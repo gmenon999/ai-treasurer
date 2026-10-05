@@ -1,0 +1,12 @@
+# Secrets — never commit tokens in any form.
+.github_token
+.github_token.*
+.netlify_token
+.netlify_token.*
+*.token
+*_token
+# Netlify CLI local state
+.netlify/
+# Deploy bundles / scratch
+*.zip
+__pycache__/

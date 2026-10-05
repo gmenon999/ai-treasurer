@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI Treasurer Briefing | AI, Treasury &amp; Finance</title>
+<meta name="description" content="A daily intelligence briefing on AI, Treasury and Finance, curated and written in plain English by Gopakumar Menon CA, CPA.">
+<meta property="og:title" content="The AI Treasurer Briefing">
+<meta property="og:description" content="Daily intelligence on AI, Treasury and Finance for CFOs and treasurers.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314263F'/%3E%3Crect x='20' y='72' width='60' height='6' fill='%23B08D3C'/%3E%3Ctext x='50' y='60' font-family='Georgia,serif' font-size='52' fill='white' text-anchor='middle'%3EAT%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --navy: #14263F;
+    --navy-soft: #3B4A60;
+    --gold: #B08D3C;
+    --grey: #EAE7E2;
+    --line: #CFCBC3;
+    --white: #FFFFFF;
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible, .skip:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--white); padding: 8px 12px; }
+  .skip:focus { left: 8px; top: 8px; z-index: 10; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* Top band */
+  header.band { background: var(--navy); color: var(--white); }
+  header.band .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; padding-bottom: 18px; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--serif); font-size: 22px; letter-spacing: 0.01em; text-decoration: none; }
+  .mark span { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+  .nav { display: flex; gap: 18px; align-items: center; font-size: 14px; }
+  .nav a { color: #C9D1DC; text-decoration: none; }
+  .nav a:hover { color: var(--white); border-bottom: 1px solid var(--gold); }
+
+  /* Masthead */
+  .masthead { border-bottom: 3px solid var(--navy); padding: 28px 0 18px; }
+  .masthead .kicker { font-family: var(--sans); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+  .masthead h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; margin: 8px 0 10px; letter-spacing: -0.015em; }
+  .masthead .dateline { font-size: 14px; color: var(--navy-soft); display: flex; gap: 14px; flex-wrap: wrap; }
+  .masthead .dateline b { color: var(--navy); font-weight: 700; }
+
+  /* Tabs */
+  .tabs { position: sticky; top: 0; z-index: 5; background: var(--white); border-bottom: 1px solid var(--line); }
+  .tabs .wrap { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tabs button {
+    appearance: none; background: none; border: none; cursor: pointer;
+    font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--navy-soft);
+    padding: 14px 16px; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -1px;
+  }
+  .tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--gold); }
+  .tabs button:hover { color: var(--navy); }
+
+  main { padding: 32px 0 16px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Editor note */
+  .desk { background: var(--navy); color: var(--white); padding: 32px 36px; margin-bottom: 36px; }
+  .desk h2 { font-family: var(--serif); font-size: clamp(22px, 3vw, 28px); margin: 0 0 14px; }
+  .desk p { max-width: 64ch; margin: 0 0 12px; color: #DCE2EA; font-size: 17px; }
+  .desk .sig { font-family: var(--serif); color: var(--white); margin-top: 18px; border-top: 2px solid var(--gold); padding-top: 12px; display: inline-block; }
+
+  /* Dashboard */
+  .dash { border-top: 3px solid var(--gold); border-bottom: 1px solid var(--line); padding: 8px 0 20px; margin-bottom: 36px; }
+  .dash h3 { font-family: var(--sans); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 16px 0 14px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .cell { background: var(--white); padding: 16px 18px; }
+  .cell .val { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.1; }
+  .cell .lbl { font-size: 13px; color: var(--navy-soft); margin-top: 4px; }
+  .cell .src { font-size: 11px; color: var(--navy-soft); margin-top: 8px; }
+  .dash .disclaim { font-size: 12px; color: var(--navy-soft); margin-top: 12px; }
+
+  /* Section + items */
+  .pillar-intro { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); margin: 0 0 6px; }
+  .pillar-sub { color: var(--navy-soft); margin: 0 0 24px; max-width: 60ch; }
+  .beat { margin-bottom: 40px; }
+  .beat > h3 { font-family: var(--sans); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin: 0 0 18px; }
+  .item { padding: 0 0 22px; margin-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .item:last-child { border-bottom: none; margin-bottom: 0; }
+  .item h4 { font-family: var(--serif); font-size: 21px; line-height: 1.25; margin: 0 0 6px; }
+  .item p { margin: 0 0 8px; color: var(--navy-soft); max-width: 66ch; }
+  .item .cite a { font-size: 13px; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .item .cite { font-size: 13px; color: var(--navy-soft); }
+
+  /* Events */
+  .event { display: grid; grid-template-columns: 150px 1fr; gap: 18px; padding: 20px 0; border-top: 1px solid var(--line); }
+  .event:last-child { border-bottom: 1px solid var(--line); }
+  .event .when { font-family: var(--serif); font-weight: 700; }
+  .event .when small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--navy-soft); }
+  .event h4 { margin: 0 0 4px; font-family: var(--serif); font-size: 19px; }
+  .event p { margin: 0; color: var(--navy-soft); font-size: 15px; }
+
+  /* Archive */
+  .arch-month { font-family: var(--serif); font-size: 22px; margin: 0 0 4px; }
+  .arch-month small { font-family: var(--sans); font-size: 13px; color: var(--navy-soft); font-weight: 400; }
+  .edlist { list-style: none; margin: 14px 0 32px; padding: 0; }
+  .edlist li { border-top: 1px solid var(--line); padding: 14px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .edlist li:last-child { border-bottom: 1px solid var(--line); }
+  .edlist .no { font-family: var(--serif); font-weight: 700; }
+  .edlist .dt { color: var(--navy-soft); font-size: 14px; }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0 48px; font-size: 13px; color: var(--navy-soft); margin-top: 24px; }
+  footer p { margin: 0 0 8px; max-width: 80ch; }
+
+  @media (max-width: 820px) {
+    body { font-size: 17px; }
+    .grid { grid-template-columns: 1fr 1fr; }
+    .desk { padding: 24px 22px; }
+    .event { grid-template-columns: 1fr; gap: 4px; }
+  }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="band">
+  <div class="wrap">
+    <a class="mark" href="/"><span>The AI Treasurer</span></a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/briefing/" aria-current="page">Daily Briefing</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="masthead">
+    <div class="kicker">The AI Treasurer Briefing</div>
+    <h1>AI, Treasury &amp; Finance</h1>
+    <div class="dateline">
+      <span><b>Monday, 5 October 2026</b></span>
+      <span>Edition No. 1</span>
+      <span>Curated by Gopakumar Menon, CA, CPA</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs" role="tablist" aria-label="Briefing sections">
+  <div class="wrap">
+    <button role="tab" aria-selected="true" aria-controls="p-front" id="t-front">Front Page</button>
+    <button role="tab" aria-selected="false" aria-controls="p-ai" id="t-ai">AI &amp; Technology</button>
+    <button role="tab" aria-selected="false" aria-controls="p-treasury" id="t-treasury">Treasury &amp; Payments</button>
+    <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets">Risk &amp; Markets</button>
+    <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events">Events Radar</button>
+    <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive">Archive</button>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap">
+
+    <!-- FRONT PAGE -->
+    <section class="panel active" id="p-front" role="tabpanel" aria-labelledby="t-front">
+      <div class="desk">
+        <h2>From the AI Treasurer's Desk</h2>
+        <p>Agentic treasury stopped being a slide this year and started shipping. Ripple is putting AI agents inside its own corporate treasury to watch cash, risk and forecasts; Goldman Sachs is building agents on Anthropic's Claude for trade accounting and onboarding; Bottomline has embedded an agent directly into cash management. Read the detail and one line repeats across all of them: the agent monitors, flags and recommends, but nothing posts until a named person approves it.</p>
+        <p>That line is the whole argument of this site. Speed is the easy part now. The harder question for anyone signing off is whether each automated step leaves a trail an auditor can follow, because by November Fedwire, CHIPS and SWIFT all run exclusively on ISO 20022, and the moment AI touches a journal entry or a reconciliation it falls inside ICFR. Faster rails and smarter agents only help if the controls keep up. That is what this briefing tracks each day.</p>
+        <span class="sig">&mdash; Gopakumar Menon, CA, CPA</span>
+      </div>
+
+      <div class="dash">
+        <h3>Treasury Market Dashboard</h3>
+        <div class="grid">
+          <div class="cell"><div class="val">4.5&ndash;4.75%</div><div class="lbl">10Y US Treasury, Q4 2026 outlook range</div><div class="src">As cited in Q4 2026 rate outlooks</div></div>
+          <div class="cell"><div class="val">~3.5 hikes</div><div class="lbl">Further Fed moves priced by Jun 2027</div><div class="src">Market pricing, as reported</div></div>
+          <div class="cell"><div class="val">$315.3B</div><div class="lbl">Total stablecoin market cap</div><div class="src">As of Jun 2026</div></div>
+          <div class="cell"><div class="val">+733%</div><div class="lbl">B2B stablecoin payments, YoY (~$226B annualised)</div><div class="src">As reported, 2026</div></div>
+          <div class="cell"><div class="val">97%</div><div class="lbl">Former MT 103 now sent as ISO 20022 pacs.008</div><div class="src">Swift network, as reported</div></div>
+          <div class="cell"><div class="val">46%</div><div class="lbl">Organisations that raised US cash holdings</div><div class="src">As of Mar 2026</div></div>
+        </div>
+        <p class="disclaim">Indicative figures compiled from the sources cited on each item, as reported on the dates shown. Not live market data and not investment advice.</p>
+      </div>
+
+      <h3 class="beat-head" style="font-family:var(--sans);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:700;border-bottom:1px solid var(--line);padding-bottom:8px;margin:0 0 18px;">Today's lead stories</h3>
+      <div class="item"><h4>Agentic treasury arrives &mdash; with a human still holding the pen</h4><p>Ripple, Goldman Sachs and Bottomline all moved live agents into treasury and cash work this autumn, each keeping an explicit human-approval step before anything executes. Full write-up under AI &amp; Technology.</p><div class="cite">See <a href="#" onclick="showTab('ai');return false;">AI &amp; Technology &rarr;</a></div></div>
+      <div class="item"><h4>The ISO 20022 deadline that reshapes payments data</h4><p>By November 2026 Fedwire, CHIPS and SWIFT operate exclusively on ISO 20022, ending the legacy-message era for US large-value and cross-border flows. Detail under Treasury &amp; Payments.</p><div class="cite">See <a href="#" onclick="showTab('treasury');return false;">Treasury &amp; Payments &rarr;</a></div></div>
+      <div class="item"><h4>Stablecoins cross from pilot into the back office</h4><p>B2B stablecoin volume is up sharply year on year as treasuries move from holding digital dollars to orchestrating them across issuers and chains. Detail under Risk &amp; Markets.</p><div class="cite">See <a href="#" onclick="showTab('markets');return false;">Risk &amp; Markets &rarr;</a></div></div>
+    </section>
+
+    <!-- AI & TECHNOLOGY -->
+    <section class="panel" id="p-ai" role="tabpanel" aria-labelledby="t-ai">
+      <h2 class="pillar-intro">AI &amp; Technology</h2>
+      <p class="pillar-sub">Where agents, models and the treasury technology stack actually touch the numbers.</p>
+
+      <div class="beat">
+        <h3>AI &amp; Agentic Automation in Treasury</h3>
+        <div class="item"><h4>Ripple embeds AI agents inside its own corporate treasury</h4><p>Ripple is adding agents to Ripple Treasury that monitor corporate cash, risk and forecasts and recommend actions across liquidity, forecasting and reconciliation &mdash; flagging problems rather than acting on them, with execution left to a person.</p><div class="cite">Reported by <a href="https://www.coindesk.com/markets/2026/09/11/ripple-puts-ai-agents-inside-its-usd1-billion-corporate-treasury-bet" target="_blank" rel="noopener">CoinDesk</a> and <a href="https://www.pymnts.com/news/artificial-intelligence/2026/ai-agents-help-treasurers-move-faster/" target="_blank" rel="noopener">PYMNTS</a></div></div>
+        <div class="item"><h4>Goldman Sachs builds trade-accounting agents on Anthropic's Claude</h4><p>Goldman is developing autonomous agents to handle core trade accounting and client onboarding, framed as digital co-workers that compress the time process-heavy functions take.</p><div class="cite">Reported by <a href="https://www.pymnts.com/news/artificial-intelligence/2026/ai-agents-help-treasurers-move-faster/" target="_blank" rel="noopener">PYMNTS</a></div></div>
+        <div class="item"><h4>Bottomline puts an AI agent directly into cash management</h4><p>Bottomline announced an embedded agent aimed at treasury and cash-management workflows, part of a wider shift to agents that initiate and manage routine treasury activity.</p><div class="cite">From <a href="https://www.bottomline.com/newsroom/press-releases/bottomline-announces-embedded-ai-agent-transform-treasury-and-cash-management" target="_blank" rel="noopener">Bottomline</a>; context via <a href="https://www.bcg.com/publications/2026/ai-agents-reshaping-corporate-treasury" target="_blank" rel="noopener">BCG</a></div></div>
+      </div>
+
+      <div class="beat">
+        <h3>Treasury Technology, Data &amp; Connectivity</h3>
+        <div class="item"><h4>TMS platforms absorb AI forecasting and real-time data</h4><p>Treasury management systems are folding in AI-driven forecasting, real-time cash visibility and ISO 20022 handling, pushing treasury from periodic reporting toward a continuous view of cash, liquidity and risk.</p><div class="cite">Via <a href="https://dxc.com/insights/knowledge-base/blogs/treasury-management-trends-and-priorities-for-2026" target="_blank" rel="noopener">DXC</a> and <a href="https://trovata.io/blog/treasury-trends/" target="_blank" rel="noopener">Trovata</a></div></div>
+        <div class="item"><h4>&ldquo;Agentic payments&rdquo; dominate the Sibos floor</h4><p>Agentic payments were among the most-discussed themes at Sibos 2026, as banks debated how the industry prepares for AI systems that can initiate and route payments, not just advise on them.</p><div class="cite">Reported by <a href="https://www.fintechfutures.com/ai-in-fintech/sibos-2026-agentic-payments-take-centre-stage-on-day-three" target="_blank" rel="noopener">FinTech Futures</a></div></div>
+      </div>
+    </section>
+
+    <!-- TREASURY & PAYMENTS -->
+    <section class="panel" id="p-treasury" role="tabpanel" aria-labelledby="t-treasury">
+      <h2 class="pillar-intro">Treasury &amp; Payments</h2>
+      <p class="pillar-sub">Cash and working capital, the payment rails that move it, and the controls around both.</p>
+
+      <div class="beat">
+        <h3>Cash, Liquidity &amp; Working Capital</h3>
+        <div class="item"><h4>Corporates keep building cash buffers</h4><p>Close to half of organisations had increased their US cash holdings by March 2026, up from a year earlier, as teams hold more cash and manage working capital tightly against a volatile backdrop.</p><div class="cite">Via <a href="https://www.invesco.com/us/en/insights/cash-trends-liquidity-survey.html" target="_blank" rel="noopener">Invesco Global Liquidity survey</a></div></div>
+        <div class="item"><h4>Faster rails are compressing the float</h4><p>The shift from cash and cheques to real-time digital payments is shrinking float and shortening the window treasurers have to make funding decisions &mdash; raising the premium on accurate, current cash visibility.</p><div class="cite">Via <a href="https://www.associatedbank.com/education/articles/business-insights/strategy-and-management/treasury-management-trends" target="_blank" rel="noopener">Associated Bank</a></div></div>
+        <div class="item"><h4>Trapped cash tops the stablecoin use-case list</h4><p>Finance leaders cite cross-border payments and freeing trapped working capital as the leading reasons to look at stablecoins and tokenised deposits.</p><div class="cite">Via <a href="https://www.jpmorgan.com/insights/payments/trends-innovation/five-payment-trends-in-2026" target="_blank" rel="noopener">J.P. Morgan Payments</a></div></div>
+      </div>
+
+      <div class="beat">
+        <h3>Payments &amp; Transaction Banking</h3>
+        <div class="item"><h4>ISO 20022 becomes the only language of large-value payments</h4><p>With the cross-border migration completed in late 2025, by November 2026 Fedwire, CHIPS and SWIFT all run exclusively on ISO 20022 &mdash; and 97% of former MT 103 messages already move as structured pacs.008.</p><div class="cite">Via <a href="https://www.redcompasslabs.com/insights/iso-20022-is-arriving-all-at-once-for-us-banks/" target="_blank" rel="noopener">RedCompass Labs</a> and the <a href="https://fasterpaymentscouncil.org/blog/16237/The-Value-of-ISO-20022-for-U-S-B2B-Instant-Payments" target="_blank" rel="noopener">US Faster Payments Council</a></div></div>
+        <div class="item"><h4>Banks ship treasury tools at Sibos 2026</h4><p>Bank of America launched Payments Insights for cross-border flow and working-capital intelligence; HSBC introduced a single dashboard for payments, balances and trade/FX; and BNY opened bank-to-wallet cross-border payouts to other banks.</p><div class="cite">Reported by <a href="https://www.tradefinanceglobal.com/posts/launches-at-sibos-2026-finastra-mastercard-bank-of-america/" target="_blank" rel="noopener">Trade Finance Global</a> and <a href="https://www.fxcintel.com/research/analysis/sibos-2026-highlights-takeaways" target="_blank" rel="noopener">FXC Intelligence</a></div></div>
+      </div>
+
+      <div class="beat">
+        <h3>Regulation, Controls &amp; the CFO Agenda</h3>
+        <div class="item"><h4>If AI touches the numbers, it is now in scope for ICFR</h4><p>Where AI shapes estimates, journal entries, reconciliations or disclosures, auditors expect it governed like any other system: an AI inventory, validation evidence reconciled to source, change logs and records of human review and override.</p><div class="cite">Via <a href="https://www.finrep.ai/blog/ai-in-financial-reporting-audit-risk-the-2026-compliance-map" target="_blank" rel="noopener">FinRep</a> and <a href="https://www.houseblend.io/articles/pcaob-ai-guidance-sox-icfr-audits-netsuite" target="_blank" rel="noopener">House Blend</a></div></div>
+        <div class="item"><h4>No binding AI audit standard yet &mdash; but the questions have started</h4><p>As of mid-2026 there is no binding PCAOB or SEC rule governing AI in audits, though the SEC has begun raising AI questions in comment letters, and broader AI transparency obligations take effect in August 2026.</p><div class="cite">Via <a href="https://www.finrep.ai/blog/ai-in-financial-reporting-audit-risk-the-2026-compliance-map" target="_blank" rel="noopener">FinRep</a></div></div>
+      </div>
+    </section>
+
+    <!-- RISK & MARKETS -->
+    <section class="panel" id="p-markets" role="tabpanel" aria-labelledby="t-markets">
+      <h2 class="pillar-intro">Risk &amp; Markets</h2>
+      <p class="pillar-sub">FX and rates exposure, digital-asset settlement, and the macro backdrop treasurers fund into.</p>
+
+      <div class="beat">
+        <h3>Treasury Risk &mdash; FX, Rates &amp; Commodities</h3>
+        <div class="item"><h4>FX stays treasury's number-one worry</h4><p>In recent survey work 83% of treasury professionals named FX as their biggest risk, 72% pointed to interest rates and 39% to commodity volatility &mdash; a reminder that the hedging toolkit matters as much as the forecast.</p><div class="cite">Via <a href="https://www.iofm.com/ap/organizational-structure/hedging-fx-rate-and-commodity-risk-treasury-s-toolkit-in-a-volatile-world" target="_blank" rel="noopener">IOFM</a></div></div>
+        <div class="item"><h4>Watch the Q4 dollar-funding squeeze</h4><p>Commentary flags a potential USD funding squeeze into year-end as coupon flows and dealer balance-sheet constraints cut the capacity to supply dollars in FX swaps &mdash; widening cross-currency basis and quietly raising the true cost of synthetically financed carry.</p><div class="cite">Via <a href="https://www.forex.com/en-us/news-and-analysis/usd-jpy-q4-2026-outlook-hawkish-fed-pricing-clashes-with-intervention-risk/" target="_blank" rel="noopener">FOREX.com</a></div></div>
+      </div>
+
+      <div class="beat">
+        <h3>Digital Assets, Tokenisation &amp; Settlement</h3>
+        <div class="item"><h4>Stablecoins move into the treasury back office</h4><p>B2B stablecoin payments rose sharply year on year toward an estimated $226B annualised, with the total market around $315B by mid-2026. Leading desks now treat stablecoin balances as a best-execution problem across issuers and chains, not a parking decision.</p><div class="cite">Via <a href="https://www.pymnts.com/news/b2b-payments/2026/stablecoin-adoption-runs-into-the-treasury-back-office/" target="_blank" rel="noopener">PYMNTS</a> and <a href="https://stablecoininsider.org/stablecoin-treasury-report-2026-data-adoption-and-yield-strategies/" target="_blank" rel="noopener">Stablecoin Insider</a></div></div>
+        <div class="item"><h4>Swift's shared ledger goes live for tokenised deposits</h4><p>Swift's blockchain-based ledger is now live, with a group of banks expected to use it across several major currencies by the end of 2026 to power always-on payments using tokenised deposits.</p><div class="cite">Via <a href="https://www.fxcintel.com/research/analysis/sibos-2026-highlights-takeaways" target="_blank" rel="noopener">FXC Intelligence</a></div></div>
+      </div>
+
+      <div class="beat">
+        <h3>Markets &amp; Macro for Treasurers</h3>
+        <div class="item"><h4>Rates: higher-for-longer, with a hawkish tilt</h4><p>Markets are pricing roughly three and a half further Fed moves by mid-2027, with 10-year Treasury yields seen in a 4.5&ndash;4.75% range in Q4 outlooks &mdash; front-end US rates remaining the dominant driver for major currency pairs.</p><div class="cite">Via <a href="https://www.ishares.com/us/insights/portfolio-insights/fed-outlook-rates-kevin-warsh-fixed-income-2026" target="_blank" rel="noopener">iShares</a> and <a href="https://www.forex.com/en-us/news-and-analysis/matt-s-top-trade-to-watch-in-2026-us-treasury-yields/" target="_blank" rel="noopener">FOREX.com</a></div></div>
+        <div class="item"><h4>A mixed call on developed-market currencies</h4><p>J.P. Morgan Research struck a cautious note on several developed-market currencies including the Canadian dollar, euro, yen and Swedish krona, even as rate expectations rise globally &mdash; relevant for anyone setting hedge ratios into 2027.</p><div class="cite">Via <a href="https://www.jpmorgan.com/insights/global-research/outlook/mid-year-outlook" target="_blank" rel="noopener">J.P. Morgan Research</a></div></div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="panel" id="p-events" role="tabpanel" aria-labelledby="t-events">
+      <h2 class="pillar-intro">Events &amp; Conference Radar</h2>
+      <p class="pillar-sub">Where the treasury agenda is being set &mdash; recent highlights and the dates worth holding.</p>
+
+      <div class="event">
+        <div class="when">16&ndash;18 Sep 2026<small>Barcelona &middot; concluded</small></div>
+        <div><h4>EuroFinance International Treasury Management</h4><p>The 35th edition ran under the theme &ldquo;Strategic treasury in the AI era,&rdquo; with streams on cash intelligence and liquidity, capital structuring, FX and commodity risk, and the payments revolution across 180+ speakers.</p><div class="cite" style="margin-top:6px;font-size:13px;color:var(--navy-soft);">Via <a href="https://www.eurofinance.com/international-treasury-event/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--gold);text-decoration:none;color:var(--navy);">EuroFinance</a></div></div>
+      </div>
+      <div class="event">
+        <div class="when">Sibos 2026<small>Miami &middot; recently concluded</small></div>
+        <div><h4>Swift Sibos 2026</h4><p>Agentic payments, the go-live of Swift's shared ledger, and a wave of bank treasury launches (Bank of America, HSBC, BNY, Finastra, Mastercard) dominated the floor.</p><div class="cite" style="margin-top:6px;font-size:13px;color:var(--navy-soft);">Via <a href="https://www.swift.com/news-events/events/sibos-2026-miami" target="_blank" rel="noopener" style="border-bottom:1px solid var(--gold);text-decoration:none;color:var(--navy);">Swift</a></div></div>
+      </div>
+      <div class="event">
+        <div class="when">By Nov 2026<small>Watch date</small></div>
+        <div><h4>ISO 20022 exclusivity for US large-value rails</h4><p>Fedwire, CHIPS and SWIFT move to operate exclusively on ISO 20022. Treasury teams should confirm their banks' readiness and their own data-quality and straight-through-processing posture.</p><div class="cite" style="margin-top:6px;font-size:13px;color:var(--navy-soft);">Via <a href="https://www.redcompasslabs.com/insights/iso-20022-is-arriving-all-at-once-for-us-banks/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--gold);text-decoration:none;color:var(--navy);">RedCompass Labs</a></div></div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE -->
+    <section class="panel" id="p-archive" role="tabpanel" aria-labelledby="t-archive">
+      <h2 class="pillar-intro">Archive</h2>
+      <p class="pillar-sub">Editions are kept for the current month. A new edition is added each day.</p>
+      <div class="arch-month">October 2026 <small>&middot; current month</small></div>
+      <ul class="edlist">
+        <li><span class="no">Edition No. 1</span> <span class="dt">Monday, 5 October 2026 &middot; current edition</span></li>
+      </ul>
+      <p style="font-size:13px;color:var(--navy-soft);">Earlier months will appear here as the archive grows.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 The AI Treasurer. Views expressed are personal and are not financial or professional advice.</p>
+    <p>This briefing links to third-party publishers and summarises each item in its own words; it does not reproduce source articles. Figures are as reported on the dates shown and are not live market data. Company and publication names are used only to identify the source.</p>
+  </div>
+</footer>
+
+<script>
+  var tabs = document.querySelectorAll('.tabs button');
+  var panels = document.querySelectorAll('.panel');
+  function showTab(key) {
+    tabs.forEach(function(b){ b.setAttribute('aria-selected', b.id === 't-'+key ? 'true':'false'); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === 'p-'+key); });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){ showTab(b.id.replace('t-','')); });
+  });
+</script>
+</body>
+</html>
