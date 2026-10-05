@@ -125,6 +125,8 @@
   @media (max-width: 520px) {
     .grid { grid-template-columns: 1fr; }
   }
+  .editor-bio p { max-width: 68ch; margin: 0 0 14px; color: var(--navy-soft); }
+  .editor-bio .ed-link { font-family: var(--serif); color: var(--navy); text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
 </style>
 </head>
 <body>
@@ -134,7 +136,7 @@
   <div class="wrap">
     <a class="mark" href="/"><span>The AI Treasurer</span></a>
     <nav class="nav">
-      <a href="/">Home</a>
+      <a href="#" onclick="showTab('about');return false;">About the Editor</a>
       <a href="/briefing/" aria-current="page">Daily Briefing</a>
     </nav>
   </div>
@@ -160,6 +162,7 @@
     <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets">Risk &amp; Markets</button>
     <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events">Events Radar</button>
     <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive">Archive</button>
+    <button role="tab" aria-selected="false" aria-controls="p-about" id="t-about">About the Editor</button>
   </div>
 </div>
 
@@ -290,6 +293,19 @@
         <li><span class="no">Edition No. 1</span> <span class="dt">Monday, 5 October 2026 &middot; current edition</span></li>
       </ul>
       <p style="font-size:13px;color:var(--navy-soft);">Earlier months will appear here as the archive grows.</p>
+    </section>
+
+    <!-- ABOUT THE EDITOR -->
+    <section class="panel" id="p-about" role="tabpanel" aria-labelledby="t-about">
+      <h2 class="pillar-intro">About the Editor</h2>
+      <p class="pillar-sub">Gopakumar Menon &mdash; Finance &amp; Treasury Leader. Modernizing Treasury through Automation and AI.</p>
+      <div class="editor-bio">
+        <p>I'm a Finance and Treasury Leader with more than 20 years of experience across financial control, IFRS and US GAAP reporting, and treasury operations, with leadership roles spanning The World Bank, Barclays, and today Woqod (Qatar Fuel).</p>
+        <p>Today, at Woqod (Qatar Fuel), Qatar's downstream oil and fuel distribution company, I'm leading the digital transformation of its Treasury. I joined in 2017 to modernize a largely manual operation and have since re-engineered the Treasury function around automation, robust controls, and industry best practice, work recognized with the company's CEO Award.</p>
+        <p>Before Woqod, I spent more than a decade in senior finance roles across international banking and global development. At Barclays, as Vice President of Financial Control, I was entity controller for the bank's Group Treasury branch within its Investment Banking Division and led the transition of its Treasury Financial Control roles from Singapore to Chennai. Earlier, over nearly six years at The World Bank, I was part of the financial reporting and analysis team responsible for the preparation of financial statements and internal MI reports, and led multiple strategic assignments at its Washington DC HQ, working alongside colleagues from around the world.</p>
+        <p>I'm a Chartered Accountant (ACA) and Certified Public Accountant (CPA), and I've always been a relentless learner. Today my focus is firmly on AI. I've completed intensive, hands-on programs in generative AI, AI agents and automation, blockchain, ESG, and data analytics, and I'm genuinely excited about what comes next. I believe AI will transform how organizations operate, how decisions are made, and how value is created, and I'm determined to help shape that future rather than simply witness it.</p>
+        <p><a class="ed-link" href="https://qa.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Let's connect on LinkedIn &rarr;</a></p>
+      </div>
     </section>
 
   </div>
