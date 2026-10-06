@@ -1,0 +1,51 @@
+name: Daily AI Treasurer Briefing
+
+# 04:00 Qatar (UTC+3) = 01:00 UTC. GitHub's own scheduler is best-effort and can
+# lag; the two later crons are self-healing retries (they no-op if today's edition
+# already exists). For exact-time delivery, trigger workflow_dispatch from a
+# punctual scheduler (e.g. n8n) at 04:00 Qatar.
+on:
+  schedule:
+    - cron: "0 1 * * *"
+    - cron: "25 1 * * *"
+    - cron: "25 2 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: daily-briefing
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet requests
+      - name: Build today's edition
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python generate.py
+      - name: Commit and push
+        run: |
+          set -e
+          git config user.name  "AI Treasurer bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes - edition already built today. Nothing to publish."
+            exit 0
+          fi
+          ED=$(grep -o 'Edition No\. [0-9]*' index.html | head -1)
+          git commit -m "${ED:-New edition} - $(date -u +'%d %B %Y')"
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then echo "Published; Netlify will deploy."; break; fi
+            [ "$i" = 5 ] && { echo "::error::push failed after 5 tries"; exit 1; }
+            sleep $((i*10)); git fetch origin main; git rebase origin/main || { git rebase --abort || true; exit 1; }
+          done
