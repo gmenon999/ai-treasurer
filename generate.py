@@ -105,15 +105,55 @@ def _ask(prompt, model, max_tokens=9000, search=True, attempts=3):
     raise last
 
 
+def _balanced_prefix(t):
+    """Return the first balanced {...} or [...] substring, ignoring trailing text."""
+    depth = 0; instr = False; esc = False
+    for i, ch in enumerate(t):
+        if instr:
+            if esc: esc = False
+            elif ch == "\\": esc = True
+            elif ch == '"': instr = False
+            continue
+        if ch == '"': instr = True
+        elif ch in "{[": depth += 1
+        elif ch in "}]":
+            depth -= 1
+            if depth == 0:
+                return t[:i + 1]
+    return None
+
+
 def _json(raw, label="response"):
-    m = re.search(r"```(?:json)?\s*(.+?)```", raw, re.S)
+    """Tolerant JSON extraction: strips fences/prose, trailing commas, trailing text."""
+    txt = raw or ""
+    m = re.search(r"```(?:json)?\s*(.+?)```", txt, re.S)
     if m:
-        raw = m.group(1)
-    starts = [i for i in (raw.find("{"), raw.find("[")) if i != -1]
+        txt = m.group(1)
+    starts = [i for i in (txt.find("{"), txt.find("[")) if i != -1]
     if not starts:
-        print("--- %s: no JSON. Raw ---\n%s\n---" % (label, raw[:1500]))
-        raise ValueError("%s: no JSON" % label)
-    return json.JSONDecoder().raw_decode(raw[min(starts):])[0]
+        print("--- %s: no JSON found. Raw model output ---\n%s\n--- end ---" % (label, (raw or "")[:3000]))
+        raise ValueError("%s: no JSON in model response" % label)
+    txt = txt[min(starts):]
+    cands = []
+    bal = _balanced_prefix(txt)
+    if bal:
+        cands.append(bal)
+    last = max(txt.rfind("}"), txt.rfind("]"))
+    if last != -1:
+        cands.append(txt[:last + 1])
+    cands.append(txt)
+    # also try each candidate with trailing commas removed
+    cands += [re.sub(r",(\s*[}\]])", r"\1", c) for c in list(cands)]
+    for c in cands:
+        try:
+            return json.loads(c)
+        except Exception:
+            try:
+                return json.JSONDecoder().raw_decode(c)[0]
+            except Exception:
+                continue
+    print("--- %s: unparseable JSON. Raw model output ---\n%s\n--- end ---" % (label, (raw or "")[:3000]))
+    raise ValueError("%s: unparseable JSON" % label)
 
 
 # ---------------------------------------------------------------- prompts
