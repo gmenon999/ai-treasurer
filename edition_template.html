@@ -13,264 +13,726 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="AI Treasurer">
 <title>The AI Treasurer | Daily Briefing on AI, Treasury &amp; Finance</title>
-<meta name="description" content="A daily intelligence briefing on AI, Treasury and Finance, written in plain English.">
+<meta name="description" content="A daily intelligence briefing on AI, Treasury and Finance, written in plain English, plus a controls-first view on adopting AI in Treasury.">
 <meta property="og:title" content="The AI Treasurer">
-<meta property="og:description" content="Daily intelligence on AI, Treasury and Finance for CFOs and treasurers.">
+<meta property="og:description" content="Daily intelligence on AI, Treasury and Finance for CFOs and treasurers. Treasury is getting faster; the controls have to keep up.">
 <meta property="og:type" content="website">
 <style>
   :root {
     --navy: #14263F;
+    --navy-deep: #0D1A2C;
+    --navy-mid: #1B3150;
     --navy-soft: #3B4A60;
+    --blue: #2E6AF0;
     --gold: #B08D3C;
+    --gold-light: #D9B867;
     --grey: #EAE7E2;
     --line: #CFCBC3;
     --white: #FFFFFF;
+    --on-dark: #DCE2EA;
+    --on-dark-soft: #9FACBE;
     --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--white);
-    color: var(--navy);
-    font-family: var(--sans);
-    font-size: 18px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--sans); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
-  a:focus-visible, .skip:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, .skip:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
   .skip { position: absolute; left: -999px; top: 0; background: var(--white); padding: 8px 12px; }
   .skip:focus { left: 8px; top: 8px; z-index: 10; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  .kicker { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+  .arrow-link { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+  .arrow-link::after { content: " \2192"; }
 
-  /* Top band */
-  header.band { background: var(--navy); color: var(--white); }
-  header.band .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; padding-bottom: 18px; gap: 16px; flex-wrap: wrap; }
-  .mark { font-family: var(--serif); font-size: 22px; letter-spacing: 0.01em; text-decoration: none; }
-  .mark span { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
-  .nav { display: flex; gap: 18px; align-items: center; font-size: 14px; }
-  .nav a { color: #C9D1DC; text-decoration: none; }
-  .nav a:hover { color: var(--white); border-bottom: 1px solid var(--gold); }
+  /* ---------- Header ---------- */
+  header.band { background: var(--navy-deep); color: var(--white); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  header.band .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; padding-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--serif); font-size: 22px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+  .mark .logomark { width: 32px; height: 32px; flex: none; }
+  .nav { display: flex; gap: 22px; align-items: center; font-size: 14px; flex-wrap: wrap; }
+  .nav a { color: var(--on-dark); text-decoration: none; }
+  .nav a:hover { color: var(--white); }
+  .nav .cta { color: var(--navy-deep); background: var(--gold-light); padding: 8px 14px; font-weight: 700; }
+  .nav .cta:hover { background: var(--white); color: var(--navy-deep); }
 
-  /* Masthead */
-  .masthead { border-bottom: 3px solid var(--navy); padding: 28px 0 18px; }
-  .masthead .kicker { font-family: var(--sans); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
-  .masthead h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; margin: 8px 0 10px; letter-spacing: -0.015em; }
-  .masthead .dateline { font-size: 14px; color: var(--navy-soft); display: flex; gap: 14px; flex-wrap: wrap; }
-  .masthead .dateline b { color: var(--navy); font-weight: 700; }
+  /* ---------- Front grid (dark) ---------- */
+  .front { background: var(--navy-deep); color: var(--white); padding: 56px 0 64px; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 24px; }
+  .tiles > *, .leads > *, .beat-items > *, .cards > *, .beat > *, .grid > * { min-width: 0; }
+  .tile h2, .card h3, .leads .item h4 { overflow-wrap: anywhere; }
+  .tile { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; min-height: 300px; padding: 28px 28px 30px; background: var(--navy-mid); color: var(--white); text-decoration: none; }
+  .tile .art { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .tile > *:not(.art) { position: relative; }
+  .tile h2 { font-family: var(--serif); font-size: clamp(24px, 2.4vw, 32px); line-height: 1.18; margin: 10px 0 12px; }
+  .tile h2 a, .tile .h-link { color: var(--white); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+  .tile p { margin: 0 0 14px; color: var(--on-dark); font-size: 16px; }
+  .tile .kicker { color: var(--gold-light); }
+  .tile-tall { grid-row: span 2; min-height: 620px; }
+  .tile-desk { justify-content: flex-start; background: var(--navy); border-top: 3px solid var(--gold); }
+  .tile-desk .note p { font-family: var(--serif); font-size: 18px; color: var(--on-dark); display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+  .tile-desk .note p + p { display: none; }
+  .tile-desk .arrow-link { color: var(--white); margin-top: auto; align-self: flex-start; }
+  .tile-dash { justify-content: flex-start; background: var(--navy-mid); }
+  .mini { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.12); margin-top: 14px; }
+  .mini .cell { background: var(--navy-mid); padding: 12px 12px 12px 0; }
+  .mini .cell:nth-child(n+5) { display: none; }
+  .mini .val { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.1; color: var(--white); }
+  .mini .lbl { font-size: 13px; color: var(--on-dark); margin-top: 4px; line-height: 1.35; }
+  .mini .src { display: none; }
+  .tile-dash small { font-size: 12px; color: var(--on-dark-soft); margin-top: 14px; display: block; }
+  .tile-work .btn { align-self: flex-start; }
+  .btn { display: inline-block; background: var(--white); color: var(--navy-deep); font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 22px; border: 0; cursor: pointer; font-family: var(--sans); }
+  .btn::after { content: "  \2192"; }
+  .btn:hover { background: var(--gold-light); }
+  .btn-gold { background: var(--gold-light); }
+  .btn-gold:hover { background: var(--white); }
 
-  /* Tabs */
-  .tabs { position: sticky; top: 0; z-index: 5; background: var(--white); border-bottom: 1px solid var(--line); }
-  .tabs .wrap { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .tabs button {
-    appearance: none; background: none; border: none; cursor: pointer;
-    font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--navy-soft);
-    padding: 14px 16px; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -1px;
-  }
+  /* Subscribe */
+  .hp { position: absolute; left: -5000px; }
+
+  /* Lead stories */
+  .leads-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.14); margin-top: 48px; padding-top: 22px; }
+  .leads-head h2 { font-family: var(--serif); font-size: 26px; margin: 0; }
+  .leads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 22px; counter-reset: lead; }
+  .leads .item { counter-increment: lead; border-top: 3px solid var(--gold); padding-top: 16px; }
+  .leads .item::before { content: "Lead story 0" counter(lead); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .leads .item h4 { font-family: var(--serif); font-size: 22px; line-height: 1.25; margin: 8px 0 8px; color: var(--white); }
+  .leads .item p { color: var(--on-dark); font-size: 16px; margin: 0 0 10px; }
+  .leads .item .cite { font-size: 14px; color: var(--on-dark-soft); }
+  .leads .item .cite a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+  /* ---------- Briefing ---------- */
+  .briefing { padding: 80px 0 0; scroll-margin-top: 24px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-bottom: 3px solid var(--navy); padding-bottom: 20px; margin-bottom: 44px; }
+  .sec-head h2 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; margin: 10px 0 0; letter-spacing: -0.02em; }
+  .sec-head p { margin: 12px 0 0; color: var(--navy-soft); max-width: 60ch; }
+  .sec-head .dateline { font-size: 14px; color: var(--navy-soft); display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
+  .sec-head .dateline b { color: var(--navy); }
+  .sec-head .meta { display: flex; gap: 28px; }
+  .sec-head .meta div { font-size: 13px; color: var(--navy-soft); line-height: 1.3; }
+  .sec-head .meta b { display: block; font-family: var(--serif); font-size: 40px; line-height: 1; color: var(--navy); }
+
+  .desk { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; margin-bottom: 64px; }
+  .desk .label { border-top: 3px solid var(--gold); padding-top: 16px; }
+  .desk .label h3 { font-family: var(--serif); font-size: 26px; line-height: 1.2; margin: 10px 0 0; }
+  .desk .text { position: relative; }
+  .desk .text::before { content: "\201C"; position: absolute; left: -54px; top: -30px; font-family: var(--serif); font-size: 150px; line-height: 1; color: var(--gold); opacity: 0.3; }
+  .desk .text p { position: relative; font-family: var(--serif); font-size: 22px; line-height: 1.55; margin: 0 0 18px; color: var(--navy); max-width: 62ch; }
+  .desk .sig { font-family: var(--serif); font-size: 17px; border-top: 2px solid var(--gold); padding-top: 12px; display: inline-block; margin-top: 4px; }
+
+  .numbers { position: relative; overflow: hidden; background: var(--navy-deep); color: var(--white); padding: 48px 0 40px; }
+  .numbers .bg { position: absolute; right: -60px; top: -40px; width: 520px; height: 340px; opacity: 0.5; }
+  .numbers .wrap { position: relative; }
+  .numbers-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .numbers-head h3 { font-family: var(--serif); font-size: 28px; margin: 6px 0 0; font-weight: 700; }
+  .numbers .disclaim { font-size: 12px; color: var(--on-dark-soft); margin: 0; max-width: 52ch; }
+  .grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.18); }
+  .grid .cell { padding: 24px 20px 6px; border-right: 1px solid rgba(255,255,255,0.12); }
+  .grid .cell:first-child { padding-left: 0; }
+  .grid .cell:last-child { border-right: 0; }
+  .grid .val { font-family: var(--serif); font-size: clamp(28px, 2.6vw, 40px); font-weight: 700; line-height: 1.05; color: var(--white); }
+  .grid .lbl { font-size: 14px; color: var(--on-dark); margin-top: 10px; line-height: 1.4; }
+  .grid .src { font-size: 12px; color: var(--on-dark-soft); margin-top: 8px; }
+
+  .brief-body { background: #F4F2EE; padding-bottom: 56px; }
+  .tabs { position: sticky; top: 0; z-index: 5; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 0 rgba(20,38,63,0.04); }
+  .tabs .tabrow { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tabs button { appearance: none; background: none; border: none; cursor: pointer; font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--navy-soft); padding: 18px 24px 16px 0; margin-right: 12px; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -1px; text-align: left; display: flex; flex-direction: column; gap: 2px; }
+  .tabs button .tn { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
   .tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--gold); }
   .tabs button:hover { color: var(--navy); }
-
-  main { padding: 32px 0 16px; }
+  .panels { padding-top: 36px; }
   .panel { display: none; }
   .panel.active { display: block; }
-
-  /* Editor note */
-  .desk { background: var(--navy); color: var(--white); padding: 32px 36px; margin-bottom: 36px; }
-  .desk h2 { font-family: var(--serif); font-size: clamp(22px, 3vw, 28px); margin: 0 0 14px; }
-  .desk p { max-width: 64ch; margin: 0 0 12px; color: #DCE2EA; font-size: 17px; }
-  .desk .sig { font-family: var(--serif); color: var(--white); margin-top: 18px; border-top: 2px solid var(--gold); padding-top: 12px; display: inline-block; }
-
-  /* Dashboard */
-  .dash { border-top: 3px solid var(--gold); border-bottom: 1px solid var(--line); padding: 8px 0 20px; margin-bottom: 36px; }
-  .dash h3 { font-family: var(--sans); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 16px 0 14px; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-  .cell { background: var(--white); padding: 16px 18px; }
-  .cell .val { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.1; }
-  .cell .lbl { font-size: 13px; color: var(--navy-soft); margin-top: 4px; }
-  .cell .src { font-size: 11px; color: var(--navy-soft); margin-top: 8px; }
-  .dash .disclaim { font-size: 12px; color: var(--navy-soft); margin-top: 12px; }
-
-  /* Section + items */
-  .pillar-intro { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); margin: 0 0 6px; }
-  .pillar-sub { color: var(--navy-soft); margin: 0 0 24px; max-width: 60ch; }
-  .beat { margin-bottom: 40px; }
-  .beat > h3 { font-family: var(--sans); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin: 0 0 18px; }
-  .item { padding: 0 0 22px; margin-bottom: 22px; border-bottom: 1px solid var(--line); }
-  .item:last-child { border-bottom: none; margin-bottom: 0; }
-  .item h4 { font-family: var(--serif); font-size: 21px; line-height: 1.25; margin: 0 0 6px; }
-  .item p { margin: 0 0 8px; color: var(--navy-soft); max-width: 66ch; }
-  .item .cite a { font-size: 13px; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
-  .item .cite { font-size: 13px; color: var(--navy-soft); }
-
-  /* Events */
-  .event { display: grid; grid-template-columns: 150px 1fr; gap: 18px; padding: 20px 0; border-top: 1px solid var(--line); }
-  .event:last-child { border-bottom: 1px solid var(--line); }
-  .event .when { font-family: var(--serif); font-weight: 700; }
-  .event .when small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--navy-soft); }
-  .event h4 { margin: 0 0 4px; font-family: var(--serif); font-size: 19px; }
+  .pillar-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) 380px; align-items: stretch; background: var(--navy); color: var(--white); margin-bottom: 8px; }
+  .pillar-hero .ph-copy { padding: 36px 40px; }
+  .pillar-hero .ph-art { display: block; width: 100%; height: 100%; min-height: 180px; }
+  .pillar-intro { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; margin: 8px 0 10px; }
+  .pillar-sub { color: var(--on-dark); margin: 0; max-width: 56ch; }
+  .panel > .pillar-intro { color: var(--navy); }
+  .panel > .pillar-sub { color: var(--navy-soft); margin-bottom: 28px; }
+  .beat { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--line); }
+  .beat:last-child { border-bottom: 0; }
+  .beat > h3 { font-family: var(--serif); font-size: 23px; line-height: 1.25; font-weight: 700; margin: 0; color: var(--navy); }
+  .beat > h3 .bn { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .beat-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .beat-items .item { background: var(--white); border: 1px solid #E2DED6; border-top: 3px solid var(--navy); padding: 20px 22px 18px; display: flex; flex-direction: column; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; }
+  .beat-items .item:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(20,38,63,0.12); border-top-color: var(--gold); }
+  .beat-items .item h4 { font-family: var(--serif); font-size: 20px; line-height: 1.25; margin: 0 0 10px; }
+  .beat-items .item p { margin: 0 0 14px; color: var(--navy-soft); font-size: 15px; line-height: 1.55; }
+  .beat-items .item .cite { margin-top: auto; font-size: 13px; color: var(--navy-soft); border-top: 1px solid #E2DED6; padding-top: 10px; }
+  .beat-items .item .cite a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .event { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; background: var(--white); border: 1px solid #E2DED6; border-top: 3px solid var(--gold); padding: 24px 26px; margin-bottom: 16px; }
+  .event .when { font-family: var(--serif); font-weight: 700; font-size: 22px; line-height: 1.2; }
+  .event .when small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--navy-soft); margin-top: 6px; }
+  .event h4 { margin: 0 0 6px; font-family: var(--serif); font-size: 21px; }
   .event p { margin: 0; color: var(--navy-soft); font-size: 15px; }
-
-  /* Archive */
-  .arch-month { font-family: var(--serif); font-size: 22px; margin: 0 0 4px; }
+  .arch-month { font-family: var(--serif); font-size: 24px; margin: 0 0 4px; }
   .arch-month small { font-family: var(--sans); font-size: 13px; color: var(--navy-soft); font-weight: 400; }
-  .edlist { list-style: none; margin: 14px 0 32px; padding: 0; }
-  .edlist li { border-top: 1px solid var(--line); padding: 14px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .edlist li:last-child { border-bottom: 1px solid var(--line); }
+  .edlist { list-style: none; margin: 14px 0 32px; padding: 0; background: var(--white); border: 1px solid #E2DED6; }
+  .edlist li { border-top: 1px solid #E2DED6; padding: 16px 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .edlist li:first-child { border-top: 0; }
   .edlist .no { font-family: var(--serif); font-weight: 700; }
   .edlist .dt { color: var(--navy-soft); font-size: 14px; }
 
-  footer { border-top: 1px solid var(--line); padding: 24px 0 48px; font-size: 13px; color: var(--navy-soft); margin-top: 24px; }
-  footer p { margin: 0 0 8px; max-width: 80ch; }
+  /* ---------- Framework (dark) ---------- */
+  .framework { position: relative; overflow: hidden; background: var(--navy); color: var(--white); padding: 96px 0 88px; scroll-margin-top: 24px; }
+  .framework .bg { position: absolute; right: -120px; top: -60px; width: 760px; height: 520px; opacity: 0.55; }
+  .framework .wrap { position: relative; }
+  .framework .kicker { color: var(--gold-light); }
+  .framework h2 { font-family: var(--serif); font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; margin: 12px 0 16px; max-width: 22ch; letter-spacing: -0.015em; }
+  .framework .sub { margin: 0 0 52px; max-width: 60ch; color: var(--on-dark); font-size: 19px; }
+  ol.trail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  ol.trail li { position: relative; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); padding: 28px 22px 24px; display: flex; flex-direction: column; }
+  ol.trail li:not(:last-child)::after { content: ""; position: absolute; right: -13px; top: 46px; width: 10px; height: 10px; border-top: 2px solid var(--gold-light); border-right: 2px solid var(--gold-light); transform: rotate(45deg); z-index: 1; }
+  ol.trail .n { font-family: var(--serif); font-size: 60px; line-height: 1; font-weight: 700; color: var(--gold-light); }
+  ol.trail .step { font-family: var(--serif); font-size: 26px; font-weight: 700; display: block; margin-top: 18px; }
+  ol.trail .why { font-size: 15px; color: var(--on-dark); line-height: 1.5; display: block; margin-top: 8px; }
+  ol.trail .q { margin-top: auto; padding-top: 18px; font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); }
+  ol.trail .q b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 12px; }
+  .framework .note { margin-top: 40px; font-size: 13px; color: var(--on-dark-soft); }
 
-  @media (max-width: 820px) {
+  footer { border-top: 1px solid var(--line); padding: 24px 0 48px; font-size: 13px; color: var(--navy-soft); }
+  footer p { margin: 0 0 8px; max-width: 90ch; }
+  footer a { color: var(--navy); }
+
+  @media (max-width: 1020px) {
+    .tiles { grid-template-columns: 1fr 1fr; }
+    .tile-tall { min-height: 520px; }
+    .tile-work { grid-column: 1 / -1; grid-row: auto; min-height: 340px; }
+      .leads, .cards { grid-template-columns: 1fr 1fr; }
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid .cell:nth-child(3n) { border-right: 0; }
+    .grid .cell:nth-child(3n+1) { padding-left: 0; }
+    .beat { grid-template-columns: 1fr; gap: 18px; }
+    .desk { grid-template-columns: 1fr; gap: 24px; }
+    .desk .text::before { display: none; }
+    .pillar-hero { grid-template-columns: minmax(0, 1fr) 260px; }
+    ol.trail { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    ol.trail li:nth-child(3)::after { display: none; }
+    .creds-row { grid-template-columns: 1fr 1fr; }
+    .creds-row div:nth-child(2) { border-right: 0; }
+    .creds-row div:nth-child(3) { padding-left: 0; border-top: 1px solid var(--line); }
+    .creds-row div:nth-child(4) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 700px) {
     body { font-size: 17px; }
+    .wrap { padding: 0 16px; }
+    .nav { gap: 14px; }
+    .nav a:not(.cta) { display: none; }
+    .front { padding: 36px 0 44px; }
+    .tiles, .leads, .cards { grid-template-columns: 1fr; }
+    .tile-tall { grid-row: auto; min-height: 560px; }
+    .tile { padding: 22px; }
     .grid { grid-template-columns: 1fr 1fr; }
-    .desk { padding: 24px 22px; }
-    .event { grid-template-columns: 1fr; gap: 4px; }
+    .grid .cell, .grid .cell:nth-child(n) { padding: 18px 14px 10px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .grid .cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.12); }
+    .grid .cell:nth-child(even) { padding-left: 14px; }
+    .sec-head .meta { display: none; }
+    .desk .text p { font-size: 19px; }
+    .pillar-hero { grid-template-columns: 1fr; }
+    .pillar-hero .ph-art { min-height: 120px; height: 120px; order: -1; }
+    .pillar-hero .ph-copy { padding: 24px 20px; }
+    .tabs button { padding-right: 18px; margin-right: 4px; font-size: 15px; }
+    .event { grid-template-columns: 1fr; gap: 6px; padding: 20px; }
+    ol.trail { grid-template-columns: 1fr; }
+    ol.trail li::after { display: none; }
+    .creds-row { grid-template-columns: 1fr; }
+    .creds-row div, .creds-row div + div { padding: 18px 0; border-right: 0; border-top: 1px solid var(--line); }
+    .creds-row div:first-child { border-top: 0; }
+    .work .box { grid-template-columns: 1fr; }
+    .work .copy { padding: 34px 22px; }
+    .work .side { min-height: 180px; order: -1; }
   }
-  @media (max-width: 520px) {
-    .grid { grid-template-columns: 1fr; }
+  /* ---------- Articles: "How we help" pattern ---------- */
+  .articles { padding: 96px 0 88px; scroll-margin-top: 24px; }
+  .center-head { text-align: center; max-width: 920px; margin: 0 auto 52px; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--navy); }
+  .eyebrow.center { text-align: center; margin-bottom: 36px; }
+  .center-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; margin: 14px 0 0; letter-spacing: -0.01em; }
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .card { display: flex; flex-direction: column; color: var(--navy); text-decoration: none; }
+  .card-img { overflow: hidden; aspect-ratio: 16 / 10; margin-bottom: 20px; background: var(--grey); }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card .kicker { color: var(--gold); }
+  .card h3 { font-family: var(--serif); font-size: 23px; line-height: 1.25; margin: 10px 0 10px; }
+  .card p { color: var(--navy-soft); font-size: 16px; margin: 0 0 16px; }
+  .card .by { margin-top: auto; font-size: 13px; color: var(--navy-soft); border-top: 1px solid var(--line); padding-top: 12px; }
+  .card .by b { color: var(--navy); font-family: var(--serif); }
+  .status { display: inline-block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--navy-soft); border: 1px solid var(--line); padding: 2px 8px; margin-left: 8px; vertical-align: 1px; }
+
+  /* ---------- Credentials: full-bleed blue band ---------- */
+  .creds { background: var(--blue); color: var(--white); padding: 80px 0 72px; }
+  .creds-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.15; margin: 0 0 44px; max-width: 26ch; }
+  .creds-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.45); }
+  .creds-row div { padding: 26px 24px 0 0; }
+  .creds-row div + div { padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.3); }
+  .creds-row b { display: block; font-family: var(--serif); font-size: 28px; line-height: 1.1; }
+  .creds-row span { display: block; font-size: 15px; color: var(--white); margin-top: 8px; line-height: 1.45; }
+
+  /* ---------- Work with me: careers pattern ---------- */
+  .work { padding: 96px 0 104px; scroll-margin-top: 24px; }
+  .work-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 72px; align-items: center; }
+  .work h2 { font-family: var(--serif); font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .work p { color: var(--navy-soft); margin: 0 0 14px; max-width: 52ch; }
+  .work ul { list-style: none; margin: 22px 0 30px; padding: 0; }
+  .work li { border-top: 1px solid var(--line); padding: 12px 0 12px 24px; position: relative; color: var(--navy-soft); font-size: 16px; }
+  .work li::before { content: ""; position: absolute; left: 0; top: 21px; width: 9px; height: 9px; background: var(--blue); }
+  .work li b { color: var(--navy); font-family: var(--serif); font-size: 18px; }
+  .btn-blue { background: var(--blue); color: var(--white); }
+  .btn-blue:hover { background: var(--navy); color: var(--white); }
+  .work .who { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 32px; font-family: var(--serif); font-size: 17px; color: var(--navy); }
+  .work .who small { display: block; font-family: var(--sans); font-size: 14px; color: var(--navy-soft); margin-top: 4px; }
+  .work-media { position: relative; padding: 32px 32px 0 0; }
+  .offset-block { position: absolute; top: 0; right: 0; width: 44%; height: 72%; background: var(--blue); }
+  .work-media img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 68% 50%; }
+
+  /* ---------- Hero, photo tiles, newsletter ---------- */
+  .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+  .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(34px, 5vw, 64px); line-height: 1.04; letter-spacing: -0.02em; margin: 0; }
+  .hero h1 span { display: block; }
+  .hero h1 .indent { padding-left: 1.6em; }
+  .hero-sub { display: flex; align-items: center; gap: 28px; margin-top: 24px; max-width: 660px; }
+  .hero-sub p { margin: 0; color: var(--on-dark); font-size: 17px; }
+  .circle-arrow { flex: none; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.14); color: var(--white); display: grid; place-items: center; transition: background 0.25s ease, color 0.25s ease; }
+  .circle-arrow svg { width: 26px; height: 26px; transition: transform 0.25s ease; }
+  .circle-arrow:hover { background: var(--white); color: var(--navy-deep); }
+  .circle-arrow:hover svg { transform: translateX(3px); }
+  .hero .dateline { font-size: 14px; color: var(--on-dark-soft); display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero .dateline b { color: var(--white); }
+
+  a.tile { cursor: pointer; }
+  .tile-photo { background: var(--navy-deep); }
+  .tile-photo .photo, .newsletter .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tile-photo .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,20,36,0) 22%, rgba(5,20,36,0.62) 52%, rgba(5,20,36,0.94) 82%); }
+  .tile-photo h2 { text-decoration: none; }
+  .tile-desk, .tile-dash { transition: background 0.25s ease; }
+  .tile-desk:hover { background: #1C3352; }
+  .tile-dash:hover { background: #22385A; }
+  .tile-dash .u { text-decoration: underline; color: var(--white); }
+
+  .hl { text-decoration-line: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: text-decoration-color 0.2s ease; }
+  a:hover .hl, a:focus-visible .hl { text-decoration-color: currentColor; }
+  .nw { white-space: nowrap; }
+  .chev { display: inline-block; width: 0.38em; height: 0.38em; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); margin-left: 0.3em; vertical-align: 0.12em; transition: transform 0.25s ease; }
+  a:hover .chev, .newsletter:hover .chev { transform: translateX(4px) rotate(45deg); }
+  .arrow-link::after, .btn::after { display: inline-block; transition: transform 0.25s ease; }
+  a:hover .arrow-link::after, .arrow-link:hover::after, a:hover .btn::after, .btn:hover::after { transform: translateX(4px); }
+  a.tile:hover .btn { background: var(--gold-light); }
+
+  .newsletter { position: relative; overflow: hidden; color: var(--white); background: var(--navy-deep); min-height: 540px; display: flex; align-items: center; }
+  .newsletter .photo { object-position: 72% 30%; }
+  .nl-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,20,36,0.96) 0%, rgba(5,20,36,0.82) 38%, rgba(5,20,36,0) 68%); }
+  .newsletter .wrap { position: relative; width: 100%; padding-top: 80px; padding-bottom: 80px; }
+  .nl-copy { max-width: 540px; }
+  .newsletter .kicker { color: var(--gold-light); }
+  .newsletter h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 1.08; margin: 12px 0 16px; letter-spacing: -0.01em; }
+  .newsletter p { color: var(--on-dark); margin: 0 0 26px; }
+  .newsletter form { display: flex; gap: 8px; max-width: 500px; }
+  .newsletter input[type=email] { flex: 1; min-width: 0; padding: 15px 16px; font-size: 16px; border: 0; font-family: var(--sans); }
+  .newsletter button { background: var(--white); color: var(--navy-deep); border: 0; font-weight: 700; padding: 0 24px; font-size: 16px; cursor: pointer; font-family: var(--sans); transition: background 0.2s ease; }
+  .newsletter button:hover { background: var(--gold-light); }
+
+  /* Sections ease in as they enter the viewport (scale 0.98 -> 1 over 1s) */
+  .js .reveal { transform: scale(0.98); transition: transform 1s ease; }
+  .js .reveal.in { transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { transform: none; transition: none; }
+    .chev, .arrow-link::after, .btn::after, .circle-arrow svg { transition: none; }
   }
-  .editor-bio p { max-width: 68ch; margin: 0 0 14px; color: var(--navy-soft); }
-  .editor-bio .ed-link { font-family: var(--serif); color: var(--navy); text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
-  .mark { display: inline-flex; align-items: center; gap: 10px; }
-  .mark .logomark { width: 32px; height: 32px; flex: none; }
+
+  @media (max-width: 1020px) {
+    .work-grid { grid-template-columns: 1fr; gap: 40px; }
+    .creds-row { grid-template-columns: 1fr 1fr; }
+    .creds-row div:nth-child(3) { padding-left: 0; border-left: 0; }
+    .creds-row div:nth-child(n+3) { margin-top: 24px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 .indent { padding-left: 0; }
+    .hero-sub { gap: 18px; }
+    .circle-arrow { width: 52px; height: 52px; }
+    .cards { grid-template-columns: 1fr; gap: 40px; }
+    .newsletter { min-height: 0; align-items: flex-end; }
+    .newsletter .photo { object-position: 75% 20%; }
+    .nl-shade { background: linear-gradient(180deg, rgba(5,20,36,0.2) 0%, rgba(5,20,36,0.88) 45%, rgba(5,20,36,0.97) 100%); }
+    .newsletter .wrap { padding-top: 220px; padding-bottom: 48px; }
+    .newsletter form { flex-direction: column; }
+    .newsletter button { padding: 14px 22px; }
+    .creds { padding: 56px 0 48px; }
+    .creds-row { grid-template-columns: 1fr; }
+    .creds-row div, .creds-row div + div { padding: 18px 0; border-left: 0; margin-top: 0; border-top: 1px solid rgba(255,255,255,0.3); }
+    .creds-row div:first-child { border-top: 0; }
+    .work { padding: 64px 0 72px; }
+    .work-media { padding: 20px 20px 0 0; }
+  }
 </style>
 </head>
 <body>
+<script>document.documentElement.className+=" js";</script>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="band">
   <div class="wrap">
     <a class="mark" href="/"><svg class="logomark" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#briefing">Briefing</a>
+      <a href="#framework">Framework</a>
+      <a href="#articles">Articles</a>
+      <a href="#briefing-tabs" onclick="showTab('events');return false;">Events</a>
+      <a href="#briefing-tabs" onclick="showTab('archive');return false;">Archive</a>
+      <a class="cta" href="#work">Get in Touch</a>
+    </nav>
   </div>
 </header>
 
-<div class="wrap">
-  <div class="masthead">
-    <div class="kicker">The AI Treasurer Briefing</div>
-    <h1>AI, Treasury &amp; Finance</h1>
-    <div class="dateline">
-      <!--DATELINE-->
-    </div>
-  </div>
-</div>
-
-<div class="tabs" role="tablist" aria-label="Briefing sections">
-  <div class="wrap">
-    <button role="tab" aria-selected="true" aria-controls="p-front" id="t-front">Front Page</button>
-    <button role="tab" aria-selected="false" aria-controls="p-ai" id="t-ai">AI &amp; Technology</button>
-    <button role="tab" aria-selected="false" aria-controls="p-treasury" id="t-treasury">Treasury &amp; Payments</button>
-    <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets">Risk &amp; Markets</button>
-    <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events">Events Radar</button>
-    <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive">Archive</button>
-  </div>
-</div>
-
 <main id="main">
-  <div class="wrap">
 
-    <!-- FRONT PAGE -->
-    <section class="panel active" id="p-front" role="tabpanel" aria-labelledby="t-front">
-      <div class="desk">
-        <h2>From the AI Treasurer's Desk</h2>
-        <!--EDITOR_NOTE-->
-        <span class="sig">&mdash; The AI Treasurer</span>
+  <!-- ===== FRONT: editorial grid ===== -->
+  <section class="front" aria-labelledby="front-h">
+    <div class="wrap">
+      <div class="hero">
+        <div class="hero-copy">
+          <h1 id="front-h"><span>Treasury is getting faster.</span><span class="indent">The controls have to keep up.</span></h1>
+          <div class="hero-sub">
+            <p>Plain-English intelligence on AI, Treasury and Finance &mdash; and a controls-first way to adopt it, so every automated step leaves a trail an auditor can follow.</p>
+            <a class="circle-arrow" href="#briefing" aria-label="Read today's briefing"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+          </div>
+        </div>
+        <div class="dateline">
+          <!--DATELINE-->
+        </div>
       </div>
 
-      <div class="dash">
-        <h3>Treasury Market Dashboard</h3>
+      <div class="tiles">
+        <!-- Tall tile: the signature framework (photo) -->
+        <a class="tile tile-tall tile-photo" href="#framework">
+          <img class="photo" src="/img/ait-framework-skyline.jpg" alt="An executive in a suit looking out over a city skyline" loading="eager" style="object-position: 55% 40%;">
+          <div class="shade"></div>
+          <div class="kicker">Framework</div>
+          <h2><span class="hl">Capture &rarr; Match &rarr; Flag &rarr; Approve &rarr;</span> <span class="nw"><span class="hl">Post</span><span class="chev" aria-hidden="true"></span></span></h2>
+          <p>The five-step control trail I apply to any AI or automation in Treasury.</p>
+        </a>
+
+        <!-- Editor's note -->
+        <a class="tile tile-desk" href="#briefing">
+          <div class="kicker">From the desk &middot; Today</div>
+          <div class="note">
+            <!--EDITOR_NOTE-->
+          </div>
+          <span class="arrow-link">Read today's briefing</span>
+        </a>
+
+        <!-- Tall tile: work with me (photo) -->
+        <a class="tile tile-tall tile-photo" href="#work">
+          <img class="photo" src="/img/ait-work-team.jpg" alt="Executives in business suits in a meeting at a conference table" loading="eager" style="object-position: 52% 40%;">
+          <div class="shade"></div>
+          <div class="kicker">Get in Touch</div>
+          <h2><span class="hl">Bringing AI into Treasury without losing control?</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
+          <p>Independent advice for CFOs and treasurers on automation that stands up to audit.</p>
+          <span class="btn">How I can help</span>
+        </a>
+
+        <!-- Dashboard snapshot -->
+        <a class="tile tile-dash" href="#numbers">
+          <div class="kicker">Treasury dashboard</div>
+          <div class="mini">
+            <!--DASHBOARD-->
+          </div>
+          <small>As reported on the dates cited; not live data. <span class="u">Full dashboard</span></small>
+        </a>
+      </div>
+
+      <div class="leads-head">
+        <h2>Today's lead stories</h2>
+        <a class="arrow-link" href="#briefing" style="color:var(--white);font-size:15px;">All eight beats</a>
+      </div>
+      <div class="leads">
+        <!--LEAD-->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER (full-bleed photo) ===== -->
+  <section class="newsletter reveal" aria-labelledby="nl-h">
+    <img class="photo" src="/img/ait-newsletter-desk.jpg" alt="A professional at her desk, looking up from her work" loading="lazy">
+    <div class="nl-shade"></div>
+    <div class="wrap">
+      <div class="nl-copy">
+        <div class="kicker">The daily briefing</div>
+        <h2 id="nl-h">Intelligence for the people who sign off<span class="chev" aria-hidden="true"></span></h2>
+        <p>AI, Treasury and Finance in plain English, every morning. Email delivery is launching soon &mdash; leave your address to be first on the list.</p>
+        <form name="briefing-subscribe" method="POST" data-netlify="true" netlify-honeypot="company" action="/subscribed.html">
+          <input type="hidden" name="form-name" value="briefing-subscribe">
+          <p class="hp"><label>Leave blank <input name="company"></label></p>
+          <label for="sub-email" class="hp">Email address</label>
+          <input id="sub-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRIEFING ===== -->
+  <section class="briefing" id="briefing" aria-labelledby="brief-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">The AI Treasurer Briefing</div>
+          <h2 id="brief-h">AI, Treasury &amp; Finance</h2>
+          <div class="dateline">
+            <!--DATELINE-->
+          </div>
+        </div>
+        <div class="meta">
+          <div><b>3</b>pillars</div>
+          <div><b>8</b>beats</div>
+          <div><b>6</b>figures</div>
+        </div>
+      </div>
+
+      <div class="desk">
+        <div class="label">
+          <div class="kicker">Editor's note</div>
+          <h3>From the AI Treasurer's Desk</h3>
+        </div>
+        <div class="text">
+          <!--EDITOR_NOTE-->
+          <span class="sig">&mdash; The AI Treasurer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="numbers" id="numbers">
+      <svg class="bg" viewBox="0 0 520 340" aria-hidden="true">
+        <g fill="none">
+          <polyline points="0,300 260,90 520,300" stroke="#2E6AF0" stroke-width="2" opacity="0.6"/>
+          <polyline points="0,340 260,130 520,340" stroke="#2E6AF0" stroke-width="1" opacity="0.4"/>
+          <polyline points="0,260 260,50 520,260" stroke="#B08D3C" stroke-width="1.5" opacity="0.7"/>
+        </g>
+      </svg>
+      <div class="wrap">
+        <div class="numbers-head">
+          <div>
+            <div class="kicker">Treasury Market Dashboard</div>
+            <h3>The numbers behind today's edition</h3>
+          </div>
+          <p class="disclaim">Indicative figures compiled from the sources cited on each item, as reported on the dates shown. Not live market data and not investment advice.</p>
+        </div>
         <div class="grid">
           <!--DASHBOARD-->
         </div>
-        <p class="disclaim">Indicative figures compiled from the sources cited on each item, as reported on the dates shown. Not live market data and not investment advice.</p>
+      </div>
+    </div>
+
+    <div class="brief-body">
+      <div class="tabs" id="briefing-tabs" role="tablist" aria-label="Briefing sections">
+        <div class="wrap tabrow">
+          <button role="tab" aria-selected="true" aria-controls="p-ai" id="t-ai"><span class="tn">Pillar 01</span>AI &amp; Technology</button>
+          <button role="tab" aria-selected="false" aria-controls="p-treasury" id="t-treasury"><span class="tn">Pillar 02</span>Treasury &amp; Payments</button>
+          <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets"><span class="tn">Pillar 03</span>Risk &amp; Markets</button>
+          <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events"><span class="tn">Diary</span>Events Radar</button>
+          <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive"><span class="tn">Editions</span>Archive</button>
+        </div>
       </div>
 
-      <h3 class="beat-head" style="font-family:var(--sans);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:700;border-bottom:1px solid var(--line);padding-bottom:8px;margin:0 0 18px;">Today's lead stories</h3>
-      <!--LEAD-->
-    </section>
+      <div class="wrap panels">
+        <section class="panel active" id="p-ai" role="tabpanel" aria-labelledby="t-ai">
+          <div class="pillar-hero">
+            <div class="ph-copy">
+              <div class="kicker">Pillar 01</div>
+              <h2 class="pillar-intro">AI &amp; Technology</h2>
+              <p class="pillar-sub">Where agents, models and the Treasury technology stack actually touch the numbers.</p>
+            </div>
+            <svg class="ph-art" viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="380" height="220" fill="#1B3150"/>
+              <g fill="none" stroke="#2E6AF0" stroke-width="1.5" opacity="0.8"><circle cx="190" cy="110" r="34"/><circle cx="190" cy="110" r="64"/><circle cx="190" cy="110" r="98"/><circle cx="190" cy="110" r="136"/></g>
+              <polygon points="190,92 214,112 214,121 190,101 166,121 166,112" fill="#FFFFFF"/>
+              <polygon points="190,112 214,132 214,141 190,121 166,141 166,132" fill="#2E6AF0"/>
+              <g fill="#D9B867"><circle cx="254" cy="110" r="4"/><circle cx="130" cy="70" r="3"/><circle cx="288" cy="40" r="2.5"/><circle cx="92" cy="160" r="2.5"/></g>
+            </svg>
+          </div>
+          <div class="beat"><h3><span class="bn">Beat 01</span>AI &amp; Agentic Automation in Treasury</h3><div class="beat-items">
+            <!--BEAT_ai_agentic-->
+          </div></div>
+          <div class="beat"><h3><span class="bn">Beat 02</span>Treasury Technology, Data &amp; Connectivity</h3><div class="beat-items">
+            <!--BEAT_treasury_tech-->
+          </div></div>
+        </section>
 
-    <!-- AI & TECHNOLOGY -->
-    <section class="panel" id="p-ai" role="tabpanel" aria-labelledby="t-ai">
-      <h2 class="pillar-intro">AI &amp; Technology</h2>
-      <p class="pillar-sub">Where agents, models and the treasury technology stack actually touch the numbers.</p>
+        <section class="panel" id="p-treasury" role="tabpanel" aria-labelledby="t-treasury">
+          <div class="pillar-hero">
+            <div class="ph-copy">
+              <div class="kicker">Pillar 02</div>
+              <h2 class="pillar-intro">Treasury &amp; Payments</h2>
+              <p class="pillar-sub">Cash and working capital, the payment rails that move it, and the controls around both.</p>
+            </div>
+            <svg class="ph-art" viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="380" height="220" fill="#1B3150"/>
+              <g stroke-width="10" fill="none"><line x1="0" y1="70" x2="380" y2="70" stroke="#2E6AF0"/><line x1="0" y1="110" x2="380" y2="110" stroke="#FFFFFF" opacity="0.9"/><line x1="0" y1="150" x2="380" y2="150" stroke="#2E6AF0" opacity="0.6"/></g>
+              <g fill="#D9B867"><rect x="70" y="64" width="12" height="12"/><rect x="190" y="104" width="12" height="12"/><rect x="300" y="144" width="12" height="12"/><rect x="250" y="64" width="12" height="12"/></g>
+              <line x1="0" y1="200" x2="380" y2="200" stroke="#B08D3C" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="beat"><h3><span class="bn">Beat 03</span>Cash, Liquidity &amp; Working Capital</h3><div class="beat-items">
+            <!--BEAT_cash-->
+          </div></div>
+          <div class="beat"><h3><span class="bn">Beat 04</span>Payments &amp; Transaction Banking</h3><div class="beat-items">
+            <!--BEAT_payments-->
+          </div></div>
+          <div class="beat"><h3><span class="bn">Beat 05</span>Regulation, Controls &amp; the CFO Agenda</h3><div class="beat-items">
+            <!--BEAT_regulation-->
+          </div></div>
+        </section>
 
-      <div class="beat">
-        <h3>AI &amp; Agentic Automation in Treasury</h3>
-        <!--BEAT_ai_agentic-->
+        <section class="panel" id="p-markets" role="tabpanel" aria-labelledby="t-markets">
+          <div class="pillar-hero">
+            <div class="ph-copy">
+              <div class="kicker">Pillar 03</div>
+              <h2 class="pillar-intro">Risk &amp; Markets</h2>
+              <p class="pillar-sub">FX and rates exposure, digital-asset settlement, and the macro backdrop treasurers fund into.</p>
+            </div>
+            <svg class="ph-art" viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="380" height="220" fill="#1B3150"/>
+              <polyline points="0,170 50,150 95,160 140,110 185,125 230,80 275,95 320,55 380,40" fill="none" stroke="#2E6AF0" stroke-width="3"/>
+              <polyline points="0,190 60,180 120,186 180,160 240,168 300,140 380,130" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+              <g fill="#D9B867"><rect x="136" y="106" width="9" height="9"/><rect x="226" y="76" width="9" height="9"/><rect x="316" y="51" width="9" height="9"/></g>
+            </svg>
+          </div>
+          <div class="beat"><h3><span class="bn">Beat 06</span>Treasury Risk &mdash; FX, Rates &amp; Commodities</h3><div class="beat-items">
+            <!--BEAT_risk-->
+          </div></div>
+          <div class="beat"><h3><span class="bn">Beat 07</span>Digital Assets, Tokenisation &amp; Settlement</h3><div class="beat-items">
+            <!--BEAT_digital-->
+          </div></div>
+          <div class="beat"><h3><span class="bn">Beat 08</span>Markets &amp; Macro for Treasurers</h3><div class="beat-items">
+            <!--BEAT_markets_macro-->
+          </div></div>
+        </section>
+
+        <section class="panel" id="p-events" role="tabpanel" aria-labelledby="t-events">
+          <h2 class="pillar-intro">Events &amp; Conference Radar</h2>
+          <p class="pillar-sub">Where the Treasury agenda is being set &mdash; recent highlights and the dates worth holding.</p>
+          <!--EVENTS-->
+        </section>
+
+        <section class="panel" id="p-archive" role="tabpanel" aria-labelledby="t-archive">
+          <h2 class="pillar-intro">Archive</h2>
+          <p class="pillar-sub">Editions are kept for the current month. A new edition is added each day.</p>
+          <!--ARCHIVE-->
+        </section>
       </div>
+    </div>
+  </section>
 
-      <div class="beat">
-        <h3>Treasury Technology, Data &amp; Connectivity</h3>
-        <!--BEAT_treasury_tech-->
+  <!-- ===== FRAMEWORK ===== -->
+  <section class="framework reveal" id="framework" aria-labelledby="fw-h">
+    <svg class="bg" viewBox="0 0 760 520" aria-hidden="true">
+      <g fill="none">
+        <polyline points="0,460 380,150 760,460" stroke="#2E6AF0" stroke-width="44" opacity="0.35"/>
+        <polyline points="0,380 380,70 760,380" stroke="#2E6AF0" stroke-width="2" opacity="0.5"/>
+        <polyline points="0,340 380,30 760,340" stroke="#B08D3C" stroke-width="2" opacity="0.6"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="kicker">How I think about AI in Treasury</div>
+      <h2 id="fw-h">Every automated step should leave a trail an auditor can follow</h2>
+      <p class="sub">The test I apply to any AI or automation idea in Treasury: can each stage be explained, evidenced and reversed? If the answer is no at any step, the speed is borrowed against the next audit.</p>
+      <ol class="trail">
+        <li><span class="n">01</span><span class="step">Capture</span><span class="why">Bank and system data arrives from a known, authorised source.</span><span class="q"><b>The auditor asks</b>Where did this data come from?</span></li>
+        <li><span class="n">02</span><span class="step">Match</span><span class="why">Rules or models pair items, and the matching logic is recorded.</span><span class="q"><b>The auditor asks</b>Why were these two items paired?</span></li>
+        <li><span class="n">03</span><span class="step">Flag</span><span class="why">Exceptions are logged and aged, never silently cleared.</span><span class="q"><b>The auditor asks</b>What didn't match, and for how long?</span></li>
+        <li><span class="n">04</span><span class="step">Approve</span><span class="why">A named person accepts each exception before anything moves.</span><span class="q"><b>The auditor asks</b>Who accepted it, and when?</span></li>
+        <li><span class="n">05</span><span class="step">Post</span><span class="why">Entries follow IFRS, with the full trail kept for review.</span><span class="q"><b>The auditor asks</b>Does the entry trace back to source?</span></li>
+      </ol>
+      <p class="note">Illustrative framework. It describes a control approach, not a specific system or result.</p>
+    </div>
+  </section>
+
+  <!-- ===== ARTICLES ("How we help" pattern) ===== -->
+  <section class="articles reveal" id="articles" aria-labelledby="art-h">
+    <div class="wrap">
+      <div class="center-head">
+        <div class="eyebrow">Articles</div>
+        <h2 id="art-h">Perspectives on adopting AI in Treasury &mdash; without losing control.</h2>
       </div>
-    </section>
-
-    <!-- TREASURY & PAYMENTS -->
-    <section class="panel" id="p-treasury" role="tabpanel" aria-labelledby="t-treasury">
-      <h2 class="pillar-intro">Treasury &amp; Payments</h2>
-      <p class="pillar-sub">Cash and working capital, the payment rails that move it, and the controls around both.</p>
-
-      <div class="beat">
-        <h3>Cash, Liquidity &amp; Working Capital</h3>
-        <!--BEAT_cash-->
+      <div class="cards">
+        <a class="card" href="#framework">
+          <div class="card-img"><img src="/img/ait-article-audit.jpg" alt="A magnifying glass resting on a blue textured surface" loading="lazy" style="object-position: 50% 50%;"></div>
+          <div class="kicker">Framework <span class="status">Forthcoming</span></div>
+          <h3><span class="hl">The control trail: a five-step test for any AI in Treasury</span>&#8288;<span class="chev" aria-hidden="true"></span></h3>
+          <p>Why Capture, Match, Flag, Approve and Post is the minimum an auditor should be able to see.</p>
+          <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
+        </a>
+        <a class="card" href="#framework">
+          <div class="card-img"><img src="/img/ait-article-exceptions.jpg" alt="Financial statements under review with a calculator and laptop" loading="lazy" style="object-position: 50% 45%;"></div>
+          <div class="kicker">Controls <span class="status">Forthcoming</span></div>
+          <h3><span class="hl">Exception accounting when a machine does the matching</span>&#8288;<span class="chev" aria-hidden="true"></span></h3>
+          <p>Keeping unmatched items visible, aged and properly accounted for once reconciliation is automated.</p>
+          <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
+        </a>
+        <a class="card" href="#framework">
+          <div class="card-img"><img src="/img/ait-article-agents.jpg" alt="An abstract network of connected cubes on a dark surface" loading="lazy" style="object-position: 50% 50%;"></div>
+          <div class="kicker">CFO agenda <span class="status">Forthcoming</span></div>
+          <h3><span class="hl">Five questions to ask before you rely on an AI agent in Treasury</span>&#8288;<span class="chev" aria-hidden="true"></span></h3>
+          <p>A short checklist for CFOs and audit committees reviewing agentic automation in cash and payments.</p>
+          <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
+        </a>
       </div>
+    </div>
+  </section>
 
-      <div class="beat">
-        <h3>Payments &amp; Transaction Banking</h3>
-        <!--BEAT_payments-->
+  <!-- ===== CREDENTIALS (blue band) ===== -->
+  <section class="creds reveal" aria-label="Credentials">
+    <div class="wrap">
+      <div class="creds-head">
+        <h2>Two decades of control, reporting and Treasury &mdash; now applied to AI.</h2>
       </div>
-
-      <div class="beat">
-        <h3>Regulation, Controls &amp; the CFO Agenda</h3>
-        <!--BEAT_regulation-->
+      <div class="creds-row">
+        <div><b>20+ years</b><span>Financial control, IFRS and US GAAP reporting, and Treasury operations</span></div>
+        <div><b>The World Bank</b><span>Financial reporting and analysis, including assignments at Washington DC headquarters</span></div>
+        <div><b>Barclays</b><span>VP, Financial Control &mdash; entity controller for Group Treasury</span></div>
+        <div><b>CA &middot; CPA &middot; CTP</b><span>Chartered Accountant, US CPA and Certified Treasury Professional</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- RISK & MARKETS -->
-    <section class="panel" id="p-markets" role="tabpanel" aria-labelledby="t-markets">
-      <h2 class="pillar-intro">Risk &amp; Markets</h2>
-      <p class="pillar-sub">FX and rates exposure, digital-asset settlement, and the macro backdrop treasurers fund into.</p>
-
-      <div class="beat">
-        <h3>Treasury Risk &mdash; FX, Rates &amp; Commodities</h3>
-        <!--BEAT_risk-->
+  <!-- ===== WORK WITH ME (careers pattern) ===== -->
+  <section class="work reveal" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="eyebrow center">Get in Touch</div>
+      <div class="work-grid">
+        <div class="copy">
+          <h2 id="work-h">Faster Treasury, with controls that keep up</h2>
+          <p>I help Finance and Treasury teams adopt automation and AI in a way their auditors, boards and banks can follow.</p>
+          <ul>
+            <li><b>Automation readiness review.</b> Where AI will genuinely save time in your Treasury processes, and where it will add risk.</li>
+            <li><b>Control design for AI workflows.</b> Approval gates, evidence and audit trails for agentic and automated steps.</li>
+            <li><b>Reconciliation and exception accounting.</b> IFRS-grounded frameworks for clean, reviewable exceptions.</li>
+          </ul>
+          <a class="btn btn-blue" href="mailto:gmenon@theaitreasurer.com?subject=Treasury%20%2B%20AI%20%E2%80%94%20a%20conversation">Start a conversation</a>
+          <div class="who">Gopakumar Menon, CA, CPA, CTP
+            <small>20+ years in financial control, IFRS reporting and Treasury, including The World Bank and Barclays. Leading a Treasury digital transformation in Doha today.</small>
+          </div>
+        </div>
+        <div class="work-media">
+          <div class="offset-block" aria-hidden="true"></div>
+          <img src="/img/ait-work-boardroom.jpg" alt="Two executives in suits meeting in a glass-walled office" loading="lazy">
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="beat">
-        <h3>Digital Assets, Tokenisation &amp; Settlement</h3>
-        <!--BEAT_digital-->
-      </div>
-
-      <div class="beat">
-        <h3>Markets &amp; Macro for Treasurers</h3>
-        <!--BEAT_markets_macro-->
-      </div>
-    </section>
-
-    <!-- EVENTS -->
-    <section class="panel" id="p-events" role="tabpanel" aria-labelledby="t-events">
-      <h2 class="pillar-intro">Events &amp; Conference Radar</h2>
-      <p class="pillar-sub">Where the treasury agenda is being set &mdash; recent highlights and the dates worth holding.</p>
-      <!--EVENTS-->
-    </section>
-
-    <!-- ARCHIVE -->
-    <section class="panel" id="p-archive" role="tabpanel" aria-labelledby="t-archive">
-      <h2 class="pillar-intro">Archive</h2>
-      <p class="pillar-sub">Editions are kept for the current month. A new edition is added each day.</p>
-      <!--ARCHIVE-->
-    </section>
-
-  </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <p>&copy; 2026 The AI Treasurer. Views expressed are personal and are not financial or professional advice.</p>
+    <p>&copy; 2026 The AI Treasurer. Views expressed are personal and are not financial or professional advice. Contact: <a href="mailto:gmenon@theaitreasurer.com">gmenon@theaitreasurer.com</a></p>
     <p>This briefing links to third-party publishers and summarises each item in its own words; it does not reproduce source articles. Figures are as reported on the dates shown and are not live market data. Company and publication names are used only to identify the source.</p>
+    <p>Photography via <a href="https://unsplash.com" rel="noopener">Unsplash</a>: Nathan Dumlao, Andreea Avramescu, Vitaly Gariev, Sasun Bughdaryan, Kelly Sikkema and Shubham Dhage. People shown are not clients or staff.</p>
   </div>
 </footer>
 
@@ -278,13 +740,21 @@
   var tabs = document.querySelectorAll('.tabs button');
   var panels = document.querySelectorAll('.panel');
   function showTab(key) {
+    if (key === 'front') key = 'ai';
     tabs.forEach(function(b){ b.setAttribute('aria-selected', b.id === 't-'+key ? 'true':'false'); });
     panels.forEach(function(p){ p.classList.toggle('active', p.id === 'p-'+key); });
-    window.scrollTo({top:0,behavior:'smooth'});
+    var t = document.getElementById('briefing-tabs');
+    if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset, behavior: 'smooth' });
   }
   tabs.forEach(function(b){
     b.addEventListener('click', function(){ showTab(b.id.replace('t-','')); });
   });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
 </script>
 </body>
 </html>
