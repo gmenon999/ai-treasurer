@@ -135,6 +135,8 @@
   }
   .editor-bio p { max-width: 68ch; margin: 0 0 14px; color: var(--navy-soft); }
   .editor-bio .ed-link { font-family: var(--serif); color: var(--navy); text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+  .mark { display: inline-flex; align-items: center; gap: 10px; }
+  .mark .logomark { width: 26px; height: 26px; flex: none; }
 </style>
 </head>
 <body>
@@ -142,7 +144,7 @@
 
 <header class="band">
   <div class="wrap">
-    <a class="mark" href="/"><span>The AI Treasurer</span></a>
+    <a class="mark" href="/"><svg class="logomark" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,12 86,42 86,56 50,26 14,56 14,42" fill="#2E6AF0"/><polygon points="50,46 86,76 86,90 50,60 14,90 14,76" fill="#ffffff"/></svg><span>The AI Treasurer</span></a>
     <nav class="nav">
       <a href="#" onclick="showTab('about');return false;">About the Editor</a>
       <a href="/briefing/" aria-current="page">Daily Briefing</a>
