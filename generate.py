@@ -137,7 +137,7 @@ def research(date_human):
         "{\n"
         '  "beats": { "<key>": [ {"headline": "...", "summary": "...", '
         '"sources": [{"name":"Publication","url":"https://..."}] } ] },\n'
-        '  "dashboard": [ {"value":"4.5-4.75%","label":"short label","src":"source + date"} ],\n'
+        '  "dashboard": [ {"value":"4.5-4.75%%","label":"short label","src":"source + date"} ],\n'
         '  "events": [ {"when":"16-18 Sep 2026","place":"City - status","title":"...","blurb":"...",'
         '"source":{"name":"...","url":"https://..."}} ]\n'
         "}\n\n"
