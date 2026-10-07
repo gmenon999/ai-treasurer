@@ -298,12 +298,16 @@
   .secnav a { flex: none; display: block; height: var(--secnav-h); line-height: var(--secnav-h); font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
   .secnav a:hover { color: var(--white); }
   .secnav a[aria-current="true"] { color: var(--white); border-bottom-color: var(--gold); }
+  .secnav-arrow { display: none; position: absolute; top: 0; bottom: 0; width: 52px; border: 0; padding: 0; cursor: pointer; color: var(--gold-light); align-items: center; }
+  .secnav-arrow svg { width: 22px; height: 22px; }
+  .secnav-arrow.next { right: 0; justify-content: flex-end; padding-right: 12px; background: linear-gradient(90deg, rgba(13,26,44,0) 0%, var(--navy-deep) 45%); }
+  .secnav-arrow.prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(13,26,44,0) 0%, var(--navy-deep) 45%); }
+  .secnav.can-next .secnav-arrow.next, .secnav.can-prev .secnav-arrow.prev { display: flex; }
   #top, #briefing, #markets, #framework, #articles, #newsletter, #work, #briefing-tabs { scroll-margin-top: calc(var(--secnav-h) + 4px); }
   .tabs { top: var(--secnav-h); }
   @media (max-width: 700px) {
     .secnav .wrap { gap: 20px; padding-right: 36px; }
     .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
-    .secnav { -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent); mask-image: linear-gradient(90deg, #000 86%, transparent); }
     .tabs { position: static; }
   }
 
@@ -599,6 +603,8 @@
     <a href="#articles">Articles</a>
     <a href="#work">Advisory</a>
   </div>
+  <button type="button" class="secnav-arrow prev" aria-label="Show earlier menu items"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+  <button type="button" class="secnav-arrow next" aria-label="Show more menu items"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
 </nav>
 
 <main id="main">
@@ -1132,6 +1138,30 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   list.innerHTML = html;
   var d = document.querySelector('.briefing .sec-head .dateline'), out = document.querySelector('.today-date');
   if (d && out) out.textContent = d.textContent.trim();
+})();
+</script>
+<script>
+/* Menu overflow cue: arrows at the edges, plus a one-time slide on first visit. */
+(function(){
+  var nav = document.querySelector('.secnav'); if (!nav) return;
+  var row = nav.querySelector('.wrap');
+  function update(){
+    var max = row.scrollWidth - row.clientWidth;
+    nav.classList.toggle('can-prev', row.scrollLeft > 4);
+    nav.classList.toggle('can-next', max > 4 && row.scrollLeft < max - 4);
+  }
+  nav.querySelector('.secnav-arrow.next').addEventListener('click', function(){ row.scrollBy({ left: row.clientWidth * 0.6, behavior: 'smooth' }); });
+  nav.querySelector('.secnav-arrow.prev').addEventListener('click', function(){ row.scrollBy({ left: -row.clientWidth * 0.6, behavior: 'smooth' }); });
+  row.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+  var seen = false; try { seen = localStorage.getItem('ait-menu-hint') === '1'; } catch (e) {}
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!seen && !reduce && row.scrollWidth > row.clientWidth + 4 && row.scrollLeft < 4) {
+    setTimeout(function(){ row.scrollTo({ left: Math.min(90, row.scrollWidth - row.clientWidth), behavior: 'smooth' });
+      setTimeout(function(){ row.scrollTo({ left: 0, behavior: 'smooth' }); }, 700); }, 900);
+    try { localStorage.setItem('ait-menu-hint', '1'); } catch (e) {}
+  }
 })();
 </script>
 <script>
