@@ -108,9 +108,10 @@
 
   /* Lead stories */
   .leads-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.14); margin-top: 48px; padding-top: 22px; }
-  .leads-nav { display: flex; flex-wrap: wrap; gap: 10px 26px; }
-  .leads-nav a { color: var(--white); font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
-  .leads-nav a:hover { color: var(--gold); }
+  .leads-nav { display: flex; flex-wrap: wrap; gap: 10px 32px; }
+  .leads-nav a { color: var(--white); font-size: 15px; font-weight: 600; text-decoration: none; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+  .leads-nav a .chev { color: var(--gold-light); }
+  .leads-nav a:hover, .leads-nav a:focus-visible { text-decoration: underline; }
   .leads-head h2 { font-family: var(--serif); font-size: 26px; margin: 0; }
   .leads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 22px; counter-reset: lead; }
   .leads .item { counter-increment: lead; border-top: 3px solid var(--gold); padding-top: 16px; }
@@ -530,7 +531,7 @@
 
       <div class="leads-head">
         <h2>Today's lead stories</h2>
-        <nav class="leads-nav" aria-label="Briefing sections"><a href="#briefing-tabs" data-tab="ai">AI &amp; Technology</a><a href="#briefing-tabs" data-tab="treasury">Treasury &amp; Payments</a><a href="#briefing-tabs" data-tab="markets">Risk &amp; Markets</a><a href="#briefing-tabs" data-tab="events">Events Radar</a></nav>
+        <nav class="leads-nav" aria-label="Briefing sections"><a href="#briefing-tabs" data-tab="ai">AI &amp; Technology<span class="chev" aria-hidden="true"></span></a><a href="#briefing-tabs" data-tab="treasury">Treasury &amp; Payments<span class="chev" aria-hidden="true"></span></a><a href="#briefing-tabs" data-tab="markets">Risk &amp; Markets<span class="chev" aria-hidden="true"></span></a><a href="#briefing-tabs" data-tab="events">Events Radar<span class="chev" aria-hidden="true"></span></a></nav>
       </div>
       <div class="leads">
         <div class="item"><div class="topic">Agentic Treasury Controls</div><h4>Ripple expands GSmart with agents that wait for approval</h4><p>Ripple's GSmart now runs orchestrated agents for forecasting, liquidity, risk, reconciliation and reporting. Each agent proposes actions tied to policy, waits for sign-off and keeps a full audit trail.</p><div class="cite">See <a href="#" onclick="showTab('ai');return false;">AI &amp; Technology &rarr;</a></div></div>
