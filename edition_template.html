@@ -301,8 +301,9 @@
   #top, #briefing, #markets, #framework, #articles, #newsletter, #work, #briefing-tabs { scroll-margin-top: calc(var(--secnav-h) + 4px); }
   .tabs { top: var(--secnav-h); }
   @media (max-width: 700px) {
-    .secnav .wrap { gap: 7px; justify-content: space-between; }
-    .secnav a { font-size: 11px; letter-spacing: 0.03em; }
+    .secnav .wrap { gap: 20px; padding-right: 36px; }
+    .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
+    .secnav { -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent); mask-image: linear-gradient(90deg, #000 86%, transparent); }
     .tabs { position: static; }
   }
 
@@ -595,6 +596,7 @@
     <a href="#briefing">Treasury Desk</a>
     <a href="#markets">Markets</a>
     <a href="#controls">Controls</a>
+    <a href="#articles">Articles</a>
     <a href="#work">Advisory</a>
   </div>
 </nav>
@@ -897,8 +899,12 @@
     </div>
   </section>
 
+  <aside class="next-band" data-view="controls" aria-label="Next section">
+    <div class="wrap"><a href="#articles"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Articles</span><span class="nb-d">Bylined pieces on adopting AI in Treasury without losing control.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
   <!-- ===== ARTICLES ("How we help" pattern) ===== -->
-  <section class="articles reveal" id="articles" data-view="controls" aria-labelledby="art-h">
+  <section class="articles reveal" id="articles" data-view="articles" aria-labelledby="art-h">
     <div class="wrap">
       <div class="center-head">
         <div class="eyebrow">Articles</div>
@@ -923,7 +929,7 @@
     </div>
   </section>
 
-  <aside class="next-band" data-view="controls" aria-label="Next section">
+  <aside class="next-band" data-view="articles" aria-label="Next section">
     <div class="wrap"><a href="#work"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Advisory</span><span class="nb-d">Two decades of control, reporting and Treasury, now applied to AI.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
