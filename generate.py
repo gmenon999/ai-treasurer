@@ -183,16 +183,10 @@ def research(date_human):
         "{\n"
         '  "beats": { "<key>": [ {"headline": "...", "summary": "...", '
         '"sources": [{"name":"Publication","url":"https://..."}] } ] },\n'
-        '  "dashboard": [ {"value":"4.5-4.75%%","label":"short label","src":"source + date"} ],\n'
         '  "events": [ {"when":"16-18 Sep 2026","place":"City - status","title":"...","blurb":"...",'
         '"source":{"name":"...","url":"https://..."}} ]\n'
         "}\n\n"
         "BEATS (produce 2-3 items each, newest/most material first):\n%s\n\n"
-        "dashboard: exactly 6 treasury-relevant figures from surveys, studies or industry data "
-        "(e.g. payments or ISO 20022 adoption, AI adoption in finance, liquidity and cash trends, "
-        "stablecoin volumes), each with a short label and a source+date in 'src'. Do NOT include "
-        "central-bank policy rates, interest rates, bond yields or FX rates: the site's Treasury "
-        "Markets panel already shows those from official sources. "
         "events: 2-3 real treasury conferences/deadlines (e.g. Sibos, EuroFinance, AFP, ISO 20022 "
         "dates), with a real source url.\n\n"
         "summary = 30-45 words, original wording. %s" % (date_human, beats_spec, GUARD)
@@ -207,10 +201,9 @@ def research(date_human):
             raise ValueError("research: beat '%s' has no usable items" % k)
         beats[k] = items[:3]
     data["beats"] = beats
-    data["dashboard"] = (data.get("dashboard") or [])[:6]
     data["events"] = (data.get("events") or [])[:3]
-    if len(data["dashboard"]) < 4 or not data["events"]:
-        raise ValueError("research: dashboard/events incomplete")
+    if not data["events"]:
+        raise ValueError("research: events incomplete")
     return data
 
 
@@ -344,7 +337,7 @@ def render(content, date_human, edition_n, archive_entries):
     s = s.replace("<!--EDITOR_NOTE-->", "<p>%s</p>\n        <p>%s</p>" % (esc(note[0]), esc(note[1])))
     # dashboard
     cells = []
-    for c in content["dashboard"]:
+    for c in content.get("dashboard") or []:
         cells.append('<div class="cell"><div class="val">%s</div><div class="lbl">%s</div><div class="src">%s</div></div>'
                      % (esc(c.get("value")), esc(c.get("label")), esc(c.get("src"))))
     s = s.replace("<!--DASHBOARD-->", "\n          ".join(cells))
@@ -354,8 +347,8 @@ def render(content, date_human, edition_n, archive_entries):
         tab = L.get("tab", "ai")
         label = LEAD_TAB_LABEL.get(tab, "AI &amp; Technology")
         topic = (L.get("topic") or "").strip() or LEAD_TAB_LABEL.get(tab, "AI &amp; Technology").replace("&amp;", "&")
-        leads.append('<div class="item"><div class="topic">%s</div><h4>%s</h4><p>%s</p><div class="cite">See <a href="#" onclick="showTab(\'%s\');return false;">%s &rarr;</a></div></div>'
-                     % (esc(topic), esc(L["headline"]), esc(L["blurb"]), tab, label))
+        leads.append('<div class="item"><div class="topic">%s</div><h4>%s</h4><div class="cite">See <a href="#" onclick="showTab(\'%s\');return false;">%s &rarr;</a></div></div>'
+                     % (esc(topic), esc(L["headline"]), tab, label))
     s = s.replace("<!--LEAD-->", "\n      ".join(leads))
     # beats
     for k in BEAT_KEYS:

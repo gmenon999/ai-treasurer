@@ -260,6 +260,27 @@
   .mk-load { color: var(--on-dark-soft); font-size: 14px; padding: 14px 0; }
   .numbers-sub { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 56px 0 4px; }
   .numbers-sub h4 { font-family: var(--serif); font-size: 24px; margin: 6px 0 0; }
+  /* ---- Re-sequenced homepage (Oct 2026) ---- */
+  .briefing .leads-head { border-top: 0; margin-top: 0; padding-top: 0; }
+  .briefing .leads { margin-bottom: 56px; }
+  .briefing .leads .item h4 { margin-bottom: 12px; }
+  .markets-sec { scroll-margin-top: 24px; }
+  .cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; margin-left: auto; margin-right: auto; }
+  .card.card-soon { cursor: default; }
+  .card .status { margin-left: 6px; }
+  .creds .kicker { color: var(--gold-light); margin-bottom: 10px; }
+  .work { padding-top: 72px; }
+  .mk-tog { display: none; appearance: none; background: none; border: 1px solid rgba(255,255,255,0.35); color: var(--white); font: 600 12px/1 var(--sans); letter-spacing: 0.04em; text-transform: none; padding: 6px 10px; cursor: pointer; }
+  @media (max-width: 700px) {
+    .tile-touch { display: none; }
+    .tile-card.tile-tall .media { aspect-ratio: 16 / 9; }
+    .cards.two { grid-template-columns: 1fr; }
+    .mk-fold h4 small { display: none; }
+    .mk-fold .mk-tog { display: inline-block; }
+    .mk-fold:not(.open) ul { display: none; }
+    .mk-fold:not(.open) h4 { border-bottom-width: 1px; }
+  }
+
   @media (max-width: 1020px) { .mk { grid-template-columns: 1fr 1fr; gap: 40px 40px; } .mk-col.mk-wide { grid-column: 1 / -1; } }
   @media (max-width: 700px) {
     .numbers { padding: 44px 0 40px; }
@@ -502,10 +523,10 @@
     <a class="mark" href="/"><svg class="logomark" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#briefing">Briefing</a>
+      <a href="#markets">Markets</a>
       <a href="#framework">Framework</a>
       <a href="#articles">Articles</a>
-      <a href="#briefing-tabs" onclick="showTab('events');return false;">Events</a>
-      <a class="cta" href="#work">Get in Touch</a>
+      <a class="cta" href="#work">Work with me</a>
     </nav>
   </div>
 </header>
@@ -522,10 +543,9 @@
       <h1 id="front-h">AI in Treasury and Finance: faster decisions, firmer controls, a cleaner audit.</h1>
       <p class="lede">Practitioner guidance for CFOs and Treasury leaders putting AI to work across the function, from cash and liquidity to close, controls and reporting, with every automated step approved, evidenced and easy to trace.</p>
       <div class="actions">
-        <a class="go" href="#briefing"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>Explore today&rsquo;s insights</a>
-        <a class="alt" href="#work">Talk to us<span class="chev" aria-hidden="true"></span></a>
+        <a class="go" href="#briefing"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>Read today&rsquo;s briefing</a>
+        <a class="alt" href="#work">Start a conversation<span class="chev" aria-hidden="true"></span></a>
       </div>
-      <div class="dateline"><span>Treasury &amp; Finance, across markets</span><!--DATELINE--></div>
     </div>
   </section>
 
@@ -546,7 +566,7 @@
 
         <!-- Editor's note -->
         <a class="tile tile-desk" href="#briefing">
-          <div class="kicker">From the desk &middot; Today</div>
+          <div class="kicker">Editor&rsquo;s note</div>
           <div class="note">
             <!--EDITOR_NOTE-->
           </div>
@@ -557,19 +577,13 @@
         <a class="tile tile-tall tile-card tile-touch" href="#work">
           <div class="media"><img src="/img/ait-touch-abstract.jpg" alt="Abstract blue glass form on a dark navy background" loading="eager" style="object-position: 50% 50%;"></div>
           <div class="body">
-          <div class="kicker">Get in Touch</div>
+          <div class="kicker">Work with me</div>
           <h2><span class="hl">Bringing AI into Treasury without losing control?</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
           <p>Independent advice for CFOs and treasurers on automation that stands up to audit.</p>
           </div>
         </a>
       </div>
 
-      <div class="leads-head">
-        <h2>Today's lead stories</h2>
-      </div>
-      <div class="leads">
-        <!--LEAD-->
-      </div>
     </div>
   </section>
 
@@ -584,65 +598,12 @@
             <!--DATELINE-->
           </div>
         </div>
-        <div class="meta">
-          <div><b>4</b>themes</div>
-          <div><b>10</b>sections</div>
-          <div><b>6</b>figures</div>
-        </div>
       </div>
-    </div>
-
-    <div class="numbers" id="numbers">
-      <svg class="bg" viewBox="0 0 520 340" aria-hidden="true">
-        <g fill="none">
-          <polyline points="0,300 260,90 520,300" stroke="#2E6AF0" stroke-width="2" opacity="0.6"/>
-          <polyline points="0,340 260,130 520,340" stroke="#2E6AF0" stroke-width="1" opacity="0.4"/>
-          <polyline points="0,260 260,50 520,260" stroke="#B08D3C" stroke-width="1.5" opacity="0.7"/>
-        </g>
-      </svg>
-      <div class="wrap">
-        <div class="numbers-head">
-          <div>
-            <div class="kicker">Treasury Markets</div>
-            <h3>Rates, money markets and FX</h3>
-          </div>
-          <p class="disclaim">Policy rates, benchmark rates and FX reference rates from official sources, refreshed through the day. Each figure links to its source and shows its date. Not live market data and not investment advice.</p>
-        </div>
-
-        <div class="live" aria-label="Live market prices from TradingView">
-          <div class="live-tag"><div><i aria-hidden="true"></i>Live</div><span>Indices, commodities, crypto</span></div>
-          <div class="live-feed">
-            <div class="tradingview-widget-container">
-              <div class="tradingview-widget-container__widget"></div>
-              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Prices by TradingView</a>, may be delayed</div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-              {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:UKXGBP","title":"FTSE 100"},{"proName":"FOREXCOM:JP225","title":"Nikkei 225"},{"proName":"BSE:SENSEX","title":"Sensex"},{"proName":"NSE:NIFTY","title":"Nifty 50"},{"proName":"TVC:UKOIL","title":"Brent"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"NYMEX:NG1!","title":"Nat gas"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
-              </script>
-            </div>
-          </div>
-        </div>
-
-        <div class="mk" id="mk" aria-live="polite">
-          <section class="mk-col" aria-labelledby="mk-h-policy"><h4 id="mk-h-policy">Policy rates<small>Last decision</small></h4><ul data-sect="policy"><li class="mk-load">Loading&hellip;</li></ul></section>
-          <section class="mk-col" aria-labelledby="mk-h-money"><h4 id="mk-h-money">Money markets &amp; yields<small>Change, bp</small></h4><ul data-sect="money"><li class="mk-load">Loading&hellip;</li></ul></section>
-          <section class="mk-col mk-wide" aria-labelledby="mk-h-fx"><h4 id="mk-h-fx">FX reference rates<small>Change, %</small></h4><ul data-sect="fx"><li class="mk-load">Loading&hellip;</li></ul></section>
-        </div>
-        <div class="mk-foot">
-          <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Figures marked Stale have not been confirmed recently.</p>
-          <p id="mk-upd"></p>
-        </div>
-        <noscript><p class="mk-foot">Turn on JavaScript to see the Treasury Markets figures.</p></noscript>
-
-        <div class="numbers-sub">
-          <div>
-            <div class="kicker">Treasury in numbers</div>
-            <h4>Today's figures from the briefing</h4>
-          </div>
-          <p class="disclaim">Survey and industry figures as reported by the sources cited, on the dates shown.</p>
-        </div>
-        <div class="grid">
-          <!--DASHBOARD-->
-        </div>
+      <div class="leads-head">
+        <h2>Top stories</h2>
+      </div>
+      <div class="leads">
+        <!--LEAD-->
       </div>
     </div>
 
@@ -661,7 +622,6 @@
         <section class="panel active" id="p-ai" role="tabpanel" aria-labelledby="t-ai">
           <div class="pillar-hero">
             <div class="ph-copy">
-              <div class="kicker">Today&rsquo;s briefing</div>
               <h2 class="pillar-intro">AI &amp; Technology</h2>
               <p class="pillar-sub">Where agents, models and the Treasury technology stack actually touch the numbers.</p>
             </div>
@@ -684,7 +644,6 @@
         <section class="panel" id="p-treasury" role="tabpanel" aria-labelledby="t-treasury">
           <div class="pillar-hero">
             <div class="ph-copy">
-              <div class="kicker">Today&rsquo;s briefing</div>
               <h2 class="pillar-intro">Treasury &amp; Payments</h2>
               <p class="pillar-sub">Cash and working capital, the payment rails that move it, and the controls around both.</p>
             </div>
@@ -706,7 +665,6 @@
         <section class="panel" id="p-markets" role="tabpanel" aria-labelledby="t-markets">
           <div class="pillar-hero">
             <div class="ph-copy">
-              <div class="kicker">Today&rsquo;s briefing</div>
               <h2 class="pillar-intro">Risk &amp; Markets</h2>
               <p class="pillar-sub">FX and rates exposure, digital-asset settlement, and the macro backdrop treasurers fund into.</p>
             </div>
@@ -731,7 +689,6 @@
         <section class="panel" id="p-regulation" role="tabpanel" aria-labelledby="t-regulation">
           <div class="pillar-hero">
             <div class="ph-copy">
-              <div class="kicker">Today&rsquo;s briefing</div>
               <h2 class="pillar-intro">Regulation &amp; Compliance</h2>
               <p class="pillar-sub">The rules, reporting standards and controls that decide how far Treasury automation can go.</p>
             </div>
@@ -758,6 +715,72 @@
           <p class="pillar-sub">Where the Treasury agenda is being set &mdash; recent highlights and the dates worth holding.</p>
           <!--EVENTS-->
         </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MARKETS ===== -->
+  <section class="markets-sec" id="markets" aria-label="Markets">
+    <div class="numbers" id="numbers" aria-labelledby="mk-title">
+      <svg class="bg" viewBox="0 0 520 340" aria-hidden="true">
+        <g fill="none">
+          <polyline points="0,300 260,90 520,300" stroke="#2E6AF0" stroke-width="2" opacity="0.6"/>
+          <polyline points="0,340 260,130 520,340" stroke="#2E6AF0" stroke-width="1" opacity="0.4"/>
+          <polyline points="0,260 260,50 520,260" stroke="#B08D3C" stroke-width="1.5" opacity="0.7"/>
+        </g>
+      </svg>
+      <div class="wrap">
+        <div class="numbers-head">
+          <div>
+            <div class="kicker">Markets</div>
+            <h3 id="mk-title">Rates, money markets and FX</h3>
+          </div>
+          <p class="disclaim">Policy rates, benchmark rates and FX reference rates from official sources, refreshed through the day. Each figure links to its source and shows its date. Not live market data and not investment advice.</p>
+        </div>
+
+        <div class="live" aria-label="Live market prices from TradingView">
+          <div class="live-tag"><div><i aria-hidden="true"></i>Live</div><span>Indices, commodities, crypto</span></div>
+          <div class="live-feed">
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Prices by TradingView</a>, may be delayed</div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+              {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:UKXGBP","title":"FTSE 100"},{"proName":"FOREXCOM:JP225","title":"Nikkei 225"},{"proName":"BSE:SENSEX","title":"Sensex"},{"proName":"NSE:NIFTY","title":"Nifty 50"},{"proName":"TVC:UKOIL","title":"Brent"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"NYMEX:NG1!","title":"Nat gas"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
+              </script>
+            </div>
+          </div>
+        </div>
+
+        <div class="mk" id="mk" aria-live="polite">
+          <section class="mk-col" aria-labelledby="mk-h-policy"><h4 id="mk-h-policy">Policy rates<small>Last decision</small></h4><ul data-sect="policy"><li class="mk-load">Loading&hellip;</li></ul></section>
+          <section class="mk-col mk-fold" aria-labelledby="mk-h-money"><h4 id="mk-h-money">Money markets &amp; yields<small>Change, bp</small><button type="button" class="mk-tog" aria-expanded="false">Show</button></h4><ul data-sect="money"><li class="mk-load">Loading&hellip;</li></ul></section>
+          <section class="mk-col mk-wide mk-fold" aria-labelledby="mk-h-fx"><h4 id="mk-h-fx">FX reference rates<small>Change, %</small><button type="button" class="mk-tog" aria-expanded="false">Show</button></h4><ul data-sect="fx"><li class="mk-load">Loading&hellip;</li></ul></section>
+        </div>
+        <div class="mk-foot">
+          <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Figures marked Stale have not been confirmed recently.</p>
+          <p id="mk-upd"></p>
+        </div>
+        <noscript><p class="mk-foot">Turn on JavaScript to see the Treasury Markets figures.</p></noscript>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER (full-bleed photo) ===== -->
+  <section class="newsletter reveal" aria-labelledby="nl-h">
+    <img class="photo" src="/img/ait-newsletter-desk.jpg" alt="A professional at her desk, looking up from her work" loading="lazy">
+    <div class="nl-shade"></div>
+    <div class="wrap">
+      <div class="nl-copy">
+        <div class="kicker">The Sunday Treasurer &middot; Weekly newsletter &middot; Starting soon</div>
+        <h2 id="nl-h">AI, Treasury and Finance, ready before Monday<span class="chev" aria-hidden="true"></span></h2>
+        <p>One email every Sunday: the week&rsquo;s moves that matter, what they mean for your function, and the controls to keep pace. Launching soon &mdash; sign up now to get the first issue.</p>
+        <form name="briefing-subscribe" method="POST" data-netlify="true" netlify-honeypot="company" action="/subscribed.html">
+          <input type="hidden" name="form-name" value="briefing-subscribe">
+          <p class="hp"><label>Leave blank <input name="company"></label></p>
+          <label for="sub-email" class="hp">Email address</label>
+          <input id="sub-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <button type="submit">Get Sunday&rsquo;s issue</button>
+        </form>
       </div>
     </div>
   </section>
@@ -793,37 +816,31 @@
         <div class="eyebrow">Articles</div>
         <h2 id="art-h">Perspectives on adopting AI in Treasury &mdash; without losing control.</h2>
       </div>
-      <div class="cards">
-        <a class="card" href="#framework">
-          <div class="card-img"><img src="/img/ait-article-audit.jpg" alt="A magnifying glass resting on a blue textured surface" loading="lazy" style="object-position: 50% 50%;"></div>
-          <div class="kicker">Framework <span class="status">Forthcoming</span></div>
-          <h3><span class="hl">The control trail: a five-step test for any AI in Treasury</span>&#8288;<span class="chev" aria-hidden="true"></span></h3>
-          <p>Why Capture, Match, Flag, Approve and Post is the minimum an auditor should be able to see.</p>
-          <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
-        </a>
-        <a class="card" href="#framework">
+      <div class="cards two">
+        <div class="card card-soon">
           <div class="card-img"><img src="/img/ait-article-exceptions.jpg" alt="Financial statements under review with a calculator and laptop" loading="lazy" style="object-position: 50% 45%;"></div>
-          <div class="kicker">Controls <span class="status">Forthcoming</span></div>
-          <h3><span class="hl">Exception accounting when a machine does the matching</span>&#8288;<span class="chev" aria-hidden="true"></span></h3>
+          <div class="kicker">Controls <span class="status">Coming soon</span></div>
+          <h3><span class="hl">Exception accounting when a machine does the matching</span></h3>
           <p>Keeping unmatched items visible, aged and properly accounted for once reconciliation is automated.</p>
           <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
-        </a>
-        <a class="card" href="#framework">
+        </div>
+        <div class="card card-soon">
           <div class="card-img"><img src="/img/ait-article-agents.jpg" alt="An abstract network of connected cubes on a dark surface" loading="lazy" style="object-position: 50% 50%;"></div>
-          <div class="kicker">CFO agenda <span class="status">Forthcoming</span></div>
-          <h3><span class="hl">Five questions to ask before you rely on an AI agent in Treasury</span>&#8288;<span class="chev" aria-hidden="true"></span></h3>
+          <div class="kicker">CFO agenda <span class="status">Coming soon</span></div>
+          <h3><span class="hl">Five questions to ask before you rely on an AI agent in Treasury</span></h3>
           <p>A short checklist for CFOs and audit committees reviewing agentic automation in cash and payments.</p>
           <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== CREDENTIALS (blue band) ===== -->
-  <section class="creds reveal" aria-label="Credentials">
+  <section class="creds reveal" id="work" aria-labelledby="work-top">
     <div class="wrap">
       <div class="creds-head">
-        <h2>Two decades of control, reporting and Treasury &mdash; now applied to AI.</h2>
+        <div class="kicker">Work with me</div>
+        <h2 id="work-top">Two decades of control, reporting and Treasury &mdash; now applied to AI.</h2>
       </div>
       <div class="creds-row">
         <div><b>20+ years</b><span>Financial control, IFRS and US GAAP reporting, and Treasury operations</span></div>
@@ -835,11 +852,10 @@
   </section>
 
   <!-- ===== WORK WITH ME (careers pattern) ===== -->
-  <section class="work reveal" id="work" aria-labelledby="work-h">
+  <section class="work reveal" aria-labelledby="work-h">
     <div class="wrap">
-      <div class="eyebrow center">Get in Touch</div>
       <div class="who who-top"><img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon, CA, CPA, CTP" width="72" height="72" loading="lazy"><div>Gopakumar Menon, CA, CPA, CTP
-            <small>20+ years in financial control, IFRS reporting and Treasury, including The World Bank and Barclays. Leading a Treasury digital transformation in Doha today.</small></div>
+            <small>Leading a Treasury digital transformation in Doha today.</small></div>
           </div>
       <div class="work-grid">
         <div class="copy">
@@ -856,25 +872,6 @@
     </div>
   </section>
 
-  <!-- ===== NEWSLETTER (full-bleed photo) ===== -->
-  <section class="newsletter reveal" aria-labelledby="nl-h">
-    <img class="photo" src="/img/ait-newsletter-desk.jpg" alt="A professional at her desk, looking up from her work" loading="lazy">
-    <div class="nl-shade"></div>
-    <div class="wrap">
-      <div class="nl-copy">
-        <div class="kicker">The Sunday Treasurer &middot; Weekly newsletter &middot; Starting soon</div>
-        <h2 id="nl-h">AI, Treasury and Finance, ready before Monday<span class="chev" aria-hidden="true"></span></h2>
-        <p>One email every Sunday: the week&rsquo;s moves that matter, what they mean for your function, and the controls to keep pace. Launching soon &mdash; sign up now to get the first issue.</p>
-        <form name="briefing-subscribe" method="POST" data-netlify="true" netlify-honeypot="company" action="/subscribed.html">
-          <input type="hidden" name="form-name" value="briefing-subscribe">
-          <p class="hp"><label>Leave blank <input name="company"></label></p>
-          <label for="sub-email" class="hp">Email address</label>
-          <input id="sub-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
-          <button type="submit">Get Sunday&rsquo;s issue</button>
-        </form>
-      </div>
-    </div>
-  </section>
 
 </main>
 
@@ -1002,6 +999,14 @@
     document.querySelectorAll('#mk .mk-load').forEach(function(li){ li.textContent = 'Figures are temporarily unavailable.'; });
   });
 })();
+</script>
+<script>
+document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
+  b.addEventListener('click', function(){
+    var col = b.closest('.mk-fold'); var open = col.classList.toggle('open');
+    b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.textContent = open ? 'Hide' : 'Show';
+  });
+});
 </script>
 </body>
 </html>
