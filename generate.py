@@ -256,7 +256,7 @@ def _items_html(items):
 def render(content, date_human, edition_n, archive_entries):
     s = open(TEMPLATE, encoding="utf-8").read()
     # dateline
-    dateline = '<span><b>%s</b></span>\n      <span>Edition No. %d</span>' % (esc(date_human), edition_n)
+    dateline = '<span><b>%s</b></span>' % esc(date_human)
     s = s.replace("<!--DATELINE-->", dateline)
     # editor note
     note = content["editor_note"]
@@ -296,25 +296,26 @@ def render(content, date_human, edition_n, archive_entries):
 
 
 def _archive_html(entries):
-    # entries: list newest-first of {n, human, month, file, current}
+    # entries: list newest-first of {n, human, month, file, current}; grouped under "Month Year"
     if not entries:
-        return '<p style="font-size:13px;color:var(--navy-soft);">Editions will appear here.</p>'
-    cur_month = entries[0]["month"]
-    this_month = [e for e in entries if e["month"] == cur_month]
-    older = [e for e in entries if e["month"] != cur_month]
-    lis = []
-    for e in this_month:
-        href = "/" if e.get("current") else e["file"]
-        tail = " &middot; current edition" if e.get("current") else ""
-        lis.append('<li><span class="no">Edition No. %d</span> <span class="dt"><a href="%s" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">%s</a>%s</span></li>'
-                   % (e["n"], href, esc(e["human"]), tail))
-    out = '<div class="arch-month">%s <small>&middot; current month</small></div>\n      <ul class="edlist">\n        %s\n      </ul>' % (esc(cur_month), "\n        ".join(lis))
-    if older:
-        olis = ['<li><span class="no">Edition No. %d</span> <span class="dt"><a href="%s" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">%s</a></span></li>' % (e["n"], e["file"], esc(e["human"])) for e in older]
-        out += '\n      <div class="arch-month" style="margin-top:28px;">Earlier editions</div>\n      <ul class="edlist">\n        %s\n      </ul>' % "\n        ".join(olis)
-    else:
-        out += '\n      <p style="font-size:13px;color:var(--navy-soft);">Earlier months will appear here as the archive grows.</p>'
-    return out
+        return '<p style="font-size:13px;color:var(--navy-soft);">Briefings will appear here.</p>'
+    link = '<a href="%s" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">%s</a>'
+    months = []
+    for e in entries:
+        if not months or months[-1][0] != e["month"]:
+            months.append((e["month"], []))
+        months[-1][1].append(e)
+    blocks = []
+    for i, (month, items) in enumerate(months):
+        lis = []
+        for e in items:
+            href = "/" if e.get("current") else e["file"]
+            tail = " &middot; today" if e.get("current") else ""
+            lis.append('<li><span class="dt">%s%s</span></li>' % (link % (href, esc(e["human"])), tail))
+        style = '' if i == 0 else ' style="margin-top:28px;"'
+        blocks.append('<div class="arch-month"%s>%s</div>\n      <ul class="edlist">\n        %s\n      </ul>'
+                      % (style, esc(month), "\n        ".join(lis)))
+    return "\n      ".join(blocks)
 
 
 # ---------------------------------------------------------------- state
