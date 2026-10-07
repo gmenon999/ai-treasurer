@@ -1,0 +1,52 @@
+name: Treasury Markets refresh
+
+# Refreshes data/markets.json (policy rates, money markets, yields, FX) from free
+# official sources every 3 hours. Commits only when a figure actually changed,
+# so most runs publish nothing. Also runs when the fetcher or the hand-maintained
+# policy-rate file changes, on whichever branch the change was pushed to.
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  push:
+    paths:
+      - "markets.py"
+      - "data/policy_rates.json"
+      - ".github/workflows/markets.yml"
+  workflow_dispatch: {}
+
+concurrency:
+  group: markets-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet requests
+      - name: Refresh Treasury Markets data
+        run: python markets.py
+      - name: Commit and push if changed
+        run: |
+          set -e
+          BRANCH="${GITHUB_REF_NAME}"
+          git config user.name  "AI Treasurer bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/markets.json
+          if git diff --cached --quiet; then
+            echo "No figure changed. Nothing to publish."
+            exit 0
+          fi
+          git commit -m "Treasury Markets refresh - $(date -u +'%d %b %Y %H:%M') UTC"
+          for i in 1 2 3 4 5; do
+            if git push origin "HEAD:${BRANCH}"; then echo "Published."; break; fi
+            [ "$i" = 5 ] && { echo "::error::push failed after 5 tries"; exit 1; }
+            sleep $((i*10)); git fetch origin "${BRANCH}"; git rebase "origin/${BRANCH}" || { git rebase --abort || true; exit 1; }
+          done

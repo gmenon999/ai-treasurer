@@ -188,8 +188,11 @@ def research(date_human):
         '"source":{"name":"...","url":"https://..."}} ]\n'
         "}\n\n"
         "BEATS (produce 2-3 items each, newest/most material first):\n%s\n\n"
-        "dashboard: exactly 6 treasury-relevant figures (rates, FX, stablecoin/market, payments "
-        "adoption, liquidity) each with a short label and a source+date in 'src'. "
+        "dashboard: exactly 6 treasury-relevant figures from surveys, studies or industry data "
+        "(e.g. payments or ISO 20022 adoption, AI adoption in finance, liquidity and cash trends, "
+        "stablecoin volumes), each with a short label and a source+date in 'src'. Do NOT include "
+        "central-bank policy rates, interest rates, bond yields or FX rates: the site's Treasury "
+        "Markets panel already shows those from official sources. "
         "events: 2-3 real treasury conferences/deadlines (e.g. Sibos, EuroFinance, AFP, ISO 20022 "
         "dates), with a real source url.\n\n"
         "summary = 30-45 words, original wording. %s" % (date_human, beats_spec, GUARD)

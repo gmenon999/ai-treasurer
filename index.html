@@ -226,6 +226,50 @@
   footer p { margin: 0 0 8px; max-width: 90ch; }
   footer a { color: var(--navy); }
 
+  /* ---- Treasury Markets panel ---- */
+  .numbers { padding: 64px 0 56px; }
+  .numbers-head { margin-bottom: 28px; }
+  .numbers-head h3 { font-size: clamp(28px, 3vw, 38px); }
+  .live { display: flex; align-items: stretch; border-top: 1px solid rgba(255,255,255,0.18); border-bottom: 1px solid rgba(255,255,255,0.18); margin-bottom: 40px; }
+  .live-tag { flex: none; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 0 20px 0 0; margin-right: 4px; border-right: 1px solid rgba(255,255,255,0.18); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); white-space: nowrap; }
+  .live-tag span { letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .live-tag i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); margin-right: 6px; vertical-align: 1px; }
+  .live-feed { flex: 1; min-width: 0; min-height: 46px; }
+  .live-feed .tradingview-widget-copyright { font-size: 11px; color: var(--on-dark-soft); padding: 0 0 6px 12px; }
+  .live-feed .tradingview-widget-copyright a { color: var(--on-dark-soft); text-decoration: none; }
+  .mk { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 48px; }
+  .mk-col h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--white); margin: 0; padding-bottom: 12px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .mk-col h4 small { font-size: 11px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .mk-col ul { list-style: none; margin: 0; padding: 0; }
+  .mk-col li { padding: 14px 0 13px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .mk-l1, .mk-l2 { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .mk-l2 { margin-top: 3px; }
+  .mk-name { min-width: 0; }
+  .mk-l2 .mk-meta { margin-top: 0; min-width: 0; }
+  .mk-name a { color: var(--white); font-weight: 600; font-size: 16px; text-decoration: none; }
+  .mk-name a:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+  .mk-meta { display: block; font-size: 12.5px; color: var(--on-dark-soft); margin-top: 2px; line-height: 1.4; }
+  .mk-fig { text-align: right; flex: none; }
+  .mk-val { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.15; color: var(--white); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+  .mk-chg { flex: none; font-size: 12.5px; color: var(--on-dark); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mk-chg.flat { color: var(--on-dark-soft); }
+  .mk-stale .mk-val { color: var(--on-dark-soft); }
+  .mk-flag { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--navy-deep); background: var(--gold-light); padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  .mk-foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark-soft); margin: 18px 0 0; }
+  .mk-foot p { margin: 0; max-width: 80ch; }
+  .mk-load { color: var(--on-dark-soft); font-size: 14px; padding: 14px 0; }
+  .numbers-sub { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 56px 0 4px; }
+  .numbers-sub h4 { font-family: var(--serif); font-size: 24px; margin: 6px 0 0; }
+  @media (max-width: 1020px) { .mk { grid-template-columns: 1fr 1fr; gap: 40px 40px; } .mk-col.mk-wide { grid-column: 1 / -1; } }
+  @media (max-width: 700px) {
+    .numbers { padding: 44px 0 40px; }
+    .mk { grid-template-columns: 1fr; gap: 36px; }
+    .live { flex-direction: column; }
+    .live-tag { flex-direction: row; justify-content: flex-start; gap: 10px; align-items: baseline; border-right: 0; padding: 10px 0 0; }
+    .mk-val { font-size: 20px; }
+    .numbers-sub { margin-top: 44px; }
+  }
+
   @media (max-width: 1020px) {
     .tiles { grid-template-columns: 1fr 1fr; }
     .tile-tall { min-height: 520px; }
@@ -562,16 +606,44 @@
       <div class="wrap">
         <div class="numbers-head">
           <div>
-            <div class="kicker">Treasury Market Dashboard</div>
-            <h3>Markets at a glance</h3>
+            <div class="kicker">Treasury Markets</div>
+            <h3>Rates, money markets and FX</h3>
           </div>
-          <p class="disclaim">Indicative figures compiled from the sources cited on each item, as reported on the dates shown. Not live market data and not investment advice.</p>
+          <p class="disclaim">Policy rates, benchmark rates and FX reference rates from official sources, refreshed through the day. Each figure links to its source and shows its date. Not live market data and not investment advice.</p>
+        </div>
+
+        <div class="live" aria-label="Live market prices from TradingView">
+          <div class="live-tag"><div><i aria-hidden="true"></i>Live</div><span>Indices, commodities, crypto</span></div>
+          <div class="live-feed">
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Prices by TradingView</a>, may be delayed</div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+              {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:UKXGBP","title":"FTSE 100"},{"proName":"FOREXCOM:JP225","title":"Nikkei 225"},{"proName":"BSE:SENSEX","title":"Sensex"},{"proName":"NSE:NIFTY","title":"Nifty 50"},{"proName":"TVC:UKOIL","title":"Brent"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"NYMEX:NG1!","title":"Nat gas"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
+              </script>
+            </div>
+          </div>
+        </div>
+
+        <div class="mk" id="mk" aria-live="polite">
+          <section class="mk-col" aria-labelledby="mk-h-policy"><h4 id="mk-h-policy">Policy rates<small>Last decision</small></h4><ul data-sect="policy"><li class="mk-load">Loading&hellip;</li></ul></section>
+          <section class="mk-col" aria-labelledby="mk-h-money"><h4 id="mk-h-money">Money markets &amp; yields<small>Change, bp</small></h4><ul data-sect="money"><li class="mk-load">Loading&hellip;</li></ul></section>
+          <section class="mk-col mk-wide" aria-labelledby="mk-h-fx"><h4 id="mk-h-fx">FX reference rates<small>Change, %</small></h4><ul data-sect="fx"><li class="mk-load">Loading&hellip;</li></ul></section>
+        </div>
+        <div class="mk-foot">
+          <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Figures marked Stale have not been confirmed recently.</p>
+          <p id="mk-upd"></p>
+        </div>
+        <noscript><p class="mk-foot">Turn on JavaScript to see the Treasury Markets figures.</p></noscript>
+
+        <div class="numbers-sub">
+          <div>
+            <div class="kicker">Treasury in numbers</div>
+            <h4>Today's figures from the briefing</h4>
+          </div>
+          <p class="disclaim">Survey and industry figures as reported by the sources cited, on the dates shown.</p>
         </div>
         <div class="grid">
-          <div class="cell"><div class="val">3.88%</div><div class="lbl">Fed Funds Effective Rate</div><div class="src">Federal Reserve H.15 + Oct 2, 2026</div></div>
-          <div class="cell"><div class="val">5.29%</div><div class="lbl">US 10-Year Treasury Yield</div><div class="src">Federal Reserve FRED + Sep 30, 2026</div></div>
-          <div class="cell"><div class="val">4.01%</div><div class="lbl">3-Month Treasury Bill Yield</div><div class="src">Federal Reserve H.15 + Oct 2, 2026</div></div>
-          <div class="cell"><div class="val">7.89T</div><div class="lbl">Total Money Market Fund Assets</div><div class="src">Investment Company Institute + Sep 30, 2026</div></div>
           <div class="cell"><div class="val">83%</div><div class="lbl">Corporate External Working Capital Solutions Adoption</div><div class="src">PYMNTS Working Capital Index + 2026</div></div>
           <div class="cell"><div class="val">46%</div><div class="lbl">US Firms Increasing Cash Holdings YoY</div><div class="src">AFP Liquidity Survey via Invesco + Mar 2026</div></div>
         </div>
@@ -898,6 +970,45 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
+</script>
+<script>
+(function(){
+  var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function d(s){ if(!s) return ''; var p=s.split('-'); return (+p[2])+' '+M[+p[1]-1]+' '+p[0]; }
+  function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function chg(v, unit){
+    if (v===null || v===undefined) return '<span class="mk-chg flat">&nbsp;</span>';
+    if (v===0) return '<span class="mk-chg flat">Unchanged</span>';
+    var up = v>0, a = Math.abs(v);
+    return '<span class="mk-chg">'+(up?'&#9650; +':'&#9660; &minus;')+(unit==='%'?a.toFixed(2)+'%':a+' bp')+'</span>';
+  }
+  function row(it, sect){
+    var meta, c;
+    if (sect==='policy') {
+      meta = e(it.label) + (it.since ? ' &middot; ' + (it.change_bp ? 'moved ' : 'held ') + d(it.since) : '');
+      c = it.change_bp===null||it.change_bp===undefined ? '<span class="mk-chg flat">&nbsp;</span>' : (it.change_bp===0 ? '<span class="mk-chg flat">Held</span>' : chg(it.change_bp,'bp'));
+    } else {
+      meta = 'As of ' + d(it.asof);
+      c = sect==='fx' ? chg(it.change_pct,'%') : chg(it.change_bp,'bp');
+    }
+    var name = sect==='policy' ? it.bank : it.name;
+    return '<li class="'+(it.stale?'mk-stale':'')+'"><div class="mk-l1"><div class="mk-name"><a href="'+e(it.source_url)+'" target="_blank" rel="noopener" title="Source: '+e(it.source_name)+'">'+e(name)+'</a>'+(it.stale?'<span class="mk-flag">Stale</span>':'')+'</div>'
+      +'<span class="mk-val">'+e(it.value)+'</span></div><div class="mk-l2"><span class="mk-meta">'+meta+'</span>'+c+'</div></li>';
+  }
+  fetch('/data/markets.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){
+    ['policy','money','fx'].forEach(function(s){
+      var ul = document.querySelector('#mk ul[data-sect="'+s+'"]');
+      if (ul && j[s] && j[s].length) ul.innerHTML = j[s].map(function(it){ return row(it,s); }).join('');
+    });
+    if (j.generated_utc) {
+      var t = new Date(j.generated_utc);
+      var s = t.toLocaleString('en-GB',{timeZone:'Asia/Qatar',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('mk-upd').textContent = 'Last refreshed ' + s + ' Doha time';
+    }
+  }).catch(function(){
+    document.querySelectorAll('#mk .mk-load').forEach(function(li){ li.textContent = 'Figures are temporarily unavailable.'; });
+  });
+})();
 </script>
 </body>
 </html>
