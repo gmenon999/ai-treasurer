@@ -298,12 +298,50 @@
   .secnav a { flex: none; display: block; height: var(--secnav-h); line-height: var(--secnav-h); font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
   .secnav a:hover { color: var(--white); }
   .secnav a[aria-current="true"] { color: var(--white); border-bottom-color: var(--gold); }
-  #top, #briefing, #markets, #framework, #articles, #newsletter, #work { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  #top, #briefing, #markets, #framework, #articles, #newsletter, #work, #briefing-tabs { scroll-margin-top: calc(var(--secnav-h) + 4px); }
   .tabs { top: var(--secnav-h); }
   @media (max-width: 700px) {
-    .secnav .wrap { gap: 22px; padding-right: 32px; }
-    .secnav { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+    .secnav .wrap { gap: 10px; justify-content: space-between; }
+    .secnav a { font-size: 11px; letter-spacing: 0.04em; }
     .tabs { position: static; }
+  }
+
+  /* ---- Today strip (Home) ---- */
+  .today { border-top: 1px solid rgba(255,255,255,0.14); margin-top: 48px; padding-top: 22px; }
+  .today-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .today-head .kicker { color: var(--gold-light); }
+  .today-date { color: var(--on-dark-soft); font-size: 14px; }
+  .today-all { color: var(--white); font-weight: 600; font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
+  .today-head .today-all { margin-left: auto; }
+  .today-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 56px; }
+  .today-list { list-style: none; margin: 0; padding: 0; }
+  .today-list li { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.12); }
+  .today-list li:first-child { border-top: 0; padding-top: 0; }
+  .today-list .n { flex: none; width: 28px; font-family: var(--serif); font-size: 20px; color: var(--gold-light); line-height: 1.3; }
+  .today-list .topic { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); margin-bottom: 4px; }
+  .today-list a { font-family: var(--serif); font-size: 20px; line-height: 1.3; color: var(--white); text-decoration: none; }
+  .today-list a:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+  .today-sub { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .today-rates ul { list-style: none; margin: 0 0 14px; padding: 0; }
+  .today-rates li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .today-rates .l { font-size: 14px; color: var(--on-dark); }
+  .today-rates .v { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  /* ---- Next band at the end of each view ---- */
+  .next-band { display: none; background: var(--white); border-top: 1px solid var(--line); }
+  .js .next-band.view-on { display: block; }
+  .next-band a { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 40px 0; text-decoration: none; color: var(--navy); }
+  .next-band .nb-copy { display: flex; flex-direction: column; gap: 6px; }
+  .next-band .nb-t { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; line-height: 1.15; }
+  .next-band .nb-d { color: var(--navy-soft); font-size: 16px; }
+  .next-band .nb-arrow { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--navy); display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s ease, color 0.2s ease; }
+  .next-band a:hover .nb-arrow { background: var(--navy); color: var(--white); }
+  .next-band a:hover .nb-t { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; }
+  @media (max-width: 700px) {
+    .today-grid { grid-template-columns: 1fr; gap: 32px; }
+    .today-head .today-all { margin-left: 0; }
+    .today-list a { font-size: 18px; }
+    .next-band a { padding: 30px 0; }
+    .next-band .nb-arrow { width: 44px; height: 44px; }
   }
 
   @media (max-width: 1020px) { .mk { grid-template-columns: 1fr 1fr; gap: 40px 40px; } .mk-col.mk-wide { grid-column: 1 / -1; } }
@@ -556,9 +594,7 @@
     <a href="#top" aria-current="true">Home</a>
     <a href="#briefing">Briefing</a>
     <a href="#markets">Markets</a>
-    <a href="#framework">Framework</a>
-    <a href="#articles">Articles</a>
-    <a href="#newsletter">Newsletter</a>
+    <a href="#insights">Insights</a>
     <a href="#work">Work with me</a>
   </div>
 </nav>
@@ -616,8 +652,19 @@
         </a>
       </div>
 
+      <div class="today" aria-label="Today at a glance">
+        <div class="today-head"><div class="kicker">Today</div><span class="today-date"></span><a class="today-all" href="#briefing">Full briefing</a></div>
+        <div class="today-grid">
+          <ol class="today-list"></ol>
+          <div class="today-rates"><div class="today-sub">Key rates</div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <aside class="next-band" data-view="top" aria-label="Next section">
+    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Today&rsquo;s briefing</span><span class="nb-d">The stories that matter for Treasury today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
 
   <!-- ===== BRIEFING ===== -->
   <section class="briefing" id="briefing" data-view="briefing" aria-labelledby="brief-h">
@@ -751,6 +798,30 @@
     </div>
   </section>
 
+  <!-- ===== NEWSLETTER (full-bleed photo) ===== -->
+  <section class="newsletter reveal" id="newsletter" data-view="briefing" aria-labelledby="nl-h">
+    <img class="photo" src="/img/ait-newsletter-desk.jpg" alt="A professional at her desk, looking up from her work" loading="lazy">
+    <div class="nl-shade"></div>
+    <div class="wrap">
+      <div class="nl-copy">
+        <div class="kicker">The Sunday Treasurer &middot; Weekly newsletter &middot; Starting soon</div>
+        <h2 id="nl-h">AI, Treasury and Finance, ready before Monday<span class="chev" aria-hidden="true"></span></h2>
+        <p>One email every Sunday: the week&rsquo;s moves that matter, what they mean for your function, and the controls to keep pace. Launching soon &mdash; sign up now to get the first issue.</p>
+        <form name="briefing-subscribe" method="POST" data-netlify="true" netlify-honeypot="company" action="/subscribed.html">
+          <input type="hidden" name="form-name" value="briefing-subscribe">
+          <p class="hp"><label>Leave blank <input name="company"></label></p>
+          <label for="sub-email" class="hp">Email address</label>
+          <input id="sub-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <button type="submit">Get Sunday&rsquo;s issue</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <aside class="next-band" data-view="briefing" aria-label="Next section">
+    <div class="wrap"><a href="#markets"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Markets</span><span class="nb-d">Policy rates, money markets and FX, from official sources.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
   <!-- ===== MARKETS ===== -->
   <section class="markets-sec" id="markets" data-view="markets" aria-label="Markets">
     <div class="numbers" id="numbers" aria-labelledby="mk-title">
@@ -797,28 +868,13 @@
     </div>
   </section>
 
-  <!-- ===== NEWSLETTER (full-bleed photo) ===== -->
-  <section class="newsletter reveal" id="newsletter" data-view="newsletter" aria-labelledby="nl-h">
-    <img class="photo" src="/img/ait-newsletter-desk.jpg" alt="A professional at her desk, looking up from her work" loading="lazy">
-    <div class="nl-shade"></div>
-    <div class="wrap">
-      <div class="nl-copy">
-        <div class="kicker">The Sunday Treasurer &middot; Weekly newsletter &middot; Starting soon</div>
-        <h2 id="nl-h">AI, Treasury and Finance, ready before Monday<span class="chev" aria-hidden="true"></span></h2>
-        <p>One email every Sunday: the week&rsquo;s moves that matter, what they mean for your function, and the controls to keep pace. Launching soon &mdash; sign up now to get the first issue.</p>
-        <form name="briefing-subscribe" method="POST" data-netlify="true" netlify-honeypot="company" action="/subscribed.html">
-          <input type="hidden" name="form-name" value="briefing-subscribe">
-          <p class="hp"><label>Leave blank <input name="company"></label></p>
-          <label for="sub-email" class="hp">Email address</label>
-          <input id="sub-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
-          <button type="submit">Get Sunday&rsquo;s issue</button>
-        </form>
-      </div>
-    </div>
-  </section>
+
+  <aside class="next-band" data-view="markets" aria-label="Next section">
+    <div class="wrap"><a href="#insights"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Insights</span><span class="nb-d">How I think about AI in Treasury, and the articles behind it.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
 
   <!-- ===== FRAMEWORK ===== -->
-  <section class="framework reveal" id="framework" data-view="framework" aria-labelledby="fw-h">
+  <section class="framework reveal" id="framework" data-view="insights" aria-labelledby="fw-h">
     <svg class="bg" viewBox="0 0 760 520" aria-hidden="true">
       <g fill="none">
         <polyline points="0,460 380,150 760,460" stroke="#2E6AF0" stroke-width="44" opacity="0.35"/>
@@ -842,7 +898,7 @@
   </section>
 
   <!-- ===== ARTICLES ("How we help" pattern) ===== -->
-  <section class="articles reveal" id="articles" data-view="articles" aria-labelledby="art-h">
+  <section class="articles reveal" id="articles" data-view="insights" aria-labelledby="art-h">
     <div class="wrap">
       <div class="center-head">
         <div class="eyebrow">Articles</div>
@@ -866,6 +922,10 @@
       </div>
     </div>
   </section>
+
+  <aside class="next-band" data-view="insights" aria-label="Next section">
+    <div class="wrap"><a href="#work"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Work with me</span><span class="nb-d">Two decades of control, reporting and Treasury, now applied to AI.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
 
   <!-- ===== CREDENTIALS (blue band) ===== -->
   <section class="creds reveal" id="work" data-view="work" aria-labelledby="work-top">
@@ -1023,6 +1083,12 @@
       var ul = document.querySelector('#mk ul[data-sect="'+s+'"]');
       if (ul && j[s] && j[s].length) ul.innerHTML = j[s].map(function(it){ return row(it,s); }).join('');
     });
+    (function(){
+      var ul = document.getElementById('today-rates'); if (!ul) return;
+      var pick = [['policy','fed','Fed funds target'],['policy','qcb','QCB deposit / repo / lending'],['money','ust10y','US Treasury 10Y']];
+      var rows = pick.map(function(p){ var it = (j[p[0]]||[]).filter(function(x){ return x.id===p[1]; })[0]; return it ? '<li><span class="l">'+e(p[2])+'</span><span class="v">'+e(it.value)+'</span></li>' : ''; }).join('');
+      if (rows) ul.innerHTML = rows;
+    })();
     if (j.generated_utc) {
       var t = new Date(j.generated_utc);
       var s = t.toLocaleString('en-GB',{timeZone:'Asia/Qatar',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
@@ -1042,15 +1108,31 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 });
 </script>
 <script>
+/* Home "Today" strip: headlines and date taken from today's briefing, so they never drift. */
+(function(){
+  var list = document.querySelector('.today-list'); if (!list) return;
+  var items = document.querySelectorAll('.briefing .leads .item'), html = '';
+  items.forEach(function(it, i){
+    var a = it.querySelector('.cite a'), h = it.querySelector('h4'), t = it.querySelector('.topic');
+    var click = a ? a.getAttribute('onclick') : "showTab('ai');return false;";
+    html += '<li><span class="n">0'+(i+1)+'</span><div><div class="topic">'+(t?t.innerHTML:'')+'</div><a href="#" onclick="'+click.replace(/"/g,'&quot;')+'">'+(h?h.innerHTML:'')+'</a></div></li>';
+  });
+  list.innerHTML = html;
+  var d = document.querySelector('.briefing .sec-head .dateline'), out = document.querySelector('.today-date');
+  if (d && out) out.textContent = d.textContent.trim();
+})();
+</script>
+<script>
 /* Section views: each menu item shows only its own section (like app tabs). */
 (function(){
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('.secnav a'));
   var current = null;
   function viewOf(id){
-    var el = id && document.getElementById(id);
-    var v = el && el.closest('[data-view]');
-    return v ? v.getAttribute('data-view') : null;
+    if (!id) return null;
+    var el = document.getElementById(id);
+    if (el) { var v = el.closest('[data-view]'); return v ? v.getAttribute('data-view') : null; }
+    return document.querySelector('[data-view="' + id + '"]') ? id : null;
   }
   function show(view){
     if (!view) view = 'top';
@@ -1074,8 +1156,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     if (!a || e.button !== 0 || e.metaKey || e.ctrlKey) return;
     var id = a.getAttribute('href').slice(1), view = viewOf(id);
     if (!view) return;
-    var el = document.getElementById(id);
-    var isRoot = el && el.getAttribute('data-view') === view;
+    var isRoot = (id === view);
     if (view === current && !isRoot) return;          // e.g. "All sections" inside the briefing: let it scroll
     e.preventDefault(); e.stopPropagation();
     show(view);
@@ -1086,7 +1167,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   show(viewOf(location.hash.slice(1)) || 'top');
   if (location.hash) setTimeout(function(){ window.scrollTo(0, 0); }, 0);
-  window.showView = show;
+  window.showView = function(v){ if (v !== current && history.pushState) history.pushState({ v: v }, '', v === 'top' ? location.pathname : '#' + v); show(v); };
 })();
 </script>
 </body>
