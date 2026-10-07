@@ -111,7 +111,7 @@
   .leads-head h2 { font-family: var(--serif); font-size: 26px; margin: 0; }
   .leads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 22px; counter-reset: lead; }
   .leads .item { counter-increment: lead; border-top: 3px solid var(--gold); padding-top: 16px; }
-  .leads .item::before { content: "Lead story 0" counter(lead); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .leads .item .topic { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
   .leads .item h4 { font-family: var(--serif); font-size: 22px; line-height: 1.25; margin: 8px 0 8px; color: var(--white); }
   .leads .item p { color: var(--on-dark); font-size: 16px; margin: 0 0 10px; }
   .leads .item .cite { font-size: 14px; color: var(--on-dark-soft); }
@@ -421,7 +421,6 @@
         </div>
         <div class="dateline">
           <span><b>Wednesday, 7 October 2026</b></span>
-      <span>Edition No. 2</span>
         </div>
       </div>
 
@@ -475,9 +474,9 @@
         <a class="arrow-link" href="#briefing" style="color:var(--white);font-size:15px;">All eight beats</a>
       </div>
       <div class="leads">
-        <div class="item"><h4>Ripple expands GSmart with agents that wait for approval</h4><p>Ripple's GSmart now runs orchestrated agents for forecasting, liquidity, risk, reconciliation and reporting. Each agent proposes actions tied to policy, waits for sign-off and keeps a full audit trail.</p><div class="cite">See <a href="#" onclick="showTab('ai');return false;">AI &amp; Technology &rarr;</a></div></div>
-      <div class="item"><h4>Bank of England pushes November 2026 ISO 20022 changes back 12 months</h4><p>The Bank of England has postponed its November 2026 RTGS standards release, including CHAPS messaging changes, to stay aligned with Swift's own deferral.</p><div class="cite">See <a href="#" onclick="showTab('treasury');return false;">Treasury &amp; Payments &rarr;</a></div></div>
-      <div class="item"><h4>US 10-year yield tops 5% after largest monthly jump since 2022</h4><p>The 10-year yield rose 53 basis points in September and the 30-year reached a 22-year high. Treasury teams are reassessing hedge ratios, VaR limits and option budgets.</p><div class="cite">See <a href="#" onclick="showTab('markets');return false;">Risk &amp; Markets &rarr;</a></div></div>
+        <div class="item"><div class="topic">Agentic Treasury Controls</div><h4>Ripple expands GSmart with agents that wait for approval</h4><p>Ripple's GSmart now runs orchestrated agents for forecasting, liquidity, risk, reconciliation and reporting. Each agent proposes actions tied to policy, waits for sign-off and keeps a full audit trail.</p><div class="cite">See <a href="#" onclick="showTab('ai');return false;">AI &amp; Technology &rarr;</a></div></div>
+      <div class="item"><div class="topic">ISO 20022 Migration</div><h4>Bank of England pushes November 2026 ISO 20022 changes back 12 months</h4><p>The Bank of England has postponed its November 2026 RTGS standards release, including CHAPS messaging changes, to stay aligned with Swift's own deferral.</p><div class="cite">See <a href="#" onclick="showTab('treasury');return false;">Treasury &amp; Payments &rarr;</a></div></div>
+      <div class="item"><div class="topic">Bond Yields &amp; Hedging</div><h4>US 10-year yield tops 5% after largest monthly jump since 2022</h4><p>The 10-year yield rose 53 basis points in September and the 30-year reached a 22-year high. Treasury teams are reassessing hedge ratios, VaR limits and option budgets.</p><div class="cite">See <a href="#" onclick="showTab('markets');return false;">Risk &amp; Markets &rarr;</a></div></div>
       </div>
     </div>
   </section>
@@ -511,7 +510,6 @@
           <h2 id="brief-h">AI, Treasury &amp; Finance</h2>
           <div class="dateline">
             <span><b>Wednesday, 7 October 2026</b></span>
-      <span>Edition No. 2</span>
           </div>
         </div>
         <div class="meta">
@@ -546,7 +544,7 @@
         <div class="numbers-head">
           <div>
             <div class="kicker">Treasury Market Dashboard</div>
-            <h3>The numbers behind today's edition</h3>
+            <h3>The numbers behind today's briefing</h3>
           </div>
           <p class="disclaim">Indicative figures compiled from the sources cited on each item, as reported on the dates shown. Not live market data and not investment advice.</p>
         </div>
@@ -568,7 +566,7 @@
           <button role="tab" aria-selected="false" aria-controls="p-treasury" id="t-treasury"><span class="tn">Pillar 02</span>Treasury &amp; Payments</button>
           <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets"><span class="tn">Pillar 03</span>Risk &amp; Markets</button>
           <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events"><span class="tn">Diary</span>Events Radar</button>
-          <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive"><span class="tn">Editions</span>Archive</button>
+          <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive"><span class="tn">Briefings</span>Archive</button>
         </div>
       </div>
 
@@ -663,13 +661,12 @@
 
         <section class="panel" id="p-archive" role="tabpanel" aria-labelledby="t-archive">
           <h2 class="pillar-intro">Archive</h2>
-          <p class="pillar-sub">Editions are kept for the current month. A new edition is added each day.</p>
-          <div class="arch-month">October 2026 <small>&middot; current month</small></div>
+          <p class="pillar-sub">Each day's briefing is filed under its month.</p>
+          <div class="arch-month">October 2026</div>
       <ul class="edlist">
-        <li><span class="no">Edition No. 2</span> <span class="dt"><a href="/" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">Wednesday, 7 October 2026</a> &middot; current edition</span></li>
-        <li><span class="no">Edition No. 1</span> <span class="dt"><a href="/editions/2026-10-05.html" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">Monday, 5 October 2026</a></span></li>
+        <li><span class="dt"><a href="/" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">Wednesday, 7 October 2026</a> &middot; today</span></li>
+        <li><span class="dt"><a href="/editions/2026-10-05.html" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">Monday, 5 October 2026</a></span></li>
       </ul>
-      <p style="font-size:13px;color:var(--navy-soft);">Earlier months will appear here as the archive grows.</p>
         </section>
       </div>
     </div>

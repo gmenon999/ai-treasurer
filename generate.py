@@ -215,12 +215,12 @@ def editorial(res, date_human):
         "treasurers). Today is %s. Based ONLY on the items below, return STRICT JSON:\n"
         "{\n"
         '  "editor_note": ["paragraph one", "paragraph two"],\n'
-        '  "lead_stories": [ {"headline":"...","blurb":"1-2 sentences","tab":"ai|treasury|markets"} ]\n'
+        '  "lead_stories": [ {"topic":"2-4 word topic","headline":"...","blurb":"1-2 sentences","tab":"ai|treasury|markets"} ]\n'
         "}\n\n"
         "editor_note: exactly 2 short paragraphs, no greeting, no salutation, tying the day's items to "
         "the site's thesis that speed is easy but every automated step must leave a trail an auditor "
         "can follow. Do NOT mention any personal name. lead_stories: exactly 3, each pointing to the "
-        "tab where the detail sits (tab is one of ai, treasury, markets). Plain, concrete, no advice.\n\n"
+        "tab where the detail sits (tab is one of ai, treasury, markets). topic: a short subject heading of 2-4 words for that story, in title case (e.g. 'Agentic Treasury Controls', 'ISO 20022 Migration', 'Bond Yields'); write Treasury with a capital T; never 'Lead story'. Plain, concrete, no advice.\n\n"
         "ITEMS:\n%s" % (date_human, "\n".join(flat))
     )
     data = _json(_ask(prompt, EDITORIAL_MODEL, search=False), "editorial")
@@ -256,7 +256,7 @@ def _items_html(items):
 def render(content, date_human, edition_n, archive_entries):
     s = open(TEMPLATE, encoding="utf-8").read()
     # dateline
-    dateline = '<span><b>%s</b></span>\n      <span>Edition No. %d</span>' % (esc(date_human), edition_n)
+    dateline = '<span><b>%s</b></span>' % esc(date_human)
     s = s.replace("<!--DATELINE-->", dateline)
     # editor note
     note = content["editor_note"]
@@ -272,8 +272,9 @@ def render(content, date_human, edition_n, archive_entries):
     for L in content["lead_stories"]:
         tab = L.get("tab", "ai")
         label = LEAD_TAB_LABEL.get(tab, "AI &amp; Technology")
-        leads.append('<div class="item"><h4>%s</h4><p>%s</p><div class="cite">See <a href="#" onclick="showTab(\'%s\');return false;">%s &rarr;</a></div></div>'
-                     % (esc(L["headline"]), esc(L["blurb"]), tab, label))
+        topic = (L.get("topic") or "").strip() or LEAD_TAB_LABEL.get(tab, "AI &amp; Technology").replace("&amp;", "&")
+        leads.append('<div class="item"><div class="topic">%s</div><h4>%s</h4><p>%s</p><div class="cite">See <a href="#" onclick="showTab(\'%s\');return false;">%s &rarr;</a></div></div>'
+                     % (esc(topic), esc(L["headline"]), esc(L["blurb"]), tab, label))
     s = s.replace("<!--LEAD-->", "\n      ".join(leads))
     # beats
     for k in BEAT_KEYS:
@@ -296,25 +297,26 @@ def render(content, date_human, edition_n, archive_entries):
 
 
 def _archive_html(entries):
-    # entries: list newest-first of {n, human, month, file, current}
+    # entries: list newest-first of {n, human, month, file, current}; grouped under "Month Year"
     if not entries:
-        return '<p style="font-size:13px;color:var(--navy-soft);">Editions will appear here.</p>'
-    cur_month = entries[0]["month"]
-    this_month = [e for e in entries if e["month"] == cur_month]
-    older = [e for e in entries if e["month"] != cur_month]
-    lis = []
-    for e in this_month:
-        href = "/" if e.get("current") else e["file"]
-        tail = " &middot; current edition" if e.get("current") else ""
-        lis.append('<li><span class="no">Edition No. %d</span> <span class="dt"><a href="%s" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">%s</a>%s</span></li>'
-                   % (e["n"], href, esc(e["human"]), tail))
-    out = '<div class="arch-month">%s <small>&middot; current month</small></div>\n      <ul class="edlist">\n        %s\n      </ul>' % (esc(cur_month), "\n        ".join(lis))
-    if older:
-        olis = ['<li><span class="no">Edition No. %d</span> <span class="dt"><a href="%s" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">%s</a></span></li>' % (e["n"], e["file"], esc(e["human"])) for e in older]
-        out += '\n      <div class="arch-month" style="margin-top:28px;">Earlier editions</div>\n      <ul class="edlist">\n        %s\n      </ul>' % "\n        ".join(olis)
-    else:
-        out += '\n      <p style="font-size:13px;color:var(--navy-soft);">Earlier months will appear here as the archive grows.</p>'
-    return out
+        return '<p style="font-size:13px;color:var(--navy-soft);">Briefings will appear here.</p>'
+    link = '<a href="%s" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);">%s</a>'
+    months = []
+    for e in entries:
+        if not months or months[-1][0] != e["month"]:
+            months.append((e["month"], []))
+        months[-1][1].append(e)
+    blocks = []
+    for i, (month, items) in enumerate(months):
+        lis = []
+        for e in items:
+            href = "/" if e.get("current") else e["file"]
+            tail = " &middot; today" if e.get("current") else ""
+            lis.append('<li><span class="dt">%s%s</span></li>' % (link % (href, esc(e["human"])), tail))
+        style = '' if i == 0 else ' style="margin-top:28px;"'
+        blocks.append('<div class="arch-month"%s>%s</div>\n      <ul class="edlist">\n        %s\n      </ul>'
+                      % (style, esc(month), "\n        ".join(lis)))
+    return "\n      ".join(blocks)
 
 
 # ---------------------------------------------------------------- state
@@ -340,7 +342,7 @@ def mock_content():
         "events": [{"when": "Soon", "place": "City - upcoming", "title": "A treasury event", "blurb": "Short blurb.", "source": {"name": "Example", "url": "https://example.com"}}],
         "editor_note": ["First paragraph of the editor note for layout testing.", "Second paragraph tying it to controls and the audit trail."],
         "lead_stories": [
-            {"headline": "Lead one", "blurb": "Blurb.", "tab": "ai"},
+            {"topic": "Agentic Treasury Controls", "headline": "Lead one", "blurb": "Blurb.", "tab": "ai"},
             {"headline": "Lead two", "blurb": "Blurb.", "tab": "treasury"},
             {"headline": "Lead three", "blurb": "Blurb.", "tab": "markets"},
         ],

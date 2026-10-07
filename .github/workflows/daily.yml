@@ -42,7 +42,7 @@ jobs:
             echo "No changes - edition already built today. Nothing to publish."
             exit 0
           fi
-          ED=$(grep -o 'Edition No\. [0-9]*' index.html | head -1)
+          ED="Daily briefing"
           git commit -m "${ED:-New edition} - $(date -u +'%d %B %Y')"
           for i in 1 2 3 4 5; do
             if git push origin HEAD:main; then echo "Published; Netlify will deploy."; break; fi
