@@ -33,7 +33,7 @@ STATE = os.path.join(EDITIONS_DIR, "state.json")
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 RESEARCH_MODEL = os.environ.get("BRIEF_RESEARCH_MODEL", "anthropic/claude-haiku-4.5")
-EDITORIAL_MODEL = os.environ.get("BRIEF_EDITORIAL_MODEL", "anthropic/claude-opus-5")
+EDITORIAL_MODEL = os.environ.get("BRIEF_EDITORIAL_MODEL", "anthropic/claude-opus-5.5")
 SEARCH_ENGINE = os.environ.get("BRIEF_SEARCH_ENGINE", "exa")
 MAX_SEARCHES = int(os.environ.get("BRIEF_MAX_SEARCHES", "10"))
 TZ_OFFSET = int(os.environ.get("BRIEF_TZ_OFFSET_HOURS", "3"))  # Qatar = UTC+3
