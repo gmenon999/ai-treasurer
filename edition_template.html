@@ -157,6 +157,12 @@
   .tabs button .tn { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
   .tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--gold); }
   .tabs button:hover { color: var(--navy); }
+
+  @media (max-width: 720px) {
+    .tabs .tabrow { flex-wrap: wrap; gap: 8px; overflow: visible; padding-top: 12px; padding-bottom: 12px; }
+    .tabs .tabrow button { padding: 9px 14px; margin: 0; font-size: 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+    .tabs .tabrow button[aria-selected="true"] { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  }
   .panels { padding-top: 36px; }
   .panel { display: none; }
   .panel.active { display: block; }
@@ -547,7 +553,7 @@
           </div>
         </div>
         <div class="meta">
-          <div><b>3</b>pillars</div>
+          <div><b>3</b>themes</div>
           <div><b>8</b>beats</div>
           <div><b>6</b>figures</div>
         </div>
@@ -590,11 +596,11 @@
     <div class="brief-body">
       <div class="tabs" id="briefing-tabs" role="tablist" aria-label="Briefing sections">
         <div class="wrap tabrow">
-          <button role="tab" aria-selected="true" aria-controls="p-ai" id="t-ai"><span class="tn">Pillar 01</span>AI &amp; Technology</button>
-          <button role="tab" aria-selected="false" aria-controls="p-treasury" id="t-treasury"><span class="tn">Pillar 02</span>Treasury &amp; Payments</button>
-          <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets"><span class="tn">Pillar 03</span>Risk &amp; Markets</button>
-          <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events"><span class="tn">Diary</span>Events Radar</button>
-          <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive"><span class="tn">Briefings</span>Archive</button>
+          <button role="tab" aria-selected="true" aria-controls="p-ai" id="t-ai">AI &amp; Technology</button>
+          <button role="tab" aria-selected="false" aria-controls="p-treasury" id="t-treasury">Treasury &amp; Payments</button>
+          <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets">Risk &amp; Markets</button>
+          <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events">Events Radar</button>
+          <button role="tab" aria-selected="false" aria-controls="p-archive" id="t-archive">Archive</button>
         </div>
       </div>
 
@@ -602,7 +608,7 @@
         <section class="panel active" id="p-ai" role="tabpanel" aria-labelledby="t-ai">
           <div class="pillar-hero">
             <div class="ph-copy">
-              <div class="kicker">Pillar 01</div>
+              <div class="kicker">Today&rsquo;s briefing</div>
               <h2 class="pillar-intro">AI &amp; Technology</h2>
               <p class="pillar-sub">Where agents, models and the Treasury technology stack actually touch the numbers.</p>
             </div>
@@ -625,7 +631,7 @@
         <section class="panel" id="p-treasury" role="tabpanel" aria-labelledby="t-treasury">
           <div class="pillar-hero">
             <div class="ph-copy">
-              <div class="kicker">Pillar 02</div>
+              <div class="kicker">Today&rsquo;s briefing</div>
               <h2 class="pillar-intro">Treasury &amp; Payments</h2>
               <p class="pillar-sub">Cash and working capital, the payment rails that move it, and the controls around both.</p>
             </div>
@@ -650,7 +656,7 @@
         <section class="panel" id="p-markets" role="tabpanel" aria-labelledby="t-markets">
           <div class="pillar-hero">
             <div class="ph-copy">
-              <div class="kicker">Pillar 03</div>
+              <div class="kicker">Today&rsquo;s briefing</div>
               <h2 class="pillar-intro">Risk &amp; Markets</h2>
               <p class="pillar-sub">FX and rates exposure, digital-asset settlement, and the macro backdrop treasurers fund into.</p>
             </div>
