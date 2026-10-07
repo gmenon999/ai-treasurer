@@ -94,6 +94,9 @@
 
   /* Lead stories */
   .leads-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.14); margin-top: 48px; padding-top: 22px; }
+  .leads-nav { display: flex; flex-wrap: wrap; gap: 10px 26px; }
+  .leads-nav a { color: var(--white); font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+  .leads-nav a:hover { color: var(--gold); }
   .leads-head h2 { font-family: var(--serif); font-size: 26px; margin: 0; }
   .leads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 22px; counter-reset: lead; }
   .leads .item { counter-increment: lead; border-top: 3px solid var(--gold); padding-top: 16px; }
@@ -454,7 +457,7 @@
 
       <div class="leads-head">
         <h2>Today's lead stories</h2>
-        <a class="arrow-link" href="#briefing" style="color:var(--white);font-size:15px;">All eight sections</a>
+        <nav class="leads-nav" aria-label="Briefing sections"><a href="#briefing-tabs" data-tab="ai">AI &amp; Technology</a><a href="#briefing-tabs" data-tab="treasury">Treasury &amp; Payments</a><a href="#briefing-tabs" data-tab="markets">Risk &amp; Markets</a><a href="#briefing-tabs" data-tab="events">Events Radar</a></nav>
       </div>
       <div class="leads">
         <div class="item"><h4>Agentic treasury arrives &mdash; with a human still holding the pen</h4><p>Ripple, Goldman Sachs and Bottomline all moved live agents into treasury and cash work this autumn, each keeping an explicit human-approval step before anything executes. Full write-up under AI &amp; Technology.</p><div class="cite">See <a href="#" onclick="showTab('ai');return false;">AI &amp; Technology &rarr;</a></div></div>
@@ -786,6 +789,9 @@
   }
   tabs.forEach(function(b){
     b.addEventListener('click', function(){ showTab(b.id.replace('t-','')); });
+  });
+  document.querySelectorAll('a[data-tab]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); showTab(a.getAttribute('data-tab')); });
   });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
