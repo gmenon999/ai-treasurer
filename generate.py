@@ -211,31 +211,101 @@ def research(date_human):
     return data
 
 
+STYLE = (
+    "HOUSE STYLE (The AI Treasurer, written for CFOs and group treasurers):\n"
+    "- Write like a senior Treasury practitioner briefing a CFO: confident, precise, plain English. "
+    "British spelling (organisation, tokenisation, programme).\n"
+    "- Lead with the insight, never with the page. Never refer to the briefing itself: no 'today's items', "
+    "'today's stories', 'this briefing', 'in this edition', 'the items below', 'this week's news shows'.\n"
+    "- Each paragraph opens with a clear claim a CFO would care about, then the evidence (named firms, "
+    "figures, dates), then what it means for control, cash or risk.\n"
+    "- Active voice, varied sentence length, no filler. Avoid: 'it is worth noting', 'in today's fast-paced', "
+    "'landscape', 'game-changer', 'unlock', 'leverage' (as a verb), 'delve', 'navigate', 'robust', "
+    "'seamless', 'cutting-edge', 'paradigm', 'Moreover', 'Furthermore', 'In conclusion'.\n"
+    "- Do not open two sentences in a row with the same word. Do not list more than three names in a row.\n"
+    "- Always write 'Treasury' with a capital T when it means the function or profession.\n"
+    "- No hype, no advice, no personal names of the author."
+)
+
+BANNED = [r"\btoday'?s items\b", r"\btoday'?s stories\b", r"\bthis briefing\b", r"\bin this edition\b",
+          r"\bthe items (below|above)\b", r"\blandscape\b", r"\bgame[- ]changer\b", r"\bdelve\b",
+          r"\bseamless(ly)?\b", r"\bcutting[- ]edge\b", r"\bparadigm\b", r"\bit is worth noting\b",
+          r"\bmoreover\b", r"\bfurthermore\b", r"\bin conclusion\b"]
+
+
+def _lint(texts):
+    hits = set()
+    for t in texts:
+        for pat in BANNED:
+            m = re.search(pat, t or "", re.I)
+            if m:
+                hits.add(m.group(0))
+    return sorted(hits)
+
+
+def _cap_treasury(t):
+    # House rule: Treasury with a capital T (function/profession). Leaves URLs untouched.
+    return re.sub(r"\btreasury\b", "Treasury", t or "")
+
+
 def editorial(res, date_human):
-    flat = []
+    flat, slots = [], []
     for k, t, _ in BEATS:
-        for it in res["beats"][k]:
-            flat.append("[%s] %s - %s" % (t, it["headline"], it["summary"]))
-    prompt = (
-        "You are the editor of The AI Treasurer (plain-English, controls-first voice for CFOs and "
-        "treasurers). Today is %s. Based ONLY on the items below, return STRICT JSON:\n"
+        for i, it in enumerate(res["beats"][k]):
+            slots.append((k, i))
+            flat.append('%d. [%s] %s - %s' % (len(slots), t, it["headline"], it["summary"]))
+    base = (
+        "You are the editor of The AI Treasurer, a controls-first daily read for CFOs and corporate "
+        "treasurers. Today is %s. Using ONLY the facts in the numbered items below (add nothing new, "
+        "keep every figure, name and date exactly), return STRICT JSON:\n"
         "{\n"
         '  "editor_note": ["paragraph one", "paragraph two"],\n'
-        '  "lead_stories": [ {"topic":"2-4 word topic","headline":"...","blurb":"1-2 sentences","tab":"ai|treasury|markets|regulation"} ]\n'
+        '  "lead_stories": [ {"topic":"2-4 word topic","headline":"...","blurb":"1-2 sentences","tab":"ai|treasury|markets|regulation"} ],\n'
+        '  "items": [ {"n": 1, "headline": "...", "summary": "..."} ]\n'
         "}\n\n"
-        "editor_note: exactly 2 short paragraphs, no greeting, no salutation, tying the day's items to "
-        "the site's thesis that speed is easy but every automated step must leave a trail an auditor "
-        "can follow. Do NOT mention any personal name. lead_stories: exactly 3, each pointing to the "
-        "tab where the detail sits (tab is one of ai, treasury, markets, regulation). topic: a short subject heading of 2-4 words for that story, in title case (e.g. 'Agentic Treasury Controls', 'ISO 20022 Migration', 'Bond Yields'); write Treasury with a capital T; never 'Lead story'. Plain, concrete, no advice.\n\n"
-        "ITEMS:\n%s" % (date_human, "\n".join(flat))
+        "editor_note: exactly 2 paragraphs of 3-4 sentences each, no greeting. Paragraph one names the "
+        "single most important shift across the items and backs it with two or three specific examples. "
+        "Paragraph two draws the control implication: speed is easy, but every automated step must leave "
+        "a trail an auditor can follow. End on a sharp, quotable line, not a summary.\n"
+        "lead_stories: exactly 3, the most material items, each pointing to the tab where the detail sits "
+        "(tab is one of ai, treasury, markets, regulation). topic: 2-4 words, title case (e.g. 'Agentic "
+        "Treasury Controls', 'ISO 20022 Migration'); never 'Lead story'.\n"
+        "items: rewrite EVERY numbered item (same n). headline: under 14 words, specific, no clickbait, no "
+        "trailing full stop. summary: 30-45 words, what happened, the key number, and why a treasurer "
+        "should care. Do not copy the source wording.\n\n"
+        "%s\n\nITEMS:\n%s" % (date_human, STYLE, "\n".join(flat))
     )
-    data = _json(_ask(prompt, EDITORIAL_MODEL, search=False), "editorial")
-    note = data.get("editor_note") or []
-    leads = data.get("lead_stories") or []
-    if len(note) < 2 or len(leads) < 3:
-        raise ValueError("editorial: note/leads incomplete")
-    data["editor_note"] = note[:2]
-    data["lead_stories"] = leads[:3]
+    prompt, data = base, None
+    for attempt in range(2):
+        data = _json(_ask(prompt, EDITORIAL_MODEL, max_tokens=12000, search=False), "editorial")
+        note = data.get("editor_note") or []
+        leads = data.get("lead_stories") or []
+        if len(note) < 2 or len(leads) < 3:
+            raise ValueError("editorial: note/leads incomplete")
+        texts = list(note[:2]) + [L.get("blurb", "") + " " + L.get("headline", "") for L in leads[:3]]
+        texts += [(x.get("headline", "") + " " + x.get("summary", "")) for x in (data.get("items") or [])]
+        hits = _lint(texts)
+        if not hits:
+            break
+        prompt = base + ("\n\nYOUR PREVIOUS DRAFT USED BANNED PHRASES: %s. Rewrite without them." % ", ".join(hits))
+    data["editor_note"] = [_cap_treasury(p) for p in data["editor_note"][:2]]
+    data["lead_stories"] = data["lead_stories"][:3]
+    for L in data["lead_stories"]:
+        L["headline"] = _cap_treasury(L.get("headline", "")); L["blurb"] = _cap_treasury(L.get("blurb", ""))
+    # merge polished item text back; keep researched text if a rewrite is missing or empty
+    rewrites = {}
+    for x in data.get("items") or []:
+        try:
+            rewrites[int(x.get("n"))] = x
+        except (TypeError, ValueError):
+            pass
+    for n, (k, i) in enumerate(slots, start=1):
+        it = res["beats"][k][i]
+        rw = rewrites.get(n) or {}
+        if rw.get("headline") and rw.get("summary"):
+            it["headline"], it["summary"] = rw["headline"].rstrip("."), rw["summary"]
+        it["headline"], it["summary"] = _cap_treasury(it["headline"]), _cap_treasury(it["summary"])
+    data.pop("items", None)
     return data
 
 
