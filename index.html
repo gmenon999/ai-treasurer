@@ -291,6 +291,11 @@
   .card.card-soon { cursor: default; }
   .card .status { margin-left: 6px; }
   .creds .kicker { color: var(--gold-light); margin-bottom: 10px; }
+  .advisor { display: flex; align-items: center; gap: 18px; margin: 18px 0 30px; }
+  .advisor img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 2px solid var(--gold-light); flex: none; }
+  .advisor b { display: block; font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); font-weight: 700; color: var(--white); line-height: 1.2; }
+  .advisor span { display: block; font-size: 15px; color: rgba(255,255,255,0.85); margin-top: 4px; }
+  @media (max-width: 700px) { .advisor img { width: 76px; height: 76px; } }
   .work { padding-top: 72px; }
   .mk-tog { display: none; appearance: none; background: none; border: 1px solid rgba(255,255,255,0.35); color: var(--white); font: 600 12px/1 var(--sans); letter-spacing: 0.04em; text-transform: none; padding: 6px 10px; cursor: pointer; }
   @media (max-width: 700px) {
@@ -974,6 +979,7 @@
     <div class="wrap">
       <div class="creds-head">
         <div class="kicker">Advisory</div>
+        <div class="advisor"><img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon, CA, CPA, CTP" width="96" height="96" loading="lazy"><div><b>Gopakumar Menon, CA, CPA, CTP</b><span>Leading a Treasury digital transformation in Doha today.</span></div></div>
         <h2 id="work-top">Two decades of control, reporting and Treasury &mdash; now applied to AI.</h2>
       </div>
       <div class="creds-row">
@@ -988,9 +994,6 @@
   <!-- ===== WORK WITH ME (careers pattern) ===== -->
   <section class="work reveal" data-view="work" aria-labelledby="work-h">
     <div class="wrap">
-      <div class="who who-top"><img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon, CA, CPA, CTP" width="72" height="72" loading="lazy"><div>Gopakumar Menon, CA, CPA, CTP
-            <small>Leading a Treasury digital transformation in Doha today.</small></div>
-          </div>
       <div class="work-grid">
         <div class="copy">
           <h2 id="work-h">Faster Treasury, with controls that keep up</h2>
