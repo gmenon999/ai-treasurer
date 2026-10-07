@@ -234,6 +234,73 @@
   .found .q { margin-top: auto; padding-top: 18px; font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); }
   .found .q b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 12px; }
   ol.trail + .fw-label { margin-top: 56px; }
+  /* ---- Hero network (reactive, subtle) ---- */
+  .intro .intro-net { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.9;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 30%, #000 62%); mask-image: linear-gradient(90deg, transparent 0%, transparent 30%, #000 62%); }
+  @media (max-width: 700px) { .intro .intro-net { -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 26%, transparent 40%); mask-image: linear-gradient(180deg, #000 0%, #000 26%, transparent 40%); } }
+
+  /* ---- In focus: control trail + yield curve ---- */
+  .focus { background: var(--navy-deep); color: var(--white); padding: 8px 0 72px; }
+  .focus-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 22px; margin-bottom: 22px; }
+  .focus-head .kicker { color: var(--gold-light); }
+  .focus-head p { margin: 0; font-size: 13px; color: var(--on-dark-soft); }
+  .focus-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; }
+  .fcard { border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.025); padding: 26px 26px 22px; display: flex; flex-direction: column; min-width: 0; }
+  .fcard .k { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); }
+  .fcard h3 { font-family: var(--serif); font-size: clamp(21px, 2vw, 25px); line-height: 1.2; margin: 8px 0 4px; font-weight: 700; }
+  .fcard .sub { font-size: 14px; color: var(--on-dark-soft); margin: 0 0 20px; }
+  .fcard .more { margin-top: auto; padding-top: 16px; font-size: 14px; font-weight: 600; color: var(--white); text-decoration: none; align-self: flex-start; border-bottom: 1px solid var(--gold); }
+
+  /* control trail */
+  .ct-track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 6px 0 22px; }
+  .ct-rail { position: absolute; left: 10%; right: 10%; top: 17px; height: 1px; background: rgba(255,255,255,0.22); }
+  .ct-fill { position: absolute; left: 10%; top: 17px; height: 1px; background: var(--gold); width: 0; transition: width 0.9s cubic-bezier(.4,0,.2,1); }
+  .ct-pulse { position: absolute; top: 12px; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%; background: var(--gold-light); box-shadow: 0 0 0 4px rgba(217,184,103,0.18); left: 10%; transition: left 0.9s cubic-bezier(.4,0,.2,1), background 0.3s ease; }
+  .ct-pulse.exc { background: #E8B44A; box-shadow: 0 0 0 6px rgba(232,180,74,0.25); }
+  .ct-node { position: relative; appearance: none; background: none; border: 0; padding: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--on-dark-soft); font-family: var(--sans); }
+  .ct-node .dot { width: 35px; height: 35px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); background: var(--navy-deep); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 14px; font-weight: 700; color: var(--on-dark-soft); transition: border-color 0.3s, color 0.3s, background 0.3s; position: relative; z-index: 1; }
+  .ct-node .nm { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; transition: color 0.3s; }
+  .ct-node.done .dot { border-color: var(--gold); color: var(--gold-light); }
+  .ct-node.on .dot { border-color: var(--gold-light); background: var(--gold-light); color: var(--navy-deep); }
+  .ct-node.on .nm { color: var(--white); }
+  .ct-node:focus-visible { outline: none; } .ct-node:focus-visible .dot { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .ct-panel { border-top: 1px solid rgba(255,255,255,0.14); padding-top: 16px; min-height: 132px; }
+  .ct-panel .t { font-family: var(--serif); font-size: 19px; font-weight: 700; margin: 0 0 6px; }
+  .ct-panel .w { font-size: 15px; line-height: 1.55; color: var(--on-dark); margin: 0 0 12px; }
+  .ct-panel .q { font-size: 13.5px; color: var(--on-dark-soft); margin: 0; }
+  .ct-panel .q b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 3px; }
+  .ct-panel.swap { animation: ctfade 0.45s ease; }
+  @keyframes ctfade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  /* yield curve */
+  .yc-legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark); margin: 0 0 8px; }
+  .yc-legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .yc-legend i { display: inline-block; width: 18px; height: 0; border-top: 2px solid; }
+  .yc-legend .now i { border-color: #B08D3C; } .yc-legend .prev i { border-color: #5A8BF0; border-top-style: dashed; }
+  .yc-wrap { position: relative; }
+  .yc-wrap svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; }
+  .yc-wrap .grid line { stroke: rgba(255,255,255,0.09); stroke-width: 1; }
+  .yc-wrap .axis text { fill: var(--on-dark-soft); font-size: 11px; font-family: var(--sans); }
+  .yc-wrap .lab { font-size: 11.5px; font-family: var(--sans); fill: var(--on-dark); }
+  .yc-tip { position: absolute; top: 0; pointer-events: none; background: #0A1524; border: 1px solid rgba(255,255,255,0.18); padding: 8px 10px; font-size: 12.5px; line-height: 1.5; color: var(--white); white-space: nowrap; opacity: 0; transition: opacity 0.15s; transform: translateX(-50%); }
+  .yc-tip b { font-family: var(--serif); }
+  .yc-tip .m { color: var(--on-dark-soft); }
+  .yc-src { font-size: 12px; color: var(--on-dark-soft); margin: 10px 0 0; }
+  .yc-src a { color: var(--on-dark-soft); }
+  .yc-table { margin-top: 8px; font-size: 12.5px; color: var(--on-dark-soft); }
+  .yc-table summary { cursor: pointer; }
+  .yc-table table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+  .yc-table td, .yc-table th { padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: right; font-variant-numeric: tabular-nums; }
+  .yc-table th:first-child, .yc-table td:first-child { text-align: left; }
+  @media (max-width: 1020px) { .focus-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) {
+    .fcard { padding: 22px 18px 18px; }
+    .ct-node .dot { width: 30px; height: 30px; font-size: 13px; }
+    .ct-rail, .ct-fill { top: 15px; } .ct-pulse { top: 10px; }
+    .ct-node .nm { font-size: 11.5px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ct-fill, .ct-pulse { transition: none; } .ct-panel.swap { animation: none; } }
+
   @media (max-width: 1020px) { .found { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 700px) { .found { grid-template-columns: 1fr; } .fw-label small { margin-left: 0; flex-basis: 100%; } ol.trail + .fw-label { margin-top: 40px; } }
 
@@ -686,6 +753,35 @@
         <div class="today-grid">
           <ol class="today-list"></ol>
           <div class="today-rates"><div class="today-sub">Key rates</div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IN FOCUS (Home) ===== -->
+  <section class="focus" data-view="top" aria-label="In focus">
+    <div class="wrap">
+      <div class="focus-head"><div class="kicker">In focus</div><p>Tap or hover to explore</p></div>
+      <div class="focus-grid">
+        <div class="fcard" id="ct-card">
+          <div class="k">AI Controls</div>
+          <h3>One transaction, five checkpoints</h3>
+          <p class="sub">How an automated step stays explainable, evidenced and reversible.</p>
+          <div class="ct-track" role="tablist" aria-label="Control trail steps">
+            <div class="ct-rail"></div><div class="ct-fill"></div><div class="ct-pulse" aria-hidden="true"></div>
+          </div>
+          <div class="ct-panel" aria-live="polite"></div>
+          <a class="more" href="#controls">See the full framework</a>
+        </div>
+        <div class="fcard" id="yc-card">
+          <div class="k">Markets</div>
+          <h3 id="yc-title">US Treasury yield curve</h3>
+          <p class="sub" id="yc-sub">Par yields by maturity, today against a month earlier.</p>
+          <div class="yc-legend"><span class="now"><i></i><em id="yc-l1">Latest</em></span><span class="prev"><i></i><em id="yc-l2">A month earlier</em></span></div>
+          <div class="yc-wrap"><svg id="yc-svg" viewBox="0 0 560 260" role="img" aria-labelledby="yc-title yc-sub"></svg><div class="yc-tip" id="yc-tip"></div></div>
+          <p class="yc-src" id="yc-src">Source: US Treasury. Not live market data and not investment advice.</p>
+          <details class="yc-table"><summary>View as table</summary><table id="yc-table"></table></details>
+          <a class="more" href="#markets">All markets</a>
         </div>
       </div>
     </div>
@@ -1186,6 +1282,124 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       setTimeout(function(){ row.scrollTo({ left: 0, behavior: 'smooth' }); }, 700); }, 900);
     try { localStorage.setItem('ait-menu-hint', '1'); } catch (e) {}
   }
+})();
+</script>
+<script>
+/* ---- Hero network: slow drifting nodes; lines brighten near the pointer ---- */
+(function(){
+  var intro = document.querySelector('.intro'); if (!intro || !window.requestAnimationFrame) return;
+  var c = document.createElement('canvas'); c.className = 'intro-net'; c.setAttribute('aria-hidden', 'true');
+  var glow = intro.querySelector('.intro-glow'); intro.insertBefore(c, glow ? glow.nextSibling : intro.firstChild);
+  var ctx = c.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0, nodes = [], px = -999, py = -999, raf = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){
+    var r = intro.getBoundingClientRect(); W = r.width; H = r.height; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.max(18, Math.min(64, Math.round(W * H / 16000)));
+    nodes = []; for (var i = 0; i < n; i++) nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.18, g: Math.random() < 0.14 });
+  }
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    var D = 150, P = 200;
+    for (var i = 0; i < nodes.length; i++) {
+      var a = nodes[i];
+      if (!reduce) { a.x += a.vx; a.y += a.vy; if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1; }
+      var pd = Math.hypot(a.x - px, a.y - py), near = pd < P ? 1 - pd / P : 0;
+      for (var j = i + 1; j < nodes.length; j++) {
+        var b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < D) { var al = (1 - d / D) * (0.26 + 0.6 * near); ctx.strokeStyle = 'rgba(120,165,255,' + al.toFixed(3) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+      }
+      if (near > 0) { ctx.strokeStyle = 'rgba(217,184,103,' + (0.6 * near).toFixed(3) + ')'; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(px, py); ctx.stroke(); }
+      ctx.fillStyle = a.g ? 'rgba(217,184,103,0.85)' : 'rgba(150,180,255,' + (0.45 + 0.4 * near).toFixed(2) + ')';
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.g ? 2.2 : 1.7, 0, 6.283); ctx.fill();
+    }
+  }
+  function loop(){ raf = null; if (document.hidden || !intro.offsetParent) return; if (Math.abs(intro.getBoundingClientRect().width - W) > 1 || !W) size(); draw(); if (!reduce) raf = requestAnimationFrame(loop); }
+  function kick(){ if (!raf) raf = requestAnimationFrame(loop); }
+  intro.addEventListener('pointermove', function(e){ var r = intro.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top; if (reduce) kick(); });
+  intro.addEventListener('pointerleave', function(){ px = py = -999; if (reduce) kick(); });
+  intro.addEventListener('touchstart', function(e){ var t = e.touches[0], r = intro.getBoundingClientRect(); px = t.clientX - r.left; py = t.clientY - r.top; }, { passive: true });
+  window.addEventListener('resize', function(){ size(); kick(); });
+  document.addEventListener('visibilitychange', kick);
+  window.addEventListener('popstate', function(){ setTimeout(kick, 50); });
+  document.addEventListener('click', function(){ setTimeout(kick, 50); });
+  setTimeout(kick, 60); kick();
+})();
+
+/* ---- Live control trail: steps read from the AI Controls section, so the copy lives in one place ---- */
+(function(){
+  var card = document.getElementById('ct-card'); if (!card) return;
+  var src = Array.prototype.slice.call(document.querySelectorAll('ol.trail li'));
+  if (!src.length) return;
+  var steps = src.map(function(li){ return { n: li.querySelector('.n').textContent, t: li.querySelector('.step').textContent, w: li.querySelector('.why').textContent, q: li.querySelector('.q').textContent.replace(/^The auditor asks/, '') }; });
+  var track = card.querySelector('.ct-track'), fill = card.querySelector('.ct-fill'), pulse = card.querySelector('.ct-pulse'), panel = card.querySelector('.ct-panel');
+  steps.forEach(function(s, i){
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'ct-node'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', 'Step ' + s.n + ': ' + s.t);
+    b.innerHTML = '<span class="dot">' + s.n + '</span><span class="nm">' + s.t + '</span>';
+    b.addEventListener('click', function(){ go(i, true); }); b.addEventListener('mouseenter', function(){ go(i, true); });
+    track.appendChild(b);
+  });
+  var btns = track.querySelectorAll('.ct-node'), cur = -1, hold = 0, reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(i, user){
+    if (user) hold = Date.now() + 9000;
+    if (i === cur) return; cur = i;
+    var pct = 10 + i * 20;
+    fill.style.width = (pct - 10) + '%'; pulse.style.left = pct + '%';
+    pulse.classList.toggle('exc', i === 2);
+    btns.forEach(function(b, k){ b.classList.toggle('on', k === i); b.classList.toggle('done', k < i); b.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+    var s = steps[i];
+    panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap');
+    panel.innerHTML = '<p class="t">' + s.n + ' &middot; ' + s.t + '</p><p class="w">' + s.w + '</p><p class="q"><b>The auditor asks</b>' + s.q + '</p>';
+  }
+  go(0);
+  if (!reduce) setInterval(function(){ if (Date.now() < hold || document.hidden || !card.offsetParent) return; go((cur + 1) % steps.length); }, 3200);
+})();
+
+/* ---- US Treasury yield curve, drawn from data/markets.json ---- */
+(function(){
+  var svg = document.getElementById('yc-svg'); if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg', M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function d(s){ var p = s.split('-'); return (+p[2]) + ' ' + M[+p[1]-1] + ' ' + p[0]; }
+  function el(tag, at, parent){ var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); (parent || svg).appendChild(e); return e; }
+  fetch('/data/markets.json', { cache: 'no-store' }).then(function(r){ return r.json(); }).then(function(j){
+    var c = j.curve; if (!c || !c.today) { svg.parentNode.innerHTML = '<p class="yc-src">The curve will appear after the next data refresh.</p>'; return; }
+    document.getElementById('yc-l1').textContent = d(c.asof); document.getElementById('yc-l2').textContent = d(c.prev_asof);
+    document.getElementById('yc-src').innerHTML = 'Source: <a href="' + c.source_url + '" target="_blank" rel="noopener">US Treasury</a>, par yields as of ' + d(c.asof) + (c.stale ? ' (stale)' : '') + '. Not live market data and not investment advice.';
+    var cw = svg.parentNode.clientWidth || 560, W = Math.round(Math.max(300, Math.min(560, cw))), H = W < 420 ? 220 : 260, L = 42, R = 46, T = 14, B = 30;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var xs = c.years.map(function(y){ return Math.sqrt(y); }), x0 = xs[0], x1 = xs[xs.length - 1];
+    var all = c.today.concat(c.prev).filter(function(v){ return v != null; });
+    var lo = Math.floor((Math.min.apply(null, all) - 0.1) * 4) / 4, hi = Math.ceil((Math.max.apply(null, all) + 0.1) * 4) / 4;
+    function X(i){ return L + (xs[i] - x0) / (x1 - x0) * (W - L - R); }
+    function Y(v){ return T + (hi - v) / (hi - lo) * (H - T - B); }
+    var g = el('g', { 'class': 'grid' }), ax = el('g', { 'class': 'axis' });
+    var step = (hi - lo) > 1.5 ? 0.5 : 0.25;
+    for (var v = lo; v <= hi + 1e-9; v += step) { el('line', { x1: L, x2: W - R, y1: Y(v), y2: Y(v) }, g); el('text', { x: L - 8, y: Y(v) + 4, 'text-anchor': 'end' }, ax).textContent = v.toFixed(2) + '%'; }
+    var show = window.innerWidth < 500 ? ['1M','1Y','2Y','5Y','10Y','30Y'] : ['1M','6M','1Y','2Y','3Y','5Y','7Y','10Y','20Y','30Y'];
+    c.tenors.forEach(function(t, i){ if (show.indexOf(t) >= 0) el('text', { x: X(i), y: H - 8, 'text-anchor': 'middle' }, ax).textContent = t; });
+    function path(vals){ var p = ''; vals.forEach(function(v, i){ if (v == null) return; p += (p ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }); return p; }
+    el('path', { d: path(c.prev), fill: 'none', stroke: '#5A8BF0', 'stroke-width': 2, 'stroke-dasharray': '5 4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+    el('path', { d: path(c.today), fill: 'none', stroke: '#B08D3C', 'stroke-width': 2.25, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+    var n = c.today.length - 1;
+    var ln = el('text', { x: X(n) + 6, y: Y(c.today[n]) + 4, 'class': 'lab' }); ln.textContent = c.today[n].toFixed(2) + '%';
+    var guide = el('line', { y1: T, y2: H - B, stroke: 'rgba(255,255,255,0.35)', 'stroke-width': 1, opacity: 0 });
+    var m1 = el('circle', { r: 4.5, fill: '#B08D3C', stroke: '#0D1A2C', 'stroke-width': 2, opacity: 0 }), m2 = el('circle', { r: 4.5, fill: '#5A8BF0', stroke: '#0D1A2C', 'stroke-width': 2, opacity: 0 });
+    var hit = el('rect', { x: L, y: 0, width: W - L - R, height: H - B, fill: 'transparent' }), tip = document.getElementById('yc-tip');
+    function at(evt){
+      var r = svg.getBoundingClientRect(), sx = (evt.clientX - r.left) / r.width * W, best = 0;
+      for (var i = 1; i < xs.length; i++) if (Math.abs(X(i) - sx) < Math.abs(X(best) - sx)) best = i;
+      var a = c.today[best], b = c.prev[best], ch = (a != null && b != null) ? Math.round((a - b) * 100) : null;
+      guide.setAttribute('x1', X(best)); guide.setAttribute('x2', X(best)); guide.setAttribute('opacity', 1);
+      if (a != null) { m1.setAttribute('cx', X(best)); m1.setAttribute('cy', Y(a)); m1.setAttribute('opacity', 1); }
+      if (b != null) { m2.setAttribute('cx', X(best)); m2.setAttribute('cy', Y(b)); m2.setAttribute('opacity', 1); }
+      tip.innerHTML = '<b>' + c.tenors[best] + '</b>&nbsp; ' + (a != null ? a.toFixed(2) + '%' : 'n/a') + ' <span class="m">vs ' + (b != null ? b.toFixed(2) + '%' : 'n/a') + (ch != null ? ' &middot; ' + (ch > 0 ? '+' : ch < 0 ? '&minus;' : '') + Math.abs(ch) + ' bp' : '') + '</span>';
+      var px = X(best) / W * r.width; tip.style.left = Math.max(70, Math.min(r.width - 70, px)) + 'px'; tip.style.opacity = 1;
+    }
+    function off(){ guide.setAttribute('opacity', 0); m1.setAttribute('opacity', 0); m2.setAttribute('opacity', 0); tip.style.opacity = 0; }
+    hit.addEventListener('pointermove', at); hit.addEventListener('pointerdown', at); hit.addEventListener('pointerleave', function(e){ if (e.pointerType === 'mouse') off(); });
+    var tb = '<tr><th>Maturity</th><th>' + d(c.asof) + '</th><th>' + d(c.prev_asof) + '</th><th>Change</th></tr>';
+    c.tenors.forEach(function(t, i){ var a = c.today[i], b = c.prev[i]; tb += '<tr><td>' + t + '</td><td>' + (a != null ? a.toFixed(2) + '%' : 'n/a') + '</td><td>' + (b != null ? b.toFixed(2) + '%' : 'n/a') + '</td><td>' + (a != null && b != null ? Math.round((a - b) * 100) + ' bp' : '') + '</td></tr>'; });
+    document.getElementById('yc-table').innerHTML = tb;
+  }).catch(function(){ svg.parentNode.innerHTML = '<p class="yc-src">The yield curve is temporarily unavailable.</p>'; });
 })();
 </script>
 <script>

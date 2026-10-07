@@ -73,6 +73,7 @@ def ecb_csv(flow_key, n):
 
 
 def treasury_curve():
+    """All daily par-yield rows, newest first; reaches into last year when needed for a one-month comparison."""
     rows = []
     for yr in (TODAY.year, TODAY.year - 1):
         url = ("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
@@ -80,10 +81,14 @@ def treasury_curve():
         for r in csv.DictReader(io.StringIO(get(url).text)):
             d = datetime.datetime.strptime(r["Date"], "%m/%d/%Y").date()
             rows.append((d, r))
-        if len(rows) >= 2:
+        rows.sort(key=lambda x: x[0], reverse=True)
+        if len(rows) >= 2 and rows[-1][0] <= rows[0][0] - datetime.timedelta(days=35):
             break
-    rows.sort(key=lambda x: x[0], reverse=True)
-    return rows[:2]
+    return rows
+
+
+CURVE_TENORS = [("1M", "1 Mo", 1 / 12), ("3M", "3 Mo", 0.25), ("6M", "6 Mo", 0.5), ("1Y", "1 Yr", 1), ("2Y", "2 Yr", 2),
+                ("3Y", "3 Yr", 3), ("5Y", "5 Yr", 5), ("7Y", "7 Yr", 7), ("10Y", "10 Yr", 10), ("20Y", "20 Yr", 20), ("30Y", "30 Yr", 30)]
 
 
 def ecb_fx():
@@ -141,6 +146,8 @@ def build():
     for sect in ("policy", "money", "fx"):
         for it in prev_doc.get(sect, []) or []:
             prev[it.get("id")] = it
+    if prev_doc.get("curve"):
+        prev["curve"] = prev_doc["curve"]
 
     # ---- money markets and yields
     money = []
@@ -163,13 +170,13 @@ def build():
         return {"name": "€STR", "value": fmt_pct(r[0][1], 3), "change_bp": bp(r[0][1], r[1][1]) if len(r) > 1 else None,
                 "asof": r[0][0], "source_name": "European Central Bank", "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html"}
 
-    curve = {}
+    curve_rows = {}
 
     def ust(col, label):
         def f():
-            if "rows" not in curve:
-                curve["rows"] = treasury_curve()
-            rows = curve["rows"]
+            if "rows" not in curve_rows:
+                curve_rows["rows"] = treasury_curve()
+            rows = curve_rows["rows"]
             v0 = float(rows[0][1][col]); v1 = float(rows[1][1][col]) if len(rows) > 1 else None
             return {"name": label, "value": fmt_pct(v0), "change_bp": bp(v0, v1), "asof": iso(rows[0][0]),
                     "source_name": "US Treasury", "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"}
@@ -180,6 +187,25 @@ def build():
         it = mark(keep_or_update(prev, key, fn), DAILY_STALE_DAYS)
         if it:
             money.append(it)
+
+    # ---- US Treasury yield curve: latest vs about one month earlier
+    def curve():
+        if "rows" not in curve_rows:
+            curve_rows["rows"] = treasury_curve()
+        rows = curve_rows["rows"]
+        d0, r0 = rows[0]
+        target = d0 - datetime.timedelta(days=28)
+        prev = next(((d, r) for d, r in rows if d <= target), None)
+        if not prev:
+            raise ValueError("no row a month earlier")
+        d1, r1 = prev
+        def vals(r):
+            return [float(r[col]) if r.get(col) not in (None, "", "N/A") else None for _, col, _ in CURVE_TENORS]
+        return {"name": "US Treasury par yield curve", "tenors": [t for t, _, _ in CURVE_TENORS],
+                "years": [y for _, _, y in CURVE_TENORS], "today": vals(r0), "prev": vals(r1),
+                "asof": iso(d0), "prev_asof": iso(d1), "source_name": "US Treasury",
+                "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"}
+    curve_item = mark(keep_or_update(prev, "curve", curve), DAILY_STALE_DAYS)
 
     # ---- FX (ECB reference rates, USD crosses derived)
     fx = []
@@ -254,6 +280,7 @@ def build():
         "policy": policy,
         "money": money,
         "fx": fx,
+        "curve": curve_item,
         "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
         "errors": LOG,
     }
