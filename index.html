@@ -336,6 +336,13 @@
   .intro { position: relative; overflow: hidden; background: var(--navy-deep); color: var(--white); min-height: min(78vh, 720px); display: flex; align-items: flex-end; }
   .intro .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
   .intro .intro-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,20,36,0.92) 0%, rgba(5,20,36,0.72) 42%, rgba(5,20,36,0.05) 75%), linear-gradient(0deg, rgba(5,20,36,0.85) 0%, rgba(5,20,36,0) 40%); }
+  .intro .intro-glow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; mix-blend-mode: screen; }
+  .intro .intro-glow span { position: absolute; left: 0; top: 0; width: 760px; height: 760px; margin: -380px 0 0 -380px; border-radius: 50%; background: radial-gradient(circle, rgba(46,106,240,0.42) 0%, rgba(46,106,240,0.16) 38%, rgba(46,106,240,0) 68%); transform: translate3d(68vw, 30vh, 0); will-change: transform; }
+  @media (hover: none), (pointer: coarse) {
+    .intro .intro-glow span { width: 520px; height: 520px; margin: -260px 0 0 -260px; animation: glowDrift 18s ease-in-out infinite alternate; }
+  }
+  @keyframes glowDrift { 0% { transform: translate3d(70vw, 18vh, 0); } 50% { transform: translate3d(30vw, 42vh, 0); } 100% { transform: translate3d(80vw, 62vh, 0); } }
+  @media (prefers-reduced-motion: reduce) { .intro .intro-glow span { animation: none; transform: translate3d(68vw, 30vh, 0); } }
   .intro .wrap { position: relative; width: 100%; padding-top: 96px; padding-bottom: 72px; }
   .intro .kicker { color: var(--gold-light); }
   .intro h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -0.02em; margin: 14px 0 22px; max-width: 13em; }
@@ -473,6 +480,7 @@
   <section class="intro" aria-labelledby="front-h">
     <img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background" loading="eager">
     <div class="intro-shade"></div>
+    <div class="intro-glow" aria-hidden="true"><span></span></div>
     <div class="wrap">
       <div class="kicker">AI &middot; Treasury &middot; Finance</div>
       <h1 id="front-h">AI in Treasury and Finance: faster decisions, firmer controls, a cleaner audit.</h1>
@@ -855,6 +863,19 @@
   document.querySelectorAll('a[data-tab]').forEach(function(a){
     a.addEventListener('click', function(e){ e.preventDefault(); showTab(a.getAttribute('data-tab')); });
   });
+  // Hero glow: follows the mouse on desktop (eased); drifts on its own on touch screens (CSS).
+  (function(){
+    var intro = document.querySelector('.intro'), dot = intro && intro.querySelector('.intro-glow span');
+    if (!dot || !window.matchMedia) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var tx = 0, ty = 0, x = 0, y = 0, running = false;
+    function place(){ var r = intro.getBoundingClientRect(); tx = x = r.width * 0.68; ty = y = r.height * 0.35; dot.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)'; }
+    function tick(){ x += (tx - x) * 0.08; y += (ty - y) * 0.08; dot.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      if (Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5) requestAnimationFrame(tick); else running = false; }
+    intro.addEventListener('pointermove', function(e){ var r = intro.getBoundingClientRect(); tx = e.clientX - r.left; ty = e.clientY - r.top; if (!running) { running = true; requestAnimationFrame(tick); } });
+    place(); window.addEventListener('resize', place);
+  })();
   // Smooth, eased scroll for in-page links (Talk to us, Framework, etc.).
   // Recomputes the target each frame so lazy images loading mid-scroll can't throw it off.
   (function(){
