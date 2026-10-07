@@ -118,7 +118,15 @@
   .leads .item .cite a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
 
   /* ---------- Briefing ---------- */
-  .briefing { padding: 80px 0 0; scroll-margin-top: 24px; }
+  .briefing { position: relative; overflow: hidden; padding: 80px 0 16px; scroll-margin-top: 24px; background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(46,106,240,0.28) 0%, rgba(46,106,240,0) 70%), radial-gradient(ellipse 50% 50% at 0% 100%, rgba(176,141,60,0.10) 0%, rgba(176,141,60,0) 70%), var(--navy); color: var(--white); }
+  .briefing > .wrap { position: relative; }
+  .briefing .kicker { color: var(--gold-light); }
+  .briefing .sec-head { border-bottom-color: var(--gold); }
+  .briefing .sec-head .dateline, .briefing .sec-head .meta div { color: var(--on-dark-soft); }
+  .briefing .sec-head .dateline b, .briefing .sec-head .meta b { color: var(--white); }
+  .briefing .desk .text p { color: var(--on-dark); }
+  .briefing .desk .text::before { opacity: 0.45; }
+  .briefing .desk .sig { color: var(--gold-light); }
   .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-bottom: 3px solid var(--navy); padding-bottom: 20px; margin-bottom: 44px; }
   .sec-head h2 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; margin: 10px 0 0; letter-spacing: -0.02em; }
   .sec-head p { margin: 12px 0 0; color: var(--navy-soft); max-width: 60ch; }
