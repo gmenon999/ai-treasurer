@@ -221,6 +221,20 @@
   ol.trail .q { margin-top: auto; padding-top: 18px; font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); }
   ol.trail .q b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 12px; }
   .framework .note { margin-top: 40px; font-size: 13px; color: var(--on-dark-soft); }
+  .fw-label { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+  .fw-label span { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .fw-label b { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--white); }
+  .fw-label small { margin-left: auto; font-size: 12.5px; color: var(--on-dark-soft); }
+  .found { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .found li { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-top: 2px solid var(--gold-light); padding: 24px 22px 22px; display: flex; flex-direction: column; }
+  .found .f-name { font-family: var(--serif); font-size: 24px; font-weight: 700; }
+  .found .f-coso { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); margin-top: 4px; }
+  .found .why { font-size: 15px; color: var(--on-dark); line-height: 1.5; display: block; margin-top: 12px; }
+  .found .q { margin-top: auto; padding-top: 18px; font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); }
+  .found .q b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 12px; }
+  ol.trail + .fw-label { margin-top: 56px; }
+  @media (max-width: 1020px) { .found { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 700px) { .found { grid-template-columns: 1fr; } .fw-label small { margin-left: 0; flex-basis: 100%; } ol.trail + .fw-label { margin-top: 40px; } }
 
   footer { border-top: 1px solid var(--line); padding: 24px 0 48px; font-size: 13px; color: var(--navy-soft); }
   footer p { margin: 0 0 8px; max-width: 90ch; }
@@ -884,7 +898,7 @@
 
 
   <aside class="next-band" data-view="markets" aria-label="Next section">
-    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">The five-step control trail for AI in Treasury and Finance.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">Five steps for every transaction, four foundations around the system.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== FRAMEWORK ===== -->
@@ -899,15 +913,23 @@
     <div class="wrap">
       <div class="kicker">AI Controls</div>
       <h2 id="fw-h">Every automated step should leave a trail an auditor can follow</h2>
-      <p class="sub">The test I apply to any AI or automation idea in Treasury and Finance: can each stage be explained, evidenced and reversed? If the answer is no at any step, the speed is borrowed against the next audit.</p>
+      <p class="sub">Five steps for every transaction, four foundations around the system. The test for any AI or automation in Treasury and Finance: can each stage be explained, evidenced and reversed? If not, the speed is borrowed against the next audit.</p>
+      <div class="fw-label"><span>For every transaction</span><b>The control trail</b><small>COSO: control activities &middot; information &amp; communication</small></div>
       <ol class="trail">
-        <li><span class="n">01</span><span class="step">Capture</span><span class="why">Bank and system data arrives from a known, authorised source.</span><span class="q"><b>The auditor asks</b>Where did this data come from?</span></li>
-        <li><span class="n">02</span><span class="step">Match</span><span class="why">Rules or models pair items, and the matching logic is recorded.</span><span class="q"><b>The auditor asks</b>Why were these two items paired?</span></li>
-        <li><span class="n">03</span><span class="step">Flag</span><span class="why">Exceptions are logged and aged, never silently cleared.</span><span class="q"><b>The auditor asks</b>What didn't match, and for how long?</span></li>
-        <li><span class="n">04</span><span class="step">Approve</span><span class="why">A named person accepts each exception before anything moves.</span><span class="q"><b>The auditor asks</b>Who accepted it, and when?</span></li>
-        <li><span class="n">05</span><span class="step">Post</span><span class="why">Entries follow IFRS, with the full trail kept for review.</span><span class="q"><b>The auditor asks</b>Does the entry trace back to source?</span></li>
+        <li><span class="n">01</span><span class="step">Capture</span><span class="why">Data arrives from a known, authorised source, with completeness totals checked. Emails and PDFs are screened for hidden instructions before any agent acts on them.</span><span class="q"><b>The auditor asks</b>Where did this data come from, and is all of it here?</span></li>
+        <li><span class="n">02</span><span class="step">Match</span><span class="why">Rules or models pair items. The logic, model and prompt version are recorded, and amounts are recalculated independently.</span><span class="q"><b>The auditor asks</b>Why were these two items paired, and by which version?</span></li>
+        <li><span class="n">03</span><span class="step">Flag</span><span class="why">Low-confidence results become exceptions. Exceptions are logged and aged, never silently cleared.</span><span class="q"><b>The auditor asks</b>What didn't match, and for how long?</span></li>
+        <li><span class="n">04</span><span class="step">Approve</span><span class="why">A named person approves, at a level set by risk. The agent that proposes an action can never approve it.</span><span class="q"><b>The auditor asks</b>Who accepted it, and were they independent?</span></li>
+        <li><span class="n">05</span><span class="step">Post</span><span class="why">Entries follow IFRS, with a record-level trail of the data, model version and approver.</span><span class="q"><b>The auditor asks</b>Does the entry trace back to source?</span></li>
       </ol>
-      <p class="note">Illustrative framework. It describes a control approach, not a specific system or result.</p>
+      <div class="fw-label"><span>Around the system</span><b>Four foundations</b><small>COSO: control environment &middot; risk assessment &middot; control activities &middot; monitoring</small></div>
+      <ul class="found">
+        <li><span class="f-name">Govern</span><span class="f-coso">Control environment &middot; risk assessment</span><span class="why">A register of every AI use: owner, risk tier, intended use, limits and impact on financial reporting.</span><span class="q"><b>The auditor asks</b>Which AI is in use, and who owns it?</span></li>
+        <li><span class="f-name">Access</span><span class="f-coso">Control activities</span><span class="why">Each agent has its own identity and only the rights it needs. No shared logins, and bank or vendor master-data changes are verified independently.</span><span class="q"><b>The auditor asks</b>What can this agent do, and who granted it?</span></li>
+        <li><span class="f-name">Change</span><span class="f-coso">Control activities</span><span class="why">Prompts, models and settings are change-controlled like code: written by one person, approved by another, tested and logged.</span><span class="q"><b>The auditor asks</b>What changed, and who signed it off?</span></li>
+        <li><span class="f-name">Monitor</span><span class="f-coso">Monitoring activities</span><span class="why">Volumes, overrides, validation failures, exception ageing and drift are tracked, with a stop switch when limits are breached.</span><span class="q"><b>The auditor asks</b>How would you know if it went wrong?</span></li>
+      </ul>
+      <p class="note">Illustrative framework, aligned with COSO&rsquo;s Internal Control&mdash;Integrated Framework and its 2026 guidance on internal control over generative AI. It describes a control approach, not a specific system or result.</p>
     </div>
   </section>
 
