@@ -348,6 +348,10 @@ def editorial(res, date_human, history=None):
         "a CFO or treasurer, through the lens of control, cash or risk, ending on one sharp line. Never "
         "open a paragraph with 'Today', 'This week', 'In', 'As' or 'With', and never mention the briefing, "
         "items, stories or edition.\n"
+        "SCOPE: the note speaks to the whole finance function, not Treasury alone. Write for the CFO, "
+        "the controller and the treasurer together: where the items allow, pair a Treasury development "
+        "with one for accounting, reporting, audit or the wider finance team, and make the so-what "
+        "apply to Finance as a whole. Prefer 'Treasury and Finance' over 'Treasury' when framing.\n"
         "Recent notes (do NOT reuse their angle, headline wording or opening):\n%s\n"
         "lead_stories: exactly 3, the most material items, each pointing to the tab where the detail sits "
         "(tab is one of ai, treasury, markets, regulation). topic: 2-4 words, title case (e.g. 'Agentic "
@@ -416,6 +420,9 @@ def _note_problems(data, recent):
             out.append("paragraph %d has %d sentences (max 4)" % (i + 1, len(sents)))
         if len(p.split()) > 65:
             out.append("paragraph %d is %d words (max 60)" % (i + 1, len(p.split())))
+    blob = (head + " " + " ".join(note)).lower()
+    if not re.search(r"\b(finance|financial reporting|cfo|controller|close|audit|accounting|icfr)\b", blob):
+        out.append("note speaks only to Treasury; frame it for the whole finance function (CFO, controller, reporting)")
     for d in recent:
         if head and d.get("note_headline") and _similar(head, d["note_headline"]):
             out.append("note_headline repeats a recent note ('%s')" % d["note_headline"]); break
