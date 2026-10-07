@@ -293,7 +293,8 @@ STYLE = (
     "'landscape', 'game-changer', 'unlock', 'leverage' (as a verb), 'delve', 'navigate', 'robust', "
     "'seamless', 'cutting-edge', 'paradigm', 'Moreover', 'Furthermore', 'In conclusion'.\n"
     "- Do not open two sentences in a row with the same word. Do not list more than three names in a row.\n"
-    "- Always write 'Treasury' with a capital T when it means the function or profession.\n"
+    "- Always write 'Treasury' with a capital T and 'Finance' with a capital F when they mean the function, "
+    "team or profession (e.g. 'Finance Teams', 'the Finance function'). 'financial' stays lower case.\n"
     "- No hype, no advice, no personal names of the author."
 )
 
@@ -316,8 +317,10 @@ def _lint(texts):
 
 
 def _cap_treasury(t):
-    # House rule: Treasury with a capital T (function/profession). Leaves URLs untouched.
-    return re.sub(r"\btreasury\b", "Treasury", t or "")
+    # House rule: Treasury with a capital T and Finance with a capital F (function/profession).
+    # Leaves URLs and 'financial' untouched.
+    t = re.sub(r"\btreasury\b", "Treasury", t or "")
+    return re.sub(r"(?<![/.\w-])finance\b(?![\w-]*\.)", "Finance", t)
 
 
 def editorial(res, date_human, history=None):
