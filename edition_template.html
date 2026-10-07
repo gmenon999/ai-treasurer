@@ -289,6 +289,8 @@
   }
 
   /* ---- Sticky section menu ---- */
+  .js [data-view]:not(.view-on) { display: none; }
+  .js main { min-height: calc(100vh - 180px); }
   :root { --secnav-h: 50px; }
   .secnav { position: sticky; top: 0; z-index: 20; background: var(--navy-deep); border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 6px 18px rgba(5,20,36,0.18); }
   .secnav .wrap { display: flex; gap: 30px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
@@ -564,7 +566,7 @@
 <main id="main">
 
   <!-- ===== INTRO (full-bleed) ===== -->
-  <section class="intro" id="top" aria-labelledby="front-h">
+  <section class="intro" id="top" data-view="top" aria-labelledby="front-h">
     <img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background" loading="eager">
     <div class="intro-shade"></div>
     <div class="intro-glow" aria-hidden="true"><span></span></div>
@@ -580,7 +582,7 @@
   </section>
 
   <!-- ===== FRONT: editorial grid ===== -->
-  <section class="front" aria-label="Today at a glance">
+  <section class="front" data-view="top" aria-label="Today at a glance">
     <div class="wrap">
 
       <div class="tiles">
@@ -618,7 +620,7 @@
   </section>
 
   <!-- ===== BRIEFING ===== -->
-  <section class="briefing" id="briefing" aria-labelledby="brief-h">
+  <section class="briefing" id="briefing" data-view="briefing" aria-labelledby="brief-h">
     <div class="wrap">
       <div class="sec-head">
         <div>
@@ -750,7 +752,7 @@
   </section>
 
   <!-- ===== MARKETS ===== -->
-  <section class="markets-sec" id="markets" aria-label="Markets">
+  <section class="markets-sec" id="markets" data-view="markets" aria-label="Markets">
     <div class="numbers" id="numbers" aria-labelledby="mk-title">
       <svg class="bg" viewBox="0 0 520 340" aria-hidden="true">
         <g fill="none">
@@ -796,7 +798,7 @@
   </section>
 
   <!-- ===== NEWSLETTER (full-bleed photo) ===== -->
-  <section class="newsletter reveal" id="newsletter" aria-labelledby="nl-h">
+  <section class="newsletter reveal" id="newsletter" data-view="newsletter" aria-labelledby="nl-h">
     <img class="photo" src="/img/ait-newsletter-desk.jpg" alt="A professional at her desk, looking up from her work" loading="lazy">
     <div class="nl-shade"></div>
     <div class="wrap">
@@ -816,7 +818,7 @@
   </section>
 
   <!-- ===== FRAMEWORK ===== -->
-  <section class="framework reveal" id="framework" aria-labelledby="fw-h">
+  <section class="framework reveal" id="framework" data-view="framework" aria-labelledby="fw-h">
     <svg class="bg" viewBox="0 0 760 520" aria-hidden="true">
       <g fill="none">
         <polyline points="0,460 380,150 760,460" stroke="#2E6AF0" stroke-width="44" opacity="0.35"/>
@@ -840,7 +842,7 @@
   </section>
 
   <!-- ===== ARTICLES ("How we help" pattern) ===== -->
-  <section class="articles reveal" id="articles" aria-labelledby="art-h">
+  <section class="articles reveal" id="articles" data-view="articles" aria-labelledby="art-h">
     <div class="wrap">
       <div class="center-head">
         <div class="eyebrow">Articles</div>
@@ -866,7 +868,7 @@
   </section>
 
   <!-- ===== CREDENTIALS (blue band) ===== -->
-  <section class="creds reveal" id="work" aria-labelledby="work-top">
+  <section class="creds reveal" id="work" data-view="work" aria-labelledby="work-top">
     <div class="wrap">
       <div class="creds-head">
         <div class="kicker">Work with me</div>
@@ -882,7 +884,7 @@
   </section>
 
   <!-- ===== WORK WITH ME (careers pattern) ===== -->
-  <section class="work reveal" aria-labelledby="work-h">
+  <section class="work reveal" data-view="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="who who-top"><img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon, CA, CPA, CTP" width="72" height="72" loading="lazy"><div>Gopakumar Menon, CA, CPA, CTP
             <small>Leading a Treasury digital transformation in Doha today.</small></div>
@@ -918,6 +920,7 @@
   var panels = document.querySelectorAll('.panel');
   function showTab(key) {
     if (key === 'front') key = 'ai';
+    if (window.showView) window.showView('briefing');
     tabs.forEach(function(b){ b.setAttribute('aria-selected', b.id === 't-'+key ? 'true':'false'); });
     panels.forEach(function(p){ p.classList.toggle('active', p.id === 'p-'+key); });
     var t = document.getElementById('briefing-tabs');
@@ -1039,23 +1042,51 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 });
 </script>
 <script>
+/* Section views: each menu item shows only its own section (like app tabs). */
 (function(){
+  var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('.secnav a'));
-  var ids = links.map(function(a){ return a.getAttribute('href').slice(1); });
-  function setActive(id){
-    links.forEach(function(a){
-      var on = a.getAttribute('href') === '#'+id;
-      if (on) { a.setAttribute('aria-current','true'); var r=a.getBoundingClientRect(), p=a.parentNode.getBoundingClientRect(); if (r.left < p.left || r.right > p.right) a.parentNode.scrollTo({left: a.offsetLeft - 16, behavior: 'smooth'}); }
-      else a.removeAttribute('aria-current');
+  var current = null;
+  function viewOf(id){
+    var el = id && document.getElementById(id);
+    var v = el && el.closest('[data-view]');
+    return v ? v.getAttribute('data-view') : null;
+  }
+  function show(view){
+    if (!view) view = 'top';
+    views.forEach(function(s){
+      var on = s.getAttribute('data-view') === view;
+      s.classList.toggle('view-on', on);
+      if (on && s.classList.contains('reveal')) s.classList.add('in');
     });
+    links.forEach(function(a){
+      if (a.getAttribute('href') === '#' + view) {
+        a.setAttribute('aria-current', 'true');
+        var p = a.parentNode, r = a.getBoundingClientRect(), pr = p.getBoundingClientRect();
+        if (r.left < pr.left || r.right > pr.right) p.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+      } else a.removeAttribute('aria-current');
+    });
+    current = view;
   }
-  function onScroll(){
-    var line = 90, current = ids[0];
-    ids.forEach(function(id){ var el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= line) current = id; });
-    setActive(current);
-  }
-  var t; window.addEventListener('scroll', function(){ if (t) return; t = requestAnimationFrame(function(){ t = null; onScroll(); }); }, {passive:true});
-  onScroll();
+  // Intercept in-page links before the smooth-scroll handler: switching view jumps to its top.
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+    var id = a.getAttribute('href').slice(1), view = viewOf(id);
+    if (!view) return;
+    var el = document.getElementById(id);
+    var isRoot = el && el.getAttribute('data-view') === view;
+    if (view === current && !isRoot) return;          // e.g. "All sections" inside the briefing: let it scroll
+    e.preventDefault(); e.stopPropagation();
+    show(view);
+    window.scrollTo(0, 0);
+    if (history.pushState) history.pushState({ v: view }, '', view === 'top' ? location.pathname : '#' + view);
+  }, true);
+  window.addEventListener('popstate', function(){ show(viewOf(location.hash.slice(1)) || 'top'); window.scrollTo(0, 0); });
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  show(viewOf(location.hash.slice(1)) || 'top');
+  if (location.hash) setTimeout(function(){ window.scrollTo(0, 0); }, 0);
+  window.showView = show;
 })();
 </script>
 </body>
