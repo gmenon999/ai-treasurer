@@ -881,9 +881,7 @@
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Prices by TradingView</a>, may be delayed</div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-              {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:UKXGBP","title":"FTSE 100"},{"proName":"FOREXCOM:JP225","title":"Nikkei 225"},{"proName":"BSE:SENSEX","title":"Sensex"},{"proName":"TVC:UKOIL","title":"Brent"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
-              </script>
+              <script type="application/json" id="tv-config">{"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:UKXGBP","title":"FTSE 100"},{"proName":"FOREXCOM:JP225","title":"Nikkei 225"},{"proName":"BSE:SENSEX","title":"Sensex"},{"proName":"TVC:UKOIL","title":"Brent"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}</script>
             </div>
           </div>
         </div>
@@ -1217,6 +1215,20 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       } else a.removeAttribute('aria-current');
     });
     current = view;
+    if (view === 'markets') startTicker();
+  }
+  var tickerStarted = false;
+  function startTicker(){
+    if (tickerStarted) return;
+    var box = document.querySelector('.live-feed .tradingview-widget-container'), cfg = document.getElementById('tv-config');
+    if (!box || !cfg) return;
+    tickerStarted = true;
+    requestAnimationFrame(function(){
+      var sc = document.createElement('script');
+      sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+      sc.async = true; sc.text = cfg.textContent;
+      box.appendChild(sc);
+    });
   }
   // Intercept in-page links before the smooth-scroll handler: switching view jumps to its top.
   document.addEventListener('click', function(e){
