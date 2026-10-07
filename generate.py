@@ -56,9 +56,15 @@ BEATS = [
      "stablecoins and tokenised deposits for corporate payments/treasury, on-chain settlement, bank digital-asset infrastructure"),
     ("markets_macro","Markets & Macro for Treasurers",
      "central-bank rate decisions and outlook, government bond yields, major FX moves - framed for a corporate treasurer"),
+    ("financial_crime","Sanctions, AML & KYC",
+     "sanctions regime changes (OFAC, UN, EU, UK), AML/KYC rules, FATF updates and enforcement that affect corporate payments, bank onboarding and counterparty screening"),
+    ("reporting",    "Accounting & Reporting Standards",
+     "IFRS / US GAAP developments relevant to treasury (IFRS 9 hedge accounting, IAS 7 supplier-finance disclosures, IFRS 18, IFRS 16), ISSB sustainability reporting, audit-regulator actions"),
 ]
+# Newer, narrower sections: if research finds nothing material, show a quiet note instead of failing the edition.
+OPTIONAL_BEATS = {"financial_crime", "reporting"}
 BEAT_KEYS = [b[0] for b in BEATS]
-LEAD_TAB_LABEL = {"ai": "AI &amp; Technology", "treasury": "Treasury &amp; Payments", "markets": "Risk &amp; Markets"}
+LEAD_TAB_LABEL = {"ai": "AI &amp; Technology", "treasury": "Treasury &amp; Payments", "markets": "Risk &amp; Markets", "regulation": "Regulation &amp; Compliance"}
 
 
 def esc(x):
@@ -194,7 +200,7 @@ def research(date_human):
     for k in BEAT_KEYS:
         items = beats.get(k) or []
         items = [it for it in items if it.get("headline") and it.get("summary") and (it.get("sources"))]
-        if not items:
+        if not items and k not in OPTIONAL_BEATS:
             raise ValueError("research: beat '%s' has no usable items" % k)
         beats[k] = items[:3]
     data["beats"] = beats
@@ -215,12 +221,12 @@ def editorial(res, date_human):
         "treasurers). Today is %s. Based ONLY on the items below, return STRICT JSON:\n"
         "{\n"
         '  "editor_note": ["paragraph one", "paragraph two"],\n'
-        '  "lead_stories": [ {"topic":"2-4 word topic","headline":"...","blurb":"1-2 sentences","tab":"ai|treasury|markets"} ]\n'
+        '  "lead_stories": [ {"topic":"2-4 word topic","headline":"...","blurb":"1-2 sentences","tab":"ai|treasury|markets|regulation"} ]\n'
         "}\n\n"
         "editor_note: exactly 2 short paragraphs, no greeting, no salutation, tying the day's items to "
         "the site's thesis that speed is easy but every automated step must leave a trail an auditor "
         "can follow. Do NOT mention any personal name. lead_stories: exactly 3, each pointing to the "
-        "tab where the detail sits (tab is one of ai, treasury, markets). topic: a short subject heading of 2-4 words for that story, in title case (e.g. 'Agentic Treasury Controls', 'ISO 20022 Migration', 'Bond Yields'); write Treasury with a capital T; never 'Lead story'. Plain, concrete, no advice.\n\n"
+        "tab where the detail sits (tab is one of ai, treasury, markets, regulation). topic: a short subject heading of 2-4 words for that story, in title case (e.g. 'Agentic Treasury Controls', 'ISO 20022 Migration', 'Bond Yields'); write Treasury with a capital T; never 'Lead story'. Plain, concrete, no advice.\n\n"
         "ITEMS:\n%s" % (date_human, "\n".join(flat))
     )
     data = _json(_ask(prompt, EDITORIAL_MODEL, search=False), "editorial")
@@ -246,6 +252,8 @@ def _sources_html(sources, prefix="Via "):
 
 
 def _items_html(items):
+    if not items:
+        return '<p class="pillar-sub" style="margin:0;">No material developments today.</p>'
     out = []
     for it in items:
         out.append('<div class="item"><h4>%s</h4><p>%s</p><div class="cite">%s</div></div>'
