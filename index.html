@@ -841,6 +841,48 @@
   tabs.forEach(function(b){
     b.addEventListener('click', function(){ showTab(b.id.replace('t-','')); });
   });
+  // Smooth, eased scroll for in-page links (Talk to us, Framework, etc.).
+  // Recomputes the target each frame so lazy images loading mid-scroll can't throw it off.
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+    function targetY(el){
+      var m = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      return Math.max(0, Math.min(max, el.getBoundingClientRect().top + window.pageYOffset - m));
+    }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+      var id = a.getAttribute('href').slice(1);
+      var el = id && document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      // Load images now and settle the reveal effect, so nothing shifts or animates during the glide.
+      document.querySelectorAll('img[loading="lazy"]').forEach(function(i){ i.loading = 'eager'; });
+      document.querySelectorAll('.reveal').forEach(function(r){ r.classList.add('in'); });
+      var root = document.documentElement, prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      var start = window.pageYOffset, dist = Math.abs(targetY(el) - start);
+      if (reduce || dist < 2) { window.scrollTo(0, targetY(el)); root.style.scrollBehavior = prev; }
+      else {
+        var dur = Math.min(1100, Math.max(450, dist * 0.22)), t0 = null;
+        var stop = function(){ cancelled = true; };
+        var cancelled = false;
+        window.addEventListener('wheel', stop, { passive: true, once: true });
+        window.addEventListener('touchstart', stop, { passive: true, once: true });
+        (function step(ts){
+          if (cancelled) { root.style.scrollBehavior = prev; return; }
+          if (t0 === null) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur);
+          window.scrollTo(0, start + (targetY(el) - start) * ease(p));
+          if (p < 1) requestAnimationFrame(step); else root.style.scrollBehavior = prev;
+        })(performance.now()) ;
+      }
+      if (history.replaceState) history.replaceState(null, '', '#' + id);
+      var f = el.querySelector('h1, h2, h3'); if (f) { f.setAttribute('tabindex', '-1'); setTimeout(function(){ f.focus({ preventScroll: true }); }, 50); }
+    });
+  })();
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
