@@ -1,0 +1,113 @@
+{
+ "days": [
+  {
+   "date": "2026-10-07",
+   "note_headline": "Treasury agents now act on their own, and controls are only starting to catch up",
+   "note_opening": "Treasury software is moving from suggesting actions to taking them. Ripple’s GSmart agents propose actions tied to policy and wait for sign-off; Atlar and Nilus have released agents that run payments, rebalancing and rec",
+   "items": [
+    {
+     "headline": "Ripple Treasury Expands GSmart: Policy-Governed Agentic AI for Enterprise Orchestration",
+     "urls": [
+      "https://treasury.ripple.com/news/ripple-treasury-brings-industrys-first-governed-ai-for-enterprise-treasury"
+     ]
+    },
+    {
+     "headline": "BCG: AI Agents Move From Insight to Autonomous Action in Treasury",
+     "urls": [
+      "https://www.bcg.com/publications/2026/ai-agents-reshaping-corporate-treasury"
+     ]
+    },
+    {
+     "headline": "Atlar and Nilus Introduce Production-Grade Treasury Agents",
+     "urls": [
+      "https://www.atlar.com/blog/introducing-ai-agents-for-treasury"
+     ]
+    },
+    {
+     "headline": "Frankfurt International Bank Adopts FIS Cloud-Native Treasury Platform",
+     "urls": [
+      "https://www.fisglobal.com/about-us/media-room/press-release/2026/frankfurt-international-bank-selects-fis-to-bypass-legacy-infrastructure"
+     ]
+    },
+    {
+     "headline": "Kyriba TAI and Trovata TMS: Agentic AI Embedded in Treasury Systems",
+     "urls": [
+      "https://www.kyriba.com/products/agentic-ai-tai/"
+     ]
+    },
+    {
+     "headline": "46% of Corporates Increased US Cash Holdings; Treasury Securities Preferred Over Deposits",
+     "urls": [
+      "https://www.invesco.com/us/en/insights/cash-trends-liquidity-survey.html"
+     ]
+    },
+    {
+     "headline": "External Working Capital Solutions Adoption Hits 83%; Card Usage Quadruples",
+     "urls": [
+      "https://www.pymnts.com/loans/working-capital/2026/working-capital-lost-its-strategic-edge-in-2026-the-best-cfos-are-already-getting-it-back/"
+     ]
+    },
+    {
+     "headline": "Money Market Fund Assets Decline to $7.89 Trillion; Government Funds Lead Outflows",
+     "urls": [
+      "https://www.ici.org/research/stats/mmf"
+     ]
+    },
+    {
+     "headline": "Bank of England Delays November 2026 ISO 20022 Mandates; Aligns with Swift Deferral",
+     "urls": [
+      "https://www.bankofengland.co.uk/payments/rtgs-renewal-programme/iso-20022"
+     ]
+    },
+    {
+     "headline": "Visa and Lloyds Conduct Live Stablecoin Settlement Pilot; Sub-Hour Cross-Border Clearing",
+     "urls": [
+      "https://www.mynewsdesk.com/uk/visa/pressreleases/visa-and-lloyds-test-faster-round-the-clock-cross-border-settlement-using-stablecoins-3469881"
+     ]
+    },
+    {
+     "headline": "US 10-Year Treasury Yield Surges Above 5%; Largest One-Month Jump Since 2022",
+     "urls": [
+      "https://www.mufgresearch.com/fx/monthly-foreign-exchange-outlook-october-2026/"
+     ]
+    },
+    {
+     "headline": "Cross-Currency Basis Widens; FX Hedging Costs Rise for Corporate Treasurers",
+     "urls": [
+      "https://www.fxmethods.com/post/fxmethods-treasury-desk-weekly-currency-treasury-outlook-05-09-october-2026"
+     ]
+    },
+    {
+     "headline": "Kyriba Deploys Regulated Stablecoin Treasury for Ledger and Mantu; Production Go-Live",
+     "urls": [
+      "https://www.kyriba.com/news/kyriba-fipto-stablecoin-treasury-ledger-mantu/"
+     ]
+    },
+    {
+     "headline": "BNY and Industry Leaders Highlight Tokenised Money for 24/7 Corporate Settlement",
+     "urls": [
+      "https://www.bny.com/investments/sg/en/institutional/news-and-insights/articles/from-liquidity-management-to-digital-innovation-the-future-treasury-toolkit-apac.html"
+     ]
+    },
+    {
+     "headline": "Federal Reserve Expected to Hike December 2026; Nomura Sees Hold Through 2027",
+     "urls": [
+      "https://www.nomuraconnects.com/focused-thinking-posts/central-banks-recalibrating-monetary-policies/"
+     ]
+    },
+    {
+     "headline": "COSO Releases GenAI Control Framework; Auditable AI Workflows for SOX Compliance",
+     "urls": [
+      "https://www.financialexecutives.org/FEI-Daily/June-2026/ai-framework-internal-control-financial-reporting.aspx"
+     ]
+    },
+    {
+     "headline": "AI and ICFR Disclosure: SEC Signals Material GenAI Implementations Must Disclose Control Changes",
+     "urls": [
+      "https://virtaspartners.com/2026/04/28/genai-in-finance-is-now-an-internal-control-question-what-cosos-new-guidance-means-for-public-company-accounting-and-finance-teams/"
+     ]
+    }
+   ]
+  }
+ ]
+}

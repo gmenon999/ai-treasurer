@@ -85,8 +85,9 @@
   .tile .kicker { color: var(--gold-light); }
   .tile-tall { grid-row: span 2; min-height: 620px; }
   .tile-desk { grid-row: span 2; justify-content: flex-start; background: var(--navy); border-top: 3px solid var(--gold); }
-  .tile-desk .note p { font-family: var(--serif); font-size: 18px; color: var(--on-dark); display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; }
-  .tile-desk .note p + p { margin-top: 4px; -webkit-line-clamp: 6; }
+  .tile-desk .note-h { font-family: var(--serif); font-size: clamp(22px, 2vw, 26px); line-height: 1.22; font-weight: 700; color: var(--white); margin: 12px 0 14px; }
+  .tile-desk .note p { font-family: var(--sans); font-size: 16px; line-height: 1.6; color: var(--on-dark); margin: 0 0 12px; }
+  .tile-desk .arrow-link { margin-top: 18px; }
   .tile-desk .arrow-link { color: var(--white); margin-top: auto; align-self: flex-start; }
   .tile-work .btn { align-self: flex-start; }
   .btn { display: inline-block; background: var(--white); color: var(--navy-deep); font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 22px; border: 0; cursor: pointer; font-family: var(--sans); }
@@ -656,10 +657,11 @@
 
         <!-- Editor's note -->
         <a class="tile tile-desk" href="#briefing">
-          <div class="kicker">Editor&rsquo;s note</div>
+          <div class="kicker">What it means for Treasury</div>
           <div class="note">
-            <p>Today's items show how quickly treasury agents are moving from suggesting actions to taking them. Ripple, Atlar, Nilus, Kyriba and Trovata are all putting agents into forecasting, payments, rebalancing and reconciliation. BCG describes payments being routed and FX exposure managed with less manual work in bank portals. The vendors that stand out describe each step as tied to policy and held for approval, or surfaced for review rather than run silently. That is the line that matters. Moving fast is the easy part. Proving afterwards who approved what, under which rule, is harder.</p>
-        <p>Controls guidance is starting to catch up. COSO's new generative AI framework maps eight control categories to ICFR, covering separation of duties and change control. Virtas Partners' reading of SEC guidance suggests that a material AI rollout can itself count as a control change that must be disclosed. The same test applies to faster settlement rails such as stablecoins and tokenised deposits, and to hedge programmes being re-examined as US yields climb. Each automated step needs to leave a record an auditor can follow from start to finish.</p>
+            <h3 class="note-h">Treasury agents now act on their own, and controls are only starting to catch up</h3>
+        <p>Treasury software is moving from suggesting actions to taking them. Ripple&rsquo;s GSmart agents propose actions tied to policy and wait for sign-off; Atlar and Nilus have released agents that run payments, rebalancing and reconciliation on set schedules; Kyriba and Trovata have built agents into their platforms.</p>
+        <p>Control guidance is following. COSO&rsquo;s generative AI framework maps eight control categories to internal control over financial reporting, including separation of duties and change control. For a CFO, the question is no longer whether an agent can do the work, but whether every step it takes can be traced, approved and reversed.</p>
           </div>
           <span class="arrow-link">Read today's briefing</span>
         </a>

@@ -30,6 +30,8 @@ TEMPLATE = os.path.join(HERE, "edition_template.html")
 INDEX = os.path.join(HERE, "index.html")
 EDITIONS_DIR = os.path.join(HERE, "editions")
 STATE = os.path.join(EDITIONS_DIR, "state.json")
+HISTORY = os.path.join(EDITIONS_DIR, "history.json")  # recent stories and notes, for no-repeat checks
+HISTORY_DAYS = 14
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 RESEARCH_MODEL = os.environ.get("BRIEF_RESEARCH_MODEL", "anthropic/claude-haiku-4.5")
@@ -174,7 +176,11 @@ GUARD = (
 )
 
 
-def research(date_human):
+def research(date_human, history=None):
+    covered = []
+    for d in (history or {}).get("days", [])[-HISTORY_DAYS:]:
+        covered += [it.get("headline", "") for it in d.get("items", [])]
+    covered_txt = "\n".join("- " + h for h in covered[-80:]) or "- (none yet)"
     beats_spec = "\n".join("- %s (key \"%s\"): %s" % (t, k, d) for k, t, d in BEATS)
     prompt = (
         "You are the research desk for The AI Treasurer, a daily briefing for CFOs and corporate "
@@ -189,7 +195,10 @@ def research(date_human):
         "BEATS (produce 2-3 items each, newest/most material first):\n%s\n\n"
         "events: 2-3 real treasury conferences/deadlines (e.g. Sibos, EuroFinance, AFP, ISO 20022 "
         "dates), with a real source url.\n\n"
-        "summary = 30-45 words, original wording. %s" % (date_human, beats_spec, GUARD)
+        "NO REPEATS: the stories below already ran in the last two weeks. Do not return them again. "
+        "Only include a follow-up if something materially new has happened, and then the headline must "
+        "say what is new.\n%s\n\n"
+        "summary = 30-45 words, original wording. %s" % (date_human, beats_spec, covered_txt, GUARD)
     )
     data = _json(_ask(prompt, RESEARCH_MODEL, search=True), "research")
     # validate
@@ -205,6 +214,71 @@ def research(date_human):
     if not data["events"]:
         raise ValueError("research: events incomplete")
     return data
+
+
+# ---------------------------------------------------------------- no-repeat memory
+import difflib
+
+
+def load_history():
+    try:
+        return json.load(open(HISTORY, encoding="utf-8"))
+    except Exception:
+        return {"days": []}
+
+
+def save_history(h, date_iso, content):
+    day = {"date": date_iso,
+           "note_headline": content.get("note_headline", ""),
+           "note_opening": (content.get("editor_note") or [""])[0][:220],
+           "items": []}
+    for k in BEAT_KEYS:
+        for it in content["beats"].get(k) or []:
+            urls = [x.get("url") for x in it.get("sources") or [] if x.get("url")]
+            day["items"].append({"headline": it.get("headline", ""), "urls": urls})
+    days = [d for d in h.get("days", []) if d.get("date") != date_iso] + [day]
+    cutoff = (datetime.date.fromisoformat(date_iso) - datetime.timedelta(days=HISTORY_DAYS)).isoformat()
+    h = {"days": [d for d in days if d.get("date", "") >= cutoff]}
+    os.makedirs(EDITIONS_DIR, exist_ok=True)
+    json.dump(h, open(HISTORY, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+
+def _norm(t):
+    return re.sub(r"[^a-z0-9 ]", "", (t or "").lower())
+
+
+def _similar(a, b):
+    return difflib.SequenceMatcher(None, _norm(a), _norm(b)).ratio() >= 0.72
+
+
+def dedupe(res, history):
+    """Drop repeats: the same story twice today, or a story already run in the last two weeks.
+    A required beat always keeps at least one item."""
+    seen_urls, seen_heads = set(), []
+    for d in history.get("days", []):
+        for it in d.get("items", []):
+            seen_urls.update(it.get("urls") or []); seen_heads.append(it.get("headline", ""))
+    today_urls, today_heads, dropped = set(), [], []
+    for k in BEAT_KEYS:
+        kept, fallback = [], []
+        for it in res["beats"].get(k) or []:
+            urls = set(x.get("url") for x in it.get("sources") or [] if x.get("url"))
+            h = it.get("headline", "")
+            repeat_today = bool(urls & today_urls) or any(_similar(h, x) for x in today_heads)
+            repeat_past = bool(urls & seen_urls) or any(_similar(h, x) for x in seen_heads)
+            if repeat_today or repeat_past:
+                dropped.append(h)
+                if not repeat_today:
+                    fallback.append((it, urls, h))
+                continue
+            kept.append(it); today_urls |= urls; today_heads.append(h)
+        if not kept and k not in OPTIONAL_BEATS and fallback:
+            it, urls, h = fallback[0]  # never leave a required beat empty: reuse a past story, never a same-day duplicate
+            kept = [it]; today_urls |= urls; today_heads.append(h); dropped.remove(h)
+        res["beats"][k] = kept
+    if dropped:
+        print("dedupe: dropped %d repeat(s): %s" % (len(dropped), "; ".join(dropped)[:400]))
+    return res
 
 
 STYLE = (
@@ -223,7 +297,9 @@ STYLE = (
     "- No hype, no advice, no personal names of the author."
 )
 
-BANNED = [r"\btoday'?s items\b", r"\btoday'?s stories\b", r"\bthis briefing\b", r"\bin this edition\b",
+BANNED = [r"\btoday['\u2019]?s items\b", r"\btoday['\u2019]?s stories\b", r"\bitems show\b", r"\bstories show\b",
+          r"\bthis week['\u2019]?s news\b", r"\bkey takeaways?\b", r"\bin summary\b", r"\bever-evolving\b",
+          r"\btransformative\b", r"\brevolutioni[sz]e\b", r"\bthis briefing\b", r"\bin this edition\b",
           r"\bthe items (below|above)\b", r"\blandscape\b", r"\bgame[- ]changer\b", r"\bdelve\b",
           r"\bseamless(ly)?\b", r"\bcutting[- ]edge\b", r"\bparadigm\b", r"\bit is worth noting\b",
           r"\bmoreover\b", r"\bfurthermore\b", r"\bin conclusion\b"]
@@ -244,7 +320,9 @@ def _cap_treasury(t):
     return re.sub(r"\btreasury\b", "Treasury", t or "")
 
 
-def editorial(res, date_human):
+def editorial(res, date_human, history=None):
+    recent = (history or {}).get("days", [])[-5:]
+    recent_notes = "\n".join("- %s | %s" % (d.get("note_headline", ""), d.get("note_opening", "")[:120]) for d in recent) or "- (none yet)"
     flat, slots = [], []
     for k, t, _ in BEATS:
         for i, it in enumerate(res["beats"][k]):
@@ -255,24 +333,32 @@ def editorial(res, date_human):
         "treasurers. Today is %s. Using ONLY the facts in the numbered items below (add nothing new, "
         "keep every figure, name and date exactly), return STRICT JSON:\n"
         "{\n"
+        '  "note_headline": "the insight in one line",\n'
         '  "editor_note": ["paragraph one", "paragraph two"],\n'
         '  "lead_stories": [ {"topic":"2-4 word topic","headline":"...","blurb":"1-2 sentences","tab":"ai|treasury|markets|regulation"} ],\n'
         '  "items": [ {"n": 1, "headline": "...", "summary": "..."} ]\n'
         "}\n\n"
-        "editor_note: exactly 2 paragraphs of 3-4 sentences each, no greeting. Paragraph one names the "
-        "single most important shift across the items and backs it with two or three specific examples. "
-        "Paragraph two draws the control implication: speed is easy, but every automated step must leave "
-        "a trail an auditor can follow. End on a sharp, quotable line, not a summary.\n"
+        "note_headline: the single insight of the day as a declarative headline a CFO would repeat, "
+        "8-14 words, no colon, no question, no date, no 'today'. It states a conclusion, not a topic "
+        "(good: 'Treasury agents now act on their own, and controls are only starting to catch up'; "
+        "bad: 'AI agents in Treasury').\n"
+        "editor_note: exactly 2 paragraphs, 2-4 sentences and 35-60 words each, written answer-first like a McKinsey "
+        "executive summary. Paragraph one: the shift, stated as a claim in the first sentence, then the "
+        "two or three strongest pieces of evidence (named firms, figures). Paragraph two: the so-what for "
+        "a CFO or treasurer, through the lens of control, cash or risk, ending on one sharp line. Never "
+        "open a paragraph with 'Today', 'This week', 'In', 'As' or 'With', and never mention the briefing, "
+        "items, stories or edition.\n"
+        "Recent notes (do NOT reuse their angle, headline wording or opening):\n%s\n"
         "lead_stories: exactly 3, the most material items, each pointing to the tab where the detail sits "
         "(tab is one of ai, treasury, markets, regulation). topic: 2-4 words, title case (e.g. 'Agentic "
         "Treasury Controls', 'ISO 20022 Migration'); never 'Lead story'.\n"
         "items: rewrite EVERY numbered item (same n). headline: under 14 words, specific, no clickbait, no "
         "trailing full stop. summary: 30-45 words, what happened, the key number, and why a treasurer "
         "should care. Do not copy the source wording.\n\n"
-        "%s\n\nITEMS:\n%s" % (date_human, STYLE, "\n".join(flat))
+        "%s\n\nITEMS:\n%s" % (date_human, recent_notes, STYLE, "\n".join(flat))
     )
     prompt, data = base, None
-    for attempt in range(2):
+    for attempt in range(3):
         data = _json(_ask(prompt, EDITORIAL_MODEL, max_tokens=12000, search=False), "editorial")
         note = data.get("editor_note") or []
         leads = data.get("lead_stories") or []
@@ -280,11 +366,15 @@ def editorial(res, date_human):
             raise ValueError("editorial: note/leads incomplete")
         texts = list(note[:2]) + [L.get("blurb", "") + " " + L.get("headline", "") for L in leads[:3]]
         texts += [(x.get("headline", "") + " " + x.get("summary", "")) for x in (data.get("items") or [])]
-        hits = _lint(texts)
-        if not hits:
+        texts.append(data.get("note_headline", ""))
+        problems = ["banned phrases: " + ", ".join(h) for h in [_lint(texts)] if h]
+        problems += _note_problems(data, recent)
+        if not problems:
             break
-        prompt = base + ("\n\nYOUR PREVIOUS DRAFT USED BANNED PHRASES: %s. Rewrite without them." % ", ".join(hits))
+        print("editorial: redraft (%s)" % "; ".join(problems))
+        prompt = base + ("\n\nYOUR PREVIOUS DRAFT FAILED THE QUALITY CHECK: %s. Rewrite to fix every point." % "; ".join(problems))
     data["editor_note"] = [_cap_treasury(p) for p in data["editor_note"][:2]]
+    data["note_headline"] = _cap_treasury((data.get("note_headline") or "").strip().rstrip("."))
     data["lead_stories"] = data["lead_stories"][:3]
     for L in data["lead_stories"]:
         L["headline"] = _cap_treasury(L.get("headline", "")); L["blurb"] = _cap_treasury(L.get("blurb", ""))
@@ -303,6 +393,41 @@ def editorial(res, date_human):
         it["headline"], it["summary"] = _cap_treasury(it["headline"]), _cap_treasury(it["summary"])
     data.pop("items", None)
     return data
+
+
+def _note_problems(data, recent):
+    """McKinsey-standard gate for the note: answer-first, tight, and not a rerun of recent notes."""
+    out = []
+    head = (data.get("note_headline") or "").strip()
+    note = data.get("editor_note") or []
+    if not head:
+        out.append("note_headline missing")
+    else:
+        n = len(head.split())
+        if n < 7 or n > 16:
+            out.append("note_headline must be 8-14 words (got %d)" % n)
+        if re.match(r"^(today|this week)\b", head, re.I) or head.endswith("?") or ":" in head:
+            out.append("note_headline must be a declarative claim with no colon, question or 'today'")
+    for i, p in enumerate(note[:2]):
+        if re.match(r"^\s*(today|this week|in |as |with )", p, re.I):
+            out.append("paragraph %d opens weakly ('%s')" % (i + 1, p.split()[0] if p.split() else ""))
+        sents = [x for x in re.split(r"(?<=[.!?])\s+", p.strip()) if x]
+        if len(sents) > 4:
+            out.append("paragraph %d has %d sentences (max 4)" % (i + 1, len(sents)))
+        if len(p.split()) > 65:
+            out.append("paragraph %d is %d words (max 60)" % (i + 1, len(p.split())))
+    for d in recent:
+        if head and d.get("note_headline") and _similar(head, d["note_headline"]):
+            out.append("note_headline repeats a recent note ('%s')" % d["note_headline"]); break
+        if note and d.get("note_opening") and _similar(note[0][:160], d["note_opening"][:160]):
+            out.append("opening repeats a recent note"); break
+    # no phrase of 5+ words used twice inside the note
+    words = _norm(" ".join(note)).split()
+    grams = [" ".join(words[i:i + 5]) for i in range(max(0, len(words) - 4))]
+    dup = sorted(set(g for g in grams if grams.count(g) > 1))
+    if dup:
+        out.append("repeated phrasing: " + dup[0])
+    return out
 
 
 # ---------------------------------------------------------------- rendering
@@ -334,7 +459,8 @@ def render(content, date_human, edition_n, archive_entries):
     s = s.replace("<!--DATELINE-->", dateline)
     # editor note
     note = content["editor_note"]
-    s = s.replace("<!--EDITOR_NOTE-->", "<p>%s</p>\n        <p>%s</p>" % (esc(note[0]), esc(note[1])))
+    head = content.get("note_headline") or ""
+    s = s.replace("<!--EDITOR_NOTE-->", ('<h3 class="note-h">%s</h3>\n        ' % esc(head) if head else "") + "<p>%s</p>\n        <p>%s</p>" % (esc(note[0]), esc(note[1])))
     # dashboard
     cells = []
     for c in content.get("dashboard") or []:
@@ -414,6 +540,7 @@ def mock_content():
         "beats": beats,
         "dashboard": [{"value": "4.5-4.75%", "label": "10Y UST range", "src": "Outlook, 2026"}] * 6,
         "events": [{"when": "Soon", "place": "City - upcoming", "title": "A treasury event", "blurb": "Short blurb.", "source": {"name": "Example", "url": "https://example.com"}}],
+        "note_headline": "Sample insight headline for the mock edition, eight words long",
         "editor_note": ["First paragraph of the editor note for layout testing.", "Second paragraph tying it to controls and the audit trail."],
         "lead_stories": [
             {"topic": "Agentic Treasury Controls", "headline": "Lead one", "blurb": "Blurb.", "tab": "ai"},
@@ -445,8 +572,9 @@ def main():
     if args.mock:
         content = mock_content()
     else:
-        res = research(date_human)
-        ed = editorial(res, date_human)
+        history = load_history()
+        res = dedupe(research(date_human, history), history)
+        ed = editorial(res, date_human, history)
         content = dict(res); content.update(ed)
 
     # archive entries (newest first): this new edition marked current
@@ -473,6 +601,7 @@ def main():
                            "month": month_human, "file": "/editions/%s.html" % date_iso})
     st["last_n"] = edition_n
     save_state(st)
+    save_history(load_history(), date_iso, content)
     print("Edition %d - %s" % (edition_n, date_human))
     return 0
 
