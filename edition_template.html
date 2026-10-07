@@ -190,6 +190,9 @@
   .beat > h3 { font-family: var(--serif); font-size: 23px; line-height: 1.25; font-weight: 700; margin: 0; color: var(--navy); }
   .beat > h3 .bn { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   .beat > h3 .chev { color: var(--blue); width: 0.34em; height: 0.34em; margin-left: 0.35em; }
+  .to-sections { grid-column: 2; justify-self: end; margin-top: -16px; font-size: 14px; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
+  .to-sections::after { content: " \2191"; }
+  .to-sections:hover { color: var(--blue); }
   .beat-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
   .beat-items .item { background: var(--white); border: 1px solid #E2DED6; border-top: 3px solid var(--navy); padding: 20px 22px 18px; display: flex; flex-direction: column; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; }
   .beat-items .item:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(20,38,63,0.12); border-top-color: var(--gold); }
@@ -240,6 +243,7 @@
     .grid .cell:nth-child(3n) { border-right: 0; }
     .grid .cell:nth-child(3n+1) { padding-left: 0; }
     .beat { grid-template-columns: 1fr; gap: 18px; }
+    .to-sections { grid-column: auto; margin-top: 4px; }
     .desk { grid-template-columns: 1fr; gap: 24px; }
     .desk .text::before { display: none; }
     .pillar-hero { grid-template-columns: minmax(0, 1fr) 260px; }
@@ -637,10 +641,10 @@
           </div>
           <div class="beat"><h3>AI &amp; Agentic Automation in Treasury<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_ai_agentic-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
           <div class="beat"><h3>Treasury Technology, Data &amp; Connectivity<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_treasury_tech-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
         </section>
 
         <section class="panel" id="p-treasury" role="tabpanel" aria-labelledby="t-treasury">
@@ -659,13 +663,13 @@
           </div>
           <div class="beat"><h3>Cash, Liquidity &amp; Working Capital<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_cash-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
           <div class="beat"><h3>Payments &amp; Transaction Banking<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_payments-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
           <div class="beat"><h3>Regulation, Controls &amp; the CFO Agenda<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_regulation-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
         </section>
 
         <section class="panel" id="p-markets" role="tabpanel" aria-labelledby="t-markets">
@@ -684,13 +688,13 @@
           </div>
           <div class="beat"><h3>Treasury Risk &mdash; FX, Rates &amp; Commodities<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_risk-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
           <div class="beat"><h3>Digital Assets, Tokenisation &amp; Settlement<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_digital-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
           <div class="beat"><h3>Markets &amp; Macro for Treasurers<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_markets_macro-->
-          </div></div>
+          </div><a class="to-sections" href="#briefing-tabs">Back to sections</a></div>
         </section>
 
         <section class="panel" id="p-events" role="tabpanel" aria-labelledby="t-events">
