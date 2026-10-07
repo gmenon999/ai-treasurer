@@ -315,12 +315,15 @@
   .intro .kicker { color: var(--gold-light); }
   .intro h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -0.02em; margin: 14px 0 22px; max-width: 13em; }
   .intro .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: var(--on-dark); max-width: 34em; margin: 0 0 32px; }
-  .intro .actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .intro .actions { display: flex; align-items: center; gap: 20px 32px; flex-wrap: wrap; }
   .intro .go { display: inline-flex; align-items: center; gap: 14px; color: var(--white); font-weight: 700; font-size: 17px; text-decoration: none; }
   .intro .go .circle-arrow { width: 52px; height: 52px; }
   .intro .go:hover .circle-arrow { background: var(--white); color: var(--navy-deep); }
-  .intro .alt { color: var(--on-dark); font-size: 15px; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 5px; }
-  .intro .alt:hover { color: var(--white); }
+  .intro .alt { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-weight: 700; font-size: 17px; text-decoration: none; transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+  .intro .alt .chev { color: var(--gold-light); margin-left: 0; }
+  .intro .alt:hover, .intro .alt:focus-visible { background: var(--white); border-color: var(--white); color: var(--navy-deep); }
+  .intro .alt:hover .chev, .intro .alt:focus-visible .chev { color: var(--navy-deep); }
+  .intro .alt:active { transform: translateY(1px); }
   .intro .dateline { margin-top: 36px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark-soft); display: flex; gap: 10px; flex-wrap: wrap; }
   .intro .dateline b { color: var(--white); font-weight: 600; }
   @media (max-width: 720px) {
@@ -452,7 +455,7 @@
       <p class="lede">Agents are starting to forecast, reconcile and move cash. Practitioner insight for CFOs and treasurers who want that speed &mdash; with approvals, evidence and an audit trail that holds.</p>
       <div class="actions">
         <a class="go" href="#briefing"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>Explore today&rsquo;s insights</a>
-        <a class="alt" href="#work">Talk to us</a>
+        <a class="alt" href="#work">Talk to us<span class="chev" aria-hidden="true"></span></a>
       </div>
       <div class="dateline"><span>Today&rsquo;s briefing</span><span><b>Wednesday, 7 October 2026</b></span></div>
     </div>
