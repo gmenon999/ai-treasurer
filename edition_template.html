@@ -282,9 +282,9 @@
   .mk-all small { font-size: 11px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; }
   .pr h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--white); margin: 0; padding-bottom: 12px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .pr h4 small { font-size: 11px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
-  .pr-ex { margin: 26px 0 0; max-width: 62ch; }
+  .pr-ex { margin: 22px 0 0; max-width: 62ch; }
   .pr-kick { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
-  .pr-title { font-family: var(--serif); font-size: clamp(22px, 2.3vw, 28px); line-height: 1.25; font-weight: 700; color: var(--white); margin: 8px 0 6px; }
+  .pr-title { font-family: var(--serif); font-size: clamp(22px, 2.3vw, 28px); line-height: 1.25; font-weight: 700; color: var(--white); margin: 0 0 6px; }
   .pr-sub { font-size: 14px; color: var(--on-dark-soft); margin: 0; }
   .pr-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 32px; flex-wrap: wrap; margin: 20px 0 8px; }
   .pr-pick { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -936,7 +936,7 @@
         <section class="pr" id="pr" aria-labelledby="pr-h">
           <h4 id="pr-h">Policy rates<small id="pr-since">Official decisions since January 2022</small></h4>
           <div class="pr-ex" id="pr-ex" hidden>
-            <div class="pr-kick">Exhibit 1</div>
+            
             <p class="pr-title" id="pr-title"></p>
             <p class="pr-sub" id="pr-sub"></p>
           </div>
@@ -959,7 +959,7 @@
 
 <section class="pr ex" id="mm" aria-labelledby="mm-h" hidden>
           <h4 id="mm-h">Money Markets &amp; yields<small>Weekly, since January 2022</small></h4>
-          <div class="pr-ex"><div class="pr-kick">Exhibit 2</div><p class="pr-title" data-r="title"></p><p class="pr-sub" data-r="sub"></p></div>
+          <div class="pr-ex"><p class="pr-title" data-r="title"></p><p class="pr-sub" data-r="sub"></p></div>
           <div class="pr-top"><div class="pr-pick" role="group" aria-label="Choose a rate or yield" data-r="pick"></div><div class="pr-read" aria-live="polite"><div class="pr-val" data-r="val"></div><div class="pr-lab" data-r="lab"></div></div></div>
           <div class="pr-chart" data-r="chart" tabindex="0" role="img"></div>
           <div class="pr-src" data-r="src"></div>
@@ -967,7 +967,7 @@
 
         <section class="pr ex" id="fxx" aria-labelledby="fxx-h" hidden>
           <h4 id="fxx-h">FX reference rates<small>Weekly, since January 2022</small></h4>
-          <div class="pr-ex"><div class="pr-kick">Exhibit 3</div><p class="pr-title" data-r="title"></p><p class="pr-sub" data-r="sub"></p></div>
+          <div class="pr-ex"><p class="pr-title" data-r="title"></p><p class="pr-sub" data-r="sub"></p></div>
           <div class="pr-top"><div class="pr-pick" role="group" aria-label="Choose a currency pair" data-r="pick"></div><div class="pr-read" aria-live="polite"><div class="pr-val" data-r="val"></div><div class="pr-lab" data-r="lab"></div></div></div>
           <div class="pr-chart" data-r="chart" tabindex="0" role="img"></div>
           <div class="pr-src" data-r="src"></div>
