@@ -406,10 +406,6 @@
   .today-rates ul { list-style: none; margin: 0 0 14px; padding: 0; }
   .today-rates li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
   .today-rates .l { font-size: 14px; color: var(--on-dark); }
-  .today-sub small { float: right; font-size: 11px; letter-spacing: 0.02em; text-transform: none; font-weight: 400; }
-  .today-rates li .l { flex: 1 1 auto; min-width: 0; }
-  .today-rates .sp { flex: none; width: 72px; height: 22px; }
-  .today-rates .sp svg { display: block; width: 72px; height: 22px; overflow: visible; }
   .today-rates .v { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); font-variant-numeric: tabular-nums; white-space: nowrap; }
   /* ---- Next band at the end of each view ---- */
   .next-band { display: none; background: var(--white); border-top: 1px solid var(--line); }
@@ -749,7 +745,7 @@
         <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span></div>
         <div class="today-grid">
           <div class="today-stories"><ol class="today-list"></ol><a class="today-all" href="#briefing">All stories</a></div>
-          <div class="today-rates"><div class="today-sub">Key rates<small>Lines: past 12 months</small></div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
+          <div class="today-rates"><div class="today-sub">Key rates</div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
         </div>
       </div>
     </div>
@@ -1231,7 +1227,7 @@
     (function(){
       var ul = document.getElementById('today-rates'); if (!ul) return;
       var pick = [['policy','fed','Fed funds target'],['policy','qcb','QCB deposit / repo / lending'],['money','ust10y','US Treasury 10Y']];
-      var rows = pick.map(function(p){ var it = (j[p[0]]||[]).filter(function(x){ return x.id===p[1]; })[0]; return it ? '<li data-k="'+p[1]+'"><span class="l">'+e(p[2])+'</span><span class="sp" aria-hidden="true"></span><span class="v">'+e(it.value)+'</span></li>' : ''; }).join('');
+      var rows = pick.map(function(p){ var it = (j[p[0]]||[]).filter(function(x){ return x.id===p[1]; })[0]; return it ? '<li><span class="l">'+e(p[2])+'</span><span class="v">'+e(it.value)+'</span></li>' : ''; }).join('');
       if (rows) ul.innerHTML = rows;
     })();
     if (j.generated_utc) {
@@ -1548,40 +1544,6 @@
 })();
 </script>
 <script>
-/* Key rates sparklines: the past 12 months from the saved histories, drawn once (no motion). */
-(function(){
-  var ul = document.getElementById('today-rates'); if (!ul) return;
-  var H = null;
-  function t(s){ return Date.UTC(+s.slice(0,4), +s.slice(5,7)-1, +s.slice(8,10)); }
-  function spark(pts, asof, step){
-    var end = t(asof), start = end - 365*864e5, P = [], k = -1;
-    pts.forEach(function(p,i){ if (t(p[0]) <= start) k = i; });
-    if (k >= 0) P.push([start, pts[k][1]]);
-    pts.forEach(function(p){ var x = t(p[0]); if (x > start && x <= end) P.push([x, p[1]]); });
-    if (P.length < 1) return '';
-    var last = P[P.length-1]; P.push([end, last[1]]);
-    var lo = Math.min.apply(null, P.map(function(p){ return p[1]; })), hi = Math.max.apply(null, P.map(function(p){ return p[1]; }));
-    if (hi - lo < 0.05) { hi += 0.1; lo -= 0.1; }
-    function X(x){ return (x-start)/(end-start)*68 + 1; } function Y(v){ return 19 - (v-lo)/(hi-lo)*16; }
-    var d = '';
-    P.forEach(function(p,i){ var x = X(p[0]).toFixed(1), y = Y(p[1]).toFixed(1); d += i ? (step ? 'H'+x+'V'+y : 'L'+x+' '+y) : 'M'+x+' '+y; });
-    return '<svg viewBox="0 0 72 22"><path d="'+d+'" fill="none" stroke="#D9B867" stroke-width="1.5" stroke-linejoin="round"/><circle cx="'+X(end).toFixed(1)+'" cy="'+Y(last[1]).toFixed(1)+'" r="2.4" fill="#D9B867"/></svg>';
-  }
-  function fill(){
-    if (!H) return;
-    ul.querySelectorAll('li[data-k]').forEach(function(li){
-      var sp = li.querySelector('.sp'); if (!sp || sp.firstChild) return;
-      var k = li.getAttribute('data-k'), S = (H.p[k] || H.m[k]); if (!S) return;
-      sp.innerHTML = spark(S.points, S.asof, !!H.p[k]);
-    });
-  }
-  Promise.all([
-    fetch('/data/policy_history.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }),
-    fetch('/data/market_history.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
-  ]).then(function(res){ H = { p: (res[0] && res[0].series) || {}, m: (res[1] && res[1].series) || {} }; fill(); });
-  if (window.MutationObserver) new MutationObserver(fill).observe(ul, {childList:true});
-})();
-
 /* Charts draw in once: the first time each Markets chart scrolls into view, its highlighted line
    traces in (under a second). Never repeats; skipped for reduced motion. */
 (function(){
