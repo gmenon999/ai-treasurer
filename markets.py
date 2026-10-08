@@ -24,6 +24,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 OUT = os.path.join(DATA, "markets.json")
 POLICY = os.path.join(DATA, "policy_rates.json")
+HIST = os.path.join(DATA, "policy_history.json")
+HIST_START = datetime.date(2022, 1, 1)   # chart window: the full 2022-26 hiking and cutting cycle
 
 UA = {"User-Agent": "Mozilla/5.0 (compatible; TheAITreasurer/1.0; +https://theaitreasurer.com)"}
 DAILY_STALE_DAYS = 5      # covers a weekend plus a holiday
@@ -105,6 +107,107 @@ def boe_bank_rate():
     last = rows[-1]
     d = datetime.datetime.strptime(last[0].strip(), "%d %b %Y").date()
     return d, float(last[1])
+
+
+# ------------------------------------------------------------- rate history
+# Official daily series, reduced to the dates the rate changed (step points).
+# Each series also records the last observation date, so the chart runs to "today".
+def _steps(rows):
+    """rows: ascending [(iso_date, value, ...)] -> only the rows where the value changed."""
+    out = []
+    for r in rows:
+        if not out or tuple(out[-1][1:]) != tuple(r[1:]):
+            out.append(list(r))
+    return out
+
+
+def hist_fed(start):
+    url = ("https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate=%s&endDate=%s"
+           % (start.isoformat(), TODAY.isoformat()))
+    rows = sorted((r["effectiveDate"], round(r["targetRateTo"], 4), round(r["targetRateFrom"], 4))
+                  for r in get(url).json()["refRates"] if r.get("targetRateTo") is not None)
+    return {"bank": "Fed", "label": "Fed funds target range (upper bound)", "range": True,
+            "source_name": "Federal Reserve Bank of New York", "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
+            "points": _steps(rows), "asof": rows[-1][0]}
+
+
+def hist_ecb(start):
+    # The ECB key-rate series records only the dates a rate changed, so read from earlier,
+    # carry the rate in force on `start` into the window, and run the line to today.
+    url = ("https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod=%s&format=csvdata"
+           % min(start, datetime.date(2014, 1, 1) if start <= HIST_START else start - datetime.timedelta(days=3660)).isoformat())
+    rows = sorted((r["TIME_PERIOD"], round(float(r["OBS_VALUE"]), 4))
+                  for r in csv.DictReader(io.StringIO(get(url).text)) if r.get("OBS_VALUE") not in (None, ""))
+    st = start.isoformat()
+    before = [r for r in rows if r[0] <= st]
+    rows = ([(st, before[-1][1])] if before else []) + [r for r in rows if r[0] > st]
+    return {"bank": "ECB", "label": "Deposit facility rate",
+            "source_name": "European Central Bank", "source_url": "https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV",
+            "points": _steps(rows), "asof": TODAY.isoformat()}
+
+
+def hist_boe(start):
+    url = ("https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes"
+           "&Datefrom=%s&Dateto=now&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N" % start.strftime("%d/%b/%Y"))
+    rows = []
+    for r in csv.reader(io.StringIO(get(url).text)):
+        try:
+            rows.append((datetime.datetime.strptime(r[0].strip(), "%d %b %Y").date().isoformat(), round(float(r[1]), 4)))
+        except Exception:
+            continue          # header or blank line
+    rows.sort()
+    return {"bank": "BoE", "label": "Bank Rate",
+            "source_name": "Bank of England", "source_url": "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp",
+            "points": _steps(rows), "asof": rows[-1][0]}
+
+
+INCREMENTAL_DAYS = 45   # daily runs re-read only the recent window and append new moves
+
+
+def build_history():
+    """Policy-rate history for the Markets chart.
+
+    The saved file is the record: each run fetches only the last INCREMENTAL_DAYS for Fed, ECB
+    and BoE and appends any new move. A full rebuild from HIST_START happens only when a
+    series is missing from the file. A series that fails keeps its last good copy."""
+    prev = {}
+    if os.path.exists(HIST):
+        try:
+            prev = json.load(open(HIST, encoding="utf-8")).get("series", {})
+        except Exception:
+            prev = {}
+    series = {}
+    for key, fn in (("fed", hist_fed), ("ecb", hist_ecb), ("boe", hist_boe)):
+        old = prev.get(key)
+        try:
+            if old and old.get("points") and not old.get("manual"):
+                start = max(HIST_START, datetime.date.fromisoformat(old["asof"]) - datetime.timedelta(days=INCREMENTAL_DAYS))
+                new = fn(start)
+                # saved moves are never rewritten; only moves dated after the last saved one are added
+                last = old["points"][-1][0]
+                item = dict(new, points=_steps(old["points"] + [p for p in new["points"] if p[0] > last]))
+            else:
+                item = fn(HIST_START)
+            if len(item["points"]) < 1:
+                raise ValueError("no observations")
+            series[key] = item
+        except Exception as e:
+            LOG.append("history %s: %s" % (key, e))
+            if old:
+                series[key] = old
+    # RBI, PBOC and QCB: researched decision histories kept by hand in policy_rates.json
+    try:
+        for s in json.load(open(POLICY, encoding="utf-8"))["rates"]:
+            pts = [list(p) for p in (s.get("history") or []) if p[0] >= HIST_START.isoformat()]
+            if pts:
+                series[s["id"]] = {"bank": s["bank"], "label": s.get("history_label") or s["label"],
+                                   "source_name": s.get("history_source_name") or s["source_name"], "source_url": s["source_url"],
+                                   "sources": s.get("history_sources") or {}, "points": pts,
+                                   "asof": max(pts[-1][0], s.get("checked") or pts[-1][0]), "manual": True}
+    except Exception as e:
+        LOG.append("history hand-kept: %s" % e)
+    return {"start": HIST_START.isoformat(), "series": series,
+            "notes": "Official daily series reduced to the dates each rate changed. Fed shows the target range (upper and lower bound) by effective date."}
 
 
 # ------------------------------------------------------------------ helpers
@@ -269,6 +372,19 @@ def main():
     doc = build()
     if not doc["money"] and not doc["fx"]:
         raise SystemExit("markets: no data at all; leaving previous file untouched. Errors: %s" % doc["errors"])
+    # rate history for the policy-rate chart (its own file; written only when it changed)
+    hist = build_history()
+    if hist["series"]:
+        old_h = None
+        if os.path.exists(HIST):
+            try:
+                old_h = json.load(open(HIST, encoding="utf-8"))
+            except Exception:
+                old_h = None
+        if old_h != hist:
+            json.dump(hist, open(HIST + ".tmp", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+            os.replace(HIST + ".tmp", HIST)
+            print("policy_history.json written: %s" % ", ".join("%s %d moves" % (k, len(v["points"])) for k, v in hist["series"].items()))
     # only rewrite when something other than the run timestamp changed (avoids empty deploys)
     if os.path.exists(OUT):
         try:

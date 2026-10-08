@@ -273,6 +273,57 @@
   .mk-foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark-soft); margin: 18px 0 0; }
   .mk-foot p { margin: 0; max-width: 80ch; }
   .mk-load { color: var(--on-dark-soft); font-size: 14px; padding: 14px 0; }
+
+  /* ---- Policy-rate chart (Markets) ---- */
+  .mk { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pr { margin-bottom: 52px; }
+  .pr h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--white); margin: 0; padding-bottom: 12px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .pr h4 small { font-size: 11px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .pr-ex { margin: 26px 0 0; max-width: 62ch; }
+  .pr-kick { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .pr-title { font-family: var(--serif); font-size: clamp(22px, 2.3vw, 28px); line-height: 1.25; font-weight: 700; color: var(--white); margin: 8px 0 6px; }
+  .pr-sub { font-size: 14px; color: var(--on-dark-soft); margin: 0; }
+  .pr-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 32px; flex-wrap: wrap; margin: 20px 0 8px; }
+  .pr-pick { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pr-pick button { appearance: none; cursor: pointer; font: 600 14px/1 var(--sans); letter-spacing: 0.02em; color: var(--on-dark); background: transparent; border: 1px solid rgba(255,255,255,0.28); padding: 10px 16px; min-width: 64px; }
+  .pr-pick button:hover { border-color: var(--gold-light); color: var(--white); }
+  .pr-pick button[aria-pressed="true"] { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-deep); }
+  .pr-pick button:focus-visible, .pr-chart:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .pr-read { text-align: right; }
+  .pr-val { font-family: var(--serif); font-size: 34px; font-weight: 700; line-height: 1.1; color: var(--white); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+  .pr-lab { font-size: 13px; color: var(--on-dark-soft); margin-top: 4px; }
+  .pr-lab b { color: var(--on-dark); font-weight: 600; }
+  .pr-chart { position: relative; height: 280px; margin-top: 8px; touch-action: pan-y; }
+  .pr-chart svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .pr-chart text { font: 12px var(--sans); fill: var(--on-dark-soft); font-variant-numeric: tabular-nums; }
+  .pr-chart text.end { font: 700 13px var(--sans); fill: var(--white); }
+  .pr-chart text.end.o { font-weight: 400; fill: var(--on-dark-soft); }
+  .pr-chart text.ann { font: 12px var(--sans); fill: var(--on-dark); }
+  .pr-tip i { font-style: normal; color: #3B4A60; display: block; }
+  .pr-tip .row { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; }
+  .pr-tip .row.on { font-weight: 700; }
+  .pr-tip { position: absolute; top: 0; pointer-events: none; background: var(--white); color: var(--navy-deep); font-size: 13px; line-height: 1.35; padding: 8px 10px; white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,0.35); transform: translateX(-50%); display: none; }
+  .pr-tip b { display: block; font-size: 15px; font-variant-numeric: tabular-nums; }
+  .pr-src { display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark-soft); margin-top: 10px; }
+  .pr-src a { color: var(--on-dark); }
+  .pr-moves { margin-top: 14px; font-size: 14px; color: var(--on-dark); }
+  .pr-moves td a { color: var(--on-dark); }
+  .pr-moves summary { cursor: pointer; font-weight: 600; color: var(--gold-light); }
+  .pr-moves table { border-collapse: collapse; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .pr-moves th, .pr-moves td { text-align: left; padding: 6px 24px 6px 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-weight: 400; }
+  .pr-moves th { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); }
+  .pr-also { margin-top: 28px; }
+  .pr-also h5 { margin: 0; font: 700 11px/1.2 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-soft); padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .pr-also ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 48px; }
+  .pr-also li { padding: 14px 0 13px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  @media (max-width: 1020px) { .pr-also ul { grid-template-columns: 1fr 1fr; gap: 0 40px; } }
+  @media (max-width: 700px) {
+    .pr-top { flex-direction: column; align-items: stretch; }
+    .pr-read { text-align: left; }
+    .pr-val { font-size: 28px; }
+    .pr-chart { height: 230px; }
+    .pr-also ul { grid-template-columns: 1fr; }
+  }
   .numbers-sub { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 56px 0 4px; }
   .numbers-sub h4 { font-family: var(--serif); font-size: 24px; margin: 6px 0 0; }
   /* ---- Re-sequenced homepage (Oct 2026) ---- */
@@ -879,10 +930,33 @@
           </div>
         </div>
 
+        <section class="pr" id="pr" aria-labelledby="pr-h">
+          <h4 id="pr-h">Policy rates<small id="pr-since">Official decisions since January 2022</small></h4>
+          <div class="pr-ex" id="pr-ex" hidden>
+            <div class="pr-kick">Exhibit</div>
+            <p class="pr-title" id="pr-title"></p>
+            <p class="pr-sub" id="pr-sub"></p>
+          </div>
+          <div class="pr-top" id="pr-top" hidden>
+            <div class="pr-pick" role="group" aria-label="Choose a central bank">
+              <button type="button" data-k="fed" aria-pressed="true">Fed</button>
+              <button type="button" data-k="ecb" aria-pressed="false">ECB</button>
+              <button type="button" data-k="boe" aria-pressed="false">BoE</button>
+              <button type="button" data-k="rbi" aria-pressed="false">RBI</button>
+              <button type="button" data-k="pboc" aria-pressed="false">PBOC</button>
+              <button type="button" data-k="qcb" aria-pressed="false">QCB</button>
+            </div>
+            <div class="pr-read" aria-live="polite"><div class="pr-val" id="pr-val"></div><div class="pr-lab" id="pr-lab"></div></div>
+          </div>
+          <div class="pr-chart" id="pr-chart" tabindex="0" role="img" aria-label="Policy rate history chart"><div class="mk-load">Loading&hellip;</div></div>
+          <div class="pr-src" id="pr-src"></div>
+          <details class="pr-moves" id="pr-moves" hidden><summary>Every rate move</summary><table><thead><tr><th scope="col">Effective</th><th scope="col">Rate</th><th scope="col">Move</th></tr></thead><tbody></tbody></table></details>
+          <div class="pr-also"><h5 id="pr-also-h">Also tracked</h5><ul id="pr-also" aria-labelledby="pr-also-h"></ul></div>
+        </section>
+
         <div class="mk" id="mk" aria-live="polite">
-          <section class="mk-col" aria-labelledby="mk-h-policy"><h4 id="mk-h-policy">Policy rates<small>Last decision</small></h4><ul data-sect="policy"><li class="mk-load">Loading&hellip;</li></ul></section>
           <section class="mk-col mk-fold" aria-labelledby="mk-h-money"><h4 id="mk-h-money">Money Markets &amp; yields<small>Change, bp</small><button type="button" class="mk-tog" aria-expanded="false">Show</button></h4><ul data-sect="money"><li class="mk-load">Loading&hellip;</li></ul></section>
-          <section class="mk-col mk-wide mk-fold" aria-labelledby="mk-h-fx"><h4 id="mk-h-fx">FX reference rates<small>Change, %</small><button type="button" class="mk-tog" aria-expanded="false">Show</button></h4><ul data-sect="fx"><li class="mk-load">Loading&hellip;</li></ul></section>
+          <section class="mk-col mk-fold" aria-labelledby="mk-h-fx"><h4 id="mk-h-fx">FX reference rates<small>Change, %</small><button type="button" class="mk-tog" aria-expanded="false">Show</button></h4><ul data-sect="fx"><li class="mk-load">Loading&hellip;</li></ul></section>
         </div>
         <div class="mk-foot">
           <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Figures marked Stale have not been confirmed recently.</p>
@@ -1131,6 +1205,138 @@
     }
   }).catch(function(){
     document.querySelectorAll('#mk .mk-load').forEach(function(li){ li.textContent = 'Figures are temporarily unavailable.'; });
+  });
+})();
+</script>
+<script>
+/* Policy-rate chart: official history (data/policy_history.json, refreshed by markets.py)
+   plus the current decision from data/markets.json. Falls back to a plain list if history is missing. */
+(function(){
+  var box = document.getElementById('pr'); if (!box) return;
+  var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function d(s){ var p=s.split('-'); return (+p[2])+' '+M[+p[1]-1]+' '+p[0]; }
+  function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function t(s){ return Date.UTC(+s.slice(0,4), +s.slice(5,7)-1, +s.slice(8,10)); }
+  function pct(v){ return (Math.round(v*100)/100).toFixed(2)+'%'; }
+  function rate(S,p){ return S.range && p[2]!=null ? (Math.round(p[2]*100)/100).toFixed(2)+'&ndash;'+pct(p[1]) : pct(p[1]); }
+  function mv(a,b){ var bp = Math.round((a-b)*100); return bp===0 ? 'No change' : (bp>0?'&#9650; +':'&#9660; &minus;')+Math.abs(bp)+' bp'; }
+  var NS='http://www.w3.org/2000/svg', H={}, P={}, cur='fed', chart=document.getElementById('pr-chart'), tip, focusIdx=-1;
+
+  function li(it){
+    var meta = e(it.label) + (it.since ? ' &middot; ' + (it.change_bp ? 'moved ' : 'held ') + d(it.since) : '');
+    var c = it.change_bp===null||it.change_bp===undefined ? '' : (it.change_bp===0 ? '<span class="mk-chg flat">Held</span>' : '<span class="mk-chg">'+(it.change_bp>0?'&#9650; +':'&#9660; &minus;')+Math.abs(it.change_bp)+' bp</span>');
+    return '<li class="'+(it.stale?'mk-stale':'')+'"><div class="mk-l1"><div class="mk-name"><a href="'+e(it.source_url)+'" target="_blank" rel="noopener" title="Source: '+e(it.source_name)+'">'+e(it.bank)+'</a>'+(it.stale?'<span class="mk-flag">Stale</span>':'')+'</div><span class="mk-val">'+e(it.value)+'</span></div><div class="mk-l2"><span class="mk-meta">'+meta+'</span>'+c+'</div></li>';
+  }
+
+  var NAME = {fed:'The Fed’s target rate', ecb:'The ECB’s deposit rate', boe:'The Bank of England’s Bank Rate', rbi:'The RBI’s repo rate', pboc:'China’s one-year loan prime rate', qcb:'Qatar Central Bank’s deposit rate'};
+  function mon(s){ return M[+s.slice(5,7)-1]+' '+s.slice(0,4); }
+  function valAt(S, ms){ var k=-1; for (var i=0;i<S.points.length;i++){ if (t(S.points[i][0])<=ms) k=i; } return k; }
+  function peak(S){ var k=0; S.points.forEach(function(p,i){ if (p[1]>S.points[k][1]) k=i; }); return k; }
+
+  function title(k){
+    var S=H[k], pts=S.points, last=pts[pts.length-1], prev=pts.length>1?pts[pts.length-2]:null, pi=peak(S), pk=pts[pi];
+    var gap=Math.round((pk[1]-last[1])*100), mvbp=prev?Math.round((last[1]-prev[1])*100):0;
+    var recent=(t(S.asof)-t(last[0]))/864e5 <= 120, nm=NAME[k]||S.bank, head, tail='';
+    if (gap<=0) head = nm+' is at its highest since '+mon(H._start);
+    else if (pi===0) head = nm+' is '+gap+' bp below its '+mon(H._start)+' level of '+pct(pk[1]);
+    else head = nm+' is '+gap+' bp below its '+pct(pk[1])+' peak of '+mon(pk[0]);
+    if (!recent || !prev) tail = ', unchanged since '+mon(last[0]);
+    else if (mvbp>0) tail = gap>0 ? ', but rose '+mvbp+' bp in '+mon(last[0]) : ', after a '+mvbp+' bp rise in '+mon(last[0]);
+    else if (mvbp<0) tail = ', after a '+(-mvbp)+' bp cut in '+mon(last[0]);
+    return head+tail;
+  }
+
+  function draw(){
+    var S = H[cur]; if (!S) return;
+    var W = chart.clientWidth, Ht = chart.clientHeight; if (!W || !Ht) return;
+    var phone = W < 520, keys = Object.keys(H).filter(function(k){ return k.charAt(0)!=='_'; });
+    var ml = 34, mr = phone ? 50 : 92, mt = 26, mb = 26, iw = W-ml-mr, ih = Ht-mt-mb;
+    var x0 = t(H._start), x1 = Math.max.apply(null, keys.map(function(k){ return t(H[k].asof); }));
+    var vals = []; keys.forEach(function(k){ H[k].points.forEach(function(p){ vals.push(p[1]); }); });
+    var mn = Math.min(0, Math.min.apply(null,vals)), mx = Math.max.apply(null,vals)+0.2, step = mx-mn > 5 ? 2 : 1;
+    var lo = step*Math.floor(mn/step), hi = step*Math.ceil(mx/step);
+    function X(s){ return ml + (t(s)-x0)/(x1-x0)*iw; }
+    function Y(v){ return mt + (hi-v)/(hi-lo)*ih; }
+    var g = '';
+    for (var v=lo; v<=hi+1e-9; v+=step){ g += '<line x1="'+ml+'" x2="'+(ml+iw)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="rgba(255,255,255,'+(v===lo?0.35:0.08)+'" stroke-width="1"/><text x="'+(ml-8)+'" y="'+(Y(v)+4)+'" text-anchor="end">'+(v<0?'&minus;'+(-v):v)+'</text>'; }
+    var y0 = +H._start.slice(0,4), yl = new Date(x1).getUTCFullYear(), every = phone && yl-y0>3 ? 2 : 1;
+    for (var y=y0; y<=yl; y++){ var xs = X(y+'-01-01'); if (xs < ml-1 || xs > ml+iw-28 || (y-y0)%every) continue; g += '<text x="'+xs+'" y="'+(mt+ih+19)+'">'+y+'</text>'; }
+    function path(K){ var P=H[K].points, s=''; P.forEach(function(p,i){ s += (i? 'H'+X(p[0]).toFixed(1)+'V'+Y(p[1]).toFixed(1) : 'M'+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)); }); return s+'H'+X(H[K].asof).toFixed(1); }
+    var lines = '', ends = [];
+    keys.filter(function(k){ return k!==cur; }).forEach(function(k){ lines += '<path d="'+path(k)+'" fill="none" stroke="rgba(159,172,190,0.38)" stroke-width="1.25" stroke-linejoin="round"/>'; });
+    lines += '<path d="'+path(cur)+'" fill="none" stroke="#D9B867" stroke-width="2.5" stroke-linejoin="round"/>';
+    keys.forEach(function(k){ if (phone && k!==cur) return; var P=H[k].points, L=P[P.length-1]; ends.push({k:k, x:X(H[k].asof), y:Y(L[1]), txt: phone ? H[k].bank : H[k].bank+' '+pct(L[1])}); });
+    ends.sort(function(a,b){ return a.y-b.y; }); for (var i=1;i<ends.length;i++){ if (ends[i].y-ends[i-1].y<14) ends[i].y = ends[i-1].y+14; }
+    var lab = (phone ? keys.filter(function(q){ return q!==cur; }).map(function(q){ var P=H[q].points; return '<circle cx="'+X(H[q].asof)+'" cy="'+Y(P[P.length-1][1])+'" r="2.5" fill="#9FACBE"/>'; }).join('') : '') + ends.map(function(o){ var on=o.k===cur; return '<circle cx="'+X(H[o.k].asof)+'" cy="'+Y(H[o.k].points[H[o.k].points.length-1][1])+'" r="'+(on?4.5:3)+'" fill="'+(on?'#D9B867':'#9FACBE')+'" stroke="#0D1A2C" stroke-width="2"/><text class="end'+(on?'':' o')+'" x="'+(o.x+9)+'" y="'+(o.y+4)+'">'+o.txt+'</text>'; }).join('');
+    var pts = S.points, pk = pts[peak(S)], px = X(pk[0]) + Math.min(80, (X(pts[Math.min(peak(S)+1,pts.length-1)][0])-X(pk[0]))/2), py = Y(pk[1]);
+    px = Math.max(ml+70, Math.min(ml+iw-70, px)); var ann = (pk!==pts[pts.length-1] && peak(S)>0) ? '<line x1="'+px+'" x2="'+px+'" y1="'+(py-4)+'" y2="'+(py-14)+'" stroke="rgba(255,255,255,0.6)"/><text class="ann" x="'+px+'" y="'+(py-19)+'" text-anchor="middle">Peak '+pct(pk[1])+', '+mon(pk[0])+'</text>' : '';
+    chart.innerHTML = '<svg viewBox="0 0 '+W+' '+Ht+'" aria-hidden="true">'+g+lines+ann+lab
+      +'<line class="xh" y1="'+mt+'" y2="'+(mt+ih)+'" stroke="rgba(255,255,255,0.55)" stroke-width="1" visibility="hidden"/>'
+      +'<circle class="xd" r="5" fill="#FFFFFF" stroke="#0D1A2C" stroke-width="2" visibility="hidden"/>'
+      +'</svg><div class="pr-tip"></div>';
+    tip = chart.querySelector('.pr-tip');
+    var xh = chart.querySelector('.xh'), xd = chart.querySelector('.xd');
+    function show(ms, head){
+      ms = Math.max(x0, Math.min(x1, ms)); var xx = ml + (ms-x0)/(x1-x0)*iw, k = valAt(S, ms); if (k<0) return;
+      var yy = Y(pts[k][1]);
+      xh.setAttribute('x1',xx); xh.setAttribute('x2',xx); xh.setAttribute('visibility','visible');
+      xd.setAttribute('cx',xx); xd.setAttribute('cy',yy); xd.setAttribute('visibility','visible');
+      var order = [cur].concat(keys.filter(function(q){ return q!==cur; }));
+      tip.innerHTML = '<i>'+(head || d(new Date(ms).toISOString().slice(0,10)))+'</i>' + order.map(function(q){ var Q=H[q], j=valAt(Q, ms); return j<0 ? '' : '<div class="row'+(q===cur?' on':'')+'"><span>'+Q.bank+'</span><span>'+rate(Q,Q.points[j])+'</span></div>'; }).join('');
+      tip.style.display='block'; var tw = tip.offsetWidth, th = tip.offsetHeight;
+      tip.style.left = Math.max(tw/2, Math.min(W-tw/2, xx))+'px';
+      tip.style.top = (yy - th - 12 < 0 ? yy + 14 : yy - th - 12) + 'px';
+    }
+    function hide(){ xh.setAttribute('visibility','hidden'); xd.setAttribute('visibility','hidden'); tip.style.display='none'; }
+    function msAt(ev){ var r = chart.getBoundingClientRect(); return x0 + ((ev.clientX - r.left) - ml)/iw*(x1-x0); }
+    chart.onpointermove = function(ev){ show(msAt(ev)); };
+    chart.onpointerdown = function(ev){ show(msAt(ev)); };
+    chart.onpointerleave = function(ev){ if (ev.pointerType==='mouse') hide(); };
+    chart.onblur = hide;
+    chart.onkeydown = function(ev){
+      if (ev.key!=='ArrowLeft' && ev.key!=='ArrowRight') return; ev.preventDefault();
+      focusIdx = focusIdx<0 ? pts.length-1 : Math.max(0, Math.min(pts.length-1, focusIdx + (ev.key==='ArrowRight'?1:-1)));
+      var p = pts[focusIdx]; show(t(p[0]), S.bank+' '+(focusIdx ? mv(p[1], pts[focusIdx-1][1]).replace(/&#9650; |&#9660; /,'')+', effective ' : 'level on ')+d(p[0]));
+    };
+    chart.setAttribute('aria-label', title(cur)+'. Chart of '+keys.map(function(q){ return H[q].bank; }).join(', ')+' policy rates since '+d(H._start)+'. Use the left and right arrow keys to step through each '+S.bank+' rate move.');
+  }
+
+  function select(k){
+    cur = k; focusIdx = -1;
+    box.querySelectorAll('.pr-pick button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-k')===k ? 'true':'false'); });
+    var S = H[k], pts = S.points, last = pts[pts.length-1], prev = pts.length>1 ? pts[pts.length-2] : null, c = P[k];
+    document.getElementById('pr-title').textContent = title(k);
+    document.getElementById('pr-sub').textContent = 'Policy rate, %, '+mon(H._start)+' to '+mon(S.asof)+'. Highlighted: '+S.label+'. Grey: the other five central banks.';
+    document.getElementById('pr-val').innerHTML = c ? e(c.value) : rate(S,last);
+    document.getElementById('pr-lab').innerHTML = e(c ? c.label : S.label) + (prev ? ' &middot; <b>last move '+mv(last[1],prev[1])+'</b>, effective '+d(last[0]) : '');
+    document.getElementById('pr-src').innerHTML = '<span>Source: <a href="'+e(S.source_url)+'" target="_blank" rel="noopener">'+e(S.source_name)+'</a>. '+(S.manual ? 'Compiled from published decisions; dates are effective dates where announced, otherwise announcement dates. Checked to '+d(S.asof)+'.' : 'Official daily series, by effective date, to '+d(S.asof)+'.')+'</span><span>Hover or tap the chart to compare any date.</span>';
+    var rows = ''; for (var i=pts.length-1;i>=0;i--){ var su = S.sources ? (S.sources[pts[i][0]] || '') : ''; rows += '<tr><td>'+(su ? '<a href="'+e(su)+'" target="_blank" rel="noopener">'+d(pts[i][0])+'</a>' : d(pts[i][0]))+'</td><td>'+rate(S,pts[i])+'</td><td>'+(i? mv(pts[i][1],pts[i-1][1]) : 'Starting level')+'</td></tr>'; }
+    document.querySelector('#pr-moves tbody').innerHTML = rows;
+    document.querySelector('#pr-moves summary').textContent = 'Every '+S.bank+' rate move';
+    draw();
+  }
+
+  Promise.all([
+    fetch('/data/markets.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }),
+    fetch('/data/policy_history.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+  ]).then(function(res){
+    var m = res[0] || {}, h = res[1], pol = m.policy || [];
+    pol.forEach(function(it){ P[it.id] = it; });
+    var have = h && h.series ? Object.keys(h.series).filter(function(k){ return h.series[k].points && h.series[k].points.length; }) : [];
+    var also = document.getElementById('pr-also');
+    if (!have.length){
+      chart.style.display='none'; document.getElementById('pr-also-h').style.display='none';
+      also.innerHTML = pol.length ? pol.map(li).join('') : '<li class="mk-load">Figures are temporarily unavailable.</li>';
+      return;
+    }
+    have.forEach(function(k){ H[k] = h.series[k]; }); H._start = h.start;
+    box.querySelectorAll('.pr-pick button').forEach(function(b){ var k=b.getAttribute('data-k'); if (!H[k]) b.style.display='none'; b.onclick=function(){ select(k); }; });
+    document.getElementById('pr-top').hidden = false; document.getElementById('pr-ex').hidden = false; document.getElementById('pr-since').textContent = 'Six central banks since January 2022'; document.getElementById('pr-moves').hidden = false;
+    var rest = pol.filter(function(it){ return !H[it.id]; }); also.innerHTML = rest.map(li).join(''); if (!rest.length) also.parentNode.style.display='none';
+    select(H.fed ? 'fed' : have[0]);
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(draw, 120); });
+    var mkSec = document.getElementById('markets');
+    if (window.MutationObserver && mkSec) new MutationObserver(function(){ if (chart.clientWidth) draw(); }).observe(mkSec, {attributes:true, attributeFilter:['class']});
   });
 })();
 </script>

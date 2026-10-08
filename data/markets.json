@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-08T06:02:47Z",
+ "generated_utc": "2026-10-08T06:32:02Z",
  "policy": [
   {
    "bank": "Fed",
@@ -49,8 +49,8 @@
    "value": "5.50%",
    "change_bp": 25,
    "since": "2026-10-07",
-   "checked": "2026-10-07",
-   "asof": "2026-10-07",
+   "checked": "2026-10-08",
+   "asof": "2026-10-08",
    "stale": false
   },
   {
@@ -62,21 +62,21 @@
    "value": "3.00 / 3.50%",
    "change_bp": 0,
    "since": "2026-09-20",
-   "checked": "2026-10-07",
-   "asof": "2026-10-07",
+   "checked": "2026-10-08",
+   "asof": "2026-10-08",
    "stale": false
   },
   {
    "bank": "QCB",
    "label": "Deposit / repo / lending",
-   "source_name": "The Peninsula",
-   "source_url": "https://www.thepeninsulaqatar.com/article/29/07/2026/qcb-maintains-current-interest-rates-8",
+   "source_name": "Qatar News Agency",
+   "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/16/qatar-central-bank-hikes-rates",
    "id": "qcb",
-   "value": "3.85 / 4.10 / 4.35%",
-   "change_bp": 0,
-   "since": "2026-07-29",
-   "checked": "2026-10-07",
-   "asof": "2026-10-07",
+   "value": "4.10 / 4.35 / 4.60%",
+   "change_bp": 25,
+   "since": "2026-09-17",
+   "checked": "2026-10-08",
+   "asof": "2026-10-08",
    "stale": false
   }
  ],
@@ -105,7 +105,7 @@
    "name": "€STR",
    "value": "2.439%",
    "change_bp": 0,
-   "asof": "2026-10-06",
+   "asof": "2026-10-07",
    "source_name": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",
    "id": "estr",
