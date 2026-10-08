@@ -1241,10 +1241,15 @@
   function peak(S){ var k=0; S.points.forEach(function(p,i){ if (p[1]>S.points[k][1]) k=i; }); return k; }
 
   function title(k){
-    var S=H[k], pts=S.points, last=pts[pts.length-1], pk=pts[peak(S)], cut=Math.round((pk[1]-last[1])*100);
-    var held = (t(S.asof)-t(last[0]))/864e5 > 60 ? ', and has held since '+mon(last[0]) : '';
-    if (cut>0) return NAME[k]+' has cut '+cut+' bp from its '+pct(pk[1])+' peak of '+mon(pk[0])+held;
-    return NAME[k]+'’s rate is at its highest since '+mon(H._start+'')+held;
+    var S=H[k], pts=S.points, last=pts[pts.length-1], prev=pts.length>1?pts[pts.length-2]:null, pk=pts[peak(S)];
+    var gap=Math.round((pk[1]-last[1])*100), mvbp=prev?Math.round((last[1]-prev[1])*100):0;
+    var recent=(t(S.asof)-t(last[0]))/864e5 <= 120, head, tail='';
+    head = gap>0 ? NAME[k]+' is '+gap+' bp below its '+pct(pk[1])+' peak of '+mon(pk[0])
+                 : NAME[k]+'’s rate is at its highest since '+mon(H._start);
+    if (!recent) tail = ', and has held since '+mon(last[0]);
+    else if (mvbp>0) tail = gap>0 ? ', but raised rates by '+mvbp+' bp in '+mon(last[0]) : ', after a '+mvbp+' bp rise in '+mon(last[0]);
+    else if (mvbp<0) tail = ', after a '+(-mvbp)+' bp cut in '+mon(last[0]);
+    return head+tail;
   }
 
   function draw(){

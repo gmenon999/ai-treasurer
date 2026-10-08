@@ -132,13 +132,17 @@ def hist_fed():
 
 
 def hist_ecb():
-    url = ("https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod=%s&format=csvdata"
-           % HIST_START.isoformat())
+    # The ECB key-rate series records only the dates a rate changed, so read from earlier,
+    # carry the rate in force on HIST_START into the window, and run the line to today.
+    url = "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod=2014-01-01&format=csvdata"
     rows = sorted((r["TIME_PERIOD"], round(float(r["OBS_VALUE"]), 4))
                   for r in csv.DictReader(io.StringIO(get(url).text)) if r.get("OBS_VALUE") not in (None, ""))
+    start = HIST_START.isoformat()
+    before = [r for r in rows if r[0] <= start]
+    rows = ([(start, before[-1][1])] if before else []) + [r for r in rows if r[0] > start]
     return {"bank": "ECB", "label": "Deposit facility rate",
             "source_name": "European Central Bank", "source_url": "https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV",
-            "points": _steps(rows), "asof": rows[-1][0]}
+            "points": _steps(rows), "asof": TODAY.isoformat()}
 
 
 def hist_boe():
