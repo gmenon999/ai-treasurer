@@ -392,8 +392,10 @@
   .today-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
   .today-head .kicker { color: var(--gold-light); }
   .today-date { color: var(--on-dark-soft); font-size: 14px; }
-  .today-all { color: var(--white); font-weight: 600; font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
-  .today-stories .today-all { display: inline-block; margin-top: 18px; }
+  .today-all { display: inline-flex; align-items: center; gap: 6px; color: var(--on-dark); font-weight: 600; font-size: 14px; text-decoration: none; border-bottom: 0; padding: 4px 0; }
+  .today-all::after { content: '\203A'; color: var(--gold-light); font-size: 18px; line-height: 1; transform: translateY(-1px); }
+  .today-all:hover { color: var(--white); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+  .today-stories .today-all { margin-top: 10px; }
   .today-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 56px; }
   .today-list { list-style: none; margin: 0; padding: 0; }
   .today-list li { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.12); }
@@ -418,7 +420,7 @@
   .next-band a:hover .nb-arrow { background: var(--navy); color: var(--white); }
   .next-band a:hover .nb-t { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; }
   @media (max-width: 700px) {
-    .today-grid { grid-template-columns: 1fr; gap: 32px; }
+    .today-grid { grid-template-columns: 1fr; gap: 48px; }
     .today-list a { font-size: 18px; }
     .next-band a { padding: 30px 0; }
     .next-band .nb-arrow { width: 44px; height: 44px; }
