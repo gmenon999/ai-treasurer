@@ -393,7 +393,7 @@
   .today-head .kicker { color: var(--gold-light); }
   .today-date { color: var(--on-dark-soft); font-size: 14px; }
   .today-all { color: var(--white); font-weight: 600; font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
-  .today-head .today-all { margin-left: auto; }
+  .today-stories .today-all { display: inline-block; margin-top: 18px; }
   .today-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 56px; }
   .today-list { list-style: none; margin: 0; padding: 0; }
   .today-list li { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.12); }
@@ -419,7 +419,6 @@
   .next-band a:hover .nb-t { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; }
   @media (max-width: 700px) {
     .today-grid { grid-template-columns: 1fr; gap: 32px; }
-    .today-head .today-all { margin-left: 0; }
     .today-list a { font-size: 18px; }
     .next-band a { padding: 30px 0; }
     .next-band .nb-arrow { width: 44px; height: 44px; }
@@ -743,9 +742,9 @@
       </div>
 
       <div class="today" aria-label="Today at a glance">
-        <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span><a class="today-all" href="#briefing">Full briefing</a></div>
+        <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span></div>
         <div class="today-grid">
-          <ol class="today-list"></ol>
+          <div class="today-stories"><ol class="today-list"></ol><a class="today-all" href="#briefing">All stories</a></div>
           <div class="today-rates"><div class="today-sub">Key rates</div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
         </div>
       </div>
