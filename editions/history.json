@@ -108,6 +108,103 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-08",
+   "note_headline": "Record cash sits trapped in receivables while long-dated yields hit 22-year highs",
+   "note_opening": "Idle working capital now carries a real price for Treasury and Finance. The Hackett Group puts the North American opportunity at a record $1.94 trillion, with receivables alone at $773 billion, up 29% year on year. Meanw",
+   "items": [
+    {
+     "headline": "Auditoria adds Agent Policies to governed AP/AR autonomy for Workday Finance",
+     "urls": [
+      "https://www.auditoria.ai/news-and-press/auditoria-expands-governed-cash-cycle-autonomy-for-workday-finance-customers/"
+     ]
+    },
+    {
+     "headline": "JPMorgan sets out agentic AI architecture for corporate cash and Treasury",
+     "urls": [
+      "https://www.jpmorgan.com/payments/newsroom/agentic-ai-corporate-cash-treasury-management"
+     ]
+    },
+    {
+     "headline": "Trovata tops mid-market TMS rankings with 28% first-choice share",
+     "urls": [
+      "https://finance-ai-index.com/treasury/treasury-management-systems/guide/"
+     ]
+    },
+    {
+     "headline": "API-led ERP-TMS integration becomes a core Treasury infrastructure priority",
+     "urls": [
+      "https://sysgenpro.com/finance-workflow-connectivity-architecture-for-treasury-and-erp-synchronization"
+     ]
+    },
+    {
+     "headline": "Hackett finds record $1.94 trillion North American working capital opportunity",
+     "urls": [
+      "https://pubt.io/view/C8B7B876C37BC24DD72DE52CB34C9B16437F59E7"
+     ]
+    },
+    {
+     "headline": "Rate-loss mitigation now a focus for 25% of firms, up from 12%",
+     "urls": [
+      "https://www.websterbank.com/resources/commercial-banking/article/liquidity-as-a-strategic-advantage/"
+     ]
+    },
+    {
+     "headline": "Swift defers all ISO 20022 SR 2026 payments changes to November 2027",
+     "urls": [
+      "https://www.swift.com/insights/news/swift-accepts-community-request-extend-structured-address-migration-iso-20022-payment-messages"
+     ]
+    },
+    {
+     "headline": "SEC signals CFOs carry SOX liability for unreviewed AI-generated disclosures",
+     "urls": [
+      "https://www.finrep.ai/blog/sec-liability-for-ai-generated-financial-disclosures-2026-enforcement-reality"
+     ]
+    },
+    {
+     "headline": "Not all AI falls under SOX, but material uses need documented assessment",
+     "urls": [
+      "https://www.mondaq.com/unitedstates/corporate-governance/1850398/shadow-ai-and-sec-disclosure-what-your-public-company-needs-to-know"
+     ]
+    },
+    {
+     "headline": "Wider cross-currency basis lifts FX forward hedging costs for treasurers",
+     "urls": [
+      "https://forex-trading-daily.contentwave.net/article/swap-vs-option-hedging-fx-when-crosscurrency-basis-widens-2026"
+     ]
+    },
+    {
+     "headline": "US 10-year yield breaks 5.3% as 30-year hits highest since 2004",
+     "urls": [
+      "https://www.federalreserve.gov/releases/h15/"
+     ]
+    },
+    {
+     "headline": "Circle and Tereina bring USDC and EURC payments into SAP Cloud ERP",
+     "urls": [
+      "https://investor.circle.com/news/news-details/2026/Tereina-an-SAP-Backed-Company-and-Circle-Bring-USDC-and-EURC-into-Enterprise-Workflows-Starting-with-the-SAP-Ecosystem-Behind-84-of-Global-Commerce/default.aspx"
+     ]
+    },
+    {
+     "headline": "Solana Foundation publishes open-source DvP standard for atomic tokenised settlement",
+     "urls": [
+      "https://stablecoininsider.org/solana-dvp-atomic-settlement-standard/"
+     ]
+    },
+    {
+     "headline": "Fed holds at 3.75-4.00% ahead of 27-28 October meeting",
+     "urls": [
+      "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+     ]
+    },
+    {
+     "headline": "OFAC warns correspondent banks, exposing hidden sanctions risk in payment routes",
+     "urls": [
+      "https://www.pymnts.com/news/cross-border-payments/2026/ofac-warning-shows-cfos-sanctions-risk-can-hide-in-the-payment-route/"
+     ]
+    }
+   ]
   }
  ]
 }
