@@ -307,6 +307,7 @@
   .pr-src { display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark-soft); margin-top: 10px; }
   .pr-src a { color: var(--on-dark); }
   .pr-moves { margin-top: 14px; font-size: 14px; color: var(--on-dark); }
+  .pr-moves td a { color: var(--on-dark); }
   .pr-moves summary { cursor: pointer; font-weight: 600; color: var(--gold-light); }
   .pr-moves table { border-collapse: collapse; margin-top: 10px; font-variant-numeric: tabular-nums; }
   .pr-moves th, .pr-moves td { text-align: left; padding: 6px 24px 6px 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-weight: 400; }
@@ -941,6 +942,9 @@
               <button type="button" data-k="fed" aria-pressed="true">Fed</button>
               <button type="button" data-k="ecb" aria-pressed="false">ECB</button>
               <button type="button" data-k="boe" aria-pressed="false">BoE</button>
+              <button type="button" data-k="rbi" aria-pressed="false">RBI</button>
+              <button type="button" data-k="pboc" aria-pressed="false">PBOC</button>
+              <button type="button" data-k="qcb" aria-pressed="false">QCB</button>
             </div>
             <div class="pr-read" aria-live="polite"><div class="pr-val" id="pr-val"></div><div class="pr-lab" id="pr-lab"></div></div>
           </div>
@@ -1224,19 +1228,20 @@
     return '<li class="'+(it.stale?'mk-stale':'')+'"><div class="mk-l1"><div class="mk-name"><a href="'+e(it.source_url)+'" target="_blank" rel="noopener" title="Source: '+e(it.source_name)+'">'+e(it.bank)+'</a>'+(it.stale?'<span class="mk-flag">Stale</span>':'')+'</div><span class="mk-val">'+e(it.value)+'</span></div><div class="mk-l2"><span class="mk-meta">'+meta+'</span>'+c+'</div></li>';
   }
 
-  var NAME = {fed:'The Fed', ecb:'The ECB', boe:'The Bank of England'};
+  var NAME = {fed:'The Fed’s target rate', ecb:'The ECB’s deposit rate', boe:'The Bank of England’s Bank Rate', rbi:'The RBI’s repo rate', pboc:'China’s one-year loan prime rate', qcb:'Qatar Central Bank’s deposit rate'};
   function mon(s){ return M[+s.slice(5,7)-1]+' '+s.slice(0,4); }
   function valAt(S, ms){ var k=-1; for (var i=0;i<S.points.length;i++){ if (t(S.points[i][0])<=ms) k=i; } return k; }
   function peak(S){ var k=0; S.points.forEach(function(p,i){ if (p[1]>S.points[k][1]) k=i; }); return k; }
 
   function title(k){
-    var S=H[k], pts=S.points, last=pts[pts.length-1], prev=pts.length>1?pts[pts.length-2]:null, pk=pts[peak(S)];
+    var S=H[k], pts=S.points, last=pts[pts.length-1], prev=pts.length>1?pts[pts.length-2]:null, pi=peak(S), pk=pts[pi];
     var gap=Math.round((pk[1]-last[1])*100), mvbp=prev?Math.round((last[1]-prev[1])*100):0;
-    var recent=(t(S.asof)-t(last[0]))/864e5 <= 120, head, tail='';
-    head = gap>0 ? NAME[k]+' is '+gap+' bp below its '+pct(pk[1])+' peak of '+mon(pk[0])
-                 : NAME[k]+'’s rate is at its highest since '+mon(H._start);
-    if (!recent) tail = ', and has held since '+mon(last[0]);
-    else if (mvbp>0) tail = gap>0 ? ', but raised rates by '+mvbp+' bp in '+mon(last[0]) : ', after a '+mvbp+' bp rise in '+mon(last[0]);
+    var recent=(t(S.asof)-t(last[0]))/864e5 <= 120, nm=NAME[k]||S.bank, head, tail='';
+    if (gap<=0) head = nm+' is at its highest since '+mon(H._start);
+    else if (pi===0) head = nm+' is '+gap+' bp below its '+mon(H._start)+' level of '+pct(pk[1]);
+    else head = nm+' is '+gap+' bp below its '+pct(pk[1])+' peak of '+mon(pk[0]);
+    if (!recent || !prev) tail = ', unchanged since '+mon(last[0]);
+    else if (mvbp>0) tail = gap>0 ? ', but rose '+mvbp+' bp in '+mon(last[0]) : ', after a '+mvbp+' bp rise in '+mon(last[0]);
     else if (mvbp<0) tail = ', after a '+(-mvbp)+' bp cut in '+mon(last[0]);
     return head+tail;
   }
@@ -1245,7 +1250,7 @@
     var S = H[cur]; if (!S) return;
     var W = chart.clientWidth, Ht = chart.clientHeight; if (!W || !Ht) return;
     var phone = W < 520, keys = Object.keys(H).filter(function(k){ return k.charAt(0)!=='_'; });
-    var ml = 34, mr = phone ? 40 : 92, mt = 26, mb = 26, iw = W-ml-mr, ih = Ht-mt-mb;
+    var ml = 34, mr = phone ? 50 : 92, mt = 26, mb = 26, iw = W-ml-mr, ih = Ht-mt-mb;
     var x0 = t(H._start), x1 = Math.max.apply(null, keys.map(function(k){ return t(H[k].asof); }));
     var vals = []; keys.forEach(function(k){ H[k].points.forEach(function(p){ vals.push(p[1]); }); });
     var mn = Math.min(0, Math.min.apply(null,vals)), mx = Math.max.apply(null,vals)+0.2, step = mx-mn > 5 ? 2 : 1;
@@ -1258,13 +1263,13 @@
     for (var y=y0; y<=yl; y++){ var xs = X(y+'-01-01'); if (xs < ml-1 || xs > ml+iw-28 || (y-y0)%every) continue; g += '<text x="'+xs+'" y="'+(mt+ih+19)+'">'+y+'</text>'; }
     function path(K){ var P=H[K].points, s=''; P.forEach(function(p,i){ s += (i? 'H'+X(p[0]).toFixed(1)+'V'+Y(p[1]).toFixed(1) : 'M'+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)); }); return s+'H'+X(H[K].asof).toFixed(1); }
     var lines = '', ends = [];
-    keys.filter(function(k){ return k!==cur; }).forEach(function(k){ lines += '<path d="'+path(k)+'" fill="none" stroke="rgba(159,172,190,0.55)" stroke-width="1.5" stroke-linejoin="round"/>'; });
+    keys.filter(function(k){ return k!==cur; }).forEach(function(k){ lines += '<path d="'+path(k)+'" fill="none" stroke="rgba(159,172,190,0.38)" stroke-width="1.25" stroke-linejoin="round"/>'; });
     lines += '<path d="'+path(cur)+'" fill="none" stroke="#D9B867" stroke-width="2.5" stroke-linejoin="round"/>';
-    keys.forEach(function(k){ var P=H[k].points, L=P[P.length-1]; ends.push({k:k, x:X(H[k].asof), y:Y(L[1]), txt: phone ? H[k].bank : H[k].bank+' '+pct(L[1])}); });
-    ends.sort(function(a,b){ return a.y-b.y; }); for (var i=1;i<ends.length;i++){ if (ends[i].y-ends[i-1].y<15) ends[i].y = ends[i-1].y+15; }
-    var lab = ends.map(function(o){ var on=o.k===cur; return '<circle cx="'+X(H[o.k].asof)+'" cy="'+Y(H[o.k].points[H[o.k].points.length-1][1])+'" r="'+(on?4.5:3)+'" fill="'+(on?'#D9B867':'#9FACBE')+'" stroke="#0D1A2C" stroke-width="2"/><text class="end'+(on?'':' o')+'" x="'+(o.x+9)+'" y="'+(o.y+4)+'">'+o.txt+'</text>'; }).join('');
+    keys.forEach(function(k){ if (phone && k!==cur) return; var P=H[k].points, L=P[P.length-1]; ends.push({k:k, x:X(H[k].asof), y:Y(L[1]), txt: phone ? H[k].bank : H[k].bank+' '+pct(L[1])}); });
+    ends.sort(function(a,b){ return a.y-b.y; }); for (var i=1;i<ends.length;i++){ if (ends[i].y-ends[i-1].y<14) ends[i].y = ends[i-1].y+14; }
+    var lab = (phone ? keys.filter(function(q){ return q!==cur; }).map(function(q){ var P=H[q].points; return '<circle cx="'+X(H[q].asof)+'" cy="'+Y(P[P.length-1][1])+'" r="2.5" fill="#9FACBE"/>'; }).join('') : '') + ends.map(function(o){ var on=o.k===cur; return '<circle cx="'+X(H[o.k].asof)+'" cy="'+Y(H[o.k].points[H[o.k].points.length-1][1])+'" r="'+(on?4.5:3)+'" fill="'+(on?'#D9B867':'#9FACBE')+'" stroke="#0D1A2C" stroke-width="2"/><text class="end'+(on?'':' o')+'" x="'+(o.x+9)+'" y="'+(o.y+4)+'">'+o.txt+'</text>'; }).join('');
     var pts = S.points, pk = pts[peak(S)], px = X(pk[0]) + Math.min(80, (X(pts[Math.min(peak(S)+1,pts.length-1)][0])-X(pk[0]))/2), py = Y(pk[1]);
-    var ann = (pk!==pts[pts.length-1]) ? '<line x1="'+px+'" x2="'+px+'" y1="'+(py-4)+'" y2="'+(py-14)+'" stroke="rgba(255,255,255,0.6)"/><text class="ann" x="'+px+'" y="'+(py-19)+'" text-anchor="middle">Peak '+pct(pk[1])+', '+mon(pk[0])+'</text>' : '';
+    px = Math.max(ml+70, Math.min(ml+iw-70, px)); var ann = (pk!==pts[pts.length-1] && peak(S)>0) ? '<line x1="'+px+'" x2="'+px+'" y1="'+(py-4)+'" y2="'+(py-14)+'" stroke="rgba(255,255,255,0.6)"/><text class="ann" x="'+px+'" y="'+(py-19)+'" text-anchor="middle">Peak '+pct(pk[1])+', '+mon(pk[0])+'</text>' : '';
     chart.innerHTML = '<svg viewBox="0 0 '+W+' '+Ht+'" aria-hidden="true">'+g+lines+ann+lab
       +'<line class="xh" y1="'+mt+'" y2="'+(mt+ih)+'" stroke="rgba(255,255,255,0.55)" stroke-width="1" visibility="hidden"/>'
       +'<circle class="xd" r="5" fill="#FFFFFF" stroke="#0D1A2C" stroke-width="2" visibility="hidden"/>'
@@ -1301,12 +1306,11 @@
     box.querySelectorAll('.pr-pick button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-k')===k ? 'true':'false'); });
     var S = H[k], pts = S.points, last = pts[pts.length-1], prev = pts.length>1 ? pts[pts.length-2] : null, c = P[k];
     document.getElementById('pr-title').textContent = title(k);
-    document.getElementById('pr-sub').textContent = 'Policy rate, %, '+mon(H._start)+' to '+mon(S.asof)+'. Fed: target range, upper bound. ECB: deposit facility rate. BoE: Bank Rate.';
+    document.getElementById('pr-sub').textContent = 'Policy rate, %, '+mon(H._start)+' to '+mon(S.asof)+'. Highlighted: '+S.label+'. Grey: the other five central banks.';
     document.getElementById('pr-val').innerHTML = c ? e(c.value) : rate(S,last);
     document.getElementById('pr-lab').innerHTML = e(c ? c.label : S.label) + (prev ? ' &middot; <b>last move '+mv(last[1],prev[1])+'</b>, effective '+d(last[0]) : '');
-    var srcs = Object.keys(H).filter(function(q){ return q.charAt(0)!=='_'; }).map(function(q){ return '<a href="'+e(H[q].source_url)+'" target="_blank" rel="noopener">'+e(H[q].source_name)+'</a>'; }).join('; ');
-    document.getElementById('pr-src').innerHTML = '<span>Source: '+srcs+'. Official daily series, by effective date.</span><span>Hover or tap the chart to compare any date.</span>';
-    var rows = ''; for (var i=pts.length-1;i>=0;i--){ rows += '<tr><td>'+d(pts[i][0])+'</td><td>'+rate(S,pts[i])+'</td><td>'+(i? mv(pts[i][1],pts[i-1][1]) : 'Starting level')+'</td></tr>'; }
+    document.getElementById('pr-src').innerHTML = '<span>Source: <a href="'+e(S.source_url)+'" target="_blank" rel="noopener">'+e(S.source_name)+'</a>. '+(S.manual ? 'Compiled from published decisions; dates are effective dates where announced, otherwise announcement dates. Checked to '+d(S.asof)+'.' : 'Official daily series, by effective date, to '+d(S.asof)+'.')+'</span><span>Hover or tap the chart to compare any date.</span>';
+    var rows = ''; for (var i=pts.length-1;i>=0;i--){ var su = S.sources ? (S.sources[pts[i][0]] || '') : ''; rows += '<tr><td>'+(su ? '<a href="'+e(su)+'" target="_blank" rel="noopener">'+d(pts[i][0])+'</a>' : d(pts[i][0]))+'</td><td>'+rate(S,pts[i])+'</td><td>'+(i? mv(pts[i][1],pts[i-1][1]) : 'Starting level')+'</td></tr>'; }
     document.querySelector('#pr-moves tbody').innerHTML = rows;
     document.querySelector('#pr-moves summary').textContent = 'Every '+S.bank+' rate move';
     draw();
@@ -1327,8 +1331,8 @@
     }
     have.forEach(function(k){ H[k] = h.series[k]; }); H._start = h.start;
     box.querySelectorAll('.pr-pick button').forEach(function(b){ var k=b.getAttribute('data-k'); if (!H[k]) b.style.display='none'; b.onclick=function(){ select(k); }; });
-    document.getElementById('pr-top').hidden = false; document.getElementById('pr-ex').hidden = false; document.getElementById('pr-since').textContent = 'Fed, ECB and BoE'; document.getElementById('pr-moves').hidden = false;
-    also.innerHTML = pol.filter(function(it){ return !H[it.id]; }).map(li).join('');
+    document.getElementById('pr-top').hidden = false; document.getElementById('pr-ex').hidden = false; document.getElementById('pr-since').textContent = 'Six central banks since January 2022'; document.getElementById('pr-moves').hidden = false;
+    var rest = pol.filter(function(it){ return !H[it.id]; }); also.innerHTML = rest.map(li).join(''); if (!rest.length) also.parentNode.style.display='none';
     select(H.fed ? 'fed' : have[0]);
     var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(draw, 120); });
     var mkSec = document.getElementById('markets');

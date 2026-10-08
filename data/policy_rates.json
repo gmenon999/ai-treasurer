@@ -1,11 +1,269 @@
 {
-  "_note": "Policy rates. Fed, ECB and BoE are refreshed automatically by markets.py; the values here are verified fallbacks. RBI, PBOC and QCB are maintained by hand: after each decision, update value, change_bp, decided, source_url and checked. A row is flagged stale on the site once 'checked' is more than 60 days old.",
-  "rates": [
-    {"id": "fed",  "bank": "Fed",  "label": "Fed funds target range", "value": "3.75–4.00%", "change_bp": null, "decided": null, "source_name": "Federal Reserve Bank of New York", "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr", "checked": "2026-10-07", "auto": true},
-    {"id": "ecb",  "bank": "ECB",  "label": "Deposit facility / MRO", "value": "2.50 / 2.65%", "change_bp": 25, "decided": "2026-09-10", "source_name": "European Central Bank", "source_url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html", "checked": "2026-10-07", "auto": true},
-    {"id": "boe",  "bank": "BoE",  "label": "Bank Rate", "value": "3.75%", "change_bp": 0, "decided": "2026-09-17", "source_name": "Bank of England", "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate", "checked": "2026-10-07", "auto": true},
-    {"id": "rbi",  "bank": "RBI",  "label": "Repo rate", "value": "5.50%", "change_bp": 25, "decided": "2026-10-07", "source_name": "Upstox (RBI MPC, 7 Oct 2026)", "source_url": "https://upstox.com/news/market-news/economy/rbi-mpc-meeting-october-7-2026-live-updates-governor-sanjay-malhotra-speech-repo-rate-hike-key-highlights/liveblog-201398/", "checked": "2026-10-07", "auto": false},
-    {"id": "pboc", "bank": "PBOC", "label": "1-year / 5-year LPR", "value": "3.00 / 3.50%", "change_bp": 0, "decided": "2026-09-20", "source_name": "Qatar News Agency", "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/20/china-keeps-key-lending-rates-unchanged", "checked": "2026-10-07", "auto": false},
-    {"id": "qcb",  "bank": "QCB",  "label": "Deposit / repo / lending", "value": "3.85 / 4.10 / 4.35%", "change_bp": 0, "decided": "2026-07-29", "source_name": "The Peninsula", "source_url": "https://www.thepeninsulaqatar.com/article/29/07/2026/qcb-maintains-current-interest-rates-8", "checked": "2026-10-07", "auto": false}
-  ]
+ "_note": "Policy rates. Fed, ECB and BoE are refreshed automatically by markets.py (current value and chart history); the values here are verified fallbacks. RBI, PBOC and QCB are maintained by hand: after each decision, update value, change_bp, decided, source_url and checked, AND append [date, rate] to 'history' with its source URL in 'history_sources' (dates are effective dates where published, otherwise announcement dates). A row is flagged stale on the site once 'checked' is more than 60 days old.",
+ "rates": [
+  {
+   "id": "fed",
+   "bank": "Fed",
+   "label": "Fed funds target range",
+   "value": "3.75–4.00%",
+   "change_bp": null,
+   "decided": null,
+   "source_name": "Federal Reserve Bank of New York",
+   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
+   "checked": "2026-10-07",
+   "auto": true
+  },
+  {
+   "id": "ecb",
+   "bank": "ECB",
+   "label": "Deposit facility / MRO",
+   "value": "2.50 / 2.65%",
+   "change_bp": 25,
+   "decided": "2026-09-10",
+   "source_name": "European Central Bank",
+   "source_url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html",
+   "checked": "2026-10-07",
+   "auto": true
+  },
+  {
+   "id": "boe",
+   "bank": "BoE",
+   "label": "Bank Rate",
+   "value": "3.75%",
+   "change_bp": 0,
+   "decided": "2026-09-17",
+   "source_name": "Bank of England",
+   "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
+   "checked": "2026-10-07",
+   "auto": true
+  },
+  {
+   "id": "rbi",
+   "bank": "RBI",
+   "label": "Repo rate",
+   "value": "5.50%",
+   "change_bp": 25,
+   "decided": "2026-10-07",
+   "source_name": "Upstox (RBI MPC, 7 Oct 2026)",
+   "source_url": "https://upstox.com/news/market-news/economy/rbi-mpc-meeting-october-7-2026-live-updates-governor-sanjay-malhotra-speech-repo-rate-hike-key-highlights/liveblog-201398/",
+   "checked": "2026-10-08",
+   "auto": false,
+   "history_label": "Repo rate",
+   "history": [
+    [
+     "2022-01-01",
+     4.0
+    ],
+    [
+     "2022-05-04",
+     4.4
+    ],
+    [
+     "2022-06-08",
+     4.9
+    ],
+    [
+     "2022-08-05",
+     5.4
+    ],
+    [
+     "2022-09-30",
+     5.9
+    ],
+    [
+     "2022-12-07",
+     6.25
+    ],
+    [
+     "2023-02-08",
+     6.5
+    ],
+    [
+     "2025-02-07",
+     6.25
+    ],
+    [
+     "2025-04-09",
+     6.0
+    ],
+    [
+     "2025-06-06",
+     5.5
+    ],
+    [
+     "2025-12-05",
+     5.25
+    ],
+    [
+     "2026-10-07",
+     5.5
+    ]
+   ],
+   "history_sources": {
+    "*": "https://stableinvestor.com/2021/10/rbi-repo-rate-history-india.html",
+    "2026-10-07": "https://upstox.com/news/market-news/economy/rbi-mpc-meeting-october-7-2026-live-updates-governor-sanjay-malhotra-speech-repo-rate-hike-key-highlights/liveblog-201398/"
+   },
+   "history_source_name": "RBI MPC decisions, compiled by StableInvestor; Upstox for Oct 2026"
+  },
+  {
+   "id": "pboc",
+   "bank": "PBOC",
+   "label": "1-year / 5-year LPR",
+   "value": "3.00 / 3.50%",
+   "change_bp": 0,
+   "decided": "2026-09-20",
+   "source_name": "Qatar News Agency",
+   "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/20/china-keeps-key-lending-rates-unchanged",
+   "checked": "2026-10-08",
+   "auto": false,
+   "history_label": "1-year loan prime rate",
+   "history": [
+    [
+     "2022-01-01",
+     3.8
+    ],
+    [
+     "2022-01-20",
+     3.7
+    ],
+    [
+     "2022-08-22",
+     3.65
+    ],
+    [
+     "2023-06-20",
+     3.55
+    ],
+    [
+     "2023-08-21",
+     3.45
+    ],
+    [
+     "2024-07-22",
+     3.35
+    ],
+    [
+     "2024-10-21",
+     3.1
+    ],
+    [
+     "2025-05-20",
+     3.0
+    ]
+   ],
+   "history_sources": {
+    "2022-01-20": "https://news.cgtn.com/news/2022-01-20/China-s-central-bank-slashes-key-lending-rates-16YdTXWQPm0/share_amp.html",
+    "2022-08-22": "https://english.www.gov.cn/news/topnews/202208/22/content_WS6302f1d8c6d02e533532f92d.html",
+    "2023-06-20": "https://www.chinadailyhk.com/hk/article/336790",
+    "2023-08-21": "https://mettisglobal.news/china-lowers-1-year-loan-rate-to-a-record-low-of-3-45/",
+    "2024-07-22": "https://english.www.gov.cn/news/202407/22/content_WS669dbfabc6d0868f4e8e9540.html",
+    "2024-10-21": "https://news.rthk.hk/rthk/en/component/k2/1775422-20241021.htm",
+    "2025-05-20": "https://news.rthk.hk/rthk/en/component/k2/1805365-20250520.htm",
+    "*": "https://qna.org.qa/en/News-Area/News/2026-9/20/china-keeps-key-lending-rates-unchanged"
+   },
+   "history_source_name": "Monthly LPR fixings, as reported by CGTN, gov.cn, China Daily and RTHK"
+  },
+  {
+   "id": "qcb",
+   "bank": "QCB",
+   "label": "Deposit / repo / lending",
+   "value": "4.10 / 4.35 / 4.60%",
+   "change_bp": 25,
+   "decided": "2026-09-17",
+   "source_name": "Qatar News Agency",
+   "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/16/qatar-central-bank-hikes-rates",
+   "checked": "2026-10-08",
+   "auto": false,
+   "history_label": "QCB deposit rate (QCBDR)",
+   "history": [
+    [
+     "2022-01-01",
+     1.0
+    ],
+    [
+     "2022-05-05",
+     1.5
+    ],
+    [
+     "2022-06-16",
+     2.25
+    ],
+    [
+     "2022-07-27",
+     3.0
+    ],
+    [
+     "2022-09-22",
+     3.75
+    ],
+    [
+     "2022-11-03",
+     4.5
+    ],
+    [
+     "2022-12-15",
+     5.0
+    ],
+    [
+     "2023-03-22",
+     5.25
+    ],
+    [
+     "2023-05-04",
+     5.5
+    ],
+    [
+     "2023-07-26",
+     5.75
+    ],
+    [
+     "2024-09-19",
+     5.2
+    ],
+    [
+     "2024-11-10",
+     4.9
+    ],
+    [
+     "2024-12-22",
+     4.6
+    ],
+    [
+     "2025-09-17",
+     4.35
+    ],
+    [
+     "2025-10-29",
+     4.1
+    ],
+    [
+     "2025-12-10",
+     3.85
+    ],
+    [
+     "2026-09-17",
+     4.1
+    ]
+   ],
+   "history_sources": {
+    "2022-05-05": "https://www.qatar-tribune.com/article/234212/FIRSTPAGE/QCB-raises-interest-rates",
+    "2022-06-16": "https://www.qna.org.qa/en/News-Area/News/2022-06/15/0068-qatar-central-bank-raises-interest-rates",
+    "2022-07-27": "https://gulf-times.com/story/721792/Qatar-Central-Bank-hikes-interest-rates",
+    "2022-09-22": "https://www.qna.org.qa/en/News-Area/News/2022-09/21/0099-qatar-central-bank-raises-interest-rates",
+    "2022-11-03": "https://www.thegroup.com.qa/groupdownload/newsreport//NEWS202211030850496626.html",
+    "2022-12-15": "https://s.thepeninsula.qa/article/15/12/2022/qcb-hikes-interest-rates-by-50-basis-points",
+    "2023-03-22": "https://www.gulf-times.com/article/658109/business/qatar-sees-45-hike-in-interest-rates-in-15-months",
+    "2023-05-04": "https://www.thegroup.com.qa/groupdownload/newsreport/NEWS202305041616420016.html",
+    "2023-07-26": "https://www.gulf-times.com/article/665473/business/qatar-sees-5-increase-in-interest-rates-since-january-2022",
+    "2024-09-19": "https://www.qna.org.qa/en/News-Area/News/2024-09/18/0080-qatar-central-bank-cuts-interest-rate",
+    "2024-11-10": "https://thepeninsulaqatar.com/article/07/11/2024/qcb-lowers-rates-30-basis-points",
+    "2024-12-22": "https://qatar-tribune.com/article/155019/business/qcb-cuts-interest-rates-by-30-basis-points",
+    "2025-09-17": "https://qna.org.qa/en/News-Area/News/2025-9/17/qcb-cuts-current-interest-rates-by-25-basis-points",
+    "2025-10-29": "https://www.qatar-tribune.com/article/201646/front/qcb-lowers-interest-rates/amp",
+    "2025-12-10": "https://s.thepeninsula.qa/article/10/12/2025/qcb-lowers-current-interest-rates",
+    "2026-09-17": "https://qna.org.qa/en/News-Area/News/2026-9/16/qatar-central-bank-hikes-rates"
+   },
+   "history_source_name": "QCB announcements, as reported by QNA, Qatar Tribune, The Peninsula and Gulf Times"
+  }
+ ]
 }

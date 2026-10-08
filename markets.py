@@ -121,9 +121,9 @@ def _steps(rows):
     return out
 
 
-def hist_fed():
+def hist_fed(start):
     url = ("https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate=%s&endDate=%s"
-           % (HIST_START.isoformat(), TODAY.isoformat()))
+           % (start.isoformat(), TODAY.isoformat()))
     rows = sorted((r["effectiveDate"], round(r["targetRateTo"], 4), round(r["targetRateFrom"], 4))
                   for r in get(url).json()["refRates"] if r.get("targetRateTo") is not None)
     return {"bank": "Fed", "label": "Fed funds target range (upper bound)", "range": True,
@@ -131,23 +131,24 @@ def hist_fed():
             "points": _steps(rows), "asof": rows[-1][0]}
 
 
-def hist_ecb():
+def hist_ecb(start):
     # The ECB key-rate series records only the dates a rate changed, so read from earlier,
-    # carry the rate in force on HIST_START into the window, and run the line to today.
-    url = "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod=2014-01-01&format=csvdata"
+    # carry the rate in force on `start` into the window, and run the line to today.
+    url = ("https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod=%s&format=csvdata"
+           % min(start, datetime.date(2014, 1, 1) if start <= HIST_START else start - datetime.timedelta(days=3660)).isoformat())
     rows = sorted((r["TIME_PERIOD"], round(float(r["OBS_VALUE"]), 4))
                   for r in csv.DictReader(io.StringIO(get(url).text)) if r.get("OBS_VALUE") not in (None, ""))
-    start = HIST_START.isoformat()
-    before = [r for r in rows if r[0] <= start]
-    rows = ([(start, before[-1][1])] if before else []) + [r for r in rows if r[0] > start]
+    st = start.isoformat()
+    before = [r for r in rows if r[0] <= st]
+    rows = ([(st, before[-1][1])] if before else []) + [r for r in rows if r[0] > st]
     return {"bank": "ECB", "label": "Deposit facility rate",
             "source_name": "European Central Bank", "source_url": "https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV",
             "points": _steps(rows), "asof": TODAY.isoformat()}
 
 
-def hist_boe():
+def hist_boe(start):
     url = ("https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes"
-           "&Datefrom=%s&Dateto=now&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N" % HIST_START.strftime("%d/%b/%Y"))
+           "&Datefrom=%s&Dateto=now&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N" % start.strftime("%d/%b/%Y"))
     rows = []
     for r in csv.reader(io.StringIO(get(url).text)):
         try:
@@ -160,8 +161,15 @@ def hist_boe():
             "points": _steps(rows), "asof": rows[-1][0]}
 
 
+INCREMENTAL_DAYS = 45   # daily runs re-read only the recent window and append new moves
+
+
 def build_history():
-    """Policy-rate history for the Markets chart. A series that fails keeps its last good copy."""
+    """Policy-rate history for the Markets chart.
+
+    The saved file is the record: each run fetches only the last INCREMENTAL_DAYS for Fed, ECB
+    and BoE and appends any new move. A full rebuild from HIST_START happens only when a
+    series is missing from the file. A series that fails keeps its last good copy."""
     prev = {}
     if os.path.exists(HIST):
         try:
@@ -170,15 +178,34 @@ def build_history():
             prev = {}
     series = {}
     for key, fn in (("fed", hist_fed), ("ecb", hist_ecb), ("boe", hist_boe)):
+        old = prev.get(key)
         try:
-            item = fn()
+            if old and old.get("points") and not old.get("manual"):
+                start = max(HIST_START, datetime.date.fromisoformat(old["asof"]) - datetime.timedelta(days=INCREMENTAL_DAYS))
+                new = fn(start)
+                # saved moves are never rewritten; only moves dated after the last saved one are added
+                last = old["points"][-1][0]
+                item = dict(new, points=_steps(old["points"] + [p for p in new["points"] if p[0] > last]))
+            else:
+                item = fn(HIST_START)
             if len(item["points"]) < 1:
                 raise ValueError("no observations")
             series[key] = item
         except Exception as e:
             LOG.append("history %s: %s" % (key, e))
-            if prev.get(key):
-                series[key] = prev[key]
+            if old:
+                series[key] = old
+    # RBI, PBOC and QCB: researched decision histories kept by hand in policy_rates.json
+    try:
+        for s in json.load(open(POLICY, encoding="utf-8"))["rates"]:
+            pts = [list(p) for p in (s.get("history") or []) if p[0] >= HIST_START.isoformat()]
+            if pts:
+                series[s["id"]] = {"bank": s["bank"], "label": s.get("history_label") or s["label"],
+                                   "source_name": s.get("history_source_name") or s["source_name"], "source_url": s["source_url"],
+                                   "sources": s.get("history_sources") or {}, "points": pts,
+                                   "asof": max(pts[-1][0], s.get("checked") or pts[-1][0]), "manual": True}
+    except Exception as e:
+        LOG.append("history hand-kept: %s" % e)
     return {"start": HIST_START.isoformat(), "series": series,
             "notes": "Official daily series reduced to the dates each rate changed. Fed shows the target range (upper and lower bound) by effective date."}
 
