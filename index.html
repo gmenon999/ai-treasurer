@@ -301,7 +301,7 @@
   .pr-chart text { font: 12px var(--sans); fill: var(--on-dark-soft); font-variant-numeric: tabular-nums; }
   .pr-chart text.end { font: 700 13px var(--sans); fill: var(--white); }
   .pr-chart text.end.o { font-weight: 400; fill: var(--on-dark-soft); }
-  .pr-chart text.ann { font: 12px var(--sans); fill: var(--on-dark); }
+  .pr-chart text.ann { font: 12px var(--sans); fill: var(--on-dark); paint-order: stroke; stroke: #0D1A2C; stroke-width: 4px; stroke-linejoin: round; }
   .pr-tip i { font-style: normal; color: #3B4A60; display: block; }
   .pr-tip .row { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; }
   .pr-tip .row.on { font-weight: 700; }
@@ -984,13 +984,8 @@
           <div class="pr-src" data-r="src"></div>
         </section>
 
-        <h4 class="mk-all">Latest figures<small>Every rate, with its date and source</small></h4>
-        <div class="mk" id="mk" aria-live="polite">
-          <section class="mk-col mk-fold" aria-labelledby="mk-h-money"><h4 id="mk-h-money">Money Markets &amp; yields<small>Change, bp</small><button type="button" class="mk-tog" aria-expanded="false">Show</button></h4><ul data-sect="money"><li class="mk-load">Loading&hellip;</li></ul></section>
-          <section class="mk-col mk-fold" aria-labelledby="mk-h-fx"><h4 id="mk-h-fx">FX reference rates<small>Change, %</small><button type="button" class="mk-tog" aria-expanded="false">Show</button></h4><ul data-sect="fx"><li class="mk-load">Loading&hellip;</li></ul></section>
-        </div>
         <div class="mk-foot">
-          <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Figures marked Stale have not been confirmed recently.</p>
+          <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Each exhibit shows its source and the date of its latest figure.</p>
           <p id="mk-upd"></p>
         </div>
         <noscript><p class="mk-foot">Turn on JavaScript to see the Treasury Markets figures.</p></noscript>
