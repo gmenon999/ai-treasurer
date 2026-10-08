@@ -1416,7 +1416,7 @@
       var lab=(phone&&cfg.compare? keys.filter(function(k){ return k!==cur; }).map(function(k){ var P=H[k].points, l=P[P.length-1]; return '<circle cx="'+X(l[0])+'" cy="'+Y(l[1])+'" r="2.5" fill="#9FACBE"/>'; }).join('') : '')
         + ends.map(function(o){ var on=o.k===cur, P=H[o.k].points, l=P[P.length-1]; return '<circle cx="'+X(l[0])+'" cy="'+Y(l[1])+'" r="'+(on?4.5:3)+'" fill="'+(on?'#D9B867':'#9FACBE')+'" stroke="#0D1A2C" stroke-width="2"/><text class="end'+(on?'':' o')+'" x="'+(o.x+9)+'" y="'+(o.y+4)+'">'+e(o.txt)+'</text>'; }).join('');
       var z=stats(S), ann='';
-      if (cfg.kind==='rate' && z.hi!==z.last){ var px=Math.max(ml+70, Math.min(ml+iw-70, X(z.hi[0]))), py=Y(z.hi[1]); ann='<line x1="'+px+'" x2="'+px+'" y1="'+(py-4)+'" y2="'+(py-12)+'" stroke="rgba(255,255,255,0.6)"/><text class="ann" x="'+px+'" y="'+(py-16)+'" text-anchor="middle">Peak '+fmt(S,z.hi[1])+', '+mon(z.hi[0])+'</text>'; }
+      if (cfg.kind==='rate' && (z.hi[1]-z.last[1])*100 > 2){ var px=Math.max(ml+70, Math.min(ml+iw-70, X(z.hi[0]))), py=Y(z.hi[1]); ann='<line x1="'+px+'" x2="'+px+'" y1="'+(py-4)+'" y2="'+(py-12)+'" stroke="rgba(255,255,255,0.6)"/><text class="ann" x="'+px+'" y="'+(py-16)+'" text-anchor="middle">Peak '+fmt(S,z.hi[1])+', '+mon(z.hi[0])+'</text>'; }
       chart.innerHTML='<svg viewBox="0 0 '+W+' '+Ht+'" aria-hidden="true">'+g+lines+ann+lab+'<line class="xh" y1="'+mt+'" y2="'+(mt+ih)+'" stroke="rgba(255,255,255,0.55)" visibility="hidden"/><circle class="xd" r="5" fill="#FFFFFF" stroke="#0D1A2C" stroke-width="2" visibility="hidden"/></svg><div class="pr-tip"></div>';
       tip=chart.querySelector('.pr-tip'); var xh=chart.querySelector('.xh'), xd=chart.querySelector('.xd'), P=S.points;
       function show(ms){
