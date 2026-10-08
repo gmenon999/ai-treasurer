@@ -537,6 +537,9 @@
   /* ---------- Full-bleed intro (McKinsey-style) ---------- */
   .intro { position: relative; overflow: hidden; background: var(--navy-deep); color: var(--white); min-height: min(78vh, 720px); display: flex; align-items: flex-end; }
   .intro .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+  .intro .field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 1.2s ease; }
+  .intro.live .field { opacity: 1; }
+  .intro.live .photo { opacity: 0; transition: opacity 1.2s ease; }
   .intro .intro-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,20,36,0.92) 0%, rgba(5,20,36,0.72) 42%, rgba(5,20,36,0.05) 75%), linear-gradient(0deg, rgba(5,20,36,0.85) 0%, rgba(5,20,36,0) 40%); }
   .intro .intro-glow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; mix-blend-mode: screen; }
   .intro .intro-glow span { position: absolute; left: 0; top: 0; width: 760px; height: 760px; margin: -380px 0 0 -380px; border-radius: 50%; background: radial-gradient(circle, rgba(46,106,240,0.42) 0%, rgba(46,106,240,0.16) 38%, rgba(46,106,240,0) 68%); transform: translate3d(68vw, 30vh, 0); will-change: transform; }
@@ -687,6 +690,7 @@
   <!-- ===== INTRO (full-bleed) ===== -->
   <section class="intro" id="top" data-view="top" aria-labelledby="front-h">
     <img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background" loading="eager">
+    <canvas class="field" aria-hidden="true"></canvas>
     <div class="intro-shade"></div>
     <div class="intro-glow" aria-hidden="true"><span></span></div>
     <div class="wrap">
@@ -1474,6 +1478,84 @@
     var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(function(){ draws.forEach(function(f){ f(); }); },120); });
     var sec=document.getElementById('markets'); if (window.MutationObserver&&sec) new MutationObserver(function(){ draws.forEach(function(f){ f(); }); }).observe(sec,{attributes:true,attributeFilter:['class']});
   });
+})();
+</script>
+<script>
+/* Hero data field: luminous streams of data that flow across the hero, converge toward a bright
+   focal point, and bend toward the cursor or finger. Canvas only; pauses when off screen or in a
+   hidden view; one still frame for reduced motion. */
+(function(){
+  var hero = document.querySelector('.intro'), cv = hero && hero.querySelector('.field');
+  if (!cv || !cv.getContext) return;
+  var cx = cv.getContext('2d'), W=0, H=0, dpr=1, phone=false, lines=[], dots=[], t=0, raf=0, onScreen=true;
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var P = {x:-9999, y:-9999, tx:-9999, ty:-9999, s:0, ts:0};
+  function size(){
+    var r = hero.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; phone = W < 720;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr); cx.setTransform(dpr,0,0,dpr,0,0);
+    var n = phone ? 34 : 54; lines = [];
+    for (var i=0;i<n;i++){
+      var f = i/(n-1);
+      lines.push({ f:f, gold: (i%9===4), a: 0.22 + 0.42*Math.sin(f*Math.PI), ph: i*0.73, k: 0.8 + (i%5)*0.11, sp: 0.22 + (i%7)*0.03, w: (i%6===0) ? 1.6 : 1.1 });
+    }
+    dots = []; for (var j=0;j<(phone?28:56);j++) dots.push({ l: Math.floor(Math.random()*n), u: Math.random(), v: 0.0014 + Math.random()*0.0026 });
+  }
+  function focus(){ return { x: phone ? W*0.78 : W*0.80, y: phone ? H*0.24 : H*0.42 }; }
+  function xAt(u){ var x0 = phone ? -20 : W*0.26, x1 = W + 30; return x0 + (x1-x0)*u; }
+  // Lines enter spread across the height and pinch toward a focal band on the right, then fan out again.
+  function yAt(L, u){
+    var top = phone ? H*0.02 : H*0.06, bot = phone ? H*0.50 : H*0.96, F = focus();
+    var y0 = top + (bot-top)*L.f, uf = (F.x - xAt(0))/(xAt(1)-xAt(0));
+    var pinch = Math.exp(-Math.pow((u-uf)/0.30, 2));
+    var y = y0 + (F.y + (L.f-0.5)*H*0.05 - y0)*pinch*0.9;
+    y += Math.sin(u*Math.PI*2*L.k + t*L.sp + L.ph) * H*0.028*(1-pinch*0.8);
+    y += Math.sin(u*Math.PI*5.0 - t*L.sp*1.7 + L.ph*1.9) * H*0.007;
+    var x = xAt(u), dx = x - P.x, dy = y - P.y, R = phone ? 120 : 190;
+    if (P.s > 0.001) y += (P.y - y) * 0.6 * P.s * Math.exp(-(dx*dx+dy*dy)/(R*R));
+    return y;
+  }
+  function frame(){
+    t += 0.016;
+    P.x += (P.tx - P.x)*0.12; P.y += (P.ty - P.y)*0.12; P.s += (P.ts - P.s)*0.06;
+    cx.clearRect(0,0,W,H);
+    var F = focus(), glow = cx.createRadialGradient(F.x, F.y, 0, F.x, F.y, Math.max(W,H)*0.42);
+    glow.addColorStop(0, 'rgba(90,150,255,0.30)'); glow.addColorStop(0.35, 'rgba(46,106,240,0.12)'); glow.addColorStop(1, 'rgba(46,106,240,0)');
+    cx.fillStyle = glow; cx.fillRect(0,0,W,H);
+    cx.globalCompositeOperation = 'lighter';
+    var seg = phone ? 64 : 100;
+    for (var i=0;i<lines.length;i++){
+      var L = lines[i], gr = cx.createLinearGradient(xAt(0),0,xAt(1),0);
+      var c = L.gold ? '245,205,105' : '96,156,255';
+      gr.addColorStop(0, 'rgba('+c+',0)'); gr.addColorStop(0.35, 'rgba('+c+','+(L.a*0.8).toFixed(3)+')');
+      gr.addColorStop(0.78, 'rgba('+c+','+Math.min(0.95, L.a+(L.gold?0.35:0.2)).toFixed(3)+')'); gr.addColorStop(1, 'rgba('+c+','+(L.a*0.6).toFixed(3)+')');
+      cx.beginPath();
+      for (var s=0;s<=seg;s++){ var u=s/seg, x=xAt(u), y=yAt(L,u); if (s) cx.lineTo(x,y); else cx.moveTo(x,y); }
+      cx.strokeStyle = gr; cx.lineWidth = L.gold ? 1.9 : L.w; cx.stroke();
+    }
+    for (var j=0;j<dots.length;j++){
+      var D = dots[j], L2 = lines[D.l]; if (!still) D.u += D.v; if (D.u > 1) { D.u = 0; D.l = Math.floor(Math.random()*lines.length); }
+      var x2 = xAt(D.u), y2 = yAt(L2, D.u), r = L2.gold ? 9 : 7, g = cx.createRadialGradient(x2,y2,0,x2,y2,r);
+      var c2 = L2.gold ? '255,226,150' : '190,215,255', fade = Math.min(1, D.u*6, (1-D.u)*6);
+      g.addColorStop(0,'rgba(255,255,255,'+(0.95*fade).toFixed(3)+')'); g.addColorStop(0.25,'rgba('+c2+','+(0.8*fade).toFixed(3)+')'); g.addColorStop(1,'rgba('+c2+',0)');
+      cx.fillStyle = g; cx.fillRect(x2-r,y2-r,2*r,2*r);
+    }
+    if (P.s > 0.02){ var pg = cx.createRadialGradient(P.x,P.y,0,P.x,P.y,phone?90:140); pg.addColorStop(0,'rgba(217,184,103,'+(0.22*P.s).toFixed(3)+')'); pg.addColorStop(1,'rgba(217,184,103,0)'); cx.fillStyle = pg; cx.fillRect(P.x-150,P.y-150,300,300); }
+    cx.globalCompositeOperation = 'source-over';
+    if (!still && onScreen && !document.hidden && hero.offsetParent !== null) raf = requestAnimationFrame(frame); else raf = 0;
+  }
+  function kick(){ if (!raf && !still) raf = requestAnimationFrame(frame); }
+  function move(e){ var r = hero.getBoundingClientRect(); P.tx = e.clientX - r.left; P.ty = e.clientY - r.top; if (P.x < -999){ P.x = P.tx; P.y = P.ty; } P.ts = 1; }
+  hero.addEventListener('pointermove', move, {passive:true});
+  hero.addEventListener('pointerdown', move, {passive:true});
+  hero.addEventListener('pointerleave', function(){ P.ts = 0; });
+  hero.addEventListener('pointerup', function(e){ if (e.pointerType !== 'mouse') P.ts = 0; });
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ size(); if (still) frame(); }, 150); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ onScreen = es[0].isIntersecting; if (onScreen) kick(); }).observe(hero);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) kick(); });
+  function start(){ if (hero.offsetParent === null) return; if (!W || !H) size(); if (!W || !H) return; if (!hero.classList.contains('live')) hero.classList.add('live'); if (still) { t = 4; frame(); } else kick(); }
+  if (window.MutationObserver) new MutationObserver(start).observe(hero, {attributes:true, attributeFilter:['class']});
+  start();
 })();
 </script>
 <script>
