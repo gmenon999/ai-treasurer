@@ -25,6 +25,7 @@ DATA = os.path.join(HERE, "data")
 OUT = os.path.join(DATA, "markets.json")
 POLICY = os.path.join(DATA, "policy_rates.json")
 HIST = os.path.join(DATA, "policy_history.json")
+MKT_HIST = os.path.join(DATA, "market_history.json")
 HIST_START = datetime.date(2022, 1, 1)   # chart window: the full 2022-26 hiking and cutting cycle
 
 UA = {"User-Agent": "Mozilla/5.0 (compatible; TheAITreasurer/1.0; +https://theaitreasurer.com)"}
@@ -210,6 +211,126 @@ def build_history():
             "notes": "Official daily series reduced to the dates each rate changed. Fed shows the target range (upper and lower bound) by effective date."}
 
 
+# ------------------------------------------------- money-market, yield and FX history
+# Weekly (last observation of each ISO week) since HIST_START, for the Markets exhibits.
+# The saved file is the record: each run re-reads only the last MKT_WINDOW_WEEKS and
+# rebuilds those weeks; older weeks are never rewritten. A full fetch happens only when a
+# series is missing from the file. A failing source keeps its last good copy.
+MKT_WINDOW_WEEKS = 6
+FX_PAIRS = [
+    ("eurusd", "EUR/USD", lambda r: r["USD"], 4),
+    ("gbpusd", "GBP/USD", lambda r: r["USD"] / r["GBP"], 4),
+    ("usdjpy", "USD/JPY", lambda r: r["JPY"] / r["USD"], 2),
+    ("usdinr", "USD/INR", lambda r: r["INR"] / r["USD"], 2),
+    ("usdcny", "USD/CNY", lambda r: r["CNY"] / r["USD"], 4),
+    ("audusd", "AUD/USD", lambda r: r["USD"] / r["AUD"], 4),
+]
+UST_COLS = [("ust3m", "3 Mo", "US Treasury 3M"), ("ust2y", "2 Yr", "US Treasury 2Y"), ("ust10y", "10 Yr", "US Treasury 10Y")]
+SRC_TSY = ("US Treasury", "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve")
+SRC_FX = ("ECB euro reference rates (USD crosses derived)", "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html")
+
+
+def _weekly(rows):
+    """rows: [(iso_date, value)] -> last observation of each ISO week, ascending."""
+    out = {}
+    for d, v in sorted(rows):
+        y, w, _ = datetime.date.fromisoformat(d).isocalendar()
+        out[(y, w)] = [d, v]
+    return [out[k] for k in sorted(out)]
+
+
+def mh_nyfed(kind, start):
+    url = ("https://markets.newyorkfed.org/api/rates/%s/search.json?startDate=%s&endDate=%s"
+           % (kind, start.isoformat(), TODAY.isoformat()))
+    return [(r["effectiveDate"], round(float(r["percentRate"]), 4)) for r in get(url).json()["refRates"] if r.get("percentRate") is not None]
+
+
+def mh_estr(start):
+    url = "https://data-api.ecb.europa.eu/service/data/EST/B.EU000A2X2A25.WT?startPeriod=%s&format=csvdata" % start.isoformat()
+    return [(r["TIME_PERIOD"], round(float(r["OBS_VALUE"]), 4)) for r in csv.DictReader(io.StringIO(get(url).text)) if r.get("OBS_VALUE") not in (None, "")]
+
+
+def mh_ust(start):
+    out = {k: [] for k, _, _ in UST_COLS}
+    for yr in range(start.year, TODAY.year + 1):
+        url = ("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
+               "daily-treasury-rates.csv/%d/all?type=daily_treasury_yield_curve&field_tdr_date_value=%d&page&_format=csv" % (yr, yr))
+        for r in csv.DictReader(io.StringIO(get(url).text)):
+            d = datetime.datetime.strptime(r["Date"], "%m/%d/%Y").date()
+            if d < start:
+                continue
+            for k, col, _ in UST_COLS:
+                if r.get(col) not in (None, "", "N/A"):
+                    out[k].append((d.isoformat(), round(float(r[col]), 4)))
+    return out
+
+
+def mh_fx(start):
+    recent = (TODAY - start).days < 85
+    url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml" if recent else "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.xml"
+    root = ET.fromstring(get(url).content)
+    out = {k: [] for k, _, _, _ in FX_PAIRS}
+    for cube in root.iter():
+        if cube.tag.endswith("Cube") and cube.get("time") and cube.get("time") >= start.isoformat():
+            rates = {c.get("currency"): float(c.get("rate")) for c in cube}
+            for k, _, fn, dp in FX_PAIRS:
+                try:
+                    out[k].append((cube.get("time"), round(fn(rates), dp + 2)))
+                except Exception:
+                    pass
+    return out
+
+
+def build_market_history():
+    prev = {}
+    if os.path.exists(MKT_HIST):
+        try:
+            prev = json.load(open(MKT_HIST, encoding="utf-8")).get("series", {})
+        except Exception:
+            prev = {}
+
+    def start_for(keys):
+        """Full fetch if any series is missing; otherwise the Monday MKT_WINDOW_WEEKS before the oldest last point."""
+        if any(not (prev.get(k) or {}).get("points") for k in keys):
+            return HIST_START
+        last = min(datetime.date.fromisoformat(prev[k]["points"][-1][0]) for k in keys)
+        st = last - datetime.timedelta(weeks=MKT_WINDOW_WEEKS)
+        return max(HIST_START, st - datetime.timedelta(days=st.weekday()))
+
+    def merge(key, meta, rows, start):
+        old = [p for p in (prev.get(key) or {}).get("points", []) if p[0] < start.isoformat()]
+        pts = old + _weekly([r for r in rows if r[0] >= start.isoformat()])
+        if not pts:
+            raise ValueError("no observations")
+        return dict(meta, points=pts, asof=pts[-1][0])
+
+    series = {}
+    jobs = [
+        (["sofr"], lambda st: {"sofr": mh_nyfed("secured/sofr", st)}, {"sofr": dict(name="SOFR", short="SOFR", group="money", unit="%", dp=2, source_name="Federal Reserve Bank of New York", source_url="https://www.newyorkfed.org/markets/reference-rates/sofr")}),
+        (["effr"], lambda st: {"effr": mh_nyfed("unsecured/effr", st)}, {"effr": dict(name="Fed funds effective rate", short="EFFR", group="money", unit="%", dp=2, source_name="Federal Reserve Bank of New York", source_url="https://www.newyorkfed.org/markets/reference-rates/effr")}),
+        (["estr"], lambda st: {"estr": mh_estr(st)}, {"estr": dict(name="€STR", short="€STR", group="money", unit="%", dp=3, source_name="European Central Bank", source_url="https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html")}),
+        ([k for k, _, _ in UST_COLS], mh_ust, {k: dict(name=lab, short=lab.replace("US Treasury ", "US "), group="money", unit="%", dp=2, source_name=SRC_TSY[0], source_url=SRC_TSY[1]) for k, _, lab in UST_COLS}),
+        ([k for k, _, _, _ in FX_PAIRS], mh_fx, {k: dict(name=lab, short=lab, group="fx", unit="", dp=dp, source_name=SRC_FX[0], source_url=SRC_FX[1]) for k, lab, _, dp in FX_PAIRS}),
+    ]
+    for keys, fetch, metas in jobs:
+        try:
+            st = start_for(keys)
+            got = fetch(st)
+            for k in keys:
+                try:
+                    series[k] = merge(k, metas[k], got.get(k) or [], st)
+                except Exception as e:
+                    LOG.append("market history %s: %s" % (k, e))
+                    if prev.get(k):
+                        series[k] = prev[k]
+        except Exception as e:
+            LOG.append("market history %s: %s" % ("/".join(keys), e))
+            for k in keys:
+                if prev.get(k):
+                    series[k] = prev[k]
+    return {"start": HIST_START.isoformat(), "frequency": "weekly (last observation of each week)", "series": series}
+
+
 # ------------------------------------------------------------------ helpers
 def keep_or_update(prev, key, build):
     """Try to build a fresh item; on failure keep the previous one (last good)."""
@@ -385,6 +506,19 @@ def main():
             json.dump(hist, open(HIST + ".tmp", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
             os.replace(HIST + ".tmp", HIST)
             print("policy_history.json written: %s" % ", ".join("%s %d moves" % (k, len(v["points"])) for k, v in hist["series"].items()))
+    # money-market, yield and FX history for the Markets exhibits
+    mh = build_market_history()
+    if mh["series"]:
+        old_m = None
+        if os.path.exists(MKT_HIST):
+            try:
+                old_m = json.load(open(MKT_HIST, encoding="utf-8"))
+            except Exception:
+                old_m = None
+        if old_m != mh:
+            json.dump(mh, open(MKT_HIST + ".tmp", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+            os.replace(MKT_HIST + ".tmp", MKT_HIST)
+            print("market_history.json written: %d series" % len(mh["series"]))
     # only rewrite when something other than the run timestamp changed (avoids empty deploys)
     if os.path.exists(OUT):
         try:

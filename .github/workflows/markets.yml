@@ -39,7 +39,7 @@ jobs:
           BRANCH="${GITHUB_REF_NAME}"
           git config user.name  "AI Treasurer bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/markets.json data/policy_history.json 2>/dev/null || git add data/markets.json
+          git add data/*.json
           if git diff --cached --quiet; then
             echo "No figure changed. Nothing to publish."
             exit 0
