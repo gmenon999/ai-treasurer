@@ -1538,8 +1538,23 @@
   hero.addEventListener('pointerleave', function(){ if (still) return; P.tx = 0.5; P.ty = 0.5; kick(); });
   var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ size(); paint(); }, 150); });
   document.addEventListener('visibilitychange', function(){ if (!document.hidden && reveal < 1) kick(); });
-  function start(){ if (hero.offsetParent === null) return; if (!W || !H) size(); if (!W || !H) return; if (!hero.classList.contains('live')) hero.classList.add('live'); if (still) paint(); else kick(); }
+  var shown = false;
+  function replay(){ if (still) return; reveal = 0; t0 = 0; P.x = P.tx = 0.5; P.y = P.ty = 0.5; kick(); }
+  function start(){
+    var vis = hero.offsetParent !== null;
+    if (!vis) { shown = false; return; }
+    if (!W || !H) size(); if (!W || !H) return;
+    if (!hero.classList.contains('live')) hero.classList.add('live');
+    if (still) { paint(); return; }
+    if (!shown) { shown = true; replay(); }
+  }
   if (window.MutationObserver) new MutationObserver(start).observe(hero, {attributes:true, attributeFilter:['class']});
+  // Draw the ribbon in again whenever Home is chosen, including when Home is already showing.
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href="#top"], a[href="/"], a[href="https://theaitreasurer.com/"]');
+    if (a) setTimeout(function(){ if (hero.offsetParent !== null) { if (!W || !H) size(); replay(); } }, 0);
+  }, true);
+  window.addEventListener('popstate', function(){ setTimeout(start, 0); });
   start();
 })();
 </script>
