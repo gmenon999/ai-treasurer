@@ -250,6 +250,8 @@
   .live-tag span { letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
   .live-tag i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); margin-right: 6px; vertical-align: 1px; }
   .live-feed { flex: 1; min-width: 0; min-height: 46px; }
+  /* The TradingView tape pauses whenever a pointer or finger rests on it; let pointer events pass through so it keeps scrolling. */
+  .live-feed iframe { pointer-events: none; }
   .live-feed .tradingview-widget-copyright { font-size: 11px; color: var(--on-dark-soft); padding: 0 0 6px 12px; }
   .live-feed .tradingview-widget-copyright a { color: var(--on-dark-soft); text-decoration: none; }
   .mk { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 48px; }
