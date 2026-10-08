@@ -406,6 +406,10 @@
   .today-rates ul { list-style: none; margin: 0 0 14px; padding: 0; }
   .today-rates li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
   .today-rates .l { font-size: 14px; color: var(--on-dark); }
+  .today-sub small { float: right; font-size: 11px; letter-spacing: 0.02em; text-transform: none; font-weight: 400; }
+  .today-rates li .l { flex: 1 1 auto; min-width: 0; }
+  .today-rates .sp { flex: none; width: 72px; height: 22px; }
+  .today-rates .sp svg { display: block; width: 72px; height: 22px; overflow: visible; }
   .today-rates .v { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); font-variant-numeric: tabular-nums; white-space: nowrap; }
   /* ---- Next band at the end of each view ---- */
   .next-band { display: none; background: var(--white); border-top: 1px solid var(--line); }
@@ -538,7 +542,7 @@
   .intro .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
   .intro .field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 1.2s ease; }
   .intro.live .field { opacity: 1; }
-  .intro.live .photo { opacity: 0; transition: opacity 1.2s ease; }
+  .intro.live .photo { opacity: 0; transition: opacity 0.6s ease; }
   .intro .intro-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,20,36,0.92) 0%, rgba(5,20,36,0.72) 42%, rgba(5,20,36,0.05) 75%), linear-gradient(0deg, rgba(5,20,36,0.85) 0%, rgba(5,20,36,0) 40%); }
   .intro .intro-glow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; mix-blend-mode: screen; }
   .intro.live .intro-glow { display: none; }
@@ -745,7 +749,7 @@
         <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span></div>
         <div class="today-grid">
           <div class="today-stories"><ol class="today-list"></ol><a class="today-all" href="#briefing">All stories</a></div>
-          <div class="today-rates"><div class="today-sub">Key rates</div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
+          <div class="today-rates"><div class="today-sub">Key rates<small>Lines: past 12 months</small></div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
         </div>
       </div>
     </div>
@@ -1227,7 +1231,7 @@
     (function(){
       var ul = document.getElementById('today-rates'); if (!ul) return;
       var pick = [['policy','fed','Fed funds target'],['policy','qcb','QCB deposit / repo / lending'],['money','ust10y','US Treasury 10Y']];
-      var rows = pick.map(function(p){ var it = (j[p[0]]||[]).filter(function(x){ return x.id===p[1]; })[0]; return it ? '<li><span class="l">'+e(p[2])+'</span><span class="v">'+e(it.value)+'</span></li>' : ''; }).join('');
+      var rows = pick.map(function(p){ var it = (j[p[0]]||[]).filter(function(x){ return x.id===p[1]; })[0]; return it ? '<li data-k="'+p[1]+'"><span class="l">'+e(p[2])+'</span><span class="sp" aria-hidden="true"></span><span class="v">'+e(it.value)+'</span></li>' : ''; }).join('');
       if (rows) ul.innerHTML = rows;
     })();
     if (j.generated_utc) {
@@ -1481,15 +1485,16 @@
 })();
 </script>
 <script>
-/* Hero data field: a calm ribbon of fine lines on the right of the hero, drifting slowly and
-   easing toward the cursor or finger. Canvas only; pauses when off screen or in a hidden view;
-   one still frame for reduced motion. */
+/* Hero data field: a calm ribbon of fine lines on the right of the hero. It draws itself in once
+   (about two seconds), then rests; it eases toward the pointer only while the pointer moves, and
+   settles again. No looping motion. Canvas only; a still frame for reduced motion. */
 (function(){
   var hero = document.querySelector('.intro'), cv = hero && hero.querySelector('.field');
   if (!cv || !cv.getContext) return;
-  var cx = cv.getContext('2d'), W=0, H=0, dpr=1, phone=false, lines=[], t=0, raf=0, onScreen=true;
+  var cx = cv.getContext('2d'), W=0, H=0, dpr=1, phone=false, lines=[], raf=0, reveal=0, t0=0;
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var P = {x:0.5, y:0.5, tx:0.5, ty:0.5};
+  var T = 2.2, P = {x:0.5, y:0.5, tx:0.5, ty:0.5};
+  if (still) reveal = 1;
   function size(){
     var r = hero.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
     W = r.width; H = r.height; phone = W < 720;
@@ -1498,45 +1503,105 @@
     for (var i=0;i<n;i++){ var f=i/(n-1); lines.push({ f:f, gold: i===Math.round(n*0.62), a: 0.16 + 0.42*Math.pow(Math.sin(f*Math.PI),1.3) }); }
   }
   function xAt(u){ var x0 = phone ? -10 : W*0.42, x1 = W + 20; return x0 + (x1-x0)*u; }
-  // One ribbon: every line follows the same two slow waves, offset by its position in the ribbon,
-  // so the set folds and twists like a sheet. The pointer gently lifts or lowers the ribbon.
   function yAt(L, u){
     var mid = (phone ? H*0.26 : H*0.50) + (P.y-0.5)*H*0.08, spread = (phone ? H*0.36 : H*0.62);
-    var twist = 0.45 + 0.55*Math.sin(u*Math.PI*1.15 + t*0.12 + (P.x-0.5)*0.8);
+    var twist = 0.45 + 0.55*Math.sin(u*Math.PI*1.15 + T*0.12 + (P.x-0.5)*0.8);
     var y = mid + (L.f-0.5)*spread*twist;
-    y += Math.sin(u*Math.PI*1.6 + t*0.09) * H*0.07;
-    y += Math.sin(u*Math.PI*3.2 - t*0.07 + L.f*1.4) * H*0.012;
+    y += Math.sin(u*Math.PI*1.6 + T*0.09) * H*0.07;
+    y += Math.sin(u*Math.PI*3.2 - T*0.07 + L.f*1.4) * H*0.012;
     return y;
   }
-  function frame(){
-    if (!still) t += 0.016;
-    P.x += (P.tx - P.x)*0.03; P.y += (P.ty - P.y)*0.03;
+  function paint(){
     cx.clearRect(0,0,W,H);
     var gx = phone ? W*0.7 : W*0.74, gy = phone ? H*0.24 : H*0.46, glow = cx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(W,H)*0.5);
-    glow.addColorStop(0, 'rgba(70,130,255,0.26)'); glow.addColorStop(1, 'rgba(46,106,240,0)');
+    glow.addColorStop(0, 'rgba(70,130,255,'+(0.26*Math.min(1, reveal*1.5)).toFixed(3)+')'); glow.addColorStop(1, 'rgba(46,106,240,0)');
     cx.fillStyle = glow; cx.fillRect(0,0,W,H);
     cx.globalCompositeOperation = 'lighter';
-    var seg = phone ? 60 : 90;
+    var seg = phone ? 60 : 90, ease = 1 - Math.pow(1 - reveal, 3), stop = Math.max(1, Math.round(seg*ease));
     for (var i=0;i<lines.length;i++){
       var L = lines[i], c = L.gold ? '235,200,115' : '110,165,255', gr = cx.createLinearGradient(xAt(0),0,xAt(1),0);
       gr.addColorStop(0, 'rgba('+c+',0)'); gr.addColorStop(0.3, 'rgba('+c+','+(L.a*(L.gold?1.6:1)).toFixed(3)+')'); gr.addColorStop(1, 'rgba('+c+','+(L.a*0.7).toFixed(3)+')');
       cx.beginPath();
-      for (var s=0;s<=seg;s++){ var u=s/seg, x=xAt(u), y=yAt(L,u); if (s) cx.lineTo(x,y); else cx.moveTo(x,y); }
+      for (var s=0;s<=stop;s++){ var u=s/seg, x=xAt(u), y=yAt(L,u); if (s) cx.lineTo(x,y); else cx.moveTo(x,y); }
       cx.strokeStyle = gr; cx.lineWidth = L.gold ? 1.4 : 1; cx.stroke();
     }
     cx.globalCompositeOperation = 'source-over';
-    if (!still && onScreen && !document.hidden && hero.offsetParent !== null) raf = requestAnimationFrame(frame); else raf = 0;
   }
-  function kick(){ if (!raf && !still) raf = requestAnimationFrame(frame); }
-  function move(e){ var r = hero.getBoundingClientRect(); P.tx = (e.clientX - r.left)/r.width; P.ty = (e.clientY - r.top)/r.height; }
+  function frame(ts){
+    if (!t0) t0 = ts;
+    if (reveal < 1) reveal = Math.min(1, (ts - t0) / 2000);
+    P.x += (P.tx - P.x)*0.06; P.y += (P.ty - P.y)*0.06;
+    paint();
+    var moving = reveal < 1 || Math.abs(P.tx-P.x) > 0.0015 || Math.abs(P.ty-P.y) > 0.0015;
+    raf = (moving && hero.offsetParent !== null && !document.hidden) ? requestAnimationFrame(frame) : 0;
+    if (!raf && reveal < 1) t0 = 0;
+  }
+  function kick(){ if (!raf) raf = requestAnimationFrame(frame); }
+  function move(e){ if (still) return; var r = hero.getBoundingClientRect(); P.tx = (e.clientX - r.left)/r.width; P.ty = (e.clientY - r.top)/r.height; kick(); }
   hero.addEventListener('pointermove', move, {passive:true});
-  hero.addEventListener('pointerleave', function(){ P.tx = 0.5; P.ty = 0.5; });
-  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ size(); if (still) frame(); }, 150); });
-  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ onScreen = es[0].isIntersecting; if (onScreen) kick(); }).observe(hero);
-  document.addEventListener('visibilitychange', function(){ if (!document.hidden) kick(); });
-  function start(){ if (hero.offsetParent === null) return; if (!W || !H) size(); if (!W || !H) return; if (!hero.classList.contains('live')) hero.classList.add('live'); if (still) { t = 6; frame(); } else kick(); }
+  hero.addEventListener('pointerleave', function(){ if (still) return; P.tx = 0.5; P.ty = 0.5; kick(); });
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ size(); paint(); }, 150); });
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden && reveal < 1) kick(); });
+  function start(){ if (hero.offsetParent === null) return; if (!W || !H) size(); if (!W || !H) return; if (!hero.classList.contains('live')) hero.classList.add('live'); if (still) paint(); else kick(); }
   if (window.MutationObserver) new MutationObserver(start).observe(hero, {attributes:true, attributeFilter:['class']});
   start();
+})();
+</script>
+<script>
+/* Key rates sparklines: the past 12 months from the saved histories, drawn once (no motion). */
+(function(){
+  var ul = document.getElementById('today-rates'); if (!ul) return;
+  var H = null;
+  function t(s){ return Date.UTC(+s.slice(0,4), +s.slice(5,7)-1, +s.slice(8,10)); }
+  function spark(pts, asof, step){
+    var end = t(asof), start = end - 365*864e5, P = [], k = -1;
+    pts.forEach(function(p,i){ if (t(p[0]) <= start) k = i; });
+    if (k >= 0) P.push([start, pts[k][1]]);
+    pts.forEach(function(p){ var x = t(p[0]); if (x > start && x <= end) P.push([x, p[1]]); });
+    if (P.length < 1) return '';
+    var last = P[P.length-1]; P.push([end, last[1]]);
+    var lo = Math.min.apply(null, P.map(function(p){ return p[1]; })), hi = Math.max.apply(null, P.map(function(p){ return p[1]; }));
+    if (hi - lo < 0.05) { hi += 0.1; lo -= 0.1; }
+    function X(x){ return (x-start)/(end-start)*68 + 1; } function Y(v){ return 19 - (v-lo)/(hi-lo)*16; }
+    var d = '';
+    P.forEach(function(p,i){ var x = X(p[0]).toFixed(1), y = Y(p[1]).toFixed(1); d += i ? (step ? 'H'+x+'V'+y : 'L'+x+' '+y) : 'M'+x+' '+y; });
+    return '<svg viewBox="0 0 72 22"><path d="'+d+'" fill="none" stroke="#D9B867" stroke-width="1.5" stroke-linejoin="round"/><circle cx="'+X(end).toFixed(1)+'" cy="'+Y(last[1]).toFixed(1)+'" r="2.4" fill="#D9B867"/></svg>';
+  }
+  function fill(){
+    if (!H) return;
+    ul.querySelectorAll('li[data-k]').forEach(function(li){
+      var sp = li.querySelector('.sp'); if (!sp || sp.firstChild) return;
+      var k = li.getAttribute('data-k'), S = (H.p[k] || H.m[k]); if (!S) return;
+      sp.innerHTML = spark(S.points, S.asof, !!H.p[k]);
+    });
+  }
+  Promise.all([
+    fetch('/data/policy_history.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }),
+    fetch('/data/market_history.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
+  ]).then(function(res){ H = { p: (res[0] && res[0].series) || {}, m: (res[1] && res[1].series) || {} }; fill(); });
+  if (window.MutationObserver) new MutationObserver(fill).observe(ul, {childList:true});
+})();
+
+/* Charts draw in once: the first time each Markets chart scrolls into view, its highlighted line
+   traces in (under a second). Never repeats; skipped for reduced motion. */
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var ch = en.target;
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        var p = ch.querySelector('svg path[stroke="#D9B867"]'); if (!p || !p.getTotalLength) return;
+        io.unobserve(ch);
+        var L = p.getTotalLength();
+        p.style.strokeDasharray = L; p.style.strokeDashoffset = L; p.getBoundingClientRect();
+        p.style.transition = 'stroke-dashoffset 0.9s ease-out'; p.style.strokeDashoffset = '0';
+        setTimeout(function(){ p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; p.style.transition = ''; }, 1000);
+      }); });
+    });
+  }, {threshold: 0.35});
+  document.querySelectorAll('.pr-chart').forEach(function(c){ io.observe(c); });
 })();
 </script>
 <script>
