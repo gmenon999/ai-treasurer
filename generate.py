@@ -39,6 +39,10 @@ EDITORIAL_MODEL = os.environ.get("BRIEF_EDITORIAL_MODEL", "anthropic/claude-opus
 SEARCH_ENGINE = os.environ.get("BRIEF_SEARCH_ENGINE", "exa")
 MAX_SEARCHES = int(os.environ.get("BRIEF_MAX_SEARCHES", "10"))
 TZ_OFFSET = int(os.environ.get("BRIEF_TZ_OFFSET_HOURS", "3"))  # Qatar = UTC+3
+CHECK_MODEL = os.environ.get("BRIEF_CHECK_MODEL", "anthropic/claude-sonnet-5.5")  # independent checker: never the drafting model
+TAKES_ON = (os.environ.get("BRIEF_TAKES") or "on").strip().lower() not in ("off", "false", "0", "no")
+TAKES_LOG = os.path.join(HERE, "editions", "takes-log.json")
+COST = {"usd": 0.0}  # running OpenRouter cost for this run (from the usage block)
 EXCLUDED = ["reddit.com", "quora.com", "medium.com", "substack.com"]
 
 BEATS = [
@@ -92,7 +96,8 @@ def _search_tool():
 
 
 def _ask(prompt, model, max_tokens=9000, search=True, attempts=3):
-    body = {"model": model, "messages": [{"role": "user", "content": prompt}], "max_tokens": max_tokens}
+    body = {"model": model, "messages": [{"role": "user", "content": prompt}], "max_tokens": max_tokens,
+            "usage": {"include": True}}
     if search:
         body["tools"] = [_search_tool()]
         body["max_tool_calls"] = MAX_SEARCHES
@@ -106,6 +111,10 @@ def _ask(prompt, model, max_tokens=9000, search=True, attempts=3):
                 data = r.json()
                 if "choices" not in data:
                     raise ValueError("no choices: " + json.dumps(data)[:300])
+                try:
+                    COST["usd"] += float((data.get("usage") or {}).get("cost") or 0)
+                except (TypeError, ValueError):
+                    pass
                 return data["choices"][0]["message"]["content"] or ""
             if r.status_code != 429 and r.status_code < 500:
                 raise RuntimeError("OpenRouter %d: %s" % (r.status_code, r.text[:400]))
@@ -406,6 +415,212 @@ def editorial(res, date_human, history=None):
     return data
 
 
+# ---------------------------------------------------------------- The Treasurer's Take
+# Two lines under every item: "Focus: <lens>" (the one point that matters most, through the lens that
+# fits the story) and "Our view". Written from the full source article, checked by an independent model,
+# dropped (never published) if it fails. Fail-safe: any error here leaves the news untouched.
+LENSES = ["Controls & audit", "Regulation & compliance", "Accounting & reporting", "Cash & liquidity",
+          "Risk", "Payments & operations", "Cost & value"]
+LENS_GUIDE = (
+    "- Controls & audit: approvals, segregation of duties, audit trail, evidence, AI governance. Name the control-trail "
+    "step (Capture, Match, Flag, Approve, Post) or foundation (Govern, Access, Change, Monitor) and the auditor's question.\n"
+    "- Regulation & compliance: a rule, regulator action, deadline, sanctions or AML/KYC duty. Say who must act and by when.\n"
+    "- Accounting & reporting: IFRS / US GAAP treatment, disclosure, classification or measurement.\n"
+    "- Cash & liquidity: visibility, forecasting, pooling, funding, working capital, trapped cash.\n"
+    "- Risk: FX, rates, commodity, counterparty or settlement exposure and how to limit it.\n"
+    "- Payments & operations: payment rails, settlement timing, process, connectivity, systems.\n"
+    "- Cost & value: fees, efficiency, return on technology spend, the business case."
+)
+SRC_CHARS = 9000
+
+
+def _page_text(url):
+    """Readable text of a source page, or '' if it cannot be read (paywall, consent wall, PDF, error)."""
+    try:
+        r = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0 (compatible; TheAITreasurerBot/1.0; +https://theaitreasurer.com)"})
+        if r.status_code != 200 or "html" not in (r.headers.get("content-type") or "").lower():
+            return ""
+        t = r.text[:2000000]
+    except Exception:
+        return ""
+    t = re.sub(r"(?is)<(script|style|noscript|svg|nav|header|footer|form|aside)\b.*?</\1>", " ", t)
+    paras = [html.unescape(re.sub(r"(?s)<[^>]+>", " ", m)) for m in re.findall(r"(?is)<p\b[^>]*>(.*?)</p>", t)]
+    paras = [re.sub(r"\s+", " ", x).strip() for x in paras]
+    body = " ".join(x for x in paras if len(x) > 40)
+    if len(body) < 800:
+        body = re.sub(r"\s+", " ", html.unescape(re.sub(r"(?s)<[^>]+>", " ", t))).strip()
+    return body[:SRC_CHARS]
+
+
+def _source_for(it):
+    """Full text of the item's first readable source that is clearly about the story; '' if none."""
+    marks = set(re.findall(r"\b(?:[A-Z][A-Za-z0-9&.-]{2,}|\d[\d.,]*%?)\b", it.get("summary", "") + " " + it.get("headline", "")))
+    marks -= {"The", "This", "That", "Treasury", "Finance", "With", "From", "And"}
+    for src in (it.get("sources") or [])[:2]:
+        txt = _page_text(src.get("url", ""))
+        if len(txt) >= 1200 and sum(1 for m in marks if m in txt) >= min(3, len(marks)):
+            return txt
+    return ""
+
+
+def _shingles(t, n=8):
+    w = re.findall(r"[a-z0-9]+", (t or "").lower())
+    return {" ".join(w[i:i + n]) for i in range(len(w) - n + 1)}
+
+
+def _local_problems(x, it, src):
+    """Mechanical checks that need no model: lens, length, banned words, copying."""
+    out = []
+    if x.get("lens") not in LENSES:
+        out.append("lens not in the list")
+    words = len((x.get("focus", "") + " " + x.get("view", "")).split())
+    if not 22 <= words <= 50:
+        out.append("length %d words (target 30-40)" % words)
+    hits = _lint([x.get("focus", ""), x.get("view", "")])
+    if hits:
+        out.append("banned phrases: " + ", ".join(hits))
+    if _shingles(x.get("focus", "") + " " + x.get("view", "")) & (_shingles(src) | _shingles(it.get("summary", ""))):
+        out.append("copies wording from the source or summary")
+    if difflib.SequenceMatcher(None, _norm(x.get("focus")), _norm(it.get("summary"))).ratio() > 0.6:
+        out.append("restates the summary")
+    return out
+
+
+def _take_prompt(rows, fixes=None):
+    blocks = []
+    for n, it, src in rows:
+        blk = "### ITEM %d\nHeadline: %s\nSummary: %s\nSOURCE TEXT:\n%s" % (n, it["headline"], it["summary"], src)
+        if fixes and fixes.get(n):
+            blk += "\nYOUR PREVIOUS TAKE FAILED THE CHECK: %s. Fix every point." % fixes[n]
+        blocks.append(blk)
+    return (
+        "You write 'The Treasurer's Take' for The AI Treasurer, a controls-first daily read for CFOs, controllers "
+        "and group treasurers. For each item below, write two lines (30-40 words in total):\n"
+        "1. focus: the ONE point in this story that matters most to Treasury and Finance, through the single lens "
+        "that fits it best. Do not restate the summary; say what follows from it. One or two sentences.\n"
+        "2. view: one sentence. A clear position or one concrete action a treasurer could take. Not hedged.\n\n"
+        "LENSES (pick exactly one, copied exactly; the story decides, never force a lens):\n%s\n\n"
+        "RULES: use ONLY facts in the SOURCE TEXT; add no figures, names or dates that are not there. Original "
+        "wording, no quotes. Brand voice ('we'), no personal name. Not investment or professional advice; no "
+        "buy/sell or vendor recommendations. Nothing negative toward Qatar, QatarEnergy or Woqod.\n\n%s\n\n"
+        "Return STRICT JSON only: {\"takes\": [{\"n\": 1, \"lens\": \"...\", \"focus\": \"...\", \"view\": \"...\"}]}\n\n%s"
+        % (LENS_GUIDE, STYLE, "\n\n".join(blocks)))
+
+
+def _check_prompt(rows, drafts):
+    blocks = []
+    for n, it, src in rows:
+        x = drafts[n]
+        blocks.append("### ITEM %d\nSOURCE TEXT:\n%s\nNEWS SUMMARY: %s\nTAKE: [Focus: %s] %s | Our view: %s"
+                      % (n, src, it["summary"], x.get("lens"), x.get("focus"), x.get("view")))
+    return (
+        "You are the independent checker for The AI Treasurer. You did not write these takes. Check each one "
+        "strictly against its SOURCE TEXT and fail it if ANY test fails:\n"
+        "1. Every fact, figure, name and date in the take is supported by the source. Nothing invented or overstated.\n"
+        "2. The lens is the one that genuinely fits the story's key point (lenses: %s). Not forced.\n"
+        "3. The focus adds a point beyond the news summary rather than repeating it.\n"
+        "4. The view takes a clear position or gives a concrete action.\n"
+        "5. No investment or professional advice, no buy/sell or vendor recommendation, nothing negative toward "
+        "Qatar, QatarEnergy or Woqod, no hype.\n"
+        "Return STRICT JSON only: {\"checks\": [{\"n\": 1, \"pass\": true, \"reasons\": \"\"}]} with a short, "
+        "specific reason for every fail.\n\n%s" % (", ".join(LENSES), "\n\n".join(blocks)))
+
+
+def _draft(rows, fixes=None):
+    data = _json(_ask(_take_prompt(rows, fixes), EDITORIAL_MODEL, max_tokens=8000, search=False), "takes")
+    out = {}
+    for x in data.get("takes") or []:
+        try:
+            n = int(x.get("n"))
+        except (TypeError, ValueError):
+            continue
+        x = {"lens": (x.get("lens") or "").strip(), "focus": _cap_treasury((x.get("focus") or "").strip()),
+             "view": _cap_treasury((x.get("view") or "").strip())}
+        if x["focus"] and x["view"]:
+            out[n] = x
+    return out
+
+
+def _check(rows, drafts):
+    """Local checks, then the independent model. Returns {n: reasons} for every failure."""
+    fails = {}
+    for n, it, src in rows:
+        if n not in drafts:
+            fails[n] = "no take returned"
+            continue
+        p = _local_problems(drafts[n], it, src)
+        if p:
+            fails[n] = "; ".join(p)
+    todo = [r for r in rows if r[0] not in fails]
+    if todo:
+        data = _json(_ask(_check_prompt(todo, drafts), CHECK_MODEL, max_tokens=4000, search=False), "check")
+        verdict = {}
+        for c in data.get("checks") or []:
+            try:
+                verdict[int(c.get("n"))] = c
+            except (TypeError, ValueError):
+                pass
+        for n, _, _ in todo:
+            c = verdict.get(n)
+            if not c or c.get("pass") is not True:
+                fails[n] = (c or {}).get("reasons") or "no verdict from checker"
+    return fails
+
+
+def takes(content, date_iso):
+    log = {"date": date_iso, "items": [], "cost_usd": None}
+    if not TAKES_ON:
+        print("takes: switched off (BRIEF_TAKES)")
+        return content, log
+    start_cost = COST["usd"]
+    rows, slots = [], {}
+    for k in BEAT_KEYS:
+        for i, it in enumerate(content["beats"].get(k) or []):
+            n = len(slots) + 1
+            slots[n] = (k, i)
+            src = _source_for(it)
+            if src:
+                rows.append((n, it, src))
+            else:
+                log["items"].append({"headline": it["headline"], "status": "no source text", "reasons": "source not readable"})
+    try:
+        drafts = _draft(rows) if rows else {}
+        fails = _check(rows, drafts) if rows else {}
+        if fails:  # one redraft for the failures only, then re-check them
+            redo = [r for r in rows if r[0] in fails]
+            drafts.update(_draft(redo, fails))
+            fails = _check(redo, drafts)
+    except Exception as e:
+        print("takes: stopped (%s); edition publishes without takes" % e)
+        log["items"].append({"headline": "(all)", "status": "error", "reasons": str(e)[:300]})
+        log["cost_usd"] = round(COST["usd"] - start_cost, 4)
+        return content, log
+    for n, it, _ in rows:
+        k, i = slots[n]
+        if n in fails:
+            log["items"].append({"headline": it["headline"], "status": "dropped", "lens": drafts.get(n, {}).get("lens", ""),
+                                 "reasons": str(fails[n])[:300]})
+        else:
+            content["beats"][k][i]["take"] = drafts[n]
+            log["items"].append({"headline": it["headline"], "status": "published", "lens": drafts[n]["lens"]})
+    log["cost_usd"] = round(COST["usd"] - start_cost, 4)
+    pub = sum(1 for x in log["items"] if x["status"] == "published")
+    print("takes: %d published of %d items; cost $%.4f" % (pub, len(slots), log["cost_usd"]))
+    return content, log
+
+
+def save_takes_log(log, edition_cost):
+    try:
+        data = json.load(open(TAKES_LOG, encoding="utf-8"))
+    except Exception:
+        data = {"days": []}
+    log = dict(log); log["edition_cost_usd"] = round(edition_cost, 4)
+    days = [d for d in data.get("days", []) if d.get("date") != log["date"]] + [log]
+    data["days"] = days[-60:]
+    os.makedirs(os.path.dirname(TAKES_LOG), exist_ok=True)
+    json.dump(data, open(TAKES_LOG, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+
 def _note_problems(data, recent):
     """McKinsey-standard gate for the note: answer-first, tight, and not a rerun of recent notes."""
     out = []
@@ -456,8 +671,16 @@ def _sources_html(sources, prefix="Via "):
     return prefix + joined
 
 
-def _norm(h):
+def _hnorm(h):
     return re.sub(r"[^a-z0-9]+", " ", (h or "").lower()).strip()
+
+
+def _take_html(t):
+    if not t:
+        return ""
+    lens = esc(t.get("lens"))
+    return ('<div class="take"><p><b>Focus: %s</b> &mdash; %s</p><p class="view"><b>Our view</b> &mdash; %s</p></div>'
+            % (lens, esc(t.get("focus")), esc(t.get("view"))))
 
 
 def _items_html(items, beat=""):
@@ -465,8 +688,9 @@ def _items_html(items, beat=""):
         return '<p class="pillar-sub" style="margin:0;">No material developments today.</p>'
     out = []
     for i, it in enumerate(items):
-        out.append('<div class="item" id="s-%s-%d"><h4>%s</h4><p>%s</p><div class="cite">%s</div></div>'
-                   % (beat, i, esc(it["headline"]), esc(it["summary"]), _sources_html(it.get("sources", []))))
+        out.append('<div class="item" id="s-%s-%d"><h4>%s</h4><p>%s</p>%s<div class="cite">%s</div></div>'
+                   % (beat, i, esc(it["headline"]), esc(it["summary"]), _take_html(it.get("take")),
+                      _sources_html(it.get("sources", []))))
     return "\n        ".join(out)
 
 
@@ -490,19 +714,20 @@ def render(content, date_human, edition_n, archive_entries):
     where = {}
     for k in BEAT_KEYS:
         for i, it in enumerate(content["beats"].get(k) or []):
-            where.setdefault(_norm(it.get("headline")), (k, i))
+            where.setdefault(_hnorm(it.get("headline")), (k, i))
     leads = []
     for L in content["lead_stories"]:
         tab = L.get("tab", "ai")
         anchor = ""
-        hit = where.get(_norm(L.get("headline")))
+        hit = where.get(_hnorm(L.get("headline")))
         if hit:
             tab = BEAT_TAB.get(hit[0], tab)
             anchor = "s-%s-%d" % hit
         label = LEAD_TAB_LABEL.get(tab, "AI &amp; Technology")
         topic = (L.get("topic") or "").strip() or LEAD_TAB_LABEL.get(tab, "AI &amp; Technology").replace("&amp;", "&")
-        leads.append('<div class="item"><div class="topic">%s</div><h4>%s</h4><div class="cite">See <a href="#" onclick="showTab(\'%s\',\'%s\');return false;">%s &rarr;</a></div></div>'
-                     % (esc(topic), esc(L["headline"]), tab, anchor, label))
+        go = "showTab(\'%s\',\'%s\');return false;" % (tab, anchor)
+        leads.append('<div class="item"><div class="topic">%s</div><h4><a class="lead-link" href="#" onclick="%s">%s</a></h4><div class="cite">See <a href="#" onclick="%s">%s &rarr;</a></div></div>'
+                     % (esc(topic), go, esc(L["headline"]), go, label))
     s = s.replace("<!--LEAD-->", "\n      ".join(leads))
     # beats
     for k in BEAT_KEYS:
@@ -563,6 +788,9 @@ def mock_content():
     def it(h, s, n, u):
         return {"headline": h, "summary": s, "sources": [{"name": n, "url": u}]}
     one = [it("Sample headline", "Sample original summary of a treasury development, about forty words long to mirror the real output of the generator so the layout can be checked end to end without calling any API.", "Example", "https://example.com/a")]
+    one[0]["take"] = {"lens": "Payments & operations",
+                      "focus": "Intercompany cash that took days now moves in hours, so forecasting and FX timing have to catch up.",
+                      "view": "Speed is the easy part; prove who controls the wallet before the next transfer."}
     beats = {k: list(one) for k in BEAT_KEYS}
     return {
         "beats": beats,
@@ -582,6 +810,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mock", action="store_true", help="render with canned content (no API)")
     ap.add_argument("--out", default=INDEX, help="output path for the latest edition")
+    ap.add_argument("--force", action="store_true", help="rebuild today's edition even if it already exists")
     args = ap.parse_args()
 
     now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
@@ -592,8 +821,14 @@ def main():
     st = load_state()
     # self-heal: if today's edition already built, exit quietly (lets retry crons no-op)
     if any(e["date"] == date_iso for e in st["editions"]) and not args.mock:
-        print("Edition for %s already exists; nothing to do." % date_iso)
-        return 0
+        if not args.force:
+            print("Edition for %s already exists; nothing to do." % date_iso)
+            return 0
+        # rebuild: drop today's entry (keeping its number) so it is replaced, not duplicated
+        today = [e for e in st["editions"] if e["date"] == date_iso]
+        st["editions"] = [e for e in st["editions"] if e["date"] != date_iso]
+        st["last_n"] = min(e["n"] for e in today) - 1
+        print("Rebuilding edition for %s" % date_iso)
 
     edition_n = (st["last_n"] + 1) if not args.mock else (st["last_n"] + 1 or 1)
 
@@ -601,9 +836,11 @@ def main():
         content = mock_content()
     else:
         history = load_history()
+        history["days"] = [d for d in history.get("days", []) if d.get("date") != date_iso]  # a rebuild must not dedupe against itself
         res = dedupe(research(date_human, history), history)
         ed = editorial(res, date_human, history)
         content = dict(res); content.update(ed)
+        content, tlog = takes(content, date_iso)
 
     # archive entries (newest first): this new edition marked current
     entries = [{"n": edition_n, "date": date_iso, "human": date_human, "month": month_human,
@@ -630,6 +867,8 @@ def main():
     st["last_n"] = edition_n
     save_state(st)
     save_history(load_history(), date_iso, content)
+    if not args.mock:
+        save_takes_log(tlog, COST["usd"])
     print("Edition %d - %s" % (edition_n, date_human))
     return 0
 
