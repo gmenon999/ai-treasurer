@@ -4,74 +4,73 @@
    "date": "2026-10-09",
    "items": [
     {
-     "headline": "Capgemini says agentic AI is now standard in leading TMS platforms",
+     "headline": "Hackett finds record $1.94 trillion trapped in North American working capital",
      "status": "no source text",
      "reasons": "source not readable"
     },
     {
-     "headline": "Circle and Tereina embed USDC and EURC payments in SAP Pay",
+     "headline": "Swift pushes all ISO 20022 SR 2026 payments changes to November 2027",
      "status": "no source text",
      "reasons": "source not readable"
     },
     {
-     "headline": "Audit committees urged to keep quarterly evidence packs for material AI systems",
+     "headline": "COSO publishes GenAI control framework with eight capability types",
      "status": "no source text",
      "reasons": "source not readable"
     },
     {
-     "headline": "Centalion's governed AI agent on Komgo cuts issuance processing time by 55%",
+     "headline": "Fed funds rate held at 3.88% ahead of 27-28 October FOMC meeting",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Centalion and Komgo launch governed AI Treasury Agent for trade Finance instruments",
      "status": "published",
      "lens": "Controls & audit"
     },
     {
-     "headline": "2026 TMS benchmark rates leading platforms on AI, forecasting and connectivity",
-     "status": "dropped",
-     "lens": "Payments & operations",
-     "reasons": "no verdict from checker"
-    },
-    {
-     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
-     "status": "published",
-     "lens": "Cash & liquidity"
-    },
-    {
-     "headline": "Money market fund assets near $7.94 trillion as SOFR reaches 3.90%",
-     "status": "published",
-     "lens": "Cash & liquidity"
-    },
-    {
-     "headline": "RTP network clears 150 million payments worth $621 billion in Q3 2026",
+     "headline": "Bank of America builds AI analytics into CashPro for corporate treasuries",
      "status": "published",
      "lens": "Payments & operations"
     },
     {
-     "headline": "Dollar Index hits 17-month high as midterms sharpen FX focus",
+     "headline": "Kyriba wins QKS Group pioneer award for governed agentic AI in cash management",
      "status": "published",
-     "lens": "Risk"
+     "lens": "Controls & audit"
     },
     {
-     "headline": "PayPal moves $1 billion intercompany in two hours using PYUSD",
-     "status": "published",
-     "lens": "Payments & operations"
-    },
-    {
-     "headline": "HSBC tokenised deposits go live in UAE through Ant International",
+     "headline": "Money market fund assets hold near $7.94 trillion as SOFR reaches 3.90%",
      "status": "published",
      "lens": "Cash & liquidity"
     },
     {
-     "headline": "Fed range at 3.75-4% after September rise; October hold seen at 67%",
+     "headline": "US 10-year yield hits 5.31% as wider cross-currency basis lifts hedging costs",
      "status": "published",
      "lens": "Risk"
     },
     {
-     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
+     "headline": "OCBC and Ant International launch 24/7 SGD/USD tokenised deposits for cross-border Treasury",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "HSBC Tokenised Deposit Service goes live in UAE with Ant International",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC designates more Iranian shadow fleet entities and issues General License EE",
      "status": "published",
      "lens": "Regulation & compliance"
     }
    ],
-   "cost_usd": 0.31,
-   "edition_cost_usd": 0.31
+   "cost_usd": 0.2241,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.18
+   },
+   "edition_cost_usd": 0.6973
   }
  ]
 }

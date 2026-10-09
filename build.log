@@ -1,0 +1,7 @@
+/home/runner/work/ai-treasurer/ai-treasurer/generate.py:1086: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
+Rebuilding edition for 2026-10-09
+takes: 8 published of 12 items; cost $0.2241
+market view: redraft (point 1: The cited facts give only the spread level (+47 bp) and no earlier spread, so the heading 'Steeper long end' implies a change in steepness that is not supported. The 10Y figures (5.22%, +26 bp since 11 Sept) are correct.)
+market view: published; cost $0.1800
+Edition 4 - Friday, 9 October 2026
