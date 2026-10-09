@@ -184,7 +184,8 @@ GUARD = (
     "if essential. Every item needs a REAL url you actually found via search - "
     "never invent a url; if you cannot verify one, drop the item. Neutral, "
     "factual tone with concrete names, numbers and dates. Prefer the last 7 "
-    "days. No investment advice. Exclude anything negative toward Qatar, "
+    "days; for the narrower sections (sanctions and accounting standards) look back up to 30 days and always return at least one item with its date in the summary. "
+    "No investment advice. Exclude anything negative toward Qatar, "
     "QatarEnergy or Woqod."
 )
 
@@ -285,8 +286,8 @@ def dedupe(res, history):
                     fallback.append((it, urls, h))
                 continue
             kept.append(it); today_urls |= urls; today_heads.append(h)
-        if not kept and k not in OPTIONAL_BEATS and fallback:
-            it, urls, h = fallback[0]  # never leave a required beat empty: reuse a past story, never a same-day duplicate
+        if not kept and fallback:
+            it, urls, h = fallback[0]  # never leave a section empty: reuse a recent story, never a same-day duplicate
             kept = [it]; today_urls |= urls; today_heads.append(h); dropped.remove(h)
         res["beats"][k] = kept
     if dropped:
