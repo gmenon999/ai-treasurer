@@ -295,6 +295,39 @@ def dedupe(res, history):
     return res
 
 
+def fill_empty(res, date_human, history):
+    """No section is ever published empty: for any beat left with no items, run a focused search with a longer
+    look-back (60 days, then 180), accept the freshest verified item, and say the date in the summary."""
+    spec = {k: (t, d) for k, t, d in BEATS}
+    for k in BEAT_KEYS:
+        if res["beats"].get(k):
+            continue
+        t, d = spec[k]
+        got = []
+        for days in (60, 180):
+            prompt = (
+                "You are the research desk for The AI Treasurer. Today is %s. Search the web for the most recent "
+                "material developments, up to the last %d days, for this section of a briefing for CFOs and corporate "
+                "treasurers: %s - %s.\nReturn STRICT JSON only: {\"items\": [{\"headline\": \"...\", \"summary\": \"...\", "
+                "\"sources\": [{\"name\": \"Publication\", \"url\": \"https://...\"}]}]} with 1-2 items, newest first. "
+                "summary = 30-45 words, original wording, and it must state the date of the development (for example "
+                "'On 17 June ...'). Never return an empty list: choose the most relevant development you can verify. %s"
+                % (date_human, days, t, d, GUARD))
+            try:
+                data = _json(_ask(prompt, RESEARCH_MODEL, search=True), "fill %s" % k)
+            except Exception as e:
+                print("fill_empty: %s attempt failed (%s)" % (k, e))
+                continue
+            got = [it for it in (data.get("items") or []) if it.get("headline") and it.get("summary") and it.get("sources")]
+            if got:
+                break
+        if not got:
+            raise ValueError("research: section '%s' is empty even after a 180-day search; not publishing an empty section" % k)
+        res["beats"][k] = got[:2]
+        print("fill_empty: filled '%s' with %d item(s)" % (k, len(res["beats"][k])))
+    return res
+
+
 STYLE = (
     "HOUSE STYLE (The AI Treasurer, written for CFOs and group treasurers):\n"
     "- Write like a senior Treasury practitioner briefing a CFO: confident, precise, plain English. "
@@ -1134,7 +1167,7 @@ def main():
     else:
         history = load_history()
         history["days"] = [d for d in history.get("days", []) if d.get("date") != date_iso]  # a rebuild must not dedupe against itself
-        res = dedupe(research(date_human, history), history)
+        res = fill_empty(dedupe(research(date_human, history), history), date_human, history)
         ed = editorial(res, date_human, history)
         content = dict(res); content.update(ed)
         content, tlog = takes(content, date_iso)
