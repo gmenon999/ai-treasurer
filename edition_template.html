@@ -190,6 +190,8 @@
   #mx .seg button { font: 600 13px var(--sans); color: var(--on-dark); background: transparent; border: 0; padding: 8px 16px; cursor: pointer; }
   #mx .seg button[aria-pressed="true"] { background: var(--gold); color: var(--navy-deep); }
   #mx .seg button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+  #mx .segs { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-bottom: 12px; }
+  #mx .segs .seg { margin-bottom: 0; }
   #mx .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
   #mx .cd { background: rgba(255,255,255,0.045); border-top: 2px solid var(--gold); padding: 14px 16px 16px; }
   #mx .cd h5 { margin: 0 0 6px; font: 700 12px var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
@@ -1871,7 +1873,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     function d(s){ var a = s.split('-'); return +a[2]+' '+MON[+a[1]-1]+' '+a[0]; }
     function link(n,u){ return u ? '<a href="'+e(u)+'" target="_blank" rel="noopener">'+e(n)+'</a>' : e(n); }
-    var dir = 'up';
+    var dir = 'up', pos = 'imp';
     function hormuz(){
       var H = D.hormuz; if (!H) return '';
       var W = 720, Ht = 300, m = {l:40, r:16, t:30, b:26}, t0 = Date.parse('2026-02-15'), t1 = Date.parse('2026-10-14'), y0 = 65, y1 = 110;
@@ -1899,12 +1901,15 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
         +'<p class="cap">'+e(H.note)+'</p></section>';
     }
     function crude(){
-      var cards = D.crude.map(function(c){ var u = dir === 'up';
-        return '<div class="cd"><h5>'+e(c.channel)+'</h5><p>'+e(u ? c.up_what : c.down_what)+'</p><span class="pill" data-tone="'+e(u ? c.up_tone : c.down_tone)+'">'+e(u ? c.up_effect : c.down_effect)+'</span>'
-          +'<div class="vw"><b>AI Treasurer view</b><p>'+e(u ? c.up_view : c.down_view)+'</p></div></div>'; }).join('');
-      return '<section class="mxs" aria-labelledby="cr-h"><h4 id="cr-h">Crude oil and Treasury decisions</h4><p class="mxh">Crude oil changes five Treasury decisions, in opposite directions</p>'
-        +'<p class="mxsub">Pick a direction. Each card shows what a move in crude tends to change and the AI Treasurer view on what to check. General patterns, not a price forecast.</p>'
-        +'<div class="seg" id="cr-seg" role="group" aria-label="Direction of crude oil"><button type="button" data-d="up" aria-pressed="'+(dir==='up')+'">Crude rises</button><button type="button" data-d="down" aria-pressed="'+(dir==='down')+'">Crude falls</button></div>'
+      var P = D.positions || {}, pk = pos === 'exp' ? 'exporter' : 'importer';
+      var cards = D.crude.map(function(c){ var u = dir === 'up', s = (pos === 'exp' && c.exporter) ? c.exporter : c;
+        return '<div class="cd"><h5>'+e(c.channel)+'</h5><p>'+e(u ? s.up_what : s.down_what)+'</p><span class="pill" data-tone="'+e(u ? s.up_tone : s.down_tone)+'">'+e(u ? s.up_effect : s.down_effect)+'</span>'
+          +'<div class="vw"><b>AI Treasurer view</b><p>'+e(u ? s.up_view : s.down_view)+'</p></div></div>'; }).join('');
+      return '<section class="mxs" aria-labelledby="cr-h"><h4 id="cr-h">Crude oil and Treasury decisions</h4><p class="mxh">Crude oil changes five Treasury decisions, and importers and exporters feel it in opposite ways</p>'
+        +'<p class="mxsub">Pick a direction and your position. Each card shows what a move in crude tends to change and the AI Treasurer view on what to check. General patterns, not a price forecast.</p>'
+        +'<div class="segs"><div class="seg" id="cr-seg" role="group" aria-label="Direction of crude oil"><button type="button" data-d="up" aria-pressed="'+(dir==='up')+'">Crude rises</button><button type="button" data-d="down" aria-pressed="'+(dir==='down')+'">Crude falls</button></div>'
+        +'<div class="seg" id="cr-pos" role="group" aria-label="Your position in crude oil"><button type="button" data-p="imp" aria-pressed="'+(pos==='imp')+'">'+e((P.importer||{}).label || 'Crude importer')+'</button><button type="button" data-p="exp" aria-pressed="'+(pos==='exp')+'">'+e((P.exporter||{}).label || 'Crude exporter')+'</button></div></div>'
+        +'<p class="mxsub" id="cr-posd">'+e((P[pk]||{}).def || '')+'</p>'
         +'<div class="cards">'+cards+'</div><p class="cap">Views are opinion for discussion, not advice and not a forecast of oil prices.</p></section>';
     }
     function qatar(){
@@ -1927,6 +1932,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       var hc = document.getElementById('hz-c'), tt = document.getElementById('hz-t');
       if (hc && D.hormuz) hc.querySelectorAll('.hp').forEach(function(g){ function sh(){ var p = D.hormuz.points[+g.getAttribute('data-i')]; tt.hidden = false; tt.innerHTML = '<b>'+e(d(p.d))+'</b>: '+(p.approx?'about ':'')+'$'+(Math.round(p.v*100)/100)+' - '+e(p.label)+' ('+link(p.src.name,p.src.url)+')'; } g.addEventListener('mouseenter',sh); g.addEventListener('focus',sh); g.addEventListener('click',sh); });
       box.querySelectorAll('#cr-seg button').forEach(function(b){ b.addEventListener('click',function(){ dir = b.getAttribute('data-d'); var y = window.scrollY; render(); window.scrollTo(0,y); }); });
+      box.querySelectorAll('#cr-pos button').forEach(function(b){ b.addEventListener('click',function(){ pos = b.getAttribute('data-p'); var y = window.scrollY; render(); window.scrollTo(0,y); }); });
     }
     render();
   }).catch(function(){});

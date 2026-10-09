@@ -16,7 +16,17 @@
    "down_effect": "Import bill down",
    "down_tone": "ok",
    "down_action": "Review",
-   "down_view": "Do not close out hedges because of one price move; first test whether your hedged share of each exposure still fits the updated forecast."
+   "down_view": "Do not close out hedges because of one price move; first test whether your hedged share of each exposure still fits the updated forecast.",
+   "exporter": {
+    "up_what": "Your crude sales are priced in dollars, so higher prices raise your dollar revenue. If your home currency firms against the dollar, part of that gain is lost when you convert.",
+    "up_effect": "Revenue up",
+    "up_tone": "ok",
+    "up_view": "Compare expected dollar revenue with your local-currency costs, and check that hedges on future crude sales still match the volumes and dates you expect to sell.",
+    "down_what": "Your dollar revenue falls with the price, and exporter currencies tend to ease against the dollar, which softens the loss when you convert.",
+    "down_effect": "Revenue down",
+    "down_tone": "bad",
+    "down_view": "Recalculate expected dollar revenue at the lower price, and check what share of future sales is hedged, so the budget does not rely on the earlier price."
+   }
   },
   {
    "id": "rates",
@@ -33,7 +43,17 @@
    "down_effect": "Rate risk down",
    "down_tone": "ok",
    "down_action": "Hold",
-   "down_view": "Confirm that your plans to borrow at a fixed rate are unchanged; one price move does not show where central banks will set interest rates."
+   "down_view": "Confirm that your plans to borrow at a fixed rate are unchanged; one price move does not show where central banks will set interest rates.",
+   "exporter": {
+    "up_what": "Higher crude brings in more cash, so borrowing needs may fall. Higher inflation can keep central banks tighter for longer, so rates on any debt you hold stay high.",
+    "up_effect": "Borrowing need down",
+    "up_tone": "ok",
+    "up_view": "Check whether the extra cash lets you repay floating-rate debt early or borrow less, and compare the interest saved with the yield from keeping the cash on deposit.",
+    "down_what": "Lower crude brings in less cash, so borrowing needs may rise. Easing inflation can give central banks room to cut rates, but the cuts may come slowly.",
+    "down_effect": "Borrowing need up",
+    "down_tone": "watch",
+    "down_view": "Recalculate cash flow at the lower price, and test whether debt repayments are still covered if interest rates fall only slowly."
+   }
   },
   {
    "id": "wc",
@@ -50,7 +70,17 @@
    "down_effect": "Cash need down",
    "down_tone": "ok",
    "down_action": "Review",
-   "down_view": "Update the cash forecast first, then invest any cash that is freed up within the investment policy's limits on maturity and counterparty."
+   "down_view": "Update the cash forecast first, then invest any cash that is freed up within the investment policy's limits on maturity and counterparty.",
+   "exporter": {
+    "up_what": "Amounts owed to you by buyers grow with the price, so more cash is tied up until buyers pay.",
+    "up_effect": "Receivables up",
+    "up_tone": "watch",
+    "up_view": "Check the credit limit and payment terms you give each buyer, and follow up late invoices quickly, because each late invoice is now larger.",
+    "down_what": "Receivables and stock are worth less at the lower price, so less cash is released and total cash inflow falls.",
+    "down_effect": "Cash inflow down",
+    "down_tone": "bad",
+    "down_view": "Update the cash forecast at the lower price, then check that committed credit lines and cash reserves still cover fixed costs and debt payments."
+   }
   },
   {
    "id": "margin",
@@ -67,7 +97,17 @@
    "down_effect": "Margin call risk",
    "down_tone": "watch",
    "down_action": "Buffer",
-   "down_view": "Identify which hedges lose value if the price falls, and confirm that your cash buffer for margin calls and your same-day approval process can still cope."
+   "down_view": "Identify which hedges lose value if the price falls, and confirm that your cash buffer for margin calls and your same-day approval process can still cope.",
+   "exporter": {
+    "up_what": "If you hedged future crude sales, those hedges lose value when prices rise and daily margin payments may be needed, while your physical sales gain.",
+    "up_effect": "Margin call risk",
+    "up_tone": "watch",
+    "up_view": "Check that you hold enough cash to meet daily margin calls on hedges that lose value when prices rise, and who is authorised to approve a same-day transfer.",
+    "down_what": "Hedges on future sales gain value when prices fall, which offsets part of the lower revenue, and margin cash may be returned to you.",
+    "down_effect": "Hedge gain",
+    "down_tone": "ok",
+    "down_view": "Count a hedge gain in the forecast only once it is settled in cash, and check that each hedge still matches the volumes you expect to sell."
+   }
   },
   {
    "id": "credit",
@@ -84,7 +124,17 @@
    "down_effect": "Credit risk shifts",
    "down_tone": "watch",
    "down_action": "Monitor",
-   "down_view": "Rank your counterparties again, starting with energy producers, and review credit limits for those you give long payment terms."
+   "down_view": "Rank your counterparties again, starting with energy producers, and review credit limits for those you give long payment terms.",
+   "exporter": {
+    "up_what": "Buyers whose costs depend on crude, such as airlines and refiners, may come under pressure and pay late, while your own credit standing tends to improve.",
+    "up_effect": "Buyer credit risk up",
+    "up_tone": "watch",
+    "up_view": "Rank your buyers again by how much crude costs weigh on their business, and review credit limits and payment terms for those under most pressure.",
+    "down_what": "Your own credit standing weakens as revenue falls, and lenders may look harder at your accounts, while buyers that use crude gain relief.",
+    "down_effect": "Own credit risk up",
+    "down_tone": "bad",
+    "down_view": "Test the financial covenants (the financial tests in your loan agreements) against lower-price forecasts, and talk to lenders early if any covenant could be breached."
+   }
   }
  ],
  "qatar": {
@@ -410,5 +460,15 @@
  "headline": {
   "asof_text": "9 October 2026",
   "takeaway": "Funding costs are rising across dollar, euro and rupee markets while the dollar firms; the 27-28 October FOMC is the next marker."
+ },
+ "positions": {
+  "importer": {
+   "label": "Crude importer",
+   "def": "Crude importer: you buy crude oil or fuel, or your costs rise with it, such as airlines, refiners and fuel buyers."
+  },
+  "exporter": {
+   "label": "Crude exporter",
+   "def": "Crude exporter: you sell crude oil, or your revenue rises with it, such as producers and traders of crude."
+  }
  }
 }
