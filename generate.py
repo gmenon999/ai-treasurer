@@ -353,6 +353,32 @@ BANNED = [r"\btoday['\u2019]?s items\b", r"\btoday['\u2019]?s stories\b", r"\bit
           r"\bmoreover\b", r"\bfurthermore\b", r"\bin conclusion\b"]
 
 
+CLARITY = (
+    "PLAIN, PRECISE OPINIONS (applies to every view): write so a CFO who is not a Treasury specialist understands "
+    "it on one read. Name the exact action (check, list, recalculate, ask, document, compare), what it applies to "
+    "and, where it matters, when. Use everyday words; if a technical term is essential, say what it means in a few "
+    "words. Never use vague verbs or jargon such as 'stage', 'lock in', 'sweep', 'corridor', 'bring into scope', "
+    "'unwind', 'tenor', 'wind-down terms', 'size the', 'test the case'; say what is meant instead (for example "
+    "'fix the rate in instalments', 'move cash into', 'route', 'close out', 'maturity'). One action per sentence; "
+    "no metaphors and no flourishes such as 'a check, not a surprise'."
+)
+
+VIEW_VAGUE = [r"\bstag(e|es|ed|ing)\b", r"\block(s|ed|ing)? in\b", r"\bsweep(s|ing)?\b", r"\bcorridors?\b",
+              r"\bbring(s|ing)? into scope\b", r"\bunwind(s|ing)?\b", r"\btenors?\b", r"\bwind-down terms\b",
+              r"\bsize the\b", r"\btest the case\b", r"\ba check, not a surprise\b"]
+
+
+def _lint_view(texts):
+    """Opinion lines must use plain, precise words: flag vague verbs and jargon."""
+    hits = set()
+    for t in texts:
+        for pat in VIEW_VAGUE:
+            m = re.search(pat, t or "", re.I)
+            if m:
+                hits.add(m.group(0))
+    return sorted(hits)
+
+
 def _lint(texts):
     hits = set()
     for t in texts:
@@ -508,11 +534,14 @@ def _local_problems(x, it, src):
     if x.get("lens") not in LENSES:
         out.append("lens not in the list")
     words = len((x.get("focus", "") + " " + x.get("view", "")).split())
-    if not 22 <= words <= 50:
-        out.append("length %d words (target 30-40)" % words)
+    if not 30 <= words <= 70:
+        out.append("length %d words (target 40-60)" % words)
     hits = _lint([x.get("focus", ""), x.get("view", "")])
     if hits:
         out.append("banned phrases: " + ", ".join(hits))
+    vague = _lint_view([x.get("view", "")])
+    if vague:
+        out.append("view is not plain and precise: " + ", ".join(vague))
     if _shingles(x.get("focus", "") + " " + x.get("view", "")) & (_shingles(src) | _shingles(it.get("summary", ""))):
         out.append("copies wording from the source or summary")
     if difflib.SequenceMatcher(None, _norm(x.get("focus")), _norm(it.get("summary"))).ratio() > 0.6:
@@ -529,10 +558,11 @@ def _take_prompt(rows, fixes=None):
         blocks.append(blk)
     return (
         "You write 'The Treasurer's Take' for The AI Treasurer, a controls-first daily read for CFOs, controllers "
-        "and group treasurers. For each item below, write two lines (30-40 words in total):\n"
+        "and group treasurers. For each item below, write two lines (40-60 words in total):\n"
         "1. focus: the ONE point in this story that matters most to Treasury and Finance, through the single lens "
         "that fits it best. Do not restate the summary; say what follows from it. One or two sentences.\n"
-        "2. view: one sentence. A clear position or one concrete action a treasurer could take. Not hedged.\n\n"
+        "2. view: one sentence. A clear position or one concrete action a treasurer could take. Not hedged. "
+        + CLARITY + "\n\n"
         "LENSES (pick exactly one, copied exactly; the story decides, never force a lens):\n%s\n\n"
         "RULES: use ONLY facts in the SOURCE TEXT; add no figures, names or dates that are not there. Original "
         "wording, no quotes. Brand voice ('we'), no personal name. Not investment or professional advice; no "
@@ -553,7 +583,8 @@ def _check_prompt(rows, drafts):
         "1. Every fact, figure, name and date in the take is supported by the source. Nothing invented or overstated.\n"
         "2. The lens is the one that genuinely fits the story's key point (lenses: %s). Not forced.\n"
         "3. The focus adds a point beyond the news summary rather than repeating it.\n"
-        "4. The view takes a clear position or gives a concrete action.\n"
+        "4. The view takes a clear position or gives a concrete action, in plain precise words: it says exactly what to do, with what, "
+        "and when; no vague verbs or unexplained jargon (stage, lock in, sweep, corridor, bring into scope).\n"
         "5. No investment or professional advice, no buy/sell or vendor recommendation, nothing negative toward "
         "Qatar, QatarEnergy or Woqod, no hype.\n"
         "Return STRICT JSON only: {\"checks\": [{\"n\": 1, \"pass\": true, \"reasons\": \"\"}]} with a short, "
@@ -759,6 +790,9 @@ def _mv_local(points, facts):
         hits = _lint([p.get("head", ""), p.get("text", ""), p.get("view", "")])
         if hits:
             out.append("point %d banned phrases: %s" % (i, ", ".join(hits)))
+        vague = _lint_view([p.get("view", "")])
+        if vague:
+            out.append("point %d AI Treasurer view is not plain and precise: %s" % (i, ", ".join(vague)))
         vw = len((p.get("view") or "").split())
         if not 10 <= vw <= 40:
             out.append("point %d AI Treasurer view is %d words (target 14-32)" % (i, vw))
@@ -782,7 +816,7 @@ def _mv_prompt(facts, date_human, fixes=None):
         "must appear in a cited fact; do not calculate new numbers).\n"
         "Also give each point an AI Treasurer view: view = ONE sentence, 14-32 words, the Treasury question or step "
         "to consider in response, framed as something to check or consider, never as an instruction to trade or buy "
-        "a product; any figure in it must appear in a cited fact; area = 2-4 words naming the Treasury area "
+        "a product; any figure in it must appear in a cited fact; " + CLARITY + " area = 2-4 words naming the Treasury area "
         "(e.g. 'Term borrowing'); effect = 2-3 words, the effect on a corporate Treasury (e.g. 'Cost up', "
         "'Yield up', 'Hedge cost up', 'Event risk'); tone = bad, good or watch.\n"
         "Order: most material first. Cover different ground: policy rates, short-term/money-market rates, the "
@@ -810,6 +844,8 @@ def _mv_check(points, facts):
         "recommendation, no hype, nothing negative toward Qatar, QatarEnergy or Woqod.\n4. The AI TREASURER VIEW is a "
         "consideration or check that follows from the point, not an instruction to trade, hedge with a named product "
         "or place money; it is not investment advice and adds no unsupported figure.\n"
+        "5. The AI TREASURER VIEW is plain and precise: it says exactly what to do, with what, and when, in everyday words, "
+        "with no vague verbs or unexplained jargon (stage, lock in, sweep, corridor, bring into scope, tenor).\n"
         "Return STRICT JSON only: {\"checks\": [{\"n\": 1, \"pass\": true, \"reasons\": \"\"}]} with a short, "
         "specific reason for every fail.\n\n%s" % "\n\n".join(blocks))
     data = _json(_ask(prompt, CHECK_MODEL, max_tokens=3000, search=False), "market view check")
