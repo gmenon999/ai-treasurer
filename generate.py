@@ -621,6 +621,241 @@ def save_takes_log(log, edition_cost):
     json.dump(data, open(TAKES_LOG, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
+# ---------------------------------------------------------------- Market view (5 points under the Markets heading)
+# Five short points of commentary, written ONLY from the official figures in data/markets.json (with 4-week
+# changes from data/market_history.json) and the day's Markets & Risk news items. Every point cites its sources.
+# Local number check + independent model check; one redraft; if it still fails the block is simply left out.
+MARKETS_JSON = os.path.join(HERE, "data", "markets.json")
+MARKET_HISTORY = os.path.join(HERE, "data", "market_history.json")
+MV_ON = (os.environ.get("BRIEF_MARKET_VIEW") or "on").strip().lower() not in ("off", "false", "0", "no")
+MV_START, MV_END = "<!--MV-START-->", "<!--MV-END-->"
+
+
+def _fmt_bp(x):
+    return ("%+d bp" % round(x)) if x is not None else "n/a"
+
+
+def market_facts(content):
+    """Numbered fact list for the model: {ref: {"text": ..., "name": source name, "url": source url}}."""
+    facts = {}
+    try:
+        mk = json.load(open(MARKETS_JSON, encoding="utf-8"))
+    except Exception:
+        mk = {}
+    try:
+        hist = json.load(open(MARKET_HISTORY, encoding="utf-8")).get("series", {})
+    except Exception:
+        hist = {}
+    for r in mk.get("policy") or []:
+        if r.get("stale") or not r.get("id"):
+            continue
+        move = ""
+        if r.get("change_bp") is not None and r.get("since"):
+            move = "; last move %s, effective %s" % (_fmt_bp(r["change_bp"]), r["since"])
+        facts["p_" + r["id"]] = {"text": "%s %s: %s%s (as of %s)" % (r.get("bank"), r.get("label"), r.get("value"), move, r.get("asof")),
+                                 "name": r.get("source_name"), "url": r.get("source_url")}
+    for g in ("money", "fx"):
+        for r in mk.get(g) or []:
+            if r.get("stale") or not r.get("id"):
+                continue
+            if g == "money":
+                chg = "day change %s" % _fmt_bp(r.get("change_bp")) if r.get("change_bp") is not None else ""
+            else:
+                chg = "day change %+.2f%%" % r["change_pct"] if r.get("change_pct") is not None else ""
+            four = ""
+            pts = (hist.get(r["id"]) or {}).get("points") or []
+            if len(pts) >= 5:
+                now_v, then_d, then_v = pts[-1][1], pts[-5][0], pts[-5][1]
+                if g == "money":
+                    four = "; change since %s: %s" % (then_d, _fmt_bp((now_v - then_v) * 100))
+                elif then_v:
+                    four = "; change since %s: %+.1f%%" % (then_d, (now_v / then_v - 1) * 100)
+            facts[r["id"]] = {"text": "%s: %s (%s, as of %s%s)" % (r.get("name"), r.get("value"), chg, r.get("asof"), four),
+                              "name": r.get("source_name"), "url": r.get("source_url")}
+    m = {r.get("id"): r for r in mk.get("money") or [] if not r.get("stale")}
+    try:
+        if "ust10y" in m and "ust2y" in m:
+            sp = (float(m["ust10y"]["value"].rstrip("%")) - float(m["ust2y"]["value"].rstrip("%"))) * 100
+            facts["curve"] = {"text": "US Treasury 10Y minus 2Y spread: %+d bp (as of %s)" % (round(sp), m["ust10y"].get("asof")),
+                              "name": m["ust10y"].get("source_name"), "url": m["ust10y"].get("source_url")}
+    except (ValueError, AttributeError):
+        pass
+    n = 0
+    for k in ("markets_macro", "risk", "digital"):
+        for it in (content.get("beats") or {}).get(k) or []:
+            src = (it.get("sources") or [{}])[0]
+            if not src.get("url"):
+                continue
+            n += 1
+            facts["n%d" % n] = {"text": "NEWS: %s. %s" % (it.get("headline"), it.get("summary")),
+                                "name": src.get("name"), "url": src.get("url")}
+    return facts
+
+
+_MONTHS = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*"
+
+
+def _nums(t):
+    """Figures in a text, ignoring dates (8 October, October 8, 2026-10-08) and tenors (10-year, 3M, 2Y)."""
+    t = (t or "").replace(",", "")
+    t = re.sub(r"\d{4}-\d{2}-\d{2}", " ", t)
+    t = re.sub(r"\b\d{1,2}(?:st|nd|rd|th)?\s+" + _MONTHS, " ", t)
+    t = re.sub(_MONTHS + r"\s+\d{1,2}\b", " ", t)
+    t = re.sub(r"\b\d+(?:-|\s)(?:year|month|week|day)s?\b|\b\d+[YM]\b", " ", t, flags=re.I)
+    return set(re.findall(r"\d+(?:\.\d+)?", t))
+
+
+def _mv_local(points, facts):
+    out = []
+    if len(points) != 5:
+        return ["need exactly 5 points (got %d)" % len(points)]
+    for i, p in enumerate(points, 1):
+        refs = [r for r in p.get("refs") or [] if r in facts]
+        if not refs:
+            out.append("point %d cites no valid fact id" % i)
+            continue
+        w = len((p.get("text") or "").split())
+        if not 14 <= w <= 45:
+            out.append("point %d is %d words (target 20-35)" % (i, w))
+        cited = " ".join(facts[r]["text"] for r in refs).replace("+", " ").replace("-", " ")
+        extra = sorted(x for x in _nums(p.get("head", "") + " " + p.get("text", "")) - _nums(cited)
+                       if x not in ("2026", "2027"))
+        if extra:
+            out.append("point %d uses figures not in its cited facts: %s" % (i, ", ".join(extra)))
+        hits = _lint([p.get("head", ""), p.get("text", "")])
+        if hits:
+            out.append("point %d banned phrases: %s" % (i, ", ".join(hits)))
+    return out
+
+
+def _mv_prompt(facts, date_human, fixes=None):
+    lst = "\n".join("[%s] %s" % (k, v["text"]) for k, v in facts.items())
+    p = (
+        "You write the Market view for The AI Treasurer, a controls-first daily read for CFOs and corporate "
+        "treasurers. Today is %s. Write EXACTLY 5 points of commentary on rates, money markets and FX for a "
+        "corporate Treasury and Finance team, using ONLY the facts below.\n\n"
+        "Each point: head = 2-5 word label (e.g. 'Curve shape', 'Dollar funding', 'Rupee pressure'); text = 1-2 "
+        "sentences, 20-35 words: the move with its figure and date basis, then what it means for funding, "
+        "investing surplus cash, FX exposure or hedging. refs = the fact ids you used (every figure you write "
+        "must appear in a cited fact; do not calculate new numbers).\n"
+        "Order: most material first. Cover different ground: policy rates, short-term/money-market rates, the "
+        "yield curve, FX, and (if a news fact supports it) the outlook. No two points on the same series.\n"
+        "RULES: commentary, not a forecast; no buy/sell, hedging-product or trade recommendations; not investment "
+        "advice. Neutral and factual about every central bank; nothing negative toward Qatar, QatarEnergy or "
+        "Woqod (the QCB and the riyal peg may be mentioned factually). Brand voice, no personal name.\n\n%s\n\n"
+        "Return STRICT JSON only: {\"points\": [{\"head\": \"...\", \"text\": \"...\", \"refs\": [\"ust10y\"]}]}\n\n"
+        "FACTS:\n%s" % (date_human, STYLE, lst))
+    if fixes:
+        p += "\n\nYOUR PREVIOUS DRAFT FAILED THE CHECK: %s. Fix every point." % fixes
+    return p
+
+
+def _mv_check(points, facts):
+    blocks = []
+    for i, x in enumerate(points, 1):
+        cited = "\n".join("  [%s] %s" % (r, facts[r]["text"]) for r in x.get("refs") or [] if r in facts)
+        blocks.append("### POINT %d\n%s: %s\nCITED FACTS:\n%s" % (i, x.get("head"), x.get("text"), cited))
+    prompt = (
+        "You are the independent checker for The AI Treasurer. You did not write these points. Fail a point if ANY "
+        "test fails:\n1. Every figure, date, name and direction (up/down, hike/cut) matches its CITED FACTS exactly. "
+        "Nothing invented, overstated or miscalculated.\n2. The implication drawn is reasonable for a corporate "
+        "treasurer and does not present a forecast as fact.\n3. No investment advice, no buy/sell or product "
+        "recommendation, no hype, nothing negative toward Qatar, QatarEnergy or Woqod.\n"
+        "Return STRICT JSON only: {\"checks\": [{\"n\": 1, \"pass\": true, \"reasons\": \"\"}]} with a short, "
+        "specific reason for every fail.\n\n%s" % "\n\n".join(blocks))
+    data = _json(_ask(prompt, CHECK_MODEL, max_tokens=3000, search=False), "market view check")
+    fails = []
+    got = {}
+    for c in data.get("checks") or []:
+        try:
+            got[int(c.get("n"))] = c
+        except (TypeError, ValueError):
+            pass
+    for i in range(1, len(points) + 1):
+        c = got.get(i)
+        if not c or c.get("pass") is not True:
+            fails.append("point %d: %s" % (i, (c or {}).get("reasons") or "no verdict"))
+    return fails
+
+
+def market_view(content, date_human):
+    """Returns {"points": [...], "log": {...}}; points is [] when switched off or when the check fails."""
+    log = {"status": "off", "reasons": ""}
+    if not MV_ON:
+        return {"points": [], "log": log}
+    start = COST["usd"]
+    try:
+        facts = market_facts(content)
+        if len(facts) < 8:
+            raise ValueError("too few market facts (%d)" % len(facts))
+        fixes, points = None, []
+        for attempt in range(2):
+            data = _json(_ask(_mv_prompt(facts, date_human, fixes), EDITORIAL_MODEL, max_tokens=4000, search=False), "market view")
+            points = [{"head": _cap_treasury((x.get("head") or "").strip().rstrip(".:")),
+                       "text": _cap_treasury((x.get("text") or "").strip()),
+                       "refs": [r for r in (x.get("refs") or []) if r in facts]} for x in data.get("points") or []]
+            problems = _mv_local(points, facts)
+            if not problems:
+                problems = _mv_check(points, facts)
+            if not problems:
+                break
+            print("market view: %s (%s)" % ("redraft" if attempt == 0 else "dropped", "; ".join(problems)[:400]))
+            fixes = "; ".join(problems)
+        if problems:
+            log = {"status": "dropped", "reasons": "; ".join(problems)[:400]}
+            points = []
+        else:
+            for p in points:
+                p["sources"] = []
+                for r in p["refs"]:
+                    s = {"name": facts[r]["name"], "url": facts[r]["url"]}
+                    if s["url"] and s not in p["sources"]:
+                        p["sources"].append(s)
+            log = {"status": "published", "reasons": ""}
+    except Exception as e:
+        print("market view: stopped (%s); Markets publishes without commentary" % e)
+        log, points = {"status": "error", "reasons": str(e)[:300]}, []
+    log["cost_usd"] = round(COST["usd"] - start, 4)
+    print("market view: %s; cost $%.4f" % (log["status"], log["cost_usd"]))
+    return {"points": points, "log": log}
+
+
+def market_view_html(points, date_human):
+    if not points:
+        return MV_START + MV_END
+    lis = []
+    for p in points:
+        src = _sources_html(p.get("sources") or [], prefix="Source: ")
+        lis.append('<li><p><b>%s.</b> %s</p>%s</li>' % (esc(p["head"]), esc(p["text"]),
+                   ('<span class="mv-src">%s</span>' % src) if src else ""))
+    return (MV_START + '<section class="mv" aria-labelledby="mv-h"><h4 id="mv-h">Market view<small>Five points for '
+            'Treasury, %s</small></h4><ol>%s</ol><p class="mv-note">Commentary on the official figures below, as '
+            'published on the dates shown. Not a forecast and not investment advice.</p></section>' % (esc(date_human), "".join(lis))
+            + MV_END)
+
+
+def market_view_only(date_human, date_iso):
+    """Write today's Market view into the published edition without re-running the news."""
+    page = open(INDEX, encoding="utf-8").read()
+    if MV_START not in page:
+        print("market view: today's page has no Market view slot (built from an older template); run with --force")
+        return 1
+    content = {"beats": {k: [] for k in BEAT_KEYS}}
+    for m in ITEM_RE.finditer(page):
+        k = m.group(2)
+        if k in content["beats"]:
+            srcs = [{"name": html.unescape(re.sub(r"<[^>]+>", "", n)), "url": html.unescape(u)}
+                    for u, n in re.findall(r'<a href="([^"]+)"[^>]*>(.*?)</a>', m.group(8))]
+            content["beats"][k].append({"headline": html.unescape(m.group(4)), "summary": html.unescape(m.group(5)), "sources": srcs})
+    mv = market_view(content, date_human)
+    page = re.sub(re.escape(MV_START) + ".*?" + re.escape(MV_END), lambda _: market_view_html(mv["points"], date_human), page, flags=re.S)
+    open(INDEX, "w", encoding="utf-8").write(page)
+    arch = os.path.join(EDITIONS_DIR, "%s.html" % date_iso)
+    if os.path.exists(arch):
+        shutil.copyfile(INDEX, arch)
+    return 0
+
+
 def _note_problems(data, recent):
     """McKinsey-standard gate for the note: answer-first, tight, and not a rerun of recent notes."""
     out = []
@@ -744,6 +979,8 @@ def render(content, date_human, edition_n, archive_entries):
         evs.append('<div class="event"><div class="when">%s<small>%s</small></div><div><h4>%s</h4><p>%s</p>%s</div></div>'
                    % (esc(e.get("when")), esc(e.get("place")), esc(e.get("title")), esc(e.get("blurb")), cite))
     s = s.replace("<!--EVENTS-->", "\n      ".join(evs))
+    # market view
+    s = s.replace("<!--MARKET_VIEW-->", market_view_html(content.get("market_view") or [], date_human))
     # archive
     s = s.replace("<!--ARCHIVE-->", _archive_html(archive_entries))
     return s
@@ -797,6 +1034,7 @@ def mock_content():
         "dashboard": [{"value": "4.5-4.75%", "label": "10Y UST range", "src": "Outlook, 2026"}] * 6,
         "events": [{"when": "Soon", "place": "City - upcoming", "title": "A treasury event", "blurb": "Short blurb.", "source": {"name": "Example", "url": "https://example.com"}}],
         "note_headline": "Sample insight headline for the mock edition, eight words long",
+        "market_view": [{"head": "Curve shape", "text": "Sample point of market commentary, about thirty words, with a figure and what it means for funding, surplus cash or hedging so the layout can be checked end to end.", "sources": [{"name": "US Treasury", "url": "https://home.treasury.gov/"}]}] * 5,
         "editor_note": ["First paragraph of the editor note for layout testing.", "Second paragraph tying it to controls and the audit trail."],
         "lead_stories": [
             {"topic": "Agentic Treasury Controls", "headline": "Lead one", "blurb": "Blurb.", "tab": "ai"},
@@ -841,6 +1079,7 @@ def main():
     ap.add_argument("--mock", action="store_true", help="render with canned content (no API)")
     ap.add_argument("--out", default=INDEX, help="output path for the latest edition")
     ap.add_argument("--force", action="store_true", help="rebuild today's edition even if it already exists")
+    ap.add_argument("--market-view-only", action="store_true", help="refresh the Market view on today's published edition; news unchanged")
     ap.add_argument("--takes-only", action="store_true", help="add takes to today's published edition; news unchanged")
     args = ap.parse_args()
 
@@ -851,6 +1090,8 @@ def main():
 
     if args.takes_only:
         return takes_only(date_iso)
+    if args.market_view_only:
+        return market_view_only(date_human, date_iso)
 
     st = load_state()
     # self-heal: if today's edition already built, exit quietly (lets retry crons no-op)
@@ -875,6 +1116,9 @@ def main():
         ed = editorial(res, date_human, history)
         content = dict(res); content.update(ed)
         content, tlog = takes(content, date_iso)
+        mv = market_view(content, date_human)
+        content["market_view"] = mv["points"]
+        tlog["market_view"] = mv["log"]
 
     # archive entries (newest first): this new edition marked current
     entries = [{"n": edition_n, "date": date_iso, "human": date_human, "month": month_human,

@@ -16,6 +16,16 @@ and control in corporate Treasury, by Gopakumar Menon, CA, CPA, CTP.
 - `welcome.html` — retired earlier homepage; redirects to `/`.
 - `netlify.toml` — Netlify publishes the repo root as-is (no build step).
 
+## Market view
+Five short points of commentary sit directly under the Markets heading. `generate.py`
+writes them each morning from the official figures in `data/markets.json` (with
+four-week changes from `data/market_history.json`) and the day's Markets & Risk
+news. Every point cites its sources; any figure not in a cited fact fails a local
+check, then an independent model checks the rest. One redraft; if it still fails,
+the block is left out and Markets publishes as normal. Switch off with the
+repository variable `BRIEF_MARKET_VIEW=off`. Result and cost are logged in
+`editions/takes-log.json`.
+
 ## Publishing
 Netlify is linked to this repo's `main` branch and republishes on every push,
 so pushing is publishing. A new briefing edition is added each day and committed

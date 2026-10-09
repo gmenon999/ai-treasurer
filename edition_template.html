@@ -152,6 +152,18 @@
   .numbers-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
   .numbers-head h3 { font-family: var(--serif); font-size: 28px; margin: 6px 0 0; font-weight: 700; }
   .numbers .disclaim { font-size: 12px; color: var(--on-dark-soft); margin: 0; max-width: 52ch; }
+  /* ---- Market view: five points under the Markets heading ---- */
+  .mv { margin: 0 0 28px; border-top: 3px solid var(--gold); padding-top: 16px; }
+  .mv h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin: 0 0 14px; }
+  .mv h4 small { display: block; margin-top: 4px; font-size: 12px; letter-spacing: 0; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .mv ol { list-style: none; counter-reset: mv; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px 32px; }
+  .mv li { counter-increment: mv; position: relative; padding: 2px 0 12px 38px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .mv li::before { content: counter(mv); position: absolute; left: 0; top: -2px; font-family: var(--serif); font-size: 26px; line-height: 1; font-weight: 700; color: var(--gold-light); }
+  .mv li p { margin: 0; font-size: 15px; line-height: 1.55; }
+  .mv li b { color: var(--white); }
+  .mv .mv-src { display: block; margin-top: 6px; font-size: 12px; color: var(--on-dark-soft); }
+  .mv .mv-src a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .mv .mv-note { margin: 12px 0 0; font-size: 12px; color: var(--on-dark-soft); }
   .grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.18); }
   .grid .cell { padding: 24px 20px 6px; border-right: 1px solid rgba(255,255,255,0.12); }
   .grid .cell:first-child { padding-left: 0; }
@@ -939,6 +951,8 @@
           </div>
           <p class="disclaim">Policy rates, benchmark rates and FX reference rates from official sources, refreshed through the day. Each figure links to its source and shows its date. Not live market data and not investment advice.</p>
         </div>
+
+        <!--MARKET_VIEW-->
 
         <div class="live" aria-label="Live market prices from TradingView">
           <div class="live-tag"><div><i aria-hidden="true"></i>Live</div><span>Indices, commodities, crypto</span></div>
