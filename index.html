@@ -164,6 +164,22 @@
   .mv .mv-src { display: block; margin-top: 6px; font-size: 12px; color: var(--on-dark-soft); }
   .mv .mv-src a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
   .mv .mv-note { margin: 12px 0 0; font-size: 12px; color: var(--on-dark-soft); }
+  /* Markets landing: headline, key figures strip, tighter header on phones */
+  .mv .mv-head { margin: 0 0 14px; font-family: var(--serif); font-size: clamp(22px, 3.2vw, 32px); line-height: 1.22; color: var(--white); font-weight: 700; max-width: 40ch; }
+  .mv .mv-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 0 0 24px; }
+  .mv .kpi { background: rgba(255,255,255,0.045); border-top: 2px solid var(--gold); padding: 10px 12px 8px; min-width: 0; }
+  .mv .kpi span { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); }
+  .mv .kpi b { display: block; font: 700 22px/1.2 var(--serif); color: var(--white); font-variant-numeric: tabular-nums; }
+  .mv .kpi i { display: block; font-style: normal; font-size: 12px; color: var(--gold-light); font-variant-numeric: tabular-nums; }
+  .mv .kpi svg { display: block; width: 100%; height: 22px; margin-top: 4px; overflow: visible; }
+  .mv .mv-vh b { order: 1; } .mv .mv-vh .mv-eff { order: 2; margin-left: auto; } .mv .mv-vh > span:not(.mv-eff) { order: 3; flex-basis: 100%; letter-spacing: 0.08em; }
+  @media (max-width: 640px) {
+    .numbers { padding: 28px 0 28px; }
+    .numbers-head { margin-bottom: 14px; }
+    .numbers-head h3 { font-size: 26px; line-height: 1.15; }
+    .numbers .bg { height: 240px; opacity: 0.35; }
+    .mv .kpi b { font-size: 20px; }
+  }
   /* Markets: crude oil decision map, Qatar money markets and equities (data/markets_extra.json) */
   #mx .mxs { margin: 0 0 52px; border-top: 3px solid var(--gold); padding-top: 16px; }
   #mx h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin: 0 0 4px; }
@@ -1848,7 +1864,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
         else if (H){ o.ids.forEach(function(id){ var S = H.series[id]; if (!S) return; var pts = S.points.slice(-o.weeks).map(function(p){ return [T(p[0]), +p[1]]; }); dp = S.dp; if (o.k === 'fx'){ var b = pts[0][1]; pts = pts.map(function(p){ return [p[0], p[1]/b*100]; }); series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(1); }}); } else { series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(2)+'%'; }}); } }); }
       } catch(e){ return; }
       if (!series.length || series.some(function(s){ return s.pts.length < 2; })) return;
-      o.series = series; var box = document.createElement('div'); box.className = 'mv-chart'; li.insertBefore(box, li.querySelector('.mv-src')); draw(box, o);
+      o.series = series; var box = document.createElement('div'); box.className = 'mv-chart'; li.insertBefore(box, li.querySelector('.mv-view') || li.querySelector('.mv-src')); draw(box, o);
     });
   });
 })();
@@ -1922,6 +1938,27 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     }
     render();
   }).catch(function(){});
+})();
+</script>
+<script>
+/* Markets landing: headline and key figures strip above the five points. */
+(function(){
+  var mv = document.querySelector('.mv'); if (!mv) return;
+  function J(u){ return fetch(u,{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
+  Promise.all([J('/data/market_history.json'), J('/data/policy_history.json'), J('/data/markets_extra.json')]).then(function(r){
+    var H = r[0], P = r[1], X = r[2], h4 = mv.querySelector('h4'); if (!h4) return;
+    var anchor = h4, when = (mv.querySelector('h4 small')||{}).textContent || '';
+    if (X && X.headline && when.indexOf(X.headline.asof_text) > -1){ var hl = document.createElement('p'); hl.className = 'mv-head'; hl.textContent = X.headline.takeaway; h4.parentNode.insertBefore(hl, mv.querySelector('ol')); anchor = hl; }
+    if (!H) return;
+    var defs = [['ust10y','US 10-year','y'],['sofr','SOFR','y'],['estr','€STR','y'],['eurusd','EUR/USD','f'],['usdinr','USD/INR','f']], html = '';
+    defs.forEach(function(df){ var S = H.series[df[0]]; if (!S || S.points.length < 6) return; var pts = S.points.slice(-26), a = S.points[S.points.length-1], b = S.points[S.points.length-5], v = +a[1], ch;
+      if (df[2]==='y') ch = (v-b[1] >= 0 ? '+' : '-') + Math.abs(Math.round((v-b[1])*100)) + ' bp in 4 weeks'; else ch = ((v/b[1]-1)*100 >= 0 ? '+' : '-') + Math.abs((v/b[1]-1)*100).toFixed(1) + '% in 4 weeks';
+      var lo = Math.min.apply(null,pts.map(function(p){return p[1];})), hi = Math.max.apply(null,pts.map(function(p){return p[1];})), n = pts.length;
+      var d = pts.map(function(p,i){ return (i?'L':'M')+(2+i*(116/(n-1)))+','+(20-(p[1]-lo)/((hi-lo)||1)*17); }).join('');
+      html += '<div class="kpi"><span>'+df[1]+'</span><b>'+(df[2]==='y' ? v.toFixed(2)+'%' : v.toFixed(S.dp||4))+'</b><i>'+ch+'</i><svg viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'" fill="none" stroke="#D9B867" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg></div>'; });
+    if (P && P.series.fed){ var fp = P.series.fed.points, fl = fp[fp.length-1]; html = '<div class="kpi"><span>Fed funds range</span><b>'+(+fl[2]).toFixed(2)+'-'+(+fl[1]).toFixed(2)+'%</b><i>upper bound, as at '+P.series.fed.asof+'</i></div>' + html; }
+    if (!html) return; var k = document.createElement('div'); k.className = 'mv-kpis'; k.setAttribute('aria-label','Key figures'); k.innerHTML = html; anchor.parentNode.insertBefore(k, mv.querySelector('ol'));
+  });
 })();
 </script>
 </body>
