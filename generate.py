@@ -406,6 +406,69 @@ def editorial(res, date_human, history=None):
     return data
 
 
+TAKE_FIELDS = [("core_issue", "Core issue"), ("implication", "Implication for Finance &amp; Treasury"),
+               ("controls", "Controls &amp; regulation"), ("view", "Our view")]
+
+
+def takes(content):
+    """The Treasurer's Take: a short, structured view under every item (core issue, implication,
+    controls and regulation, our view). Non-fatal: an item without a usable take shows the news only."""
+    slots, flat = [], []
+    for k, t, _ in BEATS:
+        for i, it in enumerate(content["beats"].get(k) or []):
+            slots.append((k, i))
+            src = "; ".join("%s %s" % (x.get("name", ""), x.get("url", "")) for x in it.get("sources") or [])
+            flat.append("%d. [%s] %s - %s (source: %s)" % (len(slots), t, it["headline"], it["summary"], src))
+    if not slots:
+        return content
+    base = (
+        "You write 'The Treasurer's Take' for The AI Treasurer: a short, opinionated read-out under each "
+        "news item, for CFOs and group treasurers. The angle is controls-first: Treasury is getting faster; "
+        "the controls have to keep up (control trail: Capture, Match, Flag, Approve, Post; foundations: "
+        "Govern, Access, Change, Monitor). The voice is an experienced Treasury and financial-control "
+        "practitioner (IFRS, audit, bank operations), in brand voice ('we', 'our view'), never a personal name.\n\n"
+        "For EVERY numbered item return STRICT JSON only:\n"
+        '{"takes": [ {"n": 1, "core_issue": "...", "implication": "...", "controls": "...", "view": "..."} ]}\n\n'
+        "Each take is 60-100 words in total:\n"
+        "- core_issue: 1 sentence, max 25 words: the underlying shift or problem, not the headline restated.\n"
+        "- implication: 1-2 sentences: who in Finance or Treasury is affected and how (liquidity, cost, risk, "
+        "process, systems or people).\n"
+        "- controls: 1-2 sentences: name the 1-2 control-trail steps or foundations most tested and the question "
+        "an auditor would ask; add any regulatory, reporting (IFRS/US GAAP) or compliance angle.\n"
+        "- view: 1 sentence: a clear position or one concrete action a treasurer could take. Not hedged.\n\n"
+        "RULES: use ONLY the facts in the item; add no figures, names, dates or links. Do not repeat the "
+        "summary's sentences. No quotes. Not investment or professional advice; no buy/sell or vendor "
+        "recommendations. Nothing negative toward Qatar, QatarEnergy or Woqod.\n\n"
+        "%s\n\nITEMS:\n%s" % (STYLE, "\n".join(flat))
+    )
+    prompt, got = base, {}
+    for attempt in range(2):
+        try:
+            data = _json(_ask(prompt, EDITORIAL_MODEL, max_tokens=12000, search=False), "takes")
+        except Exception as e:
+            print("takes: failed (%s); edition continues without them" % e)
+            return content
+        got = {}
+        for x in data.get("takes") or []:
+            try:
+                n = int(x.get("n"))
+            except (TypeError, ValueError):
+                continue
+            if all((x.get(f) or "").strip() for f, _ in TAKE_FIELDS):
+                got[n] = x
+        hits = _lint([" ".join(x.get(f, "") for f, _ in TAKE_FIELDS) for x in got.values()])
+        if not hits:
+            break
+        print("takes: redraft (banned phrases: %s)" % ", ".join(hits))
+        prompt = base + "\n\nYOUR PREVIOUS DRAFT USED BANNED PHRASES: %s. Rewrite without them." % ", ".join(hits)
+    for n, (k, i) in enumerate(slots, start=1):
+        x = got.get(n)
+        if x:
+            content["beats"][k][i]["take"] = {f: _cap_treasury(x[f].strip()) for f, _ in TAKE_FIELDS}
+    print("takes: %d of %d items" % (len(got), len(slots)))
+    return content
+
+
 def _note_problems(data, recent):
     """McKinsey-standard gate for the note: answer-first, tight, and not a rerun of recent notes."""
     out = []
@@ -456,8 +519,15 @@ def _sources_html(sources, prefix="Via "):
     return prefix + joined
 
 
-def _norm(h):
+def _hnorm(h):
     return re.sub(r"[^a-z0-9]+", " ", (h or "").lower()).strip()
+
+
+def _take_html(t):
+    if not t:
+        return ""
+    rows = "".join('<dt>%s</dt><dd>%s</dd>' % (lbl, esc(t.get(f))) for f, lbl in TAKE_FIELDS if t.get(f))
+    return '<div class="take"><div class="take-h">The Treasurer&rsquo;s Take</div><dl>%s</dl></div>' % rows
 
 
 def _items_html(items, beat=""):
@@ -465,8 +535,9 @@ def _items_html(items, beat=""):
         return '<p class="pillar-sub" style="margin:0;">No material developments today.</p>'
     out = []
     for i, it in enumerate(items):
-        out.append('<div class="item" id="s-%s-%d"><h4>%s</h4><p>%s</p><div class="cite">%s</div></div>'
-                   % (beat, i, esc(it["headline"]), esc(it["summary"]), _sources_html(it.get("sources", []))))
+        out.append('<div class="item" id="s-%s-%d"><h4>%s</h4><p>%s</p>%s<div class="cite">%s</div></div>'
+                   % (beat, i, esc(it["headline"]), esc(it["summary"]), _take_html(it.get("take")),
+                      _sources_html(it.get("sources", []))))
     return "\n        ".join(out)
 
 
@@ -490,12 +561,12 @@ def render(content, date_human, edition_n, archive_entries):
     where = {}
     for k in BEAT_KEYS:
         for i, it in enumerate(content["beats"].get(k) or []):
-            where.setdefault(_norm(it.get("headline")), (k, i))
+            where.setdefault(_hnorm(it.get("headline")), (k, i))
     leads = []
     for L in content["lead_stories"]:
         tab = L.get("tab", "ai")
         anchor = ""
-        hit = where.get(_norm(L.get("headline")))
+        hit = where.get(_hnorm(L.get("headline")))
         if hit:
             tab = BEAT_TAB.get(hit[0], tab)
             anchor = "s-%s-%d" % hit
@@ -563,6 +634,10 @@ def mock_content():
     def it(h, s, n, u):
         return {"headline": h, "summary": s, "sources": [{"name": n, "url": u}]}
     one = [it("Sample headline", "Sample original summary of a treasury development, about forty words long to mirror the real output of the generator so the layout can be checked end to end without calling any API.", "Example", "https://example.com/a")]
+    one[0]["take"] = {"core_issue": "Settlement is moving off bank rails into wallets the company controls.",
+                      "implication": "Days of float become hours, which changes cash forecasting, FX timing and the case for in-house banks.",
+                      "controls": "Access and Approve are tested: who holds the keys, and is a second sign-off enforced? Auditors will ask how wallet movements reconcile to the GL.",
+                      "view": "Speed is the easy part; prove the wallet controls before the second transfer."}
     beats = {k: list(one) for k in BEAT_KEYS}
     return {
         "beats": beats,
@@ -582,6 +657,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mock", action="store_true", help="render with canned content (no API)")
     ap.add_argument("--out", default=INDEX, help="output path for the latest edition")
+    ap.add_argument("--force", action="store_true", help="rebuild today's edition even if it already exists")
     args = ap.parse_args()
 
     now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
@@ -592,8 +668,14 @@ def main():
     st = load_state()
     # self-heal: if today's edition already built, exit quietly (lets retry crons no-op)
     if any(e["date"] == date_iso for e in st["editions"]) and not args.mock:
-        print("Edition for %s already exists; nothing to do." % date_iso)
-        return 0
+        if not args.force:
+            print("Edition for %s already exists; nothing to do." % date_iso)
+            return 0
+        # rebuild: drop today's entry (keeping its number) so it is replaced, not duplicated
+        today = [e for e in st["editions"] if e["date"] == date_iso]
+        st["editions"] = [e for e in st["editions"] if e["date"] != date_iso]
+        st["last_n"] = min(e["n"] for e in today) - 1
+        print("Rebuilding edition for %s" % date_iso)
 
     edition_n = (st["last_n"] + 1) if not args.mock else (st["last_n"] + 1 or 1)
 
@@ -601,9 +683,11 @@ def main():
         content = mock_content()
     else:
         history = load_history()
+        history["days"] = [d for d in history.get("days", []) if d.get("date") != date_iso]  # a rebuild must not dedupe against itself
         res = dedupe(research(date_human, history), history)
         ed = editorial(res, date_human, history)
         content = dict(res); content.update(ed)
+        content = takes(content)
 
     # archive entries (newest first): this new edition marked current
     entries = [{"n": edition_n, "date": date_iso, "human": date_human, "month": month_human,

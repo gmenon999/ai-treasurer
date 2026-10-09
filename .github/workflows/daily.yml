@@ -9,7 +9,12 @@ on:
     - cron: "0 1 * * *"
     - cron: "25 1 * * *"
     - cron: "25 2 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild today's edition even if it already exists"
+        type: boolean
+        default: false
 
 concurrency:
   group: daily-briefing
@@ -31,7 +36,8 @@ jobs:
       - name: Build today's edition
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python generate.py
+          FORCE: ${{ github.event.inputs.force }}
+        run: python generate.py ${{ github.event.inputs.force == 'true' && '--force' || '' }}
       - name: Commit and push
         run: |
           set -e
