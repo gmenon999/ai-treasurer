@@ -36,3 +36,9 @@ The briefing links to third-party publishers and summarises each item in its own
 words; it does not reproduce source articles. Figures are as reported on the
 dates shown and are not live market data. Nothing here is financial or
 professional advice.
+
+
+## Market view lock
+
+The Markets page Market view is locked as of 9 October 2026 (git tag `market-view-v1`). That covers the layout, the headline and key figures strip, the chart under each point, the AI Treasurer view panels, the crude oil decision map with the Hormuz chart, and the Qatar section.
+No design or code changes without the owner's explicit instruction. Only the daily content (the five points, their views, and the data files) is generated and refreshed. To restore the locked version: `git checkout market-view-v1 -- edition_template.html index.html`.
