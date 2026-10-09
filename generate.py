@@ -725,8 +725,9 @@ def render(content, date_human, edition_n, archive_entries):
             anchor = "s-%s-%d" % hit
         label = LEAD_TAB_LABEL.get(tab, "AI &amp; Technology")
         topic = (L.get("topic") or "").strip() or LEAD_TAB_LABEL.get(tab, "AI &amp; Technology").replace("&amp;", "&")
-        leads.append('<div class="item"><div class="topic">%s</div><h4>%s</h4><div class="cite">See <a href="#" onclick="showTab(\'%s\',\'%s\');return false;">%s &rarr;</a></div></div>'
-                     % (esc(topic), esc(L["headline"]), tab, anchor, label))
+        go = "showTab(\'%s\',\'%s\');return false;" % (tab, anchor)
+        leads.append('<div class="item"><div class="topic">%s</div><h4><a class="lead-link" href="#" onclick="%s">%s</a></h4><div class="cite">See <a href="#" onclick="%s">%s &rarr;</a></div></div>'
+                     % (esc(topic), go, esc(L["headline"]), go, label))
     s = s.replace("<!--LEAD-->", "\n      ".join(leads))
     # beats
     for k in BEAT_KEYS:
