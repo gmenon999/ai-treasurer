@@ -134,6 +134,7 @@
   .sec-head p { margin: 12px 0 0; color: var(--navy-soft); max-width: 60ch; }
   .sec-head .dateline { font-size: 14px; color: var(--navy-soft); display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
   .sec-head .dateline b { color: var(--navy); }
+  .briefing .sec-head .brief-tag { margin: 14px 0 0; max-width: 70ch; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(18px, 2.2vw, 24px); line-height: 1.3; color: var(--gold-light); }
   .sec-head .meta { display: flex; gap: 28px; }
   .sec-head .meta div { font-size: 13px; color: var(--navy-soft); line-height: 1.3; }
   .sec-head .meta b { display: block; font-family: var(--serif); font-size: 40px; line-height: 1; color: var(--navy); }
@@ -863,10 +864,10 @@
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <div class="kicker">Treasury Today &middot; Daily news</div>
-          <h2 id="brief-h">AI, Treasury &amp; Finance</h2>
+          <h2 id="brief-h">Global Treasury Pulse</h2>
+          <p class="brief-tag">Today&rsquo;s top AI, Treasury and Finance stories, from every market</p>
           <div class="dateline">
-            <span><b>Friday, 9 October 2026</b></span>
+            <span><b>Friday, 9 October 2026</b></span><span class="dl-sep" aria-hidden="true">&middot;</span><span>Daily Roundup</span>
           </div>
         </div>
       </div>
@@ -1710,7 +1711,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   });
   list.innerHTML = html;
   var d = document.querySelector('.briefing .sec-head .dateline'), out = document.querySelector('.today-date');
-  if (d && out) out.textContent = d.textContent.trim();
+  if (d && out) out.textContent = (d.querySelector('b') || d).textContent.trim();
 })();
 </script>
 <script>

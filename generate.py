@@ -987,7 +987,7 @@ def _items_html(items, beat=""):
 def render(content, date_human, edition_n, archive_entries):
     s = open(TEMPLATE, encoding="utf-8").read()
     # dateline
-    dateline = '<span><b>%s</b></span>' % esc(date_human)
+    dateline = '<span><b>%s</b></span><span class="dl-sep" aria-hidden="true">&middot;</span><span>Daily Roundup</span>' % esc(date_human)
     s = s.replace("<!--DATELINE-->", dateline)
     # editor note
     note = content["editor_note"]
