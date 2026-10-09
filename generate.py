@@ -806,17 +806,51 @@ def mock_content():
     }
 
 
+ITEM_RE = re.compile(r'(<div class="item" id="s-([a-z_]+)-(\d+)"><h4>(.*?)</h4><p>(.*?)</p>)(<div class="take">.*?</div></div>)?(<div class="cite">(.*?)</div></div>)', re.S)
+
+
+def takes_only(date_iso):
+    """Add takes to the edition already published today, without re-running the news."""
+    page = open(INDEX, encoding="utf-8").read()
+    content = {"beats": {k: [] for k in BEAT_KEYS}}
+    for m in ITEM_RE.finditer(page):
+        k = m.group(2)
+        if k not in content["beats"]:
+            continue
+        srcs = [{"name": html.unescape(re.sub(r"<[^>]+>", "", n)), "url": html.unescape(u)}
+                for u, n in re.findall(r'<a href="([^"]+)"[^>]*>(.*?)</a>', m.group(8))]
+        content["beats"][k].append({"headline": html.unescape(m.group(4)), "summary": html.unescape(m.group(5)),
+                                    "sources": srcs, "_id": "s-%s-%s" % (k, m.group(3))})
+    content, tlog = takes(content, date_iso)
+    by_id = {it["_id"]: it.get("take") for k in BEAT_KEYS for it in content["beats"][k]}
+
+    def put(m):
+        t = by_id.get("s-%s-%s" % (m.group(2), m.group(3)))
+        return m.group(1) + (_take_html(t) if t else (m.group(6) or "")) + m.group(7)
+    page = ITEM_RE.sub(put, page)
+    open(INDEX, "w", encoding="utf-8").write(page)
+    arch = os.path.join(EDITIONS_DIR, "%s.html" % date_iso)
+    if os.path.exists(arch):
+        shutil.copyfile(INDEX, arch)
+    save_takes_log(tlog, COST["usd"])
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mock", action="store_true", help="render with canned content (no API)")
     ap.add_argument("--out", default=INDEX, help="output path for the latest edition")
     ap.add_argument("--force", action="store_true", help="rebuild today's edition even if it already exists")
+    ap.add_argument("--takes-only", action="store_true", help="add takes to today's published edition; news unchanged")
     args = ap.parse_args()
 
     now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
     date_iso = now.strftime("%Y-%m-%d")
     date_human = now.strftime("%A, %-d %B %Y") if os.name != "nt" else now.strftime("%A, %d %B %Y")
     month_human = now.strftime("%B %Y")
+
+    if args.takes_only:
+        return takes_only(date_iso)
 
     st = load_state()
     # self-heal: if today's edition already built, exit quietly (lets retry crons no-op)
