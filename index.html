@@ -1956,7 +1956,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       var lo = Math.min.apply(null,pts.map(function(p){return p[1];})), hi = Math.max.apply(null,pts.map(function(p){return p[1];})), n = pts.length;
       var d = pts.map(function(p,i){ return (i?'L':'M')+(2+i*(116/(n-1)))+','+(20-(p[1]-lo)/((hi-lo)||1)*17); }).join('');
       html += '<div class="kpi"><span>'+df[1]+'</span><b>'+(df[2]==='y' ? v.toFixed(2)+'%' : v.toFixed(S.dp||4))+'</b><i>'+ch+'</i><svg viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'" fill="none" stroke="#D9B867" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg></div>'; });
-    if (P && P.series.fed){ var fp = P.series.fed.points, fl = fp[fp.length-1]; html = '<div class="kpi"><span>Fed funds range</span><b>'+(+fl[2]).toFixed(2)+'-'+(+fl[1]).toFixed(2)+'%</b><i>upper bound, as at '+P.series.fed.asof+'</i></div>' + html; }
+    if (P && P.series.fed){ var fp = P.series.fed.points, fl = fp[fp.length-1]; html = '<div class="kpi"><span>Fed funds range</span><b>'+(+fl[2]).toFixed(2)+'-'+(+fl[1]).toFixed(2)+'%</b><i>as at '+(function(a){ var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return +a[2]+' '+m[+a[1]-1]; })(P.series.fed.asof.split('-'))+'</i></div>' + html; }
     if (!html) return; var k = document.createElement('div'); k.className = 'mv-kpis'; k.setAttribute('aria-label','Key figures'); k.innerHTML = html; anchor.parentNode.insertBefore(k, mv.querySelector('ol'));
   });
 })();
