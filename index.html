@@ -197,6 +197,16 @@
   #mx .cap { font-size: 12px; color: var(--on-dark-soft); margin: 8px 0 0; }
   #mx a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
   #mx .src { font-size: 12px; color: var(--on-dark-soft); margin-top: 6px; }
+  #mx .hzk { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 8px; font-size: 12px; color: var(--on-dark-soft); }
+  #mx .hzk i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; }
+  #mx .hzc { position: relative; background: rgba(255,255,255,0.04); padding: 8px 6px 4px; }
+  #mx .hzc .hp { cursor: pointer; outline: none; } #mx .hzc .hp:hover circle, #mx .hzc .hp:focus circle { stroke: #fff; stroke-width: 2.5; }
+  #mx .hzt { position: absolute; left: 8px; right: 8px; bottom: 6px; padding: 6px 10px; background: #0D1A2C; border: 1px solid var(--gold); font-size: 12px; color: var(--on-dark); }
+  #mx .hzl { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 6px 24px; font-size: 13px; color: var(--on-dark); }
+  #mx .hzl li { display: flex; gap: 10px; align-items: flex-start; }
+  #mx .hzl .en { flex: none; width: 20px; height: 20px; border: 1px solid var(--gold); border-radius: 50%; text-align: center; font-size: 11px; line-height: 18px; font-weight: 700; color: #fff; }
+  #mx .hzl .es { color: var(--on-dark-soft); font-size: 12px; }
+  #mx .hzd { margin-top: 12px; font-size: 13px; color: var(--on-dark); } #mx .hzd summary { cursor: pointer; font-weight: 600; color: var(--gold-light); } #mx .hzd ul { margin: 8px 0 0; padding-left: 18px; }
   .mv .mv-view { margin: 4px 0 6px; padding: 10px 12px; background: rgba(176,141,60,0.10); border-left: 3px solid var(--gold); }
   .mv .mv-vh { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); }
   .mv .mv-vh b { color: var(--gold-light); letter-spacing: 0.14em; }
@@ -1854,6 +1864,32 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     function d(s){ var a = s.split('-'); return +a[2]+' '+MON[+a[1]-1]+' '+a[0]; }
     function link(n,u){ return u ? '<a href="'+e(u)+'" target="_blank" rel="noopener">'+e(n)+'</a>' : e(n); }
     var dir = 'up';
+    function hormuz(){
+      var H = D.hormuz; if (!H) return '';
+      var W = 720, Ht = 300, m = {l:40, r:16, t:30, b:26}, t0 = Date.parse('2026-02-15'), t1 = Date.parse('2026-10-14'), y0 = 65, y1 = 110;
+      function X(s){ return m.l + (Date.parse(s)-t0)/(t1-t0)*(W-m.l-m.r); } function Y(v){ return m.t + (1-(v-y0)/(y1-y0))*(Ht-m.t-m.b); }
+      var o = '<svg viewBox="0 0 '+W+' '+Ht+'" role="img" aria-label="'+e(H.title)+'" style="display:block;width:100%;height:auto">';
+      H.bands.forEach(function(b){ o += '<rect x="'+X(b.from)+'" y="'+m.t+'" width="'+Math.max(X(b.to)-X(b.from),2)+'" height="'+(Ht-m.t-m.b)+'" fill="'+(b.state==='open'?'rgba(111,194,154,0.22)':'rgba(229,134,107,0.14)')+'"/>'; });
+      [70,80,90,100,110].forEach(function(v){ o += '<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="rgba(255,255,255,0.10)"/><text x="'+(m.l-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="11" fill="#9FACBE">$'+v+'</text>'; });
+      ['2026-03-01','2026-04-01','2026-05-01','2026-06-01','2026-07-01','2026-08-01','2026-09-01','2026-10-01'].forEach(function(s){ var mi = +s.split('-')[1]-1; o += '<text x="'+X(s)+'" y="'+(Ht-8)+'" text-anchor="middle" font-size="11" fill="#9FACBE">'+MON[mi]+'</text>'; });
+      var path = H.points.map(function(p,i){ return (i?'L':'M')+X(p.d)+','+Y(p.v); }).join('');
+      o += '<path d="'+path+'" fill="none" stroke="#D9B867" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/>';
+      H.events.forEach(function(ev,i){ var x = X(ev.d); o += '<line x1="'+x+'" x2="'+x+'" y1="'+(m.t-4)+'" y2="'+(Ht-m.b)+'" stroke="rgba(255,255,255,0.35)" stroke-dasharray="2 3"/><circle cx="'+x+'" cy="'+(m.t-12)+'" r="9" fill="#14263F" stroke="#D9B867"/><text x="'+x+'" y="'+(m.t-8)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">'+(i+1)+'</text>'; });
+      H.points.forEach(function(p,i){ var up = i % 2 === 0; o += '<g class="hp" tabindex="0" data-i="'+i+'"><circle cx="'+X(p.d)+'" cy="'+Y(p.v)+'" r="'+(i===H.points.length-1?5:4)+'" fill="#D9B867" stroke="#0D1A2C" stroke-width="1.5"/></g>'; });
+      var f = H.points[0], l = H.points[H.points.length-1], tp = H.points[H.points.length-1];
+      o += '<text x="'+(X(f.d)+8)+'" y="'+(Y(f.v)+16)+'" font-size="12" font-weight="700" fill="#fff">~$'+f.v+'</text><text x="'+(X(l.d)-8)+'" y="'+(Y(l.v)-10)+'" text-anchor="end" font-size="12" font-weight="700" fill="#fff">~$'+Math.round(l.v)+'</text>';
+      o += '</svg>';
+      var evs = H.events.map(function(ev,i){ return '<li><span class="en">'+(i+1)+'</span><span><b>'+e(d(ev.d))+'</b> '+e(ev.t)+' <span class="es">('+link(ev.src.name,ev.src.url)+')</span></span></li>'; }).join('');
+      var pts = H.points.map(function(p){ return '<li>'+e(d(p.d))+': '+(p.approx?'about ':'')+'$'+(Math.round(p.v*100)/100)+' ('+link(p.src.name,p.src.url)+')</li>'; }).join('');
+      return '<section class="mxs" aria-labelledby="hz-h"><h4 id="hz-h">Crude oil and the Strait of Hormuz</h4><p class="mxh">'+e(H.title)+'</p>'
+        +'<p class="mxsub">Brent on the dates reported, against the strait\'s status. Hover or tap a gold dot for the price and source.</p>'
+        +'<div class="hzk"><span><i style="background:rgba(229,134,107,0.5)"></i>Closed or disrupted</span><span><i style="background:rgba(111,194,154,0.6)"></i>Open or reopening</span><span><i style="background:#D9B867"></i>Brent, as reported</span></div>'
+        +'<div class="hzc" id="hz-c">'+o+'<div class="hzt" id="hz-t" hidden></div></div>'
+        +'<ol class="hzl">'+evs+'</ol>'
+        +'<div class="vw"><b>AI Treasurer view</b><p>'+e(H.view)+'</p></div>'
+        +'<details class="hzd"><summary>Prices and sources used</summary><ul>'+pts+'</ul></details>'
+        +'<p class="cap">'+e(H.note)+'</p></section>';
+    }
     function crude(){
       var cards = D.crude.map(function(c){ var u = dir === 'up';
         return '<div class="cd"><h5>'+e(c.channel)+'</h5><p>'+e(u ? c.up_what : c.down_what)+'</p><span class="pill" data-tone="'+e(u ? c.up_tone : c.down_tone)+'">'+e(u ? c.up_effect : c.down_effect)+'</span>'
@@ -1879,7 +1915,9 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
         +'<div class="cards">'+pts+'</div></section>';
     }
     function render(){
-      box.innerHTML = crude() + qatar();
+      box.innerHTML = crude() + hormuz() + qatar();
+      var hc = document.getElementById('hz-c'), tt = document.getElementById('hz-t');
+      if (hc && D.hormuz) hc.querySelectorAll('.hp').forEach(function(g){ function sh(){ var p = D.hormuz.points[+g.getAttribute('data-i')]; tt.hidden = false; tt.innerHTML = '<b>'+e(d(p.d))+'</b>: '+(p.approx?'about ':'')+'$'+(Math.round(p.v*100)/100)+' - '+e(p.label)+' ('+link(p.src.name,p.src.url)+')'; } g.addEventListener('mouseenter',sh); g.addEventListener('focus',sh); g.addEventListener('click',sh); });
       box.querySelectorAll('#cr-seg button').forEach(function(b){ b.addEventListener('click',function(){ dir = b.getAttribute('data-d'); var y = window.scrollY; render(); window.scrollTo(0,y); }); });
     }
     render();

@@ -219,5 +219,192 @@
     "title": "The QE Index closed at 9,209.53 on 7 October, down 0.5% on the day"
    }
   ]
+ },
+ "hormuz": {
+  "title": "Crude has followed Hormuz headlines: about $72 before the war, under $75 at the June reopening, about $104 on 9 October",
+  "note": "Selected Brent prices as reported on the dates shown, from different sources and contracts (futures or intraday). Not a daily series and not a forecast. Shipping status is as reported; sources differ on whether the strait is fully closed today.",
+  "asof": "2026-10-09",
+  "view": "Plan crude-linked costs as a range tied to shipping status, not a single price, and set the review trigger on the strait's status as well as on the price.",
+  "points": [
+   {
+    "d": "2026-02-27",
+    "v": 72,
+    "approx": true,
+    "label": "About $72 before the war",
+    "src": {
+     "name": "Straits.live; Al Jazeera (12 Aug figure 24% higher)",
+     "url": "https://straits.live/"
+    }
+   },
+   {
+    "d": "2026-03-03",
+    "v": 85,
+    "approx": true,
+    "label": "Tops $85",
+    "src": {
+     "name": "Invezz",
+     "url": "https://invezz.com/ca/news/2026/03/03/brent-tops-dollar85-for-first-time-since-2024-on-mideast-tensions/"
+    }
+   },
+   {
+    "d": "2026-04-08",
+    "v": 91.7,
+    "label": "$91.70 on ceasefire",
+    "src": {
+     "name": "Business Today (Bloomberg)",
+     "url": "https://www.businesstoday.com.my/2026/04/08/brent-slumps-16-as-us-iran-ceasefire-eases-supply-concern/"
+    }
+   },
+   {
+    "d": "2026-04-17",
+    "v": 88,
+    "approx": true,
+    "label": "About $88 as Iran declares strait open",
+    "src": {
+     "name": "Times of Oman",
+     "url": "https://timesofoman.com/article/170737-brent-crude-crash-11-as-hormuz-reopening-ends-supply-chokehold-fears"
+    }
+   },
+   {
+    "d": "2026-04-20",
+    "v": 96.49,
+    "label": "$96.49 as strait closes again",
+    "src": {
+     "name": "Aaj News",
+     "url": "https://english.aaj.tv/news/amp/330457160"
+    }
+   },
+   {
+    "d": "2026-06-19",
+    "v": 79.2,
+    "label": "About $79 after interim deal",
+    "src": {
+     "name": "HDFC Sky",
+     "url": "https://hdfcsky.com/news/brent-crude-oil-price-today-june-19-2026-crude-oil-falls-to-79-2-as-hormuz-supply-starts-to-normalise-after-us-iran-peace-deal"
+    }
+   },
+   {
+    "d": "2026-06-24",
+    "v": 75,
+    "approx": true,
+    "label": "Below $75, first time since war began",
+    "src": {
+     "name": "World Oil",
+     "url": "https://worldoil.com/news/2026/6/24/oil-falls-below-75-as-hormuz-traffic-increases-amid-u-s-iran-peace-talks/"
+    }
+   },
+   {
+    "d": "2026-07-14",
+    "v": 86,
+    "approx": true,
+    "label": "About $86 as truce collapses",
+    "src": {
+     "name": "Bloomberg Law",
+     "url": "https://news.bloomberglaw.com/tariff-news/us-iran-truce-collapses-as-attacks-worsen-and-blockade-returns"
+    }
+   },
+   {
+    "d": "2026-08-12",
+    "v": 89.53,
+    "label": "$89.53",
+    "src": {
+     "name": "Al Jazeera",
+     "url": "https://www.aljazeera.com/economy/2026/8/12/oil-prices-rise-as-attacks-dent-hopes-for-strait-of-hormuz-reopening"
+    }
+   },
+   {
+    "d": "2026-10-09",
+    "v": 103.7,
+    "approx": true,
+    "label": "About $104",
+    "src": {
+     "name": "Trading Economics",
+     "url": "https://tradingeconomics.com/commodity/brent-crude-oil"
+    }
+   }
+  ],
+  "events": [
+   {
+    "d": "2026-02-28",
+    "t": "US-Israeli strikes on Iran begin",
+    "kind": "war",
+    "src": {
+     "name": "Al Jazeera",
+     "url": "https://www.aljazeera.com/economy/2026/8/12/oil-prices-rise-as-attacks-dent-hopes-for-strait-of-hormuz-reopening"
+    }
+   },
+   {
+    "d": "2026-04-08",
+    "t": "Two-week ceasefire",
+    "kind": "open",
+    "src": {
+     "name": "Business Today (Bloomberg)",
+     "url": "https://www.businesstoday.com.my/2026/04/08/brent-slumps-16-as-us-iran-ceasefire-eases-supply-concern/"
+    }
+   },
+   {
+    "d": "2026-04-17",
+    "t": "Iran declares strait open",
+    "kind": "open",
+    "src": {
+     "name": "Times of Oman",
+     "url": "https://timesofoman.com/article/170737-brent-crude-crash-11-as-hormuz-reopening-ends-supply-chokehold-fears"
+    }
+   },
+   {
+    "d": "2026-04-18",
+    "t": "Closed again",
+    "kind": "closed",
+    "src": {
+     "name": "Egyptian Streets",
+     "url": "https://egyptianstreets.com/2026/04/18/iran-closes-strait-of-hormuz-again-saying-it-will-remain-shut-until-us-blockade-is-lifted/"
+    }
+   },
+   {
+    "d": "2026-06-19",
+    "t": "Interim peace deal; ships begin to transit (reported by this date)",
+    "kind": "open",
+    "src": {
+     "name": "HDFC Sky",
+     "url": "https://hdfcsky.com/news/brent-crude-oil-price-today-june-19-2026-crude-oil-falls-to-79-2-as-hormuz-supply-starts-to-normalise-after-us-iran-peace-deal"
+    }
+   },
+   {
+    "d": "2026-07-14",
+    "t": "Truce collapses; US restarts blockade (reported by this date)",
+    "kind": "closed",
+    "src": {
+     "name": "Bloomberg Law",
+     "url": "https://news.bloomberglaw.com/tariff-news/us-iran-truce-collapses-as-attacks-worsen-and-blockade-returns"
+    }
+   }
+  ],
+  "bands": [
+   {
+    "from": "2026-02-28",
+    "to": "2026-04-17",
+    "state": "closed"
+   },
+   {
+    "from": "2026-04-17",
+    "to": "2026-04-18",
+    "state": "open"
+   },
+   {
+    "from": "2026-04-18",
+    "to": "2026-06-19",
+    "state": "closed"
+   },
+   {
+    "from": "2026-06-19",
+    "to": "2026-07-14",
+    "state": "open"
+   },
+   {
+    "from": "2026-07-14",
+    "to": "2026-10-09",
+    "state": "closed"
+   }
+  ]
  }
 }
