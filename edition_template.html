@@ -164,6 +164,46 @@
   .mv .mv-src { display: block; margin-top: 6px; font-size: 12px; color: var(--on-dark-soft); }
   .mv .mv-src a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
   .mv .mv-note { margin: 12px 0 0; font-size: 12px; color: var(--on-dark-soft); }
+  /* Markets: crude oil decision map, Qatar money markets and equities (data/markets_extra.json) */
+  #mx .mxs { margin: 0 0 52px; border-top: 3px solid var(--gold); padding-top: 16px; }
+  #mx h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin: 0 0 4px; }
+  #mx .mxh { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; color: var(--white); margin: 6px 0 6px; font-weight: 700; }
+  #mx .mxsub { margin: 0 0 16px; font-size: 14px; color: var(--on-dark-soft); max-width: 70ch; }
+  #mx .seg { display: inline-flex; border: 1px solid rgba(255,255,255,0.25); margin-bottom: 16px; }
+  #mx .seg button { font: 600 13px var(--sans); color: var(--on-dark); background: transparent; border: 0; padding: 8px 16px; cursor: pointer; }
+  #mx .seg button[aria-pressed="true"] { background: var(--gold); color: var(--navy-deep); }
+  #mx .seg button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+  #mx .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+  #mx .cd { background: rgba(255,255,255,0.045); border-top: 2px solid var(--gold); padding: 14px 16px 16px; }
+  #mx .cd h5 { margin: 0 0 6px; font: 700 12px var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+  #mx .cd p { margin: 0 0 10px; font-size: 14px; line-height: 1.5; color: var(--on-dark); }
+  #mx .pill { display: inline-block; padding: 2px 8px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+  #mx .pill[data-tone="bad"] { border-color: #E5866B; color: #F0A58E; }
+  #mx .pill[data-tone="ok"], #mx .pill[data-tone="good"] { border-color: #6FC29A; color: #8ED6B1; }
+  #mx .vw { margin-top: 10px; padding: 10px 12px; background: rgba(176,141,60,0.10); border-left: 3px solid var(--gold); }
+  #mx .vw b { display: block; margin-bottom: 4px; font: 700 11px var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+  #mx .vw p { margin: 0; font-size: 14px; color: var(--on-dark); }
+  #mx .qgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; margin-bottom: 20px; }
+  #mx .bars { list-style: none; margin: 0; padding: 0; }
+  #mx .bars li { display: grid; grid-template-columns: 120px 1fr 56px; gap: 10px; align-items: center; padding: 6px 0; font-size: 13px; color: var(--on-dark); font-variant-numeric: tabular-nums; }
+  #mx .bars .bt { height: 14px; background: rgba(255,255,255,0.08); position: relative; }
+  #mx .bars .bf { position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold-light); }
+  #mx .bars li.b2 .bf { background: #6EA0FF; }
+  #mx .bars .bv { text-align: right; font-weight: 700; color: var(--white); }
+  #mx .kp { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  #mx .kp div { background: rgba(255,255,255,0.045); border-top: 2px solid var(--gold); padding: 10px 12px; }
+  #mx .kp span { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); }
+  #mx .kp b { font: 700 20px var(--serif); color: var(--white); }
+  #mx .cap { font-size: 12px; color: var(--on-dark-soft); margin: 8px 0 0; }
+  #mx a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  #mx .src { font-size: 12px; color: var(--on-dark-soft); margin-top: 6px; }
+  .mv .mv-view { margin: 4px 0 6px; padding: 10px 12px; background: rgba(176,141,60,0.10); border-left: 3px solid var(--gold); }
+  .mv .mv-vh { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); }
+  .mv .mv-vh b { color: var(--gold-light); letter-spacing: 0.14em; }
+  .mv .mv-eff { margin-left: auto; padding: 2px 8px; border: 1px solid var(--gold); color: var(--gold-light); letter-spacing: 0.06em; }
+  .mv .mv-view[data-tone="bad"] .mv-eff { border-color: #E5866B; color: #F0A58E; }
+  .mv .mv-view[data-tone="good"] .mv-eff, .mv .mv-view[data-tone="ok"] .mv-eff { border-color: #6FC29A; color: #8ED6B1; }
+  .mv .mv-view p { margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: var(--on-dark); }
   .mv .mv-chart { margin: 12px 0 4px; padding: 10px 12px 8px; background: rgba(255,255,255,0.04); border-top: 2px solid var(--gold); }
   .mv .mv-cap { margin-top: 4px; font-size: 12px; color: var(--on-dark-soft); font-variant-numeric: tabular-nums; min-height: 16px; }
   .grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.18); }
@@ -1016,6 +1056,8 @@
           <div class="pr-src" data-r="src"></div>
         </section>
 
+        <div id="mx" aria-live="polite"></div>
+
         <div class="mk-foot">
           <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Each exhibit shows its source and the date of its latest figure.</p>
           <p id="mk-upd"></p>
@@ -1789,6 +1831,49 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       o.series = series; var box = document.createElement('div'); box.className = 'mv-chart'; li.insertBefore(box, li.querySelector('.mv-src')); draw(box, o);
     });
   });
+})();
+</script>
+<script>
+/* Markets: crude oil decision map and Qatar money markets and equities, from data/markets_extra.json. Figures are compiled from the cited sources on the date shown. */
+(function(){
+  var box = document.getElementById('mx'); if (!box) return;
+  fetch('/data/markets_extra.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).then(function(D){
+    if (!D) return;
+    function e(s){ return String(s == null ? '' : s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function d(s){ var a = s.split('-'); return +a[2]+' '+MON[+a[1]-1]+' '+a[0]; }
+    function link(n,u){ return u ? '<a href="'+e(u)+'" target="_blank" rel="noopener">'+e(n)+'</a>' : e(n); }
+    var dir = 'up';
+    function crude(){
+      var cards = D.crude.map(function(c){ var u = dir === 'up';
+        return '<div class="cd"><h5>'+e(c.channel)+'</h5><p>'+e(u ? c.up_what : c.down_what)+'</p><span class="pill" data-tone="'+e(u ? c.up_tone : c.down_tone)+'">'+e(u ? c.up_effect : c.down_effect)+'</span>'
+          +'<div class="vw"><b>AI Treasurer view</b><p>'+e(u ? c.up_view : c.down_view)+'</p></div></div>'; }).join('');
+      return '<section class="mxs" aria-labelledby="cr-h"><h4 id="cr-h">Crude oil and Treasury decisions</h4><p class="mxh">Crude oil changes five Treasury decisions, in opposite directions</p>'
+        +'<p class="mxsub">Pick a direction. Each card shows what a move in crude tends to change and the AI Treasurer view on what to check. General patterns, not a price forecast.</p>'
+        +'<div class="seg" id="cr-seg" role="group" aria-label="Direction of crude oil"><button type="button" data-d="up" aria-pressed="'+(dir==='up')+'">Crude rises</button><button type="button" data-d="down" aria-pressed="'+(dir==='down')+'">Crude falls</button></div>'
+        +'<div class="cards">'+cards+'</div><p class="cap">Views are opinion for discussion, not advice and not a forecast of oil prices.</p></section>';
+    }
+    function qatar(){
+      var Q = D.qatar, mx = Math.max.apply(null, Q.rates.map(function(r){ return r.value; }))*1.12;
+      var bars = Q.rates.map(function(r){ return '<li class="'+(r.group==='usd'?'b2':'')+'"><span>'+link(r.label,r.source_url)+'</span><span class="bt"><span class="bf" style="width:'+(r.value/mx*100)+'%"></span></span><span class="bv">'+r.value.toFixed(2)+'%</span></li>'; }).join('');
+      var kp = Q.equities.filter(function(r){ return r.id !== 'chg'; }).map(function(r){ return '<div><span>'+e(r.label)+'</span><b>'+e(r.value)+'</b></div>'; }).join('');
+      var tmx = Math.max.apply(null, Q.turnover.map(function(t){ return t.value; }))*1.1;
+      var tb = Q.turnover.map(function(t){ return '<li><span>'+link(d(t.date),t.source_url)+'</span><span class="bt"><span class="bf" style="width:'+(t.value/tmx*100)+'%"></span></span><span class="bv">'+t.value.toFixed(0)+'</span></li>'; }).join('');
+      var pts = Q.points.map(function(p){ var s = [[p.s1n,p.s1u],[p.s2n,p.s2u]].filter(function(x){ return x[0]; }).map(function(x){ return link(x[0],x[1]); }).join(' and ');
+        return '<div class="cd"><h5>'+e(p.head)+'</h5><p>'+e(p.text)+'</p><span class="pill" data-tone="'+e(p.tone)+'">'+e(p.effect)+'</span><div class="vw"><b>AI Treasurer view</b><p>'+e(p.view)+'</p></div>'+(s?'<div class="src">Source: '+s+'</div>':'')+'</div>'; }).join('');
+      var ref = Q.equities[0] ? d(Q.equities[0].asof) : '';
+      return '<section class="mxs" aria-labelledby="qa-h"><h4 id="qa-h">Qatar money markets and equities</h4><p class="mxh">QCB deposit rate now sits above both SOFR and the top of the Fed range</p>'
+        +'<p class="mxsub">Central bank rates against the dollar benchmarks, and the equity market in brief. Compiled from the sources linked, as published on the dates shown; not live data.</p>'
+        +'<div class="qgrid"><div><ul class="bars" aria-label="QCB rates against SOFR and the Fed upper bound, %">'+bars+'</ul><p class="cap">Gold: QCB rates. Blue: dollar benchmarks. The Fed bar is the upper bound of the target range.</p></div>'
+        +'<div><div class="kp">'+kp+'</div><ul class="bars" aria-label="Value traded, QR million">'+tb+'</ul><p class="cap">Value traded on the sessions reported, QR million. As at '+e(ref)+'.</p></div></div>'
+        +'<div class="cards">'+pts+'</div></section>';
+    }
+    function render(){
+      box.innerHTML = crude() + qatar();
+      box.querySelectorAll('#cr-seg button').forEach(function(b){ b.addEventListener('click',function(){ dir = b.getAttribute('data-d'); var y = window.scrollY; render(); window.scrollTo(0,y); }); });
+    }
+    render();
+  }).catch(function(){});
 })();
 </script>
 </body>

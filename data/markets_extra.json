@@ -1,0 +1,223 @@
+{
+ "asof": "2026-10-09",
+ "crude": [
+  {
+   "id": "fx",
+   "n": 1,
+   "channel": "Currency",
+   "ref_id": "usdinr",
+   "ref_label": "USD/INR",
+   "up_what": "Importer currencies tend to weaken against the dollar, and exporter currencies tend to firm.",
+   "up_effect": "Import bill up",
+   "up_tone": "bad",
+   "up_action": "Hedge",
+   "up_view": "Check unhedged import-currency payables and decide whether to extend cover before the next payment cycle.",
+   "down_what": "Importer currencies tend to firm against the dollar, and exporter currencies tend to ease.",
+   "down_effect": "Import bill down",
+   "down_tone": "ok",
+   "down_action": "Review",
+   "down_view": "Do not unwind hedges on a single price move; test hedge ratios against the updated forecast first."
+  },
+  {
+   "id": "rates",
+   "n": 2,
+   "channel": "Inflation and rates",
+   "ref_id": "ust10y",
+   "ref_label": "US 10Y",
+   "up_what": "Higher crude lifts headline inflation, which can keep central banks tighter for longer.",
+   "up_effect": "Rate risk up",
+   "up_tone": "bad",
+   "up_action": "Scenario",
+   "up_view": "Run floating-rate interest cost scenarios on a higher-for-longer path before the next central-bank decisions.",
+   "down_what": "Lower crude eases headline inflation and can give central banks room to pause.",
+   "down_effect": "Rate risk down",
+   "down_tone": "ok",
+   "down_action": "Hold",
+   "down_view": "Keep fixed-rate issuance plans unchanged until central banks signal a shift; one price move is not a policy signal."
+  },
+  {
+   "id": "wc",
+   "n": 3,
+   "channel": "Working capital",
+   "ref_id": "sofr",
+   "ref_label": "SOFR",
+   "up_what": "Fuel and input costs rise, so cash tied up in inventory and receivables grows.",
+   "up_effect": "Cash need up",
+   "up_tone": "bad",
+   "up_action": "Fund",
+   "up_view": "Confirm committed credit lines cover the larger working-capital swing, and what it costs at current short-term rates.",
+   "down_what": "Working-capital needs ease, and released cash sits in short-term deposits.",
+   "down_effect": "Cash need down",
+   "down_tone": "ok",
+   "down_action": "Review",
+   "down_view": "Refresh the cash forecast, then apply the investment policy's tenor and counterparty limits to any released cash."
+  },
+  {
+   "id": "margin",
+   "n": 4,
+   "channel": "Hedging and margin",
+   "ref_id": "",
+   "ref_label": "",
+   "up_what": "Commodity hedges settle daily, so on positions that lose when prices rise, a sharp move can call for cash within a day.",
+   "up_effect": "Margin call risk",
+   "up_tone": "watch",
+   "up_action": "Buffer",
+   "up_view": "Hold a cash buffer for variation margin, and confirm who can approve a same-day transfer.",
+   "down_what": "On positions that lose when prices fall, the margin call comes on the way down instead.",
+   "down_effect": "Margin call risk",
+   "down_tone": "watch",
+   "down_action": "Buffer",
+   "down_view": "Check which hedges lose on a fall, and keep the same buffer and same-day approval route ready."
+  },
+  {
+   "id": "credit",
+   "n": 5,
+   "channel": "Credit and counterparties",
+   "ref_id": "",
+   "ref_label": "",
+   "up_what": "Energy-heavy customers and suppliers come under pressure, while producers' credit tends to improve.",
+   "up_effect": "Credit risk shifts",
+   "up_tone": "watch",
+   "up_action": "Monitor",
+   "up_view": "Re-rank counterparty exposure by energy sensitivity, and tighten limits where payment terms are long.",
+   "down_what": "Producers come under pressure, while energy-heavy users get relief.",
+   "down_effect": "Credit risk shifts",
+   "down_tone": "watch",
+   "down_action": "Monitor",
+   "down_view": "Re-rank counterparty exposure for producers, and review limits where payment terms are long."
+  }
+ ],
+ "qatar": {
+  "rates": [
+   {
+    "id": "qcb_lend",
+    "label": "QCB lending rate",
+    "value": 4.6,
+    "group": "qcb",
+    "asof": "2026-10-08",
+    "source_name": "Qatar News Agency",
+    "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/16/qatar-central-bank-hikes-rates"
+   },
+   {
+    "id": "qcb_repo",
+    "label": "QCB repo rate",
+    "value": 4.35,
+    "group": "qcb",
+    "asof": "2026-10-08",
+    "source_name": "Qatar News Agency",
+    "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/16/qatar-central-bank-hikes-rates"
+   },
+   {
+    "id": "qcb_dep",
+    "label": "QCB deposit rate",
+    "value": 4.1,
+    "group": "qcb",
+    "asof": "2026-10-08",
+    "source_name": "Qatar News Agency",
+    "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/16/qatar-central-bank-hikes-rates"
+   },
+   {
+    "id": "sofr",
+    "label": "SOFR",
+    "value": 3.88,
+    "group": "usd",
+    "asof": "2026-10-07",
+    "source_name": "Federal Reserve Bank of New York",
+    "source_url": "https://www.newyorkfed.org/markets/reference-rates/sofr"
+   },
+   {
+    "id": "fed",
+    "label": "Fed target range",
+    "value": 4.0,
+    "low": 3.75,
+    "group": "usd",
+    "asof": "2026-10-09",
+    "source_name": "Federal Reserve Bank of New York",
+    "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr"
+   }
+  ],
+  "equities": [
+   {
+    "id": "idx",
+    "label": "QE Index close",
+    "value": "9,209.53",
+    "asof": "2026-10-07",
+    "source_name": "QNB Financial Services daily market report",
+    "source_url": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR08October2026"
+   },
+   {
+    "id": "chg",
+    "label": "Change on the day",
+    "value": "-0.5%",
+    "asof": "2026-10-07",
+    "source_name": "QNB Financial Services daily market report",
+    "source_url": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR08October2026"
+   },
+   {
+    "id": "turn",
+    "label": "Value traded",
+    "value": "QR 200.7mn",
+    "asof": "2026-10-07",
+    "source_name": "QNB Financial Services daily market report",
+    "source_url": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR08October2026"
+   },
+   {
+    "id": "cap",
+    "label": "Market capitalisation",
+    "value": "QR 558.7bn",
+    "asof": "2026-10-07",
+    "source_name": "QNB Financial Services daily market report",
+    "source_url": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR08October2026"
+   }
+  ],
+  "turnover": [
+   {
+    "date": "2026-10-01",
+    "value": 355.7,
+    "source_url": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR05October2026"
+   },
+   {
+    "date": "2026-10-04",
+    "value": 257.4,
+    "source_url": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR05October2026"
+   },
+   {
+    "date": "2026-10-07",
+    "value": 200.7,
+    "source_url": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR08October2026"
+   }
+  ],
+  "points": [
+   {
+    "id": "money",
+    "head": "Qatar money markets",
+    "text": "QCB raised its deposit, repo and lending rates by 25 bp each from 17 September, to 4.10%, 4.35% and 4.60%. The deposit rate now sits above both SOFR (3.88%) and the top of the Fed range (4.00%), with the riyal pegged at QAR 3.64 per USD.",
+    "effect": "Local rates up",
+    "tone": "watch",
+    "action": "Compare",
+    "area": "Surplus cash and funding",
+    "view": "Compare riyal deposit yields with dollar alternatives for the same tenor before placing surplus cash, and keep counterparty limits fixed while yields rise.",
+    "s1n": "Qatar News Agency",
+    "s1u": "https://qna.org.qa/en/News-Area/News/2026-9/16/qatar-central-bank-hikes-rates",
+    "s2n": "Federal Reserve Bank of New York",
+    "s2u": "https://www.newyorkfed.org/markets/reference-rates/sofr",
+    "title": "The QCB deposit rate of 4.10% now sits above SOFR and the top of the Fed range"
+   },
+   {
+    "id": "equity",
+    "head": "Qatar equities",
+    "text": "The QE Index closed at 9,209.53 on 7 October, with QR 200.7mn traded and a market capitalisation of QR 558.7bn.",
+    "effect": "Valuation date",
+    "tone": "watch",
+    "action": "Classify",
+    "area": "Listed holdings",
+    "view": "Value any listed holdings at the reporting-date close and keep them out of cash equivalents; a single day's close is not a reason to change the investment policy.",
+    "s1n": "QNB Financial Services, 8 Oct report",
+    "s1u": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR08October2026",
+    "s2n": "QNB Financial Services, 5 Oct report",
+    "s2u": "https://www.qnb.com/sites/qnb/qnbfs/document/en/enDMR05October2026",
+    "title": "The QE Index closed at 9,209.53 on 7 October, down 0.5% on the day"
+   }
+  ]
+ }
+}

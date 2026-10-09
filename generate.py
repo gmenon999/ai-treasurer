@@ -722,9 +722,17 @@ def _mv_local(points, facts):
                        if x not in ("2026", "2027"))
         if extra:
             out.append("point %d uses figures not in its cited facts: %s" % (i, ", ".join(extra)))
-        hits = _lint([p.get("head", ""), p.get("text", "")])
+        hits = _lint([p.get("head", ""), p.get("text", ""), p.get("view", "")])
         if hits:
             out.append("point %d banned phrases: %s" % (i, ", ".join(hits)))
+        vw = len((p.get("view") or "").split())
+        if not 10 <= vw <= 40:
+            out.append("point %d AI Treasurer view is %d words (target 14-32)" % (i, vw))
+        if p.get("tone") not in ("bad", "good", "watch") or not (p.get("effect") or "").strip() or not (p.get("area") or "").strip():
+            out.append("point %d needs area, effect and tone (bad/good/watch)" % i)
+        vx = sorted(x for x in _nums(p.get("view", "")) - _nums(cited) if x not in ("2026", "2027"))
+        if vx:
+            out.append("point %d view uses figures not in its cited facts: %s" % (i, ", ".join(vx)))
     return out
 
 
@@ -738,12 +746,17 @@ def _mv_prompt(facts, date_human, fixes=None):
         "sentences, 20-35 words: the move with its figure and date basis, then what it means for funding, "
         "investing surplus cash, FX exposure or hedging. refs = the fact ids you used (every figure you write "
         "must appear in a cited fact; do not calculate new numbers).\n"
+        "Also give each point an AI Treasurer view: view = ONE sentence, 14-32 words, the Treasury question or step "
+        "to consider in response, framed as something to check or consider, never as an instruction to trade or buy "
+        "a product; any figure in it must appear in a cited fact; area = 2-4 words naming the Treasury area "
+        "(e.g. 'Term borrowing'); effect = 2-3 words, the effect on a corporate Treasury (e.g. 'Cost up', "
+        "'Yield up', 'Hedge cost up', 'Event risk'); tone = bad, good or watch.\n"
         "Order: most material first. Cover different ground: policy rates, short-term/money-market rates, the "
         "yield curve, FX, and (if a news fact supports it) the outlook. No two points on the same series.\n"
         "RULES: commentary, not a forecast; no buy/sell, hedging-product or trade recommendations; not investment "
         "advice. Neutral and factual about every central bank; nothing negative toward Qatar, QatarEnergy or "
         "Woqod (the QCB and the riyal peg may be mentioned factually). Brand voice, no personal name.\n\n%s\n\n"
-        "Return STRICT JSON only: {\"points\": [{\"head\": \"...\", \"text\": \"...\", \"refs\": [\"ust10y\"]}]}\n\n"
+        "Return STRICT JSON only: {\"points\": [{\"head\": \"...\", \"text\": \"...\", \"refs\": [\"ust10y\"], \"view\": \"...\", \"area\": \"...\", \"effect\": \"...\", \"tone\": \"watch\"}]}\n\n"
         "FACTS:\n%s" % (date_human, STYLE, lst))
     if fixes:
         p += "\n\nYOUR PREVIOUS DRAFT FAILED THE CHECK: %s. Fix every point." % fixes
@@ -754,13 +767,15 @@ def _mv_check(points, facts):
     blocks = []
     for i, x in enumerate(points, 1):
         cited = "\n".join("  [%s] %s" % (r, facts[r]["text"]) for r in x.get("refs") or [] if r in facts)
-        blocks.append("### POINT %d\n%s: %s\nCITED FACTS:\n%s" % (i, x.get("head"), x.get("text"), cited))
+        blocks.append("### POINT %d\n%s: %s\nAI TREASURER VIEW: %s\nCITED FACTS:\n%s" % (i, x.get("head"), x.get("text"), x.get("view"), cited))
     prompt = (
         "You are the independent checker for The AI Treasurer. You did not write these points. Fail a point if ANY "
         "test fails:\n1. Every figure, date, name and direction (up/down, hike/cut) matches its CITED FACTS exactly. "
         "Nothing invented, overstated or miscalculated.\n2. The implication drawn is reasonable for a corporate "
         "treasurer and does not present a forecast as fact.\n3. No investment advice, no buy/sell or product "
-        "recommendation, no hype, nothing negative toward Qatar, QatarEnergy or Woqod.\n"
+        "recommendation, no hype, nothing negative toward Qatar, QatarEnergy or Woqod.\n4. The AI TREASURER VIEW is a "
+        "consideration or check that follows from the point, not an instruction to trade, hedge with a named product "
+        "or place money; it is not investment advice and adds no unsupported figure.\n"
         "Return STRICT JSON only: {\"checks\": [{\"n\": 1, \"pass\": true, \"reasons\": \"\"}]} with a short, "
         "specific reason for every fail.\n\n%s" % "\n\n".join(blocks))
     data = _json(_ask(prompt, CHECK_MODEL, max_tokens=3000, search=False), "market view check")
@@ -793,7 +808,11 @@ def market_view(content, date_human):
             data = _json(_ask(_mv_prompt(facts, date_human, fixes), EDITORIAL_MODEL, max_tokens=4000, search=False), "market view")
             points = [{"head": _cap_treasury((x.get("head") or "").strip().rstrip(".:")),
                        "text": _cap_treasury((x.get("text") or "").strip()),
-                       "refs": [r for r in (x.get("refs") or []) if r in facts]} for x in data.get("points") or []]
+                       "refs": [r for r in (x.get("refs") or []) if r in facts],
+                       "view": _cap_treasury((x.get("view") or "").strip()),
+                       "area": _cap_treasury((x.get("area") or "").strip()),
+                       "effect": _cap_treasury((x.get("effect") or "").strip()),
+                       "tone": (x.get("tone") or "").strip().lower()} for x in data.get("points") or []]
             problems = _mv_local(points, facts)
             if not problems:
                 problems = _mv_check(points, facts)
@@ -826,7 +845,9 @@ def market_view_html(points, date_human):
     lis = []
     for p in points:
         src = _sources_html(p.get("sources") or [], prefix="Source: ")
-        lis.append('<li><p><b>%s.</b> %s</p>%s</li>' % (esc(p["head"]), esc(p["text"]),
+        vw = ('<div class="mv-view" data-tone="%s"><div class="mv-vh"><b>AI Treasurer view</b><span>%s</span><span class="mv-eff">%s</span></div>'
+              '<p>%s</p></div>' % (esc(p.get("tone") or "watch"), esc(p.get("area") or ""), esc(p.get("effect") or ""), esc(p["view"]))) if p.get("view") else ""
+        lis.append('<li><p><b>%s.</b> %s</p>%s%s</li>' % (esc(p["head"]), esc(p["text"]), vw,
                    ('<span class="mv-src">%s</span>' % src) if src else ""))
     return (MV_START + '<section class="mv" aria-labelledby="mv-h"><h4 id="mv-h">Market view<small>Five points for '
             'Treasury, %s</small></h4><ol>%s</ol><p class="mv-note">Commentary on the official figures below, as '
@@ -1034,7 +1055,7 @@ def mock_content():
         "dashboard": [{"value": "4.5-4.75%", "label": "10Y UST range", "src": "Outlook, 2026"}] * 6,
         "events": [{"when": "Soon", "place": "City - upcoming", "title": "A treasury event", "blurb": "Short blurb.", "source": {"name": "Example", "url": "https://example.com"}}],
         "note_headline": "Sample insight headline for the mock edition, eight words long",
-        "market_view": [{"head": "Curve shape", "text": "Sample point of market commentary, about thirty words, with a figure and what it means for funding, surplus cash or hedging so the layout can be checked end to end.", "sources": [{"name": "US Treasury", "url": "https://home.treasury.gov/"}]}] * 5,
+        "market_view": [{"head": "Curve shape", "text": "Sample point of market commentary, about thirty words, with a figure and what it means for funding, surplus cash or hedging so the layout can be checked end to end.", "view": "Sample AI Treasurer view: the check or step to consider, in one sentence.", "area": "Term borrowing", "effect": "Cost up", "tone": "watch", "sources": [{"name": "US Treasury", "url": "https://home.treasury.gov/"}]}] * 5,
         "editor_note": ["First paragraph of the editor note for layout testing.", "Second paragraph tying it to controls and the audit trail."],
         "lead_stories": [
             {"topic": "Agentic Treasury Controls", "headline": "Lead one", "blurb": "Blurb.", "tab": "ai"},
