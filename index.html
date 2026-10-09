@@ -334,8 +334,19 @@
   .pr-src { display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark-soft); margin-top: 10px; }
   .pr-src a { color: var(--on-dark); }
   .pr-moves { margin-top: 14px; font-size: 14px; color: var(--on-dark); }
-  .pr-moves td a { color: var(--on-dark); }
   .pr-moves summary { cursor: pointer; font-weight: 600; color: var(--gold-light); }
+  .pr-bars { margin-top: 10px; font-variant-numeric: tabular-nums; max-height: 420px; overflow-y: auto; padding-right: 6px; }
+  .pr-bar { display: grid; grid-template-columns: 92px 1fr 104px; align-items: center; gap: 12px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pr-bar .bd { font-size: 13px; color: var(--on-dark-soft); }
+  .pr-bar .bd a { color: var(--on-dark); }
+  .pr-bar .bt { position: relative; height: 18px; }
+  .pr-bar .bt::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.25); }
+  .pr-bar .bf { position: absolute; top: 3px; height: 12px; min-width: 2px; }
+  .pr-bar .bf.up { left: 50%; background: var(--gold-light); }
+  .pr-bar .bf.dn { right: 50%; background: #6EA0FF; }
+  .pr-bar .bf.st { left: calc(50% - 3px); width: 6px; background: var(--on-dark-soft); }
+  .pr-bar .bm { position: absolute; top: 0; font-size: 12px; line-height: 18px; color: var(--on-dark); white-space: nowrap; }
+  .pr-bar .br { white-space: nowrap; font-size: 14px; font-weight: 700; color: var(--white); text-align: right; }
   .pr-moves table { border-collapse: collapse; margin-top: 10px; font-variant-numeric: tabular-nums; }
   .pr-moves th, .pr-moves td { text-align: left; padding: 6px 24px 6px 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-weight: 400; }
   .pr-moves th { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); }
@@ -993,7 +1004,7 @@
           </div>
           <div class="pr-chart" id="pr-chart" tabindex="0" role="img" aria-label="Policy rate history chart"><div class="mk-load">Loading&hellip;</div></div>
           <div class="pr-src" id="pr-src"></div>
-          <details class="pr-moves" id="pr-moves" hidden><summary>Every rate move</summary><table><thead><tr><th scope="col">Effective</th><th scope="col">Rate</th><th scope="col">Move</th></tr></thead><tbody></tbody></table></details>
+          <details class="pr-moves" id="pr-moves" hidden open><summary>Every rate move</summary><div class="pr-bars" role="list" aria-label="Rate moves, newest first. Bars to the right are increases, bars to the left are cuts."></div></details>
           <div class="pr-also"><h5 id="pr-also-h">Also tracked</h5><ul id="pr-also" aria-labelledby="pr-also-h"></ul></div>
         </section>
 
@@ -1368,8 +1379,10 @@
     document.getElementById('pr-val').innerHTML = c ? e(c.value) : rate(S,last);
     document.getElementById('pr-lab').innerHTML = e(c ? c.label : S.label) + (prev ? ' &middot; <b>last move '+mv(last[1],prev[1])+'</b>, effective '+d(last[0]) : '');
     document.getElementById('pr-src').innerHTML = '<span>Source: <a href="'+e(S.source_url)+'" target="_blank" rel="noopener">'+e(S.source_name)+'</a>. '+(S.manual ? 'Compiled from published decisions; dates are effective dates where announced, otherwise announcement dates. Checked to '+d(S.asof)+'.' : 'Official daily series, by effective date, to '+d(S.asof)+'.')+'</span><span>Hover or tap the chart to compare any date.</span>';
-    var rows = ''; for (var i=pts.length-1;i>=0;i--){ var su = S.sources ? (S.sources[pts[i][0]] || '') : ''; rows += '<tr><td>'+(su ? '<a href="'+e(su)+'" target="_blank" rel="noopener">'+d(pts[i][0])+'</a>' : d(pts[i][0]))+'</td><td>'+rate(S,pts[i])+'</td><td>'+(i? mv(pts[i][1],pts[i-1][1]) : 'Starting level')+'</td></tr>'; }
-    document.querySelector('#pr-moves tbody').innerHTML = rows;
+    var mx = 0.01; for (var j=1;j<pts.length;j++){ mx = Math.max(mx, Math.abs(pts[j][1]-pts[j-1][1])); }
+    var rows = ''; for (var i=pts.length-1;i>=0;i--){ var su = S.sources ? (S.sources[pts[i][0]] || '') : ''; var dl = i ? pts[i][1]-pts[i-1][1] : 0; var w = Math.round(Math.abs(dl)/mx*46);
+      rows += '<div class="pr-bar" role="listitem"><div class="bd">'+(su ? '<a href="'+e(su)+'" target="_blank" rel="noopener">'+d(pts[i][0])+'</a>' : d(pts[i][0]))+'</div><div class="bt" title="'+(i ? '' : 'Starting level')+'">'+(i ? '<span class="bf '+(dl>0?'up':'dn')+'" style="width:'+w+'%"></span><span class="bm" style="'+(dl>0?'left:calc(50% + '+w+'% + 6px)':'right:calc(50% + '+w+'% + 6px)')+'">'+mv(pts[i][1],pts[i-1][1])+'</span>' : '<span class="bf st"></span><span class="bm" style="left:calc(50% + 10px)">Starting level</span>')+'</div><div class="br">'+rate(S,pts[i])+'</div></div>'; }
+    document.querySelector('#pr-moves .pr-bars').innerHTML = rows;
     document.querySelector('#pr-moves summary').textContent = 'Every '+S.bank+' rate move';
     draw();
   }
