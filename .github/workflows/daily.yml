@@ -41,21 +41,26 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           BRIEF_TAKES: ${{ vars.BRIEF_TAKES }}
-        run: python generate.py ${{ github.event.inputs.force == 'true' && '--force' || '' }}
-      - name: Upload preview
-        if: ${{ github.event.inputs.preview == 'true' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: preview
-          path: |
-            index.html
-            editions/takes-log.json
+        run: |
+          set -o pipefail
+          python generate.py ${{ github.event.inputs.force == 'true' && '--force' || '' }} 2>&1 | tee build.log
+      - name: Push preview branch (never main)
+        if: ${{ always() && github.event.inputs.preview == 'true' }}
+        run: |
+          git config user.name  "AI Treasurer bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B preview-takes
+          git add -A
+          git add -f build.log
+          git commit -m "Preview build $(date -u +'%d %B %Y %H:%M UTC')" || true
+          git push -f origin preview-takes
       - name: Commit and push
         if: ${{ github.event.inputs.preview != 'true' }}
         run: |
           set -e
           git config user.name  "AI Treasurer bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f build.log
           git add -A
           if git diff --cached --quiet; then
             echo "No changes - edition already built today. Nothing to publish."
