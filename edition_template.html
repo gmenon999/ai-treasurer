@@ -164,6 +164,8 @@
   .mv .mv-src { display: block; margin-top: 6px; font-size: 12px; color: var(--on-dark-soft); }
   .mv .mv-src a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
   .mv .mv-note { margin: 12px 0 0; font-size: 12px; color: var(--on-dark-soft); }
+  .mv .mv-chart { margin: 12px 0 4px; padding: 10px 12px 8px; background: rgba(255,255,255,0.04); border-top: 2px solid var(--gold); }
+  .mv .mv-cap { margin-top: 4px; font-size: 12px; color: var(--on-dark-soft); font-variant-numeric: tabular-nums; min-height: 16px; }
   .grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.18); }
   .grid .cell { padding: 24px 20px 6px; border-right: 1px solid rgba(255,255,255,0.12); }
   .grid .cell:first-child { padding-left: 0; }
@@ -1723,6 +1725,70 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   show(viewOf(location.hash.slice(1)) || 'top');
   if (location.hash) setTimeout(function(){ window.scrollTo(0, 0); }, 0);
   window.showView = function(v){ if (v !== current && history.pushState) history.pushState({ v: v }, '', v === 'top' ? location.pathname : '#' + v); show(v); };
+})();
+</script>
+<script>
+/* Market view: a small chart under each of the five points, drawn from the same official series as the exhibits below. */
+(function(){
+  var items = document.querySelectorAll('.mv ol li'); if (!items.length) return;
+  var NS = 'http://www.w3.org/2000/svg', GOLD = '#D9B867', BLUE = '#6EA0FF';
+  function J(u){ return fetch(u,{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
+  function T(s){ var a = s.split('-'); return Date.UTC(+a[0], +a[1]-1, +a[2]); }
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function D(t){ var d = new Date(t); return d.getUTCDate()+' '+MON[d.getUTCMonth()]+' '+d.getUTCFullYear(); }
+  function pick(txt){
+    txt = txt.toLowerCase();
+    if (/sofr|€str|estr|money-market|money market/.test(txt)) return {k:'his', ids:['sofr','estr'], title:'SOFR and €STR, %, weekly', weeks:26};
+    if (/fomc|fed funds|federal reserve/.test(txt)) return {k:'pol', ids:['fed'], title:'Fed funds upper bound, %, last 12 months'};
+    if (/eur\/usd|gbp\/usd|usd\/inr/.test(txt)) return {k:'fx', ids:['eurusd','gbpusd'], title:'EUR/USD and GBP/USD, indexed to 100 six months ago', weeks:26};
+    if (/\becb\b|\brbi\b|policy/.test(txt)) return {k:'pol', ids:['ecb','rbi'], title:'ECB deposit rate and RBI repo rate, %, last 12 months'};
+    if (/10-year|10y|treasury yield|term/.test(txt)) return {k:'his', ids:['ust10y','ust2y'], title:'US Treasury 10-year and 2-year yields, %, weekly', weeks:26};
+    return null;
+  }
+  function draw(box, o){
+    var W = Math.max(box.clientWidth, 240), H = 150, m = {l:6, r:78, t:10, b:20};
+    var svg = document.createElementNS(NS,'svg'); svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.setAttribute('role','img'); svg.setAttribute('aria-label', o.title); svg.style.cssText = 'display:block;width:100%;height:auto;overflow:visible';
+    var xs = [], ys = []; o.series.forEach(function(s){ s.pts.forEach(function(p){ xs.push(p[0]); ys.push(p[1]); }); });
+    var x0 = Math.min.apply(null,xs), x1 = Math.max.apply(null,xs), y0 = Math.min.apply(null,ys), y1 = Math.max.apply(null,ys), pad = (y1-y0||1)*0.18; y0 -= pad; y1 += pad;
+    function X(t){ return m.l + (t-x0)/(x1-x0||1)*(W-m.l-m.r); } function Y(v){ return m.t + (1-(v-y0)/(y1-y0))*(H-m.t-m.b); }
+    function el(n,a,p){ var e = document.createElementNS(NS,n); for (var k in a) e.setAttribute(k,a[k]); (p||svg).appendChild(e); return e; }
+    for (var i=0;i<3;i++){ var gy = m.t + i*(H-m.t-m.b)/2; el('line',{x1:m.l,x2:W-m.r,y1:gy,y2:gy,stroke:'rgba(255,255,255,0.10)'}); }
+    [x0,x1].forEach(function(t,i){ var tx = el('text',{x:X(t),y:H-4,'font-size':11,fill:'#9FACBE','text-anchor': i?'end':'start'}); tx.textContent = MON[new Date(t).getUTCMonth()]+' '+String(new Date(t).getUTCFullYear()).slice(2); });
+    var cols = [GOLD, BLUE], ends = [];
+    o.series.forEach(function(s,si){
+      var d = '', last = null;
+      s.pts.forEach(function(p,i){ var px = X(p[0]), py = Y(p[1]); if (o.step && i){ d += 'L'+px+','+last[1]; } d += (i?'L':'M')+px+','+py; last = [px,py]; });
+      if (o.step){ d += 'L'+X(x1)+','+last[1]; }
+      el('path',{d:d,fill:'none',stroke:cols[si],'stroke-width':2.2,'stroke-linejoin':'round'});
+      var lp = s.pts[s.pts.length-1]; el('circle',{cx:X(lp[0]),cy:Y(lp[1]),r:3.2,fill:cols[si]});
+      ends.push({y:Y(lp[1]), s:s, c:cols[si], v:lp[1]});
+    });
+    ends.sort(function(a,b){ return a.y-b.y; }); if (ends.length>1 && ends[1].y-ends[0].y < 26){ var mid=(ends[0].y+ends[1].y)/2; ends[0].y = mid-13; ends[1].y = mid+13; }
+    ends.forEach(function(e){ var t = el('text',{x:W-m.r+8,y:e.y+4,'font-size':12,'font-weight':700,fill:e.c}); t.textContent = e.s.name+' '+e.s.fmt(e.v); });
+    var cross = el('line',{y1:m.t,y2:H-m.b,stroke:'#fff','stroke-opacity':.5,display:'none'});
+    var cap = document.createElement('div'); cap.className = 'mv-cap'; cap.textContent = o.title;
+    function move(ev){
+      var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, t = x0 + (px-m.l)/(W-m.l-m.r)*(x1-x0); if (px < m.l || px > W-m.r){ return; }
+      var parts = [], nx = null; o.series.forEach(function(s){ var b = s.pts[0]; s.pts.forEach(function(p){ if (Math.abs(p[0]-t) < Math.abs(b[0]-t) && (!o.step || p[0] <= t || b[0] > t)) b = p; }); if (o.step){ b = s.pts[0]; s.pts.forEach(function(p){ if (p[0] <= t) b = p; }); } parts.push(s.name+' '+s.fmt(b[1])); nx = nx === null ? b[0] : nx; });
+      cross.setAttribute('x1',X(nx)); cross.setAttribute('x2',X(nx)); cross.setAttribute('display','block'); cap.textContent = D(o.step ? t : nx)+': '+parts.join(' · ');
+    }
+    function out(){ cross.setAttribute('display','none'); cap.textContent = o.title; }
+    svg.addEventListener('pointermove',move); svg.addEventListener('pointerleave',out);
+    box.appendChild(svg); box.appendChild(cap);
+  }
+  Promise.all([J('/data/market_history.json'), J('/data/policy_history.json')]).then(function(r){
+    var H = r[0], P = r[1]; if (!H && !P) return;
+    var NAMES = {sofr:'SOFR',estr:'€STR',ust10y:'10Y',ust2y:'2Y',eurusd:'EUR/USD',gbpusd:'GBP/USD',ecb:'ECB',rbi:'RBI',fed:'Fed'};
+    items.forEach(function(li){
+      var o = pick((li.querySelector('p')||li).textContent); if (!o) return; var series = [], dp;
+      try {
+        if (o.k === 'pol' && P){ var from = Date.now() - 365*864e5; o.ids.forEach(function(id){ var S = P.series[id]; if (!S) return; var pts = S.points.map(function(p){ return [T(p[0]), +p[1]]; }), i0 = 0; pts.forEach(function(p,i){ if (p[0] <= from) i0 = i; }); pts = pts.slice(i0); if (pts[0][0] < from) pts[0] = [from, pts[0][1]]; series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(2)+'%'; }}); }); o.step = true; }
+        else if (H){ o.ids.forEach(function(id){ var S = H.series[id]; if (!S) return; var pts = S.points.slice(-o.weeks).map(function(p){ return [T(p[0]), +p[1]]; }); dp = S.dp; if (o.k === 'fx'){ var b = pts[0][1]; pts = pts.map(function(p){ return [p[0], p[1]/b*100]; }); series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(1); }}); } else { series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(2)+'%'; }}); } }); }
+      } catch(e){ return; }
+      if (!series.length || series.some(function(s){ return s.pts.length < 2; })) return;
+      o.series = series; var box = document.createElement('div'); box.className = 'mv-chart'; li.insertBefore(box, li.querySelector('.mv-src')); draw(box, o);
+    });
+  });
 })();
 </script>
 </body>
