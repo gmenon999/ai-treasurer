@@ -205,6 +205,91 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-09",
+   "note_headline": "Settlement is moving inside the ERP, and audit evidence must follow it",
+   "note_opening": "Settlement is shifting from bank channels into the systems Treasury and Finance already run. PayPal moved $1 billion of intercompany dividends between subsidiaries in two hours using PYUSD, against days through tradition",
+   "items": [
+    {
+     "headline": "Centalion's governed AI agent on Komgo cuts issuance processing time by 55%",
+     "urls": [
+      "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
+     ]
+    },
+    {
+     "headline": "Capgemini says agentic AI is now standard in leading TMS platforms",
+     "urls": [
+      "https://www.capgemini.com/in-en/insights/expert-perspectives/the-rise-of-agentic-payments-when-treasury-systems-become-autonomous-bankers/"
+     ]
+    },
+    {
+     "headline": "2026 TMS benchmark rates leading platforms on AI, forecasting and connectivity",
+     "urls": [
+      "https://pickmysoft.com/blog/best-treasury-management-systems"
+     ]
+    },
+    {
+     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
+     "urls": [
+      "https://www.cfo.com/news/us-firms-face-record-194t-liquidity-challenge-hackett-north-american-working-capital-survey-says/826774/"
+     ]
+    },
+    {
+     "headline": "Money market fund assets near $7.94 trillion as SOFR reaches 3.90%",
+     "urls": [
+      "https://www.ssga.com/us/en/institutional/insights/monthly-cash-review"
+     ]
+    },
+    {
+     "headline": "Circle and Tereina embed USDC and EURC payments in SAP Pay",
+     "urls": [
+      "https://www.nasdaq.com/press-release/tereina-sap-backed-company-and-circle-bring-usdc-and-eurc-enterprise-workflows"
+     ]
+    },
+    {
+     "headline": "RTP network clears 150 million payments worth $621 billion in Q3 2026",
+     "urls": [
+      "https://www.theclearinghouse.org/payment-systems/rtp"
+     ]
+    },
+    {
+     "headline": "Audit committees urged to keep quarterly evidence packs for material AI systems",
+     "urls": [
+      "https://www.accountingtoday.com/opinion/audit-committees-need-an-ai-evidence-pack-not-just-more-ai-expertise"
+     ]
+    },
+    {
+     "headline": "Dollar Index hits 17-month high as midterms sharpen FX focus",
+     "urls": [
+      "https://www.investec.com/en_gb/focus/business-growth/fx-market-update-october-2026.html"
+     ]
+    },
+    {
+     "headline": "PayPal moves $1 billion intercompany in two hours using PYUSD",
+     "urls": [
+      "https://cryptobriefing.com/paypal-pyusd-1-billion-intercompany-transfers/"
+     ]
+    },
+    {
+     "headline": "HSBC tokenised deposits go live in UAE through Ant International",
+     "urls": [
+      "https://garant.consulting/en/news/ant-international-hsbc-tokenised-deposits-uae-pilot-2026-10/"
+     ]
+    },
+    {
+     "headline": "Fed range at 3.75-4% after September rise; October hold seen at 67%",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261008"
+     ]
+    }
+   ]
   }
  ]
 }
