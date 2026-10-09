@@ -15,6 +15,10 @@ on:
         description: "Rebuild today's edition even if it already exists"
         type: boolean
         default: false
+      preview:
+        description: "Build only: do not publish; upload the page for review"
+        type: boolean
+        default: false
 
 concurrency:
   group: daily-briefing
@@ -36,9 +40,18 @@ jobs:
       - name: Build today's edition
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          FORCE: ${{ github.event.inputs.force }}
+          BRIEF_TAKES: ${{ vars.BRIEF_TAKES }}
         run: python generate.py ${{ github.event.inputs.force == 'true' && '--force' || '' }}
+      - name: Upload preview
+        if: ${{ github.event.inputs.preview == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview
+          path: |
+            index.html
+            editions/takes-log.json
       - name: Commit and push
+        if: ${{ github.event.inputs.preview != 'true' }}
         run: |
           set -e
           git config user.name  "AI Treasurer bot"
