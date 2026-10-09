@@ -1,0 +1,77 @@
+{
+ "days": [
+  {
+   "date": "2026-10-09",
+   "items": [
+    {
+     "headline": "Capgemini says agentic AI is now standard in leading TMS platforms",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Circle and Tereina embed USDC and EURC payments in SAP Pay",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Audit committees urged to keep quarterly evidence packs for material AI systems",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Centalion's governed AI agent on Komgo cuts issuance processing time by 55%",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "2026 TMS benchmark rates leading platforms on AI, forecasting and connectivity",
+     "status": "dropped",
+     "lens": "Payments & operations",
+     "reasons": "no verdict from checker"
+    },
+    {
+     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Money market fund assets near $7.94 trillion as SOFR reaches 3.90%",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "RTP network clears 150 million payments worth $621 billion in Q3 2026",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Dollar Index hits 17-month high as midterms sharpen FX focus",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "PayPal moves $1 billion intercompany in two hours using PYUSD",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "HSBC tokenised deposits go live in UAE through Ant International",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Fed range at 3.75-4% after September rise; October hold seen at 67%",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.31,
+   "edition_cost_usd": 0.31
+  }
+ ]
+}
