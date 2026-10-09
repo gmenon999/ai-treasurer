@@ -107,6 +107,9 @@
   .leads-nav a:hover, .leads-nav a:focus-visible { text-decoration: underline; }
   .leads-head h2 { font-family: var(--serif); font-size: 26px; margin: 0; }
   .leads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 22px; counter-reset: lead; }
+  .panel .item.flash { animation: itemflash 2.4s ease-out; }
+  @keyframes itemflash { 0%, 30% { background: rgba(201,162,74,0.18); box-shadow: -10px 0 0 rgba(201,162,74,0.18), 10px 0 0 rgba(201,162,74,0.18); } 100% { background: transparent; box-shadow: none; } }
+  @media (prefers-reduced-motion: reduce) { .panel .item.flash { animation: none; } }
   .leads .item { counter-increment: lead; border-top: 3px solid var(--gold); padding-top: 16px; }
   .leads .item .topic { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
   .leads .item h4 { font-family: var(--serif); font-size: 22px; line-height: 1.25; margin: 8px 0 8px; color: var(--white); }
@@ -1110,13 +1113,16 @@
 <script>
   var tabs = document.querySelectorAll('.tabs button');
   var panels = document.querySelectorAll('.panel');
-  function showTab(key) {
+  function showTab(key, itemId) {
     if (key === 'front') key = 'ai';
     if (window.showView) window.showView('briefing');
     tabs.forEach(function(b){ b.setAttribute('aria-selected', b.id === 't-'+key ? 'true':'false'); });
     panels.forEach(function(p){ p.classList.toggle('active', p.id === 'p-'+key); });
     var t = document.getElementById('briefing-tabs');
-    if (t) { var h = (document.querySelector('.secnav')||{}).offsetHeight || 0; window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - h, behavior: 'smooth' }); }
+    var it = itemId ? document.getElementById(itemId) : null;
+    var dest = it || t;
+    if (dest) { var h = (document.querySelector('.secnav')||{}).offsetHeight || 0; window.scrollTo({ top: dest.getBoundingClientRect().top + window.pageYOffset - h - (it ? 16 : 0), behavior: 'smooth' }); }
+    if (it) { it.classList.remove('flash'); void it.offsetWidth; it.classList.add('flash'); }
   }
   tabs.forEach(function(b){
     b.addEventListener('click', function(){ showTab(b.id.replace('t-','')); });

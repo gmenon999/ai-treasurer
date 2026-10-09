@@ -66,6 +66,10 @@ BEATS = [
 # Newer, narrower sections: if research finds nothing material, show a quiet note instead of failing the edition.
 OPTIONAL_BEATS = {"financial_crime", "reporting"}
 BEAT_KEYS = [b[0] for b in BEATS]
+# Which briefing tab each beat is shown under (must match edition_template.html panels).
+BEAT_TAB = {"ai_agentic": "ai", "treasury_tech": "ai", "cash": "treasury", "payments": "treasury",
+            "risk": "markets", "digital": "markets", "markets_macro": "markets",
+            "regulation": "regulation", "financial_crime": "regulation", "reporting": "regulation"}
 LEAD_TAB_LABEL = {"ai": "AI &amp; Technology", "treasury": "Treasury &amp; Payments", "markets": "Risk &amp; Markets", "regulation": "Regulation &amp; Compliance"}
 
 
@@ -452,13 +456,17 @@ def _sources_html(sources, prefix="Via "):
     return prefix + joined
 
 
-def _items_html(items):
+def _norm(h):
+    return re.sub(r"[^a-z0-9]+", " ", (h or "").lower()).strip()
+
+
+def _items_html(items, beat=""):
     if not items:
         return '<p class="pillar-sub" style="margin:0;">No material developments today.</p>'
     out = []
-    for it in items:
-        out.append('<div class="item"><h4>%s</h4><p>%s</p><div class="cite">%s</div></div>'
-                   % (esc(it["headline"]), esc(it["summary"]), _sources_html(it.get("sources", []))))
+    for i, it in enumerate(items):
+        out.append('<div class="item" id="s-%s-%d"><h4>%s</h4><p>%s</p><div class="cite">%s</div></div>'
+                   % (beat, i, esc(it["headline"]), esc(it["summary"]), _sources_html(it.get("sources", []))))
     return "\n        ".join(out)
 
 
@@ -478,17 +486,27 @@ def render(content, date_human, edition_n, archive_entries):
                      % (esc(c.get("value")), esc(c.get("label")), esc(c.get("src"))))
     s = s.replace("<!--DASHBOARD-->", "\n          ".join(cells))
     # lead stories
+    # Locate each lead in the beats, so its link opens the tab (and story) where it actually appears.
+    where = {}
+    for k in BEAT_KEYS:
+        for i, it in enumerate(content["beats"].get(k) or []):
+            where.setdefault(_norm(it.get("headline")), (k, i))
     leads = []
     for L in content["lead_stories"]:
         tab = L.get("tab", "ai")
+        anchor = ""
+        hit = where.get(_norm(L.get("headline")))
+        if hit:
+            tab = BEAT_TAB.get(hit[0], tab)
+            anchor = "s-%s-%d" % hit
         label = LEAD_TAB_LABEL.get(tab, "AI &amp; Technology")
         topic = (L.get("topic") or "").strip() or LEAD_TAB_LABEL.get(tab, "AI &amp; Technology").replace("&amp;", "&")
-        leads.append('<div class="item"><div class="topic">%s</div><h4>%s</h4><div class="cite">See <a href="#" onclick="showTab(\'%s\');return false;">%s &rarr;</a></div></div>'
-                     % (esc(topic), esc(L["headline"]), tab, label))
+        leads.append('<div class="item"><div class="topic">%s</div><h4>%s</h4><div class="cite">See <a href="#" onclick="showTab(\'%s\',\'%s\');return false;">%s &rarr;</a></div></div>'
+                     % (esc(topic), esc(L["headline"]), tab, anchor, label))
     s = s.replace("<!--LEAD-->", "\n      ".join(leads))
     # beats
     for k in BEAT_KEYS:
-        s = s.replace("<!--BEAT_%s-->" % k, _items_html(content["beats"][k]))
+        s = s.replace("<!--BEAT_%s-->" % k, _items_html(content["beats"][k], k))
     # events
     evs = []
     for e in content["events"]:
