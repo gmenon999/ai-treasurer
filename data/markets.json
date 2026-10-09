@@ -8,8 +8,8 @@
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
    "id": "fed",
    "value": "3.75–4.00%",
-   "change_bp": null,
-   "since": null,
+   "change_bp": 25,
+   "since": "2026-09-16",
    "checked": "2026-10-09",
    "asof": "2026-10-09",
    "stale": false
