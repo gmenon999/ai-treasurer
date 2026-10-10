@@ -807,7 +807,7 @@ def _mv_local(points, facts):
 def _mv_prompt(facts, date_human, fixes=None):
     lst = "\n".join("[%s] %s" % (k, v["text"]) for k, v in facts.items())
     p = (
-        "You write the Market view for The AI Treasurer, a controls-first daily read for CFOs and corporate "
+        ("You write the Market view for The AI Treasurer, a controls-first daily read for CFOs and corporate "
         "treasurers. Today is %s. Write EXACTLY 5 points of commentary on rates, money markets and FX for a "
         "corporate Treasury and Finance team, using ONLY the facts below.\n\n"
         "Each point: head = 2-5 word label (e.g. 'Curve shape', 'Dollar funding', 'Rupee pressure'); text = 1-2 "
@@ -816,7 +816,7 @@ def _mv_prompt(facts, date_human, fixes=None):
         "must appear in a cited fact; do not calculate new numbers).\n"
         "Also give each point an AI Treasurer view: view = ONE sentence, 14-32 words, the Treasury question or step "
         "to consider in response, framed as something to check or consider, never as an instruction to trade or buy "
-        "a product; any figure in it must appear in a cited fact; " + CLARITY + " area = 2-4 words naming the Treasury area "
+        "a product; any figure in it must appear in a cited fact; " % date_human) + CLARITY + (" area = 2-4 words naming the Treasury area "
         "(e.g. 'Term borrowing'); effect = 2-3 words, the effect on a corporate Treasury (e.g. 'Cost up', "
         "'Yield up', 'Hedge cost up', 'Event risk'); tone = bad, good or watch.\n"
         "Order: most material first. Cover different ground: policy rates, short-term/money-market rates, the "
@@ -825,7 +825,7 @@ def _mv_prompt(facts, date_human, fixes=None):
         "advice. Neutral and factual about every central bank; nothing negative toward Qatar, QatarEnergy or "
         "Woqod (the QCB and the riyal peg may be mentioned factually). Brand voice, no personal name.\n\n%s\n\n"
         "Return STRICT JSON only: {\"points\": [{\"head\": \"...\", \"text\": \"...\", \"refs\": [\"ust10y\"], \"view\": \"...\", \"area\": \"...\", \"effect\": \"...\", \"tone\": \"watch\"}]}\n\n"
-        "FACTS:\n%s" % (date_human, STYLE, lst))
+        "FACTS:\n%s" % (STYLE, lst)))
     if fixes:
         p += "\n\nYOUR PREVIOUS DRAFT FAILED THE CHECK: %s. Fix every point." % fixes
     return p
