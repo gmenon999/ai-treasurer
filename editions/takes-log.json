@@ -72,6 +72,76 @@
    ],
    "cost_usd": 0.31,
    "edition_cost_usd": 0.31
+  },
+  {
+   "date": "2026-10-10",
+   "items": [
+    {
+     "headline": "Dollar index reaches 17-month high as cross-currency basis lifts hedging costs",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ICMA ERCC finds repo markets normalised after Q3, with GC near 3.90%",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Zone & Co launches AgentHQ with governed write actions inside NetSuite",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Bank of America adds AI-driven Payments Insights to CashPro Data Intelligence",
+     "status": "dropped",
+     "lens": "Cost & value",
+     "reasons": "Two problems. First, \"cheaper or faster method\" is not in the source, which only says \"more efficient payment methods\" and \"working-capital outcomes\" and gives no cost claim. Second, the lens is a poor fit: the story's key point is payment efficiency and operations, so Payments & operations fits bet"
+    },
+    {
+     "headline": "Corporates lift U.S. cash holdings and shift from deposits to Treasuries",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "The figures 42%, \"lowest share since 2011\" and the shift from bank deposits into Treasury securities and money market funds do not appear in the source text. They appear only in the news summary. The source says only that organisations are holding more cash and taking a cautious approach."
+    },
+    {
+     "headline": "SEPA Instant becomes the default, with 10-second checks and Verification of Payee",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "COSO GenAI framework demands contemporaneous documentation for AI-assisted ICFR judgements",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    },
+    {
+     "headline": "SOX Section 404 gives agentic AI systems no exemption from ICFR scope",
+     "status": "dropped",
+     "lens": "Controls & audit",
+     "reasons": "The view asks for a \"regular human check\" but does not say how often or when. \"Regular\" is a vague verb for timing, so the action is not precise enough."
+    },
+    {
+     "headline": "OpenAssets and Partior prove atomic DvP using tokenised commercial bank deposits",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Fed signals one or two more hikes, with December pricing at 85%",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC issues Iran General License EE as sanctions lookback doubles to ten years",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.4452,
+   "market_view": {
+    "status": "error",
+    "reasons": "not all arguments converted during string formatting",
+    "cost_usd": 0.0
+   },
+   "edition_cost_usd": 0.8963
   }
  ]
 }

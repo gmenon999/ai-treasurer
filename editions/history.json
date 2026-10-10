@@ -290,6 +290,82 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-10",
+   "note_headline": "AI-assisted judgements in Finance now need audit evidence created as they happen",
+   "note_opening": "Audit evidence for AI in Treasury and Finance must now exist when decisions are made. COSO's 2026 GenAI framework requires documentation of AI-assisted judgements during the reporting period relied upon, and SOX Section ",
+   "items": [
+    {
+     "headline": "Zone & Co launches AgentHQ with governed write actions inside NetSuite",
+     "urls": [
+      "https://www.prnewswire.com/news-releases/zone--co-introduces-agenthq-bringing-action-and-control-to-ai-agents-in-the-erp-302901951.html"
+     ]
+    },
+    {
+     "headline": "Bank of America adds AI-driven Payments Insights to CashPro Data Intelligence",
+     "urls": [
+      "https://bankingherald.com/bank-of-america-adds-payments-insights-to-cashpro-ai-technology/"
+     ]
+    },
+    {
+     "headline": "Corporates lift U.S. cash holdings and shift from deposits to Treasuries",
+     "urls": [
+      "https://www.invesco.com/us/en/insights/cash-trends-liquidity-survey.html"
+     ]
+    },
+    {
+     "headline": "SEPA Instant becomes the default, with 10-second checks and Verification of Payee",
+     "urls": [
+      "https://thepaypers.com/payments/expert-views/from-mandate-to-mainstream-key-takeaways-on-sepa-instant-as-the-default"
+     ]
+    },
+    {
+     "headline": "COSO GenAI framework demands contemporaneous documentation for AI-assisted ICFR judgements",
+     "urls": [
+      "https://www.ey.com/en_us/cro-risk/coso-2026-and-the-shift-in-ai-governance",
+      "https://dailysynapse.com/news/coso-issues-generative-artificial-intelligence-internal-control-guidance/"
+     ]
+    },
+    {
+     "headline": "SOX Section 404 gives agentic AI systems no exemption from ICFR scope",
+     "urls": [
+      "https://www.finrep.ai/blog/sox-and-ai-controls-the-governance-framework-for-2026"
+     ]
+    },
+    {
+     "headline": "Dollar index reaches 17-month high as cross-currency basis lifts hedging costs",
+     "urls": [
+      "https://www.investec.com/en_gb/focus/business-growth/fx-market-update-october-2026.html",
+      "https://forex-trading-daily.contentwave.net/article/swap-vs-option-hedging-fx-when-crosscurrency-basis-widens-2026"
+     ]
+    },
+    {
+     "headline": "OpenAssets and Partior prove atomic DvP using tokenised commercial bank deposits",
+     "urls": [
+      "https://www.prnewswire.com/news-releases/openassets-and-partior-complete-proof-of-concept-demonstrating-atomic-delivery-versus-payment-with-tokenised-deposits-as-the-settlement-asset-302838116.html"
+     ]
+    },
+    {
+     "headline": "Fed signals one or two more hikes, with December pricing at 85%",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/speech/waller20261008a.htm"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran General License EE as sanctions lookback doubles to ten years",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261008",
+      "https://blog.volkovlaw.com/2026/10/updating-your-sanctions-compliance-guidance-part-2-the-four-multi-agency-priorities-you-need-to-build-into-your-program-now/"
+     ]
+    },
+    {
+     "headline": "ICMA ERCC finds repo markets normalised after Q3, with GC near 3.90%",
+     "urls": [
+      "https://www.icmagroup.org/assets/documents/Regulatory/Repo/ERCC-Repo-Pulse/ICMA-ERCC-Repo-Pulse-quarter-end-analysis-October-2026-061026.pdf"
+     ]
+    }
+   ]
   }
  ]
 }
