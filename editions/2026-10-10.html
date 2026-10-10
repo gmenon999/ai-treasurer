@@ -274,7 +274,7 @@
   .to-sections { grid-column: 2; justify-self: end; margin-top: -16px; font-size: 14px; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
   .to-sections::after { content: " \2191"; }
   .to-sections:hover { color: var(--blue); }
-  .beat-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .beat-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
   .beat-items .item { background: var(--white); border: 1px solid #E2DED6; border-top: 3px solid var(--navy); padding: 20px 22px 18px; display: flex; flex-direction: column; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; }
   .beat-items .item:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(20,38,63,0.12); border-top-color: var(--gold); }
   .beat-items .item h4 { font-family: var(--serif); font-size: 20px; line-height: 1.25; margin: 0 0 10px; color: var(--navy); }
@@ -286,6 +286,14 @@
   .beat-items .item .take .view { color: var(--navy); }
   .beat-items .item .cite { margin-top: auto; font-size: 13px; color: var(--navy-soft); border-top: 1px solid #E2DED6; padding-top: 10px; }
   .beat-items .item .cite a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  /* Desktop: a lone story fills the row (auto-fit collapses empty tracks); with a take, summary and take sit side by side */
+  @media (min-width: 701px) {
+    .beat-items .item:only-child:has(.take) { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); column-gap: 32px; align-items: start; }
+    .beat-items .item:only-child:has(.take) > h4 { grid-column: 1 / -1; }
+    .beat-items .item:only-child:has(.take) > p { grid-column: 1; margin: 0; }
+    .beat-items .item:only-child:has(.take) > .take { grid-column: 2; margin: 0; }
+    .beat-items .item:only-child:has(.take) > .cite { grid-column: 1 / -1; margin-top: 18px; }
+  }
   .event { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; background: var(--white); border: 1px solid #E2DED6; border-top: 3px solid var(--gold); padding: 24px 26px; margin-bottom: 16px; }
   .event .when { font-family: var(--serif); font-weight: 700; font-size: 22px; line-height: 1.2; }
   .event .when small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--navy-soft); margin-top: 6px; }
