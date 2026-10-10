@@ -874,7 +874,7 @@ def market_view(content, date_human):
         if len(facts) < 8:
             raise ValueError("too few market facts (%d)" % len(facts))
         fixes, points = None, []
-        for attempt in range(2):
+        for attempt in range(3):
             data = _json(_ask(_mv_prompt(facts, date_human, fixes), EDITORIAL_MODEL, max_tokens=4000, search=False), "market view")
             points = [{"head": _cap_treasury((x.get("head") or "").strip().rstrip(".:")),
                        "text": _cap_treasury((x.get("text") or "").strip()),
@@ -888,7 +888,7 @@ def market_view(content, date_human):
                 problems = _mv_check(points, facts)
             if not problems:
                 break
-            print("market view: %s (%s)" % ("redraft" if attempt == 0 else "dropped", "; ".join(problems)[:400]))
+            print("market view: %s (%s)" % ("redraft" if attempt < 2 else "dropped", "; ".join(problems)[:400]))
             fixes = "; ".join(problems)
         if problems:
             log = {"status": "dropped", "reasons": "; ".join(problems)[:400]}
@@ -1165,14 +1165,67 @@ def takes_only(date_iso):
     return 0
 
 
+def selftest():
+    """Offline check, no API calls: every prompt builder must run and leave no unfilled placeholder.
+    A formatting slip once made the Market view fail silently; this stops that reaching publication."""
+    problems = []
+    facts = {"p_fed": {"text": "Fed target range: 3.75-4.00% (as of 2026-10-08)", "name": "Fed", "url": "https://example.com/"},
+             "ust10y": {"text": "US Treasury 10Y: 5.24% (day change +2 bp, as of 2026-10-09)", "name": "UST", "url": "https://example.com/"}}
+    items = [(1, {"headline": "Sample headline", "summary": "Sample summary."}, "Sample source text.")]
+    points = [{"head": "Curve shape", "text": "Sample text.", "refs": ["ust10y"], "view": "Sample view.", "area": "Term borrowing", "effect": "Cost up", "tone": "watch"}]
+    seen = {}
+    def grab(name, fn):
+        try:
+            seen[name] = fn()
+        except Exception as e:
+            problems.append("%s raised %s: %s" % (name, type(e).__name__, e))
+    grab("market view prompt", lambda: _mv_prompt(facts, "Saturday, 10 October 2026"))
+    grab("market view prompt (redraft)", lambda: _mv_prompt(facts, "Saturday, 10 October 2026", "point 1: sample"))
+    grab("take prompt", lambda: _take_prompt(items))
+    grab("take check prompt", lambda: _check_prompt(items, {1: {"lens": "Risk", "focus": "f", "view": "v"}}))
+    real_ask, captured = globals()["_ask"], {}
+    def fake_ask(prompt, *a, **k):
+        captured["p"] = prompt
+        return '{"checks": [{"n": 1, "pass": true, "reasons": ""}]}'
+    globals()["_ask"] = fake_ask
+    try:
+        grab("market view check prompt", lambda: (_mv_check(points, facts), captured.get("p"))[1])
+    finally:
+        globals()["_ask"] = real_ask
+    for name, p in seen.items():
+        if p is None or len(p) < 200:
+            problems.append("%s is empty or too short" % name)
+        elif re.search(r"%(?:\(|[sdr])", p):
+            problems.append("%s still has an unfilled %% placeholder" % name)
+    mv = seen.get("market view prompt") or ""
+    for needle in ("10 October 2026", "[ust10y]", "FACTS:"):
+        if mv and needle not in mv:
+            problems.append("market view prompt is missing %r" % needle)
+    if problems:
+        for p in problems:
+            print("SELFTEST FAIL: " + p)
+        return 1
+    print("selftest ok: %d prompts build cleanly" % len(seen))
+    return 0
+
+
+def mv_missing(page):
+    """True when this page has an empty Market view slot (the block is absent)."""
+    return MV_START in page and not re.search(re.escape(MV_START) + r"\s*<section", page)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mock", action="store_true", help="render with canned content (no API)")
     ap.add_argument("--out", default=INDEX, help="output path for the latest edition")
     ap.add_argument("--force", action="store_true", help="rebuild today's edition even if it already exists")
     ap.add_argument("--market-view-only", action="store_true", help="refresh the Market view on today's published edition; news unchanged")
+    ap.add_argument("--selftest", action="store_true", help="offline check that every prompt builds; no API calls")
     ap.add_argument("--takes-only", action="store_true", help="add takes to today's published edition; news unchanged")
     args = ap.parse_args()
+
+    if args.selftest:
+        return selftest()
 
     now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
     date_iso = now.strftime("%Y-%m-%d")
@@ -1188,6 +1241,13 @@ def main():
     # self-heal: if today's edition already built, exit quietly (lets retry crons no-op)
     if any(e["date"] == date_iso for e in st["editions"]) and not args.mock:
         if not args.force:
+            try:
+                page_now = open(INDEX, encoding="utf-8").read()
+            except OSError:
+                page_now = ""
+            if MV_ON and mv_missing(page_now):
+                print("Edition for %s exists but its Market view is missing; retrying the Market view only." % date_iso)
+                return market_view_only(date_human, date_iso)
             print("Edition for %s already exists; nothing to do." % date_iso)
             return 0
         # rebuild: drop today's entry (keeping its number) so it is replaced, not duplicated

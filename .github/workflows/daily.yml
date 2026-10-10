@@ -45,6 +45,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install --quiet requests
+      - name: Self-test (prompts build; no API calls)
+        id: selftest
+        continue-on-error: true
+        run: python generate.py --selftest
       - name: Build today's edition
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -82,3 +86,19 @@ jobs:
             [ "$i" = 5 ] && { echo "::error::push failed after 5 tries"; exit 1; }
             sleep $((i*10)); git fetch origin main; git rebase origin/main || { git rebase --abort || true; exit 1; }
           done
+      - name: Flag a missing Market view (job turns red so GitHub emails the owner)
+        if: ${{ always() && github.event.inputs.preview != 'true' && github.event.inputs.takes_only != 'true' }}
+        env:
+          BRIEF_MARKET_VIEW: ${{ vars.BRIEF_MARKET_VIEW }}
+        run: |
+          bad=0
+          if [ "${{ steps.selftest.outcome }}" = "failure" ]; then
+            echo "::error::Self-test failed: a prompt no longer builds. See the Self-test step."; bad=1
+          fi
+          case "$(echo "${BRIEF_MARKET_VIEW:-on}" | tr '[:upper:]' '[:lower:]')" in
+            off|false|0|no) echo "Market view switched off; not checked." ;;
+            *) if ! grep -q '<!--MV-START--><section class="mv"' index.html; then
+                 echo "::error::Market view is missing from today's page (edition still published). Re-run with market_view_only."; bad=1
+               fi ;;
+          esac
+          exit $bad
