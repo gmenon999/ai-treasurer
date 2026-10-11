@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14263F">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AI Treasurer">
+<title>The AI Treasurer | Daily Briefing on AI, Treasury &amp; Finance</title>
+<meta name="description" content="A daily intelligence briefing on AI, Treasury and Finance, written in plain English, plus a controls-first view on adopting AI in Treasury.">
+<meta property="og:title" content="The AI Treasurer">
+<meta property="og:description" content="Daily intelligence on AI, Treasury and Finance for CFOs and treasurers. Treasury is getting faster; the controls have to keep up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theaitreasurer.com/">
+<meta property="og:image" content="https://theaitreasurer.com/img/ait-og-gopakumar.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Gopakumar Menon, CA, CPA, CTP, The AI Treasurer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://theaitreasurer.com/img/ait-og-gopakumar.jpg">
+<link rel="image_src" href="https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":"https://theaitreasurer.com/#website","url":"https://theaitreasurer.com/","name":"The AI Treasurer","publisher":{"@id":"https://theaitreasurer.com/#author"},"image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg"},
+ {"@type":"Person","@id":"https://theaitreasurer.com/#author","name":"Gopakumar Menon","honorificSuffix":"CA, CPA, CTP","url":"https://theaitreasurer.com/","image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg","email":"mailto:gmenon@theaitreasurer.com"}
+]}
+</script>
+<style>
+  :root {
+    --navy: #14263F;
+    --navy-deep: #0D1A2C;
+    --navy-mid: #1B3150;
+    --navy-soft: #3B4A60;
+    --blue: #2E6AF0;
+    --gold: #B08D3C;
+    --gold-light: #D9B867;
+    --grey: #EAE7E2;
+    --line: #CFCBC3;
+    --white: #FFFFFF;
+    --on-dark: #DCE2EA;
+    --on-dark-soft: #9FACBE;
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--sans); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible, .skip:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--white); padding: 8px 12px; }
+  .skip:focus { left: 8px; top: 8px; z-index: 10; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  .kicker { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+  .arrow-link { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+  .arrow-link::after { content: " \2192"; }
+
+  /* ---------- Header ---------- */
+  header.band { background: var(--navy-deep); color: var(--white); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  header.band .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; padding-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--serif); font-size: 22px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+  .mark .logomark { width: 32px; height: 32px; flex: none; }
+  .nav { display: flex; gap: 22px; align-items: center; font-size: 14px; flex-wrap: wrap; }
+  .nav a { color: var(--on-dark); text-decoration: none; }
+  .nav a:hover { color: var(--white); }
+  .nav .cta { color: var(--navy-deep); background: var(--gold-light); padding: 8px 14px; font-weight: 700; }
+  .nav .cta:hover { background: var(--white); color: var(--navy-deep); }
+
+  /* ---------- Front grid (dark) ---------- */
+  .front { background: var(--navy-deep); color: var(--white); padding: 56px 0 64px; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 24px; }
+  .tiles > *, .leads > *, .beat-items > *, .cards > *, .beat > *, .grid > * { min-width: 0; }
+  .tile h2, .card h3, .leads .item h4 { overflow-wrap: anywhere; }
+  .tile { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; min-height: 300px; padding: 28px 28px 30px; background: var(--navy-mid); color: var(--white); text-decoration: none; }
+  .tile .art { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .tile > *:not(.art) { position: relative; }
+  .tile h2 { font-family: var(--serif); font-size: clamp(24px, 2.4vw, 32px); line-height: 1.18; margin: 10px 0 12px; }
+  .tile h2 a, .tile .h-link { color: var(--white); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+  .tile p { margin: 0 0 14px; color: var(--on-dark); font-size: 16px; }
+  .tile .kicker { color: var(--gold-light); }
+  .tile-tall { grid-row: span 2; min-height: 620px; }
+  .tile-desk { grid-row: span 2; justify-content: flex-start; background: var(--navy); border-top: 3px solid var(--gold); }
+  .tile-desk .note-h { font-family: var(--serif); font-size: clamp(22px, 2vw, 26px); line-height: 1.22; font-weight: 700; color: var(--white); margin: 12px 0 14px; }
+  .tile-desk .note p { font-family: var(--sans); font-size: 16px; line-height: 1.6; color: var(--on-dark); margin: 0 0 12px; }
+  .tile-desk .arrow-link { margin-top: 18px; }
+  .tile-desk .arrow-link { color: var(--white); margin-top: auto; align-self: flex-start; }
+  .tile-work .btn { align-self: flex-start; }
+  .btn { display: inline-block; background: var(--white); color: var(--navy-deep); font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 22px; border: 0; cursor: pointer; font-family: var(--sans); }
+  .btn::after { content: "  \2192"; }
+  .btn:hover { background: var(--gold-light); }
+  .btn-gold { background: var(--gold-light); }
+  .btn-gold:hover { background: var(--white); }
+
+  /* Subscribe */
+  .hp { position: absolute; left: -5000px; }
+
+  /* Lead stories */
+  .leads-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.14); margin-top: 48px; padding-top: 22px; }
+  .leads-nav { display: flex; flex-wrap: wrap; gap: 10px 32px; }
+  .leads-nav a { color: var(--white); font-size: 15px; font-weight: 600; text-decoration: none; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+  .leads-nav a .chev { color: var(--gold-light); }
+  .leads-nav a:hover, .leads-nav a:focus-visible { text-decoration: underline; }
+  .leads-head h2 { font-family: var(--serif); font-size: 26px; margin: 0; }
+  .leads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 22px; counter-reset: lead; }
+  .panel .item.flash { animation: itemflash 2.4s ease-out; }
+  @keyframes itemflash { 0%, 30% { background: rgba(201,162,74,0.18); box-shadow: -10px 0 0 rgba(201,162,74,0.18), 10px 0 0 rgba(201,162,74,0.18); } 100% { background: transparent; box-shadow: none; } }
+  @media (prefers-reduced-motion: reduce) { .panel .item.flash { animation: none; } }
+  .leads .item { counter-increment: lead; border-top: 3px solid var(--gold); padding-top: 16px; }
+  .leads .item .topic { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .leads .item h4 a.lead-link { color: inherit; text-decoration: none; }
+  .leads .item h4 a.lead-link:hover, .leads .item h4 a.lead-link:focus-visible { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 5px; text-decoration-thickness: 2px; }
+  .leads .item h4 { font-family: var(--serif); font-size: 22px; line-height: 1.25; margin: 8px 0 8px; color: var(--white); }
+  .leads .item p { color: var(--on-dark); font-size: 16px; margin: 0 0 10px; }
+  .leads .item .cite { font-size: 14px; color: var(--on-dark-soft); }
+  .leads .item .cite a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+  /* ---------- Briefing ---------- */
+  .briefing { position: relative; overflow: hidden; padding: 80px 0 16px; scroll-margin-top: 24px; background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(46,106,240,0.28) 0%, rgba(46,106,240,0) 70%), radial-gradient(ellipse 50% 50% at 0% 100%, rgba(176,141,60,0.10) 0%, rgba(176,141,60,0) 70%), var(--navy); color: var(--white); }
+  .briefing > .wrap { position: relative; }
+  .briefing .kicker { color: var(--gold-light); }
+  .briefing .sec-head { border-bottom-color: var(--gold); }
+  .briefing .sec-head .dateline, .briefing .sec-head .meta div { color: var(--on-dark-soft); }
+  .briefing .sec-head .dateline b, .briefing .sec-head .meta b { color: var(--white); }
+  .briefing .desk .text p { color: var(--on-dark); }
+  .briefing .desk .text::before { opacity: 0.45; }
+  .briefing .desk .sig { color: var(--gold-light); }
+  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-bottom: 3px solid var(--navy); padding-bottom: 20px; margin-bottom: 44px; }
+  .sec-head h2 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; margin: 10px 0 0; letter-spacing: -0.02em; }
+  .sec-head p { margin: 12px 0 0; color: var(--navy-soft); max-width: 60ch; }
+  .sec-head .dateline { font-size: 14px; color: var(--navy-soft); display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
+  .sec-head .dateline b { color: var(--navy); }
+  .briefing .sec-head .brief-tag { margin: 14px 0 0; max-width: 70ch; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 19px; line-height: 1.3; color: var(--gold-light); }
+  .sec-head .meta { display: flex; gap: 28px; }
+  .sec-head .meta div { font-size: 13px; color: var(--navy-soft); line-height: 1.3; }
+  .sec-head .meta b { display: block; font-family: var(--serif); font-size: 40px; line-height: 1; color: var(--navy); }
+
+  .desk { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; margin-bottom: 64px; }
+  .desk .label { border-top: 3px solid var(--gold); padding-top: 16px; }
+  .desk .label h3 { font-family: var(--serif); font-size: 26px; line-height: 1.2; margin: 10px 0 0; }
+  .desk .text { position: relative; }
+  .desk .text::before { content: "\201C"; position: absolute; left: -54px; top: -30px; font-family: var(--serif); font-size: 150px; line-height: 1; color: var(--gold); opacity: 0.3; }
+  .desk .text p { position: relative; font-family: var(--serif); font-size: 22px; line-height: 1.55; margin: 0 0 18px; color: var(--navy); max-width: 62ch; }
+  .desk .sig { font-family: var(--serif); font-size: 17px; border-top: 2px solid var(--gold); padding-top: 12px; display: inline-block; margin-top: 4px; }
+
+  .numbers { position: relative; overflow: hidden; background: var(--navy-deep); color: var(--white); padding: 48px 0 40px; }
+  .numbers .bg { position: absolute; right: -60px; top: -40px; width: 520px; height: 340px; opacity: 0.5; }
+  .numbers .wrap { position: relative; }
+  .numbers-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .numbers-head h3 { font-family: var(--serif); font-size: 28px; margin: 6px 0 0; font-weight: 700; }
+  .numbers .disclaim { font-size: 12px; color: var(--on-dark-soft); margin: 0; max-width: 52ch; }
+  /* ---- Market view: five points under the Markets heading ---- */
+  .mv { margin: 0 0 28px; border-top: 3px solid var(--gold); padding-top: 16px; }
+  .mv h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin: 0 0 14px; }
+  .mv h4 small { display: block; margin-top: 4px; font-size: 12px; letter-spacing: 0; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .mv ol { list-style: none; counter-reset: mv; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px 32px; }
+  .mv li { counter-increment: mv; position: relative; padding: 2px 0 12px 38px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .mv li::before { content: counter(mv); position: absolute; left: 0; top: -2px; font-family: var(--serif); font-size: 26px; line-height: 1; font-weight: 700; color: var(--gold-light); }
+  .mv li p { margin: 0; font-size: 15px; line-height: 1.55; }
+  .mv li b { color: var(--white); }
+  .mv .mv-src { display: block; margin-top: 6px; font-size: 12px; color: var(--on-dark-soft); }
+  .mv .mv-src a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .mv .mv-note { margin: 12px 0 0; font-size: 12px; color: var(--on-dark-soft); }
+  /* Markets landing: headline, key figures strip, tighter header on phones */
+  .mv .mv-head { margin: 0 0 14px; font-family: var(--serif); font-size: clamp(22px, 3.2vw, 32px); line-height: 1.22; color: var(--white); font-weight: 700; max-width: 40ch; }
+  .mv .mv-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 0 0 24px; }
+  .mv .kpi { background: rgba(255,255,255,0.045); border-top: 2px solid var(--gold); padding: 10px 12px 8px; min-width: 0; }
+  .mv .kpi span { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); }
+  .mv .kpi b { display: block; font: 700 22px/1.2 var(--serif); color: var(--white); font-variant-numeric: tabular-nums; }
+  .mv .kpi i { display: block; font-style: normal; font-size: 12px; color: var(--gold-light); font-variant-numeric: tabular-nums; }
+  .mv .kpi svg { display: block; width: 100%; height: 22px; margin-top: 4px; overflow: visible; }
+  .mv .mv-vh b { order: 1; } .mv .mv-vh .mv-eff { order: 2; margin-left: auto; } .mv .mv-vh > span:not(.mv-eff) { order: 3; flex-basis: 100%; letter-spacing: 0.08em; }
+  @media (max-width: 640px) {
+    .numbers { padding: 28px 0 28px; }
+    .numbers-head { margin-bottom: 14px; }
+    .numbers-head h3 { font-size: 26px; line-height: 1.15; }
+    .numbers .bg { height: 240px; opacity: 0.35; }
+    .mv .kpi b { font-size: 20px; }
+  }
+  /* Markets: crude oil decision map, Qatar money markets and equities (data/markets_extra.json) */
+  #mx .mxs { margin: 0 0 52px; border-top: 3px solid var(--gold); padding-top: 16px; }
+  #mx h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin: 0 0 4px; }
+  #mx .mxh { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; color: var(--white); margin: 6px 0 6px; font-weight: 700; }
+  #mx .mxsub { margin: 0 0 16px; font-size: 14px; color: var(--on-dark-soft); max-width: 70ch; }
+  #mx .seg { display: inline-flex; border: 1px solid rgba(255,255,255,0.25); margin-bottom: 16px; }
+  #mx .seg button { font: 600 13px var(--sans); color: var(--on-dark); background: transparent; border: 0; padding: 8px 16px; cursor: pointer; }
+  #mx .seg button[aria-pressed="true"] { background: var(--gold); color: var(--navy-deep); }
+  #mx .seg button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+  #mx .segs { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-bottom: 12px; }
+  #mx .segs .seg { margin-bottom: 0; }
+  #mx .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+  #mx .cd { background: rgba(255,255,255,0.045); border-top: 2px solid var(--gold); padding: 14px 16px 16px; }
+  #mx .cd h5 { margin: 0 0 6px; font: 700 12px var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+  #mx .cd p { margin: 0 0 10px; font-size: 14px; line-height: 1.5; color: var(--on-dark); }
+  #mx .pill { display: inline-block; padding: 2px 8px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+  #mx .pill[data-tone="bad"] { border-color: #E5866B; color: #F0A58E; }
+  #mx .pill[data-tone="ok"], #mx .pill[data-tone="good"] { border-color: #6FC29A; color: #8ED6B1; }
+  #mx .vw { margin-top: 10px; padding: 10px 12px; background: rgba(176,141,60,0.10); border-left: 3px solid var(--gold); }
+  #mx .vw b { display: block; margin-bottom: 4px; font: 700 11px var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+  #mx .vw p { margin: 0; font-size: 14px; color: var(--on-dark); }
+  #mx .qgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; margin-bottom: 20px; }
+  #mx .bars { list-style: none; margin: 0; padding: 0; }
+  #mx .bars li { display: grid; grid-template-columns: 120px 1fr 56px; gap: 10px; align-items: center; padding: 6px 0; font-size: 13px; color: var(--on-dark); font-variant-numeric: tabular-nums; }
+  #mx .bars .bt { height: 14px; background: rgba(255,255,255,0.08); position: relative; }
+  #mx .bars .bf { position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold-light); }
+  #mx .bars li.b2 .bf { background: #6EA0FF; }
+  #mx .bars .bv { text-align: right; font-weight: 700; color: var(--white); }
+  #mx .kp { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  #mx .kp div { background: rgba(255,255,255,0.045); border-top: 2px solid var(--gold); padding: 10px 12px; }
+  #mx .kp span { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); }
+  #mx .kp b { font: 700 20px var(--serif); color: var(--white); }
+  #mx .cap { font-size: 12px; color: var(--on-dark-soft); margin: 8px 0 0; }
+  #mx a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  #mx .src { font-size: 12px; color: var(--on-dark-soft); margin-top: 6px; }
+  #mx .hzk { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 8px; font-size: 12px; color: var(--on-dark-soft); }
+  #mx .hzk i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; }
+  #mx .hzc { position: relative; background: rgba(255,255,255,0.04); padding: 8px 6px 4px; }
+  #mx .hzc .hp { cursor: pointer; outline: none; } #mx .hzc .hp:hover circle, #mx .hzc .hp:focus circle { stroke: #fff; stroke-width: 2.5; }
+  #mx .hzt { position: absolute; left: 8px; right: 8px; bottom: 6px; padding: 6px 10px; background: #0D1A2C; border: 1px solid var(--gold); font-size: 12px; color: var(--on-dark); }
+  #mx .hzl { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 6px 24px; font-size: 13px; color: var(--on-dark); }
+  #mx .hzl li { display: flex; gap: 10px; align-items: flex-start; }
+  #mx .hzl .en { flex: none; width: 20px; height: 20px; border: 1px solid var(--gold); border-radius: 50%; text-align: center; font-size: 11px; line-height: 18px; font-weight: 700; color: #fff; }
+  #mx .hzl .es { color: var(--on-dark-soft); font-size: 12px; }
+  #mx .hzd { margin-top: 12px; font-size: 13px; color: var(--on-dark); } #mx .hzd summary { cursor: pointer; font-weight: 600; color: var(--gold-light); } #mx .hzd ul { margin: 8px 0 0; padding-left: 18px; }
+  .mv .mv-view { margin: 4px 0 6px; padding: 10px 12px; background: rgba(176,141,60,0.10); border-left: 3px solid var(--gold); }
+  .mv .mv-vh { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); }
+  .mv .mv-vh b { color: var(--gold-light); letter-spacing: 0.14em; }
+  .mv .mv-eff { margin-left: auto; padding: 2px 8px; border: 1px solid var(--gold); color: var(--gold-light); letter-spacing: 0.06em; }
+  .mv .mv-view[data-tone="bad"] .mv-eff { border-color: #E5866B; color: #F0A58E; }
+  .mv .mv-view[data-tone="good"] .mv-eff, .mv .mv-view[data-tone="ok"] .mv-eff { border-color: #6FC29A; color: #8ED6B1; }
+  .mv .mv-view p { margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: var(--on-dark); }
+  .mv .mv-chart { margin: 12px 0 4px; padding: 10px 12px 8px; background: rgba(255,255,255,0.04); border-top: 2px solid var(--gold); }
+  .mv .mv-cap { margin-top: 4px; font-size: 12px; color: var(--on-dark-soft); font-variant-numeric: tabular-nums; min-height: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.18); }
+  .grid .cell { padding: 24px 20px 6px; border-right: 1px solid rgba(255,255,255,0.12); }
+  .grid .cell:first-child { padding-left: 0; }
+  .grid .cell:last-child { border-right: 0; }
+  .grid .val { font-family: var(--serif); font-size: clamp(28px, 2.6vw, 40px); font-weight: 700; line-height: 1.05; color: var(--white); }
+  .grid .lbl { font-size: 14px; color: var(--on-dark); margin-top: 10px; line-height: 1.4; }
+  .grid .src { font-size: 12px; color: var(--on-dark-soft); margin-top: 8px; }
+
+  .brief-body { background: #F4F2EE; padding-bottom: 56px; }
+  .tabs { position: sticky; top: 0; z-index: 5; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 0 rgba(20,38,63,0.04); }
+  .tabs .tabrow { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tabs button { appearance: none; background: none; border: none; cursor: pointer; font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--navy-soft); padding: 18px 24px 16px 0; margin-right: 12px; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -1px; text-align: left; display: flex; flex-direction: column; gap: 2px; }
+  .tabs button .tn { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+  .tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--gold); }
+  .tabs button:hover { color: var(--navy); }
+
+  @media (max-width: 720px) {
+    .tabs .tabrow { flex-wrap: wrap; gap: 8px; overflow: visible; padding-top: 12px; padding-bottom: 12px; }
+    .tabs .tabrow button { padding: 9px 14px; margin: 0; font-size: 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+    .tabs .tabrow button[aria-selected="true"] { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  }
+  .panels { padding-top: 36px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .pillar-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) 380px; align-items: stretch; background: var(--navy); color: var(--white); margin-bottom: 8px; }
+  .pillar-hero .ph-copy { padding: 36px 40px; }
+  .pillar-hero .ph-art { display: block; width: 100%; height: 100%; min-height: 180px; }
+  .pillar-intro { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; margin: 8px 0 10px; }
+  .pillar-sub { color: var(--on-dark); margin: 0; max-width: 56ch; }
+  .panel > .pillar-intro { color: var(--navy); }
+  .panel > .pillar-sub { color: var(--navy-soft); margin-bottom: 28px; }
+  .beat { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--line); }
+  .beat:last-child { border-bottom: 0; }
+  .beat > h3 { font-family: var(--serif); font-size: 23px; line-height: 1.25; font-weight: 700; margin: 0; color: var(--navy); }
+  .beat > h3 .bn { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .beat > h3 .chev { color: var(--blue); width: 0.34em; height: 0.34em; margin-left: 0.35em; }
+  .to-sections { grid-column: 2; justify-self: end; margin-top: -16px; font-size: 14px; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
+  .to-sections::after { content: " \2191"; }
+  .to-sections:hover { color: var(--blue); }
+  .beat-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .beat-items .item { background: var(--white); border: 1px solid #E2DED6; border-top: 3px solid var(--navy); padding: 20px 22px 18px; display: flex; flex-direction: column; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; }
+  .beat-items .item:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(20,38,63,0.12); border-top-color: var(--gold); }
+  .beat-items .item h4 { font-family: var(--serif); font-size: 20px; line-height: 1.25; margin: 0 0 10px; color: var(--navy); }
+  .beat-items .item p { margin: 0 0 14px; color: var(--navy-soft); font-size: 15px; line-height: 1.55; }
+  .beat-items .item .take { margin: 0 0 14px; padding: 10px 12px; background: #F6F3EC; border-left: 3px solid var(--gold); }
+  .beat-items .item .take p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--navy-soft); }
+  .beat-items .item .take p + p { margin-top: 6px; }
+  .beat-items .item .take b { color: var(--navy); font-weight: 700; }
+  .beat-items .item .take .view { color: var(--navy); }
+  .beat-items .item .cite { margin-top: auto; font-size: 13px; color: var(--navy-soft); border-top: 1px solid #E2DED6; padding-top: 10px; }
+  .beat-items .item .cite a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  /* Desktop: a lone story fills the row (auto-fit collapses empty tracks); with a take, summary and take sit side by side */
+  @media (min-width: 701px) {
+    .beat-items .item:only-child:has(.take) { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); column-gap: 32px; align-items: start; }
+    .beat-items .item:only-child:has(.take) > h4 { grid-column: 1 / -1; }
+    .beat-items .item:only-child:has(.take) > p { grid-column: 1; margin: 0; }
+    .beat-items .item:only-child:has(.take) > .take { grid-column: 2; margin: 0; }
+    .beat-items .item:only-child:has(.take) > .cite { grid-column: 1 / -1; margin-top: 18px; }
+  }
+  .event { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; background: var(--white); border: 1px solid #E2DED6; border-top: 3px solid var(--gold); padding: 24px 26px; margin-bottom: 16px; }
+  .event .when { font-family: var(--serif); font-weight: 700; font-size: 22px; line-height: 1.2; }
+  .event .when small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--navy-soft); margin-top: 6px; }
+  .event h4 { margin: 0 0 6px; font-family: var(--serif); font-size: 21px; }
+  .event p { margin: 0; color: var(--navy-soft); font-size: 15px; }
+  .arch-month { font-family: var(--serif); font-size: 24px; margin: 0 0 4px; }
+  .arch-month small { font-family: var(--sans); font-size: 13px; color: var(--navy-soft); font-weight: 400; }
+  .edlist { list-style: none; margin: 14px 0 32px; padding: 0; background: var(--white); border: 1px solid #E2DED6; }
+  .edlist li { border-top: 1px solid #E2DED6; padding: 16px 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .edlist li:first-child { border-top: 0; }
+  .edlist .no { font-family: var(--serif); font-weight: 700; }
+  .edlist .dt { color: var(--navy-soft); font-size: 14px; }
+
+  /* ---------- Framework (dark) ---------- */
+  .framework { position: relative; overflow: hidden; background: var(--navy); color: var(--white); padding: 96px 0 88px; scroll-margin-top: 24px; }
+  .framework .bg { position: absolute; right: -120px; top: -60px; width: 760px; height: 520px; opacity: 0.55; }
+  .framework .wrap { position: relative; }
+  .framework .kicker { color: var(--gold-light); }
+  .framework h2 { font-family: var(--serif); font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; margin: 12px 0 16px; max-width: 22ch; letter-spacing: -0.015em; }
+  .framework .sub { margin: 0 0 52px; max-width: 60ch; color: var(--on-dark); font-size: 19px; }
+  ol.trail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  ol.trail li { position: relative; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); padding: 28px 22px 24px; display: flex; flex-direction: column; }
+  ol.trail li:not(:last-child)::after { content: ""; position: absolute; right: -13px; top: 46px; width: 10px; height: 10px; border-top: 2px solid var(--gold-light); border-right: 2px solid var(--gold-light); transform: rotate(45deg); z-index: 1; }
+  ol.trail .n { font-family: var(--serif); font-size: 60px; line-height: 1; font-weight: 700; color: var(--gold-light); }
+  ol.trail .step { font-family: var(--serif); font-size: 26px; font-weight: 700; display: block; margin-top: 18px; }
+  ol.trail .why { font-size: 15px; color: var(--on-dark); line-height: 1.5; display: block; margin-top: 8px; }
+  ol.trail .q { margin-top: auto; padding-top: 18px; font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); }
+  ol.trail .q b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 12px; }
+  .framework .note { margin-top: 40px; font-size: 13px; color: var(--on-dark-soft); }
+  .fw-label { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+  .fw-label span { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .fw-label b { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--white); }
+  .fw-label small { margin-left: auto; font-size: 12.5px; color: var(--on-dark-soft); }
+  .found { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .found li { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-top: 2px solid var(--gold-light); padding: 24px 22px 22px; display: flex; flex-direction: column; }
+  .found .f-name { font-family: var(--serif); font-size: 24px; font-weight: 700; }
+  .found .f-coso { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); margin-top: 4px; }
+  .found .why { font-size: 15px; color: var(--on-dark); line-height: 1.5; display: block; margin-top: 12px; }
+  .found .q { margin-top: auto; padding-top: 18px; font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); }
+  .found .q b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 12px; }
+  ol.trail + .fw-label { margin-top: 56px; }
+  @media (max-width: 1020px) { .found { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 700px) { .found { grid-template-columns: 1fr; } .fw-label small { margin-left: 0; flex-basis: 100%; } ol.trail + .fw-label { margin-top: 40px; } }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0 48px; font-size: 13px; color: var(--navy-soft); }
+  footer p { margin: 0 0 8px; max-width: 90ch; }
+  footer a { color: var(--navy); }
+
+  /* ---- Treasury Markets panel ---- */
+  .numbers { padding: 64px 0 56px; }
+  .numbers-head { margin-bottom: 28px; }
+  .numbers-head h3 { font-size: clamp(28px, 3vw, 38px); }
+  .live { display: flex; align-items: stretch; border-top: 1px solid rgba(255,255,255,0.18); border-bottom: 1px solid rgba(255,255,255,0.18); margin-bottom: 40px; }
+  .live-tag { flex: none; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 0 20px 0 0; margin-right: 4px; border-right: 1px solid rgba(255,255,255,0.18); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); white-space: nowrap; }
+  .live-tag span { letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .live-tag i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); margin-right: 6px; vertical-align: 1px; }
+  .live-feed { flex: 1; min-width: 0; min-height: 46px; }
+  /* The TradingView tape pauses whenever a pointer or finger rests on it; let pointer events pass through so it keeps scrolling. */
+  .live-feed iframe { pointer-events: none; }
+  .live-feed .tradingview-widget-copyright { font-size: 11px; color: var(--on-dark-soft); padding: 0 0 6px 12px; }
+  .live-feed .tradingview-widget-copyright a { color: var(--on-dark-soft); text-decoration: none; }
+  .mk { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 48px; }
+  .mk-col h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--white); margin: 0; padding-bottom: 12px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .mk-col h4 small { font-size: 11px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .mk-col ul { list-style: none; margin: 0; padding: 0; }
+  .mk-col li { padding: 14px 0 13px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .mk-l1, .mk-l2 { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .mk-l2 { margin-top: 3px; }
+  .mk-name { min-width: 0; }
+  .mk-l2 .mk-meta { margin-top: 0; min-width: 0; }
+  .mk-name a { color: var(--white); font-weight: 600; font-size: 16px; text-decoration: none; }
+  .mk-name a:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+  .mk-meta { display: block; font-size: 12.5px; color: var(--on-dark-soft); margin-top: 2px; line-height: 1.4; }
+  .mk-fig { text-align: right; flex: none; }
+  .mk-val { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.15; color: var(--white); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+  .mk-chg { flex: none; font-size: 12.5px; color: var(--on-dark); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mk-chg.flat { color: var(--on-dark-soft); }
+  .mk-stale .mk-val { color: var(--on-dark-soft); }
+  .mk-flag { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--navy-deep); background: var(--gold-light); padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  .mk-foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark-soft); margin: 18px 0 0; }
+  .mk-foot p { margin: 0; max-width: 80ch; }
+  .mk-load { color: var(--on-dark-soft); font-size: 14px; padding: 14px 0; }
+
+  /* ---- Policy-rate chart (Markets) ---- */
+  .mk { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pr { margin-bottom: 52px; }
+  .ex { margin-top: 8px; }
+  .mk-all { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); margin: 8px 0 24px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.18); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .mk-all small { font-size: 11px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; }
+  .pr h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--white); margin: 0; padding-bottom: 12px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .pr h4 small { font-size: 11px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .pr-ex { margin: 22px 0 0; max-width: 62ch; }
+  .pr-kick { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .pr-title { font-family: var(--serif); font-size: clamp(22px, 2.3vw, 28px); line-height: 1.25; font-weight: 700; color: var(--white); margin: 0 0 6px; }
+  .pr-sub { font-size: 14px; color: var(--on-dark-soft); margin: 0; }
+  .pr-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 32px; flex-wrap: wrap; margin: 20px 0 8px; }
+  .pr-pick { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pr-pick button { appearance: none; cursor: pointer; font: 600 14px/1 var(--sans); letter-spacing: 0.02em; color: var(--on-dark); background: transparent; border: 1px solid rgba(255,255,255,0.28); padding: 10px 16px; min-width: 64px; }
+  .pr-pick button:hover { border-color: var(--gold-light); color: var(--white); }
+  .pr-pick button[aria-pressed="true"] { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-deep); }
+  .pr-pick button:focus-visible, .pr-chart:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .pr-read { text-align: right; }
+  .pr-val { font-family: var(--serif); font-size: 34px; font-weight: 700; line-height: 1.1; color: var(--white); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+  .pr-lab { font-size: 13px; color: var(--on-dark-soft); margin-top: 4px; }
+  .pr-lab b { color: var(--on-dark); font-weight: 600; }
+  .pr-chart { position: relative; height: 280px; margin-top: 8px; touch-action: pan-y; }
+  .pr-chart svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .pr-chart text { font: 12px var(--sans); fill: var(--on-dark-soft); font-variant-numeric: tabular-nums; }
+  .pr-chart text.end { font: 700 13px var(--sans); fill: var(--white); }
+  .pr-chart text.end.o { font-weight: 400; fill: var(--on-dark-soft); }
+  .pr-chart text.ann { font: 12px var(--sans); fill: var(--on-dark); paint-order: stroke; stroke: #0D1A2C; stroke-width: 4px; stroke-linejoin: round; }
+  .pr-tip i { font-style: normal; color: #3B4A60; display: block; }
+  .pr-tip .row { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; }
+  .pr-tip .row.on { font-weight: 700; }
+  .pr-tip { position: absolute; top: 0; pointer-events: none; background: var(--white); color: var(--navy-deep); font-size: 13px; line-height: 1.35; padding: 8px 10px; white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,0.35); transform: translateX(-50%); display: none; }
+  .pr-tip b { display: block; font-size: 15px; font-variant-numeric: tabular-nums; }
+  .pr-src { display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; font-size: 12.5px; color: var(--on-dark-soft); margin-top: 10px; }
+  .pr-src a { color: var(--on-dark); }
+  .pr-moves { margin-top: 14px; font-size: 14px; color: var(--on-dark); }
+  .pr-moves td a { color: var(--on-dark); }
+  .pr-moves summary { cursor: pointer; font-weight: 600; color: var(--gold-light); }
+  .pr-bars { margin-top: 10px; font-variant-numeric: tabular-nums; max-height: 420px; overflow-y: auto; padding-right: 6px; }
+  .pr-bar { display: grid; grid-template-columns: 92px 1fr 104px; align-items: center; gap: 12px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pr-bar .bd { font-size: 13px; color: var(--on-dark-soft); }
+  .pr-bar .bd a { color: var(--on-dark); }
+  .pr-bar .bt { position: relative; height: 18px; }
+  .pr-bar .bt::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.25); }
+  .pr-bar .bf { position: absolute; top: 3px; height: 12px; min-width: 2px; }
+  .pr-bar .bf.up { left: 50%; background: var(--gold-light); }
+  .pr-bar .bf.dn { right: 50%; background: #6EA0FF; }
+  .pr-bar .bf.st { left: calc(50% - 3px); width: 6px; background: var(--on-dark-soft); }
+  .pr-bar .bm { position: absolute; top: 0; font-size: 12px; line-height: 18px; color: var(--on-dark); white-space: nowrap; }
+  .pr-bar .br { white-space: nowrap; font-size: 14px; font-weight: 700; color: var(--white); text-align: right; }
+  .pr-also { margin-top: 28px; }
+  .pr-also h5 { margin: 0; font: 700 11px/1.2 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-soft); padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .pr-also ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 48px; }
+  .pr-also li { padding: 14px 0 13px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  @media (max-width: 1020px) { .pr-also ul { grid-template-columns: 1fr 1fr; gap: 0 40px; } }
+  @media (max-width: 700px) {
+    .pr-top { flex-direction: column; align-items: stretch; }
+    .pr-read { text-align: left; }
+    .pr-val { font-size: 28px; }
+    .pr-chart { height: 230px; }
+    .pr-also ul { grid-template-columns: 1fr; }
+  }
+  .numbers-sub { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 56px 0 4px; }
+  .numbers-sub h4 { font-family: var(--serif); font-size: 24px; margin: 6px 0 0; }
+  /* ---- Re-sequenced homepage (Oct 2026) ---- */
+  .briefing .leads-head { border-top: 0; margin-top: 0; padding-top: 0; }
+  .briefing .leads-head h2 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); }
+  .briefing .leads { margin-top: 14px; margin-bottom: 56px; }
+  .briefing .leads .item { border-top: 1px solid rgba(255,255,255,0.16); padding-top: 18px; }
+  .briefing .leads .item h4 { margin-bottom: 12px; }
+  @media (max-width: 700px) {
+    .briefing .leads { gap: 0; }
+    .briefing .leads .item { padding: 18px 0 20px; }
+    .briefing .leads .item:first-child { border-top: 0; padding-top: 4px; }
+  }
+  .markets-sec { scroll-margin-top: 24px; }
+  .cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; margin-left: auto; margin-right: auto; }
+  .card.card-soon { cursor: default; }
+  .card .status { margin-left: 6px; }
+  .creds .kicker { color: var(--gold-light); margin-bottom: 10px; }
+  .advisor { display: flex; align-items: center; gap: 18px; margin: 18px 0 30px; }
+  .advisor img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 2px solid var(--gold-light); flex: none; }
+  .advisor b { display: block; font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); font-weight: 700; color: var(--white); line-height: 1.2; }
+  .advisor span { display: block; font-size: 15px; color: rgba(255,255,255,0.85); margin-top: 4px; }
+  @media (max-width: 700px) { .advisor img { width: 76px; height: 76px; } }
+  .work { padding-top: 72px; }
+  .mk-tog { display: none; appearance: none; background: none; border: 1px solid rgba(255,255,255,0.35); color: var(--white); font: 600 12px/1 var(--sans); letter-spacing: 0.04em; text-transform: none; padding: 6px 10px; cursor: pointer; }
+  @media (max-width: 700px) {
+    .tile-touch { display: none; }
+    .tile-card.tile-tall .media { aspect-ratio: 16 / 9; }
+    .cards.two { grid-template-columns: 1fr; }
+    .mk-fold h4 small { display: none; }
+    .mk-fold .mk-tog { display: inline-block; }
+    .mk-fold:not(.open) ul { display: none; }
+    .mk-fold:not(.open) h4 { border-bottom-width: 1px; }
+  }
+
+  /* ---- Sticky section menu ---- */
+  .js [data-view]:not(.view-on) { display: none; }
+  .js main { min-height: calc(100vh - 180px); }
+  :root { --secnav-h: 50px; }
+  .secnav { position: sticky; top: 0; z-index: 20; background: var(--navy-deep); border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 6px 18px rgba(5,20,36,0.18); }
+  .secnav .wrap { display: flex; gap: 30px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .secnav .wrap::-webkit-scrollbar { display: none; }
+  .secnav a { flex: none; display: block; height: var(--secnav-h); line-height: var(--secnav-h); font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+  .secnav a:hover { color: var(--white); }
+  .secnav a[aria-current="true"] { color: var(--white); border-bottom-color: var(--gold); }
+  .secnav-arrow { display: none; position: absolute; top: 0; bottom: 0; width: 52px; border: 0; padding: 0; cursor: pointer; color: var(--gold-light); align-items: center; }
+  .secnav-arrow svg { width: 22px; height: 22px; }
+  .secnav-arrow.next { right: 0; justify-content: flex-end; padding-right: 12px; background: linear-gradient(90deg, rgba(13,26,44,0) 0%, var(--navy-deep) 45%); }
+  .secnav-arrow.prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(13,26,44,0) 0%, var(--navy-deep) 45%); }
+  .secnav.can-next .secnav-arrow.next, .secnav.can-prev .secnav-arrow.prev { display: flex; }
+  #top, #briefing, #markets, #framework, #articles, #newsletter, #work, #briefing-tabs { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  .tabs { top: var(--secnav-h); }
+  @media (max-width: 700px) {
+    .secnav .wrap { gap: 20px; padding-right: 36px; }
+    .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
+    .tabs { position: static; }
+  }
+
+  /* ---- Today strip (Home) ---- */
+  .today { border-top: 1px solid rgba(255,255,255,0.14); margin-top: 48px; padding-top: 22px; }
+  .today-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .today-head .kicker { color: var(--gold-light); }
+  .today-date { color: var(--on-dark-soft); font-size: 14px; }
+  .today-all { display: inline-flex; align-items: center; gap: 6px; color: var(--on-dark); font-weight: 600; font-size: 14px; text-decoration: none; border-bottom: 0; padding: 4px 0; }
+  .today-all::after { content: '\203A'; color: var(--gold-light); font-size: 18px; line-height: 1; transform: translateY(-1px); }
+  .today-all:hover { color: var(--white); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+  .today-stories .today-all { margin-top: 10px; }
+  .today-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 56px; }
+  .today-list { list-style: none; margin: 0; padding: 0; }
+  .today-list li { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.12); }
+  .today-list li:first-child { border-top: 0; padding-top: 0; }
+  .today-list .n { flex: none; width: 28px; font-family: var(--serif); font-size: 20px; color: var(--gold-light); line-height: 1.3; }
+  .today-list .topic { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); margin-bottom: 4px; }
+  .today-list a { font-family: var(--serif); font-size: 20px; line-height: 1.3; color: var(--white); text-decoration: none; }
+  .today-list a:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+  .today-sub { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .today-rates ul { list-style: none; margin: 0 0 14px; padding: 0; }
+  .today-rates li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .today-rates .l { font-size: 14px; color: var(--on-dark); }
+  .today-rates .v { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .today-rates .today-sub { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .today-rates .today-sub small { font-size: 11.5px; letter-spacing: 0.02em; text-transform: none; font-weight: 400; color: var(--on-dark-soft); }
+  .today-rates .r { text-align: right; }
+  .today-rates .tc { display: block; margin-top: 3px; font-family: inherit; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .today-rates .tc.up { color: #e8806f; }
+  .today-rates .tc.down { color: #6fd1a4; }
+  .today-rates .tc.flat { color: var(--on-dark-soft); font-weight: 400; }
+  /* ---- Next band at the end of each view ---- */
+  .next-band { display: none; background: var(--white); border-top: 1px solid var(--line); }
+  .js .next-band.view-on { display: block; }
+  .next-band a { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 40px 0; text-decoration: none; color: var(--navy); }
+  .next-band .nb-copy { display: flex; flex-direction: column; gap: 6px; }
+  .next-band .nb-t { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; line-height: 1.15; }
+  .next-band .nb-d { color: var(--navy-soft); font-size: 16px; }
+  .next-band .nb-arrow { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--navy); display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s ease, color 0.2s ease; }
+  .next-band a:hover .nb-arrow { background: var(--navy); color: var(--white); }
+  .next-band a:hover .nb-t { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; }
+  @media (max-width: 700px) {
+    .today-grid { grid-template-columns: 1fr; gap: 48px; }
+    .today-list a { font-size: 18px; }
+    .next-band a { padding: 30px 0; }
+    .next-band .nb-arrow { width: 44px; height: 44px; }
+  }
+
+  @media (max-width: 1020px) { .mk { grid-template-columns: 1fr 1fr; gap: 40px 40px; } .mk-col.mk-wide { grid-column: 1 / -1; } }
+  @media (max-width: 700px) {
+    .numbers { padding: 44px 0 40px; }
+    .mk { grid-template-columns: 1fr; gap: 36px; }
+    .live { flex-direction: column; }
+    .live-tag { flex-direction: row; justify-content: flex-start; gap: 10px; align-items: baseline; border-right: 0; padding: 10px 0 0; }
+    .mk-val { font-size: 20px; }
+    .numbers-sub { margin-top: 44px; }
+  }
+
+  @media (max-width: 1020px) {
+    .tiles { grid-template-columns: 1fr 1fr; }
+    .tile-tall { min-height: 520px; }
+    .tile-work { grid-column: 1 / -1; grid-row: auto; min-height: 340px; }
+    .tile-desk, .tile-touch { grid-row: auto; }
+      .leads, .cards { grid-template-columns: 1fr 1fr; }
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid .cell:nth-child(3n) { border-right: 0; }
+    .grid .cell:nth-child(3n+1) { padding-left: 0; }
+    .beat { grid-template-columns: 1fr; gap: 18px; }
+    .to-sections { grid-column: auto; margin-top: 4px; }
+    .desk { grid-template-columns: 1fr; gap: 24px; }
+    .desk .text::before { display: none; }
+    .pillar-hero { grid-template-columns: minmax(0, 1fr) 260px; }
+    ol.trail { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    ol.trail li:nth-child(3)::after { display: none; }
+    .creds-row { grid-template-columns: 1fr 1fr; }
+    .creds-row div:nth-child(2) { border-right: 0; }
+    .creds-row div:nth-child(3) { padding-left: 0; border-top: 1px solid var(--line); }
+    .creds-row div:nth-child(4) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 700px) {
+    body { font-size: 17px; }
+    .wrap { padding: 0 16px; }
+    .nav { gap: 14px; }
+    .nav a:not(.cta) { display: none; }
+    .front { padding: 36px 0 44px; }
+    .tiles, .leads, .cards { grid-template-columns: 1fr; }
+    .tile-tall { grid-row: auto; min-height: 560px; }
+    .tile { padding: 22px; }
+    .grid { grid-template-columns: 1fr 1fr; }
+    .grid .cell, .grid .cell:nth-child(n) { padding: 18px 14px 10px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .grid .cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.12); }
+    .grid .cell:nth-child(even) { padding-left: 14px; }
+    .sec-head .meta { display: none; }
+    .briefing .sec-head { margin-bottom: 28px; }
+    .briefing .desk .label { border-top: 0; padding-top: 0; }
+    .desk .text p { font-size: 19px; }
+    .pillar-hero { grid-template-columns: 1fr; }
+    .pillar-hero .ph-art { min-height: 120px; height: 120px; order: -1; }
+    .pillar-hero .ph-copy { padding: 24px 20px; }
+    .tabs button { padding-right: 18px; margin-right: 4px; font-size: 15px; }
+    .event { grid-template-columns: 1fr; gap: 6px; padding: 20px; }
+    ol.trail { grid-template-columns: 1fr; }
+    ol.trail li::after { display: none; }
+    .creds-row { grid-template-columns: 1fr; }
+    .creds-row div, .creds-row div + div { padding: 18px 0; border-right: 0; border-top: 1px solid var(--line); }
+    .creds-row div:first-child { border-top: 0; }
+    .work .box { grid-template-columns: 1fr; }
+    .work .copy { padding: 34px 22px; }
+    .work .side { min-height: 180px; order: -1; }
+  }
+  /* ---------- Articles: "How we help" pattern ---------- */
+  .articles { padding: 96px 0 88px; scroll-margin-top: 24px; }
+  .center-head { text-align: center; max-width: 920px; margin: 0 auto 52px; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--navy); }
+  .eyebrow.center { text-align: center; margin-bottom: 36px; }
+  .center-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; margin: 14px 0 0; letter-spacing: -0.01em; }
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .card { display: flex; flex-direction: column; color: var(--navy); text-decoration: none; }
+  .card-img { overflow: hidden; aspect-ratio: 16 / 10; margin-bottom: 20px; background: var(--grey); }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card .kicker { color: var(--gold); }
+  .card h3 { font-family: var(--serif); font-size: 23px; line-height: 1.25; margin: 10px 0 10px; }
+  .card p { color: var(--navy-soft); font-size: 16px; margin: 0 0 16px; }
+  .card .by { margin-top: auto; font-size: 13px; color: var(--navy-soft); border-top: 1px solid var(--line); padding-top: 12px; }
+  .card .by b { color: var(--navy); font-family: var(--serif); }
+  .status { display: inline-block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--navy-soft); border: 1px solid var(--line); padding: 2px 8px; margin-left: 8px; vertical-align: 1px; }
+
+  /* ---------- Credentials: full-bleed blue band ---------- */
+  .creds { background: var(--blue); color: var(--white); padding: 80px 0 72px; }
+  .creds-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.15; margin: 0 0 44px; max-width: 26ch; }
+  .creds-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.45); }
+  .creds-row div { padding: 26px 24px 0 0; }
+  .creds-row div + div { padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.3); }
+  .creds-row b { display: block; font-family: var(--serif); font-size: 28px; line-height: 1.1; }
+  .creds-row span { display: block; font-size: 15px; color: var(--white); margin-top: 8px; line-height: 1.45; }
+
+  /* ---------- Get in Touch ---------- */
+  .work { padding: 96px 0 104px; scroll-margin-top: 24px; }
+  .work-grid { display: grid; grid-template-columns: minmax(0, 1fr); max-width: 760px; margin: 0 auto; }
+  .work h2 { font-family: var(--serif); font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .work p { color: var(--navy-soft); margin: 0 0 14px; max-width: 52ch; }
+  .work ul { list-style: none; margin: 22px 0 30px; padding: 0; }
+  .work li { border-top: 1px solid var(--line); padding: 12px 0 12px 24px; position: relative; color: var(--navy-soft); font-size: 16px; }
+  .work li::before { content: ""; position: absolute; left: 0; top: 21px; width: 9px; height: 9px; background: var(--blue); }
+  .work li b { color: var(--navy); font-family: var(--serif); font-size: 18px; }
+  .work .work-note { margin: 22px 0 0; font-size: 13px; line-height: 1.5; }
+  .btn-blue { background: var(--blue); color: var(--white); }
+  .btn-blue:hover { background: var(--navy); color: var(--white); }
+  .work .who { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 32px; font-family: var(--serif); font-size: 17px; color: var(--navy); }
+  .work .who small { display: block; font-family: var(--sans); font-size: 14px; color: var(--navy-soft); margin-top: 4px; }
+  .work .who { display: flex; gap: 16px; align-items: flex-start; }
+  .work .who-top { max-width: 760px; margin: 0 auto 48px; border-top: none; padding-top: 0; }
+  .work .who img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; flex: none; border: 2px solid var(--gold); }
+  .work-media { position: relative; padding: 32px 32px 0 0; }
+  .offset-block { position: absolute; top: 0; right: 0; width: 44%; height: 72%; background: var(--blue); }
+  .work-media img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 68% 50%; }
+
+
+  /* ---------- Full-bleed intro (McKinsey-style) ---------- */
+  .intro { position: relative; overflow: hidden; background: var(--navy-deep); color: var(--white); min-height: min(78vh, 720px); display: flex; align-items: flex-end; }
+  .intro .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+  .intro .field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 1.2s ease; }
+  .intro.live .field { opacity: 1; }
+  .intro.live .photo { opacity: 0; transition: opacity 0.6s ease; }
+  .intro .intro-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,20,36,0.92) 0%, rgba(5,20,36,0.72) 42%, rgba(5,20,36,0.05) 75%), linear-gradient(0deg, rgba(5,20,36,0.85) 0%, rgba(5,20,36,0) 40%); }
+  .intro .intro-glow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; mix-blend-mode: screen; }
+  .intro.live .intro-glow { display: none; }
+  .intro .intro-glow span { position: absolute; left: 0; top: 0; width: 760px; height: 760px; margin: -380px 0 0 -380px; border-radius: 50%; background: radial-gradient(circle, rgba(46,106,240,0.42) 0%, rgba(46,106,240,0.16) 38%, rgba(46,106,240,0) 68%); transform: translate3d(68vw, 30vh, 0); will-change: transform; }
+  @media (hover: none), (pointer: coarse) {
+    .intro .intro-glow span { width: 520px; height: 520px; margin: -260px 0 0 -260px; animation: glowDrift 18s ease-in-out infinite alternate; }
+  }
+  @keyframes glowDrift { 0% { transform: translate3d(70vw, 18vh, 0); } 50% { transform: translate3d(30vw, 42vh, 0); } 100% { transform: translate3d(80vw, 62vh, 0); } }
+  @media (prefers-reduced-motion: reduce) { .intro .intro-glow span { animation: none; transform: translate3d(68vw, 30vh, 0); } }
+  .intro .wrap { position: relative; width: 100%; padding-top: 96px; padding-bottom: 72px; }
+  .intro .kicker { color: var(--gold-light); }
+  .intro h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -0.02em; margin: 14px 0 22px; max-width: 13em; }
+  .intro .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: var(--on-dark); max-width: 34em; margin: 0 0 32px; }
+  .intro .actions { display: flex; align-items: center; gap: 20px 32px; flex-wrap: wrap; }
+  .intro .go { display: inline-flex; align-items: center; gap: 14px; color: var(--white); font-weight: 700; font-size: 17px; text-decoration: none; }
+  .intro .go .circle-arrow { width: 52px; height: 52px; }
+  .intro .go:hover .circle-arrow { background: var(--white); color: var(--navy-deep); }
+  .intro .alt { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-weight: 700; font-size: 17px; text-decoration: none; transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+  .intro .alt .chev { color: var(--gold-light); margin-left: 0; }
+  .intro .alt:hover, .intro .alt:focus-visible { background: var(--white); border-color: var(--white); color: var(--navy-deep); }
+  .intro .alt:hover .chev, .intro .alt:focus-visible .chev { color: var(--navy-deep); }
+  .intro .alt:active { transform: translateY(1px); }
+  .intro .dateline { margin-top: 36px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark-soft); display: flex; gap: 10px; flex-wrap: wrap; }
+  .intro .dateline b { color: var(--white); font-weight: 600; }
+  @media (max-width: 720px) {
+    .intro { min-height: 86vh; }
+    .intro .photo { height: 52%; object-position: 62% 50%; }
+    .intro .intro-shade { background: linear-gradient(180deg, rgba(5,20,36,0.1) 0%, rgba(5,20,36,0.35) 30%, rgba(5,20,36,0.97) 52%, rgba(5,20,36,1) 100%); }
+    .intro .wrap { padding-top: 240px; padding-bottom: 48px; }
+  }
+
+  /* ---------- Hero, photo tiles, newsletter ---------- */
+  .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+  .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(34px, 5vw, 64px); line-height: 1.04; letter-spacing: -0.02em; margin: 0; }
+  .hero h1 span { display: block; }
+  .hero h1 .indent { padding-left: 1.6em; }
+  .hero-sub { display: flex; align-items: center; gap: 28px; margin-top: 24px; max-width: 660px; }
+  .hero-sub p { margin: 0; color: var(--on-dark); font-size: 17px; }
+  .circle-arrow { flex: none; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.14); color: var(--white); display: grid; place-items: center; transition: background 0.25s ease, color 0.25s ease; }
+  .circle-arrow svg { width: 26px; height: 26px; transition: transform 0.25s ease; }
+  .circle-arrow:hover { background: var(--white); color: var(--navy-deep); }
+  .circle-arrow:hover svg { transform: translateX(3px); }
+  .hero .dateline { font-size: 14px; color: var(--on-dark-soft); display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero .dateline b { color: var(--white); }
+
+
+  /* Image-on-top cards (front photo tiles) */
+  .tile-card { padding: 0; justify-content: flex-start; background: transparent; }
+  .tile-card .media { position: relative; overflow: hidden; flex: 1 1 auto; min-height: 240px; background: var(--navy-deep); }
+  .tile-card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tile-card .body { padding: 24px 2px 4px; }
+  .tile-card h2 { margin-top: 8px; }
+  .tile-card p { margin-bottom: 0; }
+  @media (max-width: 720px) { .tile-card.tile-tall { min-height: 0; } .tile-card .media { flex: none; aspect-ratio: 16 / 10; min-height: 0; } }
+
+  a.tile { cursor: pointer; }
+  .tile-photo { background: var(--navy-deep); }
+  .tile-photo .photo, .newsletter .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tile-photo .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,20,36,0) 22%, rgba(5,20,36,0.62) 52%, rgba(5,20,36,0.94) 82%); }
+  .tile-photo h2 { text-decoration: none; }
+  .tile-desk { transition: background 0.25s ease; }
+  .tile-desk:hover { background: #1C3352; }
+
+  .hl { text-decoration-line: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: text-decoration-color 0.2s ease; }
+  a:hover .hl, a:focus-visible .hl { text-decoration-color: currentColor; }
+  .nw { white-space: nowrap; }
+  .chev { display: inline-block; width: 0.38em; height: 0.38em; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); margin-left: 0.3em; vertical-align: 0.12em; transition: transform 0.25s ease; }
+  a:hover .chev, .newsletter:hover .chev { transform: translateX(4px) rotate(45deg); }
+  .arrow-link::after, .btn::after { display: inline-block; transition: transform 0.25s ease; }
+  a:hover .arrow-link::after, .arrow-link:hover::after, a:hover .btn::after, .btn:hover::after { transform: translateX(4px); }
+  a.tile:hover .btn { background: var(--gold-light); }
+
+  .newsletter { position: relative; overflow: hidden; color: var(--white); background: var(--navy-deep); min-height: 540px; display: flex; align-items: center; }
+  .newsletter .photo { object-position: 72% 30%; }
+  .nl-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,20,36,0.96) 0%, rgba(5,20,36,0.82) 38%, rgba(5,20,36,0) 68%); }
+  .newsletter .wrap { position: relative; width: 100%; padding-top: 80px; padding-bottom: 80px; }
+  .nl-copy { max-width: 540px; }
+  .newsletter .kicker { color: var(--gold-light); }
+  .newsletter h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 1.08; margin: 12px 0 16px; letter-spacing: -0.01em; }
+  .newsletter p { color: var(--on-dark); margin: 0 0 26px; }
+  .newsletter form { display: flex; gap: 8px; max-width: 500px; }
+  .newsletter input[type=email] { flex: 1; min-width: 0; padding: 15px 16px; font-size: 16px; border: 0; font-family: var(--sans); }
+  .newsletter button { background: var(--white); color: var(--navy-deep); border: 0; font-weight: 700; padding: 0 24px; font-size: 16px; cursor: pointer; font-family: var(--sans); transition: background 0.2s ease; }
+  .newsletter button:hover { background: var(--gold-light); }
+
+  /* Sections ease in as they enter the viewport (scale 0.98 -> 1 over 1s) */
+  .js .reveal { transform: scale(0.98); transition: transform 1s ease; }
+  .js .reveal.in { transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { transform: none; transition: none; }
+    .chev, .arrow-link::after, .btn::after, .circle-arrow svg { transition: none; }
+  }
+
+  @media (max-width: 1020px) {
+    .work-grid { grid-template-columns: 1fr; gap: 40px; }
+    .creds-row { grid-template-columns: 1fr 1fr; }
+    .creds-row div:nth-child(3) { padding-left: 0; border-left: 0; }
+    .creds-row div:nth-child(n+3) { margin-top: 24px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 .indent { padding-left: 0; }
+    .hero-sub { gap: 18px; }
+    .circle-arrow { width: 52px; height: 52px; }
+    .cards { grid-template-columns: 1fr; gap: 40px; }
+    .newsletter { min-height: 0; align-items: flex-end; }
+    .newsletter .photo { object-position: 75% 20%; }
+    .nl-shade { background: linear-gradient(180deg, rgba(5,20,36,0.2) 0%, rgba(5,20,36,0.88) 45%, rgba(5,20,36,0.97) 100%); }
+    .newsletter .wrap { padding-top: 220px; padding-bottom: 48px; }
+    .newsletter form { flex-direction: column; }
+    .newsletter button { padding: 14px 22px; }
+    .creds { padding: 56px 0 48px; }
+    .creds-row { grid-template-columns: 1fr; }
+    .creds-row div, .creds-row div + div { padding: 18px 0; border-left: 0; margin-top: 0; border-top: 1px solid rgba(255,255,255,0.3); }
+    .creds-row div:first-child { border-top: 0; }
+    .work { padding: 64px 0 72px; }
+    .work-media { padding: 20px 20px 0 0; }
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=" js";</script>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="band">
+  <div class="wrap">
+    <a class="mark" href="/"><svg class="logomark" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
+    <nav class="nav" aria-label="Contact">
+      <a class="cta" href="#work">Get in Touch</a>
+    </nav>
+  </div>
+</header>
+<nav class="secnav" aria-label="Sections">
+  <div class="wrap">
+    <a href="#top" aria-current="true">Home</a>
+    <a href="#briefing">Treasury Today</a>
+    <a href="#markets">Markets</a>
+    <a href="#controls">AI Controls</a>
+    <a href="#articles">Articles</a>
+    <a href="#work">Get in Touch</a>
+  </div>
+  <button type="button" class="secnav-arrow prev" aria-label="Show earlier menu items"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+  <button type="button" class="secnav-arrow next" aria-label="Show more menu items"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+</nav>
+
+<main id="main">
+
+  <!-- ===== INTRO (full-bleed) ===== -->
+  <section class="intro" id="top" data-view="top" aria-labelledby="front-h">
+    <img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background" loading="eager">
+    <canvas class="field" aria-hidden="true"></canvas>
+    <div class="intro-shade"></div>
+    <div class="intro-glow" aria-hidden="true"><span></span></div>
+    <div class="wrap">
+      <div class="kicker">AI &middot; Treasury &middot; Finance</div>
+      <h1 id="front-h">AI in Treasury and Finance: faster decisions, firmer controls, a cleaner audit.</h1>
+      <p class="lede">Practitioner perspectives for CFOs and Treasury leaders on putting AI to work across the function, from cash and liquidity to close, controls and reporting, with every automated step approved, evidenced and easy to trace.</p>
+      <div class="actions">
+        <a class="go" href="#briefing"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>Read today&rsquo;s briefing</a>
+        <a class="alt" href="#work">Let&rsquo;s talk Treasury and AI<span class="chev" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FRONT: editorial grid ===== -->
+  <section class="front" data-view="top" aria-label="Today at a glance">
+    <div class="wrap">
+
+      <div class="tiles">
+        <!-- Tall tile: the signature framework (photo) -->
+        <a class="tile tile-tall tile-card" href="#framework">
+          <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="eager" style="object-position: 50% 45%;"></div>
+          <div class="body">
+          <div class="kicker">AI Controls</div>
+          <h2><span class="hl">Capture &rarr; Match &rarr; Flag &rarr; Approve &rarr;</span> <span class="nw"><span class="hl">Post</span><span class="chev" aria-hidden="true"></span></span></h2>
+          <p>The five-step control trail I apply to any AI or automation in Treasury and Finance.</p>
+          </div>
+        </a>
+
+        <!-- Editor's note -->
+        <a class="tile tile-desk" href="#briefing">
+          <div class="kicker">Today&rsquo;s Lead</div>
+          <div class="note">
+            <h3 class="note-h">Hedging is getting dearer just as its accounting rules reopen for debate</h3>
+        <p>Hedging is becoming more expensive just as its accounting reopens for review. The US Dollar Index hit a 17-month high in October 2026 and an elevated USD cross-currency basis lifted forward costs, while markets price an 85% chance of another Fed hike in December. On 28 September 2026 the IASB began its post-implementation review of IFRS 9 hedge accounting.</p>
+        <p>The review gives Treasury and Finance a rare say in rules that now carry a rising price. Shorter one-month forwards mean more frequent rolls, and each roll leans on the 'highly probable' criterion and cost of hedging treatments that controllers document and auditors test. A hedge that works in cash but fails on paper still lands in earnings.</p>
+          </div>
+          <span class="arrow-link">Read today's briefing</span>
+        </a>
+
+        <!-- Tall tile: get in touch (photo) -->
+        <a class="tile tile-tall tile-card tile-touch" href="#work">
+          <div class="media"><img src="/img/ait-touch-abstract.jpg" alt="Abstract blue glass form on a dark navy background" loading="eager" style="object-position: 50% 50%;"></div>
+          <div class="body">
+          <div class="kicker">Get in Touch</div>
+          <h2><span class="hl">How is your Treasury team bringing in AI?</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
+          <p>I would like to hear how Treasury professionals around the world are handling automation and controls.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="today" aria-label="Today at a glance">
+        <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span></div>
+        <div class="today-grid">
+          <div class="today-stories"><ol class="today-list"></ol><a class="today-all" href="#briefing">All stories</a></div>
+          <div class="today-rates"><div class="today-sub">Key rates<small id="today-asof"></small></div><ul id="today-rates"><li><span class="l">Loading&hellip;</span></li></ul><a class="today-all" href="#markets">All markets</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="next-band" data-view="top" aria-label="Next section">
+    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Treasury Today</span><span class="nb-d">The stories that matter for Treasury and Finance today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
+  <!-- ===== BRIEFING ===== -->
+  <section class="briefing" id="briefing" data-view="briefing" aria-labelledby="brief-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 id="brief-h">Global Treasury Pulse</h2>
+          <p class="brief-tag">Today&rsquo;s top AI, Treasury and Finance stories, from every market</p>
+          <div class="dateline">
+            <span><b>Sunday, 11 October 2026</b></span><span class="dl-sep" aria-hidden="true">&middot;</span><span>Daily Roundup</span>
+          </div>
+        </div>
+      </div>
+      <div class="leads-head">
+        <h2>Top stories</h2>
+      </div>
+      <div class="leads">
+        <div class="item"><div class="topic">IFRS 9 Hedge Review</div><h4><a class="lead-link" href="#" onclick="showTab('regulation','s-reporting-1');return false;">IASB opens IFRS 9 hedge accounting post-implementation review</a></h4><div class="cite">See <a href="#" onclick="showTab('regulation','s-reporting-1');return false;">Regulation &amp; Compliance &rarr;</a></div></div>
+      <div class="item"><div class="topic">FX Hedging Costs</div><h4><a class="lead-link" href="#" onclick="showTab('markets','s-risk-0');return false;">Dollar hits 17-month high as wider basis lifts FX hedging costs</a></h4><div class="cite">See <a href="#" onclick="showTab('markets','s-risk-0');return false;">Risk &amp; Markets &rarr;</a></div></div>
+      <div class="item"><div class="topic">ISO 20022 Addresses</div><h4><a class="lead-link" href="#" onclick="showTab('treasury','s-payments-0');return false;">Swift will reject unstructured postal addresses from November 2026</a></h4><div class="cite">See <a href="#" onclick="showTab('treasury','s-payments-0');return false;">Treasury &amp; Payments &rarr;</a></div></div>
+      </div>
+    </div>
+
+    <div class="brief-body">
+      <div class="tabs" id="briefing-tabs" role="tablist" aria-label="Briefing sections">
+        <div class="wrap tabrow">
+          <button role="tab" aria-selected="true" aria-controls="p-ai" id="t-ai">AI &amp; Technology</button>
+          <button role="tab" aria-selected="false" aria-controls="p-treasury" id="t-treasury">Treasury &amp; Payments</button>
+          <button role="tab" aria-selected="false" aria-controls="p-markets" id="t-markets">Risk &amp; Markets</button>
+          <button role="tab" aria-selected="false" aria-controls="p-regulation" id="t-regulation">Regulation &amp; Compliance</button>
+          <button role="tab" aria-selected="false" aria-controls="p-events" id="t-events">Events Radar</button>
+        </div>
+      </div>
+
+      <div class="wrap panels">
+        <section class="panel active" id="p-ai" role="tabpanel" aria-labelledby="t-ai">
+          <div class="pillar-hero">
+            <div class="ph-copy">
+              <h2 class="pillar-intro">AI &amp; Technology</h2>
+              <p class="pillar-sub">Where agents, models and the Treasury technology stack actually touch the numbers.</p>
+            </div>
+            <svg class="ph-art" viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="380" height="220" fill="#1B3150"/>
+              <g fill="none" stroke="#2E6AF0" stroke-width="1.5" opacity="0.8"><circle cx="190" cy="110" r="34"/><circle cx="190" cy="110" r="64"/><circle cx="190" cy="110" r="98"/><circle cx="190" cy="110" r="136"/></g>
+              <polygon points="190,92 214,112 214,121 190,101 166,121 166,112" fill="#FFFFFF"/>
+              <polygon points="190,112 214,132 214,141 190,121 166,141 166,132" fill="#2E6AF0"/>
+              <g fill="#D9B867"><circle cx="254" cy="110" r="4"/><circle cx="130" cy="70" r="3"/><circle cx="288" cy="40" r="2.5"/><circle cx="92" cy="160" r="2.5"/></g>
+            </svg>
+          </div>
+          <div class="beat"><h3>AI &amp; Agentic Automation in Treasury<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-ai_agentic-0"><h4>Hedera Agent Accounts let AI agents spend within on-chain rules</h4><p>Hedera unveiled Agent Accounts, non-custodial on-chain wallets through which AI agents can transact autonomously under preset rules enforced by smart contract. Spending limits, merchant lists and daily caps are locked on-chain, with testnet due in Q4 2026. Treasurers get a template for hard-coded agent mandates.</p><div class="take"><p><b>Focus: Controls &amp; audit</b> &mdash; At the Approve step, a smart contract, not a person, would check each agent payment against preset limits and permitted payees. Auditors will therefore ask who wrote those rules and who can change them.</p><p class="view"><b>Our view</b> &mdash; Before any trial, document which named Finance staff may set or revoke each agent's limits, with a second approver for every change.</p></div><div class="cite">Via <a href="https://hedera.com/blog/introducing-hedera-agent-accounts/" target="_blank" rel="noopener">Hedera</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+          <div class="beat"><h3>Treasury Technology, Data &amp; Connectivity<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-treasury_tech-0"><h4>Frankfurt International Bank runs FIS Quantum Cloud Edition from day one</h4><p>Frankfurt International Bank chose FIS Treasury &amp; Risk Manager – Quantum Cloud Edition as its foundational platform. New-generation banks increasingly select cloud SaaS from inception rather than inheriting legacy on-premise infrastructure, a structural shift that shapes the platforms behind treasurers' banking partners.</p><div class="cite">Via <a href="https://www.fisglobal.com/about-us/media-room/press-release/2026/frankfurt-international-bank-selects-fis-to-bypass-legacy-infrastructure" target="_blank" rel="noopener">FIS</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+        </section>
+
+        <section class="panel" id="p-treasury" role="tabpanel" aria-labelledby="t-treasury">
+          <div class="pillar-hero">
+            <div class="ph-copy">
+              <h2 class="pillar-intro">Treasury &amp; Payments</h2>
+              <p class="pillar-sub">Cash and working capital, the payment rails that move it, and the controls around both.</p>
+            </div>
+            <svg class="ph-art" viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="380" height="220" fill="#1B3150"/>
+              <g stroke-width="10" fill="none"><line x1="0" y1="70" x2="380" y2="70" stroke="#2E6AF0"/><line x1="0" y1="110" x2="380" y2="110" stroke="#FFFFFF" opacity="0.9"/><line x1="0" y1="150" x2="380" y2="150" stroke="#2E6AF0" opacity="0.6"/></g>
+              <g fill="#D9B867"><rect x="70" y="64" width="12" height="12"/><rect x="190" y="104" width="12" height="12"/><rect x="300" y="144" width="12" height="12"/><rect x="250" y="64" width="12" height="12"/></g>
+              <line x1="0" y1="200" x2="380" y2="200" stroke="#B08D3C" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="beat"><h3>Cash, Liquidity &amp; Working Capital<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-cash-0"><h4>Money market fund assets reach $7.96 trillion as government funds add $61.15 billion</h4><p>Money market fund assets rose to $7.96 trillion as of October 7, 2026, led by a $61.15 billion rise in government funds. With SOFR at 3.90% and three-month T-bills at 4.17%, corporate treasurers still keep 83% of short-term investments in safe, liquid vehicles.</p><div class="take"><p><b>Focus: Cash &amp; liquidity</b> &mdash; Institutional cash is going almost entirely to government funds. They took $54.66 billion of the week's $58.27 billion institutional inflow, against $2.33 billion for prime funds.</p><p class="view"><b>Our view</b> &mdash; This month, check that every prime fund holding still fits the limits in your investment policy.</p></div><div class="cite">Via <a href="https://www.iciglobal.org/research/stats/mmf" target="_blank" rel="noopener">Investment Company Institute</a> and <a href="https://www.ssga.com/us/en/institutional/insights/monthly-cash-review" target="_blank" rel="noopener">State Street</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+          <div class="beat"><h3>Payments &amp; Transaction Banking<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-payments-0"><h4>Swift will reject unstructured postal addresses from November 2026</h4><p>From November 2026, cross-border Swift payments need fully structured or hybrid postal addresses under ISO 20022 rules; unstructured addresses will be rejected or delayed. Usage guidelines enforce compliance, so corporates must audit payment processes now to avoid rejected payments.</p><div class="cite">Via <a href="https://www.swift.com/insights/newsletters/iso-20022-bytes-payments-call-to-action-november-2026" target="_blank" rel="noopener">Swift</a></div></div>
+        <div class="item" id="s-payments-1"><h4>Swift retail payments framework wins 2026 commitments from more than 70 institutions</h4><p>Swift launched a framework to tackle frictions in cross-border retail payments, with 23-second clearing observed on the Australia-Spain corridor. More than 70 financial institutions have committed to implementing instant settlement capability during 2026, raising expectations for faster, more predictable cross-border cash movement.</p><div class="cite">Via <a href="https://www.swift.com/insights/news/better-cross-border-payment-experience-here" target="_blank" rel="noopener">Swift</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+        </section>
+
+        <section class="panel" id="p-markets" role="tabpanel" aria-labelledby="t-markets">
+          <div class="pillar-hero">
+            <div class="ph-copy">
+              <h2 class="pillar-intro">Risk &amp; Markets</h2>
+              <p class="pillar-sub">FX and rates exposure, digital-asset settlement, and the macro backdrop treasurers fund into.</p>
+            </div>
+            <svg class="ph-art" viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="380" height="220" fill="#1B3150"/>
+              <polyline points="0,170 50,150 95,160 140,110 185,125 230,80 275,95 320,55 380,40" fill="none" stroke="#2E6AF0" stroke-width="3"/>
+              <polyline points="0,190 60,180 120,186 180,160 240,168 300,140 380,130" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+              <g fill="#D9B867"><rect x="136" y="106" width="9" height="9"/><rect x="226" y="76" width="9" height="9"/><rect x="316" y="51" width="9" height="9"/></g>
+            </svg>
+          </div>
+          <div class="beat"><h3>Treasury Risk &mdash; FX, Rates &amp; Commodities<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-risk-0"><h4>Dollar hits 17-month high as wider basis lifts FX hedging costs</h4><p>The US Dollar Index reached a 17-month high in October 2026 on midterm election focus. An elevated USD cross-currency basis has pushed up forward hedging costs, and one-month FX forwards have become the preferred vehicle, meaning more frequent rolls for Treasury.</p><div class="take"><p><b>Focus: Risk</b> &mdash; Two events could move currencies sharply within weeks: the US midterms, where the odds of Democrats taking all of Congress have climbed, and the Bank of England's 5 November meeting, with a rate rise 85% priced in.</p><p class="view"><b>Our view</b> &mdash; Before 5 November, list the euro, sterling and Mexican peso payments due around those dates that have no hedge in place.</p></div><div class="cite">Via <a href="https://www.investec.com/en_gb/focus/business-growth/fx-market-update-october-2026.html" target="_blank" rel="noopener">Investec / FX Methods</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+          <div class="beat"><h3>Digital Assets, Tokenisation &amp; Settlement<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-digital-0"><h4>PayPal settles $1 billion intercompany dividends in two hours with PYUSD</h4><p>PayPal moved $1 billion of dividend payments between its US and international subsidiaries in about two hours using its PYUSD stablecoin. The pilot used dedicated on-chain wallets with legal and accounting coordination, showing how traditional multi-day intercompany cycles can compress.</p><div class="take"><p><b>Focus: Risk</b> &mdash; The two-hour settlement worked partly because PayPal issues PYUSD itself, so it faced no question over the token's issuer. Any other group would hold a third-party token between its own entities. That creates exposure to the issuer, a risk PayPal did not carry.</p><p class="view"><b>Our view</b> &mdash; Before any stablecoin intercompany pilot, document who issues the token, what reserves back it and the maximum balance Treasury may hold in it.</p></div><div class="cite">Via <a href="https://mempoolbrief.com/articles/paypal-settles-1-billion-between-subsidiaries-in-hours-via-pyusd-5af4eaef" target="_blank" rel="noopener">Mempool Brief</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+          <div class="beat"><h3>Markets &amp; Macro for Treasurers<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-markets_macro-0"><h4>Fed lifts rates to 3.75%-4.00%, with December hike 85% priced</h4><p>The FOMC raised the federal funds rate by 25 basis points on September 17, 2026, to 3.75%-4.00%. Minutes of the September 15-16 meeting, released October 7, show most participants expect at least one more hike by year-end; markets price 85% for December.</p><div class="cite">Via <a href="https://www.federalreserve.gov/monetarypolicy/files/fomcminutes20260916.pdf" target="_blank" rel="noopener">Federal Reserve</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+        </section>
+
+        <section class="panel" id="p-regulation" role="tabpanel" aria-labelledby="t-regulation">
+          <div class="pillar-hero">
+            <div class="ph-copy">
+              <h2 class="pillar-intro">Regulation &amp; Compliance</h2>
+              <p class="pillar-sub">The rules, reporting standards and controls that decide how far Treasury automation can go.</p>
+            </div>
+            <svg class="ph-art" viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="380" height="220" fill="#1B3150"/>
+              <g fill="none" stroke="#2E6AF0" stroke-width="1.5" opacity="0.7"><rect x="40" y="40" width="300" height="140"/><line x1="40" y1="75" x2="340" y2="75"/><line x1="40" y1="110" x2="340" y2="110"/><line x1="40" y1="145" x2="340" y2="145"/><line x1="150" y1="40" x2="150" y2="180"/></g>
+              <path d="M190 58 L222 70 L222 104 C222 128 206 144 190 152 C174 144 158 128 158 104 L158 70 Z" fill="#1B3150" stroke="#FFFFFF" stroke-width="3"/>
+              <polyline points="174,104 186,116 207,92" fill="none" stroke="#D9B867" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="beat"><h3>Regulation, Controls &amp; the CFO Agenda<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-regulation-0"><h4>COSO GenAI framework maps controls across eight AI capability types</h4><p>COSO published a GenAI governance framework organised by eight capability types, from ingestion and posting to judgment and human-AI interaction. Audit-ready templates and control matrices align to the five components of COSO 2013, giving controllers and treasurers a common structure for AI controls.</p><div class="cite">Via <a href="https://ab5bd07f-8066-4a33-869e-6f82d80ee59a.filesusr.com/ugd/719ba0_08f358f2c8f946fa9d26bd51d37b7117.pdf" target="_blank" rel="noopener">COSO / XyloDocs</a></div></div>
+        <div class="item" id="s-regulation-1"><h4>ISACA chief calls AI governance compliance 'SOX on steroids'</h4><p>ISACA CEO Erik Prusch said the AI compliance burden outweighs SOX, pointing to missing controls, accountability lines and reporting standards. CFOs face open questions on who carries ultimate responsibility for AI and how boards are kept informed, leaving governance gaps to close internally.</p><div class="take"><p><b>Focus: Regulation &amp; compliance</b> &mdash; With no settled AI rulebook, companies must build their own controls now. Prusch expects a rush within roughly a year, as failures prompt regulation and board members face lawsuits.</p><p class="view"><b>Our view</b> &mdash; This quarter, name one executive accountable to the board for each AI tool the Finance function uses.</p></div><div class="cite">Via <a href="https://www.itpro.com/business/policy-and-legislation/isaca-ceo-says-ai-compliance-will-be-like-sox-on-steroids" target="_blank" rel="noopener">IT Pro / ISACA</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+          <div class="beat"><h3>Sanctions, AML &amp; KYC<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-financial_crime-0"><h4>OCC fines American Express $350 million over BSA/AML failures</h4><p>The OCC assessed a $350 million penalty against American Express National Bank for BSA/AML programme deficiencies, including inadequate resources, weak independent testing and failure to monitor about $13 billion in suspected trade-based money laundering over the past decade. Under-resourced testing proved costly.</p><div class="cite">Via <a href="https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-87.html" target="_blank" rel="noopener">OCC</a></div></div>
+        <div class="item" id="s-financial_crime-1"><h4>OFAC sets October 1 Iran automotive and rail determination, issues General License EE</h4><p>OFAC published a determination on Iran's automotive and rail sectors under Executive Order 13902, effective October 1, 2026, alongside amended Iran-related Frequently Asked Questions. The evolving regime puts Iran-related counterparty exposure back under review for Treasury and compliance teams.</p><div class="take"><p><b>Focus: Regulation &amp; compliance</b> &mdash; The exposure reaches well beyond Iran. Newly listed names include companies registered in China, the UAE and Indonesia, several under alternative names, so screening that looks only for Iranian addresses would miss them.</p><p class="view"><b>Our view</b> &mdash; This week, rescreen counterparties linked to vehicles, rail or parts against the updated list, including every alternative name.</p></div><div class="cite">Via <a href="https://ofac.treasury.gov/recent-actions/20261001" target="_blank" rel="noopener">OFAC</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+          <div class="beat"><h3>Accounting &amp; Reporting Standards<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+            <div class="item" id="s-reporting-0"><h4>ISSB opens 120-day nature-related disclosures consultation on 22 October 2026</h4><p>On 22 October 2026 the ISSB launches a 120-day public consultation at COP17 on a proposed Practice Statement for nature-related disclosures that lets companies apply IFRS S1 to material nature risks and opportunities. Feedback closes 19 February 2027, giving reporting teams a clear window.</p><div class="cite">Via <a href="https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/" target="_blank" rel="noopener">IFRS</a> and <a href="https://www.bdo.global/en-gb/news/ifrs-news/issb-launches-public-consultation-on-nature-related-disclosures" target="_blank" rel="noopener">BDO Global</a></div></div>
+        <div class="item" id="s-reporting-1"><h4>IASB opens IFRS 9 hedge accounting post-implementation review</h4><p>On 28 September 2026 the IASB published a Request for Information starting its post-implementation review of IFRS 9 hedge accounting and IFRS 7 disclosures. It seeks feedback on application challenges, including the 'highly probable' criterion and cost of hedging treatments, giving treasurers a direct channel.</p><div class="take"><p><b>Focus: Accounting &amp; reporting</b> &mdash; The IASB is reviewing how the IFRS 9 hedge accounting rules and the related IFRS 7 disclosures work in practice. Treasury teams that hedge but struggle to reflect those hedges in the accounts now have a formal route to the standard-setter.</p><p class="view"><b>Our view</b> &mdash; Send the IASB a comment letter by 26 January 2027 listing the hedges you could not treat as hedges in your accounts, with the reasons.</p></div><div class="cite">Via <a href="https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/" target="_blank" rel="noopener">IFRS</a> and <a href="https://www.iasplus.com/en-gb/news/2026/09/pir-ifrs-9-ha" target="_blank" rel="noopener">IASPlus</a></div></div>
+          </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
+        </section>
+
+        <section class="panel" id="p-events" role="tabpanel" aria-labelledby="t-events">
+          <h2 class="pillar-intro">Events &amp; Conference Radar</h2>
+          <p class="pillar-sub">Where the Treasury agenda is being set &mdash; recent highlights and the dates worth holding.</p>
+          <div class="event"><div class="when">27-29 October 2026<small>TBD - Status: Scheduled</small></div><div><h4>Federal Reserve FOMC Meeting</h4><p>FOMC meets October 27-29; markets expect hold ahead of likely December hike. Treasury curve pricing reflects expectations of one or two additional hikes by year-end 2026.</p><div class="cite" style="margin-top:6px;font-size:13px;color:var(--navy-soft);">Via <a href="https://www.federalreserve.gov/monetarypolicy/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--gold);text-decoration:none;color:var(--navy);">Federal Reserve</a></div></div></div>
+      <div class="event"><div class="when">November 2026<small>Global - ISO 20022 Mandate</small></div><div><h4>ISO 20022 Cross-Border Postal Address Compliance Deadline</h4><p>From November 2026, Swift cross-border payments must use fully structured or hybrid postal addresses only. Unstructured addresses will be rejected or delayed. Corporates must audit payment connectivity and supplier data quality.</p><div class="cite" style="margin-top:6px;font-size:13px;color:var(--navy-soft);">Via <a href="https://www.swift.com/insights/newsletters/iso-20022-bytes-payments-call-to-action-november-2026" target="_blank" rel="noopener" style="border-bottom:1px solid var(--gold);text-decoration:none;color:var(--navy);">Swift</a></div></div></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER (full-bleed photo) ===== -->
+  <section class="newsletter reveal" id="newsletter" data-view="briefing" aria-labelledby="nl-h">
+    <img class="photo" src="/img/ait-newsletter-desk.jpg" alt="A professional at her desk, looking up from her work" loading="lazy">
+    <div class="nl-shade"></div>
+    <div class="wrap">
+      <div class="nl-copy">
+        <div class="kicker">The Monthly Treasurer &middot; Monthly newsletter &middot; Starting soon</div>
+        <h2 id="nl-h">The month in AI, Treasury and Finance, in one email<span class="chev" aria-hidden="true"></span></h2>
+        <p>One email a month: the month&rsquo;s moves that matter, what they mean for your function, and the controls to keep pace. Launching soon &mdash; sign up now to get the first issue.</p>
+        <form name="briefing-subscribe" method="POST" data-netlify="true" netlify-honeypot="company" action="/subscribed.html">
+          <input type="hidden" name="form-name" value="briefing-subscribe">
+          <p class="hp"><label>Leave blank <input name="company"></label></p>
+          <label for="sub-email" class="hp">Email address</label>
+          <input id="sub-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <button type="submit">Get the first issue</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <aside class="next-band" data-view="briefing" aria-label="Next section">
+    <div class="wrap"><a href="#markets"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Markets</span><span class="nb-d">Policy rates, Money Markets and FX, from official sources.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
+  <!-- ===== MARKETS ===== -->
+  <section class="markets-sec" id="markets" data-view="markets" aria-label="Markets">
+    <div class="numbers" id="numbers" aria-labelledby="mk-title">
+      <svg class="bg" viewBox="0 0 520 340" aria-hidden="true">
+        <g fill="none">
+          <polyline points="0,300 260,90 520,300" stroke="#2E6AF0" stroke-width="2" opacity="0.6"/>
+          <polyline points="0,340 260,130 520,340" stroke="#2E6AF0" stroke-width="1" opacity="0.4"/>
+          <polyline points="0,260 260,50 520,260" stroke="#B08D3C" stroke-width="1.5" opacity="0.7"/>
+        </g>
+      </svg>
+      <div class="wrap">
+        <div class="numbers-head">
+          <div>
+            <div class="kicker">Markets</div>
+            <h3 id="mk-title">Rates, Money Markets and FX</h3>
+          </div>
+          <p class="disclaim">Policy rates, benchmark rates and FX reference rates from official sources, refreshed through the day. Each figure links to its source and shows its date. Not live market data and not investment advice.</p>
+        </div>
+
+        <!-- MARKET VIEW LOCKED 2026-10-09 (tag market-view-v1): design, layout, charts and AI Treasurer view panels are final. Do not change without the owner's explicit instruction. Daily content is generated into the slot by generate.py. -->
+        <!--MV-START--><!--MV-END-->
+
+        <div class="live" aria-label="Live market prices from TradingView">
+          <div class="live-tag"><div><i aria-hidden="true"></i>Live</div><span>Indices, commodities, crypto</span></div>
+          <div class="live-feed">
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Prices by TradingView</a>, may be delayed</div>
+              <script type="application/json" id="tv-config">{"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:UKXGBP","title":"FTSE 100"},{"proName":"FOREXCOM:JP225","title":"Nikkei 225"},{"proName":"BSE:SENSEX","title":"Sensex"},{"proName":"TVC:UKOIL","title":"Brent"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}</script>
+            </div>
+          </div>
+        </div>
+
+        <section class="pr" id="pr" aria-labelledby="pr-h">
+          <h4 id="pr-h">Policy rates<small id="pr-since">Official decisions since January 2022</small></h4>
+          <div class="pr-ex" id="pr-ex" hidden>
+            
+            <p class="pr-title" id="pr-title"></p>
+            <p class="pr-sub" id="pr-sub"></p>
+          </div>
+          <div class="pr-top" id="pr-top" hidden>
+            <div class="pr-pick" role="group" aria-label="Choose a central bank">
+              <button type="button" data-k="fed" aria-pressed="true">Fed</button>
+              <button type="button" data-k="ecb" aria-pressed="false">ECB</button>
+              <button type="button" data-k="boe" aria-pressed="false">BoE</button>
+              <button type="button" data-k="rbi" aria-pressed="false">RBI</button>
+              <button type="button" data-k="pboc" aria-pressed="false">PBOC</button>
+              <button type="button" data-k="qcb" aria-pressed="false">QCB</button>
+            </div>
+            <div class="pr-read" aria-live="polite"><div class="pr-val" id="pr-val"></div><div class="pr-lab" id="pr-lab"></div></div>
+          </div>
+          <div class="pr-chart" id="pr-chart" tabindex="0" role="img" aria-label="Policy rate history chart"><div class="mk-load">Loading&hellip;</div></div>
+          <div class="pr-src" id="pr-src"></div>
+          <details class="pr-moves" id="pr-moves" hidden open><summary>Every rate move</summary><div class="pr-bars" role="list" aria-label="Rate moves, newest first. Bars to the right are increases, bars to the left are cuts."></div></details>
+          <div class="pr-also"><h5 id="pr-also-h">Also tracked</h5><ul id="pr-also" aria-labelledby="pr-also-h"></ul></div>
+        </section>
+
+<section class="pr ex" id="mm" aria-labelledby="mm-h" hidden>
+          <h4 id="mm-h">Money Markets &amp; yields<small>Weekly, since January 2022</small></h4>
+          <div class="pr-ex"><p class="pr-title" data-r="title"></p><p class="pr-sub" data-r="sub"></p></div>
+          <div class="pr-top"><div class="pr-pick" role="group" aria-label="Choose a rate or yield" data-r="pick"></div><div class="pr-read" aria-live="polite"><div class="pr-val" data-r="val"></div><div class="pr-lab" data-r="lab"></div></div></div>
+          <div class="pr-chart" data-r="chart" tabindex="0" role="img"></div>
+          <div class="pr-src" data-r="src"></div>
+        </section>
+
+        <section class="pr ex" id="fxx" aria-labelledby="fxx-h" hidden>
+          <h4 id="fxx-h">FX reference rates<small>Weekly, since January 2022</small></h4>
+          <div class="pr-ex"><p class="pr-title" data-r="title"></p><p class="pr-sub" data-r="sub"></p></div>
+          <div class="pr-top"><div class="pr-pick" role="group" aria-label="Choose a currency pair" data-r="pick"></div><div class="pr-read" aria-live="polite"><div class="pr-val" data-r="val"></div><div class="pr-lab" data-r="lab"></div></div></div>
+          <div class="pr-chart" data-r="chart" tabindex="0" role="img"></div>
+          <div class="pr-src" data-r="src"></div>
+        </section>
+
+        <div id="mx" aria-live="polite"></div>
+
+        <div class="mk-foot">
+          <p id="mk-note">The Qatari riyal is pegged at QAR 3.64 per USD. USD crosses are derived from ECB euro reference rates. Each exhibit shows its source and the date of its latest figure.</p>
+          <p id="mk-upd"></p>
+        </div>
+        <noscript><p class="mk-foot">Turn on JavaScript to see the Treasury Markets figures.</p></noscript>
+      </div>
+    </div>
+  </section>
+
+
+  <aside class="next-band" data-view="markets" aria-label="Next section">
+    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">Five steps for every transaction, four foundations around the system.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
+  <!-- ===== FRAMEWORK ===== -->
+  <section class="framework reveal" id="framework" data-view="controls" aria-labelledby="fw-h">
+    <svg class="bg" viewBox="0 0 760 520" aria-hidden="true">
+      <g fill="none">
+        <polyline points="0,460 380,150 760,460" stroke="#2E6AF0" stroke-width="44" opacity="0.35"/>
+        <polyline points="0,380 380,70 760,380" stroke="#2E6AF0" stroke-width="2" opacity="0.5"/>
+        <polyline points="0,340 380,30 760,340" stroke="#B08D3C" stroke-width="2" opacity="0.6"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="kicker">AI Controls</div>
+      <h2 id="fw-h">Every automated step should leave a trail an auditor can follow</h2>
+      <p class="sub">Five steps for every transaction, four foundations around the system. The test for any AI or automation in Treasury and Finance: can each stage be explained, evidenced and reversed? If not, the speed is borrowed against the next audit.</p>
+      <div class="fw-label"><span>For every transaction</span><b>The control trail</b><small>COSO: control activities &middot; information &amp; communication</small></div>
+      <ol class="trail">
+        <li><span class="n">01</span><span class="step">Capture</span><span class="why">Data arrives from a known, authorised source, with completeness totals checked. Emails and PDFs are screened for hidden instructions before any agent acts on them.</span><span class="q"><b>The auditor asks</b>Where did this data come from, and is all of it here?</span></li>
+        <li><span class="n">02</span><span class="step">Match</span><span class="why">Rules or models pair items. The logic, model and prompt version are recorded, and amounts are recalculated independently.</span><span class="q"><b>The auditor asks</b>Why were these two items paired, and by which version?</span></li>
+        <li><span class="n">03</span><span class="step">Flag</span><span class="why">Low-confidence results become exceptions. Exceptions are logged and aged, never silently cleared.</span><span class="q"><b>The auditor asks</b>What didn't match, and for how long?</span></li>
+        <li><span class="n">04</span><span class="step">Approve</span><span class="why">A named person approves, at a level set by risk. The agent that proposes an action can never approve it.</span><span class="q"><b>The auditor asks</b>Who accepted it, and were they independent?</span></li>
+        <li><span class="n">05</span><span class="step">Post</span><span class="why">Entries follow IFRS, with a record-level trail of the data, model version and approver.</span><span class="q"><b>The auditor asks</b>Does the entry trace back to source?</span></li>
+      </ol>
+      <div class="fw-label"><span>Around the system</span><b>Four foundations</b><small>COSO: control environment &middot; risk assessment &middot; control activities &middot; monitoring</small></div>
+      <ul class="found">
+        <li><span class="f-name">Govern</span><span class="f-coso">Control environment &middot; risk assessment</span><span class="why">A register of every AI use: owner, risk tier, intended use, limits and impact on financial reporting.</span><span class="q"><b>The auditor asks</b>Which AI is in use, and who owns it?</span></li>
+        <li><span class="f-name">Access</span><span class="f-coso">Control activities</span><span class="why">Each agent has its own identity and only the rights it needs. No shared logins, and bank or vendor master-data changes are verified independently.</span><span class="q"><b>The auditor asks</b>What can this agent do, and who granted it?</span></li>
+        <li><span class="f-name">Change</span><span class="f-coso">Control activities</span><span class="why">Prompts, models and settings are change-controlled like code: written by one person, approved by another, tested and logged.</span><span class="q"><b>The auditor asks</b>What changed, and who signed it off?</span></li>
+        <li><span class="f-name">Monitor</span><span class="f-coso">Monitoring activities</span><span class="why">Volumes, overrides, validation failures, exception ageing and drift are tracked, with a stop switch when limits are breached.</span><span class="q"><b>The auditor asks</b>How would you know if it went wrong?</span></li>
+      </ul>
+      <p class="note">Illustrative framework, aligned with COSO&rsquo;s Internal Control&mdash;Integrated Framework and its 2026 guidance on internal control over generative AI. It describes a control approach, not a specific system or result.</p>
+    </div>
+  </section>
+
+  <aside class="next-band" data-view="controls" aria-label="Next section">
+    <div class="wrap"><a href="#articles"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Articles</span><span class="nb-d">Bylined pieces on adopting AI in Treasury without losing control.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
+  <!-- ===== ARTICLES ("How we help" pattern) ===== -->
+  <section class="articles reveal" id="articles" data-view="articles" aria-labelledby="art-h">
+    <div class="wrap">
+      <div class="center-head">
+        <div class="eyebrow">Articles</div>
+        <h2 id="art-h">Perspectives on adopting AI in Treasury &mdash; without losing control.</h2>
+      </div>
+      <div class="cards two">
+        <div class="card card-soon">
+          <div class="card-img"><img src="/img/ait-article-exceptions.jpg" alt="Financial statements under review with a calculator and laptop" loading="lazy" style="object-position: 50% 45%;"></div>
+          <div class="kicker">Controls <span class="status">Coming soon</span></div>
+          <h3><span class="hl">Exception accounting when a machine does the matching</span></h3>
+          <p>Keeping unmatched items visible, aged and properly accounted for once reconciliation is automated.</p>
+          <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
+        </div>
+        <div class="card card-soon">
+          <div class="card-img"><img src="/img/ait-article-agents.jpg" alt="An abstract network of connected cubes on a dark surface" loading="lazy" style="object-position: 50% 50%;"></div>
+          <div class="kicker">CFO agenda <span class="status">Coming soon</span></div>
+          <h3><span class="hl">Five questions to ask before you rely on an AI agent in Treasury</span></h3>
+          <p>A short checklist for CFOs and audit committees reviewing agentic automation in cash and payments.</p>
+          <div class="by"><b>Gopakumar Menon</b>, CA, CPA, CTP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="next-band" data-view="articles" aria-label="Next section">
+    <div class="wrap"><a href="#work"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Get in Touch</span><span class="nb-d">Share a view, a question or an experience.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
+  <!-- ===== CREDENTIALS (blue band) ===== -->
+  <section class="creds reveal" id="work" data-view="work" aria-labelledby="work-top">
+    <div class="wrap">
+      <div class="creds-head">
+        <div class="kicker">About</div>
+        <div class="advisor"><img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon, CA, CPA, CTP" width="96" height="96" loading="lazy"><div><b>Gopakumar Menon, CA, CPA, CTP</b><span>Senior Treasury and Finance Leader, specialising in AI and Financial Controls</span></div></div>
+        <h2 id="work-top">Two decades in control, reporting and Treasury, and a keen interest in AI.</h2>
+      </div>
+      <div class="creds-row">
+        <div><b>20+ years</b><span>Financial control, IFRS and US GAAP reporting, and Treasury operations</span></div>
+        <div><b>The World Bank</b><span>Financial reporting and analysis, including assignments at Washington DC headquarters</span></div>
+        <div><b>Barclays</b><span>VP, Financial Control &mdash; entity controller for Group Treasury</span></div>
+        <div><b>CA &middot; CPA &middot; CTP</b><span>Chartered Accountant, Certified Public Accountant and Certified Treasury Professional</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GET IN TOUCH ===== -->
+  <section class="work reveal" data-view="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="work-grid">
+        <div class="copy">
+          <h2 id="work-h">Faster Treasury, with controls that keep up</h2>
+          <p>This is a personal project, written from a lasting interest in Treasury and AI. I would like to hear from Treasury and Finance professionals around the world: what is working, what is not, and where the controls are hardest.</p>
+          <ul>
+            <li><b>Where AI genuinely saves time.</b> Which Treasury processes you have automated, and which you have chosen to leave alone.</li>
+            <li><b>Controls for automated steps.</b> How approvals, evidence and audit trails work when an agent or workflow acts.</li>
+            <li><b>Reconciliation and exceptions.</b> How your team handles unmatched items and records the reasons under IFRS.</li>
+          </ul>
+          <a class="btn btn-blue" href="mailto:gmenon@theaitreasurer.com?subject=Treasury%20%2B%20AI%20%E2%80%94%20a%20conversation">Let&rsquo;s talk Treasury and AI</a>
+          <p class="work-note">A personal, independent site. It does not offer services, and the views are my own, not those of any employer or organisation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 The AI Treasurer. Views expressed are personal, are not financial or professional advice, and do not represent any employer or organisation. Contact: <a href="mailto:gmenon@theaitreasurer.com">gmenon@theaitreasurer.com</a></p>
+    <p>This briefing links to third-party publishers and summarises each item in its own words; it does not reproduce source articles. Figures are as reported on the dates shown and are not live market data. Company and publication names are used only to identify the source.</p>
+    <p>Photography via <a href="https://unsplash.com" rel="noopener">Unsplash</a>: Andreea Avramescu, Vitaly Gariev, Sasun Bughdaryan, Kelly Sikkema, Shubham Dhage, Dima Solomin and Daniele Levis Pelusi. People shown are not clients or staff.</p>
+  </div>
+</footer>
+
+<script>
+  var tabs = document.querySelectorAll('.tabs button');
+  var panels = document.querySelectorAll('.panel');
+  function showTab(key, itemId) {
+    if (key === 'front') key = 'ai';
+    if (window.showView) window.showView('briefing');
+    tabs.forEach(function(b){ b.setAttribute('aria-selected', b.id === 't-'+key ? 'true':'false'); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === 'p-'+key); });
+    var t = document.getElementById('briefing-tabs');
+    var it = itemId ? document.getElementById(itemId) : null;
+    var dest = it || t;
+    if (dest) { var h = (document.querySelector('.secnav')||{}).offsetHeight || 0; window.scrollTo({ top: dest.getBoundingClientRect().top + window.pageYOffset - h - (it ? 16 : 0), behavior: 'smooth' }); }
+    if (it) { it.classList.remove('flash'); void it.offsetWidth; it.classList.add('flash'); }
+  }
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){ showTab(b.id.replace('t-','')); });
+  });
+  document.querySelectorAll('a[data-tab]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); showTab(a.getAttribute('data-tab')); });
+  });
+  // Hero glow: follows the mouse on desktop (eased); drifts on its own on touch screens (CSS).
+  (function(){
+    var intro = document.querySelector('.intro'), dot = intro && intro.querySelector('.intro-glow span');
+    if (!dot || !window.matchMedia) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var tx = 0, ty = 0, x = 0, y = 0, running = false;
+    function place(){ var r = intro.getBoundingClientRect(); tx = x = r.width * 0.68; ty = y = r.height * 0.35; dot.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)'; }
+    function tick(){ x += (tx - x) * 0.08; y += (ty - y) * 0.08; dot.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      if (Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5) requestAnimationFrame(tick); else running = false; }
+    intro.addEventListener('pointermove', function(e){ var r = intro.getBoundingClientRect(); tx = e.clientX - r.left; ty = e.clientY - r.top; if (!running) { running = true; requestAnimationFrame(tick); } });
+    place(); window.addEventListener('resize', place);
+  })();
+  // Smooth, eased scroll for in-page links (Talk to us, Framework, etc.).
+  // Recomputes the target each frame so lazy images loading mid-scroll can't throw it off.
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+    function targetY(el){
+      var m = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      return Math.max(0, Math.min(max, el.getBoundingClientRect().top + window.pageYOffset - m));
+    }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+      var id = a.getAttribute('href').slice(1);
+      var el = id && document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      // Load images now and settle the reveal effect, so nothing shifts or animates during the glide.
+      document.querySelectorAll('img[loading="lazy"]').forEach(function(i){ i.loading = 'eager'; });
+      document.querySelectorAll('.reveal').forEach(function(r){ r.classList.add('in'); });
+      var root = document.documentElement, prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      var start = window.pageYOffset, dist = Math.abs(targetY(el) - start);
+      if (reduce || dist < 2) { window.scrollTo(0, targetY(el)); root.style.scrollBehavior = prev; }
+      else {
+        var dur = Math.min(1100, Math.max(450, dist * 0.22)), t0 = null;
+        var stop = function(){ cancelled = true; };
+        var cancelled = false;
+        window.addEventListener('wheel', stop, { passive: true, once: true });
+        window.addEventListener('touchstart', stop, { passive: true, once: true });
+        (function step(ts){
+          if (cancelled) { root.style.scrollBehavior = prev; return; }
+          if (t0 === null) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur);
+          window.scrollTo(0, start + (targetY(el) - start) * ease(p));
+          if (p < 1) requestAnimationFrame(step); else root.style.scrollBehavior = prev;
+        })(performance.now()) ;
+      }
+      if (history.replaceState) history.replaceState(null, '', '#' + id);
+      var f = el.querySelector('h1, h2, h3'); if (f) { f.setAttribute('tabindex', '-1'); setTimeout(function(){ f.focus({ preventScroll: true }); }, 50); }
+    });
+  })();
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+<script>
+(function(){
+  var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function d(s){ if(!s) return ''; var p=s.split('-'); return (+p[2])+' '+M[+p[1]-1]+' '+p[0]; }
+  function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function chg(v, unit){
+    if (v===null || v===undefined) return '<span class="mk-chg flat">&nbsp;</span>';
+    if (v===0) return '<span class="mk-chg flat">Unchanged</span>';
+    var up = v>0, a = Math.abs(v);
+    return '<span class="mk-chg">'+(up?'&#9650; +':'&#9660; &minus;')+(unit==='%'?a.toFixed(2)+'%':a+' bp')+'</span>';
+  }
+  function row(it, sect){
+    var meta, c;
+    if (sect==='policy') {
+      meta = e(it.label) + (it.since ? ' &middot; ' + (it.change_bp ? 'moved ' : 'held ') + d(it.since) : '');
+      c = it.change_bp===null||it.change_bp===undefined ? '<span class="mk-chg flat">&nbsp;</span>' : (it.change_bp===0 ? '<span class="mk-chg flat">Held</span>' : chg(it.change_bp,'bp'));
+    } else {
+      meta = 'As of ' + d(it.asof);
+      c = sect==='fx' ? chg(it.change_pct,'%') : chg(it.change_bp,'bp');
+    }
+    var name = sect==='policy' ? it.bank : it.name;
+    return '<li class="'+(it.stale?'mk-stale':'')+'"><div class="mk-l1"><div class="mk-name"><a href="'+e(it.source_url)+'" target="_blank" rel="noopener" title="Source: '+e(it.source_name)+'">'+e(name)+'</a>'+(it.stale?'<span class="mk-flag">Stale</span>':'')+'</div>'
+      +'<span class="mk-val">'+e(it.value)+'</span></div><div class="mk-l2"><span class="mk-meta">'+meta+'</span>'+c+'</div></li>';
+  }
+  fetch('/data/markets.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){
+    ['policy','money','fx'].forEach(function(s){
+      var ul = document.querySelector('#mk ul[data-sect="'+s+'"]');
+      if (ul && j[s] && j[s].length) ul.innerHTML = j[s].map(function(it){ return row(it,s); }).join('');
+    });
+    (function(){
+      var ul = document.getElementById('today-rates'); if (!ul) return;
+      var pick = [['policy','fed','Fed funds target'],['policy','qcb','QCB repo'],['money','ust10y','US Treasury 10Y']];
+      var oldest = '';
+      function sd(s){ var p=s.split('-'); return (+p[2])+' '+M[+p[1]-1]; }
+      var rows = pick.map(function(p){
+        var it = (j[p[0]]||[]).filter(function(x){ return x.id===p[1]; })[0]; if (!it) return '';
+        var val = String(it.value);
+        if (p[1]==='qcb') { var q = val.split('/'); if (q.length===3) val = q[1].replace(/%/g,'').trim()+'%'; }
+        if (it.asof && (!oldest || it.asof < oldest)) oldest = it.asof;
+        var bp = it.change_bp, c = '';
+        if (bp===0) c = '<span class="tc flat">Unchanged</span>';
+        else if (typeof bp==='number') {
+          c = '<span class="tc '+(bp>0?'up':'down')+'">'+(bp>0?'&#9650; +':'&#9660; &minus;')+Math.abs(bp)+' bp'
+            + (it.since ? ' &middot; '+sd(it.since) : (p[0]==='money' ? ' &middot; vs prior close' : ''))+'</span>';
+        }
+        return '<li><span class="l">'+e(p[2])+'</span><span class="r"><span class="v">'+e(val)+'</span>'+c+'</span></li>';
+      }).join('');
+      if (rows) ul.innerHTML = rows;
+      var ao = document.getElementById('today-asof'); if (ao && oldest) ao.textContent = 'As of ' + d(oldest);
+    })();
+    if (j.generated_utc) {
+      var t = new Date(j.generated_utc);
+      var s = t.toLocaleString('en-GB',{timeZone:'Asia/Qatar',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('mk-upd').textContent = 'Last refreshed ' + s + ' Doha time';
+    }
+  }).catch(function(){
+    document.querySelectorAll('#mk .mk-load').forEach(function(li){ li.textContent = 'Figures are temporarily unavailable.'; });
+  });
+})();
+</script>
+<script>
+/* Policy-rate chart: official history (data/policy_history.json, refreshed by markets.py)
+   plus the current decision from data/markets.json. Falls back to a plain list if history is missing. */
+(function(){
+  var box = document.getElementById('pr'); if (!box) return;
+  var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function d(s){ var p=s.split('-'); return (+p[2])+' '+M[+p[1]-1]+' '+p[0]; }
+  function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function t(s){ return Date.UTC(+s.slice(0,4), +s.slice(5,7)-1, +s.slice(8,10)); }
+  function pct(v){ return (Math.round(v*100)/100).toFixed(2)+'%'; }
+  function rate(S,p){ return S.range && p[2]!=null ? (Math.round(p[2]*100)/100).toFixed(2)+'&ndash;'+pct(p[1]) : pct(p[1]); }
+  function mv(a,b){ var bp = Math.round((a-b)*100); return bp===0 ? 'No change' : (bp>0?'&#9650; +':'&#9660; &minus;')+Math.abs(bp)+' bp'; }
+  var NS='http://www.w3.org/2000/svg', H={}, P={}, cur='fed', chart=document.getElementById('pr-chart'), tip, focusIdx=-1;
+
+  function li(it){
+    var meta = e(it.label) + (it.since ? ' &middot; ' + (it.change_bp ? 'moved ' : 'held ') + d(it.since) : '');
+    var c = it.change_bp===null||it.change_bp===undefined ? '' : (it.change_bp===0 ? '<span class="mk-chg flat">Held</span>' : '<span class="mk-chg">'+(it.change_bp>0?'&#9650; +':'&#9660; &minus;')+Math.abs(it.change_bp)+' bp</span>');
+    return '<li class="'+(it.stale?'mk-stale':'')+'"><div class="mk-l1"><div class="mk-name"><a href="'+e(it.source_url)+'" target="_blank" rel="noopener" title="Source: '+e(it.source_name)+'">'+e(it.bank)+'</a>'+(it.stale?'<span class="mk-flag">Stale</span>':'')+'</div><span class="mk-val">'+e(it.value)+'</span></div><div class="mk-l2"><span class="mk-meta">'+meta+'</span>'+c+'</div></li>';
+  }
+
+  var NAME = {fed:'The Fed’s target rate', ecb:'The ECB’s deposit rate', boe:'The Bank of England’s Bank Rate', rbi:'The RBI’s repo rate', pboc:'China’s one-year loan prime rate', qcb:'Qatar Central Bank’s deposit rate'};
+  function mon(s){ return M[+s.slice(5,7)-1]+' '+s.slice(0,4); }
+  function valAt(S, ms){ var k=-1; for (var i=0;i<S.points.length;i++){ if (t(S.points[i][0])<=ms) k=i; } return k; }
+  function peak(S){ var k=0; S.points.forEach(function(p,i){ if (p[1]>S.points[k][1]) k=i; }); return k; }
+
+  function title(k){
+    var S=H[k], pts=S.points, last=pts[pts.length-1], prev=pts.length>1?pts[pts.length-2]:null, pi=peak(S), pk=pts[pi];
+    var gap=Math.round((pk[1]-last[1])*100), mvbp=prev?Math.round((last[1]-prev[1])*100):0;
+    var recent=(t(S.asof)-t(last[0]))/864e5 <= 120, nm=NAME[k]||S.bank, head, tail='';
+    if (gap<=0) head = nm+' is at its highest since '+mon(H._start);
+    else if (pi===0) head = nm+' is '+gap+' bp below its '+mon(H._start)+' level of '+pct(pk[1]);
+    else head = nm+' is '+gap+' bp below its '+pct(pk[1])+' peak of '+mon(pk[0]);
+    if (!recent || !prev) tail = ', unchanged since '+mon(last[0]);
+    else if (mvbp>0) tail = gap>0 ? ', but rose '+mvbp+' bp in '+mon(last[0]) : ', after a '+mvbp+' bp rise in '+mon(last[0]);
+    else if (mvbp<0) tail = ', after a '+(-mvbp)+' bp cut in '+mon(last[0]);
+    return head+tail;
+  }
+
+  function draw(){
+    var S = H[cur]; if (!S) return;
+    var W = chart.clientWidth, Ht = chart.clientHeight; if (!W || !Ht) return;
+    var phone = W < 520, keys = Object.keys(H).filter(function(k){ return k.charAt(0)!=='_'; });
+    var ml = 34, mr = phone ? 50 : 92, mt = 26, mb = 26, iw = W-ml-mr, ih = Ht-mt-mb;
+    var x0 = t(H._start), x1 = Math.max.apply(null, keys.map(function(k){ return t(H[k].asof); }));
+    var vals = []; keys.forEach(function(k){ H[k].points.forEach(function(p){ vals.push(p[1]); }); });
+    var mn = Math.min(0, Math.min.apply(null,vals)), mx = Math.max.apply(null,vals)+0.2, step = mx-mn > 5 ? 2 : 1;
+    var lo = step*Math.floor(mn/step), hi = step*Math.ceil(mx/step);
+    function X(s){ return ml + (t(s)-x0)/(x1-x0)*iw; }
+    function Y(v){ return mt + (hi-v)/(hi-lo)*ih; }
+    var g = '';
+    for (var v=lo; v<=hi+1e-9; v+=step){ g += '<line x1="'+ml+'" x2="'+(ml+iw)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="rgba(255,255,255,'+(v===lo?0.35:0.08)+'" stroke-width="1"/><text x="'+(ml-8)+'" y="'+(Y(v)+4)+'" text-anchor="end">'+(v<0?'&minus;'+(-v):v)+'</text>'; }
+    var y0 = +H._start.slice(0,4), yl = new Date(x1).getUTCFullYear(), every = phone && yl-y0>3 ? 2 : 1;
+    for (var y=y0; y<=yl; y++){ var xs = X(y+'-01-01'); if (xs < ml-1 || xs > ml+iw-28 || (y-y0)%every) continue; g += '<text x="'+xs+'" y="'+(mt+ih+19)+'">'+y+'</text>'; }
+    function path(K){ var P=H[K].points, s=''; P.forEach(function(p,i){ s += (i? 'H'+X(p[0]).toFixed(1)+'V'+Y(p[1]).toFixed(1) : 'M'+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)); }); return s+'H'+X(H[K].asof).toFixed(1); }
+    var lines = '', ends = [];
+    keys.filter(function(k){ return k!==cur; }).forEach(function(k){ lines += '<path d="'+path(k)+'" fill="none" stroke="rgba(159,172,190,0.38)" stroke-width="1.25" stroke-linejoin="round"/>'; });
+    lines += '<path d="'+path(cur)+'" fill="none" stroke="#D9B867" stroke-width="2.5" stroke-linejoin="round"/>';
+    keys.forEach(function(k){ if (phone && k!==cur) return; var P=H[k].points, L=P[P.length-1]; ends.push({k:k, x:X(H[k].asof), y:Y(L[1]), txt: phone ? H[k].bank : H[k].bank+' '+pct(L[1])}); });
+    ends.sort(function(a,b){ return a.y-b.y; }); for (var i=1;i<ends.length;i++){ if (ends[i].y-ends[i-1].y<14) ends[i].y = ends[i-1].y+14; }
+    var lab = (phone ? keys.filter(function(q){ return q!==cur; }).map(function(q){ var P=H[q].points; return '<circle cx="'+X(H[q].asof)+'" cy="'+Y(P[P.length-1][1])+'" r="2.5" fill="#9FACBE"/>'; }).join('') : '') + ends.map(function(o){ var on=o.k===cur; return '<circle cx="'+X(H[o.k].asof)+'" cy="'+Y(H[o.k].points[H[o.k].points.length-1][1])+'" r="'+(on?4.5:3)+'" fill="'+(on?'#D9B867':'#9FACBE')+'" stroke="#0D1A2C" stroke-width="2"/><text class="end'+(on?'':' o')+'" x="'+(o.x+9)+'" y="'+(o.y+4)+'">'+o.txt+'</text>'; }).join('');
+    var pts = S.points, pk = pts[peak(S)], px = X(pk[0]) + Math.min(80, (X(pts[Math.min(peak(S)+1,pts.length-1)][0])-X(pk[0]))/2), py = Y(pk[1]);
+    px = Math.max(ml+70, Math.min(ml+iw-70, px)); var ann = (pk!==pts[pts.length-1] && peak(S)>0) ? '<line x1="'+px+'" x2="'+px+'" y1="'+(py-4)+'" y2="'+(py-14)+'" stroke="rgba(255,255,255,0.6)"/><text class="ann" x="'+px+'" y="'+(py-19)+'" text-anchor="middle">Peak '+pct(pk[1])+', '+mon(pk[0])+'</text>' : '';
+    chart.innerHTML = '<svg viewBox="0 0 '+W+' '+Ht+'" aria-hidden="true">'+g+lines+ann+lab
+      +'<line class="xh" y1="'+mt+'" y2="'+(mt+ih)+'" stroke="rgba(255,255,255,0.55)" stroke-width="1" visibility="hidden"/>'
+      +'<circle class="xd" r="5" fill="#FFFFFF" stroke="#0D1A2C" stroke-width="2" visibility="hidden"/>'
+      +'</svg><div class="pr-tip"></div>';
+    tip = chart.querySelector('.pr-tip');
+    var xh = chart.querySelector('.xh'), xd = chart.querySelector('.xd');
+    function show(ms, head){
+      ms = Math.max(x0, Math.min(x1, ms)); var xx = ml + (ms-x0)/(x1-x0)*iw, k = valAt(S, ms); if (k<0) return;
+      var yy = Y(pts[k][1]);
+      xh.setAttribute('x1',xx); xh.setAttribute('x2',xx); xh.setAttribute('visibility','visible');
+      xd.setAttribute('cx',xx); xd.setAttribute('cy',yy); xd.setAttribute('visibility','visible');
+      var order = [cur].concat(keys.filter(function(q){ return q!==cur; }));
+      tip.innerHTML = '<i>'+(head || d(new Date(ms).toISOString().slice(0,10)))+'</i>' + order.map(function(q){ var Q=H[q], j=valAt(Q, ms); return j<0 ? '' : '<div class="row'+(q===cur?' on':'')+'"><span>'+Q.bank+'</span><span>'+rate(Q,Q.points[j])+'</span></div>'; }).join('');
+      tip.style.display='block'; var tw = tip.offsetWidth, th = tip.offsetHeight;
+      tip.style.left = Math.max(tw/2, Math.min(W-tw/2, xx))+'px';
+      tip.style.top = (yy - th - 12 < 0 ? yy + 14 : yy - th - 12) + 'px';
+    }
+    function hide(){ xh.setAttribute('visibility','hidden'); xd.setAttribute('visibility','hidden'); tip.style.display='none'; }
+    function msAt(ev){ var r = chart.getBoundingClientRect(); return x0 + ((ev.clientX - r.left) - ml)/iw*(x1-x0); }
+    chart.onpointermove = function(ev){ show(msAt(ev)); };
+    chart.onpointerdown = function(ev){ show(msAt(ev)); };
+    chart.onpointerleave = function(ev){ if (ev.pointerType==='mouse') hide(); };
+    chart.onblur = hide;
+    chart.onkeydown = function(ev){
+      if (ev.key!=='ArrowLeft' && ev.key!=='ArrowRight') return; ev.preventDefault();
+      focusIdx = focusIdx<0 ? pts.length-1 : Math.max(0, Math.min(pts.length-1, focusIdx + (ev.key==='ArrowRight'?1:-1)));
+      var p = pts[focusIdx]; show(t(p[0]), S.bank+' '+(focusIdx ? mv(p[1], pts[focusIdx-1][1]).replace(/&#9650; |&#9660; /,'')+', effective ' : 'level on ')+d(p[0]));
+    };
+    chart.setAttribute('aria-label', title(cur)+'. Chart of '+keys.map(function(q){ return H[q].bank; }).join(', ')+' policy rates since '+d(H._start)+'. Use the left and right arrow keys to step through each '+S.bank+' rate move.');
+  }
+
+  function select(k){
+    cur = k; focusIdx = -1;
+    box.querySelectorAll('.pr-pick button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-k')===k ? 'true':'false'); });
+    var S = H[k], pts = S.points, last = pts[pts.length-1], prev = pts.length>1 ? pts[pts.length-2] : null, c = P[k];
+    document.getElementById('pr-title').textContent = title(k);
+    document.getElementById('pr-sub').textContent = 'Policy rate, %, '+mon(H._start)+' to '+mon(S.asof)+'. Highlighted: '+S.label+'. Grey: the other five central banks.';
+    document.getElementById('pr-val').innerHTML = c ? e(c.value) : rate(S,last);
+    document.getElementById('pr-lab').innerHTML = e(c ? c.label : S.label) + (prev ? ' &middot; <b>last move '+mv(last[1],prev[1])+'</b>, effective '+d(last[0]) : '');
+    document.getElementById('pr-src').innerHTML = '<span>Source: <a href="'+e(S.source_url)+'" target="_blank" rel="noopener">'+e(S.source_name)+'</a>. '+(S.manual ? 'Compiled from published decisions; dates are effective dates where announced, otherwise announcement dates. Checked to '+d(S.asof)+'.' : 'Official daily series, by effective date, to '+d(S.asof)+'.')+'</span><span>Hover or tap the chart to compare any date.</span>';
+    var mx = 0.01; for (var j=1;j<pts.length;j++){ mx = Math.max(mx, Math.abs(pts[j][1]-pts[j-1][1])); }
+    var rows = ''; for (var i=pts.length-1;i>=0;i--){ var su = S.sources ? (S.sources[pts[i][0]] || '') : ''; var dl = i ? pts[i][1]-pts[i-1][1] : 0; var w = Math.round(Math.abs(dl)/mx*46);
+      rows += '<div class="pr-bar" role="listitem"><div class="bd">'+(su ? '<a href="'+e(su)+'" target="_blank" rel="noopener">'+d(pts[i][0])+'</a>' : d(pts[i][0]))+'</div><div class="bt" title="'+(i ? '' : 'Starting level')+'">'+(i ? '<span class="bf '+(dl>0?'up':'dn')+'" style="width:'+w+'%"></span><span class="bm" style="'+(dl>0?'left:calc(50% + '+w+'% + 6px)':'right:calc(50% + '+w+'% + 6px)')+'">'+mv(pts[i][1],pts[i-1][1])+'</span>' : '<span class="bf st"></span><span class="bm" style="left:calc(50% + 10px)">Starting level</span>')+'</div><div class="br">'+rate(S,pts[i])+'</div></div>'; }
+    document.querySelector('#pr-moves .pr-bars').innerHTML = rows;
+    document.querySelector('#pr-moves summary').textContent = 'Every '+S.bank+' rate move';
+    draw();
+  }
+
+  Promise.all([
+    fetch('/data/markets.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }),
+    fetch('/data/policy_history.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+  ]).then(function(res){
+    var m = res[0] || {}, h = res[1], pol = m.policy || [];
+    pol.forEach(function(it){ P[it.id] = it; });
+    var have = h && h.series ? Object.keys(h.series).filter(function(k){ return h.series[k].points && h.series[k].points.length; }) : [];
+    var also = document.getElementById('pr-also');
+    if (!have.length){
+      chart.style.display='none'; document.getElementById('pr-also-h').style.display='none';
+      also.innerHTML = pol.length ? pol.map(li).join('') : '<li class="mk-load">Figures are temporarily unavailable.</li>';
+      return;
+    }
+    have.forEach(function(k){ H[k] = h.series[k]; }); H._start = h.start;
+    box.querySelectorAll('.pr-pick button').forEach(function(b){ var k=b.getAttribute('data-k'); if (!H[k]) b.style.display='none'; b.onclick=function(){ select(k); }; });
+    document.getElementById('pr-top').hidden = false; document.getElementById('pr-ex').hidden = false; document.getElementById('pr-since').textContent = 'Six central banks since January 2022'; document.getElementById('pr-moves').hidden = false;
+    var rest = pol.filter(function(it){ return !H[it.id]; }); also.innerHTML = rest.map(li).join(''); if (!rest.length) also.parentNode.style.display='none';
+    select(H.fed ? 'fed' : have[0]);
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(draw, 120); });
+    var mkSec = document.getElementById('markets');
+    if (window.MutationObserver && mkSec) new MutationObserver(function(){ if (chart.clientWidth) draw(); }).observe(mkSec, {attributes:true, attributeFilter:['class']});
+  });
+})();
+</script>
+<script>
+/* Exhibits 2 and 3: weekly history (data/market_history.json, refreshed by markets.py) with the
+   latest daily figure from data/markets.json. Same look and controls as the policy-rate exhibit. */
+(function(){
+  var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function d(s){ var p=s.split('-'); return (+p[2])+' '+M[+p[1]-1]+' '+p[0]; }
+  function mon(s){ return M[+s.slice(5,7)-1]+' '+s.slice(0,4); }
+  function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function t(s){ return Date.UTC(+s.slice(0,4), +s.slice(5,7)-1, +s.slice(8,10)); }
+  function nice(span){ var r = span/4, p = Math.pow(10, Math.floor(Math.log10(r))), m = r/p; return (m<1.5?1:m<3?2:m<7?5:10)*p; }
+  var LEAD = {sofr:'SOFR', effr:'The effective Fed funds rate', estr:'€STR', ust3m:'The US 3-month Treasury yield', ust2y:'The US 2-year Treasury yield', ust10y:'The US 10-year Treasury yield'};
+  var CCY = {EUR:'euro', USD:'US dollar', GBP:'pound', JPY:'yen', INR:'rupee', CNY:'yuan', AUD:'Australian dollar'};
+
+  function make(cfg){
+    var box = document.getElementById(cfg.id), H = cfg.series, keys = cfg.keys, cur = keys[0], focus = -1, L = cfg.latest;
+    var q = function(r){ return box.querySelector('[data-r="'+r+'"]'); }, chart = q('chart'), tip;
+    function fmt(S, v){ return S.unit==='%' ? v.toFixed(S.dp)+'%' : v.toFixed(S.dp); }
+    function atOrBefore(P, ms){ var k=-1; for (var i=0;i<P.length;i++){ if (t(P[i][0])<=ms) k=i; } return k; }
+    function stats(S){
+      var P=S.points, last=P[P.length-1], ya=P[Math.max(0, atOrBefore(P, t(last[0])-365*864e5))], hi=0, lo=0;
+      P.forEach(function(p,i){ if (p[1]>P[hi][1]) hi=i; if (p[1]<P[lo][1]) lo=i; });
+      return {last:last, ya:ya, hi:P[hi], lo:P[lo], first:P[0]};
+    }
+    function title(k){
+      var S=H[k], z=stats(S);
+      if (cfg.kind==='rate'){
+        var ch=Math.round((z.last[1]-z.ya[1])*100), gap=Math.round((z.hi[1]-z.last[1])*100);
+        var head = (LEAD[k]||S.name)+' is '+fmt(S,z.last[1])+', '+(ch===0?'unchanged from':Math.abs(ch)+' bp '+(ch>0?'higher than':'lower than'))+' a year ago';
+        return head + (gap<=2 ? ', and at its highest since '+mon(cfg.start) : '; it peaked at '+fmt(S,z.hi[1])+' in '+mon(z.hi[0]));
+      }
+      var b=S.name.slice(0,3), qn=S.name.slice(4,7), pc=(z.last[1]/z.ya[1]-1)*100, p0=(z.last[1]/z.first[1]-1)*100;
+      return 'The '+CCY[b]+' has '+(pc>=0?'strengthened':'weakened')+' '+Math.abs(pc).toFixed(1)+'% against the '+CCY[qn]+' over the past year, and is '+Math.abs(p0).toFixed(1)+'% '+(p0>=0?'above':'below')+' its January 2022 level';
+    }
+    function draw(){
+      var S=H[cur], W=chart.clientWidth, Ht=chart.clientHeight; if (!W||!Ht) return;
+      var phone = W<520, shown = cfg.compare ? keys : [cur];
+      var ml = cfg.kind==='rate' ? 34 : 52, mr = phone ? 50 : (cfg.compare ? 92 : 72), mt = 22, mb = 26, iw=W-ml-mr, ih=Ht-mt-mb;
+      var x0=t(cfg.start), x1=Math.max.apply(null, shown.map(function(k){ return t(H[k].asof); }));
+      var vals=[]; shown.forEach(function(k){ H[k].points.forEach(function(p){ vals.push(p[1]); }); });
+      var mn=Math.min.apply(null,vals), mx=Math.max.apply(null,vals); if (cfg.kind==='rate') mn=Math.min(0,mn);
+      var st=nice(mx-mn||1), lo=st*Math.floor(mn/st), hi=st*Math.ceil(mx/st); if (hi===mx) hi+=st*0.25;
+      function X(s){ return ml+(t(s)-x0)/(x1-x0)*iw; } function Y(v){ return mt+(hi-v)/(hi-lo)*ih; }
+      var dec = st<1 ? (st<0.1?2:1) : 0, g='';
+      for (var v=lo; v<=hi+1e-9; v+=st){ g+='<line x1="'+ml+'" x2="'+(ml+iw)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="rgba(255,255,255,'+(Math.abs(v-lo)<1e-9?0.35:0.08)+'"/><text x="'+(ml-8)+'" y="'+(Y(v)+4)+'" text-anchor="end">'+(v<0?'&minus;'+(-v).toFixed(dec):v.toFixed(dec))+'</text>'; }
+      var y0=+cfg.start.slice(0,4), yl=new Date(x1).getUTCFullYear(), ev=phone&&yl-y0>3?2:1;
+      for (var y=y0;y<=yl;y++){ var xs=X(y+'-01-01'); if (xs<ml-1||xs>ml+iw-28||(y-y0)%ev) continue; g+='<text x="'+xs+'" y="'+(mt+ih+19)+'">'+y+'</text>'; }
+      function path(k){ return H[k].points.map(function(p,i){ return (i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1); }).join(''); }
+      var lines='', ends=[];
+      shown.filter(function(k){ return k!==cur; }).forEach(function(k){ lines+='<path d="'+path(k)+'" fill="none" stroke="rgba(159,172,190,0.38)" stroke-width="1.25" stroke-linejoin="round"/>'; });
+      lines+='<path d="'+path(cur)+'" fill="none" stroke="#D9B867" stroke-width="2.25" stroke-linejoin="round"/>';
+      if (!cfg.compare){ var f0=H[cur].points[0]; lines+='<line x1="'+ml+'" x2="'+(ml+iw)+'" y1="'+Y(f0[1])+'" y2="'+Y(f0[1])+'" stroke="rgba(255,255,255,0.35)" stroke-dasharray="3 4"/><text class="ann" x="'+(ml+iw-4)+'" y="'+(Y(f0[1])-6)+'" text-anchor="end">January 2022 level</text>'; }
+      shown.forEach(function(k){ if (phone && k!==cur) return; var P=H[k].points, l=P[P.length-1]; ends.push({k:k,x:X(l[0]),y:Y(l[1]),txt: phone||!cfg.compare ? (cfg.compare?H[k].short:fmt(H[k],l[1])) : H[k].short+' '+fmt(H[k],l[1])}); });
+      ends.sort(function(a,b){ return a.y-b.y; }); for (var i=1;i<ends.length;i++){ if (ends[i].y-ends[i-1].y<14) ends[i].y=ends[i-1].y+14; }
+      var lab=(phone&&cfg.compare? keys.filter(function(k){ return k!==cur; }).map(function(k){ var P=H[k].points, l=P[P.length-1]; return '<circle cx="'+X(l[0])+'" cy="'+Y(l[1])+'" r="2.5" fill="#9FACBE"/>'; }).join('') : '')
+        + ends.map(function(o){ var on=o.k===cur, P=H[o.k].points, l=P[P.length-1]; return '<circle cx="'+X(l[0])+'" cy="'+Y(l[1])+'" r="'+(on?4.5:3)+'" fill="'+(on?'#D9B867':'#9FACBE')+'" stroke="#0D1A2C" stroke-width="2"/><text class="end'+(on?'':' o')+'" x="'+(o.x+9)+'" y="'+(o.y+4)+'">'+e(o.txt)+'</text>'; }).join('');
+      var z=stats(S), ann='';
+      if (cfg.kind==='rate' && (z.hi[1]-z.last[1])*100 > 2){ var px=Math.max(ml+70, Math.min(ml+iw-70, X(z.hi[0]))), py=Y(z.hi[1]); ann='<line x1="'+px+'" x2="'+px+'" y1="'+(py-4)+'" y2="'+(py-12)+'" stroke="rgba(255,255,255,0.6)"/><text class="ann" x="'+px+'" y="'+(py-16)+'" text-anchor="middle">Peak '+fmt(S,z.hi[1])+', '+mon(z.hi[0])+'</text>'; }
+      chart.innerHTML='<svg viewBox="0 0 '+W+' '+Ht+'" aria-hidden="true">'+g+lines+ann+lab+'<line class="xh" y1="'+mt+'" y2="'+(mt+ih)+'" stroke="rgba(255,255,255,0.55)" visibility="hidden"/><circle class="xd" r="5" fill="#FFFFFF" stroke="#0D1A2C" stroke-width="2" visibility="hidden"/></svg><div class="pr-tip"></div>';
+      tip=chart.querySelector('.pr-tip'); var xh=chart.querySelector('.xh'), xd=chart.querySelector('.xd'), P=S.points;
+      function show(ms){
+        ms=Math.max(x0,Math.min(x1,ms)); var k=atOrBefore(P,ms); if (k<0) return; var p=P[k], xx=X(p[0]), yy=Y(p[1]);
+        xh.setAttribute('x1',xx); xh.setAttribute('x2',xx); xh.setAttribute('visibility','visible'); xd.setAttribute('cx',xx); xd.setAttribute('cy',yy); xd.setAttribute('visibility','visible');
+        var order=[cur].concat(shown.filter(function(q2){ return q2!==cur; }));
+        tip.innerHTML='<i>Week to '+d(p[0])+'</i>'+order.map(function(q2){ var Q=H[q2], j=atOrBefore(Q.points, t(p[0])); return j<0?'':'<div class="row'+(q2===cur?' on':'')+'"><span>'+e(Q.short)+'</span><span>'+fmt(Q,Q.points[j][1])+'</span></div>'; }).join('');
+        tip.style.display='block'; var tw=tip.offsetWidth, th=tip.offsetHeight; tip.style.left=Math.max(tw/2,Math.min(W-tw/2,xx))+'px'; tip.style.top=(yy-th-12<0?yy+14:yy-th-12)+'px';
+      }
+      function hide(){ xh.setAttribute('visibility','hidden'); xd.setAttribute('visibility','hidden'); tip.style.display='none'; }
+      function msAt(ev){ var r=chart.getBoundingClientRect(); return x0+((ev.clientX-r.left)-ml)/iw*(x1-x0); }
+      chart.onpointermove=function(ev){ show(msAt(ev)); }; chart.onpointerdown=function(ev){ show(msAt(ev)); };
+      chart.onpointerleave=function(ev){ if (ev.pointerType==='mouse') hide(); }; chart.onblur=hide;
+      chart.onkeydown=function(ev){ if (ev.key!=='ArrowLeft'&&ev.key!=='ArrowRight') return; ev.preventDefault(); focus = focus<0 ? P.length-1 : Math.max(0,Math.min(P.length-1, focus+(ev.key==='ArrowRight'?1:-1))); show(t(P[focus][0])); };
+      chart.setAttribute('aria-label', title(cur)+'. Weekly chart since January 2022. Use the left and right arrow keys to step through the weeks.');
+    }
+    function select(k){
+      cur=k; focus=-1; var S=H[k], li=L[k];
+      box.querySelectorAll('[data-r="pick"] button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-k')===k?'true':'false'); });
+      q('title').textContent=title(k);
+      q('sub').textContent = cfg.kind==='rate' ? 'Rate or yield, %, weekly, '+mon(cfg.start)+' to '+mon(S.asof)+'. Highlighted: '+S.name+'. Grey: the other money-market rates and Treasury yields.'
+                                               : S.name+', weekly, '+mon(cfg.start)+' to '+mon(S.asof)+'. ECB euro reference rates; USD crosses derived. Dashed line: January 2022 level.';
+      q('val').textContent = li ? li.value : fmt(S, S.points[S.points.length-1][1]);
+      var chg = li ? (cfg.kind==='rate' ? (li.change_bp==null?'':(li.change_bp===0?'unchanged on the day':(li.change_bp>0?'&#9650; +':'&#9660; &minus;')+Math.abs(li.change_bp)+' bp on the day'))
+                                        : (li.change_pct==null?'':(li.change_pct===0?'unchanged on the day':(li.change_pct>0?'&#9650; +':'&#9660; &minus;')+Math.abs(li.change_pct).toFixed(2)+'% on the day'))) : '';
+      q('lab').innerHTML = e(S.name)+(li?' &middot; as of '+d(li.asof):'')+(chg?' &middot; <b>'+chg+'</b>':'');
+      q('src').innerHTML='<span>Source: <a href="'+e(S.source_url)+'" target="_blank" rel="noopener">'+e(S.source_name)+'</a>. Last observation of each week, to '+d(S.asof)+'. Not live market data.</span><span>Hover or tap the chart to read any week.</span>';
+      draw();
+    }
+    q('pick').innerHTML = keys.map(function(k){ return '<button type="button" data-k="'+k+'" aria-pressed="false">'+e(H[k].short)+'</button>'; }).join('');
+    q('pick').querySelectorAll('button').forEach(function(b){ b.onclick=function(){ select(b.getAttribute('data-k')); }; });
+    box.hidden=false; select(cur);
+    return draw;
+  }
+
+  Promise.all([
+    fetch('/data/markets.json',{cache:'no-store'}).then(function(r){ return r.ok?r.json():{}; }).catch(function(){ return {}; }),
+    fetch('/data/market_history.json',{cache:'no-store'}).then(function(r){ return r.ok?r.json():null; }).catch(function(){ return null; })
+  ]).then(function(res){
+    var m=res[0]||{}, h=res[1]; if (!h||!h.series) return;
+    var latest={}; (m.money||[]).concat(m.fx||[]).forEach(function(it){ latest[it.id]=it; });
+    var draws=[];
+    [['mm','money','rate',true],['fxx','fx','fx',false]].forEach(function(c){
+      var keys=Object.keys(h.series).filter(function(k){ var S=h.series[k]; return S.group===c[1] && S.points && S.points.length>1; });
+      if (keys.length) draws.push(make({id:c[0], series:h.series, keys:keys, kind:c[2], compare:c[3], start:h.start, latest:latest}));
+    });
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(function(){ draws.forEach(function(f){ f(); }); },120); });
+    var sec=document.getElementById('markets'); if (window.MutationObserver&&sec) new MutationObserver(function(){ draws.forEach(function(f){ f(); }); }).observe(sec,{attributes:true,attributeFilter:['class']});
+  });
+})();
+</script>
+<script>
+/* Hero data field: a calm ribbon of fine lines on the right of the hero. It draws itself in once
+   (about two seconds), then rests; it eases toward the pointer only while the pointer moves, and
+   settles again. No looping motion. Canvas only; a still frame for reduced motion. */
+(function(){
+  var hero = document.querySelector('.intro'), cv = hero && hero.querySelector('.field');
+  if (!cv || !cv.getContext) return;
+  var cx = cv.getContext('2d'), W=0, H=0, dpr=1, phone=false, lines=[], raf=0, reveal=0, t0=0;
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = 2.2, P = {x:0.5, y:0.5, tx:0.5, ty:0.5};
+  if (still) reveal = 1;
+  function size(){
+    var r = hero.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; phone = W < 720;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr); cx.setTransform(dpr,0,0,dpr,0,0);
+    var n = phone ? 22 : 34; lines = [];
+    for (var i=0;i<n;i++){ var f=i/(n-1); lines.push({ f:f, gold: i===Math.round(n*0.62), a: 0.16 + 0.42*Math.pow(Math.sin(f*Math.PI),1.3) }); }
+  }
+  function xAt(u){ var x0 = phone ? -10 : W*0.42, x1 = W + 20; return x0 + (x1-x0)*u; }
+  function yAt(L, u){
+    var mid = (phone ? H*0.26 : H*0.50) + (P.y-0.5)*H*0.08, spread = (phone ? H*0.36 : H*0.62);
+    var twist = 0.45 + 0.55*Math.sin(u*Math.PI*1.15 + T*0.12 + (P.x-0.5)*0.8);
+    var y = mid + (L.f-0.5)*spread*twist;
+    y += Math.sin(u*Math.PI*1.6 + T*0.09) * H*0.07;
+    y += Math.sin(u*Math.PI*3.2 - T*0.07 + L.f*1.4) * H*0.012;
+    return y;
+  }
+  function paint(){
+    cx.clearRect(0,0,W,H);
+    var gx = phone ? W*0.7 : W*0.74, gy = phone ? H*0.24 : H*0.46, glow = cx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(W,H)*0.5);
+    glow.addColorStop(0, 'rgba(70,130,255,'+(0.26*Math.min(1, reveal*1.5)).toFixed(3)+')'); glow.addColorStop(1, 'rgba(46,106,240,0)');
+    cx.fillStyle = glow; cx.fillRect(0,0,W,H);
+    cx.globalCompositeOperation = 'lighter';
+    var seg = phone ? 60 : 90, ease = 1 - Math.pow(1 - reveal, 3), stop = Math.max(1, Math.round(seg*ease));
+    for (var i=0;i<lines.length;i++){
+      var L = lines[i], c = L.gold ? '235,200,115' : '110,165,255', gr = cx.createLinearGradient(xAt(0),0,xAt(1),0);
+      gr.addColorStop(0, 'rgba('+c+',0)'); gr.addColorStop(0.3, 'rgba('+c+','+(L.a*(L.gold?1.6:1)).toFixed(3)+')'); gr.addColorStop(1, 'rgba('+c+','+(L.a*0.7).toFixed(3)+')');
+      cx.beginPath();
+      for (var s=0;s<=stop;s++){ var u=s/seg, x=xAt(u), y=yAt(L,u); if (s) cx.lineTo(x,y); else cx.moveTo(x,y); }
+      cx.strokeStyle = gr; cx.lineWidth = L.gold ? 2 : 1.5; cx.stroke();
+    }
+    cx.globalCompositeOperation = 'source-over';
+  }
+  function frame(ts){
+    if (!t0) t0 = ts;
+    if (reveal < 1) reveal = Math.min(1, (ts - t0) / 2000);
+    P.x += (P.tx - P.x)*0.06; P.y += (P.ty - P.y)*0.06;
+    paint();
+    var moving = reveal < 1 || Math.abs(P.tx-P.x) > 0.0015 || Math.abs(P.ty-P.y) > 0.0015;
+    raf = (moving && hero.offsetParent !== null && !document.hidden) ? requestAnimationFrame(frame) : 0;
+    if (!raf && reveal < 1) t0 = 0;
+  }
+  function kick(){ if (!raf) raf = requestAnimationFrame(frame); }
+  function move(e){ if (still) return; var r = hero.getBoundingClientRect(); P.tx = (e.clientX - r.left)/r.width; P.ty = (e.clientY - r.top)/r.height; kick(); }
+  hero.addEventListener('pointermove', move, {passive:true});
+  hero.addEventListener('pointerleave', function(){ if (still) return; P.tx = 0.5; P.ty = 0.5; kick(); });
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ size(); paint(); }, 150); });
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden && reveal < 1) kick(); });
+  var shown = false;
+  function replay(){ if (still) return; reveal = 0; t0 = 0; P.x = P.tx = 0.5; P.y = P.ty = 0.5; kick(); }
+  function start(){
+    var vis = hero.offsetParent !== null;
+    if (!vis) { shown = false; return; }
+    if (!W || !H) size(); if (!W || !H) return;
+    if (!hero.classList.contains('live')) hero.classList.add('live');
+    if (still) { paint(); return; }
+    if (!shown) { shown = true; replay(); }
+  }
+  if (window.MutationObserver) new MutationObserver(start).observe(hero, {attributes:true, attributeFilter:['class']});
+  // Draw the ribbon in again whenever Home is chosen, including when Home is already showing.
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href="#top"], a[href="/"], a[href="https://theaitreasurer.com/"]');
+    if (a) setTimeout(function(){ if (hero.offsetParent !== null) { if (!W || !H) size(); replay(); } }, 0);
+  }, true);
+  window.addEventListener('popstate', function(){ setTimeout(start, 0); });
+  start();
+})();
+</script>
+<script>
+/* Charts draw in once: the first time each Markets chart scrolls into view, its highlighted line
+   traces in (under a second). Never repeats; skipped for reduced motion. */
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var ch = en.target;
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        var p = ch.querySelector('svg path[stroke="#D9B867"]'); if (!p || !p.getTotalLength) return;
+        io.unobserve(ch);
+        var L = p.getTotalLength();
+        p.style.strokeDasharray = L; p.style.strokeDashoffset = L; p.getBoundingClientRect();
+        p.style.transition = 'stroke-dashoffset 0.9s ease-out'; p.style.strokeDashoffset = '0';
+        setTimeout(function(){ p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; p.style.transition = ''; }, 1000);
+      }); });
+    });
+  }, {threshold: 0.35});
+  document.querySelectorAll('.pr-chart').forEach(function(c){ io.observe(c); });
+})();
+</script>
+<script>
+document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
+  b.addEventListener('click', function(){
+    var col = b.closest('.mk-fold'); var open = col.classList.toggle('open');
+    b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.textContent = open ? 'Hide' : 'Show';
+  });
+});
+</script>
+<script>
+/* Home "Today" strip: headlines and date taken from today's briefing, so they never drift. */
+(function(){
+  var list = document.querySelector('.today-list'); if (!list) return;
+  var items = document.querySelectorAll('.briefing .leads .item'), html = '';
+  items.forEach(function(it, i){
+    var a = it.querySelector('.cite a'), h = it.querySelector('h4'), t = it.querySelector('.topic');
+    var click = a ? a.getAttribute('onclick') : "showTab('ai');return false;";
+    html += '<li><span class="n">0'+(i+1)+'</span><div><div class="topic">'+(t?t.innerHTML:'')+'</div><a href="#" onclick="'+click.replace(/"/g,'&quot;')+'">'+(h?h.textContent.replace(/&/g,'&amp;').replace(/</g,'&lt;'):'')+'</a></div></li>';
+  });
+  list.innerHTML = html;
+  var d = document.querySelector('.briefing .sec-head .dateline'), out = document.querySelector('.today-date');
+  if (d && out) out.textContent = (d.querySelector('b') || d).textContent.trim();
+})();
+</script>
+<script>
+/* Menu overflow cue: arrows at the edges, plus a one-time slide on first visit. */
+(function(){
+  var nav = document.querySelector('.secnav'); if (!nav) return;
+  var row = nav.querySelector('.wrap');
+  function update(){
+    var max = row.scrollWidth - row.clientWidth;
+    nav.classList.toggle('can-prev', row.scrollLeft > 4);
+    nav.classList.toggle('can-next', max > 4 && row.scrollLeft < max - 4);
+  }
+  nav.querySelector('.secnav-arrow.next').addEventListener('click', function(){ row.scrollBy({ left: row.clientWidth * 0.6, behavior: 'smooth' }); });
+  nav.querySelector('.secnav-arrow.prev').addEventListener('click', function(){ row.scrollBy({ left: -row.clientWidth * 0.6, behavior: 'smooth' }); });
+  row.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+  var seen = false; try { seen = localStorage.getItem('ait-menu-hint') === '1'; } catch (e) {}
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!seen && !reduce && row.scrollWidth > row.clientWidth + 4 && row.scrollLeft < 4) {
+    setTimeout(function(){ row.scrollTo({ left: Math.min(90, row.scrollWidth - row.clientWidth), behavior: 'smooth' });
+      setTimeout(function(){ row.scrollTo({ left: 0, behavior: 'smooth' }); }, 700); }, 900);
+    try { localStorage.setItem('ait-menu-hint', '1'); } catch (e) {}
+  }
+})();
+</script>
+<script>
+/* Section views: each menu item shows only its own section (like app tabs). */
+(function(){
+  var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.secnav a'));
+  var current = null;
+  function viewOf(id){
+    if (!id) return null;
+    var el = document.getElementById(id);
+    if (el) { var v = el.closest('[data-view]'); return v ? v.getAttribute('data-view') : null; }
+    return document.querySelector('[data-view="' + id + '"]') ? id : null;
+  }
+  function show(view){
+    if (!view) view = 'top';
+    views.forEach(function(s){
+      var on = s.getAttribute('data-view') === view;
+      s.classList.toggle('view-on', on);
+      if (on && s.classList.contains('reveal')) s.classList.add('in');
+    });
+    links.forEach(function(a){
+      if (a.getAttribute('href') === '#' + view) {
+        a.setAttribute('aria-current', 'true');
+        var p = a.parentNode, r = a.getBoundingClientRect(), pr = p.getBoundingClientRect();
+        if (r.left < pr.left || r.right > pr.right) p.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+      } else a.removeAttribute('aria-current');
+    });
+    current = view;
+    if (view === 'markets') startTicker();
+  }
+  // The TradingView tape freezes after its frame has been hidden (another tab, phone locked, app in background)
+  // and does not always resume. Rebuild it whenever Markets comes back into view, at most once every 2 s.
+  var tickerBuiltAt = 0;
+  function startTicker(){
+    var box = document.querySelector('.live-feed .tradingview-widget-container'), cfg = document.getElementById('tv-config');
+    if (!box || !cfg || Date.now() - tickerBuiltAt < 2000) return;
+    tickerBuiltAt = Date.now();
+    var w = box.querySelector('.tradingview-widget-container__widget'), keep = box.querySelector('.tradingview-widget-copyright');
+    Array.prototype.slice.call(box.children).forEach(function(n){ if (n !== w && n !== keep) box.removeChild(n); });
+    if (w) w.innerHTML = '';
+    requestAnimationFrame(function(){
+      var sc = document.createElement('script');
+      sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+      sc.async = true; sc.text = cfg.textContent;
+      box.appendChild(sc);
+    });
+  }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible' && current === 'markets') startTicker(); });
+  window.addEventListener('pageshow', function(e){ if (e.persisted && current === 'markets') startTicker(); });
+  // Intercept in-page links before the smooth-scroll handler: switching view jumps to its top.
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+    var id = a.getAttribute('href').slice(1), view = viewOf(id);
+    if (!view) return;
+    var isRoot = (id === view);
+    if (view === current && !isRoot) return;          // e.g. "All sections" inside the briefing: let it scroll
+    e.preventDefault(); e.stopPropagation();
+    show(view);
+    window.scrollTo(0, 0);
+    if (history.pushState) history.pushState({ v: view }, '', view === 'top' ? location.pathname : '#' + view);
+  }, true);
+  window.addEventListener('popstate', function(){ show(viewOf(location.hash.slice(1)) || 'top'); window.scrollTo(0, 0); });
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  show(viewOf(location.hash.slice(1)) || 'top');
+  if (location.hash) setTimeout(function(){ window.scrollTo(0, 0); }, 0);
+  window.showView = function(v){ if (v !== current && history.pushState) history.pushState({ v: v }, '', v === 'top' ? location.pathname : '#' + v); show(v); };
+})();
+</script>
+<script>
+/* Market view: a small chart under each of the five points, drawn from the same official series as the exhibits below. */
+(function(){
+  var items = document.querySelectorAll('.mv ol li'); if (!items.length) return;
+  var NS = 'http://www.w3.org/2000/svg', GOLD = '#D9B867', BLUE = '#6EA0FF';
+  function J(u){ return fetch(u,{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
+  function T(s){ var a = s.split('-'); return Date.UTC(+a[0], +a[1]-1, +a[2]); }
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function D(t){ var d = new Date(t); return d.getUTCDate()+' '+MON[d.getUTCMonth()]+' '+d.getUTCFullYear(); }
+  function pick(txt){
+    txt = txt.toLowerCase();
+    if (/sofr|€str|estr|money-market|money market/.test(txt)) return {k:'his', ids:['sofr','estr'], title:'SOFR and €STR, %, weekly', weeks:26};
+    if (/fomc|fed funds|federal reserve/.test(txt)) return {k:'pol', ids:['fed'], title:'Fed funds upper bound, %, last 12 months'};
+    if (/eur\/usd|gbp\/usd|usd\/inr/.test(txt)) return {k:'fx', ids:['eurusd','gbpusd'], title:'EUR/USD and GBP/USD, indexed to 100 six months ago', weeks:26};
+    if (/\becb\b|\brbi\b|policy/.test(txt)) return {k:'pol', ids:['ecb','rbi'], title:'ECB deposit rate and RBI repo rate, %, last 12 months'};
+    if (/10-year|10y|treasury yield|term/.test(txt)) return {k:'his', ids:['ust10y','ust2y'], title:'US Treasury 10-year and 2-year yields, %, weekly', weeks:26};
+    return null;
+  }
+  function draw(box, o){
+    var W = Math.max(box.clientWidth, 240), H = 150, m = {l:6, r:78, t:10, b:20};
+    var svg = document.createElementNS(NS,'svg'); svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.setAttribute('role','img'); svg.setAttribute('aria-label', o.title); svg.style.cssText = 'display:block;width:100%;height:auto;overflow:visible';
+    var xs = [], ys = []; o.series.forEach(function(s){ s.pts.forEach(function(p){ xs.push(p[0]); ys.push(p[1]); }); });
+    var x0 = Math.min.apply(null,xs), x1 = Math.max.apply(null,xs), y0 = Math.min.apply(null,ys), y1 = Math.max.apply(null,ys), pad = (y1-y0||1)*0.18; y0 -= pad; y1 += pad;
+    function X(t){ return m.l + (t-x0)/(x1-x0||1)*(W-m.l-m.r); } function Y(v){ return m.t + (1-(v-y0)/(y1-y0))*(H-m.t-m.b); }
+    function el(n,a,p){ var e = document.createElementNS(NS,n); for (var k in a) e.setAttribute(k,a[k]); (p||svg).appendChild(e); return e; }
+    for (var i=0;i<3;i++){ var gy = m.t + i*(H-m.t-m.b)/2; el('line',{x1:m.l,x2:W-m.r,y1:gy,y2:gy,stroke:'rgba(255,255,255,0.10)'}); }
+    [x0,x1].forEach(function(t,i){ var tx = el('text',{x:X(t),y:H-4,'font-size':11,fill:'#9FACBE','text-anchor': i?'end':'start'}); tx.textContent = MON[new Date(t).getUTCMonth()]+' '+String(new Date(t).getUTCFullYear()).slice(2); });
+    var cols = [GOLD, BLUE], ends = [];
+    o.series.forEach(function(s,si){
+      var d = '', last = null;
+      s.pts.forEach(function(p,i){ var px = X(p[0]), py = Y(p[1]); if (o.step && i){ d += 'L'+px+','+last[1]; } d += (i?'L':'M')+px+','+py; last = [px,py]; });
+      if (o.step){ d += 'L'+X(x1)+','+last[1]; }
+      el('path',{d:d,fill:'none',stroke:cols[si],'stroke-width':2.2,'stroke-linejoin':'round'});
+      var lp = s.pts[s.pts.length-1]; el('circle',{cx:X(lp[0]),cy:Y(lp[1]),r:3.2,fill:cols[si]});
+      ends.push({y:Y(lp[1]), s:s, c:cols[si], v:lp[1]});
+    });
+    ends.sort(function(a,b){ return a.y-b.y; }); if (ends.length>1 && ends[1].y-ends[0].y < 26){ var mid=(ends[0].y+ends[1].y)/2; ends[0].y = mid-13; ends[1].y = mid+13; }
+    ends.forEach(function(e){ var t = el('text',{x:W-m.r+8,y:e.y+4,'font-size':12,'font-weight':700,fill:e.c}); t.textContent = e.s.name+' '+e.s.fmt(e.v); });
+    var cross = el('line',{y1:m.t,y2:H-m.b,stroke:'#fff','stroke-opacity':.5,display:'none'});
+    var cap = document.createElement('div'); cap.className = 'mv-cap'; cap.textContent = o.title;
+    function move(ev){
+      var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, t = x0 + (px-m.l)/(W-m.l-m.r)*(x1-x0); if (px < m.l || px > W-m.r){ return; }
+      var parts = [], nx = null; o.series.forEach(function(s){ var b = s.pts[0]; s.pts.forEach(function(p){ if (Math.abs(p[0]-t) < Math.abs(b[0]-t) && (!o.step || p[0] <= t || b[0] > t)) b = p; }); if (o.step){ b = s.pts[0]; s.pts.forEach(function(p){ if (p[0] <= t) b = p; }); } parts.push(s.name+' '+s.fmt(b[1])); nx = nx === null ? b[0] : nx; });
+      cross.setAttribute('x1',X(nx)); cross.setAttribute('x2',X(nx)); cross.setAttribute('display','block'); cap.textContent = D(o.step ? t : nx)+': '+parts.join(' · ');
+    }
+    function out(){ cross.setAttribute('display','none'); cap.textContent = o.title; }
+    svg.addEventListener('pointermove',move); svg.addEventListener('pointerleave',out);
+    box.appendChild(svg); box.appendChild(cap);
+  }
+  Promise.all([J('/data/market_history.json'), J('/data/policy_history.json')]).then(function(r){
+    var H = r[0], P = r[1]; if (!H && !P) return;
+    var NAMES = {sofr:'SOFR',estr:'€STR',ust10y:'10Y',ust2y:'2Y',eurusd:'EUR/USD',gbpusd:'GBP/USD',ecb:'ECB',rbi:'RBI',fed:'Fed'};
+    items.forEach(function(li){
+      var o = pick((li.querySelector('p')||li).textContent); if (!o) return; var series = [], dp;
+      try {
+        if (o.k === 'pol' && P){ var from = Date.now() - 365*864e5; o.ids.forEach(function(id){ var S = P.series[id]; if (!S) return; var pts = S.points.map(function(p){ return [T(p[0]), +p[1]]; }), i0 = 0; pts.forEach(function(p,i){ if (p[0] <= from) i0 = i; }); pts = pts.slice(i0); if (pts[0][0] < from) pts[0] = [from, pts[0][1]]; series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(2)+'%'; }}); }); o.step = true; }
+        else if (H){ o.ids.forEach(function(id){ var S = H.series[id]; if (!S) return; var pts = S.points.slice(-o.weeks).map(function(p){ return [T(p[0]), +p[1]]; }); dp = S.dp; if (o.k === 'fx'){ var b = pts[0][1]; pts = pts.map(function(p){ return [p[0], p[1]/b*100]; }); series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(1); }}); } else { series.push({name:NAMES[id], pts:pts, fmt:function(v){ return v.toFixed(2)+'%'; }}); } }); }
+      } catch(e){ return; }
+      if (!series.length || series.some(function(s){ return s.pts.length < 2; })) return;
+      o.series = series; var box = document.createElement('div'); box.className = 'mv-chart'; li.insertBefore(box, li.querySelector('.mv-view') || li.querySelector('.mv-src')); draw(box, o);
+    });
+  });
+})();
+</script>
+<script>
+/* Markets: crude oil decision map and Qatar money markets and equities, from data/markets_extra.json. Figures are compiled from the cited sources on the date shown. */
+(function(){
+  var box = document.getElementById('mx'); if (!box) return;
+  fetch('/data/markets_extra.json',{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).then(function(D){
+    if (!D) return;
+    function e(s){ return String(s == null ? '' : s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function d(s){ var a = s.split('-'); return +a[2]+' '+MON[+a[1]-1]+' '+a[0]; }
+    function link(n,u){ return u ? '<a href="'+e(u)+'" target="_blank" rel="noopener">'+e(n)+'</a>' : e(n); }
+    var dir = 'up', pos = 'imp';
+    function hormuz(){
+      var H = D.hormuz; if (!H) return '';
+      var W = 720, Ht = 300, m = {l:40, r:16, t:30, b:26}, t0 = Date.parse('2026-02-15'), t1 = Date.parse('2026-10-14'), y0 = 65, y1 = 110;
+      function X(s){ return m.l + (Date.parse(s)-t0)/(t1-t0)*(W-m.l-m.r); } function Y(v){ return m.t + (1-(v-y0)/(y1-y0))*(Ht-m.t-m.b); }
+      var o = '<svg viewBox="0 0 '+W+' '+Ht+'" role="img" aria-label="'+e(H.title)+'" style="display:block;width:100%;height:auto">';
+      H.bands.forEach(function(b){ o += '<rect x="'+X(b.from)+'" y="'+m.t+'" width="'+Math.max(X(b.to)-X(b.from),2)+'" height="'+(Ht-m.t-m.b)+'" fill="'+(b.state==='open'?'rgba(111,194,154,0.22)':'rgba(229,134,107,0.14)')+'"/>'; });
+      [70,80,90,100,110].forEach(function(v){ o += '<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="rgba(255,255,255,0.10)"/><text x="'+(m.l-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="11" fill="#9FACBE">$'+v+'</text>'; });
+      ['2026-03-01','2026-04-01','2026-05-01','2026-06-01','2026-07-01','2026-08-01','2026-09-01','2026-10-01'].forEach(function(s){ var mi = +s.split('-')[1]-1; o += '<text x="'+X(s)+'" y="'+(Ht-8)+'" text-anchor="middle" font-size="11" fill="#9FACBE">'+MON[mi]+'</text>'; });
+      var path = H.points.map(function(p,i){ return (i?'L':'M')+X(p.d)+','+Y(p.v); }).join('');
+      o += '<path d="'+path+'" fill="none" stroke="#D9B867" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/>';
+      H.events.forEach(function(ev,i){ var x = X(ev.d); o += '<line x1="'+x+'" x2="'+x+'" y1="'+(m.t-4)+'" y2="'+(Ht-m.b)+'" stroke="rgba(255,255,255,0.35)" stroke-dasharray="2 3"/><circle cx="'+x+'" cy="'+(m.t-12)+'" r="9" fill="#14263F" stroke="#D9B867"/><text x="'+x+'" y="'+(m.t-8)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">'+(i+1)+'</text>'; });
+      H.points.forEach(function(p,i){ var up = i % 2 === 0; o += '<g class="hp" tabindex="0" data-i="'+i+'"><circle cx="'+X(p.d)+'" cy="'+Y(p.v)+'" r="'+(i===H.points.length-1?5:4)+'" fill="#D9B867" stroke="#0D1A2C" stroke-width="1.5"/></g>'; });
+      var f = H.points[0], l = H.points[H.points.length-1], tp = H.points[H.points.length-1];
+      o += '<text x="'+(X(f.d)+8)+'" y="'+(Y(f.v)+16)+'" font-size="12" font-weight="700" fill="#fff">~$'+f.v+'</text><text x="'+(X(l.d)-8)+'" y="'+(Y(l.v)-10)+'" text-anchor="end" font-size="12" font-weight="700" fill="#fff">~$'+Math.round(l.v)+'</text>';
+      o += '</svg>';
+      var evs = H.events.map(function(ev,i){ return '<li><span class="en">'+(i+1)+'</span><span><b>'+e(d(ev.d))+'</b> '+e(ev.t)+' <span class="es">('+link(ev.src.name,ev.src.url)+')</span></span></li>'; }).join('');
+      var pts = H.points.map(function(p){ return '<li>'+e(d(p.d))+': '+(p.approx?'about ':'')+'$'+(Math.round(p.v*100)/100)+' ('+link(p.src.name,p.src.url)+')</li>'; }).join('');
+      return '<section class="mxs" aria-labelledby="hz-h"><h4 id="hz-h">Crude oil and the Strait of Hormuz</h4><p class="mxh">'+e(H.title)+'</p>'
+        +'<p class="mxsub">Brent on the dates reported, against the strait\'s status. Hover or tap a gold dot for the price and source.</p>'
+        +'<div class="hzk"><span><i style="background:rgba(229,134,107,0.5)"></i>Closed or disrupted</span><span><i style="background:rgba(111,194,154,0.6)"></i>Open or reopening</span><span><i style="background:#D9B867"></i>Brent, as reported</span></div>'
+        +'<div class="hzc" id="hz-c">'+o+'<div class="hzt" id="hz-t" hidden></div></div>'
+        +'<ol class="hzl">'+evs+'</ol>'
+        +'<div class="vw"><b>AI Treasurer view</b><p>'+e(H.view)+'</p></div>'
+        +'<details class="hzd"><summary>Prices and sources used</summary><ul>'+pts+'</ul></details>'
+        +'<p class="cap">'+e(H.note)+'</p></section>';
+    }
+    function crude(){
+      var P = D.positions || {}, pk = pos === 'exp' ? 'exporter' : 'importer';
+      var cards = D.crude.map(function(c){ var u = dir === 'up', s = (pos === 'exp' && c.exporter) ? c.exporter : c;
+        return '<div class="cd"><h5>'+e(c.channel)+'</h5><p>'+e(u ? s.up_what : s.down_what)+'</p><span class="pill" data-tone="'+e(u ? s.up_tone : s.down_tone)+'">'+e(u ? s.up_effect : s.down_effect)+'</span>'
+          +'<div class="vw"><b>AI Treasurer view</b><p>'+e(u ? s.up_view : s.down_view)+'</p></div></div>'; }).join('');
+      return '<section class="mxs" aria-labelledby="cr-h"><h4 id="cr-h">Crude oil and Treasury decisions</h4><p class="mxh">Crude oil changes five Treasury decisions, and importers and exporters feel it in opposite ways</p>'
+        +'<p class="mxsub">Pick a direction and your position. Each card shows what a move in crude tends to change and the AI Treasurer view on what to check. General patterns, not a price forecast.</p>'
+        +'<div class="segs"><div class="seg" id="cr-seg" role="group" aria-label="Direction of crude oil"><button type="button" data-d="up" aria-pressed="'+(dir==='up')+'">Crude rises</button><button type="button" data-d="down" aria-pressed="'+(dir==='down')+'">Crude falls</button></div>'
+        +'<div class="seg" id="cr-pos" role="group" aria-label="Your position in crude oil"><button type="button" data-p="imp" aria-pressed="'+(pos==='imp')+'">'+e((P.importer||{}).label || 'Crude importer')+'</button><button type="button" data-p="exp" aria-pressed="'+(pos==='exp')+'">'+e((P.exporter||{}).label || 'Crude exporter')+'</button></div></div>'
+        +'<p class="mxsub" id="cr-posd">'+e((P[pk]||{}).def || '')+'</p>'
+        +'<div class="cards">'+cards+'</div><p class="cap">Views are opinion for discussion, not advice and not a forecast of oil prices.</p></section>';
+    }
+    function qatar(){
+      var Q = D.qatar, mx = Math.max.apply(null, Q.rates.map(function(r){ return r.value; }))*1.12;
+      var bars = Q.rates.map(function(r){ return '<li class="'+(r.group==='usd'?'b2':'')+'"><span>'+link(r.label,r.source_url)+'</span><span class="bt"><span class="bf" style="width:'+(r.value/mx*100)+'%"></span></span><span class="bv">'+r.value.toFixed(2)+'%</span></li>'; }).join('');
+      var kp = Q.equities.filter(function(r){ return r.id !== 'chg'; }).map(function(r){ return '<div><span>'+e(r.label)+'</span><b>'+e(r.value)+'</b></div>'; }).join('');
+      var tmx = Math.max.apply(null, Q.turnover.map(function(t){ return t.value; }))*1.1;
+      var tb = Q.turnover.map(function(t){ return '<li><span>'+link(d(t.date),t.source_url)+'</span><span class="bt"><span class="bf" style="width:'+(t.value/tmx*100)+'%"></span></span><span class="bv">'+t.value.toFixed(0)+'</span></li>'; }).join('');
+      var pts = Q.points.map(function(p){ var s = [[p.s1n,p.s1u],[p.s2n,p.s2u]].filter(function(x){ return x[0]; }).map(function(x){ return link(x[0],x[1]); }).join(' and ');
+        return '<div class="cd"><h5>'+e(p.head)+'</h5><p>'+e(p.text)+'</p><span class="pill" data-tone="'+e(p.tone)+'">'+e(p.effect)+'</span><div class="vw"><b>AI Treasurer view</b><p>'+e(p.view)+'</p></div>'+(s?'<div class="src">Source: '+s+'</div>':'')+'</div>'; }).join('');
+      var ref = Q.equities[0] ? d(Q.equities[0].asof) : '';
+      return '<section class="mxs" aria-labelledby="qa-h"><h4 id="qa-h">Qatar money markets and equities</h4><p class="mxh">QCB deposit rate now sits above both SOFR and the top of the Fed range</p>'
+        +'<p class="mxsub">Central bank rates against the dollar benchmarks, and the equity market in brief. Compiled from the sources linked, as published on the dates shown; not live data.</p>'
+        +'<div class="qgrid"><div><ul class="bars" aria-label="QCB rates against SOFR and the Fed upper bound, %">'+bars+'</ul><p class="cap">Gold: QCB rates. Blue: dollar benchmarks. The Fed bar is the upper bound of the target range.</p></div>'
+        +'<div><div class="kp">'+kp+'</div><ul class="bars" aria-label="Value traded, QR million">'+tb+'</ul><p class="cap">Value traded on the sessions reported, QR million. As at '+e(ref)+'.</p></div></div>'
+        +'<div class="cards">'+pts+'</div></section>';
+    }
+    function render(){
+      box.innerHTML = crude() + hormuz() + qatar();
+      var hc = document.getElementById('hz-c'), tt = document.getElementById('hz-t');
+      if (hc && D.hormuz) hc.querySelectorAll('.hp').forEach(function(g){ function sh(){ var p = D.hormuz.points[+g.getAttribute('data-i')]; tt.hidden = false; tt.innerHTML = '<b>'+e(d(p.d))+'</b>: '+(p.approx?'about ':'')+'$'+(Math.round(p.v*100)/100)+' - '+e(p.label)+' ('+link(p.src.name,p.src.url)+')'; } g.addEventListener('mouseenter',sh); g.addEventListener('focus',sh); g.addEventListener('click',sh); });
+      box.querySelectorAll('#cr-seg button').forEach(function(b){ b.addEventListener('click',function(){ dir = b.getAttribute('data-d'); var y = window.scrollY; render(); window.scrollTo(0,y); }); });
+      box.querySelectorAll('#cr-pos button').forEach(function(b){ b.addEventListener('click',function(){ pos = b.getAttribute('data-p'); var y = window.scrollY; render(); window.scrollTo(0,y); }); });
+    }
+    render();
+  }).catch(function(){});
+})();
+</script>
+<script>
+/* Markets landing: headline and key figures strip above the five points. */
+(function(){
+  var mv = document.querySelector('.mv'); if (!mv) return;
+  function J(u){ return fetch(u,{cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
+  Promise.all([J('/data/market_history.json'), J('/data/policy_history.json'), J('/data/markets_extra.json')]).then(function(r){
+    var H = r[0], P = r[1], X = r[2], h4 = mv.querySelector('h4'); if (!h4) return;
+    var anchor = h4, when = (mv.querySelector('h4 small')||{}).textContent || '';
+    if (X && X.headline && when.indexOf(X.headline.asof_text) > -1){ var hl = document.createElement('p'); hl.className = 'mv-head'; hl.textContent = X.headline.takeaway; h4.parentNode.insertBefore(hl, mv.querySelector('ol')); anchor = hl; }
+    if (!H) return;
+    var defs = [['ust10y','US 10-year','y'],['sofr','SOFR','y'],['estr','€STR','y'],['eurusd','EUR/USD','f'],['usdinr','USD/INR','f']], html = '';
+    defs.forEach(function(df){ var S = H.series[df[0]]; if (!S || S.points.length < 6) return; var pts = S.points.slice(-26), a = S.points[S.points.length-1], b = S.points[S.points.length-5], v = +a[1], ch;
+      if (df[2]==='y') ch = (v-b[1] >= 0 ? '+' : '-') + Math.abs(Math.round((v-b[1])*100)) + ' bp in 4 weeks'; else ch = ((v/b[1]-1)*100 >= 0 ? '+' : '-') + Math.abs((v/b[1]-1)*100).toFixed(1) + '% in 4 weeks';
+      var lo = Math.min.apply(null,pts.map(function(p){return p[1];})), hi = Math.max.apply(null,pts.map(function(p){return p[1];})), n = pts.length;
+      var d = pts.map(function(p,i){ return (i?'L':'M')+(2+i*(116/(n-1)))+','+(20-(p[1]-lo)/((hi-lo)||1)*17); }).join('');
+      html += '<div class="kpi"><span>'+df[1]+'</span><b>'+(df[2]==='y' ? v.toFixed(2)+'%' : v.toFixed(S.dp||4))+'</b><i>'+ch+'</i><svg viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'" fill="none" stroke="#D9B867" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg></div>'; });
+    if (P && P.series.fed){ var fp = P.series.fed.points, fl = fp[fp.length-1]; html = '<div class="kpi"><span>Fed funds range</span><b>'+(+fl[2]).toFixed(2)+'-'+(+fl[1]).toFixed(2)+'%</b><i>as at '+(function(a){ var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return +a[2]+' '+m[+a[1]-1]; })(P.series.fed.asof.split('-'))+'</i></div>' + html; }
+    if (!html) return; var k = document.createElement('div'); k.className = 'mv-kpis'; k.setAttribute('aria-label','Key figures'); k.innerHTML = html; anchor.parentNode.insertBefore(k, mv.querySelector('ol'));
+  });
+})();
+</script>
+</body>
+</html>

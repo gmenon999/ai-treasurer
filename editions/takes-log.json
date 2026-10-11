@@ -142,6 +142,91 @@
     "cost_usd": 0.0
    },
    "edition_cost_usd": 0.8963
+  },
+  {
+   "date": "2026-10-11",
+   "items": [
+    {
+     "headline": "Swift will reject unstructured postal addresses from November 2026",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Swift retail payments framework wins 2026 commitments from more than 70 institutions",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "COSO GenAI framework maps controls across eight AI capability types",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Fed lifts rates to 3.75%-4.00%, with December hike 85% priced",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Hedera Agent Accounts let AI agents spend within on-chain rules",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Frankfurt International Bank runs FIS Quantum Cloud Edition from day one",
+     "status": "dropped",
+     "lens": "Cost & value",
+     "reasons": "The comparison is misleading. FIB is a new bank with no legacy systems, and the ten-week figure is a vendor-press-release claim for the first part of the rollout only. Telling a corporate treasurer to challenge vendor quotes against it is not a like-for-like benchmark. The view is also vague on what"
+    },
+    {
+     "headline": "Money market fund assets reach $7.96 trillion as government funds add $61.15 billion",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "ISACA chief calls AI governance compliance 'SOX on steroids'",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "Dollar hits 17-month high as wider basis lifts FX hedging costs",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "PayPal settles $1 billion intercompany dividends in two hours with PYUSD",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OCC fines American Express $350 million over BSA/AML failures",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "Overstated. Calling the risk-assessment aim the 'core failure' is not supported. The OCC lists several deficiencies as equals: inadequate resources, systemic internal control gaps, weak independent testing and weak training. The take elevates one of them without source support."
+    },
+    {
+     "headline": "OFAC sets October 1 Iran automotive and rail determination, issues General License EE",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB opens 120-day nature-related disclosures consultation on 22 October 2026",
+     "status": "dropped",
+     "lens": "Accounting & reporting",
+     "reasons": "The take says groups can review against the draft 'now', but the source says the Exposure Draft launches on 22 October 2026, and the other items are dated around 7-8 October. The draft is not yet published, so reviewing against it now is unsupported."
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting post-implementation review",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.481,
+   "market_view": {
+    "status": "error",
+    "reasons": "market view: unparseable JSON",
+    "cost_usd": 0.1974
+   },
+   "edition_cost_usd": 1.1084
   }
  ]
 }
