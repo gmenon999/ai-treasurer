@@ -115,7 +115,10 @@ def _ask(prompt, model, max_tokens=9000, search=True, attempts=3):
                     COST["usd"] += float((data.get("usage") or {}).get("cost") or 0)
                 except (TypeError, ValueError):
                     pass
-                return data["choices"][0]["message"]["content"] or ""
+                ch0 = data["choices"][0]
+                if ch0.get("finish_reason") == "length":
+                    print("_ask: reply CUT OFF at max_tokens=%d (model %s); raise the limit" % (max_tokens, model))
+                return ch0["message"]["content"] or ""
             if r.status_code != 429 and r.status_code < 500:
                 raise RuntimeError("OpenRouter %d: %s" % (r.status_code, r.text[:400]))
             last = RuntimeError("OpenRouter %d" % r.status_code)
@@ -173,7 +176,7 @@ def _json(raw, label="response"):
                 return json.JSONDecoder().raw_decode(c)[0]
             except Exception:
                 continue
-    print("--- %s: unparseable JSON. Raw model output ---\n%s\n--- end ---" % (label, (raw or "")[:3000]))
+    print("--- %s: unparseable JSON (%d chars). Raw model output ---\n%s\n[...tail...] %s\n--- end ---" % (label, len(raw or ""), (raw or "")[:3000], (raw or "")[-300:]))
     raise ValueError("%s: unparseable JSON" % label)
 
 
@@ -848,7 +851,7 @@ def _mv_check(points, facts):
         "with no vague verbs or unexplained jargon (stage, lock in, sweep, corridor, bring into scope, tenor).\n"
         "Return STRICT JSON only: {\"checks\": [{\"n\": 1, \"pass\": true, \"reasons\": \"\"}]} with a short, "
         "specific reason for every fail.\n\n%s" % "\n\n".join(blocks))
-    data = _json(_ask(prompt, CHECK_MODEL, max_tokens=3000, search=False), "market view check")
+    data = _json(_ask(prompt, CHECK_MODEL, max_tokens=8000, search=False), "market view check")
     fails = []
     got = {}
     for c in data.get("checks") or []:
@@ -875,7 +878,14 @@ def market_view(content, date_human):
             raise ValueError("too few market facts (%d)" % len(facts))
         fixes, points = None, []
         for attempt in range(3):
-            data = _json(_ask(_mv_prompt(facts, date_human, fixes), EDITORIAL_MODEL, max_tokens=4000, search=False), "market view")
+            try:
+                data = _json(_ask(_mv_prompt(facts, date_human, fixes), EDITORIAL_MODEL, max_tokens=10000, search=False), "market view")
+            except ValueError as exc:
+                if attempt < 2:
+                    print("market view: reply unusable (%s); retrying" % exc)
+                    fixes = "your previous reply was not valid, complete JSON; return exactly 5 compact points as strict JSON"
+                    continue
+                raise
             points = [{"head": _cap_treasury((x.get("head") or "").strip().rstrip(".:")),
                        "text": _cap_treasury((x.get("text") or "").strip()),
                        "refs": [r for r in (x.get("refs") or []) if r in facts],
