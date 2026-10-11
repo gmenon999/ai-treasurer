@@ -1,14 +1,9 @@
 name: Daily AI Treasurer Briefing
 
-# 04:00 Qatar (UTC+3) = 01:00 UTC. GitHub's own scheduler is best-effort and can
-# lag; the two later crons are self-healing retries (they no-op if today's edition
-# already exists). For exact-time delivery, trigger workflow_dispatch from a
-# punctual scheduler (e.g. n8n) at 04:00 Qatar.
+# Triggered daily at 04:00 Qatar by n8n Cloud ("AI Treasurer - 4 AM Qatar trigger")
+# via workflow_dispatch. GitHub's own cron schedules were removed on 11 Oct 2026
+# (best-effort, often late). Run by hand from the Actions tab if a day is missed.
 on:
-  schedule:
-    - cron: "0 1 * * *"
-    - cron: "25 1 * * *"
-    - cron: "25 2 * * *"
   workflow_dispatch:
     inputs:
       force:
