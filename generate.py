@@ -43,6 +43,7 @@ CHECK_MODEL = os.environ.get("BRIEF_CHECK_MODEL", "anthropic/claude-sonnet-5.5")
 TAKES_ON = (os.environ.get("BRIEF_TAKES") or "on").strip().lower() not in ("off", "false", "0", "no")
 TAKES_LOG = os.path.join(HERE, "editions", "takes-log.json")
 COST = {"usd": 0.0}  # running OpenRouter cost for this run (from the usage block)
+PREFERRED = ["tradefinanceglobal.com", "tradetreasurypayments.com", "treasury-management.com", "finextra.com"]  # Trade Finance Global, Trade Treasury Payments, TMI, Finextra
 EXCLUDED = ["reddit.com", "quora.com", "medium.com", "substack.com"]
 
 BEATS = [
@@ -212,6 +213,10 @@ def research(date_human, history=None):
         "BEATS (produce 2-3 items each, newest/most material first):\n%s\n\n"
         "events: 2-3 real treasury conferences/deadlines (e.g. Sibos, EuroFinance, AFP, ISO 20022 "
         "dates), with a real source url.\n\n"
+        "PREFERRED SOURCES: check these specialist outlets first in every relevant beat (e.g. a site: search), "
+        "and use them where they have a material story: Trade Finance Global (tradefinanceglobal.com), "
+        "Trade Treasury Payments (tradetreasurypayments.com), Treasury Management International / TMI "
+        "(treasury-management.com) and Finextra (finextra.com). Other credible sources are still allowed.\n\n"
         "NO REPEATS: the stories below already ran in the last two weeks. Do not return them again. "
         "Only include a follow-up if something materially new has happened, and then the headline must "
         "say what is new.\n%s\n\n"
