@@ -460,6 +460,73 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-12",
+   "note_headline": "Agentic AI now sits inside SOX scope, and CFOs carry the liability",
+   "note_opening": "Autonomous AI has lost any claim to sit outside the control framework. SEC guidance puts agentic systems that perform, support or initiate transactions within ICFR scope, and CFOs carry SOX Section 404 liability for the ",
+   "items": [
+    {
+     "headline": "MAS sets AI supervisory expectations and plans agentic AI consultation for 2027",
+     "urls": [
+      "https://www.mas.gov.sg/news/media-releases/2026/mas-sets-out-supervisory-expectations-on-responsible-ai-adoption-by-financial-institutions"
+     ]
+    },
+    {
+     "headline": "Trovata leads mid-market TMS benchmark with 28% first-choice share",
+     "urls": [
+      "https://finance-ai-index.com/treasury/treasury-management-systems/guide/"
+     ]
+    },
+    {
+     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
+     "urls": [
+      "https://www.cfo.com/news/us-firms-face-record-194t-liquidity-challenge-hackett-north-american-working-capital-survey-says/826774/"
+     ]
+    },
+    {
+     "headline": "HSBC and Ant International take tokenised deposits live in the UAE",
+     "urls": [
+      "https://garant.consulting/en/news/ant-international-hsbc-tokenised-deposits-uae-pilot-2026-10/"
+     ]
+    },
+    {
+     "headline": "SEC confirms no ICFR exemption for agentic AI under SOX Section 404",
+     "urls": [
+      "https://uniqus.com/wp-content/uploads/2026/09/Controlling-the-Agentic-Finance-Function.pdf"
+     ]
+    },
+    {
+     "headline": "US 10-year yield falls to 5.22% with Fed on hold at 3.75%-4.00%",
+     "urls": [
+      "https://www.federalreserve.gov/RELEASES/H15/default.htm"
+     ]
+    },
+    {
+     "headline": "Citi widens Coinbase partnership to offer corporate clients stablecoin payments",
+     "urls": [
+      "https://mempoolbrief.com/articles/coinbase-powers-citi-s-stablecoin-rails-for-institutions-cf53201f"
+     ]
+    },
+    {
+     "headline": "Fed holds at 3.75%-4.00% as cross-currency basis widening pressures hedging",
+     "urls": [
+      "https://www.federalreserve.gov/releases/h15/"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261008"
+     ]
+    },
+    {
+     "headline": "ISSB opens 120-day nature-related disclosures consultation from 22 October",
+     "urls": [
+      "https://www.issb.org/news-and-announcements/2026/issb-opens-consultation-on-nature-related-disclosures"
+     ]
+    }
+   ]
   }
  ]
 }

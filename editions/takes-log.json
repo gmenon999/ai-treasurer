@@ -227,6 +227,69 @@
     "cost_usd": 0.1974
    },
    "edition_cost_usd": 1.1084
+  },
+  {
+   "date": "2026-10-12",
+   "items": [
+    {
+     "headline": "SEC confirms no ICFR exemption for agentic AI under SOX Section 404",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Citi widens Coinbase partnership to offer corporate clients stablecoin payments",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ISSB opens 120-day nature-related disclosures consultation from 22 October",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "MAS sets AI supervisory expectations and plans agentic AI consultation for 2027",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "Trovata leads mid-market TMS benchmark with 28% first-choice share",
+     "status": "dropped",
+     "lens": "Cost & value",
+     "reasons": "Overstated. The source says the models moved their own first choice 67% of the time, but also that a leader's share moved only 3 points at the median, and the index counts a change only above 10 points. Calling the rankings 'too unstable to support a system decision' ignores that and goes beyond the"
+    },
+    {
+     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "HSBC and Ant International take tokenised deposits live in the UAE",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "US 10-year yield falls to 5.22% with Fed on hold at 3.75%-4.00%",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Fed holds at 3.75%-4.00% as cross-currency basis widening pressures hedging",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    },
+    {
+     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.3848,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.2311
+   },
+   "edition_cost_usd": 0.9546
   }
  ]
 }
