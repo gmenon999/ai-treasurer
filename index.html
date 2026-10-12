@@ -338,6 +338,161 @@
   @media (max-width: 1020px) { .found { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 700px) { .found { grid-template-columns: 1fr; } .fw-label small { margin-left: 0; flex-basis: 100%; } ol.trail + .fw-label { margin-top: 40px; } }
 
+  /* ---------- Framework: interactive layer (progressive enhancement; static cards remain as fallback) ---------- */
+  .fwx { display: none; --fwx-bad: #E8998F; --fwx-line: rgba(255,255,255,0.18); }
+  .js .framework.fwx-on .fwx { display: flex; flex-direction: column; }
+  .fwx-modes { order: 1; } .fwx-hint { order: 2; } .fwx-pick-h { order: 3; } .fwx-pick { order: 4; } .fwx-scn { order: 5; }
+  .fwx-cap { order: 5; } .fwx-steps { order: 6; } .fwx-found { order: 8; } .fwx-panel { order: 9; } .fwx-nav { order: 10; } .fwx-snav { order: 10; } .fwx-cta { order: 11; }
+  .js .framework.fwx-on .fw-static { display: none; }
+  .fwx [hidden] { display: none !important; }
+  .fwx button { appearance: none; font-family: var(--sans); }
+  .fwx button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* mode tabs */
+  .fwx-modes { display: flex; gap: 36px; border-bottom: 1px solid var(--fwx-line); margin: 0 0 22px; }
+  .fwx-modes button { background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--on-dark-soft); font-size: 15px; font-weight: 600; line-height: 1; padding: 0 0 16px; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .fwx-modes button:hover { color: var(--white); }
+  .fwx-modes button[aria-pressed="true"] { color: var(--white); border-bottom-color: var(--gold-light); }
+
+  .fwx-hint { margin: 0 0 18px; font-size: 15.5px; line-height: 1.5; color: var(--on-dark); max-width: 64ch; }
+  .fwx-hint b { color: var(--gold-light); font-weight: 700; }
+
+  /* trail chevrons */
+  /* The step bar is pinned under the site menu while the detail scrolls. overflow: clip (not hidden) keeps it from trapping sticky. */
+  .js .framework.fwx-on { overflow: clip; }
+  .fwx-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 0; position: sticky; top: var(--fwx-top, 0px); z-index: 6; background: var(--navy); padding: 10px 0 18px; border-bottom: 1px solid transparent; transition: box-shadow 0.2s, border-color 0.2s; }
+  .fwx-steps.stuck { border-bottom-color: var(--fwx-line); box-shadow: 0 12px 16px -12px rgba(5,14,26,0.85); }
+  .fwx-step.next { box-shadow: inset 0 -3px 0 var(--gold-light); }
+  .fwx-step { position: relative; border: 0; color: var(--white); background: rgba(255,255,255,0.07); text-align: left; cursor: pointer; padding: 13px 10px 13px 30px; margin-left: -6px; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%); transition: background 0.25s, color 0.25s; }
+  .fwx-step:first-child { margin-left: 0; padding-left: 20px; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%); }
+  .fwx-step:hover { background: rgba(255,255,255,0.15); }
+  .fwx-step .n { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--gold-light); transition: color 0.25s; }
+  .fwx-step .nm { display: block; font: 700 20px/1.2 var(--serif); margin-top: 6px; }
+  .fwx-step.done { background: rgba(217,184,103,0.24); }
+  .fwx-step.bad { background: rgba(232,153,143,0.3); }
+  .fwx-step[aria-pressed="true"] { background: var(--gold-light); color: var(--navy-deep); }
+  .fwx-step[aria-pressed="true"] .n { color: var(--navy-deep); }
+  .fwx-step.bad[aria-pressed="true"] { background: var(--fwx-bad); }
+  .fwx-step:focus-visible { outline: 0; background: rgba(255,255,255,0.22); }
+  .fwx-step[aria-pressed="true"]:focus-visible { background: var(--gold-light); box-shadow: inset 0 -3px 0 var(--navy-deep); }
+
+  /* foundations base */
+  .fwx-cap { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); margin: 0 0 12px; }
+  .fwx-found { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 0 22px; position: sticky; top: var(--fwx-top, 0px); z-index: 6; background: var(--navy); border-top: 1px solid var(--fwx-line); border-bottom: 1px solid transparent; transition: box-shadow 0.2s, border-color 0.2s; }
+  .fwx-found.stuck { border-bottom-color: var(--fwx-line); box-shadow: 0 12px 16px -12px rgba(5,14,26,0.85); }
+  .fwx-found .cap { grid-column: 1 / -1; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-soft); padding: 14px 0 10px; }
+  .fwx-found button { position: relative; display: block; background: none; border: 0; border-left: 1px solid var(--fwx-line); color: var(--on-dark); padding: 14px 34px 16px 18px; text-align: left; cursor: pointer; box-shadow: inset 0 0 0 0 var(--gold-light); transition: color 0.2s, box-shadow 0.2s, background 0.2s; }
+  .fwx-found .fn { display: block; font: 700 20px/1.2 var(--serif); }
+  .fwx-found .fd { display: block; margin-top: 5px; font-size: 13px; line-height: 1.4; color: var(--on-dark-soft); }
+  .fwx-found button[aria-pressed="true"] .fd { color: var(--on-dark); }
+  .fwx-found button::after { content: "\2192"; position: absolute; right: 14px; top: 16px; font: 400 15px/1 var(--sans); color: var(--gold-light); opacity: 0.55; }
+  .fwx-found button:first-of-type { border-left: 0; padding-left: 0; }
+  .fwx-found button:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+  .fwx-found button[aria-pressed="true"] { color: var(--white); box-shadow: inset 0 3px 0 0 var(--gold-light); background: rgba(255,255,255,0.06); }
+
+  /* scenario picker */
+  .fwx-pick-h .swipe { display: none; }
+  .fwx-pick-h { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-soft); margin: 0 0 12px; }
+  .fwx-pick { display: flex; flex-wrap: wrap; gap: 14px 44px; margin: 0 0 18px; }
+  .fwx-pick .grp { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; }
+  .fwx-pick .gl { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); min-width: 74px; }
+  .fwx-pick button { background: none; border: 0; border-bottom: 1px solid transparent; color: var(--on-dark-soft); font-size: 15px; font-weight: 500; line-height: 1.7; padding: 0; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .fwx-pick button:hover { color: var(--white); }
+  .fwx-pick button[aria-pressed="true"] { color: var(--white); border-bottom-color: var(--gold-light); }
+  .fwx-scn { scroll-margin-top: 90px; margin: 0 0 20px; max-width: 72ch; font: 400 19px/1.5 var(--serif); color: var(--on-dark); }
+  .fwx-scn .k { display: block; font: 700 11px/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-soft); margin-bottom: 8px; }
+
+  /* detail panel */
+  .fwx-panel { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; min-height: 240px; scroll-margin-top: calc(var(--fwx-top, 0px) + var(--fwx-dock-h, 72px) + 14px); }
+  .fwx-panel.anim > * { animation: fwxIn 0.4s cubic-bezier(.2,.7,.2,1) both; }
+  .fwx-panel.anim > *:nth-child(2) { animation-delay: 0.06s; }
+  .fwx-panel.anim > *:nth-child(3) { animation-delay: 0.12s; }
+  @keyframes fwxIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .fwx-card { border-top: 2px solid var(--gold-light); padding-top: 22px; }
+  .fwx-card h3 { font: 700 34px/1.1 var(--serif); margin: 0; letter-spacing: -0.01em; }
+  .fwx-card .tag { margin-top: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-soft); }
+  .fwx-card p { margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: var(--on-dark); max-width: 56ch; }
+  .fwx-lab { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); margin: 20px 0 0; padding-top: 12px; border-top: 1px solid var(--fwx-line); }
+  .fwx-lab.first { margin-top: 18px; padding-top: 0; border-top: 0; }
+  .fwx-lab + p { margin-top: 8px; }
+  .fwx-card .aud { font: italic 400 20px/1.45 var(--serif); color: var(--white); }
+  .fwx-rec { border-top: 1px solid rgba(255,255,255,0.4); padding-top: 22px; }
+  .fwx-rec .hd { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; }
+  .fwx-rec .sub { font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); margin: 0 0 8px; }
+  .fwx-rec ul { list-style: none; margin: 0; padding: 0; }
+  .fwx-rec li { padding: 14px 0; border-top: 1px solid var(--fwx-line); font-size: 15.5px; line-height: 1.5; color: var(--on-dark); animation: fwxIn 0.4s ease both; }
+  .fwx-rec li:first-child { border-top: 0; }
+  .fwx-rec li b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-soft); margin-bottom: 3px; }
+  .fwx-rec li .gl { display: block; margin-top: 8px; padding-top: 6px; border-top: 1px dotted var(--fwx-line); }
+  .fwx-refs .fnl { display: block; font-size: 11px; line-height: 1.4; font-style: italic; color: var(--on-dark-soft); margin-top: 3px; }
+  .fwx-refs .fnl b { display: inline; font-size: 11px; letter-spacing: 0; text-transform: none; font-style: normal; color: var(--gold-light); margin: 0; }
+  .fwx-refs { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--fwx-line); }
+  .fwx-refs > b { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-soft); margin-bottom: 4px; }
+  .fwx-rec li sup.fn { font-size: 0.6em; font-weight: 700; color: var(--gold-light); margin-left: 1px; vertical-align: super; line-height: 0; }
+  .fwx-rec li.gap, .fwx-rec li.gap b { color: var(--fwx-bad); }
+  .fwx-rec .empty, .fwx-rec .why { font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .fwx-miss { margin-top: 26px; padding: 2px 0 2px 18px; border-left: 2px solid var(--fwx-bad); font-size: 15.5px; line-height: 1.55; color: var(--on-dark); max-width: 56ch; animation: fwxIn 0.35s ease both; }
+  .fwx-miss b { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fwx-bad); margin-bottom: 6px; }
+
+  /* trail integrity summary (step 5) */
+  .fwx-sum { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.4); padding-top: 22px; margin-top: 4px; }
+  .fwx-sum .hd { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
+  .fwx-sum .big { font: 700 32px/1.15 var(--serif); margin: 8px 0 0; }
+  .fwx-sum .why { margin: 10px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); max-width: 62ch; }
+  .fwx-sum ul { list-style: none; margin: 14px 0 0; padding: 0; max-width: 62ch; }
+  .fwx-sum li { padding: 12px 0; border-top: 1px solid var(--fwx-line); display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: baseline; }
+  .fwx-sum li b { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fwx-bad); }
+  .fwx-sum li span { font: italic 400 17.5px/1.45 var(--serif); color: var(--white); }
+  .fwx-sum .invite { margin: 22px 0 0; font-size: 15.5px; color: var(--on-dark-soft); }
+  .fwx-sum .invite a { color: var(--gold-light); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+
+  /* walkthrough controls */
+  .fwx-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--fwx-line); }
+  .fwx-nav .prog { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); order: 3; }
+  .fwx-btn { background: none; border: 0; color: var(--on-dark); font-size: 14px; font-weight: 600; padding: 10px 2px; cursor: pointer; transition: color 0.2s; }
+  .fwx-btn:hover { color: var(--white); }
+  .fwx-btn:disabled { opacity: 0.3; cursor: default; }
+  .fwx-btn.pri { background: var(--gold-light); color: var(--navy-deep); font-size: 14px; letter-spacing: 0.01em; padding: 11px 20px; transition: background 0.2s; }
+  .fwx-btn.pri:hover { background: var(--white); }
+  .fwx-snav { margin-top: 24px; padding-top: 16px; }
+  .fwx-btn.alt { border: 1px solid var(--gold-light); color: var(--gold-light); padding: 11px 18px; margin: 22px 0 0; }
+  .fwx-btn.alt:hover { background: var(--gold-light); color: var(--navy-deep); }
+  .fwx-sw { margin-left: auto; display: inline-flex; align-items: center; gap: 12px; background: none; border: 0; color: var(--on-dark); font-size: 14px; font-weight: 600; cursor: pointer; padding: 8px 0; order: 4; }
+  .fwx-sw .trk { position: relative; width: 38px; height: 20px; border-radius: 20px; background: rgba(255,255,255,0.22); transition: background 0.25s; flex: none; }
+  .fwx-sw .trk::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--white); transition: transform 0.25s; }
+  .fwx-sw[aria-checked="true"] .trk { background: var(--fwx-bad); }
+  .fwx-sw[aria-checked="true"] .trk::after { transform: translateX(18px); }
+  .fwx-sw[aria-checked="true"] { color: var(--fwx-bad); }
+  .fwx-cta { margin: 28px 0 0; font-size: 15.5px; color: var(--on-dark-soft); }
+  .fwx-cta a { color: var(--gold-light); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+
+  .js .framework.fwx-on { padding: 64px 0 60px; }
+  .js .framework.fwx-on .sub { margin-bottom: 30px; }
+  .js .framework.fwx-on .note { margin-top: 26px; }
+  .fwx.walk .fwx-panel { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr); }
+  .fwx-sum { grid-column: 1 / -1; }
+
+  @media (max-width: 900px) { .fwx-panel, .fwx.walk .fwx-panel { order: 8; grid-template-columns: 1fr; gap: 26px; min-height: 0; margin-top: 20px; } .fwx-nav { order: 9; } .fwx-snav { order: 9; } .fwx-found { order: 7; margin: 0 0 14px; } .fwx-sw { margin-left: 0; order: 2; width: 100%; } .fwx-nav .prog { order: 1; margin-left: auto; } }
+  @media (max-width: 700px) {
+    .fwx-modes { gap: 22px; } .fwx-modes button { font-size: 14px; }
+    .fwx-steps { padding: 8px 0 14px; }
+    .fwx-step { padding: 12px 2px 12px 18px; } .fwx-step:first-child { padding-left: 8px; }
+    .fwx-step .n { font-size: 10px; } .fwx-step .nm { font-size: 12.5px; }
+    .js .framework.fwx-on { padding: 44px 0 44px; }
+    .fwx-found .cap, .fwx-found .fd, .fwx-found button::after { display: none; }
+    .fwx-found button { padding: 12px 4px 12px 10px; }
+    .fwx-found button:first-of-type { padding-left: 0; }
+    .fwx-found .fn { font-size: 14px; }
+    .fwx-hint { margin-top: -8px; }
+    .fwx-card h3 { font-size: 28px; }
+    .fwx-pick { flex-wrap: nowrap; overflow-x: auto; gap: 30px; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 6px; -webkit-mask-image: linear-gradient(to right, #000 90%, transparent); mask-image: linear-gradient(to right, #000 90%, transparent); }
+    .fwx-pick::-webkit-scrollbar { display: none; }
+    .fwx-pick .grp { flex-wrap: nowrap; flex: none; gap: 6px 20px; } .fwx-pick .gl { min-width: 0; } .fwx-pick button { white-space: nowrap; scroll-snap-align: start; }
+    .fwx-pick-h .swipe { display: inline; }
+    .fwx-sum li { grid-template-columns: 1fr; gap: 4px; } .fwx-sum .big { font-size: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .fwx *, .fwx *::after { animation: none !important; transition: none !important; } }
+
   footer { border-top: 1px solid var(--line); padding: 24px 0 48px; font-size: 13px; color: var(--navy-soft); }
   footer p { margin: 0 0 8px; max-width: 90ch; }
   footer a { color: var(--navy); }
@@ -1136,21 +1291,24 @@
       <div class="kicker">AI Controls</div>
       <h2 id="fw-h">Every automated step should leave a trail an auditor can follow</h2>
       <p class="sub">Five steps for every transaction, four foundations around the system. The test for any AI or automation in Treasury and Finance: can each stage be explained, evidenced and reversed? If not, the speed is borrowed against the next audit.</p>
+      <div class="fwx" id="fwx" hidden></div>
+      <div class="fw-static">
       <div class="fw-label"><span>For every transaction</span><b>The control trail</b><small>COSO: control activities &middot; information &amp; communication</small></div>
       <ol class="trail">
         <li><span class="n">01</span><span class="step">Capture</span><span class="why">Data arrives from a known, authorised source, with completeness totals checked. Emails and PDFs are screened for hidden instructions before any agent acts on them.</span><span class="q"><b>The auditor asks</b>Where did this data come from, and is all of it here?</span></li>
-        <li><span class="n">02</span><span class="step">Match</span><span class="why">Rules or models pair items. The logic, model and prompt version are recorded, and amounts are recalculated independently.</span><span class="q"><b>The auditor asks</b>Why were these two items paired, and by which version?</span></li>
-        <li><span class="n">03</span><span class="step">Flag</span><span class="why">Low-confidence results become exceptions. Exceptions are logged and aged, never silently cleared.</span><span class="q"><b>The auditor asks</b>What didn't match, and for how long?</span></li>
+        <li><span class="n">02</span><span class="step">Match</span><span class="why">Rules or AI models pair items. The checking rules, AI model and AI instruction versions are recorded, and amounts are recalculated independently.</span><span class="q"><b>The auditor asks</b>Why were these two items paired, and by which version?</span></li>
+        <li><span class="n">03</span><span class="step">Flag</span><span class="why">Low-confidence results become exceptions. Exceptions are logged and aged, never silently cleared.</span><span class="q"><b>The auditor asks</b>What didn't match, and how long has it been open?</span></li>
         <li><span class="n">04</span><span class="step">Approve</span><span class="why">A named person approves, at a level set by risk. The agent that proposes an action can never approve it.</span><span class="q"><b>The auditor asks</b>Who accepted it, and were they independent?</span></li>
-        <li><span class="n">05</span><span class="step">Post</span><span class="why">Entries follow IFRS, with a record-level trail of the data, model version and approver.</span><span class="q"><b>The auditor asks</b>Does the entry trace back to source?</span></li>
+        <li><span class="n">05</span><span class="step">Post</span><span class="why">Entries follow IFRS, with a record-level trail of the data, AI model version and approver.</span><span class="q"><b>The auditor asks</b>Does the entry trace back to source?</span></li>
       </ol>
       <div class="fw-label"><span>Around the system</span><b>Four foundations</b><small>COSO: control environment &middot; risk assessment &middot; control activities &middot; monitoring</small></div>
       <ul class="found">
         <li><span class="f-name">Govern</span><span class="f-coso">Control environment &middot; risk assessment</span><span class="why">A register of every AI use: owner, risk tier, intended use, limits and impact on financial reporting.</span><span class="q"><b>The auditor asks</b>Which AI is in use, and who owns it?</span></li>
         <li><span class="f-name">Access</span><span class="f-coso">Control activities</span><span class="why">Each agent has its own identity and only the rights it needs. No shared logins, and bank or vendor master-data changes are verified independently.</span><span class="q"><b>The auditor asks</b>What can this agent do, and who granted it?</span></li>
-        <li><span class="f-name">Change</span><span class="f-coso">Control activities</span><span class="why">Prompts, models and settings are change-controlled like code: written by one person, approved by another, tested and logged.</span><span class="q"><b>The auditor asks</b>What changed, and who signed it off?</span></li>
+        <li><span class="f-name">Change</span><span class="f-coso">Control activities</span><span class="why">AI instructions (prompts), AI models and settings are change-controlled like code: written by one person, approved by another, tested and logged.</span><span class="q"><b>The auditor asks</b>What changed, and who signed it off?</span></li>
         <li><span class="f-name">Monitor</span><span class="f-coso">Monitoring activities</span><span class="why">Volumes, overrides, validation failures, exception ageing and drift are tracked, with a stop switch when limits are breached.</span><span class="q"><b>The auditor asks</b>How would you know if it went wrong?</span></li>
       </ul>
+      </div>
       <p class="note">Illustrative framework, aligned with COSO&rsquo;s Internal Control&mdash;Integrated Framework and its 2026 guidance on internal control over generative AI. It describes a control approach, not a specific system or result.</p>
     </div>
   </section>
@@ -1994,6 +2152,474 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     if (P && P.series.fed){ var fp = P.series.fed.points, fl = fp[fp.length-1]; html = '<div class="kpi"><span>Fed funds range</span><b>'+(+fl[2]).toFixed(2)+'-'+(+fl[1]).toFixed(2)+'%</b><i>as at '+(function(a){ var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return +a[2]+' '+m[+a[1]-1]; })(P.series.fed.asof.split('-'))+'</i></div>' + html; }
     if (!html) return; var k = document.createElement('div'); k.className = 'mv-kpis'; k.setAttribute('aria-label','Key figures'); k.innerHTML = html; anchor.parentNode.insertBefore(k, mv.querySelector('ol'));
   });
+})();
+</script>
+<script>
+/* AI Controls: interactive control trail + transaction walkthroughs across Treasury and Finance.
+   Reads the static cards as its source, so the core wording lives in one place. All scenarios are illustrative. */
+(function(){
+  var sec = document.getElementById('framework');
+  if (!sec) return;
+  var host = sec.querySelector('#fwx');
+  var trailLis = sec.querySelectorAll('ol.trail > li');
+  var foundLis = sec.querySelectorAll('ul.found > li');
+  if (!host || trailLis.length !== 5 || foundLis.length !== 4) return;
+
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function qText(li){ var q = li.querySelector('.q'); if (!q) return ''; var c = q.cloneNode(true); var b = c.querySelector('b'); if (b) b.remove(); return c.textContent.trim(); }
+
+  var steps = [].map.call(trailLis, function(li){
+    return { n: li.querySelector('.n').textContent, name: li.querySelector('.step').textContent, why: li.querySelector('.why').textContent, q: qText(li) };
+  });
+  var found = [].map.call(foundLis, function(li){
+    return { name: li.querySelector('.f-name').textContent, tag: li.querySelector('.f-coso').textContent, why: li.querySelector('.why').textContent, q: qText(li) };
+  });
+
+  var evidence = {
+    Capture: 'Source system and sender, row counts and control totals, and the result of screening for hidden instructions.',
+    Match: 'The checking rules, AI model and AI instruction versions, both item references, and the independent recalculation result.',
+    Flag: 'An exception ID, the reason, an AI confidence score (how sure it is, 0 to 1), the date opened and its running age. Never auto-cleared.',
+    Approve: 'The approver’s identity and time, the risk tier applied, and confirmation that proposer and approver differ.',
+    Post: 'A journal reference, the IFRS basis, a link back to the source record, the data snapshot, AI model version and approver.',
+    Govern: 'A register entry per AI use: owner, risk tier, intended use, limits and relevance to financial reporting.',
+    Access: 'Each agent’s identity, the rights granted, who granted them, and the independent check on master-data changes.',
+    Change: 'A change record: author, approver, test result and version, with the old and new versions retained.',
+    Monitor: 'Tracked volumes, overrides, validation failures, exception ageing and drift, plus a log of any stop-switch use.'
+  };
+
+  /* Illustrative scenarios. Names, amounts and references are invented. */
+  var SC = [
+    { g: 'Treasury', label: 'Supplier payment', head: 'Trail record for INV-2041',
+      intro: 'A supplier invoice arrives by email as a PDF: Northgate Supplies, invoice INV-2041, USD 48,600, against purchase order PO-7730.',
+      t: ['09:02','09:03','09:03','09:41','09:42'],
+      rec: [
+        'Source: AP inbox, sender on the approved list. 1 of 1 invoice captured, control total 48,600. Screened for embedded instructions: clear.',
+        'Paired to PO-7730 and receipt GR-5512. Checking rules v3.2 and AI instruction v14. Recalculated independently: the invoice charges USD 120 more freight than the purchase order allows.',
+        'Exception EX-0193 opened: freight USD 120 above the purchase order, AI confidence 0.71 out of 1. Invoice blocked from payment and routed to the purchasing team, who own the purchase order. Age 0 days.',
+        'Purchasing confirms the extra USD 120 freight was agreed with the supplier for expedited delivery. A change order is raised and approved by the purchasing manager, and EX-0193 is closed against it. Payment of USD 48,600 is proposed by payment agent PA-02 and approved by a named Treasury approver at medium tier. Proposer is not the approver.',
+        'Journal J-88213 posted per IFRS for USD 48,600. Linked to the invoice, the amended purchase order, data snapshot, checking rules v3.2, AI instruction v14 and the approver. Traceable end to end.'
+      ],
+      gap: ['No screening and no control totals. A hidden line in the PDF is read as an instruction.','No version recorded. The pairing cannot be explained or repeated.','No exception raised. The invoice is not blocked, and nothing is aged or reviewed.','No independent approver on file.','The entry exists, but the trail to source does not.'],
+      miss: [
+        'A hidden line in the PDF tells the agent to update the supplier’s bank details before paying. With no screening, the agent complies and the payment goes to the wrong account.',
+        'The agent pairs the invoice to an older purchase order of a similar amount. Months later nobody can say which logic or version made that call.',
+        'The extra USD 120 freight is waved through as immaterial, with nobody checking it was authorised. It recurs on every invoice from that supplier, and nobody sees the pattern.',
+        'The agent that proposed the payment also approves it. A single faulty instruction goes straight to the bank with no second pair of eyes.',
+        'The entry is posted, but at audit there is no link to the source. The auditor cannot re-perform it, so the whole population is in question.'
+      ] },
+    { g: 'Treasury', label: 'Bank reconciliation', head: 'Trail record for STMT-1012',
+      intro: 'The overnight bank statement for the main operating account arrives: 412 lines, closing balance USD 3.41m. The agent reconciles it to the cash ledger.',
+      t: ['06:10','06:11','06:12','08:30','08:31'],
+      rec: [
+        'Statement received through the bank file channel. Account checked against the register. 412 lines, closing balance agrees to the file footer.',
+        '409 of 412 lines paired (checking rules v2.8, AI model v9 for near-matches). Independent recalculation: 3 lines unmatched, 18,400 in total.',
+        'Exceptions EX-2210 to EX-2212 opened for the 3 lines. Age 0 days. Owner: cash team. None auto-cleared.',
+        'Clearing proposed for exceptions EX-2210 and EX-2211 (11,200). Approved by a named reviewer. The reconciliation agent cannot sign off its own work.',
+        'Clearing journal posted for 11,200. Exception EX-2212 (7,200) stays open and appears in the ageing report. Linked to statement lines, versions and reviewer.'
+      ],
+      gap: ['No completeness check on the statement.','No independent recalculation.','Unmatched items moved to a suspense account.','The preparer signs off their own reconciliation.','Clearing entries carry no link to statement lines.'],
+      miss: [
+        'The bank file is cut off part-way. The agent reconciles what it received and reports a clean result, while a day of transactions is missing.',
+        'The agent pairs two similar-looking items wrongly, and the errors offset each other. Totals agree, so the problem stays hidden.',
+        'The 18,400 is pushed to a suspense account to tidy the report. Over the months suspense grows, and nobody can say what it holds.',
+        'The agent that did the reconciliation also signs it off, so a wrong clearing entry has no independent check.',
+        'Cleared items cannot be traced back to statement lines. At audit, the reconciliation has to be redone by hand.'
+      ] },
+    { g: 'Treasury', label: 'Bank-detail change', head: 'Trail record for CR-0457',
+      intro: 'An email arrives from a supplier asking to update its bank account details ahead of the next payment run.',
+      t: ['10:15','10:16','10:16','11:50','11:51'],
+      rec: [
+        'Request received by email. Sender domain differs from the supplier on file. Logged as unverified; no data changed.',
+        'Compared with the vendor master record. New account is in a different country from the supplier’s address. Checking rules v1.4 rate it high risk.',
+        'Exception EX-0457 opened. Payments to this supplier placed on hold pending verification.',
+        'Call-back made to the number already on file; the supplier confirms. Approved by the master-data owner and a second approver.',
+        'Master record updated. Change log keeps old and new details, both approvers and the call-back note. Hold released and EX-0457 closed.'
+      ],
+      gap: ['Sender not checked against the supplier on file.','No comparison with the master record.','No hold. Nothing marks the request as unusual.','One person, or the agent itself, makes the change.','Old details overwritten with no history.'],
+      miss: [
+        'The email comes from a look-alike address. Without a sender check it is treated as genuine.',
+        'The new account is in a different country, which would stand out against the master record. Nobody compares.',
+        'No hold is placed, so the next payment run goes to the new account.',
+        'With no independent call-back, the change is accepted on the strength of an email alone. This is the classic route for payment fraud.',
+        'The old details are overwritten. After a loss, nobody can show what the account was or who changed it.'
+      ] },
+    { g: 'Treasury', label: 'Cash forecast', head: 'Trail record for forecast FC-14',
+      intro: 'Each Monday an AI model drafts the 13-week cash forecast for the group from ledger, bank and receivables data.',
+      t: ['07:00','07:05','07:06','09:20','09:21'],
+      rec: [
+        'Pulled ledger, bank balances and receivables ageing. Balances agree to bank statements; receivables total agrees to the ledger.',
+        'Forecast drafted with AI model v6 and AI instruction v11. Opening cash agrees to bank balances. The 13-week roll-forward is recalculated independently.',
+        'Week 6 inflow is 31% above the trailing average; AI confidence low. Exception EX-0612 opened for review.',
+        'Treasury manager reviews week 6, adjusts the inflow and approves. The forecast agent cannot approve its own forecast. Adjustment logged and EX-0612 closed.',
+        'Forecast FC-14 published with data snapshot, AI model and AI instruction versions, the adjustment and approver. Prior version kept for variance tracking.'
+      ],
+      gap: ['Inputs not tied back to bank balances.','No AI model or AI instruction version recorded.','The unusual week 6 inflow passes without comment.','The forecast goes out with no named reviewer.','No snapshot kept.'],
+      miss: [
+        'A stale bank feed means opening cash is a week old. Every week of the forecast starts from the wrong number.',
+        'Someone quietly edits the AI instruction. The forecast shifts and nobody can say why.',
+        'An optimistic inflow in week 6 goes unchallenged, and a funding decision leans on it.',
+        'The forecast reaches the CFO with no named reviewer. When it proves wrong, nobody owns it.',
+        'With no snapshot, nobody can compare forecast with actual or learn where the model drifts.'
+      ] },
+    { g: 'Treasury', label: 'FX confirmation', head: 'Trail record for deal FX-7731',
+      intro: 'A bank sends a confirmation for a EUR 5.0m forward sale. The agent checks it against the deal recorded in the Treasury system.',
+      t: ['14:02','14:03','14:03','15:10','15:11'],
+      rec: [
+        'Confirmation received through the bank’s registered channel. Deal FX-7731 found in the Treasury system. Counterparty and reference verified.',
+        'Terms compared field by field: amount, value date, rate, currency pair (checking rules v2.1). Amount and value date agree; the rate differs from the deal in the Treasury system.',
+        'Exception EX-0731 opened: rate mismatch. Deal marked unconfirmed. Age 0 days. Dealer notified.',
+        'Dealer confirms the system entry was keyed wrongly. Correction approved by the Treasury manager, not by the dealer who keyed it.',
+        'Deal record corrected with old and new rate retained. EX-0731 closed. Valuation reflects the corrected rate and the deal stays linked to its hedge documentation.'
+      ],
+      gap: ['Confirmation accepted from any sender.','Terms skimmed, not compared field by field.','Mismatch not raised. The deal stays confirmed.','The person who keyed the deal corrects it.','Rate overwritten with no history.'],
+      miss: [
+        'A confirmation from an unverified channel is accepted. It could be spoofed, or relate to a different deal.',
+        'Terms are skimmed rather than compared. The wrong rate is not noticed until settlement.',
+        'The mismatch is not raised. The deal sits as confirmed and the valuation is built on the wrong rate.',
+        'The dealer who keyed the deal also corrects it. There is no independent check on their own error.',
+        'The rate is overwritten with no history. The hedge file no longer shows what was originally agreed.'
+      ] },
+    { g: 'Treasury', label: 'Deposit placement', head: 'Trail record for placement DP-0192',
+      intro: 'Surplus cash of USD 10m is proposed for a three-month deposit. The agent drafts the placement within the board-approved investment policy.',
+      t: ['11:00','11:01','11:01','11:40','11:42'],
+      rec: [
+        'Surplus taken from the approved cash position and agreed to the bank balance. Policy limits and the counterparty list loaded from their registers.',
+        'Proposed bank checked against the approved list and its limit. Exposure after placement recalculated: 62% of limit (checking rules v1.9).',
+        'No breach. Exposure above 60% of limit raises an amber notice. Exception EX-0192 logged for the Treasury manager.',
+        'Approved by two authorised signatories, as policy requires at this size. The amber notice is acknowledged. The agent that drafted the placement is not one of them.',
+        'Deal booked and bank confirmation matched. Interest accrual set up per IFRS. Linked to the limit check, approvals and policy version.'
+      ],
+      gap: ['Cash position not tied to the bank.','Limits not recalculated.','No warning as exposure nears the limit.','Placement released on one signature, or by the system itself.','Deposit booked with no link to the policy or approvals.'],
+      miss: [
+        'The surplus is taken from a stale position. Money is placed that is already earmarked for payments.',
+        'Counterparty exposure is not recalculated. The group quietly exceeds its limit with one bank.',
+        'The amber warning never fires, so nobody reviews the concentration until it is too late.',
+        'The agent releases the placement with no authorised signatories. That goes against the policy and the bank mandate.',
+        'The deposit is booked, but nobody can show which policy version or approval it relied on.'
+      ] },
+    { g: 'Treasury', label: 'Covenant check', head: 'Trail record for certificate COV-Q3',
+      intro: 'Quarter-end approaches. The agent calculates the leverage covenant on a term loan from the ledger and prepares the compliance certificate.',
+      t: ['08:00','08:02','08:02','10:30','10:31'],
+      rec: [
+        'Trial balance and debt schedule pulled; totals agree to the ledger. Covenant definitions loaded from the facility agreement, amended version v2.',
+        'Net debt to EBITDA recalculated independently: 2.9x against a 3.5x limit, using the definitions in the agreement (checking rules v1.3).',
+        'Headroom of 17% flagged amber. One item treated as exceptional is queried. Exception EX-0301 opened.',
+        'Group financial controller reviews the exceptional item and approves. The CFO signs the certificate. EX-0301 closed. The preparer is not a signatory.',
+        'Certificate and workings filed, linked to the ledger snapshot and definitions version. Available for lenders and for the financial statement disclosures.'
+      ],
+      gap: ['Definitions taken from an old version of the agreement.','Ratio not recalculated independently.','Thin headroom and a judgement pass unmarked.','Certificate signed without review.','Workings not kept.'],
+      miss: [
+        'The agent uses a superseded definition from before the amendment, so the ratio is calculated on the wrong basis.',
+        'The ratio is not recalculated independently. A formula error passes into a certificate sent to lenders.',
+        'Thin headroom and a judgemental adjustment go unmarked, so the CFO does not see how close the limit is.',
+        'The certificate is signed without review. A mistake in it would be a representation made to lenders.',
+        'The workings are not kept. If a lender queries the figure, it cannot be reproduced.'
+      ] },
+    { g: 'Finance', label: 'Cash application', head: 'Trail record for receipt RC-3308',
+      intro: 'A customer remittance advice and a bank receipt of USD 86,000 arrive. The agent applies the cash to open invoices.',
+      t: ['09:20','09:21','09:21','10:05','10:06'],
+      rec: [
+        'Receipt found in the bank file and the remittance advice in the customer’s email. Receipt amount 86,000. Screened: clear.',
+        'Remittance lists IN-1180 (52,000) and IN-1186 (36,000), total 88,000. The receipt is 86,000, so it is short by 2,000 (checking rules v4.0).',
+        'Short payment of 2,000 on IN-1186 logged as exception EX-0889 and aged. Not written off.',
+        'Credit controller confirms the customer disputes a delivery charge and approves part-payment. The cash agent cannot approve adjustments.',
+        'IN-1180 cleared in full; IN-1186 part-paid 34,000, balance 2,000 open. EX-0889 stays open for the 2,000. Entry linked to the receipt, remittance and approver.'
+      ],
+      gap: ['Remittance not matched to a bank receipt.','Remittance total trusted, not recalculated.','The 2,000 shortfall is silently written off.','The agent decides adjustments itself.','Application not linked to the receipt.'],
+      miss: [
+        'Cash is applied on the strength of an email alone, before any money has arrived.',
+        'The remittance total is trusted without recalculation. A keying error flows into the ledger.',
+        'The 2,000 shortfall is quietly written off. The customer’s dispute repeats and nobody sees the pattern.',
+        'The agent decides adjustments and write-offs itself, with nobody independent.',
+        'The application has no link to the receipt, so a customer query means redoing it by hand.'
+      ] },
+    { g: 'Finance', label: 'Month-end accrual', head: 'Trail record for journal MJ-1031',
+      intro: 'At month-end the agent proposes an accrual for services received but not yet invoiced: USD 64,000 across four suppliers.',
+      t: ['17:00','17:02','17:02','18:15','18:16'],
+      rec: [
+        'Open purchase orders and goods-receipt data pulled. Counts and values agree to the sub-ledger.',
+        'Four accruals calculated from receipt dates and contract rates (checking rules v5.1 and AI instruction v8). Recalculated independently: total 64,000.',
+        'One accrual of 22,000 has no matching purchase order. Exception EX-1031 opened.',
+        'Financial controller removes that item pending support and approves 42,000. The preparer is not the approver.',
+        'Journal MJ-1031 posted for 42,000 on the accruals basis, with an automatic reversal next period. Linked to receipts, rates, versions and approver. Exception EX-1031 stays open and aged.'
+      ],
+      gap: ['Sub-ledger not tied out.','No version and no recalculation.','The unsupported 22,000 goes in without comment.','Posted straight from the agent.','No reversal scheduled and no support attached.'],
+      miss: [
+        'The source data is incomplete. Some receipts are missing, so costs are understated.',
+        'There is no independent recalculation. A wrong contract rate flows into the ledger.',
+        'The unsupported 22,000 is included without comment and inflates the cost.',
+        'The agent posts the journal itself. Nobody reviews an entry that hits the ledger directly.',
+        'No reversal is scheduled, so the cost is counted twice when the invoice arrives.'
+      ] },
+    { g: 'Finance', label: 'IFRS disclosure', head: 'Trail record for note LR-Q3',
+      intro: 'At quarter-end the agent drafts the liquidity risk note for the financial statements from the trial balance.',
+      t: ['14:00','14:05','14:06','16:40','16:41'],
+      rec: [
+        'Trial balance and debt maturity data pulled. Totals agree to the ledger and the reporting period is confirmed.',
+        'Every figure in the draft traced to a ledger balance. Prior-period comparatives agree to last year’s published note (AI model v7 and AI instruction v12).',
+        'One figure in the draft does not tie to the maturity schedule: it differs by 1,300. Exception EX-0902 opened. Draft marked incomplete.',
+        'Reporting manager corrects the schedule and re-runs the tie-out. Financial controller approves and EX-0902 is closed. The drafter is not the approver.',
+        'Note filed in the reporting pack with its tie-out file, versions and approvers. Every number traceable to the ledger.'
+      ],
+      gap: ['Period and totals not confirmed.','Figures not traced to the ledger.','The variance is smoothed over by the draft.','Draft goes into the pack unreviewed.','No tie-out file kept.'],
+      miss: [
+        'The agent drafts from the wrong period’s data. The note reads well and is wrong.',
+        'Figures are not traced to the ledger. A fluent paragraph can hide a number that does not tie.',
+        'The agent smooths over the 1,300 gap instead of flagging it.',
+        'The draft goes into the pack with no review. A misstatement in a published note is a reporting error.',
+        'No tie-out file is kept, so the auditor has to re-perform the whole note.'
+      ] }
+  ];
+
+  var mode = 'steps', sel = 0, fsel = 0, w = 0, si = 0, gaps = [false, false, false, false, false];
+  function resetGaps(){ gaps = [false, false, false, false, false]; }
+  var reduce = W_reduce();
+  function W_reduce(){ try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } }
+  function dock(){ return mode === 'found' ? foundRow : stepRow; }
+  function nudge(target, force){
+    var t = target || panel; if (!t.scrollIntoView) return;
+    var top0 = parseFloat(host.style.getPropertyValue('--fwx-top')) || 0;
+    var dk = dock(), off = top0 + (dk.hidden ? 0 : dk.offsetHeight);
+    var r = t.getBoundingClientRect();
+    if (force || r.top < off || r.top > window.innerHeight * 0.6) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  host.textContent = '';
+  var modes = el('div', 'fwx-modes'); modes.setAttribute('role', 'group'); modes.setAttribute('aria-label', 'View');
+  var bSteps = el('button', null, 'Five steps'), bFound = el('button', null, 'Four foundations'), bWalk = el('button', null, 'Walkthrough');
+  bSteps.type = bFound.type = bWalk.type = 'button'; modes.appendChild(bSteps); modes.appendChild(bFound); modes.appendChild(bWalk);
+
+  var hint = el('p', 'fwx-hint');
+  var capSteps = el('div', 'fwx-cap', 'For every transaction \u00b7 the control trail');
+  var stepRow = el('div', 'fwx-steps'); stepRow.setAttribute('role', 'group'); stepRow.setAttribute('aria-label', 'The control trail, five steps. Use the left and right arrow keys to move between steps.');
+  var stepBtns = steps.map(function(s, i){
+    var b = el('button', 'fwx-step'); b.type = 'button';
+    b.appendChild(el('span', 'n', s.n)); b.appendChild(el('span', 'nm', s.name));
+    b.addEventListener('click', function(){ pickStep(i); });
+    stepRow.appendChild(b); return b;
+  });
+  stepRow.addEventListener('keydown', function(e){
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    var cur = mode === 'walk' ? w : sel;
+    var nx = Math.max(0, Math.min(4, cur + (e.key === 'ArrowRight' ? 1 : -1)));
+    e.preventDefault(); pickStep(nx); stepBtns[nx].focus();
+  });
+  function pickStep(i){ if (mode === 'walk') { w = i; } else { sel = i; } render(true); nudge(); }
+
+  var foundRow = el('div', 'fwx-found'); foundRow.setAttribute('role', 'group'); foundRow.setAttribute('aria-label', 'The four foundations');
+  foundRow.appendChild(el('div', 'cap', 'Around the whole system \u00b7 four foundations behind every step'));
+  var FD = { Govern: 'Who owns each AI use', Access: 'What each agent may touch', Change: 'How AI instructions and models change', Monitor: 'How you would spot trouble' };
+  var foundBtns = found.map(function(f, i){
+    var b = el('button'); b.type = 'button';
+    b.appendChild(el('span', 'fn', f.name)); b.appendChild(el('span', 'fd', FD[f.name] || ''));
+    b.addEventListener('click', function(){ fsel = i; render(true); nudge(); });
+    foundRow.appendChild(b); return b;
+  });
+
+  var pickH = el('div', 'fwx-pick-h', 'Choose a scenario'); pickH.appendChild(el('span', 'swipe', ' \u00b7 swipe for more'));
+  var pick = el('div', 'fwx-pick'); pick.setAttribute('role', 'group'); pick.setAttribute('aria-label', 'Choose a scenario');
+  var pickBtns = [];
+  ['Treasury', 'Finance'].forEach(function(g){
+    var grp = el('div', 'grp'); grp.appendChild(el('span', 'gl', g));
+    SC.forEach(function(s, i){
+      if (s.g !== g) return;
+      var b = el('button', null, s.label); b.type = 'button';
+      b.addEventListener('click', function(){ si = i; w = 0; resetGaps(); render(true); });
+      grp.appendChild(b); pickBtns[i] = b;
+    });
+    pick.appendChild(grp);
+  });
+  var scnBox = el('p', 'fwx-scn');
+  var panel = el('div', 'fwx-panel'); panel.setAttribute('aria-live', 'polite');
+
+  var nav = el('div', 'fwx-nav');
+  var back = el('button', 'fwx-btn', 'Back'); back.type = 'button';
+  var next = el('button', 'fwx-btn pri', 'Next step'); next.type = 'button';
+  var prog = el('span', 'prog');
+  var sw = el('button', 'fwx-sw'); sw.type = 'button'; sw.setAttribute('role', 'switch');
+  sw.appendChild(el('span', 'trk')); var swl = el('span', null, 'Remove this control'); sw.appendChild(swl);
+  back.addEventListener('click', function(){ if (w > 0) { w--; render(true); nudge(); } });
+  next.addEventListener('click', function(){ if (w === 4) { w = 0; resetGaps(); } else { w++; } render(true); nudge(); });
+  sw.addEventListener('click', function(){ gaps[w] = !gaps[w]; render(false); });
+  [back, next, prog, sw].forEach(function(n){ nav.appendChild(n); });
+
+  var snav = el('div', 'fwx-nav fwx-snav');
+  var snext = el('button', 'fwx-btn pri'); snext.type = 'button';
+  snext.addEventListener('click', function(){
+    var i = mode === 'found' ? fsel : sel, last = mode === 'found' ? found.length - 1 : 4;
+    if (i < last) { if (mode === 'found') { fsel++; } else { sel++; } render(true); nudge(); }
+    else { mode = 'walk'; w = 0; resetGaps(); render(true); nudge(scnBox, true); }
+  });
+  snav.appendChild(snext);
+
+  var cta = el('p', 'fwx-cta');
+  cta.appendChild(document.createTextNode('Curious how your own process would hold up? '));
+  var a = el('a', null, 'Get in touch'); a.href = 'mailto:gmenon@theaitreasurer.com?subject=AI%20controls%20in%20Treasury'; cta.appendChild(a); cta.appendChild(document.createTextNode('.'));
+  [modes, hint, pickH, pick, scnBox, capSteps, stepRow, foundRow, panel, nav, snav, cta].forEach(function(n){ host.appendChild(n); });
+
+  function card(item, tag, ev, compact){
+    var c = el('div', 'fwx-card');
+    c.appendChild(el('h3', null, item.name)); c.appendChild(el('div', 'tag', tag));
+    if (compact) {
+      c.appendChild(el('span', 'fwx-lab first', 'The auditor asks')); c.appendChild(el('p', 'aud', item.q));
+      return c;
+    }
+    c.appendChild(el('span', 'fwx-lab first', 'What it does')); c.appendChild(el('p', null, item.why));
+    c.appendChild(el('span', 'fwx-lab', 'Evidence it leaves')); c.appendChild(el('p', null, ev));
+    c.appendChild(el('span', 'fwx-lab', 'The auditor asks')); c.appendChild(el('p', 'aud', item.q));
+    return c;
+  }
+  var GL = [[/Checking rules v[\d.]+/i, 'Checking rules: the fixed logic that checked this.'],
+    [/AI model v[\d.]+/, 'AI model: the AI system used.'],
+    [/AI instruction v[\d.]+/, 'AI instruction: the written brief given to the AI.'],
+    [/AI confidence (?:[\d.]+ out of 1|low)/, 'AI confidence: how sure it is, from 0 to 1. Low scores become exceptions.'],
+    [/EX-\d+/, 'EX number: the exception\u2019s reference, tracked until someone resolves it.']];
+  // Footnotes follow the table on screen: numbered 1, 2, 3 in order of first appearance, listed at the foot of the record.
+  function recBox(head, rows){
+    var box = el('div', 'fwx-rec'); box.appendChild(el('div', 'hd', head));
+    box.appendChild(el('div', 'sub', 'Logged automatically at each step. Each line is audit evidence.'));
+    var num = {}, order = [];
+    function hitsOf(t){
+      var h = [];
+      GL.forEach(function(g, gi){ var m = g[0].exec(t); if (m) h.push({ end: m.index + m[0].length, gi: gi }); });
+      return h.sort(function(x, y){ return x.end - y.end; });
+    }
+    rows.forEach(function(r){ if (r.gap) return; hitsOf(r.t).forEach(function(h){ if (num[h.gi] == null) { order.push(h.gi); num[h.gi] = order.length; } }); });
+    var ul = el('ul');
+    rows.forEach(function(r){
+      var li = el('li', r.gap ? 'gap' : ''); li.appendChild(el('b', null, r.h));
+      if (r.gap) { li.appendChild(document.createTextNode(r.t)); }
+      else {
+        var pos = 0; hitsOf(r.t).forEach(function(h){
+          li.appendChild(document.createTextNode(r.t.slice(pos, h.end))); pos = h.end;
+          li.appendChild(el('sup', 'fn', String(num[h.gi]))); });
+        li.appendChild(document.createTextNode(r.t.slice(pos)));
+      }
+      ul.appendChild(li); });
+    box.appendChild(ul);
+    if (order.length) {
+      var fn = el('div', 'fwx-refs'); fn.appendChild(el('b', null, 'Notes'));
+      var versioned = false;
+      order.forEach(function(gi){
+        var line = el('span', 'fnl'); line.appendChild(el('b', null, num[gi] + ' '));
+        var txt = GL[gi][1];
+        if (!versioned && gi < 3) { txt += ' The v number is the version, so an auditor can see exactly which one ran.'; versioned = true; }
+        line.appendChild(document.createTextNode(txt)); fn.appendChild(line); });
+      box.appendChild(fn);
+    }
+    return box;
+  }
+
+  function summary(){
+    var n = gaps.filter(function(g){ return !g; }).length;
+    var box = el('div', 'fwx-sum');
+    box.appendChild(el('div', 'hd', 'Would this trail stand up to an auditor?'));
+    box.appendChild(el('div', 'big', n + ' of 5 steps evidenced'));
+    if (n === 5) {
+      box.appendChild(el('p', 'why', 'An auditor can follow this transaction from source to ledger, and re-perform it. Now switch off a control at any step and see what the trail loses.'));
+    } else {
+      box.appendChild(el('p', 'why', 'Questions an auditor would ask that this trail can no longer answer:'));
+      var ul = el('ul');
+      gaps.forEach(function(g, i){ if (!g) return; var li = el('li'); li.appendChild(el('b', null, steps[i].name)); li.appendChild(el('span', null, steps[i].q)); ul.appendChild(li); });
+      box.appendChild(ul);
+    }
+    var nxt = SC[(si + 1) % SC.length];
+    var again = el('button', 'fwx-btn alt', 'Try another scenario: ' + nxt.label + ' \u2192'); again.type = 'button';
+    again.addEventListener('click', function(){ si = (si + 1) % SC.length; w = 0; resetGaps(); render(true); nudge(scnBox, true); });
+    box.appendChild(again);
+    var p = el('p', 'invite'); p.appendChild(document.createTextNode('Want this tested against your own process? '));
+    var a2 = el('a', null, 'Get in touch'); a2.href = a.href; p.appendChild(a2); p.appendChild(document.createTextNode('.'));
+    box.appendChild(p);
+    return box;
+  }
+
+  var ticking = false, raf = window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(f){ return setTimeout(f, 16); };
+  function updateStuck(){
+    var sn = document.querySelector('.secnav'), top0 = sn ? sn.offsetHeight : 0;
+    host.style.setProperty('--fwx-top', top0 + 'px');
+    var dk = dock(), other = dk === stepRow ? foundRow : stepRow;
+    other.classList.remove('stuck');
+    if (dk.hidden) { dk.classList.remove('stuck'); return; }
+    host.style.setProperty('--fwx-dock-h', dk.offsetHeight + 'px');
+    dk.classList.toggle('stuck', dk.getBoundingClientRect().top <= top0 + 1);
+  }
+  function onScroll(){ if (ticking) return; ticking = true; raf(function(){ ticking = false; updateStuck(); }); }
+  window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll);
+
+  var FEX = {
+    Govern: ['Payment agent PA-02 has a register entry: owner, the Head of Treasury Operations; risk tier, high because it moves cash; use, proposing supplier payments; limit, it cannot approve them. The register is reviewed every quarter.',
+             'A team starts using an AI tool to draft bank letters. Nobody owns it and it is not in the register, so no one tests it and no auditor ever hears about it.'],
+    Access: ['PA-02 has its own login. It can create payment proposals but cannot release payments or edit supplier bank details. Its rights were granted by the system owner and are reviewed every quarter.',
+             'The agent shares a login with an AP clerk who can also edit bank details. One manipulated instruction can change an account and pay it.'],
+    Change: ['The freight tolerance is raised from USD 50 to USD 75. One person writes the change, a second approves it after testing it on last month\u2019s invoices, and the trail now reads \u201cchecking rules v3.3\u201d. Version 3.2 is kept.',
+             'Someone edits the AI instruction to \u201cignore small variances\u201d. Matching quietly loosens, and nobody can say when or why the exceptions fell.'],
+    Monitor: ['A weekly view shows invoices processed, exceptions raised, approver overrides and items open over 30 days. Overrides jump from 2% to 9% in a month, so the controller investigates. A stop switch pauses the agent if limits are breached.',
+              'Exceptions pile up, approvers click through, and the agent drifts. The first sign is a loss or an audit finding, months later.']
+  };
+  function render(animate){
+    var walk = mode === 'walk', isFound = mode === 'found', S = SC[si];
+    host.classList.toggle('walk', walk);
+    bSteps.setAttribute('aria-pressed', String(mode === 'steps')); bFound.setAttribute('aria-pressed', String(isFound)); bWalk.setAttribute('aria-pressed', String(walk));
+    capSteps.hidden = stepRow.hidden = isFound;
+    pick.hidden = pickH.hidden = scnBox.hidden = nav.hidden = !walk;
+    snav.hidden = mode === 'walk';
+    if (mode === 'steps') snext.textContent = sel < 4 ? 'Next: ' + steps[sel + 1].name + ' \u2192' : 'Walk through an example transaction \u2192';
+    else if (isFound) snext.textContent = fsel < found.length - 1 ? 'Next: ' + found[fsel + 1].name + ' \u2192' : 'Walk through an example transaction \u2192';
+    hint.textContent = '';
+    if (walk) { hint.appendChild(el('b', null, 'How this works. ')); hint.appendChild(document.createTextNode('Choose a scenario, then press Next step to watch the five controls build an audit trail. At any step, use the switch to remove that step\u2019s control and see what breaks. Step 5 shows whether the trail would stand up to an auditor.')); }
+    else if (isFound) { hint.appendChild(el('b', null, 'How this works. ')); hint.appendChild(document.createTextNode('Four foundations sit around the whole system, behind every step. Tap one to see what it covers, the evidence it leaves, and the question an auditor would ask.')); }
+    else { hint.appendChild(el('b', null, 'How this works. ')); hint.appendChild(document.createTextNode('Tap any step to see what it does, the evidence it leaves, and the question an auditor would ask. To watch the five controls work on a real-looking transaction, choose Walkthrough.')); }
+    capSteps.textContent = walk ? 'Walkthrough \u00b7 ' + S.label + ' \u00b7 step ' + (w + 1) + ' of 5' : 'For every transaction \u00b7 the control trail';
+    pickBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', String(i === si)); });
+    stepBtns.forEach(function(b, i){
+      var on = walk ? i === w : i === sel;
+      b.setAttribute('aria-pressed', String(on));
+      b.classList.toggle('done', walk && i < w && !gaps[i]);
+      b.classList.toggle('bad', walk && gaps[i]);
+      b.classList.toggle('next', walk && w < 4 && i === w + 1);
+    });
+    foundRow.hidden = !isFound;
+    foundBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', String(isFound && i === fsel)); });
+    cta.hidden = walk && w === 4;
+    panel.textContent = '';
+    panel.classList.toggle('anim', animate !== false);
+    if (!walk) {
+      if (!isFound) {
+        panel.appendChild(card(steps[sel], 'Step ' + (sel + 1) + ' of 5, every transaction', evidence[steps[sel].name]));
+        panel.appendChild(recBox('Example of what the trail records: ' + SC[si].label, [{ h: steps[sel].name + ' · ' + SC[si].t[sel], t: SC[si].rec[sel] }]));
+      } else {
+        panel.appendChild(card(found[fsel], 'COSO: ' + found[fsel].tag, evidence[found[fsel].name]));
+        var fx = FEX[found[fsel].name], r = el('div', 'fwx-rec');
+        r.appendChild(el('div', 'hd', 'Example: ' + found[fsel].name));
+        r.appendChild(el('div', 'sub', 'Illustrative. Names and figures are invented.'));
+        var fu = el('ul');
+        [['In practice', fx[0], ''], ['If it is missing', fx[1], 'gap']].forEach(function(x){
+          var li = el('li', x[2]); li.appendChild(el('b', null, x[0])); li.appendChild(document.createTextNode(x[1])); fu.appendChild(li); });
+        r.appendChild(fu);
+        panel.appendChild(r);
+      }
+    } else {
+      scnBox.textContent = ''; scnBox.appendChild(el('span', 'k', 'Illustrative scenario')); scnBox.appendChild(document.createTextNode(S.intro));
+      var rows = [];
+      for (var i = 0; i <= w; i++) {
+        rows.push(gaps[i] ? { gap: true, h: steps[i].name + ' · no record', t: S.gap[i] } : { h: steps[i].name + ' · ' + S.t[i], t: S.rec[i] });
+      }
+      var c = card(steps[w], 'Step ' + (w + 1) + ' of 5, ' + S.label.toLowerCase(), evidence[steps[w].name], true);
+      if (gaps[w]) { var m = el('div', 'fwx-miss'); m.appendChild(el('b', null, 'What goes wrong without ' + steps[w].name)); m.appendChild(document.createTextNode(S.miss[w])); c.appendChild(m); }
+      panel.appendChild(c); panel.appendChild(recBox(S.head, rows));
+      if (w === 4) { panel.appendChild(summary()); }
+      back.disabled = w === 0; next.textContent = w === 4 ? 'Start again' : 'Next step';
+      prog.textContent = 'Step ' + (w + 1) + ' of 5';
+      sw.setAttribute('aria-checked', String(gaps[w])); swl.textContent = gaps[w] ? steps[w].name + ' control removed. Restore it' : 'Remove the ' + steps[w].name + ' control';
+    }
+    updateStuck();
+  }
+
+  bSteps.addEventListener('click', function(){ mode = 'steps'; render(true); });
+  bFound.addEventListener('click', function(){ mode = 'found'; render(true); });
+  bWalk.addEventListener('click', function(){ mode = 'walk'; render(true); });
+  sec.classList.add('fwx-on'); host.hidden = false;
+  render(false);
 })();
 </script>
 </body>
