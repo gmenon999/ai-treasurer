@@ -948,6 +948,10 @@
     .ag-mt li { flex: 1 1 0; min-width: 0; background: var(--ag-tile); padding: 9px 2px 8px; text-align: center; font-size: 12px; font-weight: 700; line-height: 1.2; }
     .ag-mt li small { display: block; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
     .ag-mt li.p { background: var(--gold-light); color: var(--navy-deep); }
+    .ag-mt li { padding: 0; }
+    .ag-mt a { display: flex; flex-direction: column; justify-content: center; min-height: 48px; padding: 6px 2px; color: inherit; text-decoration: none; }
+    .ag-mt a:focus-visible { outline: 2px solid var(--white); outline-offset: -2px; }
+    .ag-mt li.p a { color: var(--navy-deep); }
     .ag-acts { flex-wrap: nowrap; gap: 8px; margin-top: 16px; }
     .ag-btn { width: auto; flex: 1 1 0; min-height: 44px; padding: 0 8px; font-size: 14px; text-align: center; }
     .ag-art { opacity: 0.25; }
@@ -1029,6 +1033,9 @@
   .ag-src a { color: var(--gold-light); }
   @media (max-width: 960px) { .ag-gl4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 700px) { .ag-gl4 { grid-template-columns: minmax(0, 1fr); } .ag-h4 { margin-top: 12px; } .ag-start { font-size: 14.5px; padding: 10px 12px; } }
+
+  .ag-ex tr[id] { scroll-margin-top: 120px; }
+  .ag-ex tr:target > * { box-shadow: inset 0 0 0 2px var(--gold-light); }
 
   /* ---------- Credentials: full-bleed blue band ---------- */
   .creds { background: var(--blue); color: var(--white); padding: 80px 0 72px; }
@@ -1581,7 +1588,7 @@
         <div class="ag-eye">Agentic Automation</div>
         <h2 id="ag-h">Treasury is getting faster. The controls have to keep up.</h2>
         <p class="ag-lede">Agents can capture, match and draft quickly. People still approve, release and post. Here is where each belongs, across 108 functions in 18 areas.</p>
-        <ol class="ag-mt" aria-label="The five steps: Capture, Match, Flag, Approve by a person, Post"><li>Capture</li><li>Match</li><li>Flag</li><li class="p">Approve<small>Person</small></li><li>Post</li></ol>
+        <ol class="ag-mt" aria-label="The five steps. Each links to the worked example below."><li><a href="#ag-ex-1">Capture</a></li><li><a href="#ag-ex-2">Match</a></li><li><a href="#ag-ex-3">Flag</a></li><li class="p"><a href="#ag-ex-4">Approve<small>Person</small></a></li><li><a href="#ag-ex-5">Post</a></li></ol>
         <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ag-map">Explore the map</a><a class="ag-btn ag-btn-o" href="#ag-pack">Ask for a detailed pack</a></div>
       </div>
     </div>
@@ -1591,7 +1598,7 @@
         <summary><h3 class="ag-h3">See it work: a fake &ldquo;we have changed bank&rdquo; email stops at a phone call</h3></summary>
         <p class="ag-p">The request: &ldquo;Please update our bank details.&rdquo; The agent checks it. People make the call and approve the change.</p>
         
-        <table class="ag-ex"><caption class="ag-sr">Supplier bank-detail change, step by step</caption><thead><tr><th scope="col">Step</th><th scope="col">Who</th><th scope="col">What happens</th><th scope="col">What the auditor sees</th></tr></thead><tbody><tr class=""><th scope="row" data-l="Step">Capture</th><td data-l="Who">Agent</td><td data-l="What happens">Logs the request, its source and the new details. Changes nothing.</td><td data-l="What the auditor sees">The request and where it came from.</td></tr><tr class=""><th scope="row" data-l="Step">Match</th><td data-l="Who">Agent</td><td data-l="What happens">Compares the new details with those on file and validates the account where the bank offers that.</td><td data-l="What the auditor sees">The comparison result.</td></tr><tr class=""><th scope="row" data-l="Step">Flag</th><td data-l="Who">Agent</td><td data-l="What happens">Marks the request high risk and opens a call-back to the number already on file, never the one in the request.</td><td data-l="What the auditor sees">The call-back task and the number used.</td></tr><tr class="ag-person"><th scope="row" data-l="Step">Approve</th><td data-l="Who">Person</td><td data-l="What happens">One person makes the call-back and records it. A second person approves the change.</td><td data-l="What the auditor sees">Both records, with names and times.</td></tr><tr class="ag-person"><th scope="row" data-l="Step">Post</th><td data-l="Who">Person</td><td data-l="What happens">A person with edit rights applies the change only after both records exist.</td><td data-l="What the auditor sees">Before and after master data, and a report of payments to changed accounts.</td></tr></tbody></table>
+        <table class="ag-ex"><caption class="ag-sr">Supplier bank-detail change, step by step</caption><thead><tr><th scope="col">Step</th><th scope="col">Who</th><th scope="col">What happens</th><th scope="col">What the auditor sees</th></tr></thead><tbody><tr id="ag-ex-1" class=""><th scope="row" data-l="Step">Capture</th><td data-l="Who">Agent</td><td data-l="What happens">Logs the request, its source and the new details. Changes nothing.</td><td data-l="What the auditor sees">The request and where it came from.</td></tr><tr id="ag-ex-2" class=""><th scope="row" data-l="Step">Match</th><td data-l="Who">Agent</td><td data-l="What happens">Compares the new details with those on file and validates the account where the bank offers that.</td><td data-l="What the auditor sees">The comparison result.</td></tr><tr id="ag-ex-3" class=""><th scope="row" data-l="Step">Flag</th><td data-l="Who">Agent</td><td data-l="What happens">Marks the request high risk and opens a call-back to the number already on file, never the one in the request.</td><td data-l="What the auditor sees">The call-back task and the number used.</td></tr><tr id="ag-ex-4" class="ag-person"><th scope="row" data-l="Step">Approve</th><td data-l="Who">Person</td><td data-l="What happens">One person makes the call-back and records it. A second person approves the change.</td><td data-l="What the auditor sees">Both records, with names and times.</td></tr><tr id="ag-ex-5" class="ag-person"><th scope="row" data-l="Step">Post</th><td data-l="Who">Person</td><td data-l="What happens">A person with edit rights applies the change only after both records exist.</td><td data-l="What the auditor sees">Before and after master data, and a report of payments to changed accounts.</td></tr></tbody></table>
         <p class="ag-src">Source: The AI Treasurer Accounts payable pack, draft.</p>
       </details>
 
