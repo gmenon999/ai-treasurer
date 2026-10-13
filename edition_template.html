@@ -790,13 +790,19 @@
   .ag-hero-in { position: relative; max-width: 1088px; margin: 0 auto; padding-top: 84px; padding-bottom: 64px; }
   .ag-eye, .ag-k { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
   .ag-k { font-size: 12px; margin-bottom: 10px; }
-  .ag-hero h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; letter-spacing: -0.015em; margin: 12px 0 16px; max-width: 20ch; color: var(--white); }
+  .ag-hero h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; letter-spacing: -0.015em; margin: 12px 0 16px; max-width: 24ch; color: var(--white); }
   .ag-lede { font-size: 19px; line-height: 1.55; color: var(--on-dark); max-width: 52ch; margin: 0; }
   .ag-kpi { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; max-width: 860px; border-top: 2px solid var(--gold-light); }
   .ag-kpi li { padding: 16px 24px 0 0; }
   .ag-kpi li + li { padding-left: 24px; border-left: 1px solid var(--ag-line); }
   .ag-kpi b { display: block; font-family: var(--serif); font-weight: 700; font-size: 44px; line-height: 1; color: var(--white); }
   .ag-kpi span { display: block; margin-top: 8px; font-size: 15px; line-height: 1.4; color: var(--on-dark); }
+  .ag-areas { margin: 26px 0 0; max-width: 980px; display: grid; gap: 10px; }
+  .ag-ag { display: grid; grid-template-columns: 110px 1fr; gap: 10px; align-items: start; }
+  .ag-agl { padding-top: 7px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .ag-agc { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ag-ach { display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; font-size: 14px; font-weight: 600; color: var(--white); background: var(--ag-tile); text-decoration: none; transition: background .2s; }
+  .ag-ach:hover { background: var(--gold-light); color: var(--navy-deep); }
   .ag-acts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
   .ag-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; font: 600 15px/1.2 var(--sans); text-decoration: none; border: 0; cursor: pointer; }
   .ag-btn-g { background: var(--gold-light); color: var(--navy-deep); }
@@ -986,8 +992,13 @@
     .ag-hero-in { padding-top: 26px; padding-bottom: 22px; }
     .ag-art { width: 100%; opacity: 0.22; -webkit-mask-image: none; mask-image: none; }
     .ag-eye { font-size: 11px; }
-    .ag-hero h2 { font-size: 28px; line-height: 1.12; margin: 8px 0 10px; }
+    .ag-hero h2 { font-size: 26px; line-height: 1.14; margin: 8px 0 10px; max-width: none; }
     .ag-lede { font-size: 16px; line-height: 1.5; }
+    .ag-areas { margin-top: 16px; gap: 8px; }
+    .ag-ag { grid-template-columns: minmax(0, 1fr); gap: 5px; }
+    .ag-agl { padding-top: 0; font-size: 10.5px; }
+    .ag-agc { gap: 4px; }
+    .ag-ach { min-height: 32px; padding: 0 9px; font-size: 13px; }
     .ag-kpi { margin-top: 18px; }
     .ag-kpi li { padding: 10px 8px 0 0; }
     .ag-kpi li + li { padding-left: 10px; }
@@ -1610,8 +1621,9 @@
 </svg>
       <div class="wrap ag-hero-in">
         <div class="ag-eye">Agentic Automation</div>
-        <h2 id="ag-h">Treasury is getting faster. The controls have to keep up.</h2>
-        <p class="ag-lede">Agents capture, match and draft. People approve, release and post. This map shows where each belongs.</p>
+        <h2 id="ag-h">Treasury and Finance are getting faster. The controls have to keep up.</h2>
+        <p class="ag-lede">Agents capture, match and draft. People approve, release and post. Here is where each belongs, area by area. Tap one to see it.</p>
+        <nav class="ag-areas" aria-label="All 18 areas"><div class="ag-ag"><span class="ag-agl">Treasury</span><div class="ag-agc"><a class="ag-ach" href="#ag-p-cash-and-liquidity" data-p="ag-p-cash-and-liquidity">Cash and liquidity</a><a class="ag-ach" href="#ag-p-investments" data-p="ag-p-investments">Investments</a><a class="ag-ach" href="#ag-p-bank-management" data-p="ag-p-bank-management">Bank management</a><a class="ag-ach" href="#ag-p-risk-fx-rates-and-commodities" data-p="ag-p-risk-fx-rates-and-commodities">FX, rates, commodities</a><a class="ag-ach" href="#ag-p-credit-risk" data-p="ag-p-credit-risk">Credit risk</a><a class="ag-ach" href="#ag-p-insurance" data-p="ag-p-insurance">Insurance</a><a class="ag-ach" href="#ag-p-debt-and-funding" data-p="ag-p-debt-and-funding">Debt and funding</a></div></div><div class="ag-ag"><span class="ag-agl">Finance</span><div class="ag-agc"><a class="ag-ach" href="#ag-p-general-ledger-accounting" data-p="ag-p-general-ledger-accounting">General ledger</a><a class="ag-ach" href="#ag-p-accounts-payable-ap" data-p="ag-p-accounts-payable-ap">AP</a><a class="ag-ach" href="#ag-p-accounts-receivable-ar" data-p="ag-p-accounts-receivable-ar">AR</a><a class="ag-ach" href="#ag-p-financial-reporting" data-p="ag-p-financial-reporting">Financial reporting</a><a class="ag-ach" href="#ag-p-taxation" data-p="ag-p-taxation">Taxation</a><a class="ag-ach" href="#ag-p-planning-and-analysis" data-p="ag-p-planning-and-analysis">Planning and analysis</a><a class="ag-ach" href="#ag-p-procurement" data-p="ag-p-procurement">Procurement</a><a class="ag-ach" href="#ag-p-inventory" data-p="ag-p-inventory">Inventory</a><a class="ag-ach" href="#ag-p-sales-and-marketing" data-p="ag-p-sales-and-marketing">Sales and Marketing</a><a class="ag-ach" href="#ag-p-payroll-accounting" data-p="ag-p-payroll-accounting">Payroll</a></div></div><div class="ag-ag"><span class="ag-agl">Across both</span><div class="ag-agc"><a class="ag-ach" href="#ag-p-governance" data-p="ag-p-governance">Governance of agents</a></div></div></nav>
         <ul class="ag-kpi"><li><b>108</b><span>functions mapped across 18 areas of Treasury and Finance</span></li><li><b>71</b><span>stop at Level 1: the agent drafts, a person approves</span></li><li><b>0</b><span>are left to an agent alone. Nothing sits at Level 3</span></li></ul>
         <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ag-map">Find your area</a><a class="ag-btn ag-btn-o" href="#ag-pack">Get the detailed pack</a></div>
       </div>
@@ -1771,6 +1783,7 @@
     if (lastCard) lastCard.focus({ preventScroll: true });
   }
   cards.forEach(function (c) { c.addEventListener('click', function (ev) { ev.preventDefault(); open(c.getAttribute('data-p'), c); }); });
+  root.querySelectorAll('.ag-ach').forEach(function (c) { c.addEventListener('click', function (ev) { ev.preventDefault(); open(c.getAttribute('data-p'), c); }); });
   root.querySelectorAll('.ag-x').forEach(function (b) { b.addEventListener('click', close); });
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') close(); });
   wrap.addEventListener('keydown', function (ev) {
