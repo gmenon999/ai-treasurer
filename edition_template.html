@@ -1285,6 +1285,43 @@
     .work { padding: 64px 0 72px; }
     .work-media { padding: 20px 20px 0 0; }
   }
+  /* Home benefits band, Get in Touch band, AI Controls adopt parts */
+  .benefits { background: var(--navy); color: var(--white); padding: 40px 0 44px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .benefits ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+  .benefits li { border-top: 3px solid var(--gold); padding-top: 14px; }
+  .benefits b { display: block; font-family: var(--serif); font-size: 22px; line-height: 1.2; }
+  .benefits span { display: block; margin-top: 8px; font-size: 15.5px; line-height: 1.5; color: var(--on-dark); }
+  .touch-band { display: flex; align-items: stretch; margin-top: 24px; background: var(--navy-mid); color: var(--white); text-decoration: none; border-top: 3px solid var(--gold); }
+  .touch-band:hover .tb-t, .touch-band:focus-visible .tb-t { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+  .tb-img { position: relative; flex: 0 0 240px; min-height: 130px; overflow: hidden; background: var(--navy-deep); }
+  .tb-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tb-copy { display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 22px 28px; }
+  .tb-copy .kicker { color: var(--gold-light); }
+  .tb-t { font-family: var(--serif); font-size: clamp(20px, 2vw, 26px); line-height: 1.2; font-weight: 700; }
+  .tb-d { font-size: 15.5px; line-height: 1.5; color: var(--on-dark); max-width: 62ch; }
+  .ctl { position: relative; background: var(--navy); color: var(--white); padding: 0 0 72px; --ag-line: rgba(255,255,255,0.18); }
+  .ctl-blk { max-width: 1040px; margin: 0 auto; padding-top: 56px; scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  .ctl-blk:first-child { border-top: 1px solid var(--ag-line); }
+  .ctl-blk + .ctl-blk { margin-top: 56px; border-top: 1px solid var(--ag-line); }
+  .ctl-p { margin: 0 0 14px; max-width: 70ch; font-size: 17px; line-height: 1.55; color: var(--on-dark); }
+  .ctl-p b { color: var(--white); }
+  #ctl-adopt { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  @media (max-width: 1020px) {
+    .benefits ul { grid-template-columns: 1fr 1fr; }
+    .tile-fw { grid-row: auto; grid-column: 1 / -1; min-height: 340px; }
+  }
+  @media (max-width: 700px) {
+    .benefits { padding: 28px 0 32px; }
+    .benefits ul { grid-template-columns: 1fr; gap: 18px; }
+    .benefits b { font-size: 20px; }
+    .benefits span { font-size: 15px; margin-top: 4px; }
+    .tb-img { display: none; }
+    .tb-copy { padding: 18px 18px 20px; }
+    .ctl { padding-bottom: 48px; }
+    .ctl-blk { padding-top: 32px; }
+    .ctl-blk + .ctl-blk { margin-top: 32px; }
+    .ctl-p { font-size: 15.5px; }
+  }
 </style>
 </head>
 <body>
@@ -1302,10 +1339,10 @@
 <nav class="secnav" aria-label="Sections">
   <div class="wrap">
     <a href="#top" aria-current="true">Home</a>
+    <a href="#agentic">Agentic Automation</a>
+    <a href="#controls">AI Controls</a>
     <a href="#briefing">Treasury Today</a>
     <a href="#markets">Markets</a>
-    <a href="#controls">AI Controls</a>
-    <a href="#agentic">Agentic Automation</a>
     <a href="#work">Get in Touch</a>
   </div>
   <button type="button" class="secnav-arrow prev" aria-label="Show earlier menu items"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
@@ -1322,12 +1359,24 @@
     <div class="intro-glow" aria-hidden="true"><span></span></div>
     <div class="wrap">
       <div class="kicker">AI &middot; Treasury &middot; Finance</div>
-      <h1 id="front-h">AI in Treasury and Finance: faster decisions, firmer controls, a cleaner audit.</h1>
-      <p class="lede">Practitioner perspectives for CFOs and Treasury leaders on putting AI to work across the function, from cash and liquidity to close, controls and reporting, with every automated step approved, evidenced and easy to trace.</p>
+      <h1 id="front-h">Embrace AI. Stay in control.</h1>
+      <p class="lede">AI automation for Treasury and Finance. Agents do the work, people make the decisions, and every step is traceable.</p>
       <div class="actions">
-        <a class="go" href="#briefing"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>Read today&rsquo;s briefing</a>
-        <a class="alt" href="#work">Let&rsquo;s talk Treasury and AI<span class="chev" aria-hidden="true"></span></a>
+        <a class="go" href="#agentic"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>See how it works</a>
+        <a class="alt" href="#work">Get in touch<span class="chev" aria-hidden="true"></span></a>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== BENEFITS ===== -->
+  <section class="benefits" data-view="top" aria-label="What AI automation gives a Treasury team">
+    <div class="wrap">
+      <ul>
+        <li><b>Time back</b><span>Agents handle the matching, checking and drafting.</span></li>
+        <li><b>Fewer surprises</b><span>Exceptions are flagged and aged, never quietly cleared.</span></li>
+        <li><b>A cleaner audit</b><span>Every step leaves a record from source to ledger.</span></li>
+        <li><b>People stay in charge</b><span>Nothing moves money, posts an entry or changes master data without a named person approving it.</span></li>
+      </ul>
     </div>
   </section>
 
@@ -1336,13 +1385,13 @@
     <div class="wrap">
 
       <div class="tiles">
-        <!-- Tall tile: the signature framework (photo) -->
-        <a class="tile tile-tall tile-card" href="#framework">
-          <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="eager" style="object-position: 50% 45%;"></div>
+        <!-- Tall tile: agentic automation (photo) -->
+        <a class="tile tile-tall tile-card" href="#agentic">
+          <div class="media"><img src="/img/ait-article-agents.jpg" alt="Glass cubes joined by thin lines on a black background, like a network" loading="eager" style="object-position: 50% 50%;"></div>
           <div class="body">
-          <div class="kicker">AI Controls</div>
-          <h2><span class="hl">Capture &rarr; Match &rarr; Flag &rarr; Approve &rarr;</span> <span class="nw"><span class="hl">Post</span><span class="chev" aria-hidden="true"></span></span></h2>
-          <p>The five-step control trail I apply to any AI or automation in Treasury and Finance.</p>
+          <div class="kicker">Agentic Automation</div>
+          <h2><span class="hl">18 agents a Finance team could use. Each one reports to a person.</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
+          <p>A proposed map of 108 functions across 18 areas of Treasury and Finance, and how far an agent goes in each.</p>
           </div>
         </a>
 
@@ -1355,16 +1404,21 @@
           <span class="arrow-link">Read today's briefing</span>
         </a>
 
-        <!-- Tall tile: get in touch (photo) -->
-        <a class="tile tile-tall tile-card tile-touch" href="#work">
-          <div class="media"><img src="/img/ait-touch-abstract.jpg" alt="Abstract blue glass form on a dark navy background" loading="eager" style="object-position: 50% 50%;"></div>
+        <!-- Tall tile: the signature framework (photo) -->
+        <a class="tile tile-tall tile-card tile-fw" href="#framework">
+          <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="eager" style="object-position: 50% 45%;"></div>
           <div class="body">
-          <div class="kicker">Get in Touch</div>
-          <h2><span class="hl">How is your Treasury team bringing in AI?</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
-          <p>I would like to hear how Treasury professionals around the world are handling automation and controls.</p>
+          <div class="kicker">AI Controls</div>
+          <h2><span class="hl">Capture &rarr; Match &rarr; Flag &rarr; Approve &rarr;</span> <span class="nw"><span class="hl">Post</span><span class="chev" aria-hidden="true"></span></span></h2>
+          <p>The five-step control trail I apply to any AI or automation in Treasury and Finance.</p>
           </div>
         </a>
       </div>
+
+      <a class="touch-band" href="#work">
+        <span class="tb-img"><img src="/img/ait-touch-abstract.jpg" alt="Abstract blue glass form on a dark navy background" loading="lazy" style="object-position: 50% 50%;"></span>
+        <span class="tb-copy"><span class="kicker">Get in Touch</span><span class="tb-t">How is your Treasury team bringing in AI?</span><span class="tb-d">I would like to hear how Treasury professionals around the world are handling automation and controls.</span></span>
+      </a>
 
       <div class="today" aria-label="Today at a glance">
         <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span></div>
@@ -1377,7 +1431,7 @@
   </section>
 
   <aside class="next-band" data-view="top" aria-label="Next section">
-    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Treasury Today</span><span class="nb-d">The stories that matter for Treasury and Finance today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#agentic"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Agentic Automation</span><span class="nb-d">Where AI agents fit in Treasury and Finance, and the control that keeps each one safe.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== BRIEFING ===== -->
@@ -1622,7 +1676,7 @@
 
 
   <aside class="next-band" data-view="markets" aria-label="Next section">
-    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">Five steps for every transaction, four foundations around the system.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#work"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Get in Touch</span><span class="nb-d">Share a view, a question or an experience.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== FRAMEWORK ===== -->
@@ -1660,8 +1714,33 @@
     </div>
   </section>
 
+  <section class="ctl reveal" id="ctl-adopt" data-view="controls" aria-labelledby="ctl-h">
+    <div class="wrap">
+      <div class="ctl-blk" id="ctl-before">
+        <div class="ag-k">Before you adopt agents</div>
+        <h3 class="ag-h3" id="ctl-h">Put three foundations in place, then run five checks</h3>
+        <p class="ctl-p">Govern, Access and Change come first: a register with an owner for every agent, its own identity with only the rights it needs, and change control over its instructions and models. Monitor, the fourth foundation, takes over once agents are running.</p>
+        <p class="ctl-p"><b>Choose a level for each function.</b> Level 0: a person does it. Level 1: the agent drafts and a person approves. Level 2: the agent runs and a person handles the exceptions, never the final money step. Anything that moves money, posts an entry or changes master data stays at Level 1 or below. The Agentic Automation tab shows the proposed level for each of the 108 functions.</p>
+        <ol class="ag-gl ag-glw"><li><span class="ag-gn">1</span><p>Run the agent in draft-only mode on past cases and compare its drafts with what people decided.</p></li><li><span class="ag-gn">2</span><p>Treat the text of documents and emails as data, never as instructions. Test with planted instructions.</p></li><li><span class="ag-gn">3</span><p>Give the agent its own identity, the narrowest access that works, and no sensitive data carried between tasks.</p></li><li><span class="ag-gn">4</span><p>Name an owner and a person who can switch it off by removing the agent’s access, not by asking it to stop.</p></li><li><span class="ag-gn">5</span><p>Test the failure case. If the agent is unavailable, work continues by the manual route. If it is unsure, it holds and never releases.</p></li></ol>
+      </div>
+      <div class="ctl-blk" id="ctl-after">
+        <div class="ag-k">After you adopt agents</div>
+        <h3 class="ag-h3">Run the trail on every transaction, and watch it</h3>
+        <p class="ctl-p">Every transaction follows the five steps above. Monitor tracks volumes, overrides, validation failures, exception ageing and drift, with a stop switch when limits are breached. Four more checks apply once an agent is running.</p>
+        <ol class="ag-gl ag-glw"><li><span class="ag-gn">6</span><p>Hand over to a person on a blocker, repeated failure or unclear case, and cap the retries.</p></li><li><span class="ag-gn">7</span><p>Watch accuracy and the override rate. A rate near zero deserves as much scrutiny as a high one. Sample approvals to check reviewers are not just clicking through.</p></li><li><span class="ag-gn">8</span><p>Treat a new model, prompt or tool version as a change: test it, approve it, record it.</p></li><li><span class="ag-gn">9</span><p>Keep a decision record: the inputs, the data sources, the model version and who approved.</p></li></ol>
+        <p class="ag-src">Source: The AI Treasurer, informed by Anthropic&rsquo;s published guidance on agents. Checks 6 to 9 and the wording of check 4 are the author&rsquo;s judgment.</p>
+      </div>
+      <div class="ctl-blk" id="ctl-widen">
+        <div class="ag-k">Widening an agent&rsquo;s role</div>
+        <h3 class="ag-h3">Earn the next level before you give it</h3>
+        <p class="ctl-p">A step moves from Level 1 to Level 2 only after it has run cleanly at Level 1. A person decides, and the reason is written down. Steps that move money, post an entry or change master data stay at Level 1.</p>
+        <p class="ag-src">The levels and this rule are the author&rsquo;s proposals, not taken from a standard. Nothing here is investment, legal or professional advice.</p>
+      </div>
+    </div>
+  </section>
+
   <aside class="next-band" data-view="controls" aria-label="Next section">
-    <div class="wrap"><a href="#agentic"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Agentic Automation</span><span class="nb-d">Where AI agents fit in Treasury and Finance, and the control that keeps each one safe.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Treasury Today</span><span class="nb-d">The stories that matter for Treasury and Finance today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== AGENTIC AUTOMATION ===== -->
@@ -1684,7 +1763,7 @@
     </div>
 
     <nav class="ag-jump" aria-label="On this page"><div class="wrap ag-jump-in">
-      <a href="#ag-how"><span>1</span>How it works</a><a href="#ag-map"><span>2</span>The agents</a><a href="#ag-before"><span>3</span>Before go-live</a><a href="#ag-after"><span>4</span>After go-live</a><a href="#ag-pack"><span>5</span>Full playbook</a>
+      <a href="#ag-how"><span>1</span>How it works</a><a href="#ag-map"><span>2</span>The agents</a><a href="#ag-golive"><span>3</span>Go-live checks</a><a href="#ag-pack"><span>4</span>Full playbook</a>
     </div></nav>
 
     <div class="wrap">
@@ -1732,17 +1811,11 @@
         <p class="ag-src">Source: The AI Treasurer function map, October 2026. Illustrative and not exhaustive. The workflow or agent split follows Anthropic&rsquo;s <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a> and <a href="https://claude.com/blog/building-ai-agents-in-financial-services" target="_blank" rel="noopener">financial services guide</a>.</p>
       </div>
 
-      <div class="ag-blk ag-golive" id="ag-before">
-        <div class="ag-k">3 &middot; Before go-live</div>
-        <h3 class="ag-h3">Five checks before any agent touches live work</h3>
-        <ol class="ag-gl ag-glw"><li><span class="ag-gn">1</span><p>Run the agent in draft-only mode on past cases and compare its drafts with what people decided.</p></li><li><span class="ag-gn">2</span><p>Treat the text of documents and emails as data, never as instructions. Test with planted instructions.</p></li><li><span class="ag-gn">3</span><p>Give the agent its own identity, the narrowest access that works, and no sensitive data carried between tasks.</p></li><li><span class="ag-gn">4</span><p>Name an owner and a person who can switch it off by removing the agent’s access, not by asking it to stop.</p></li><li><span class="ag-gn">5</span><p>Test the failure case. If the agent is unavailable, work continues by the manual route. If it is unsure, it holds and never releases.</p></li></ol>
-      </div>
-
-      <div class="ag-blk ag-golive" id="ag-after">
-        <div class="ag-k">4 &middot; After go-live</div>
-        <h3 class="ag-h3">Four checks once the agent is running</h3>
-        <ol class="ag-gl ag-glw"><li><span class="ag-gn">6</span><p>Hand over to a person on a blocker, repeated failure or unclear case, and cap the retries.</p></li><li><span class="ag-gn">7</span><p>Watch accuracy and the override rate. A rate near zero deserves as much scrutiny as a high one. Sample approvals to check reviewers are not just clicking through.</p></li><li><span class="ag-gn">8</span><p>Treat a new model, prompt or tool version as a change: test it, approve it, record it.</p></li><li><span class="ag-gn">9</span><p>Keep a decision record: the inputs, the data sources, the model version and who approved.</p></li></ol>
-        <p class="ag-src">Source: The AI Treasurer, informed by Anthropic&rsquo;s published guidance on agents. Checks 6 to 9 and the wording of check 4 are the author&rsquo;s judgment.</p>
+      <div class="ag-blk ag-golive" id="ag-golive">
+        <div class="ag-k">3 &middot; Go-live checks</div>
+        <h3 class="ag-h3">Nine checks before and after go-live are on AI Controls</h3>
+        <p class="ag-p">Five to run before any agent touches live work, and four once it is running. They apply to every agent on this page.</p>
+        <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ctl-adopt">See the checks</a></div>
         <details class="ag-fold ag-limits" open>
           <summary><h4 class="ag-h4">What this does not claim</h4></summary>
           <ul><li>It describes a control approach, not a specific system. No product is named or endorsed.</li><li>It is written for IFRS. US GAAP differs in places.</li><li>The autonomy levels are the author’s proposals, not taken from a standard.</li><li>Accounting standard references were checked against firm and professional-body summaries, not the standard texts.</li><li>Taxation, payroll and end-of-service lines are kept generic. They differ by country.</li><li>The workflow or agent tags and the starting points are the author’s proposals, informed by Anthropic’s published guidance on agents.</li></ul>
@@ -1754,7 +1827,7 @@
     <div class="ag-cta" id="ag-pack">
       <div class="wrap ag-cta-in">
         <div class="ag-cta-t">
-          <div class="ag-k">5 &middot; Full playbook</div>
+          <div class="ag-k">4 &middot; Full playbook</div>
           <h3>Get the full playbook for your area</h3>
           <p>You get it by email once you send the request. For each agent in your area you get the full job description: the five steps for every function, who does what, the guardrails, the evidence an auditor will want and the nine checks before and after go-live.</p>
           <p class="ag-cta-s">Prefer a conversation? Write to <a href="mailto:gmenon@theaitreasurer.com?subject=Agentic%20Automation">gmenon@theaitreasurer.com</a>.</p>
@@ -1910,7 +1983,7 @@
   </script>
 
   <aside class="next-band" data-view="agentic" aria-label="Next section">
-    <div class="wrap"><a href="#work"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Get in Touch</span><span class="nb-d">Share a view, a question or an experience.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">The control trail, and the checks before and after an agent goes live.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== CREDENTIALS (blue band) ===== -->
