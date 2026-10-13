@@ -527,6 +527,80 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-13",
+   "note_headline": "Finance is leaving more risk unhedged and handing more decisions to machines",
+   "note_opening": "Treasury and Finance are accepting more open exposure and more delegated judgement at the same time. Corporate hedge ratios fell from 57% to 46% in Treasury Management International's Q2 2026 survey, the lowest since tra",
+   "items": [
+    {
+     "headline": "FIS launches agentic AI suite for collections, liquidity and risk",
+     "urls": [
+      "https://www.renascence.io/news/104368/fis-launches-agentic-ai-suite-for-the-office-of-the-cfo"
+     ]
+    },
+    {
+     "headline": "Ripple Treasury guide splits TMS market into AI-native and bolt-on",
+     "urls": [
+      "https://treasury.ripple.com/posts/ai-treasury-management-system"
+     ]
+    },
+    {
+     "headline": "Deloitte sees agentic AI orchestrating receivables, payables and inventory together",
+     "urls": [
+      "https://deloitte.wsj.com/cfo/cash-not-growth-could-become-the-test-for-corporate-america-ffcb7d0b?eafs_enabled="
+     ]
+    },
+    {
+     "headline": "Swift defers November 2026 CBPR+ standards release by 12 months",
+     "urls": [
+      "https://www.bankofengland.co.uk/payments/rtgs-renewal-programme/iso-20022",
+      "https://www.ecb.europa.eu/paym/groups/shared/docs/324fa-2025-10-22-t2-cg-item-5.4-a-iso-20022-message-unfreeze-strategy-status-update.pdf"
+     ]
+    },
+    {
+     "headline": "COSO GenAI framework sets controls across eight AI capability types",
+     "urls": [
+      "https://auditoresinternos.es/wp-content/uploads/2026/02/Achieving-Effective-Internal-Control-Over-Generative-AI_COSO_compressed.pdf"
+     ]
+    },
+    {
+     "headline": "Corporate hedge ratios fall to 46%, lowest since tracking began",
+     "urls": [
+      "https://treasury-management.com/news/q2-survey-reveals-corporates-pull-back-on-hedging-as-rate-paths-diverge"
+     ]
+    },
+    {
+     "headline": "OCBC goes live with Ant International tokenised deposits via WhaleRTP",
+     "urls": [
+      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
+     ]
+    },
+    {
+     "headline": "Fed holds at 3.75–4.00% as 10-year yield closes at 5.22%",
+     "urls": [
+      "https://www.federalreserve.gov/releases/h15/"
+     ]
+    },
+    {
+     "headline": "OFAC Economic Outcast alert raises Iran sanctions risk for foreign banks",
+     "urls": [
+      "https://ofac.treasury.gov/faqs/updated"
+     ]
+    },
+    {
+     "headline": "ISSB to open 120-day consultation on nature-related disclosures",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
+     ]
+    },
+    {
+     "headline": "IASB seeks feedback on IFRS 9 hedge accounting post-implementation review",
+     "urls": [
+      "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/"
+     ]
+    }
+   ]
   }
  ]
 }

@@ -290,6 +290,74 @@
     "cost_usd": 0.2311
    },
    "edition_cost_usd": 0.9546
+  },
+  {
+   "date": "2026-10-13",
+   "items": [
+    {
+     "headline": "FIS launches agentic AI suite for collections, liquidity and risk",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Deloitte sees agentic AI orchestrating receivables, payables and inventory together",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "COSO GenAI framework sets controls across eight AI capability types",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Ripple Treasury guide splits TMS market into AI-native and bolt-on",
+     "status": "published",
+     "lens": "Cost & value"
+    },
+    {
+     "headline": "Swift defers November 2026 CBPR+ standards release by 12 months",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Corporate hedge ratios fall to 46%, lowest since tracking began",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OCBC goes live with Ant International tokenised deposits via WhaleRTP",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Fed holds at 3.75–4.00% as 10-year yield closes at 5.22%",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "OFAC Economic Outcast alert raises Iran sanctions risk for foreign banks",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB to open 120-day consultation on nature-related disclosures",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    },
+    {
+     "headline": "IASB seeks feedback on IFRS 9 hedge accounting post-implementation review",
+     "status": "dropped",
+     "lens": "Accounting & reporting",
+     "reasons": "The source text only says the IASB published the Request for Information on 28 September 2026, with comments open until 26 January 2027. It does not say the request covers hedge accounting that 'costs more than it returns' or IFRS 7 disclosures that 'add little'. Those details come only from the new"
+    }
+   ],
+   "cost_usd": 0.3646,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1289
+   },
+   "edition_cost_usd": 0.8829
   }
  ]
 }
