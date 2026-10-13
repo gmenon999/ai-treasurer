@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-13T02:36:24Z",
+ "generated_utc": "2026-10-13T10:34:40Z",
  "policy": [
   {
    "bank": "Fed",
@@ -103,9 +103,9 @@
   },
   {
    "name": "€STR",
-   "value": "2.437%",
+   "value": "2.439%",
    "change_bp": 0,
-   "asof": "2026-10-09",
+   "asof": "2026-10-12",
    "source_name": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",
    "id": "estr",
