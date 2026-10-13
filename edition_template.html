@@ -797,12 +797,12 @@
   .ag-kpi li + li { padding-left: 24px; border-left: 1px solid var(--ag-line); }
   .ag-kpi b { display: block; font-family: var(--serif); font-weight: 700; font-size: 44px; line-height: 1; color: var(--white); }
   .ag-kpi span { display: block; margin-top: 8px; font-size: 15px; line-height: 1.4; color: var(--on-dark); }
-  .ag-areas { margin: 26px 0 0; max-width: 980px; display: grid; gap: 10px; }
-  .ag-ag { display: grid; grid-template-columns: 110px 1fr; gap: 10px; align-items: start; }
-  .ag-agl { padding-top: 7px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
-  .ag-agc { display: flex; flex-wrap: wrap; gap: 6px; }
-  .ag-ach { display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; font-size: 14px; font-weight: 600; color: var(--white); background: var(--ag-tile); text-decoration: none; transition: background .2s; }
+  .ag-areas { list-style: none; margin: 26px 0 0; padding: 0; max-width: 1040px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+  .ag-ach { display: flex; flex-direction: column; justify-content: space-between; gap: 4px; height: 100%; min-height: 64px; padding: 10px 12px; background: var(--ag-tile); color: var(--white); text-decoration: none; border-top: 2px solid var(--gold-light); transition: background .2s; }
+  .ag-ach b { font-size: 14px; line-height: 1.25; font-weight: 700; }
+  .ag-ach span { font-size: 11.5px; font-weight: 600; color: var(--on-dark-soft); }
   .ag-ach:hover { background: var(--gold-light); color: var(--navy-deep); }
+  .ag-ach:hover span { color: var(--navy-deep); }
   .ag-acts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
   .ag-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; font: 600 15px/1.2 var(--sans); text-decoration: none; border: 0; cursor: pointer; }
   .ag-btn-g { background: var(--gold-light); color: var(--navy-deep); }
@@ -982,6 +982,7 @@
   @media (prefers-reduced-motion: reduce) { .js .ag-fade { opacity: 1; transform: none; transition: none; } .ag-card, .ag-step, .ag-pan { transition: none !important; animation: none !important; } }
 
   @media (max-width: 1040px) {
+    .ag-areas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .ag-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ag-leg { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 0; }
     .ag-leg li:nth-child(3) { padding-left: 0; border-left: 0; }
@@ -994,11 +995,10 @@
     .ag-eye { font-size: 11px; }
     .ag-hero h2 { font-size: 26px; line-height: 1.14; margin: 8px 0 10px; max-width: none; }
     .ag-lede { font-size: 16px; line-height: 1.5; }
-    .ag-areas { margin-top: 16px; gap: 8px; }
-    .ag-ag { grid-template-columns: minmax(0, 1fr); gap: 5px; }
-    .ag-agl { padding-top: 0; font-size: 10.5px; }
-    .ag-agc { gap: 4px; }
-    .ag-ach { min-height: 32px; padding: 0 9px; font-size: 13px; }
+    .ag-areas { margin-top: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+    .ag-ach { min-height: 38px; padding: 6px 10px; justify-content: center; border-top: 0; border-left: 2px solid var(--gold-light); }
+    .ag-ach b { font-size: 13.5px; line-height: 1.2; }
+    .ag-ach span { display: none; }
     .ag-kpi { margin-top: 18px; }
     .ag-kpi li { padding: 10px 8px 0 0; }
     .ag-kpi li + li { padding-left: 10px; }
@@ -1622,8 +1622,8 @@
       <div class="wrap ag-hero-in">
         <div class="ag-eye">Agentic Automation</div>
         <h2 id="ag-h">Treasury and Finance are getting faster. The controls have to keep up.</h2>
-        <p class="ag-lede">Agents capture, match and draft. People approve, release and post. Here is where each belongs, area by area. Tap one to see it.</p>
-        <nav class="ag-areas" aria-label="All 18 areas"><div class="ag-ag"><span class="ag-agl">Treasury</span><div class="ag-agc"><a class="ag-ach" href="#ag-p-cash-and-liquidity" data-p="ag-p-cash-and-liquidity">Cash and liquidity</a><a class="ag-ach" href="#ag-p-investments" data-p="ag-p-investments">Investments</a><a class="ag-ach" href="#ag-p-bank-management" data-p="ag-p-bank-management">Bank management</a><a class="ag-ach" href="#ag-p-risk-fx-rates-and-commodities" data-p="ag-p-risk-fx-rates-and-commodities">FX, rates, commodities</a><a class="ag-ach" href="#ag-p-credit-risk" data-p="ag-p-credit-risk">Credit risk</a><a class="ag-ach" href="#ag-p-insurance" data-p="ag-p-insurance">Insurance</a><a class="ag-ach" href="#ag-p-debt-and-funding" data-p="ag-p-debt-and-funding">Debt and funding</a></div></div><div class="ag-ag"><span class="ag-agl">Finance</span><div class="ag-agc"><a class="ag-ach" href="#ag-p-general-ledger-accounting" data-p="ag-p-general-ledger-accounting">General ledger</a><a class="ag-ach" href="#ag-p-accounts-payable-ap" data-p="ag-p-accounts-payable-ap">AP</a><a class="ag-ach" href="#ag-p-accounts-receivable-ar" data-p="ag-p-accounts-receivable-ar">AR</a><a class="ag-ach" href="#ag-p-financial-reporting" data-p="ag-p-financial-reporting">Financial reporting</a><a class="ag-ach" href="#ag-p-taxation" data-p="ag-p-taxation">Taxation</a><a class="ag-ach" href="#ag-p-planning-and-analysis" data-p="ag-p-planning-and-analysis">Planning and analysis</a><a class="ag-ach" href="#ag-p-procurement" data-p="ag-p-procurement">Procurement</a><a class="ag-ach" href="#ag-p-inventory" data-p="ag-p-inventory">Inventory</a><a class="ag-ach" href="#ag-p-sales-and-marketing" data-p="ag-p-sales-and-marketing">Sales and Marketing</a><a class="ag-ach" href="#ag-p-payroll-accounting" data-p="ag-p-payroll-accounting">Payroll</a></div></div><div class="ag-ag"><span class="ag-agl">Across both</span><div class="ag-agc"><a class="ag-ach" href="#ag-p-governance" data-p="ag-p-governance">Governance of agents</a></div></div></nav>
+        <p class="ag-lede">Agents capture, match and draft. People approve, release and post. Here is where each belongs, department by department. Tap one to see it.</p>
+        <ul class="ag-areas" aria-label="All 18 departments"><li><a class="ag-ach" href="#ag-p-cash-and-liquidity" data-p="ag-p-cash-and-liquidity"><b>Cash and liquidity</b><span>8 functions</span></a></li><li><a class="ag-ach" href="#ag-p-investments" data-p="ag-p-investments"><b>Investments</b><span>7 functions</span></a></li><li><a class="ag-ach" href="#ag-p-bank-management" data-p="ag-p-bank-management"><b>Bank management</b><span>6 functions</span></a></li><li><a class="ag-ach" href="#ag-p-risk-fx-rates-and-commodities" data-p="ag-p-risk-fx-rates-and-commodities"><b>FX, rates and commodities</b><span>6 functions</span></a></li><li><a class="ag-ach" href="#ag-p-credit-risk" data-p="ag-p-credit-risk"><b>Credit risk</b><span>5 functions</span></a></li><li><a class="ag-ach" href="#ag-p-insurance" data-p="ag-p-insurance"><b>Insurance</b><span>5 functions</span></a></li><li><a class="ag-ach" href="#ag-p-debt-and-funding" data-p="ag-p-debt-and-funding"><b>Debt and funding</b><span>6 functions</span></a></li><li><a class="ag-ach" href="#ag-p-general-ledger-accounting" data-p="ag-p-general-ledger-accounting"><b>General ledger</b><span>8 functions</span></a></li><li><a class="ag-ach" href="#ag-p-accounts-payable-ap" data-p="ag-p-accounts-payable-ap"><b>Accounts payable</b><span>4 functions</span></a></li><li><a class="ag-ach" href="#ag-p-accounts-receivable-ar" data-p="ag-p-accounts-receivable-ar"><b>Accounts receivable</b><span>4 functions</span></a></li><li><a class="ag-ach" href="#ag-p-financial-reporting" data-p="ag-p-financial-reporting"><b>Financial reporting</b><span>13 functions</span></a></li><li><a class="ag-ach" href="#ag-p-taxation" data-p="ag-p-taxation"><b>Taxation</b><span>7 functions</span></a></li><li><a class="ag-ach" href="#ag-p-planning-and-analysis" data-p="ag-p-planning-and-analysis"><b>Planning and analysis</b><span>4 functions</span></a></li><li><a class="ag-ach" href="#ag-p-procurement" data-p="ag-p-procurement"><b>Procurement</b><span>4 functions</span></a></li><li><a class="ag-ach" href="#ag-p-inventory" data-p="ag-p-inventory"><b>Inventory</b><span>5 functions</span></a></li><li><a class="ag-ach" href="#ag-p-sales-and-marketing" data-p="ag-p-sales-and-marketing"><b>Sales and Marketing</b><span>4 functions</span></a></li><li><a class="ag-ach" href="#ag-p-payroll-accounting" data-p="ag-p-payroll-accounting"><b>Payroll</b><span>6 functions</span></a></li><li><a class="ag-ach" href="#ag-p-governance" data-p="ag-p-governance"><b>Governance of agents</b><span>6 functions</span></a></li></ul>
         <ul class="ag-kpi"><li><b>108</b><span>functions mapped across 18 areas of Treasury and Finance</span></li><li><b>71</b><span>stop at Level 1: the agent drafts, a person approves</span></li><li><b>0</b><span>are left to an agent alone. Nothing sits at Level 3</span></li></ul>
         <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ag-map">Find your area</a><a class="ag-btn ag-btn-o" href="#ag-pack">Get the detailed pack</a></div>
       </div>
