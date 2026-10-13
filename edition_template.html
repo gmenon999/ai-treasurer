@@ -934,6 +934,94 @@
     .ag-ex td::before { content: attr(data-l); display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); }
   }
 
+  /* folds and mini trail */
+  .ag-fold > summary { list-style: none; cursor: default; }
+  .ag-fold > summary::-webkit-details-marker { display: none; }
+  .ag-fold > summary .ag-h3 { margin: 0 0 14px; }
+  .ag-mt { display: none; }
+  @media (max-width: 700px) {
+    .ag-hero-in { padding-top: 28px; padding-bottom: 26px; }
+    .ag-eye { font-size: 11px; }
+    .ag-hero h2 { font-size: 28px; line-height: 1.12; margin: 8px 0 10px; }
+    .ag-lede { font-size: 16px; line-height: 1.5; }
+    .ag-mt { display: flex; gap: 4px; list-style: none; margin: 18px 0 0; padding: 0; }
+    .ag-mt li { flex: 1 1 0; min-width: 0; background: var(--ag-tile); padding: 9px 2px 8px; text-align: center; font-size: 12px; font-weight: 700; line-height: 1.2; }
+    .ag-mt li small { display: block; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .ag-mt li.p { background: var(--gold-light); color: var(--navy-deep); }
+    .ag-acts { flex-wrap: nowrap; gap: 8px; margin-top: 16px; }
+    .ag-btn { width: auto; flex: 1 1 0; min-height: 44px; padding: 0 8px; font-size: 14px; text-align: center; }
+    .ag-art { opacity: 0.25; }
+    .ag-blk { padding: 30px 0 2px; }
+    .ag-blk + .ag-blk { margin-top: 26px; }
+    .ag-take { padding-top: 28px; }
+    .ag-h3 { font-size: 21px; margin-bottom: 10px; max-width: none; }
+    .ag-p { font-size: 15.5px; margin: 0 0 14px; }
+    .ag-src { font-size: 12px; margin-top: 12px; }
+    .ag-tk { margin-top: 12px; gap: 12px; }
+    .ag-tk li { border-top-width: 1px; padding-top: 10px; display: grid; grid-template-columns: 22px 1fr; gap: 0 8px; }
+    .ag-tn { grid-row: 1 / 3; margin: 3px 0 0; }
+    .ag-tk b { font-size: 17px; }
+    .ag-tk p { font-size: 14.5px; margin: 3px 0 0; }
+    .ag-trail { gap: 4px; }
+    .ag-st { display: grid; grid-template-columns: 30px 1fr auto; align-items: baseline; gap: 2px 8px; padding: 10px 14px; }
+    .ag-st .ag-sn { margin: 0; font-size: 11px; }
+    .ag-st b { font-size: 19px; }
+    .ag-who { margin: 0; font-size: 10px; }
+    .ag-st p { grid-column: 2 / -1; margin: 0; font-size: 14px; }
+    .ag-lv { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; padding: 12px 0; }
+    .ag-lv p { display: none; }
+    .ag-lvh b { font-size: 15px; flex-basis: 100%; }
+    .ag-lvh { gap: 6px; }
+    .ag-bar { grid-column: 1 / -1; height: 8px; }
+    .ag-cn { grid-row: 1; grid-column: 2; text-align: right; }
+    .ag-cn b { font-size: 20px; }
+    .ag-rule { margin-top: 16px; padding: 12px 14px; font-size: 15px; }
+    .ag-tools { margin: 14px 0 4px; gap: 10px; }
+    .ag-filters { flex-wrap: nowrap; overflow-x: auto; width: 100%; padding-bottom: 2px; scrollbar-width: none; }
+    .ag-filters::-webkit-scrollbar { display: none; }
+    .ag-fc { flex: none; min-height: 40px; padding: 0 14px; font-size: 13px; }
+    .ag-search { width: 100%; }
+    .ag-search input { width: 100%; }
+    .ag-legend { font-size: 11.5px; line-height: 1.9; margin-top: 6px; }
+    .ag-status { margin: 4px 0 8px; }
+    .ag-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .ag-card { min-height: 0; padding: 12px 12px 10px; }
+    .ag-cg, .ag-cd { display: none; }
+    .ag-cn2 { font-size: 16px; margin-top: 0; }
+    .ag-cf { margin-top: 10px; font-size: 12px; }
+    .ag-mini { font-size: 10px; padding: 0 5px; }
+    .ag-pan { margin-top: 16px; padding: 16px 14px 2px; }
+    .ag-pt h3 { font-size: 22px; margin: 4px 0; }
+    .ag-pt p { font-size: 14.5px; }
+    .ag-fl { margin-top: 14px; }
+    .ag-fl > li { padding: 12px 0 14px; }
+    .ag-fh b { font-size: 17px; }
+    .ag-ctl { font-size: 15px; }
+    .ag-aut { font-size: 14px; }
+    .ag-fold > summary { cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--ag-line); padding-bottom: 12px; margin-bottom: 14px; }
+    .ag-fold > summary .ag-h3 { margin: 0; font-size: 18px; }
+    .ag-fold > summary::after { content: "+"; font-size: 26px; line-height: 1; color: var(--gold-light); flex: none; }
+    .ag-fold[open] > summary::after { content: "\2212"; }
+    .ag-ex tr { padding: 8px 0; }
+    .ag-ex tbody th { display: inline-block; width: auto; font-size: 17px; }
+    .ag-ex td:nth-child(2) { display: inline-block; width: auto; margin-left: 8px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+    .ag-ex td:nth-child(2)::before { display: none; }
+    .ag-ex td { font-size: 14.5px; }
+    .ag-gl { gap: 10px; margin-top: 4px; }
+    .ag-gl li { border-top-width: 1px; padding-top: 8px; display: grid; grid-template-columns: 28px 1fr; gap: 0 8px; align-items: baseline; }
+    .ag-gn { font-size: 20px; }
+    .ag-gl p { margin: 0; font-size: 14.5px; }
+    .ag-limits ul { margin-top: 4px; }
+    .ag-limits li { font-size: 14.5px; }
+    .ag-cta { margin-top: 36px; }
+    .ag-cta-in { padding-top: 32px; padding-bottom: 32px; gap: 18px; }
+    .ag-cta h3 { font-size: 24px; margin-bottom: 8px; }
+    .ag-cta p { font-size: 15px; margin-bottom: 8px; }
+    .ag-form { gap: 10px; }
+    .ag-form input, .ag-form select { min-height: 44px; }
+    .ag-share { padding: 16px 0 28px; }
+  }
+
   /* ---------- Credentials: full-bleed blue band ---------- */
   .creds { background: var(--blue); color: var(--white); padding: 80px 0 72px; }
   .creds-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.15; margin: 0 0 44px; max-width: 26ch; }
@@ -1480,6 +1568,7 @@
         <div class="ag-eye">Agentic Automation</div>
         <h2 id="ag-h">Treasury is getting faster. The controls have to keep up.</h2>
         <p class="ag-lede">Agents can capture, match and draft in seconds. People still approve, release and post. Here is where each belongs, across 108 functions in 18 areas.</p>
+        <ol class="ag-mt" aria-label="The five steps: Capture, Match, Flag, Approve by a person, Post"><li>Capture</li><li>Match</li><li>Flag</li><li class="p">Approve<small>Person</small></li><li>Post</li></ol>
         <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ag-map">Explore the map</a><a class="ag-btn ag-btn-o" href="#ag-pack">Ask for a detailed pack</a></div>
       </div>
     </div>
@@ -1523,23 +1612,23 @@
         <p class="ag-src">Source: The AI Treasurer function map, October 2026. Illustrative and not exhaustive.</p>
       </div>
 
-      <div class="ag-blk" id="ag-example">
-        <h3 class="ag-h3">Worked example: a fake &ldquo;we have changed bank&rdquo; email stops at a phone call</h3>
+      <details class="ag-blk ag-fold" id="ag-example" open>
+        <summary><h3 class="ag-h3">Worked example: a fake &ldquo;we have changed bank&rdquo; email stops at a phone call</h3></summary>
         <p class="ag-p">Supplier bank-detail change, Accounts payable. Level 1 throughout.</p>
         <table class="ag-ex"><caption class="ag-sr">Supplier bank-detail change, step by step</caption><thead><tr><th scope="col">Step</th><th scope="col">Who</th><th scope="col">What happens</th><th scope="col">What the auditor sees</th></tr></thead><tbody><tr class=""><th scope="row" data-l="Step">Capture</th><td data-l="Who">Agent</td><td data-l="What happens">Logs the request, its source and the new details. Changes nothing.</td><td data-l="What the auditor sees">The request and where it came from.</td></tr><tr class=""><th scope="row" data-l="Step">Match</th><td data-l="Who">Agent</td><td data-l="What happens">Compares the new details with those on file and validates the account where the bank offers that.</td><td data-l="What the auditor sees">The comparison result.</td></tr><tr class=""><th scope="row" data-l="Step">Flag</th><td data-l="Who">Agent</td><td data-l="What happens">Marks the request high risk and opens a call-back to the number already on file, never the one in the request.</td><td data-l="What the auditor sees">The call-back task and the number used.</td></tr><tr class="ag-person"><th scope="row" data-l="Step">Approve</th><td data-l="Who">Person</td><td data-l="What happens">One person makes the call-back and records it. A second person approves the change.</td><td data-l="What the auditor sees">Both records, with names and times.</td></tr><tr class="ag-person"><th scope="row" data-l="Step">Post</th><td data-l="Who">Person</td><td data-l="What happens">A person with edit rights applies the change only after both records exist.</td><td data-l="What the auditor sees">Before and after master data, and a report of payments to changed accounts.</td></tr></tbody></table>
         <p class="ag-src">Source: The AI Treasurer Accounts payable pack, draft.</p>
-      </div>
+      </details>
 
-      <div class="ag-blk ag-golive">
-        <h3 class="ag-h3">Five checks before any agent goes live</h3>
+      <details class="ag-blk ag-fold ag-golive" open>
+        <summary><h3 class="ag-h3">Five checks before any agent goes live</h3></summary>
         <ol class="ag-gl"><li><span class="ag-gn">1</span><p>Run the agent in draft-only mode on past cases and compare its drafts with what people decided.</p></li><li><span class="ag-gn">2</span><p>Record how often people override the agent. A rate near zero deserves as much scrutiny as a high one.</p></li><li><span class="ag-gn">3</span><p>Give the agent its own identity and the narrowest access that works.</p></li><li><span class="ag-gn">4</span><p>Name an owner for the agent and a person who can switch it off.</p></li><li><span class="ag-gn">5</span><p>Test the failure case. If the agent is unavailable, the work continues by the manual route.</p></li></ol>
-      </div>
+      </details>
 
-      <div class="ag-blk ag-limits">
-        <h3 class="ag-h3">What this does not claim</h3>
+      <details class="ag-blk ag-fold ag-limits" open>
+        <summary><h3 class="ag-h3">What this does not claim</h3></summary>
         <ul><li>It describes a control approach, not a specific system. No product is named or endorsed.</li><li>It is written for IFRS. US GAAP differs in places.</li><li>The autonomy levels are the author’s proposals, not taken from a standard.</li><li>Accounting standard references were checked against firm and professional-body summaries, not the standard texts.</li><li>Taxation, payroll and end-of-service lines are kept generic. They differ by country.</li></ul>
         <p class="ag-src">Nothing here is investment, legal or professional advice.</p>
-      </div>
+      </details>
     </div>
 
     <div class="ag-cta" id="ag-pack">
@@ -1611,6 +1700,11 @@
     var url = 'https://theaitreasurer.com/#agentic';
     function done(t) { note.textContent = t; setTimeout(function () { note.textContent = ''; }, 2500); }
     try { navigator.clipboard.writeText(url).then(function () { done('Link copied'); }, function () { done(url); }); } catch (e) { done(url); }
+  });
+  var folds = root.querySelectorAll('.ag-fold'), narrow = window.matchMedia && matchMedia('(max-width: 700px)').matches;
+  folds.forEach(function (d) {
+    if (narrow) d.removeAttribute('open');
+    d.querySelector('summary').addEventListener('click', function (ev) { if (!(window.matchMedia && matchMedia('(max-width: 700px)').matches)) ev.preventDefault(); });
   });
   var fades = root.querySelectorAll('.ag-blk, .ag-cta-in');
   fades.forEach(function (el) { el.classList.add('ag-fade'); });
