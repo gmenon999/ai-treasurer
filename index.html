@@ -244,7 +244,9 @@
   .grid .lbl { font-size: 14px; color: var(--on-dark); margin-top: 10px; line-height: 1.4; }
   .grid .src { font-size: 12px; color: var(--on-dark-soft); margin-top: 8px; }
 
-  .brief-body { background: #F4F2EE; padding-bottom: 56px; }
+    .tile-heads { list-style: none; margin: 8px 0 14px; padding: 0; }
+  .tile-heads li { margin: 0 0 8px; font-size: 15px; line-height: 1.35; }
+.brief-body { background: #F4F2EE; padding-bottom: 56px; }
   .tabs { position: sticky; top: 0; z-index: 5; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 1px 0 rgba(20,38,63,0.04); }
   .tabs .tabrow { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .tabs button { appearance: none; background: none; border: none; cursor: pointer; font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--navy-soft); padding: 18px 24px 16px 0; margin-right: 12px; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -1px; text-align: left; display: flex; flex-direction: column; gap: 2px; }
@@ -1517,11 +1519,11 @@
           <div class="media"><img src="/img/ait-tile-news-doha.jpg" alt="The Doha skyline at sunset, glass towers reflected in still water" loading="lazy" style="object-position: 50% 50%;"></div>
           <div class="body">
           <div class="kicker">Daily briefing: Treasury and Finance</div>
-          <div class="note">
-            <h3 class="note-h">Cash now moves around the clock, so Finance controls cannot keep office hours</h3>
-        <p>Liquidity is starting to move outside banking hours, and the tools that decide where it goes are increasingly automated. OCBC began mobilising SGD and USD tokenised deposits 24/7 for Ant International on 7 October 2026, while Consensys and ClearToken announced 24/7 delivery-versus-payment settlement. AI adoption in trade operations has nearly tripled to 45% since 2024, according to <a href="https://www.citigroup.com/global/news/press-release/2026/citi-institute-supply-chain-financing-report-liquidity-takes-center-stage-as-supply-chain-disruption-becomes-norm" target="_blank" rel="noopener">Citi Institute</a>.</p>
-        <p>For Treasury and Finance, a settlement window that never closes demands controls that never sleep. Approval limits, sanctions screening and reconciliation must run at the same speed as settlement, and the AICPA's 13 October 2026 practice aid tells auditors to seek documented assessment of material AI use in financial reporting. Speed without evidence is exposure.</p>
-          </div>
+          <ol class="tile-heads">
+            <li>OCBC becomes first bank to collaborate with Ant International on tokenised deposits</li>
+            <li>AICPA practice aid tells auditors to test controls over material AI use</li>
+            <li>US 10-year yield closes at 5.24% as markets price more hikes</li>
+          </ol>
           <span class="arrow-link">Read today's briefing</span>
           </div>
         </a>
