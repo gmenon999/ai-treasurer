@@ -130,7 +130,7 @@
   .briefing .desk .text::before { opacity: 0.45; }
   .briefing .desk .sig { color: var(--gold-light); }
   .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-bottom: 3px solid var(--navy); padding-bottom: 20px; margin-bottom: 44px; }
-  .sec-head h2 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; margin: 10px 0 0; letter-spacing: -0.02em; }
+  .sec-head h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; margin: 10px 0 0; letter-spacing: -0.015em; }
   .sec-head p { margin: 12px 0 0; color: var(--navy-soft); max-width: 60ch; }
   .sec-head .dateline { font-size: 14px; color: var(--navy-soft); display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
   .sec-head .dateline b { color: var(--navy); }
@@ -152,6 +152,7 @@
   .numbers .wrap { position: relative; }
   .numbers-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
   .numbers-head h3 { font-family: var(--serif); font-size: 28px; margin: 6px 0 0; font-weight: 700; }
+  .numbers-head h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; letter-spacing: -0.015em; margin: 12px 0 16px; }
   .numbers .disclaim { font-size: 12px; color: var(--on-dark-soft); margin: 0; max-width: 52ch; }
   /* ---- Market view: five points under the Markets heading ---- */
   .mv { margin: 0 0 28px; border-top: 3px solid var(--gold); padding-top: 16px; }
@@ -312,7 +313,7 @@
   .framework .bg { position: absolute; right: -120px; top: -60px; width: 760px; height: 520px; opacity: 0.55; }
   .framework .wrap { position: relative; }
   .framework .kicker { color: var(--gold-light); }
-  .framework h2 { font-family: var(--serif); font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; margin: 12px 0 16px; max-width: 22ch; letter-spacing: -0.015em; }
+  .framework h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; margin: 12px 0 16px; max-width: 22ch; letter-spacing: -0.015em; }
   .framework .sub { margin: 0 0 52px; max-width: 60ch; color: var(--on-dark); font-size: 19px; }
   ol.trail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
   ol.trail li { position: relative; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); padding: 28px 22px 24px; display: flex; flex-direction: column; }
@@ -1003,7 +1004,7 @@
     .ag-hero-in { padding-top: 26px; padding-bottom: 22px; }
     .ag-art { width: 100%; opacity: 0.22; -webkit-mask-image: none; mask-image: none; }
     .ag-eye { font-size: 11px; }
-    .ag-hero h2 { font-size: 26px; line-height: 1.14; margin: 8px 0 10px; max-width: none; }
+    .ag-hero h2 { margin: 8px 0 10px; max-width: none; }
     .ag-lede { font-size: 16px; line-height: 1.5; }
     .ag-areas { margin-top: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
     .ag-ach { min-height: 38px; padding: 6px 10px; justify-content: center; border-top: 0; border-left: 2px solid var(--gold-light); }
@@ -1141,7 +1142,7 @@
 
   /* ---------- Credentials: full-bleed blue band ---------- */
   .creds { background: var(--blue); color: var(--white); padding: 80px 0 72px; }
-  .creds-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.15; margin: 0 0 44px; max-width: 26ch; }
+  .creds-head h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 44px; max-width: 26ch; }
   .creds-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.45); }
   .creds-row div { padding: 26px 24px 0 0; }
   .creds-row div + div { padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.3); }
@@ -1599,7 +1600,7 @@
               <g fill="#D9B867"><rect x="136" y="106" width="9" height="9"/><rect x="226" y="76" width="9" height="9"/><rect x="316" y="51" width="9" height="9"/></g>
             </svg>
           </div>
-          <div class="beat"><h3>Treasury Risk &mdash; FX, Rates &amp; Commodities<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
+          <div class="beat"><h3>Treasury Risk: FX, Rates &amp; Commodities<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
             <!--BEAT_risk-->
           </div><a class="to-sections" href="#briefing-tabs">All sections</a></div>
           <div class="beat"><h3>Digital Assets, Tokenisation &amp; Settlement<span class="chev" aria-hidden="true"></span></h3><div class="beat-items">
@@ -1636,7 +1637,7 @@
 
         <section class="panel" id="p-events" role="tabpanel" aria-labelledby="t-events">
           <h2 class="pillar-intro">Events &amp; Conference Radar</h2>
-          <p class="pillar-sub">Where the Treasury agenda is being set &mdash; recent highlights and the dates worth holding.</p>
+          <p class="pillar-sub">Where the Treasury agenda is being set, with recent highlights and the dates worth holding.</p>
           <!--EVENTS-->
         </section>
       </div>
@@ -1662,7 +1663,7 @@
         <div class="numbers-head">
           <div>
             <div class="kicker">Markets</div>
-            <h3 id="mk-title">Rates, Money Markets and FX</h3>
+            <h2 id="mk-title">Rates, Money Markets and FX</h2>
           </div>
           <p class="disclaim">Policy rates, benchmark rates and FX reference rates from official sources, refreshed through the day. Each figure links to its source and shows its date. Not live market data and not investment advice.</p>
         </div>
@@ -2048,7 +2049,7 @@
         <div><b>20+ years</b><span>Financial control, IFRS and US GAAP reporting, and Treasury operations</span></div>
         <div><b>Qatar Fuel (WOQOD)</b><span>Leading Treasury Digital Transformations</span></div>
         <div><b>The World Bank</b><span>Financial reporting and analysis, including assignments at Washington DC headquarters</span></div>
-        <div><b>Barclays</b><span>VP, Financial Control &mdash; entity controller for Group Treasury</span></div>
+        <div><b>Barclays</b><span>VP, Financial Control: entity controller for Group Treasury</span></div>
         <div><b>CA &middot; CPA &middot; CTP</b><span>Chartered Accountant, Certified Public Accountant and Certified Treasury Professional</span></div>
       </div>
     </div>
