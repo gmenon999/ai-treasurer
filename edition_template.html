@@ -727,7 +727,7 @@
     ol.trail li:nth-child(3)::after { display: none; }
     .creds-row { grid-template-columns: 1fr 1fr; }
     .creds-row div:nth-child(2) { border-right: 0; }
-    .creds-row div:nth-child(3) { padding-left: 0; border-top: 1px solid var(--line); }
+    .creds-row div:nth-child(3), .creds-row div:nth-child(5) { padding-left: 0; border-top: 1px solid var(--line); }
     .creds-row div:nth-child(4) { border-top: 1px solid var(--line); }
   }
   @media (max-width: 700px) {
@@ -1132,7 +1132,7 @@
   /* ---------- Credentials: full-bleed blue band ---------- */
   .creds { background: var(--blue); color: var(--white); padding: 80px 0 72px; }
   .creds-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.15; margin: 0 0 44px; max-width: 26ch; }
-  .creds-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.45); }
+  .creds-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.45); }
   .creds-row div { padding: 26px 24px 0 0; }
   .creds-row div + div { padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.3); }
   .creds-row b { display: block; font-family: var(--serif); font-size: 28px; line-height: 1.1; }
@@ -1263,7 +1263,7 @@
   @media (max-width: 1020px) {
     .work-grid { grid-template-columns: 1fr; gap: 40px; }
     .creds-row { grid-template-columns: 1fr 1fr; }
-    .creds-row div:nth-child(3) { padding-left: 0; border-left: 0; }
+    .creds-row div:nth-child(3), .creds-row div:nth-child(5) { padding-left: 0; border-left: 0; }
     .creds-row div:nth-child(n+3) { margin-top: 24px; }
     .cards { grid-template-columns: 1fr 1fr; }
   }
@@ -1379,6 +1379,7 @@
     .nav { flex: none; flex-wrap: nowrap; }
     .nav .cta { white-space: nowrap; font-size: 13px; padding: 8px 11px; }
   }
+  .creds-row b { font-size: clamp(22px, 2.1vw, 28px); }
 </style>
 </head>
 <body>
@@ -1773,7 +1774,7 @@
 
   <section class="about-strip" data-view="controls" aria-label="About the author">
     <div class="wrap">
-      <p><b>Gopakumar Menon, CA, CPA, CTP.</b> Two decades in control, reporting and Treasury. Leading Treasury digital transformation projects at Woqod.</p>
+      <p><b>Gopakumar Menon, CA, CPA, CTP.</b> Two decades in control, reporting and Treasury. Leading Treasury Digital Transformations at Qatar Fuel (WOQOD).</p>
       <a class="li-btn" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a>
     </div>
   </section>
@@ -2005,10 +2006,10 @@
         <div class="kicker">About</div>
         <div class="advisor"><img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon, CA, CPA, CTP" width="96" height="96" loading="lazy"><div><b>Gopakumar Menon, CA, CPA, CTP</b><span>Senior Treasury and Finance Leader, specialising in AI and Financial Controls</span></div></div>
         <h2 id="work-top">Two decades in control, reporting and Treasury, and a keen interest in AI.</h2>
-        <p class="role-line">Leading Treasury digital transformation projects at Woqod.</p>
         <a class="li-btn" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a>
       </div>
       <div class="creds-row">
+        <div><b>Qatar Fuel (WOQOD)</b><span>Leading Treasury Digital Transformations</span></div>
         <div><b>20+ years</b><span>Financial control, IFRS and US GAAP reporting, and Treasury operations</span></div>
         <div><b>The World Bank</b><span>Financial reporting and analysis, including assignments at Washington DC headquarters</span></div>
         <div><b>Barclays</b><span>VP, Financial Control &mdash; entity controller for Group Treasury</span></div>
