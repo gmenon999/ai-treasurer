@@ -358,6 +358,80 @@
     "cost_usd": 0.1289
    },
    "edition_cost_usd": 0.8829
+  },
+  {
+   "date": "2026-10-14",
+   "items": [
+    {
+     "headline": "FIS launches agentic AI suite for cash forecasting and collections",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Growth firms using AI in working capital report 66% higher bottom-line gains",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Swift will reject fully unstructured postal addresses from November 2026",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "AICPA practice aid tells auditors to test controls over material AI use",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Citi survey finds 72% of corporates prioritise freeing trapped liquidity",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "OCBC and Ant International move tokenised deposits 24/7 across Singapore and Malaysia",
+     "status": "dropped",
+     "lens": "Controls & audit",
+     "reasons": "The view rests on unexplained jargon: \"Match-step\" is not in the source and is not defined. \"The auditor's ... question\" is also an unsupported framing. \"Document that matching method\" is vague about who does it, what it covers and what it should contain. \"Tamper-proof\" is also stronger than the sou"
+    },
+    {
+     "headline": "US 10-year yield hits 5.27% as markets price more hikes",
+     "status": "dropped",
+     "lens": "Payments & operations",
+     "reasons": "The claim that \"the rates themselves are unchanged\" and that \"the same data stays available\" is not in the source. The source only says users can access data and expanded download options through FRED. The take also gives no reason why this operational notice is the key point of the story, which the"
+    },
+    {
+     "headline": "Consensys and ClearToken partner on 24/7 delivery-versus-payment for tokenised assets",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "OCBC becomes first bank to collaborate with Ant International on tokenised deposits",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Fed holds at 3.75%-4.00% while markets price three to four hikes",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC widens Operation Economic Outcast, naming A7 Network a criminal organisation",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosures from 22 October 2026",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.3299,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.2516
+   },
+   "edition_cost_usd": 0.9253
   }
  ]
 }

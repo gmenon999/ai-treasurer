@@ -601,6 +601,87 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-14",
+   "note_headline": "Cash now moves around the clock, so Finance controls cannot keep office hours",
+   "note_opening": "Liquidity is starting to move outside banking hours, and the tools that decide where it goes are increasingly automated. OCBC began mobilising SGD and USD tokenised deposits 24/7 for Ant International on 7 October 2026, ",
+   "items": [
+    {
+     "headline": "FIS launches agentic AI suite for cash forecasting and collections",
+     "urls": [
+      "https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-equips-cfos-with-agentic-ai-to-forecast-cash-flow-and-surface-risk-earlier"
+     ]
+    },
+    {
+     "headline": "Citi survey finds 72% of corporates prioritise freeing trapped liquidity",
+     "urls": [
+      "https://www.citigroup.com/global/news/press-release/2026/citi-institute-supply-chain-financing-report-liquidity-takes-center-stage-as-supply-chain-disruption-becomes-norm"
+     ]
+    },
+    {
+     "headline": "Growth firms using AI in working capital report 66% higher bottom-line gains",
+     "urls": [
+      "https://www.pymnts.com/wp-content/uploads/2026/01/PYMNTS-Growth-Corporates-Working-Capital-Index-January-2026.pdf"
+     ]
+    },
+    {
+     "headline": "OCBC and Ant International move tokenised deposits 24/7 across Singapore and Malaysia",
+     "urls": [
+      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
+     ]
+    },
+    {
+     "headline": "Swift will reject fully unstructured postal addresses from November 2026",
+     "urls": [
+      "https://www.swift.com/insights/newsletters/iso-20022-bytes-payments-call-action-november-2026"
+     ]
+    },
+    {
+     "headline": "AICPA practice aid tells auditors to test controls over material AI use",
+     "urls": [
+      "https://www.cpapracticeadvisor.com/2026/10/13/aicpa-releases-guidance-on-the-use-of-ai-in-financial-reporting-and-auditing/"
+     ]
+    },
+    {
+     "headline": "US 10-year yield hits 5.27% as markets price more hikes",
+     "urls": [
+      "https://www.federalreserve.gov/releases/h15/",
+      "https://www.bbvaresearch.com/wp-content/uploads/2026/10/US_Interest_Rates_Monitor_October_26_ENG.pdf"
+     ]
+    },
+    {
+     "headline": "Consensys and ClearToken partner on 24/7 delivery-versus-payment for tokenised assets",
+     "urls": [
+      "https://consensys.com/blog/consensys-and-clear-partner-to-bring-24-7-settlement-infrastructure-to-wholesale-markets"
+     ]
+    },
+    {
+     "headline": "OCBC becomes first bank to collaborate with Ant International on tokenised deposits",
+     "urls": [
+      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
+     ]
+    },
+    {
+     "headline": "Fed holds at 3.75%-4.00% while markets price three to four hikes",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "https://www.siktintelligence.com/blog/fed-rate-odds-october-2026"
+     ]
+    },
+    {
+     "headline": "OFAC widens Operation Economic Outcast, naming A7 Network a criminal organisation",
+     "urls": [
+      "https://www.bracewell.com/resources/treasury-expands-operation-economic-outcast-toolbox-with-focus-on-foreign-financial-institutions/"
+     ]
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosures from 22 October 2026",
+     "urls": [
+      "https://www.federalregister.gov/documents/2026/10/08/2026-20683/notice-of-ofac-sanctions-actions"
+     ]
+    }
+   ]
   }
  ]
 }
