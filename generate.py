@@ -57,7 +57,7 @@ BEATS = [
      "ISO 20022, real-time/instant and cross-border payments, transaction-banking product launches from major banks"),
     ("regulation",   "Regulation, Controls & the CFO Agenda",
      "AI governance and controls in finance, ICFR/audit, SEC/PCAOB, EU AI Act, CFO-office compliance"),
-    ("risk",         "Treasury Risk - FX, Rates & Commodities",
+    ("risk",         "Treasury Risk: FX, Rates & Commodities",
      "corporate FX and interest-rate hedging, commodity exposure, funding and counterparty risk for treasurers"),
     ("digital",      "Digital Assets, Tokenisation & Settlement",
      "stablecoins and tokenised deposits for corporate payments/treasury, on-chain settlement, bank digital-asset infrastructure"),
@@ -1020,7 +1020,7 @@ def _take_html(t):
     if not t:
         return ""
     lens = esc(t.get("lens"))
-    return ('<div class="take"><p><b>Focus: %s</b> &mdash; %s</p><p class="view"><b>Our view</b> &mdash; %s</p></div>'
+    return ('<div class="take"><p><b>Focus: %s.</b> %s</p><p class="view"><b>Our view.</b> %s</p></div>'
             % (lens, esc(t.get("focus")), esc(t.get("view"))))
 
 
