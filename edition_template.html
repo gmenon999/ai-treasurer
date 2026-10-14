@@ -1370,6 +1370,15 @@
     .benefits.trail span { margin-top: 2px; }
   }
   @media (max-width: 720px) { .benefits.trail { padding: 30px 0 34px; } .trail-h { margin-bottom: 24px; } }
+
+  /* phones: logo and Follow button share one row */
+  @media (max-width: 720px) {
+    header.band .wrap { flex-wrap: nowrap; padding-top: 12px; padding-bottom: 12px; gap: 10px; }
+    header.band .mark { min-width: 0; font-size: 18px; }
+    header.band .mark .logomark { width: 30px; height: 30px; flex: none; }
+    .nav { flex: none; flex-wrap: nowrap; }
+    .nav .cta { white-space: nowrap; font-size: 13px; padding: 8px 11px; }
+  }
 </style>
 </head>
 <body>
