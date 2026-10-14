@@ -1189,6 +1189,8 @@
   .intro .wrap { position: relative; width: 100%; padding-top: 96px; padding-bottom: 72px; }
   .intro .kicker { color: var(--gold-light); }
   .intro h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -0.02em; margin: 14px 0 22px; max-width: 13em; }
+  .intro h1 .nw { white-space: nowrap; }
+  @media (max-width: 600px) { .intro h1 { font-size: min(38px, 8.6vw); } }
   .intro .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: var(--on-dark); max-width: 34em; margin: 0 0 32px; }
   .intro .actions { display: flex; align-items: center; gap: 20px 32px; flex-wrap: wrap; }
   .intro .go { display: inline-flex; align-items: center; gap: 14px; color: var(--white); font-weight: 700; font-size: 17px; text-decoration: none; }
@@ -1436,7 +1438,7 @@
     <div class="intro-glow" aria-hidden="true"><span></span></div>
     <div class="wrap">
       <div class="kicker">AI &middot; Treasury &middot; Finance</div>
-      <h1 id="front-h">Delegate the workflow, never the authority.</h1>
+      <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
       <p class="lede">Agentic AI for Treasury and Finance, adopted with clear ownership, sound controls and an audit trail an auditor can follow.</p>
       <div class="actions">
         <a class="go" href="#controls"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>See how it works</a>
