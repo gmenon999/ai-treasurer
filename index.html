@@ -1338,6 +1338,12 @@
   .notify .hp { position: absolute; left: -9999px; }
   @media (max-width: 900px) { .benefits.trail ul { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) { .benefits.trail ul { grid-template-columns: 1fr; } }
+
+  /* tighter hero: the class "live" on .intro also matched the ticker rule and added a 40px white gap */
+  .intro.live { margin-bottom: 0; border-top: 0; border-bottom: 0; display: flex; }
+  .intro { min-height: min(54vh, 500px); }
+  .intro .wrap { padding-top: 64px; padding-bottom: 56px; }
+  @media (max-width: 720px) { .intro { min-height: 64vh; } }
 </style>
 </head>
 <body>
