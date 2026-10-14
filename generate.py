@@ -1272,6 +1272,16 @@ def consistency_problems(content, history_path=None):
         if not str((e.get("source") or {}).get("url", "")).startswith("http"):
             problems.append("event '%s': no source link" % e.get("title", "")[:70])
 
+    # 4b. "according to X" must match a source that is actually linked in the edition
+    linked = " ".join((src.get("name", "") + " " + src.get("url", "")).lower()
+                      for it in beats for src in (it.get("sources") or []))
+    linked += " " + " ".join((e.get("source") or {}).get("name", "") + " " + (e.get("source") or {}).get("url", "")
+                             for e in content.get("events") or []).lower()
+    for where, text in _body_texts(content):
+        for name in re.findall(r"according to ([A-Z][\w&.-]*)", text or ""):
+            if name.lower() not in linked:
+                problems.append("%s: 'according to %s' has no matching linked source" % (where, name))
+
     # 5. one value per metric per date; 6. check against the stored daily series
     claims = []
     for where, text in _body_texts(content):
@@ -1372,6 +1382,13 @@ def selftest():
     good, _ = consistency_problems(fixed_content)
     if good:
         problems.append("consistency gate flags corrected text: %s" % "; ".join(good))
+    unlinked = {"beats": {}, "events": [], "lead_stories": [], "market_view": [], "editor_note": ["AI adoption has tripled, according to Citi Institute."], "note_headline": ""}
+    if not any("according to Citi" in b for b in consistency_problems(unlinked)[0]):
+        problems.append("consistency gate missed an unlinked 'according to' attribution")
+    linked_ok = {"beats": {"cash": [{"headline": "Citi survey", "summary": "A survey.", "sources": [{"name": "Citigroup", "url": "https://www.citigroup.com/x"}], "take": None}]},
+                 "events": [], "lead_stories": [], "market_view": [], "editor_note": ["AI adoption has tripled, according to Citi Institute."], "note_headline": ""}
+    if any("according to" in b for b in consistency_problems(linked_ok)[0]):
+        problems.append("consistency gate flags a linked 'according to' attribution")
     mock_bad, _ = consistency_problems(mock_content())
     if mock_bad:
         problems.append("consistency gate flags the mock edition: %s" % "; ".join(mock_bad))
