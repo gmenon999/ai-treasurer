@@ -910,6 +910,16 @@
   .ag-card:hover .ag-more { text-decoration: underline; }
   .ag-card[aria-current="true"] .ag-fn { background: rgba(20,38,63,0.06); }
   .ag-card[aria-current="true"] .s0 { background: var(--navy-soft); }
+  /* Agents collapsed by default: name only; tap to show functions */
+  .js .ag-cards { align-items: start; }
+  .js .ag-card { position: relative; height: auto; cursor: pointer; }
+  .js .ag-ch { padding-right: 24px; }
+  .js .ag-card::after { content: "+"; position: absolute; right: 14px; top: 10px; font-size: 22px; line-height: 1; font-weight: 400; color: var(--gold-light); }
+  .js .ag-card[aria-expanded="true"]::after { content: "\2013"; }
+  .js .ag-card[aria-current="true"]::after { color: var(--navy-deep); }
+  .js .ag-card[aria-expanded="false"] .ag-cf,
+  .js .ag-card[aria-expanded="false"] .ag-fnl,
+  .js .ag-card[aria-expanded="false"] .ag-more { display: none; }
   .ag-legend { margin: 16px 0 0; font-size: 13px; line-height: 1.7; color: var(--on-dark-soft); }
   .ag-empty { margin: 12px 0 0; color: var(--on-dark); }
   .ag-grp[hidden] { display: none; }
@@ -1952,7 +1962,18 @@
     wrap.classList.remove('sheet'); wrap.removeAttribute('role'); wrap.removeAttribute('aria-modal'); wrap.removeAttribute('aria-labelledby'); lock(false);
     if (lastCard) lastCard.focus({ preventScroll: true });
   }
-  cards.forEach(function (c) { c.addEventListener('click', function (ev) { ev.preventDefault(); open(c.getAttribute('data-p'), c); }); });
+  /* Agent cards start collapsed. First tap shows the functions; "Open area" (or a second Enter key) opens the full panel. */
+  cards.forEach(function (c) {
+    c.setAttribute('aria-expanded', 'false');
+    c.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      var isOpen = c.getAttribute('aria-expanded') === 'true';
+      var onMore = ev.target && ev.target.closest && ev.target.closest('.ag-more');
+      if (isOpen && (onMore || ev.detail === 0)) { open(c.getAttribute('data-p'), c); return; }
+      c.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    });
+    c.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && c.getAttribute('aria-expanded') === 'true' && !wrap.classList.contains('sheet')) c.setAttribute('aria-expanded', 'false'); });
+  });
   root.querySelectorAll('.ag-ach').forEach(function (c) { c.addEventListener('click', function (ev) { ev.preventDefault(); open(c.getAttribute('data-p'), c); }); });
   root.querySelectorAll('.ag-x').forEach(function (b) { b.addEventListener('click', close); });
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') close(); });
