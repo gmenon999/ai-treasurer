@@ -1383,7 +1383,10 @@
 
   /* news tile matches the other two tiles: no fill, same text edge */
   .tile-desk, .tile-desk:hover { background: transparent; }
-  .tile-desk { padding: 0 2px 4px; min-height: 0; }
+  .tile-desk { padding: 0; min-height: 0; }
+  .tile-desk .body { display: flex; flex-direction: column; flex: 1 1 auto; }
+  .tile-desk.tile-card .media { flex: none; aspect-ratio: 16 / 10; min-height: 0; }
+  @media (max-width: 720px) { .tiles { gap: 16px; } }
   .tile-desk .kicker { margin-top: 0; }
 </style>
 </head>
@@ -1471,12 +1474,15 @@
         </a>
 
         <!-- Editor's note -->
-        <a class="tile tile-desk" href="#briefing">
+        <a class="tile tile-desk tile-card" href="#briefing">
+          <div class="media"><img src="/img/ait-tile-news-doha.jpg" alt="The Doha skyline at sunset, glass towers reflected in still water" loading="lazy" style="object-position: 50% 50%;"></div>
+          <div class="body">
           <div class="kicker">Daily briefing: Treasury and Finance</div>
           <div class="note">
             <!--EDITOR_NOTE-->
           </div>
           <span class="arrow-link">Read today's briefing</span>
+          </div>
         </a>
       </div>
 
