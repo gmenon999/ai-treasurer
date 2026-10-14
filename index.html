@@ -1350,6 +1350,26 @@
   .about-strip p { margin: 0; max-width: 60ch; font-size: 17px; line-height: 1.5; }
   .about-strip .li-btn { margin-top: 0; }
   @media (max-width: 720px) { .intro { min-height: 0; } .benefits.trail { padding-top: 24px; } }
+
+  /* control trail: labelled, connected timeline */
+  .benefits.trail { padding: 44px 0 52px; }
+  .benefits.trail .kicker { color: var(--gold-light); }
+  .trail-h { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; margin: 8px 0 34px; letter-spacing: -0.01em; font-weight: 700; }
+  .benefits.trail ul { position: relative; counter-reset: st; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+  .benefits.trail ul::before { content: ""; position: absolute; left: 20px; right: 20px; top: 20px; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(217,184,103,0.35)); }
+  .benefits.trail li { counter-increment: st; border-top: 0; padding-top: 56px; position: relative; }
+  .benefits.trail li::before { content: counter(st); position: absolute; top: 0; left: 0; width: 42px; height: 42px; border-radius: 50%; background: var(--navy-deep); border: 2px solid var(--gold); color: var(--gold-light); font-family: var(--serif); font-weight: 700; font-size: 19px; display: grid; place-items: center; }
+  .benefits.trail li:last-child::before { background: var(--gold); color: var(--navy-deep); }
+  .benefits.trail b { font-size: 22px; }
+  @media (max-width: 900px) {
+    .benefits.trail ul { grid-template-columns: 1fr; gap: 0; }
+    .benefits.trail ul::before { left: 20px; right: auto; top: 20px; bottom: 20px; width: 2px; height: auto; background: linear-gradient(180deg, var(--gold), rgba(217,184,103,0.35)); }
+    .benefits.trail li { padding: 0 0 22px 62px; min-height: 42px; }
+    .benefits.trail li:last-child { padding-bottom: 0; }
+    .benefits.trail b { font-size: 20px; margin-top: -2px; }
+    .benefits.trail span { margin-top: 2px; }
+  }
+  @media (max-width: 720px) { .benefits.trail { padding: 30px 0 34px; } .trail-h { margin-bottom: 24px; } }
 </style>
 </head>
 <body>
@@ -1398,12 +1418,14 @@
   <!-- ===== BENEFITS ===== -->
   <section class="benefits trail" data-view="top" aria-label="The five-step control trail">
     <div class="wrap">
+      <div class="kicker">The control trail</div>
+      <h2 class="trail-h">Five steps from data to ledger</h2>
       <ul>
-        <li><b>1 &middot; Capture</b><span>Take in the data and keep the source.</span></li>
-        <li><b>2 &middot; Match</b><span>Compare it with the books and the bank.</span></li>
-        <li><b>3 &middot; Flag</b><span>Raise every difference. Never hide one.</span></li>
-        <li><b>4 &middot; Approve</b><span>A named person signs off.</span></li>
-        <li><b>5 &middot; Post</b><span>Record it with the evidence.</span></li>
+        <li><b>Capture</b><span>Take in the data and keep the source.</span></li>
+        <li><b>Match</b><span>Compare it with the books and the bank.</span></li>
+        <li><b>Flag</b><span>Raise every difference. Never hide one.</span></li>
+        <li><b>Approve</b><span>A named person signs off.</span></li>
+        <li><b>Post</b><span>Record it with the evidence.</span></li>
       </ul>
     </div>
   </section>
