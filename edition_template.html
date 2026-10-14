@@ -1329,13 +1329,6 @@
   .role-line { margin: 10px 0 0; font-size: 17px; color: var(--white); }
   .li-btn { display: inline-block; margin-top: 18px; padding: 12px 22px; background: var(--white); color: var(--navy-deep); font-weight: 700; text-decoration: none; }
   .li-btn:hover { background: var(--gold-light); }
-  .notify { display: grid; gap: 6px; max-width: 420px; margin: 18px 0; }
-  .notify strong { font-size: 15px; }
-  .notify label { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-  .notify input { min-height: 44px; padding: 0 12px; font: 16px var(--sans); border: 1px solid rgba(0,0,0,.3); }
-  .notify button { justify-self: start; min-height: 44px; padding: 0 22px; font: 700 16px var(--sans); cursor: pointer; }
-  .notify small { opacity: .8; }
-  .notify .hp { position: absolute; left: -9999px; }
   @media (max-width: 900px) { .benefits.trail ul { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) { .benefits.trail ul { grid-template-columns: 1fr; } }
 
@@ -2040,15 +2033,6 @@
 <footer>
   <div class="wrap">
     <p>&copy; 2026 The AI Treasurer. Views expressed are personal, are not financial or professional advice, and do not represent any employer or organisation. Get in touch: <a href="mailto:gmenon@theaitreasurer.com">gmenon@theaitreasurer.com</a></p>
-    <form class="notify" name="playbook-notify" method="POST" data-netlify="true" netlify-honeypot="company" action="/subscribed.html">
-      <input type="hidden" name="form-name" value="playbook-notify">
-      <p class="hp"><label>Leave blank <input name="company"></label></p>
-      <strong>Notify me if the playbook is published</strong>
-      <label for="nf-name">Name</label><input id="nf-name" name="name" required autocomplete="name">
-      <label for="nf-email">Email</label><input id="nf-email" type="email" name="email" required autocomplete="email">
-      <button type="submit">Notify me</button>
-      <small>Used only to send that one notice. Not shared.</small>
-    </form>
     <p>This briefing links to third-party publishers and summarises each item in its own words; it does not reproduce source articles. Figures are as reported on the dates shown and are not live market data. Company and publication names are used only to identify the source.</p>
     <p>Photography via <a href="https://unsplash.com" rel="noopener">Unsplash</a>: Andreea Avramescu, Vitaly Gariev, Sasun Bughdaryan, Kelly Sikkema, Shubham Dhage, Dima Solomin and Daniele Levis Pelusi. People shown are not clients or staff.</p>
   </div>
