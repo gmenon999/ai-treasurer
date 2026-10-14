@@ -1180,6 +1180,126 @@ def takes_only(date_iso):
     return 0
 
 
+# ---- consistency gate: runs on every built edition before anything is written. Blocks publishing on errors. ----
+MONTHS = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July",
+                                      "August", "September", "October", "November", "December"], 1)}
+ACTIONS = {"hold": r"\bholds?\b|\bholding\b|\bheld\b", "raise": r"\braises?\b|\braised\b|\braising\b",
+           "cut": r"\bcuts?\b|\bcutting\b"}
+ACRONYM_OK = {"AI", "CFO", "CFOs", "USD", "SGD", "EUR", "GBP", "US", "UK", "ERP", "API"}
+
+
+def _body_texts(content):
+    """Every piece of edition text the reader sees, with a label for error messages."""
+    out = []
+    for k in BEAT_KEYS:
+        for it in content.get("beats", {}).get(k) or []:
+            where = "item '%s'" % it.get("headline", "")[:60]
+            out.append((where, " ".join([it.get("headline", ""), it.get("summary", "")] +
+                                        ([it["take"].get("focus", ""), it["take"].get("view", "")] if it.get("take") else []))))
+    for e in content.get("events") or []:
+        out.append(("event '%s'" % e.get("title", "")[:60], e.get("title", "") + " " + e.get("blurb", "")))
+    for L in content.get("lead_stories") or []:
+        out.append(("lead '%s'" % L.get("headline", "")[:60], L.get("headline", "") + " " + L.get("blurb", "")))
+    for p in content.get("market_view") or []:
+        out.append(("market view '%s'" % p.get("head", "")[:60], " ".join(str(p.get(x, "")) for x in ("text", "view", "effect"))))
+    out.append(("note", (content.get("note_headline") or "") + " " + " ".join(content.get("editor_note") or [])))
+    return out
+
+
+def _sentence_dates(sent, pos):
+    """ISO date nearest to position pos in the sentence, year assumed 2026 if absent. None if no date."""
+    best = None
+    for m in re.finditer(r"\b(\d{1,2}) (January|February|March|April|May|June|July|August|September|October|November|December)(?: (\d{4}))?\b", sent):
+        d = datetime.date(int(m.group(3) or 2026), MONTHS[m.group(2)], int(m.group(1))).isoformat()
+        dist = abs(m.start() - pos)
+        if best is None or dist < best[0]:
+            best = (dist, d)
+    return best[1] if best else None
+
+
+def _ten_year_claims(text):
+    """(value, iso date or None) for each 10-year yield figure in the text."""
+    out = []
+    for sent in re.split(r"(?<=[.!?])\s+", text or ""):
+        for m in re.finditer(r"(?:10-year|10Y|ten-year)[^%.;]{0,60}?(\d+\.\d+)%", sent):
+            out.append((float(m.group(1)), _sentence_dates(sent, m.start(1))))
+    return out
+
+
+def _actions(t):
+    return {name for name, pat in ACTIONS.items() if re.search(pat, t or "", re.I)}
+
+
+def _acronyms(t):
+    return set(re.findall(r"\b[A-Z][A-Z]{2,5}\b", t or "")) - ACRONYM_OK
+
+
+def consistency_problems(content, history_path=None):
+    """Returns (blocking problems, warnings). Empty problems = safe to publish."""
+    history_path = history_path or MARKET_HISTORY
+    problems, warnings = [], []
+    beats = [it for k in BEAT_KEYS for it in content.get("beats", {}).get(k) or []]
+
+    for it in beats:
+        head = it.get("headline", "")
+        # 1. every story and event carries a source link
+        if not any(str(s.get("url", "")).startswith("http") for s in it.get("sources") or []):
+            problems.append("'%s': no source link" % head[:70])
+        body = it.get("summary", "") + " " + ((it.get("take") or {}).get("focus", "") + " " + (it.get("take") or {}).get("view", ""))
+        # 2. headline figures must appear in the body
+        for fig in re.findall(r"\d[\d.,]*%?", head):
+            if fig.rstrip(".,") not in body:
+                problems.append("'%s': headline figure %s is not in its summary or commentary" % (head[:70], fig))
+        # 3. headline action must match body action (hold vs raise vs cut)
+        # the summary and the commentary must agree with the headline and with each other
+        ha, sa = _actions(head), _actions(it.get("summary", ""))
+        ta = _actions((it.get("take") or {}).get("focus", "") + " " + (it.get("take") or {}).get("view", ""))
+        if ha and sa and not (ha & sa):
+            problems.append("'%s': headline says %s but the summary says %s" % (head[:70], "/".join(sorted(ha)), "/".join(sorted(sa))))
+        if sa and ta and not (sa & ta):
+            problems.append("'%s': summary says %s but the commentary says %s" % (head[:70], "/".join(sorted(sa)), "/".join(sorted(ta))))
+        # 4. commentary must not name a story that belongs to another item
+        own = _acronyms(head + " " + it.get("summary", "") + " " + " ".join(s.get("name", "") for s in it.get("sources") or []))
+        others = set()
+        for o in beats:
+            if o is not it:
+                others |= _acronyms(o.get("headline", "") + " " + o.get("summary", ""))
+        if it.get("take"):
+            for a in (_acronyms(it["take"].get("focus", "") + " " + it["take"].get("view", "")) - own) & others:
+                problems.append("'%s': commentary names %s, which belongs to another item" % (head[:70], a))
+
+    for e in content.get("events") or []:
+        if not str((e.get("source") or {}).get("url", "")).startswith("http"):
+            problems.append("event '%s': no source link" % e.get("title", "")[:70])
+
+    # 5. one value per metric per date; 6. check against the stored daily series
+    claims = []
+    for where, text in _body_texts(content):
+        for value, date in _ten_year_claims(text):
+            claims.append((where, value, date))
+    by_date = {}
+    for where, value, date in claims:
+        by_date.setdefault(date, set()).add(value)
+    for date, vals in by_date.items():
+        if len(vals) > 1:
+            problems.append("10-year yield: conflicting values %s for %s" % (
+                ", ".join("%.2f%%" % v for v in sorted(vals)), date or "no date"))
+    try:
+        series = json.load(open(history_path, encoding="utf-8"))["series"]["ust10y"]["points"]
+        known = {d: v for d, v in series}
+    except Exception as e:
+        known = {}
+        warnings.append("10-year history not readable (%s); yields not checked against it" % e)
+    for where, value, date in claims:
+        if date is None:
+            warnings.append("%s: 10-year yield %.2f%% has no date; cannot check" % (where, value))
+        elif date in known and abs(known[date] - value) > 0.005:
+            problems.append("%s: 10-year yield %.2f%% on %s, but the stored series says %.2f%%" % (where, value, date, known[date]))
+        elif date not in known:
+            warnings.append("%s: 10-year yield %.2f%% on %s is not in the stored series; not verified" % (where, value, date))
+    return problems, warnings
+
+
 def selftest():
     """Offline check, no API calls: every prompt builder must run and leave no unfilled placeholder.
     A formatting slip once made the Market view fail silently; this stops that reaching publication."""
@@ -1216,6 +1336,45 @@ def selftest():
     for needle in ("10 October 2026", "[ust10y]", "FACTS:"):
         if mv and needle not in mv:
             problems.append("market view prompt is missing %r" % needle)
+    # consistency gate: the 14 Oct slips must be caught, and the corrected text must pass
+    slips = {"markets_macro": [{"headline": "Fed holds at 3.75%-4.00% while markets price three to four hikes",
+                                "summary": "The Federal Reserve held rates at 3.75%-4.00% on 16 September 2026 after a previous quarter-point rise.",
+                                "sources": [{"name": "Federal Reserve", "url": "https://www.federalreserve.gov/x"}],
+                                "take": {"lens": "Risk", "focus": "The Fed raised its target range by a quarter point to 3.75%-4.00% on 16 September.", "view": "Recalculate interest cost."}}],
+             "risk": [{"headline": "US 10-year yield hits 5.27% as markets price more hikes",
+                       "summary": "The US 10-year Treasury yield reached 5.27% on 9 October 2026, with the 30-year near 5.60%.",
+                       "sources": [{"name": "Fed", "url": "https://www.federalreserve.gov/x"}], "take": None}],
+             "financial_crime": [{"headline": "OFAC widens Operation Economic Outcast",
+                                  "summary": "On 1 October 2026 OFAC designated A7 Network.",
+                                  "sources": [{"name": "Bracewell", "url": "https://www.bracewell.com/x"}], "take": None}],
+             "regulation": [{"headline": "ISSB opens 120-day consultation on nature-related disclosures from 22 October 2026",
+                             "summary": "The ISSB opens a 120-day consultation on 22 October 2026 on mandatory nature-related disclosure standards.",
+                             "sources": [{"name": "IFRS", "url": "https://www.ifrs.org/x"}],
+                             "take": {"lens": "Regulation & compliance", "focus": "OFAC removed persons from the SDN List on 5 October.", "view": "Confirm SDN changes are loaded."}}],
+             "cash": [{"headline": "AI adoption in trade reaches 45%", "summary": "AI adoption in trade operations is 45%.", "sources": [], "take": None}]}
+    slip_content = {"beats": slips, "events": [], "lead_stories": [], "market_view": [], "editor_note": [], "note_headline": ""}
+    bad, _ = consistency_problems(slip_content)
+    for needle in ("no source link", "summary says hold but the commentary says raise", "commentary names OFAC", "5.27%"):
+        if not any(needle in b for b in bad):
+            problems.append("consistency gate missed: %s" % needle)
+    fixed = {"markets_macro": [{"headline": "Fed raises rates to 3.75%-4.00% while markets price three to four hikes",
+                                "summary": "The Federal Reserve raised its target range by a quarter point to 3.75%-4.00% on 16 September 2026, in a 12-0 vote.",
+                                "sources": [{"name": "Federal Reserve", "url": "https://www.federalreserve.gov/x"}],
+                                "take": {"lens": "Risk", "focus": "The Fed cited elevated inflation and solid growth, so floating-rate debt costs are still rising.", "view": "Recalculate interest cost."}}],
+             "risk": [{"headline": "US 10-year yield closes at 5.24% as markets price more hikes",
+                       "summary": "The US 10-year Treasury yield closed at 5.24% on 9 October 2026, with the 30-year near 5.60%.",
+                       "sources": [{"name": "Fed", "url": "https://www.federalreserve.gov/x"}], "take": None}],
+             "regulation": [{"headline": "ISSB opens 120-day consultation on nature-related disclosures from 22 October 2026",
+                             "summary": "The ISSB opens a 120-day consultation on 22 October 2026 on an IFRS Practice Statement for nature-related disclosures, closing on 19 February 2027.",
+                             "sources": [{"name": "IFRS", "url": "https://www.ifrs.org/x"}],
+                             "take": {"lens": "Regulation & compliance", "focus": "The Practice Statement would be non-mandatory guidance, drawing on the TNFD framework.", "view": "List which counterparties carry material nature exposure."}}]}
+    fixed_content = {"beats": fixed, "events": [], "lead_stories": [], "market_view": [], "editor_note": [], "note_headline": ""}
+    good, _ = consistency_problems(fixed_content)
+    if good:
+        problems.append("consistency gate flags corrected text: %s" % "; ".join(good))
+    mock_bad, _ = consistency_problems(mock_content())
+    if mock_bad:
+        problems.append("consistency gate flags the mock edition: %s" % "; ".join(mock_bad))
     if problems:
         for p in problems:
             print("SELFTEST FAIL: " + p)
@@ -1293,6 +1452,14 @@ def main():
         e = dict(e); e["current"] = False
         entries.append(e)
 
+    problems, warnings = consistency_problems(content)
+    for w in warnings:
+        print("WARN: " + w)
+    if problems:
+        for pr in problems:
+            print("BLOCKED: " + pr)
+        print("Edition NOT published: %d consistency problem(s). Fix them in the source and re-run." % len(problems))
+        return 3
     page = render(content, date_human, edition_n, entries)
 
     if args.mock:
