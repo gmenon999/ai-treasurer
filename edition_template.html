@@ -455,10 +455,12 @@
   .fwx-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--fwx-line); }
   .fwx-nav .prog { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-soft); order: 3; }
   .fwx-btn { background: none; border: 0; color: var(--on-dark); font-size: 14px; font-weight: 600; padding: 10px 2px; cursor: pointer; transition: color 0.2s; }
-  .fwx-btn:hover { color: var(--white); }
+  @media (hover: hover) { .fwx-btn:hover { color: var(--white); } }
   .fwx-btn:disabled { opacity: 0.3; cursor: default; }
   .fwx-btn.pri { background: var(--gold-light); color: var(--navy-deep); font-size: 14px; letter-spacing: 0.01em; padding: 11px 20px; transition: background 0.2s; }
-  .fwx-btn.pri:hover { background: var(--white); }
+  @media (hover: hover) { .fwx-btn.pri:hover { background: var(--white); } }
+  .fwx-back { border: 1px solid rgba(255,255,255,0.35); padding: 10px 16px; }
+  .fwx-back[hidden], .fwx-btn[hidden] { display: none; }
   .fwx-snav { margin-top: 24px; padding-top: 16px; }
   .fwx-btn.alt { border: 1px solid var(--gold-light); color: var(--gold-light); padding: 11px 18px; margin: 22px 0 0; }
   .fwx-btn.alt:hover { background: var(--gold-light); color: var(--navy-deep); }
@@ -3196,7 +3198,12 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     if (i < last) { if (mode === 'found') { fsel++; } else { sel++; } render(true); nudge(); }
     else { mode = 'walk'; w = 0; resetGaps(); render(true); nudge(scnBox, true); }
   });
-  snav.appendChild(snext);
+  var sback = el('button', 'fwx-btn fwx-back'); sback.type = 'button';
+  sback.addEventListener('click', function(){
+    if (mode === 'found') { if (fsel > 0) fsel--; } else { if (sel > 0) sel--; }
+    render(true); nudge();
+  });
+  snav.appendChild(sback); snav.appendChild(snext);
 
   [modes, hint, pickBar, pickH, pick, scnBox, capSteps, stepRow, foundRow, panel, nav, snav].forEach(function(n){ host.appendChild(n); });
 
@@ -3303,7 +3310,11 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     scnBox.hidden = nav.hidden = !walk; pickBar.hidden = true;
     pick.hidden = pickH.hidden = true;
     pickBar.setAttribute('aria-expanded', String(pickOpen)); pbN.textContent = S.label; pbC.textContent = pickOpen ? 'Close \u25B4' : 'Change \u25BE';
-    snav.hidden = mode === 'walk' || (mode === 'steps' && sel === 4) || (isFound && fsel === found.length - 1);
+    var si2 = isFound ? fsel : sel, last2 = isFound ? found.length - 1 : 4, list2 = isFound ? found : steps;
+    snav.hidden = mode === 'walk';
+    snext.hidden = si2 === last2;
+    sback.hidden = si2 === 0;
+    if (si2 > 0) sback.textContent = '\u2190 Back: ' + list2[si2 - 1].name;
     if (mode === 'steps') snext.textContent = sel < 4 ? 'Next: ' + steps[sel + 1].name + ' \u2192' : 'Walk through an example transaction \u2192';
     else if (isFound) snext.textContent = fsel < found.length - 1 ? 'Next: ' + found[fsel + 1].name + ' \u2192' : 'Walk through an example transaction \u2192';
     hint.textContent = '';
