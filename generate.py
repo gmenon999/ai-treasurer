@@ -1237,6 +1237,73 @@ def _acronyms(t):
     return set(re.findall(r"\b[A-Z][A-Z]{2,5}\b", t or "")) - ACRONYM_OK
 
 
+def _num(x):
+    """'1,250.50' -> 1250.5; None if not a number."""
+    try:
+        return round(float(str(x).replace(",", "").rstrip(".")), 4)
+    except ValueError:
+        return None
+
+
+def repair_items(content, problems, date_human):
+    """One targeted fix of the items the gate flagged, before deciding to block. Facts stay the same;
+    only the wording is aligned. Flagged commentary is dropped, not rewritten. True if anything changed."""
+    flagged = []
+    for k in BEAT_KEYS:
+        for i, it in enumerate(content["beats"].get(k) or []):
+            tag = "'%s'" % it.get("headline", "")[:70]
+            msgs = [m for m in problems if m.startswith(tag)]
+            if msgs:
+                flagged.append((k, i, msgs))
+    if not flagged:
+        return False
+    changed, rows = False, []
+    for k, i, msgs in flagged:
+        it = content["beats"][k][i]
+        if it.get("take") and any("commentary" in m and "headline figure" not in m for m in msgs):
+            it["take"] = None
+            changed = True
+            msgs = [m for m in msgs if not ("commentary" in m and "headline figure" not in m)]
+        if msgs:
+            rows.append((len(rows) + 1, k, i, msgs))
+    if rows:
+        listing = "\n".join("%d. HEADLINE: %s\n   SUMMARY: %s\n   PROBLEMS: %s" % (
+            n, content["beats"][k][i].get("headline", ""), content["beats"][k][i].get("summary", ""), "; ".join(m))
+            for n, k, i, m in rows)
+        prompt = (
+            "You are the copy editor of The AI Treasurer, a daily briefing for CFOs and corporate treasurers. Today is %s. "
+            "An automated consistency check blocked the items below. Rewrite each item's headline and summary so that "
+            "every listed problem is fixed. Rules: keep every fact, figure, date and name exactly as it is and add no new "
+            "facts; any figure in the headline must appear in the summary written the same way (for example both say "
+            "'24/7', or both say '5.00%%'); if the summary cannot support a headline figure, take it out of the headline. "
+            "headline: under 14 words, no trailing full stop. summary: 30-45 words.\n"
+            "Return STRICT JSON only: {\"items\": [{\"n\": 1, \"headline\": \"...\", \"summary\": \"...\"}]}\n\n"
+            "ITEMS:\n%s" % (date_human, listing))
+        try:
+            data = _json(_ask(prompt, EDITORIAL_MODEL, max_tokens=4000, search=False), "repair")
+        except Exception as e:
+            print("repair: rewrite failed (%s)" % e)
+            data = {}
+        byn = {}
+        for x in data.get("items") or []:
+            try:
+                byn[int(x.get("n"))] = x
+            except (TypeError, ValueError):
+                pass
+        for n, k, i, _ in rows:
+            x, it = byn.get(n) or {}, content["beats"][k][i]
+            if x.get("headline") and x.get("summary"):
+                old = _hnorm(it.get("headline"))
+                it["headline"] = _cap_treasury(x["headline"].strip().rstrip("."))
+                it["summary"] = _cap_treasury(x["summary"].strip())
+                for L in content.get("lead_stories") or []:  # keep the lead story pointing at its item
+                    if _hnorm(L.get("headline")) == old:
+                        L["headline"] = it["headline"]
+                changed = True
+    print("repair: %d item(s) flagged; %s" % (len(flagged), "fixed and re-checked" if changed else "no change"))
+    return changed
+
+
 def consistency_problems(content, history_path=None):
     """Returns (blocking problems, warnings). Empty problems = safe to publish."""
     history_path = history_path or MARKET_HISTORY
@@ -1249,10 +1316,13 @@ def consistency_problems(content, history_path=None):
         if not any(str(s.get("url", "")).startswith("http") for s in it.get("sources") or []):
             problems.append("'%s': no source link" % head[:70])
         body = it.get("summary", "") + " " + ((it.get("take") or {}).get("focus", "") + " " + (it.get("take") or {}).get("view", ""))
-        # 2. headline figures must appear in the body
+        # 2. headline figures must appear in the body (compared by value too, so "5%" matches "5.00%")
+        body_nums = {_num(x) for x in re.findall(r"\d[\d.,]*", body)}
         for fig in re.findall(r"\d[\d.,]*%?", head):
-            if fig.rstrip(".,") not in body:
-                problems.append("'%s': headline figure %s is not in its summary or commentary" % (head[:70], fig))
+            f = fig.rstrip(".,")
+            if f in body or (_num(f.rstrip("%")) is not None and _num(f.rstrip("%")) in body_nums):
+                continue
+            problems.append("'%s': headline figure %s is not in its summary or commentary" % (head[:70], fig))
         # 3. headline action must match body action (hold vs raise vs cut)
         # the summary and the commentary must agree with the headline and with each other
         ha, sa = _actions(head), _actions(it.get("summary", ""))
@@ -1294,6 +1364,8 @@ def consistency_problems(content, history_path=None):
     for where, value, date in claims:
         by_date.setdefault(date, set()).add(value)
     for date, vals in by_date.items():
+        if date is None:
+            continue  # undated figures can't be compared (a threshold vs a close); each is warned about below
         if len(vals) > 1:
             problems.append("10-year yield: conflicting values %s for %s" % (
                 ", ".join("%.2f%%" % v for v in sorted(vals)), date or "no date"))
@@ -1431,6 +1503,27 @@ def selftest():
                  "events": [], "lead_stories": [], "market_view": [], "editor_note": ["AI adoption has tripled, according to Citi Institute."], "note_headline": ""}
     if any("according to" in b for b in consistency_problems(linked_ok)[0]):
         problems.append("consistency gate flags a linked 'according to' attribution")
+    # the 15 Oct blocks: '5%' vs '5.00%' and two undated yields were false alarms; a missing '24/7' is real
+    src = [{"name": "Sample", "url": "https://example.com/x"}]
+    oct15 = {"beats": {"payments": [{"headline": "Unit adds native RTP payments with 24/7 settlement and pre-send checks",
+                                     "summary": "Unit added native RTP payments with round-the-clock settlement and pre-send checks.",
+                                     "sources": src, "take": None}],
+                       "risk": [{"headline": "US 10-year yield breaks 5% for first time since 2007",
+                                 "summary": "The US 10-year Treasury yield closed at 5.00% in September 2026, its first close at that level since 2007.",
+                                 "sources": src, "take": None}]},
+             "events": [], "lead_stories": [], "editor_note": [], "note_headline": "",
+             "market_view": [{"head": "Ten-year breaks 5%", "text": "The 10-year yield is 5.19% after the latest sell-off.", "view": "", "effect": ""}]}
+    b15, _ = consistency_problems(oct15)
+    if not any("headline figure 24" in b for b in b15):
+        problems.append("consistency gate missed a headline '24/7' that is not in the summary")
+    for wrong in ("headline figure 5%", "conflicting values"):
+        if any(wrong in b for b in b15):
+            problems.append("consistency gate false alarm on the 15 Oct case: %s" % wrong)
+    oct15["beats"]["payments"][0]["summary"] = "Unit added native RTP payments with 24/7 settlement and pre-send checks."
+    if any("headline figure" in b for b in consistency_problems(oct15)[0]):
+        problems.append("consistency gate flags a headline figure that is in the summary")
+    oct15["beats"]["payments"][0]["summary"] = "Unit added native RTP payments with round-the-clock settlement."
+    prompt_of("repair prompt", lambda: repair_items(oct15, b15, "Thursday, 15 October 2026"))
     mock_bad, _ = consistency_problems(mock_content())
     if mock_bad:
         problems.append("consistency gate flags the mock edition: %s" % "; ".join(mock_bad))
@@ -1512,6 +1605,11 @@ def main():
         entries.append(e)
 
     problems, warnings = consistency_problems(content)
+    if problems and not args.mock:
+        for pr in problems:
+            print("REPAIRING: " + pr)
+        if repair_items(content, problems, date_human):
+            problems, warnings = consistency_problems(content)
     for w in warnings:
         print("WARN: " + w)
     if problems:
