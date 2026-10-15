@@ -974,6 +974,8 @@
   .js .ag-pan { display: none; margin-top: 0; }
   .js .ag-pan.on { display: block; }
   .ag-pan:focus { outline: none; }
+  /* Jump links move focus to the section heading for screen readers; headings are not controls, so no focus ring */
+  h1[tabindex="-1"]:focus, h2[tabindex="-1"]:focus, h3[tabindex="-1"]:focus { outline: none; }
   .ag-pt { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
   .ag-cg { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
   .ag-pt h3 { font-family: var(--serif); font-size: 26px; line-height: 1.15; margin: 6px 0 6px; color: var(--white); }
