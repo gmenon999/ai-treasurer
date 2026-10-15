@@ -868,8 +868,12 @@
   .ag-who { flex-basis: 100%; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
   .ag-step p { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: var(--on-dark); }
   .ag-aud span { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--on-dark-soft); margin-bottom: 2px; }
-  .ag-how[data-mode="model"] .ag-step.pm, .ag-how[data-mode="case"] .ag-step.pc { background: var(--gold-light); }
-  .ag-how[data-mode="model"] .ag-step.pm *, .ag-how[data-mode="case"] .ag-step.pc * { color: var(--navy-deep); }
+  /* Who does the step: blue edge and label = agent, gold edge and heavier gold label = person */
+  .ag-step { border-left: 4px solid var(--ag-l2); }
+  .ag-who { color: var(--ag-l2); font-weight: 500; }
+  .ag-how[data-mode="model"] .ag-step.pm, .ag-how[data-mode="case"] .ag-step.pc { border-left-color: var(--gold-light); }
+  .ag-how[data-mode="model"] .ag-step.pm .ag-who, .ag-how[data-mode="case"] .ag-step.pc .ag-who { color: var(--gold-light); font-weight: 800; font-size: 12.5px; }
+  .ag-how[data-mode="model"] .ag-step.pm .ag-sh b, .ag-how[data-mode="case"] .ag-step.pc .ag-sh b { font-weight: 800; }
   .js .ag-how[data-mode="model"] .c, .js .ag-how[data-mode="case"] .m { display: none; }
   .ag-how p.c:not(.ag-aud)::before { content: "Real case: "; font-weight: 700; }
   .js .ag-how p.c::before { content: none; }
@@ -1067,6 +1071,7 @@
     .ag-sh { flex-wrap: nowrap; gap: 8px; }
     .ag-sh b { font-size: 18px; }
     .ag-who { flex-basis: auto; margin-left: auto; font-size: 10px; }
+    .ag-how[data-mode="model"] .ag-step.pm .ag-who, .ag-how[data-mode="case"] .ag-step.pc .ag-who { font-size: 11.5px; }
     .ag-step p { margin-top: 4px; font-size: 14px; }
     .ag-sub { margin-top: 28px; }
     .ag-leg { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 12px; }
@@ -1175,6 +1180,11 @@
   .ag-m5-top { margin-top: 10px; }
   .ag-xstep { margin-top: 10px; }
   .ag-m5 li.p b, .ag-m5 li.p i { color: var(--navy-deep); }
+  .ag-m5 li { border-top: 3px solid var(--ag-l2); }
+  .ag-m5 i { color: var(--ag-l2); font-weight: 500; }
+  .ag-m5 li.p { background: var(--ag-tile); border-top-color: var(--gold-light); }
+  .ag-m5 li.p b { color: var(--white); font-weight: 800; }
+  .ag-m5 li.p i { color: var(--gold-light); font-weight: 800; }
   @media (max-width: 700px) { .ag-m5 b { font-size: 11.5px; } .ag-m5 i { font-size: 9px; letter-spacing: 0.06em; } }
 
   .ag-lkey { margin: 14px 0 4px; padding: 12px 14px; background: var(--ag-tile-2); border: 1px solid var(--ag-line); }
