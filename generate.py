@@ -1313,6 +1313,26 @@ def consistency_problems(content, history_path=None):
     return problems, warnings
 
 
+class _PromptCaptured(BaseException):
+    """Raised by the stub so a prompt builder stops right after building its prompt."""
+
+
+def _capture_prompt(fn):
+    """Run fn with _ask stubbed; return the prompt it would send, or None. No API calls."""
+    real, box = globals()["_ask"], {}
+    def stub(prompt, *a, **k):
+        box["p"] = prompt
+        raise _PromptCaptured()
+    globals()["_ask"] = stub
+    try:
+        fn()
+    except _PromptCaptured:
+        pass
+    finally:
+        globals()["_ask"] = real
+    return box.get("p")
+
+
 def selftest():
     """Offline check, no API calls: every prompt builder must run and leave no unfilled placeholder.
     A formatting slip once made the Market view fail silently; this stops that reaching publication."""
@@ -1340,6 +1360,25 @@ def selftest():
         grab("market view check prompt", lambda: (_mv_check(points, facts), captured.get("p"))[1])
     finally:
         globals()["_ask"] = real_ask
+    # every remaining prompt builder: capture the prompt that would be sent (API stubbed). A formatting
+    # slip such as a stray "%" raises here, which is how the 15 Oct build failed in production.
+    full = {k: [{"headline": "Sample headline", "summary": "Sample summary.", "sources": [{"name": "Sample", "url": "https://example.com/"}], "take": None}] for k in BEAT_KEYS}
+    full_res = {"beats": full, "events": [{"when": "1 Nov 2026", "place": "Doha", "title": "Sample", "blurb": "Sample.", "source": {"name": "Sample", "url": "https://example.com/"}}], "lead_stories": [], "market_view": [], "editor_note": [], "note_headline": ""}
+    def prompt_of(name, fn):
+        try:
+            pr = _capture_prompt(fn)
+        except Exception as e:
+            problems.append("%s raised %s: %s" % (name, type(e).__name__, e))
+            return
+        if pr is None:
+            problems.append("%s built no prompt" % name)
+            return
+        seen[name] = pr
+    prompt_of("research prompt", lambda: research("Thursday, 15 October 2026", {"days": []}))
+    prompt_of("fill_empty prompt", lambda: fill_empty({"beats": {}, "events": []}, "Thursday, 15 October 2026", {"days": []}))
+    prompt_of("editorial prompt", lambda: editorial(dict(full_res), "Thursday, 15 October 2026", {"days": []}))
+    prompt_of("market view prompt (full)", lambda: market_view(dict(full_res), "Thursday, 15 October 2026"))
+
     for name, p in seen.items():
         if p is None or len(p) < 200:
             problems.append("%s is empty or too short" % name)
