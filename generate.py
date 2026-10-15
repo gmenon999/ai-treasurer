@@ -442,8 +442,10 @@ def editorial(res, date_human, history=None):
         "(tab is one of ai, treasury, markets, regulation). topic: 2-4 words, title case (e.g. 'Agentic "
         "Treasury Controls', 'ISO 20022 Migration'); never 'Lead story'.\n"
         "items: rewrite EVERY numbered item (same n). headline: under 14 words, specific, no clickbait, no "
-        "trailing full stop. summary: 30-45 words, what happened, the key number, and why a treasurer "
-        "should care. Do not copy the source wording.\n\n"
+        "trailing full stop. Any figure in the headline (a percentage, a count, or a number such as 24/7) "
+        "must also appear in the summary, written the same way. summary: 30-45 words, what happened, the key "
+        "number, and why a treasurer should care. Any 10-year yield quoted must give its date, for example "
+        "'closed at 5.19% on 14 October 2026', and must match the source. Do not copy the source wording.\n\n"
         "%s\n\nITEMS:\n%s" % (date_human, recent_notes, STYLE, "\n".join(flat))
     )
     prompt, data = base, None
