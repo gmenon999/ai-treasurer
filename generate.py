@@ -229,8 +229,8 @@ def research(date_human, history=None):
     for k in BEAT_KEYS:
         items = beats.get(k) or []
         items = [it for it in items if it.get("headline") and it.get("summary") and (it.get("sources"))]
-        if not items and k not in OPTIONAL_BEATS:
-            raise ValueError("research: beat '%s' has no usable items" % k)
+        # An empty beat is not fatal here: fill_empty() runs a longer, focused search for it and fails
+        # the build only if that search also comes back empty.
         beats[k] = items[:3]
     data["beats"] = beats
     data["events"] = (data.get("events") or [])[:3]
