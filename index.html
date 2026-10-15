@@ -843,6 +843,11 @@
   /* blocks */
   .ag-blk { padding: 64px 0 8px; max-width: 1040px; margin: 0 auto; scroll-margin-top: var(--ag-top); }
   .ag-blk + .ag-blk { border-top: 1px solid var(--ag-line); margin-top: 56px; }
+  /* Sub-tabs: with JS, show one part at a time */
+  .ag-subtabs .ag-part:not(.on) { display: none; }
+  .ag-subtabs .ag-part.on { border-top: 0; margin-top: 0; }
+  .ag-nextp { margin-top: 32px; }
+  .next-band.ag-nb-off { display: none !important; }
   .ag-h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(25px, 3vw, 34px); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 14px; max-width: 30ch; color: var(--white); }
   .ag-h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin: 0 0 12px; }
   .ag-p { font-size: 17px; color: var(--on-dark); max-width: 62ch; margin: 0 0 20px; }
@@ -1879,7 +1884,7 @@
     </div></nav>
 
     <div class="wrap">
-      <div class="ag-blk ag-how" id="ag-how" data-mode="model">
+      <div class="ag-blk ag-how ag-part" id="ag-how" data-mode="model">
         <div class="ag-bh">
           <div><div class="ag-k">1 &middot; How it works</div>
           <h3 class="ag-h3">Five steps. The agent does the checking, a named person makes the decision.</h3></div>
@@ -1899,9 +1904,10 @@
           <p class="ag-rule"><b>The rule.</b> Anything that moves money, posts an entry or changes master data stays at Level 1 or below.</p>
           <p class="ag-src">Source: The AI Treasurer function map, October 2026. Illustrative. Levels are the author&rsquo;s proposals.</p>
         </div>
+        <div class="ag-acts ag-nextp"><a class="ag-btn ag-btn-g" href="#ag-map">Next: The agents &rarr;</a></div>
       </div>
 
-      <div class="ag-blk ag-mapb" id="ag-map">
+      <div class="ag-blk ag-mapb ag-part" id="ag-map">
         <div class="ag-k">2 &middot; The agents in detail</div>
         <h3 class="ag-h3">Every agent, function by function. Tap one to see who does what, and how far the agent can go.</h3>
         <p class="ag-start"><b>Where to start.</b> Work where a person already checks the result and a mistake is cheap: bank reconciliation, cash positioning, variance analysis. Leave payments until later.</p>
@@ -1921,9 +1927,10 @@
           </div>
         </div>
         <p class="ag-src">Source: The AI Treasurer function map, October 2026. Illustrative and not exhaustive. The workflow or agent split follows Anthropic&rsquo;s <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a> and <a href="https://claude.com/blog/building-ai-agents-in-financial-services" target="_blank" rel="noopener">financial services guide</a>.</p>
+        <div class="ag-acts ag-nextp"><a class="ag-btn ag-btn-g" href="#ag-golive">Next: Go-live checks &rarr;</a></div>
       </div>
 
-      <div class="ag-blk ag-golive" id="ag-golive">
+      <div class="ag-blk ag-golive ag-part" id="ag-golive">
         <div class="ag-k">3 &middot; Go-live checks</div>
         <h3 class="ag-h3">Nine checks: five before an agent touches live work, four once it is running</h3>
         <p class="ag-p">They apply to every agent on this page.</p>
@@ -1982,6 +1989,7 @@
   jl.forEach(function (a) { var t = document.querySelector(a.getAttribute('href')); if (t) parts.push([t, a]); });
   function spy() {
     var line = (parseFloat(getComputedStyle(root).getPropertyValue('--ag-jump-h')) || 52) + 120, cur = null;
+    if (root.classList.contains('ag-subtabs')) return; /* sub-tabs set the highlight themselves */
     if (!root.offsetHeight) return; /* tab hidden: positions are meaningless, keep the current highlight */
     if (parts.length) cur = parts[0][1]; /* at the top of the tab, highlight How it works */
     parts.forEach(function (p) { if (p[0].getBoundingClientRect().top <= line) cur = p[1]; });
@@ -1991,6 +1999,32 @@
   var ticking = false;
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; spy(); }); } }, { passive: true });
   spy();
+  /* Sub-tabs: How it works, The agents and Go-live checks show one at a time */
+  var partEls = [].slice.call(root.querySelectorAll('.ag-part'));
+  function partOf(el) { return el && el.closest ? el.closest('.ag-part') : null; }
+  function showPart(id) {
+    partEls.forEach(function (p) { p.classList.toggle('on', p.id === id); });
+    jl.forEach(function (a) { if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    /* one Next at a time: the Treasury Today band only after the last part */
+    var nba = document.querySelector('.next-band[data-view="agentic"]'); if (nba) nba.classList.toggle('ag-nb-off', id !== partEls[partEls.length - 1].id);
+  }
+  if (partEls.length) {
+    root.classList.add('ag-subtabs');
+    var startEl = location.hash.length > 1 ? document.getElementById(location.hash.slice(1)) : null;
+    showPart((partOf(startEl) || partEls[0]).id);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+      var t = document.getElementById(a.getAttribute('href').slice(1)), part = partOf(t); if (!part) return;
+      showPart(part.id);
+      if (t !== part) return; /* links to something inside a part: the site's own scroll takes it from here */
+      e.preventDefault(); e.stopPropagation();
+      /* switching part: no animated scroll; put the part's top straight under the bar */
+      var m = parseFloat(getComputedStyle(part).scrollMarginTop) || 0, y = part.getBoundingClientRect().top + window.pageYOffset - m;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'instant' });
+      if (history.replaceState) history.replaceState(null, '', '#' + part.id);
+      var h = part.querySelector('h3'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    }, true);
+  }
   /* re-check when the tab is opened, since switching tabs may not scroll */
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { if (es[0].isIntersecting) spy(); }).observe(root);
 
