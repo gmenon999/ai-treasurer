@@ -3198,10 +3198,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   });
   snav.appendChild(snext);
 
-  var cta = el('p', 'fwx-cta');
-  cta.appendChild(document.createTextNode('Curious how your own process would hold up? '));
-  var a = el('a', null, 'Get in touch'); a.href = 'mailto:gmenon@theaitreasurer.com?subject=AI%20controls%20in%20Treasury'; cta.appendChild(a); cta.appendChild(document.createTextNode('.'));
-  [modes, hint, pickBar, pickH, pick, scnBox, capSteps, stepRow, foundRow, panel, nav, snav, cta].forEach(function(n){ host.appendChild(n); });
+  [modes, hint, pickBar, pickH, pick, scnBox, capSteps, stepRow, foundRow, panel, nav, snav].forEach(function(n){ host.appendChild(n); });
 
   function card(item, tag, ev, compact){
     var c = el('div', 'fwx-card');
@@ -3324,7 +3321,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     });
     foundRow.hidden = !isFound;
     foundBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', String(isFound && i === fsel)); });
-    cta.hidden = walk && w === 4;
+
     panel.textContent = '';
     panel.classList.toggle('anim', animate !== false);
     if (!walk) {
