@@ -3181,9 +3181,14 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   var sw = el('button', 'fwx-sw'); sw.type = 'button'; sw.setAttribute('role', 'switch');
   sw.appendChild(el('span', 'trk')); var swl = el('span', null, 'Remove this control'); sw.appendChild(swl);
   back.addEventListener('click', function(){ if (w > 0) { w--; render(true); nudge(); } });
-  next.addEventListener('click', function(){ if (w === 4) { w = 0; resetGaps(); } else { w++; } render(true); nudge(); });
+  var again = el('button', 'fwx-btn', 'Start again'); again.type = 'button';
+  again.addEventListener('click', function(){ w = 0; resetGaps(); render(true); nudge(); });
+  next.addEventListener('click', function(){
+    if (w === 4) { var nb = document.querySelector('.next-band[data-view="controls"] a'); if (nb) nb.click(); else location.hash = '#agentic'; return; }
+    w++; render(true); nudge();
+  });
   sw.addEventListener('click', function(){ gaps[w] = !gaps[w]; render(false); });
-  [back, next, prog, sw].forEach(function(n){ nav.appendChild(n); });
+  [back, next, again, prog, sw].forEach(function(n){ nav.appendChild(n); });
 
   var snav = el('div', 'fwx-nav fwx-snav');
   var snext = el('button', 'fwx-btn pri'); snext.type = 'button';
@@ -3267,9 +3272,6 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       gaps.forEach(function(g, i){ if (!g) return; var li = el('li'); li.appendChild(el('b', null, steps[i].name)); li.appendChild(el('span', null, steps[i].q)); ul.appendChild(li); });
       box.appendChild(ul);
     }
-    var p = el('p', 'invite'); p.appendChild(document.createTextNode('Want this tested against your own process? '));
-    var a2 = el('a', null, 'Get in touch'); a2.href = a.href; p.appendChild(a2); p.appendChild(document.createTextNode('.'));
-    box.appendChild(p);
     return box;
   }
 
@@ -3306,11 +3308,10 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     pickBar.setAttribute('aria-expanded', String(pickOpen)); pbN.textContent = S.label; pbC.textContent = pickOpen ? 'Close \u25B4' : 'Change \u25BE';
     var si2 = isFound ? fsel : sel, last2 = isFound ? found.length - 1 : 4, list2 = isFound ? found : steps;
     snav.hidden = mode === 'walk';
-    snext.hidden = si2 === last2;
     sback.hidden = si2 === 0;
     if (si2 > 0) sback.textContent = '\u2190 Back: ' + list2[si2 - 1].name;
-    if (mode === 'steps') snext.textContent = sel < 4 ? 'Next: ' + steps[sel + 1].name + ' \u2192' : 'Walk through an example transaction \u2192';
-    else if (isFound) snext.textContent = fsel < found.length - 1 ? 'Next: ' + found[fsel + 1].name + ' \u2192' : 'Walk through an example transaction \u2192';
+    if (mode === 'steps') snext.textContent = sel < 4 ? 'Next: ' + steps[sel + 1].name + ' \u2192' : 'Next: See it on a real transaction \u2192';
+    else if (isFound) snext.textContent = fsel < found.length - 1 ? 'Next: ' + found[fsel + 1].name + ' \u2192' : 'Next: See it on a real transaction \u2192';
     hint.textContent = '';
     if (walk) { hint.appendChild(el('b', null, 'How this works. ')); hint.appendChild(document.createTextNode('Press Next step to watch an AI agent handle a supplier\u2019s request to change its bank account while the five controls build an audit trail. At any step, use the switch to remove that step\u2019s control and see what breaks. Step 5 shows whether the trail would stand up to an auditor.')); }
     else if (isFound) { hint.appendChild(el('b', null, 'How this works. ')); hint.appendChild(document.createTextNode('Four foundations sit around the whole system, behind every step. Tap one to see what it covers, the evidence it leaves, and the question an auditor would ask.')); }
@@ -3354,7 +3355,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       if (gaps[w]) { var m = el('div', 'fwx-miss'); m.appendChild(el('b', null, 'What goes wrong without ' + steps[w].name)); m.appendChild(document.createTextNode(S.miss[w])); c.appendChild(m); }
       panel.appendChild(c); panel.appendChild(recBox(S.head, rows));
       if (w === 4) { panel.appendChild(summary()); }
-      back.disabled = w === 0; next.textContent = w === 4 ? 'Start again' : 'Next step';
+      back.disabled = w === 0; next.textContent = w === 4 ? 'Next: Agentic Automation \u2192' : 'Next step'; again.hidden = w !== 4;
       prog.textContent = 'Step ' + (w + 1) + ' of 5';
       sw.setAttribute('aria-checked', String(gaps[w])); swl.textContent = gaps[w] ? steps[w].name + ' control removed. Restore it' : 'Remove the ' + steps[w].name + ' control';
     }
