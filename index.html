@@ -1835,7 +1835,7 @@
         <li><span class="n">02</span><span class="step">Match</span><span class="why">Rules or AI models pair items. The checking rules, AI model and AI instruction versions are recorded, and amounts are recalculated independently.</span><span class="q"><b>The auditor asks</b>Why were these two items paired, and by which version?</span></li>
         <li><span class="n">03</span><span class="step">Flag</span><span class="why">Low-confidence results become exceptions. Exceptions are logged and aged, never silently cleared.</span><span class="q"><b>The auditor asks</b>What didn't match, and how long has it been open?</span></li>
         <li><span class="n">04</span><span class="step">Approve</span><span class="why">A named person approves, at a level set by risk. The agent that proposes an action can never approve it.</span><span class="q"><b>The auditor asks</b>Who accepted it, and were they independent?</span></li>
-        <li><span class="n">05</span><span class="step">Post</span><span class="why">Entries follow IFRS, with a record-level trail of the data, AI model version and approver.</span><span class="q"><b>The auditor asks</b>Does the entry trace back to source?</span></li>
+        <li><span class="n">05</span><span class="step">Post</span><span class="why">The approved result is recorded in its system of record (the ledger, the forecast or master data), with the sources, AI model version and approver attached. Ledger entries follow IFRS.</span><span class="q"><b>The auditor asks</b>Does what was recorded trace back to source?</span></li>
       </ol>
       <div class="fw-label"><span>Around the system</span><b>Four foundations</b><small>COSO: control environment &middot; risk assessment &middot; control activities &middot; monitoring</small></div>
       <ul class="found">
@@ -2929,7 +2929,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     Match: 'The checking rules, AI model and AI instruction versions, both item references, and the independent recalculation result.',
     Flag: 'An exception ID, the reason, an AI confidence score (how sure it is, 0 to 1), the date opened and its running age. Never auto-cleared.',
     Approve: 'The approver’s identity and time, the risk tier applied, and confirmation that proposer and approver differ.',
-    Post: 'A journal reference, the IFRS basis, a link back to the source record, the data snapshot, AI model version and approver.',
+    Post: 'A reference for what was recorded (a journal number, forecast version or change record), a link back to the source, the data snapshot, AI model version and approver. For ledger entries, the IFRS basis too.',
     Govern: 'A register entry per AI use: owner, risk tier, intended use, limits and relevance to financial reporting.',
     Access: 'Each agent’s identity, the rights granted, who granted them, and the independent check on master-data changes.',
     Change: 'A change record: author, approver, test result and version, with the old and new versions retained.',
