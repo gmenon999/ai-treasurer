@@ -1,0 +1,23 @@
+name: CI - generator self-test
+
+# Runs on every pull request that touches the generator, its template or the workflows.
+# Offline only: the self-test builds every prompt with the API stubbed out, so a formatting
+# slip fails here instead of in the 04:00 Qatar daily build.
+on:
+  pull_request:
+    paths:
+      - "generate.py"
+      - "edition_template.html"
+      - ".github/workflows/**"
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet requests
+      - name: Self-test (prompts build; no API calls)
+        run: python generate.py --selftest
