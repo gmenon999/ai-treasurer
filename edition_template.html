@@ -1974,6 +1974,8 @@
   jl.forEach(function (a) { var t = document.querySelector(a.getAttribute('href')); if (t) parts.push([t, a]); });
   function spy() {
     var line = (parseFloat(getComputedStyle(root).getPropertyValue('--ag-jump-h')) || 52) + 120, cur = null;
+    if (!root.offsetHeight) return; /* tab hidden: positions are meaningless, keep the current highlight */
+    if (parts.length) cur = parts[0][1]; /* at the top of the tab, highlight How it works */
     parts.forEach(function (p) { if (p[0].getBoundingClientRect().top <= line) cur = p[1]; });
     jl.forEach(function (a) { if (a === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     if (cur && cur.scrollIntoView && mq.matches) { var bar = cur.parentNode; var l = Math.max(0, cur.offsetLeft - bar.offsetLeft - 24); if (Math.abs(bar.scrollLeft - l) > 40) bar.scrollLeft = l; }
@@ -1981,6 +1983,8 @@
   var ticking = false;
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; spy(); }); } }, { passive: true });
   spy();
+  /* re-check when the tab is opened, since switching tabs may not scroll */
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { if (es[0].isIntersecting) spy(); }).observe(root);
 
   /* 2. map */
   var cards = root.querySelectorAll('.ag-card'), items = root.querySelectorAll('.ag-cards li'), grps = root.querySelectorAll('.ag-grp');
