@@ -432,6 +432,23 @@
     "cost_usd": 0.2516
    },
    "edition_cost_usd": 0.9253
+  },
+  {
+   "date": "2026-10-15",
+   "items": [
+    {
+     "headline": "(all)",
+     "status": "error",
+     "reasons": "takes: no JSON in model response"
+    }
+   ],
+   "cost_usd": 0.2558,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.2559
+   },
+   "edition_cost_usd": 1.1017
   }
  ]
 }

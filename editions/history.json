@@ -682,6 +682,101 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-15",
+   "note_headline": "Auditors want AI inside existing controls just as banks build it into platforms",
+   "note_opening": "Auditors now expect AI to be governed through the controls Finance already runs, not a parallel regime. The AICPA's 13 October 2026 practice aid folds AI into existing ICFR risk assessment; EY wants an inventory of AI us",
+   "items": [
+    {
+     "headline": "Ripple expands GSmart with approval-gated AI agents across Treasury workflows",
+     "urls": [
+      "https://treasury.ripple.com/news/ripple-treasury-brings-industrys-first-governed-ai-for-enterprise-treasury"
+     ]
+    },
+    {
+     "headline": "ISO 20022 leaders treat migration as a data-quality programme at Sibos 2026",
+     "urls": [
+      "https://vyntra.com/press/what-sibos-2026-taught-us-about-iso-20022/"
+     ]
+    },
+    {
+     "headline": "Standard Chartered sets out four-step playbook to tackle fragmented corporate cash",
+     "urls": [
+      "https://treasurytoday.com/insight-and-analysis/digital-solutions-ease-trapped-cash-challenges/"
+     ]
+    },
+    {
+     "headline": "Citi goes live first with multiple markets on Swift instant payments scheme",
+     "urls": [
+      "https://www.finextra.com/newsarticle/48508/citi-launches-multi-market-instant-payments-on-swift-scheme",
+      "https://www.citigroup.com/global/news/press-release/2026/citi-first-bank-launch-multi-market-instant-payments-swift-payments-scheme"
+     ]
+    },
+    {
+     "headline": "HSBC unveils HSBCnio, an AI-enabled transaction banking platform, at Sibos",
+     "urls": [
+      "https://bankingherald.com/hsbc-launches-hsbcnio-combining-transaction-banking-and-ai-tools-for-business-clients/"
+     ]
+    },
+    {
+     "headline": "AICPA practice aid folds AI into existing ICFR risk assessment for auditors",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ]
+    },
+    {
+     "headline": "EY tells auditors to map AI risks to material misstatement",
+     "urls": [
+      "https://www.ey.com/en_us/insights/assurance/ai-audit-readiness-for-financial-reporting"
+     ]
+    },
+    {
+     "headline": "10-year Treasury yield peaks at 5.28%, a 24-year high",
+     "urls": [
+      "https://www.nbcnews.com/business/markets/treasury-yields-hit-24-year-highs-global-sell-accelerates-rcna602045",
+      "https://www.federalreserve.gov/releases/h15/?utm="
+     ]
+    },
+    {
+     "headline": "Fed and ECB raise rates 25bp on the same day",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html"
+     ]
+    },
+    {
+     "headline": "Visa stablecoin-linked card volume up 200%, with 17% from business",
+     "urls": [
+      "https://corporate.visa.com/en/sites/visa-perspectives/newsroom/stablecoins-gain-traction-business-payments.html"
+     ]
+    },
+    {
+     "headline": "Fed lifts rates to 3.75%-4.00% with unanimous support",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261008",
+      "https://ofac.treasury.gov/media/937091/download"
+     ]
+    },
+    {
+     "headline": "ISSB to open 120-day consultation on nature-related disclosures practice statement",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
+     ]
+    },
+    {
+     "headline": "IASB opens hedge accounting review, with comments due 26 January 2027",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
+     ]
+    }
+   ]
   }
  ]
 }
