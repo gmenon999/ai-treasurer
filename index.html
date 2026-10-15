@@ -1183,6 +1183,11 @@
   .ag-lkey li { display: grid; grid-template-columns: 74px 1fr; gap: 10px; align-items: baseline; font-size: 13.5px; line-height: 1.45; color: var(--on-dark); }
   .ag-lkey .ag-chip { font-size: 10px; padding: 2px 6px; text-align: center; }
   .ag-glw { max-width: 760px; }
+  .ag-glb { max-width: 760px; margin: 0 0 34px; }
+  .ag-glb .ag-h4 { margin-bottom: 10px; }
+  .ag-glb .ag-p { margin-bottom: 12px; }
+  .ag-glb .ag-p a, .ctl .note a, .framework .note a { color: var(--gold-light); font-weight: 700; }
+  .ag-glb .ag-src { margin-top: 12px; }
 
   /* ---------- Credentials: full-bleed blue band ---------- */
   .creds { background: var(--blue); color: var(--white); padding: 80px 0 72px; }
@@ -1521,7 +1526,7 @@
           <div class="body">
           <div class="kicker">AI Controls</div>
           <h2><span class="hl">Controls that keep pace with automation</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
-          <p>The four foundations, and the nine checks before and after an agent goes live.</p>
+          <p>The five-step control trail, and the four foundations around every system.</p>
           </div>
         </a>
 
@@ -1531,7 +1536,7 @@
           <div class="body">
           <div class="kicker">Agentic Automation</div>
           <h2><span class="hl">22 agents a Finance team could use. Each one reports to a person.</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
-          <p>A proposed map of 124 functions across 22 areas of Treasury and Finance, and how far an agent goes in each.</p>
+          <p>A proposed map of 124 functions across 22 areas of Treasury and Finance, how far an agent goes in each, and nine checks for go-live.</p>
           </div>
         </a>
 
@@ -1829,33 +1834,10 @@
       </ul>
       </div>
       <p class="note">Illustrative framework, aligned with COSO&rsquo;s Internal Control&mdash;Integrated Framework and its 2026 guidance on internal control over generative AI. It describes a control approach, not a specific system or result.</p>
+      <p class="note">Adopting agents? The nine go-live checks are on <a href="#ag-golive">Agentic Automation</a>.</p>
     </div>
   </section>
 
-  <section class="ctl reveal" id="ctl-adopt" data-view="controls" aria-labelledby="ctl-h">
-    <div class="wrap">
-      <div class="ctl-blk" id="ctl-before">
-        <div class="ag-k">Before you adopt agents</div>
-        <h3 class="ag-h3" id="ctl-h">Put three foundations in place, then run five checks</h3>
-        <p class="ctl-p">Govern, Access and Change come first: a register with an owner for every agent, its own identity with only the rights it needs, and change control over its instructions and models. Monitor, the fourth foundation, takes over once agents are running.</p>
-        <p class="ctl-p"><b>Choose a level for each function.</b> Level 0: a person does it. Level 1: the agent drafts and a person approves. Level 2: the agent runs and a person handles the exceptions, never the final money step. Anything that moves money, posts an entry or changes master data stays at Level 1 or below. The Agentic Automation tab shows the proposed level for each of the 124 functions.</p>
-        <ol class="ag-gl ag-glw"><li><span class="ag-gn">1</span><p>Run the agent in draft-only mode on past cases and compare its drafts with what people decided.</p></li><li><span class="ag-gn">2</span><p>Treat the text of documents and emails as data, never as instructions. Test with planted instructions.</p></li><li><span class="ag-gn">3</span><p>Give the agent its own identity, the narrowest access that works, and no sensitive data carried between tasks.</p></li><li><span class="ag-gn">4</span><p>Name an owner and a person who can switch it off by removing the agent’s access, not by asking it to stop.</p></li><li><span class="ag-gn">5</span><p>Test the failure case. If the agent is unavailable, work continues by the manual route. If it is unsure, it holds and never releases.</p></li></ol>
-      </div>
-      <div class="ctl-blk" id="ctl-after">
-        <div class="ag-k">After you adopt agents</div>
-        <h3 class="ag-h3">Run the trail on every transaction, and watch it</h3>
-        <p class="ctl-p">Every transaction follows the five steps above. Monitor tracks volumes, overrides, validation failures, exception ageing and drift, with a stop switch when limits are breached. Four more checks apply once an agent is running.</p>
-        <ol class="ag-gl ag-glw"><li><span class="ag-gn">6</span><p>Hand over to a person on a blocker, repeated failure or unclear case, and cap the retries.</p></li><li><span class="ag-gn">7</span><p>Watch accuracy and the override rate. A rate near zero deserves as much scrutiny as a high one. Sample approvals to check reviewers are not just clicking through.</p></li><li><span class="ag-gn">8</span><p>Treat a new model, prompt or tool version as a change: test it, approve it, record it.</p></li><li><span class="ag-gn">9</span><p>Keep a decision record: the inputs, the data sources, the model version and who approved.</p></li></ol>
-        <p class="ag-src">Source: The AI Treasurer, informed by Anthropic&rsquo;s published guidance on agents. Checks 6 to 9 and the wording of check 4 are the author&rsquo;s judgment.</p>
-      </div>
-      <div class="ctl-blk" id="ctl-widen">
-        <div class="ag-k">Widening an agent&rsquo;s role</div>
-        <h3 class="ag-h3">Earn the next level before you give it</h3>
-        <p class="ctl-p">A step moves from Level 1 to Level 2 only after it has run cleanly at Level 1. A person decides, and the reason is written down. Steps that move money, post an entry or change master data stay at Level 1.</p>
-        <p class="ag-src">The levels and this rule are the author&rsquo;s proposals, not taken from a standard. Nothing here is investment, legal or professional advice.</p>
-      </div>
-    </div>
-  </section>
 
   <section class="about-strip" data-view="controls" aria-label="About the author">
     <div class="wrap">
@@ -1937,9 +1919,23 @@
 
       <div class="ag-blk ag-golive" id="ag-golive">
         <div class="ag-k">3 &middot; Go-live checks</div>
-        <h3 class="ag-h3">Nine checks before and after go-live are on AI Controls</h3>
-        <p class="ag-p">Five to run before any agent touches live work, and four once it is running. They apply to every agent on this page.</p>
-        <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ctl-adopt">See the checks</a></div>
+        <h3 class="ag-h3">Nine checks: five before an agent touches live work, four once it is running</h3>
+        <p class="ag-p">They apply to every agent on this page.</p>
+        <div class="ag-glb" id="ctl-adopt">
+          <h4 class="ag-h4">Before go-live &middot; checks 1 to 5</h4>
+          <p class="ag-p">Put three of the <a href="#framework">four foundations</a> in place first: Govern, Access and Change. That means a register with an owner for every agent, its own identity with only the rights it needs, and change control over its instructions and models.</p>
+          <ol class="ag-gl ag-glw"><li><span class="ag-gn">1</span><p>Run the agent in draft-only mode on past cases and compare its drafts with what people decided.</p></li><li><span class="ag-gn">2</span><p>Treat the text of documents and emails as data, never as instructions. Test with planted instructions.</p></li><li><span class="ag-gn">3</span><p>Give the agent its own identity, the narrowest access that works, and no sensitive data carried between tasks.</p></li><li><span class="ag-gn">4</span><p>Name an owner and a person who can switch it off by removing the agent’s access, not by asking it to stop.</p></li><li><span class="ag-gn">5</span><p>Test the failure case. If the agent is unavailable, work continues by the manual route. If it is unsure, it holds and never releases.</p></li></ol>
+        </div>
+        <div class="ag-glb" id="ctl-after">
+          <h4 class="ag-h4">Once it is running &middot; checks 6 to 9</h4>
+          <p class="ag-p">Every transaction follows the five steps in <a href="#ag-how">How it works</a>. Monitor, the fourth foundation, tracks volumes, overrides, validation failures, exception ageing and drift, with a stop switch when limits are breached.</p>
+          <ol class="ag-gl ag-glw"><li><span class="ag-gn">6</span><p>Hand over to a person on a blocker, repeated failure or unclear case, and cap the retries.</p></li><li><span class="ag-gn">7</span><p>Watch accuracy and the override rate. A rate near zero deserves as much scrutiny as a high one. Sample approvals to check reviewers are not just clicking through.</p></li><li><span class="ag-gn">8</span><p>Treat a new model, prompt or tool version as a change: test it, approve it, record it.</p></li><li><span class="ag-gn">9</span><p>Keep a decision record: the inputs, the data sources, the model version and who approved.</p></li></ol>
+          <p class="ag-src">Source: The AI Treasurer, informed by Anthropic&rsquo;s published guidance on agents. Checks 6 to 9 and the wording of check 4 are the author&rsquo;s judgment.</p>
+        </div>
+        <div class="ag-glb" id="ctl-widen">
+          <h4 class="ag-h4">Widening an agent&rsquo;s role</h4>
+          <p class="ag-p">Earn the next level before you give it. A step moves from Level 1 to Level 2 only after it has run cleanly at Level 1. A person decides, and the reason is written down. Steps that move money, post an entry or change master data stay at Level 1.</p>
+        </div>
         <details class="ag-fold ag-limits" open>
           <summary><h4 class="ag-h4">What this does not claim</h4></summary>
           <ul><li>It describes a control approach, not a specific system. No product is named or endorsed.</li><li>It is written for IFRS. US GAAP differs in places.</li><li>The autonomy levels are the author’s proposals, not taken from a standard.</li><li>Accounting standard references were checked against firm and professional-body summaries, not the standard texts.</li><li>Taxation, payroll and end-of-service lines are kept generic. They differ by country.</li><li>The workflow or agent tags and the starting points are the author’s proposals, informed by Anthropic’s published guidance on agents.</li></ul>
