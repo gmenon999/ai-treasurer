@@ -449,6 +449,38 @@
     "cost_usd": 0.2559
    },
    "edition_cost_usd": 1.1017
+  },
+  {
+   "date": "2026-10-17",
+   "items": [
+    {
+     "headline": "Trovata pitches mid-market TMS with real-time links to 9,900+ banks",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Inyo Global first to go live on Visa Direct stablecoin prefunding",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Fed funds at 3.75–4.00% as 27–28 October FOMC approaches",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "(all)",
+     "status": "error",
+     "reasons": "takes: no JSON in model response"
+    }
+   ],
+   "cost_usd": 0.5097,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1036
+   },
+   "edition_cost_usd": 1.0824
   }
  ]
 }

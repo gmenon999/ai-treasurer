@@ -777,6 +777,92 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-17",
+   "note_headline": "Agents now prepare the transactions, so Finance must own the review step",
+   "note_opening": "Agentic AI has moved from forecasting cash to preparing the transactions that move it. Centalion Group's agent, built with Komgo, cut issuance processing by 55% and amendments by 80% while leaving approval with humans. K",
+   "items": [
+    {
+     "headline": "Centalion's Komgo-built agent cuts trade Finance processing by up to 80%",
+     "urls": [
+      "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
+     ]
+    },
+    {
+     "headline": "Kyriba and Esker pair Treasury intelligence with AP and AR execution",
+     "urls": [
+      "https://www.kyriba.com/news/kyriba-and-esker-partner-to-help-companies-improve-cash-visibility-forecasting-and-liquidity-optimization/"
+     ]
+    },
+    {
+     "headline": "Trovata pitches mid-market TMS with real-time links to 9,900+ banks",
+     "urls": [
+      "https://trovata.io/trovata-tms"
+     ]
+    },
+    {
+     "headline": "Kyriba–Esker platform aims to join Treasury and operational cash management",
+     "urls": [
+      "https://www.kyriba.com/news/kyriba-and-esker-partner-to-help-companies-improve-cash-visibility-forecasting-and-liquidity-optimization/",
+      "https://www.esker.com/company/press-releases/kyriba-and-esker-partner-help-companies-improve-cash-visibility-forecasting/"
+     ]
+    },
+    {
+     "headline": "72% of global corporates now rank trapped liquidity release first, says Citi",
+     "urls": [
+      "https://www.citigroup.com/global/news/press-release/2026/citi-institute-supply-chain-financing-report-liquidity-takes-center-stage-as-supply-chain-disruption-becomes-norm"
+     ]
+    },
+    {
+     "headline": "Inyo Global first to go live on Visa Direct stablecoin prefunding",
+     "urls": [
+      "https://investor.visa.com/news/news-details/2026/Visa-Direct-Launches-Stablecoin-Powered-Money-Movement-as-Pilots-Move-to-Production/default.aspx"
+     ]
+    },
+    {
+     "headline": "AICPA practice aid maps AI risks to financial reporting controls",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ]
+    },
+    {
+     "headline": "CommBank FX Barometer shows corporate hedge ratios steady at 46%",
+     "urls": [
+      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
+     ]
+    },
+    {
+     "headline": "OCBC goes live with Ant International tokenised deposits for 24/7 Treasury",
+     "urls": [
+      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
+     ]
+    },
+    {
+     "headline": "Fed funds at 3.75–4.00% as 27–28 October FOMC approaches",
+     "urls": [
+      "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+     ]
+    },
+    {
+     "headline": "OFAC General License FF authorises Iran-related bank wind-down",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261015"
+     ]
+    },
+    {
+     "headline": "ISSB exposure draft proposes nature-related disclosures practice statement",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
+     ]
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting post-implementation review for comment",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
+     ]
+    }
+   ]
   }
  ]
 }

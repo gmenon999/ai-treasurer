@@ -1,0 +1,12 @@
+/home/runner/work/ai-treasurer/ai-treasurer/generate.py:1556: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
+dedupe: dropped 4 repeat(s): Ripple expands GSmart with policy-governed AI across treasury workflows (September 2026); Kyriba–Esker Liquidity Operating Platform connects treasury to operational working capital (15 October 2026); EY framework maps AI risks to material misstatement for ICFR audits; OFAC updates Iran and Russia general licenses (8 October 2026)
+fill_empty: filled 'cash' with 2 item(s)
+fill_empty: filled 'reporting' with 2 item(s)
+_ask: reply CUT OFF at max_tokens=8000 (model anthropic/claude-opus-5.5); raise the limit
+--- takes: no JSON found. Raw model output ---
+
+--- end ---
+takes: stopped (takes: no JSON in model response); edition publishes without takes
+market view: published; cost $0.1036
+Edition 11 - Saturday, 17 October 2026
