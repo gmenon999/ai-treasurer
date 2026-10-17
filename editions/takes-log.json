@@ -449,6 +449,76 @@
     "cost_usd": 0.2559
    },
    "edition_cost_usd": 1.1017
+  },
+  {
+   "date": "2026-10-17",
+   "items": [
+    {
+     "headline": "Centalion's AI agent on Komgo cuts trade Finance processing by 55-80%",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Kyriba and Esker launch Liquidity Operating Platform linking Treasury and AP/AR",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Citi finds 72% of corporates prioritise freeing trapped liquidity",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "Fails test 1: the take says Standard Chartered traces dispersed cash to causes in China and South-East Asia, but the source gives China and South-East Asia as complex areas in general commentary, not as Standard Chartered's regional causes. It also says currency and regulatory limits in South Americ"
+    },
+    {
+     "headline": "SEPA Instant default leaves banks a 10-second window for fraud checks",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "AICPA practice aid brings agentic AI into ICFR audit scope",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "CommBank FX Barometer finds hedge ratios steady as basis costs stay high",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "BNY and Citadel Securities settle Treasury repo with tokenised assets",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Fed holds rates at 3.75-4% as Warsh ends previews of decisions",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC issues Iran General License FF and amends Russia licences",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "FRC fines Deloitte £6.05m over Go-Ahead Group audit failures",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review with comments due January 2027",
+     "status": "dropped",
+     "lens": "Accounting & reporting",
+     "reasons": "Fails test 3: the focus mostly repeats the news summary (scope and the 26 January 2027 deadline) and adds little new. It also overstates: 'must respond by that date' is not supported, since responding is voluntary and the source says only that the comment period is open until then. The view is weak "
+    }
+   ],
+   "cost_usd": 0.4001,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1318
+   },
+   "edition_cost_usd": 0.8676
   }
  ]
 }

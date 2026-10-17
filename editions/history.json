@@ -777,6 +777,79 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-17",
+   "note_headline": "The next liquidity gains come from joining Treasury to Finance operations",
+   "note_opening": "The next pool of liquidity sits inside Finance operations, not in new funding. Citi research finds 72% of corporates prioritise freeing trapped cash, and Kyriba and Esker plan a Liquidity Operating Platform that feeds li",
+   "items": [
+    {
+     "headline": "Centalion's AI agent on Komgo cuts trade Finance processing by 55-80%",
+     "urls": [
+      "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
+     ]
+    },
+    {
+     "headline": "Kyriba and Esker launch Liquidity Operating Platform linking Treasury and AP/AR",
+     "urls": [
+      "https://www.esker.com/company/press-releases/kyriba-and-esker-partner-help-companies-improve-cash-visibility-forecasting/"
+     ]
+    },
+    {
+     "headline": "Citi finds 72% of corporates prioritise freeing trapped liquidity",
+     "urls": [
+      "https://treasurytoday.com/insight-and-analysis/digital-solutions-ease-trapped-cash-challenges/"
+     ]
+    },
+    {
+     "headline": "SEPA Instant default leaves banks a 10-second window for fraud checks",
+     "urls": [
+      "https://thepaypers.com/payments/expert-views/from-mandate-to-mainstream-key-takeaways-on-sepa-instant-as-the-default"
+     ]
+    },
+    {
+     "headline": "AICPA practice aid brings agentic AI into ICFR audit scope",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ]
+    },
+    {
+     "headline": "CommBank FX Barometer finds hedge ratios steady as basis costs stay high",
+     "urls": [
+      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
+     ]
+    },
+    {
+     "headline": "BNY and Citadel Securities settle Treasury repo with tokenised assets",
+     "urls": [
+      "https://www.theblock.co/news/business/2026-10-14-bny-citadel-securities-complete-treasury-repo-in-first-use-of-tokenized-assets-on-major-triparty-platform-418534"
+     ]
+    },
+    {
+     "headline": "Fed holds rates at 3.75-4% as Warsh ends previews of decisions",
+     "urls": [
+      "https://www.cnbc.com/2026/10/16/kevin-warsh-fed-october-rate-hike-interest-rates-markets.html"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran General License FF and amends Russia licences",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261015"
+     ]
+    },
+    {
+     "headline": "FRC fines Deloitte £6.05m over Go-Ahead Group audit failures",
+     "urls": [
+      "https://www.frc.org.uk/news-and-events/news/2026/10/sanctions-2026-10-07/"
+     ]
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review with comments due January 2027",
+     "urls": [
+      "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/"
+     ]
+    }
+   ]
   }
  ]
 }
