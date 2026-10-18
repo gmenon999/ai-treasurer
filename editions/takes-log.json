@@ -519,6 +519,73 @@
     "cost_usd": 0.1318
    },
    "edition_cost_usd": 0.8676
+  },
+  {
+   "date": "2026-10-18",
+   "items": [
+    {
+     "headline": "FSB finalises 12 sound practices for AI governance in financial institutions",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "AICPA practice aid ties AI risks to material misstatement in ICFR audits",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "API-first TMS platforms replace overnight batch files with real-time bank data",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Standard Chartered sets out four-step playbook for trapped corporate liquidity",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "European Payments Council defers SEPA Instant unstructured address cut-off",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "AICPA guidance tests auditors' skills in spotting AI-related control deficiencies",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "CommBank FX Barometer finds corporate hedge ratios steady despite costly basis",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OCBC and Ant International launch 24/7 tokenised deposit Treasury settlement",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Traders price 72% chance the Fed holds rates at October meeting",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC sanctions Iran-linked A7 Network as FinCEN moves to block transmittals",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.3385,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1102
+   },
+   "edition_cost_usd": 0.8309
   }
  ]
 }

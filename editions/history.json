@@ -850,6 +850,84 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-18",
+   "note_headline": "AI in Finance now has a rulebook, and audit evidence must prove it",
+   "note_opening": "AI governance for Finance has moved from principle to checklist. The Financial Stability Board finalised 12 sound practices on 15 October 2026, covering human oversight and third-party risk across the AI lifecycle. Two d",
+   "items": [
+    {
+     "headline": "AICPA practice aid ties AI risks to material misstatement in ICFR audits",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing",
+      "https://www.ey.com/en_us/insights/assurance/ai-audit-readiness-for-financial-reporting"
+     ]
+    },
+    {
+     "headline": "API-first TMS platforms replace overnight batch files with real-time bank data",
+     "urls": [
+      "https://trovata.io/blog/real-time-cash-visibility-how-an-api-first-tms-sees-global-cash-as-it-moves",
+      "https://www.ingwb.com/en/payments-and-collections/treasury-apis"
+     ]
+    },
+    {
+     "headline": "Standard Chartered sets out four-step playbook for trapped corporate liquidity",
+     "urls": [
+      "https://treasurytoday.com/insight-and-analysis/digital-solutions-ease-trapped-cash-challenges/",
+      "https://www.citigroup.com/global/insights/navigating-the-global-liquidity-maze"
+     ]
+    },
+    {
+     "headline": "European Payments Council defers SEPA Instant unstructured address cut-off",
+     "urls": [
+      "https://www.europeanpaymentscouncil.eu/document-library/implementation-guidelines/sepa-instant-credit-transfer-customer-psp-2"
+     ]
+    },
+    {
+     "headline": "FSB finalises 12 sound practices for AI governance in financial institutions",
+     "urls": [
+      "https://www.fsb.org/2026/10/sound-practices-for-responsible-adoption-of-artificial-intelligence-ai-final-report/"
+     ]
+    },
+    {
+     "headline": "AICPA guidance tests auditors' skills in spotting AI-related control deficiencies",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ]
+    },
+    {
+     "headline": "CommBank FX Barometer finds corporate hedge ratios steady despite costly basis",
+     "urls": [
+      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
+     ]
+    },
+    {
+     "headline": "OCBC and Ant International launch 24/7 tokenised deposit Treasury settlement",
+     "urls": [
+      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
+     ]
+    },
+    {
+     "headline": "Traders price 72% chance the Fed holds rates at October meeting",
+     "urls": [
+      "https://www.cnbc.com/2026/10/15/dollar-pulls-back-from-18-month-high-as-treasury-yields-fall-fed-hike-bets-ease.html",
+      "https://www.cnbc.com/2026/10/16/kevin-warsh-fed-october-rate-hike-interest-rates-markets.html"
+     ]
+    },
+    {
+     "headline": "OFAC sanctions Iran-linked A7 Network as FinCEN moves to block transmittals",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0644",
+      "https://ofac.treasury.gov/recent-actions/20261015"
+     ]
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
+     "urls": [
+      "https://www.iasb.org/"
+     ]
+    }
+   ]
   }
  ]
 }
