@@ -928,6 +928,86 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-19",
+   "note_headline": "Finance can see its cash in real time but still cannot move it",
+   "note_opening": "Cash visibility has outrun cash mobility, and idle balances show the cost. NeuGroup's 2026 Corporate Cash Confidence Survey finds 49% of CFOs hold over 10% of operating cash idle, and while 76% say 24/7 settlement matter",
+   "items": [
+    {
+     "headline": "Kyriba and Esker partner on Liquidity Operating Platform linking forecasts to AP/AR",
+     "urls": [
+      "https://www.esker.com/company/press-releases/kyriba-and-esker-partner-help-companies-improve-cash-visibility-forecasting/"
+     ]
+    },
+    {
+     "headline": "Trovata's API-first TMS replaces overnight bank files with intraday cash updates",
+     "urls": [
+      "https://trovata.io/blog/real-time-cash-visibility-how-an-api-first-tms-sees-global-cash-as-it-moves"
+     ]
+    },
+    {
+     "headline": "NeuGroup: 49% of mid-market CFOs leave over 10% of operating cash idle",
+     "urls": [
+      "https://connect.neugroup.com/public/blogs/the-2026-corporate-cash-confidence-survey-report"
+     ]
+    },
+    {
+     "headline": "Citi framework sorts jurisdictions by restriction to expose trapped cash",
+     "urls": [
+      "https://www.citigroup.com/global/insights/navigating-the-global-liquidity-maze/"
+     ]
+    },
+    {
+     "headline": "Swift Scheme extends instant payments into cross-border corridors under common SLAs",
+     "urls": [
+      "https://home.cib.natixis.com/articles/international-flows-where-do-we-stand"
+     ]
+    },
+    {
+     "headline": "AICPA practice aid maps AI risks to material misstatement in audits",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ]
+    },
+    {
+     "headline": "CommBank FX Barometer finds Australian corporates holding hedge ratios despite basis costs",
+     "urls": [
+      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
+     ]
+    },
+    {
+     "headline": "OCBC first bank to launch tokenised deposits with Ant International for 24/7 settlement",
+     "urls": [
+      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
+     ]
+    },
+    {
+     "headline": "Fed's 25 basis point rise to 3.75%-4.00% puts focus on 28 October decision",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "https://www.reuters.com/business/feds-kashkari-expects-more-rate-hikes-unsure-need-act-this-month-2026-10-01/"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran General Licenses FF and EE and amends Russia Lukoil licences",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261015"
+     ]
+    },
+    {
+     "headline": "ISSB consults on nature-related disclosures Practice Statement under IFRS S1",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
+     ]
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
+     ]
+    }
+   ]
   }
  ]
 }
