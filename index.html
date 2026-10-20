@@ -1589,6 +1589,11 @@
   .peak .today-list .src { margin: 6px 0 0; font-size: 13.5px; color: var(--on-dark-soft); }
   .peak-all { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; min-height: 50px; padding: 0 20px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s; }
   .peak-all svg { width: 18px; height: 18px; }
+  .peak-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 18px; }
+  .peak-links .peak-all { margin-top: 0; }
+  .peak-mk { color: var(--white); font-weight: 700; font-size: 15.5px; text-decoration: none; border-bottom: 2px solid var(--gold-light); padding-bottom: 2px; }
+  .peak-mk::after { content: " \2192"; }
+  .peak-mk:hover, .peak-mk:focus-visible { color: var(--gold-light); }
   .peak-all:hover, .peak-all:focus-visible { background: var(--white); color: var(--navy-deep); }
   .dialogue { background: var(--navy); border: 1px solid rgba(255,255,255,0.16); border-top: 3px solid var(--gold-light); padding: 28px 26px 26px; }
   .dialogue .kicker { color: var(--gold-light); }
@@ -1745,7 +1750,7 @@
         <h2 id="peak-h">Today&rsquo;s top stories</h2>
         <span class="today-date"></span>
         <ol class="today-list"></ol>
-        <a class="peak-all" href="#briefing">Read the full briefing<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <div class="peak-links"><a class="peak-all" href="#briefing">Read the full briefing<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><a class="peak-mk" href="#markets">Today&rsquo;s markets view</a></div>
       </div>
       <aside class="dialogue" aria-labelledby="dlg-h">
         <div class="kicker">Practitioner Dialogue</div>
