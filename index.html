@@ -1567,27 +1567,28 @@
     .benefits.trail.ht-on li::before { left: 50%; transform: translateX(-50%); }
     .benefits.trail.ht-on li span { display: none; }
     .benefits.trail.ht-on .ht-step { text-align: center; }
-    .benefits.trail.ht-on b { font-size: 14.5px; }
+    .benefits.trail.ht-on .ht-step b { font-size: 14.5px; }
+    .ht-panel .hd b { font-size: 19px; }
     .ht-cols { grid-template-columns: 1fr; }
     .ht-col { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
     .ht-col:first-child { border-top: 0; }
     .ht-panel .hd, .ht-col { padding-left: 18px; padding-right: 18px; }
     .ht-cases { margin-bottom: 26px; }
   }
-  @media (max-width: 380px) { .benefits.trail.ht-on b { font-size: 12.5px; } }
+  @media (max-width: 380px) { .benefits.trail.ht-on .ht-step b { font-size: 12.5px; } }
 
   /* Briefing preview + Practitioner Dialogue */
   .peak { background: var(--navy-deep); color: var(--white); padding: 64px 0 72px; border-top: 1px solid rgba(255,255,255,0.1); }
   .peak-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 56px; align-items: start; }
   .peak-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .peak-head .kicker { color: var(--gold-light); }
-  .peak h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 4px; }
+  .peak h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 4px; }
   .peak .today-date { display: block; color: var(--on-dark-soft); font-size: 14px; margin-bottom: 22px; }
   .peak .today-list li { padding: 18px 0; }
   .peak .today-list .topic { color: var(--gold-light); }
   .peak .today-list .sum { margin: 8px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
   .peak .today-list .src { margin: 6px 0 0; font-size: 13.5px; color: var(--on-dark-soft); }
-  .peak-all { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; min-height: 50px; padding: 0 20px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .peak-all { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; min-height: 50px; padding: 0 20px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s; }
   .peak-all svg { width: 18px; height: 18px; }
   .peak-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 18px; }
   .peak-links .peak-all { margin-top: 0; }
@@ -1610,7 +1611,7 @@
   /* FAQ */
   .faq { background: var(--navy); color: var(--white); padding: 64px 0 72px; }
   .faq .kicker { color: var(--gold-light); }
-  .faq h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 0; }
+  .faq h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 0; }
   .faq-list { margin-top: 26px; border-top: 1px solid rgba(255,255,255,0.18); max-width: 920px; }
   .faq details { border-bottom: 1px solid rgba(255,255,255,0.18); }
   .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px 0; font-family: var(--serif); font-size: clamp(19px, 2vw, 22px); font-weight: 700; line-height: 1.3; }
