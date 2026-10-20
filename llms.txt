@@ -1,6 +1,6 @@
 # The AI Treasurer
 
-> An independent, practitioner-led site on agentic AI in corporate Treasury and Finance, written by Gopakumar Menon, CA, CPA, CTP. Its position: AI agents can take on Treasury workflows, but authority stays with named people, and every automated step should leave a trail an auditor can follow. Everything on the site is free to read, with no sign-up, login or paywall. Nothing on it is financial or professional advice.
+> An independent site on AI agents in corporate Treasury and Finance, written by Gopakumar Menon, CA, CPA, CTP, a Treasury and Financial Control practitioner. Its position: AI agents can take on Treasury workflows, but authority stays with named people, and every automated step should leave a trail an auditor can follow. Everything on the site is free to read, with no sign-up, login or paywall. Nothing on it is financial or professional advice.
 
 The site is a single page with sections reached by anchor links. Key ideas:
 
