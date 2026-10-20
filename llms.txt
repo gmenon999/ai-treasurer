@@ -4,7 +4,7 @@
 
 The site is a single page with sections reached by anchor links. Key ideas:
 
-- The 5-Step Control Trail: Capture, Match, Flag, Approve, Post. It is the test the site applies to any automated step in Treasury and Finance.
+- The control trail (five steps): Capture, Match, Flag, Approve, Post. It is the test the site applies to any automated step in Treasury and Finance.
 - The Four Foundations around every system: Govern, Access, Change, Monitor. Aligned with the COSO internal control framework. Illustrative, not a certified standard.
 - The agent that proposes an action never approves it; a named person signs off at a level set by risk.
 
