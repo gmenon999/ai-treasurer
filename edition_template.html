@@ -1681,6 +1681,20 @@
     .hag-grp a { font-size: 14px; padding: 8px 12px; min-height: 40px; }
     .hag-all { width: 100%; justify-content: space-between; }
   }
+
+  /* Today's Lead inside the briefing preview (tiles row removed, Oct 2026) */
+  .peak-lead { margin: 6px 0 34px; padding: 22px 24px 20px; background: var(--navy); border-left: 3px solid var(--gold-light); }
+  .peak-lead .kicker { color: var(--gold-light); }
+  .peak-lead .note-h { font-family: var(--serif); font-size: clamp(21px, 2vw, 25px); line-height: 1.25; font-weight: 700; color: var(--white); margin: 8px 0 10px; }
+  .peak-lead .note p { margin: 0 0 10px; font-size: 16px; line-height: 1.6; color: var(--on-dark); }
+  .peak-lead .note p:last-child { margin-bottom: 0; }
+  .peak-sub { margin: 0 0 6px; font: 700 12px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+  @media (max-width: 720px) {
+    .peak-lead { padding: 18px 18px 16px; }
+    .peak-lead .note p { display: -webkit-box; -webkit-line-clamp: 5; line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+    .peak-lead .note p + p { display: none; }
+  }
+  #dialogue { scroll-margin-top: calc(var(--secnav-h) + 16px); }
 </style>
 </head>
 <body>
@@ -1698,8 +1712,8 @@
 <nav class="secnav" aria-label="Sections">
   <div class="wrap">
     <a href="#top" aria-current="true">Home</a>
-    <a href="#controls">AI Controls</a>
     <a href="#agentic">Agentic Automation</a>
+    <a href="#controls">AI Controls</a>
     <a href="#briefing">Treasury Today</a>
     <a href="#markets">Markets</a>
     <a href="#about">About</a>
@@ -1766,7 +1780,7 @@
   <!-- ===== BENEFITS ===== -->
   <section class="benefits trail" id="trail" data-view="top" aria-label="The five-step control trail">
     <div class="wrap">
-      <div class="kicker">The control trail</div>
+      <div class="kicker">How every agent is controlled</div>
       <h2 class="trail-h">Five steps from data to ledger</h2>
       <p class="ht-intro">Pick a step to see what the agent does, what a person decides and what the auditor sees.</p>
       <ul>
@@ -1781,49 +1795,22 @@
     </div>
   </section>
 
-  <!-- ===== FRONT: editorial grid ===== -->
-  <section class="front" data-view="top" aria-label="Today at a glance">
-    <div class="wrap">
-
-      <div class="tiles tiles-2">
-        <!-- Tall tile: the signature framework (photo) -->
-        <a class="tile tile-tall tile-card tile-fw" href="#framework">
-          <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="lazy" decoding="async" style="object-position: 50% 45%;"></div>
-          <div class="body">
-          <div class="kicker">AI Controls</div>
-          <h2><span class="hl">Controls that keep pace with automation</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
-          <p>The five-step control trail, and the four foundations around every system.</p>
-          </div>
-        </a>
-
-
-        <!-- Editor's note -->
-        <a class="tile tile-desk tile-card" href="#briefing">
-          <div class="media"><img src="/img/ait-tile-news-doha.jpg" alt="The Doha skyline at sunset, glass towers reflected in still water" loading="lazy" style="object-position: 50% 50%;"></div>
-          <div class="body">
-          <div class="kicker">Daily briefing: Treasury and Finance</div>
-          <div class="note">
-            <!--EDITOR_NOTE-->
-          </div>
-          <span class="arrow-link">Read today's briefing</span>
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ===== TODAY'S BRIEFING PREVIEW + PRACTITIONER DIALOGUE ===== -->
   <section class="peak" id="today" data-view="top" aria-labelledby="peak-h">
     <div class="wrap peak-grid">
       <div class="peak-brief">
         <div class="peak-head"><div class="kicker">Treasury Today</div><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Open access &middot; No sign-up</span></div>
-        <h2 id="peak-h">Today&rsquo;s top stories</h2>
+        <h2 id="peak-h">Today&rsquo;s briefing</h2>
         <span class="today-date"></span>
+        <div class="peak-lead"><div class="kicker">Today&rsquo;s Lead</div><div class="note">
+            <!--EDITOR_NOTE-->
+          </div></div>
+        <h3 class="peak-sub">Top stories</h3>
         <ol class="today-list"></ol>
         <div class="peak-links"><a class="peak-all" href="#briefing">Read the full briefing<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><a class="peak-mk" href="#markets">Today&rsquo;s markets view</a></div>
       </div>
-      <aside class="dialogue" aria-labelledby="dlg-h">
+      <aside class="dialogue" id="dialogue" aria-labelledby="dlg-h">
         <div class="kicker">Practitioner Dialogue</div>
         <h3 id="dlg-h">Compare notes on AI and controls in Treasury</h3>
         <p>If you are putting agents, approvals or audit trails to work in your own team, I would like to hear what is working and what is not. This is an exchange between practitioners, not a sales conversation.</p>
@@ -1849,7 +1836,7 @@
   </section>
 
   <aside class="next-band" data-view="top" aria-label="Next section">
-    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">Controls that keep pace with automation.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#agentic"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Agentic Automation</span><span class="nb-d">Where AI agents fit in Treasury and Finance, and the control that keeps each one safe.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
 
@@ -2118,7 +2105,7 @@
 
 
   <aside class="next-band" data-view="controls" aria-label="Next section">
-    <div class="wrap"><a href="#agentic"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Agentic Automation</span><span class="nb-d">Where AI agents fit in Treasury and Finance, and the control that keeps each one safe.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Treasury Today</span><span class="nb-d">The stories that matter for Treasury and Finance today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== AGENTIC AUTOMATION ===== -->
@@ -2401,7 +2388,7 @@
   </script>
 
   <aside class="next-band" data-view="agentic" aria-label="Next section">
-    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Treasury Today</span><span class="nb-d">The stories that matter for Treasury and Finance today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">Controls that keep pace with automation.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== CREDENTIALS (blue band) ===== -->
@@ -2423,6 +2410,10 @@
       </div>
     </div>
   </section>
+
+  <aside class="next-band" data-view="about" aria-label="Next section">
+    <div class="wrap"><a href="#dialogue"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Practitioner Dialogue</span><span class="nb-d">Compare notes on AI and controls in Treasury.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
 
 
 
