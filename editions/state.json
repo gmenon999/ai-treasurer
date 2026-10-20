@@ -90,7 +90,14 @@
       "human": "Monday, 19 October 2026",
       "month": "October 2026",
       "file": "/editions/2026-10-19.html"
+    },
+    {
+      "n": 14,
+      "date": "2026-10-20",
+      "human": "Tuesday, 20 October 2026",
+      "month": "October 2026",
+      "file": "/editions/2026-10-20.html"
     }
   ],
-  "last_n": 13
+  "last_n": 14
 }

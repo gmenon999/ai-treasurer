@@ -1008,6 +1008,80 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-20",
+   "note_headline": "Rate guidance is gone and hedge accounting is under review, so discipline beats prediction",
+   "note_opening": "Treasury and Finance are losing the external anchors they plan around. Fed Chair Kevin Warsh has ended pre-decision signalling, so the 28 October meeting arrives with no forward guidance. The IASB has opened its post-imp",
+   "items": [
+    {
+     "headline": "Ripple Treasury adds approval-gated AI agents to GSmart",
+     "urls": [
+      "https://treasury.ripple.com/news/ripple-treasury-brings-industrys-first-governed-ai-for-enterprise-treasury"
+     ]
+    },
+    {
+     "headline": "Kyriba and Esker feed live AP/AR signals into Treasury cash forecasts",
+     "urls": [
+      "https://www.kyriba.com/news/kyriba-and-esker-partner-to-help-companies-improve-cash-visibility-forecasting-and-liquidity-optimization/"
+     ]
+    },
+    {
+     "headline": "49% of mid-market CFOs hold over 10% of operating cash idle",
+     "urls": [
+      "https://connect.neugroup.com/public/blogs/the-2026-corporate-cash-confidence-survey-report"
+     ]
+    },
+    {
+     "headline": "Swift Scheme links instant-payment systems as CBPR+ release slips 12 months",
+     "urls": [
+      "https://home.cib.natixis.com/articles/international-flows-where-do-we-stand",
+      "https://www.jpmorgan.com/insights/payments/fx-cross-border/iso-20022-migration"
+     ]
+    },
+    {
+     "headline": "AICPA practice aid requires auditors to test AI controls within ICFR",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ]
+    },
+    {
+     "headline": "Australian corporates hold FX hedge ratios despite costly cross-currency basis",
+     "urls": [
+      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
+     ]
+    },
+    {
+     "headline": "Sibos 2026 banks split roles between tokenised deposits and stablecoins",
+     "urls": [
+      "https://spendthebits.com/insights/sibos-2026-tokenised-deposits-vs-stablecoins"
+     ]
+    },
+    {
+     "headline": "Fed Chair Warsh ends rate previews before the 28 October decision",
+     "urls": [
+      "https://www.wsj.com/economy/central-banking/warsh-avoids-signal-on-october-rate-move-a176b0d5"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran GL FF and amends Lukoil licences 128D and 130B",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261015"
+     ]
+    },
+    {
+     "headline": "ISSB opens nature-related disclosures consultation for 120 days at COP17",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
+     ]
+    },
+    {
+     "headline": "IASB opens post-implementation review of IFRS 9 hedge accounting",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
+     ]
+    }
+   ]
   }
  ]
 }

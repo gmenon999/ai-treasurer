@@ -603,6 +603,75 @@
     "cost_usd": 0.1142
    },
    "edition_cost_usd": 0.8331
+  },
+  {
+   "date": "2026-10-20",
+   "items": [
+    {
+     "headline": "Ripple Treasury adds approval-gated AI agents to GSmart",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Fed Chair Warsh ends rate previews before the 28 October decision",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Kyriba and Esker feed live AP/AR signals into Treasury cash forecasts",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "The clause 'so current forecasting processes stay unchanged until then' is not in the source. The source gives only the 2027 availability target and the two initial capabilities, so this is an invented inference."
+    },
+    {
+     "headline": "49% of mid-market CFOs hold over 10% of operating cash idle",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Swift Scheme links instant-payment systems as CBPR+ release slips 12 months",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "AICPA practice aid requires auditors to test AI controls within ICFR",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Australian corporates hold FX hedge ratios despite costly cross-currency basis",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "Sibos 2026 banks split roles between tokenised deposits and stablecoins",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC issues Iran GL FF and amends Lukoil licences 128D and 130B",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB opens nature-related disclosures consultation for 120 days at COP17",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    },
+    {
+     "headline": "IASB opens post-implementation review of IFRS 9 hedge accounting",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.4951,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.3505
+   },
+   "edition_cost_usd": 1.2769
   }
  ]
 }
