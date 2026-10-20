@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-20T08:31:34Z",
+ "generated_utc": "2026-10-20T10:58:02Z",
  "policy": [
   {
    "bank": "Fed",
@@ -56,14 +56,14 @@
   {
    "bank": "PBOC",
    "label": "1-year / 5-year LPR",
-   "source_name": "Qatar News Agency",
-   "source_url": "https://qna.org.qa/en/News-Area/News/2026-9/20/china-keeps-key-lending-rates-unchanged",
+   "source_name": "Dim Sum Daily (National Interbank Funding Center)",
+   "source_url": "https://www.dimsumdaily.hk/china-keeps-loan-prime-rates-unchanged-with-one-year-benchmark-at-3/",
    "id": "pboc",
    "value": "3.00 / 3.50%",
    "change_bp": 0,
-   "since": "2026-09-20",
-   "checked": "2026-10-08",
-   "asof": "2026-10-08",
+   "since": "2026-10-20",
+   "checked": "2026-10-20",
+   "asof": "2026-10-20",
    "stale": false
   },
   {
