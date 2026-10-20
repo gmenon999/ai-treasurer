@@ -28,7 +28,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":"https://theaitreasurer.com/#website","url":"https://theaitreasurer.com/","name":"The AI Treasurer","publisher":{"@id":"https://theaitreasurer.com/#author"},"image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg"},
- {"@type":"Person","@id":"https://theaitreasurer.com/#author","name":"Gopakumar Menon","honorificSuffix":"CA, CPA, CTP","url":"https://theaitreasurer.com/","image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg","email":"mailto:gmenon@theaitreasurer.com"}
+ {"@type":"Person","@id":"https://theaitreasurer.com/#author","name":"Gopakumar Menon","honorificSuffix":"CA, CPA, CTP","url":"https://theaitreasurer.com/","image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg","email":"mailto:gmenon@theaitreasurer.com","sameAs":["https://www.linkedin.com/in/gopakumarmenon"]},
+ {"@type":"FAQPage","@id":"https://theaitreasurer.com/#faq","mainEntity":[{"@type":"Question","name":"How is agentic AI different from RPA in Treasury?","acceptedAnswer":{"@type":"Answer","text":"RPA (robotic process automation) follows a fixed script: the same clicks and the same rules every time, and it stops when the input changes. An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast. That flexibility is the benefit and the risk. An agent needs its own identity with limited rights, recorded versions of its rules and model, and a named person who approves what it proposes."}},{"@type":"Question","name":"What is the 5-Step Control Trail?","acceptedAnswer":{"@type":"Answer","text":"It is the test this site applies to any automated step in Treasury and Finance. Capture: data comes from a known source and is complete. Match: items are paired, and the rule and model versions are recorded. Flag: anything that does not match becomes a logged exception that is aged, never silently cleared. Approve: a named person signs off, and the agent that proposes an action never approves it. Post: the approved result is recorded with its evidence. Four foundations sit around every system: Govern, Access, Change and Monitor. It is an illustrative framework aligned with the COSO internal control framework, not a certified standard."}},{"@type":"Question","name":"How does the control trail help with Internal Audit?","acceptedAnswer":{"@type":"Answer","text":"Each step answers a question an auditor will ask. Where did this data come from? Why were these two items paired? What did not match, and how long has it been open? Who approved it, and were they independent? Does the record trace back to source? When an agent records that evidence as it works, the trail exists before the audit instead of being rebuilt afterwards. It does not replace your auditors' own testing, and nothing on this site is professional advice."}},{"@type":"Question","name":"How is the Daily Briefing put together?","acceptedAnswer":{"@type":"Answer","text":"Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the opinion lines and market figures before they appear. The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice."}}]}
 ]}
 </script>
 <style>
@@ -634,7 +635,8 @@
   }
 
   /* ---- Sticky section menu ---- */
-  .js [data-view]:not(.view-on) { display: none; }
+  /* Home paints before the view script runs (faster first paint); other views wait for it. */
+  .js:not(.v-top) [data-view]:not(.view-on), .js.v-top [data-view]:not([data-view="top"]):not(.view-on) { display: none; }
   .js main { min-height: calc(100vh - 180px); }
   :root { --secnav-h: 50px; }
   .secnav { position: sticky; top: 0; z-index: 20; background: var(--navy-deep); border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 6px 18px rgba(5,20,36,0.18); }
@@ -1472,10 +1474,154 @@
   /* About: Follow button gets clear space, no longer sits on the divider */
   .creds-head h2 { margin-bottom: 24px; }
   .creds-head .li-btn { margin: 0 0 32px; }
+
+  /* ===================== Home upgrade (Oct 2026) ===================== */
+  /* Contrast pass: text 12:1 or better on navy and navy-deep; muted text and accents 7:1 or better.
+     Markets keeps its locked colours (market-view-v1). */
+  :root { --on-dark: #E9EEF4; --on-dark-soft: #C9D2DE; --gold-light: #E9CB85; }
+  .markets-sec { --on-dark: #DCE2EA; --on-dark-soft: #9FACBE; --gold-light: #D9B867; }
+  .fwx { --fwx-tile: rgba(255,255,255,0.07); --fwx-tile-hover: rgba(255,255,255,0.14); }
+  .agentic.ag2 { --ag-tile: rgba(255,255,255,0.05); }
+  .ag-who, .ag-m5 i { color: #DCE7F9; }
+  .ag-step p.m { color: var(--white); }
+  .creds { background: #122E6B; }
+  .creds .advisor span { color: var(--white); }
+  .next-band .kicker { color: #6E520F; }
+
+  /* Hero: keep the light ribbon clear of the headline; dual call to action */
+  .intro .field { -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 42%, #000 68%); mask-image: linear-gradient(90deg, transparent 0, transparent 42%, #000 68%); }
+  @media (max-width: 720px) {
+    .intro .field { -webkit-mask-image: linear-gradient(180deg, #000 0, #000 9%, transparent 22%); mask-image: linear-gradient(180deg, #000 0, #000 9%, transparent 22%); }
+  }
+  .intro .actions { gap: 14px 16px; }
+  .cta-main { display: inline-flex; align-items: center; gap: 12px; min-height: 54px; padding: 0 22px 0 24px; background: var(--gold-light); color: var(--navy-deep); font-weight: 700; font-size: 17px; text-decoration: none; transition: background 0.2s ease; }
+  .cta-main svg { width: 20px; height: 20px; transition: transform 0.2s ease; }
+  .cta-main:hover, .cta-main:focus-visible { background: var(--white); }
+  .cta-main:hover svg { transform: translateX(3px); }
+  .intro .cta-brief { min-height: 54px; gap: 12px; padding: 0 16px 0 22px; }
+  .oa-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 1; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark); border: 1px solid rgba(255,255,255,0.32); padding: 6px 8px; white-space: nowrap; }
+  .oa-badge svg { width: 13px; height: 13px; flex: none; color: var(--gold-light); }
+  .intro .cta-brief:hover .oa-badge, .intro .cta-brief:focus-visible .oa-badge { color: var(--navy-deep); border-color: rgba(13,26,44,0.35); }
+  .intro .cta-brief:hover .oa-badge svg, .intro .cta-brief:focus-visible .oa-badge svg { color: var(--navy-deep); }
+  @media (max-width: 560px) {
+    .intro .actions { flex-direction: column; align-items: stretch; }
+    .cta-main, .intro .cta-brief { justify-content: space-between; }
+    .intro .cta-brief { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; row-gap: 8px; }
+  }
+
+  /* Proof strip */
+  .proof { background: var(--navy-deep); color: var(--white); border-top: 1px solid rgba(255,255,255,0.1); }
+  .proof ul { list-style: none; margin: 0; padding: 24px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .proof li { display: flex; gap: 14px; align-items: flex-start; padding: 2px 22px; border-left: 1px solid rgba(255,255,255,0.14); }
+  .proof li:first-child { border-left: 0; padding-left: 0; }
+  .proof svg { flex: none; width: 28px; height: 28px; color: var(--gold-light); margin-top: 1px; }
+  .proof b { display: block; font-size: 15px; line-height: 1.35; font-weight: 700; color: var(--white); }
+  .proof span { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--on-dark); }
+  @media (max-width: 1000px) { .proof ul { grid-template-columns: 1fr 1fr; row-gap: 20px; } .proof li:nth-child(3) { border-left: 0; padding-left: 0; } }
+  @media (max-width: 560px) { .proof ul { grid-template-columns: 1fr; row-gap: 16px; padding: 22px 0; } .proof li { border-left: 0; padding: 0; } }
+
+  /* Interactive control trail (Home) */
+  .ht-intro { margin: -18px 0 22px; font-size: 16.5px; color: var(--on-dark); max-width: 62ch; }
+  .ht-cases, .ht-frow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+  .ht-cases { margin: 0 0 34px; }
+  .ht-cases .lab, .ht-frow .lab { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin-right: 6px; }
+  .ht-cases button, .ht-frow button { appearance: none; font: 600 14.5px/1.2 var(--sans); color: var(--white); background: transparent; border: 1px solid rgba(255,255,255,0.4); padding: 10px 15px; cursor: pointer; border-radius: 999px; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .ht-frow button { border-radius: 0; }
+  .ht-cases button:hover, .ht-frow button:hover { border-color: var(--white); }
+  .ht-cases button[aria-pressed="true"], .ht-frow button[aria-expanded="true"] { background: var(--white); color: var(--navy-deep); border-color: var(--white); }
+  .benefits.trail.ht-on li { padding-bottom: 0; }
+  .ht-step { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+  .ht-step::after { content: ""; position: absolute; inset: -8px; }
+  .ht-step:focus-visible { outline: 0; }
+  .ht-step:focus-visible::after { outline: 3px solid var(--gold); outline-offset: 0; }
+  .ht-step b { transition: color 0.2s; }
+  .ht-step:hover b { color: var(--gold-light); }
+  .benefits.trail.ht-on li:last-child::before { background: var(--navy-deep); color: var(--gold-light); }
+  .benefits.trail.ht-on li.on::before { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-deep); }
+  .benefits.trail.ht-on li.on b { color: var(--gold-light); }
+  .ht-panel { margin-top: 30px; border: 1px solid rgba(255,255,255,0.18); border-top: 3px solid var(--gold-light); background: rgba(5,13,24,0.45); }
+  .ht-panel .hd { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 20px; padding: 16px 22px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .ht-panel .hd b { display: block; font-family: var(--serif); font-size: 21px; line-height: 1.25; }
+  .ht-panel .hd .line { display: block; font-size: 15px; color: var(--on-dark); margin-top: 2px; }
+  .ht-panel .hd .case { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .ht-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ht-col { padding: 20px 22px 22px; border-left: 1px solid rgba(255,255,255,0.12); }
+  .ht-col:first-child { border-left: 0; }
+  .ht-col h4 { margin: 0 0 8px; font: 700 12px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+  .ht-col p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .ht-col .ask, .ht-fnote .ask { margin-top: 12px; font-size: 14.5px; color: var(--on-dark); }
+  .benefits .ht-col .ask b, .benefits .ht-fnote .ask b { display: inline; font: 700 14.5px/1.5 var(--sans); color: var(--white); }
+  .peak .today-list li:first-child { padding-top: 4px; }
+  .ht-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ht-fine { margin: 0; padding: 10px 22px 12px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px; color: var(--on-dark-soft); }
+  .ht-found { margin-top: 26px; }
+  .ht-fnote { margin-top: 14px; max-width: 80ch; }
+  .ht-fnote p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .ht-more { display: inline-block; margin-top: 26px; color: var(--white); font-weight: 700; font-size: 15.5px; text-decoration: none; border-bottom: 2px solid var(--gold-light); padding-bottom: 2px; }
+  .ht-more::after { content: " \2192"; }
+  .ht-more:hover { color: var(--gold-light); }
+  @media (max-width: 900px) {
+    .benefits.trail.ht-on ul { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+    .benefits.trail.ht-on ul::before { left: 10%; right: 10%; top: 20px; bottom: auto; width: auto; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(217,184,103,0.35)); }
+    .benefits.trail.ht-on li { padding: 52px 0 0; min-height: 0; text-align: center; }
+    .benefits.trail.ht-on li::before { left: 50%; transform: translateX(-50%); }
+    .benefits.trail.ht-on li span { display: none; }
+    .benefits.trail.ht-on .ht-step { text-align: center; }
+    .benefits.trail.ht-on b { font-size: 14.5px; }
+    .ht-cols { grid-template-columns: 1fr; }
+    .ht-col { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .ht-col:first-child { border-top: 0; }
+    .ht-panel .hd, .ht-col { padding-left: 18px; padding-right: 18px; }
+    .ht-cases { margin-bottom: 26px; }
+  }
+  @media (max-width: 380px) { .benefits.trail.ht-on b { font-size: 12.5px; } }
+
+  /* Briefing preview + Practitioner Dialogue */
+  .peak { background: var(--navy-deep); color: var(--white); padding: 64px 0 72px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .peak-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .peak-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .peak-head .kicker { color: var(--gold-light); }
+  .peak h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 4px; }
+  .peak .today-date { display: block; color: var(--on-dark-soft); font-size: 14px; margin-bottom: 22px; }
+  .peak .today-list li { padding: 18px 0; }
+  .peak .today-list .topic { color: var(--gold-light); }
+  .peak .today-list .sum { margin: 8px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .peak .today-list .src { margin: 6px 0 0; font-size: 13.5px; color: var(--on-dark-soft); }
+  .peak-all { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; min-height: 50px; padding: 0 20px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .peak-all svg { width: 18px; height: 18px; }
+  .peak-all:hover, .peak-all:focus-visible { background: var(--white); color: var(--navy-deep); }
+  .dialogue { background: var(--navy); border: 1px solid rgba(255,255,255,0.16); border-top: 3px solid var(--gold-light); padding: 28px 26px 26px; }
+  .dialogue .kicker { color: var(--gold-light); }
+  .dialogue h3 { font-family: var(--serif); font-size: clamp(22px, 2.2vw, 26px); line-height: 1.2; margin: 10px 0 12px; }
+  .dialogue p { margin: 0 0 22px; font-size: 16px; line-height: 1.55; color: var(--on-dark); }
+  .dlg-mail, .dlg-li { display: flex; align-items: center; justify-content: center; min-height: 50px; padding: 8px 16px; font-weight: 700; font-size: 15.5px; text-decoration: none; text-align: center; overflow-wrap: anywhere; transition: background 0.2s, color 0.2s; }
+  .dlg-mail { background: var(--gold-light); color: var(--navy-deep); }
+  .dlg-mail:hover, .dlg-mail:focus-visible { background: var(--white); }
+  .dlg-li { margin-top: 10px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); }
+  .dlg-li:hover, .dlg-li:focus-visible { background: var(--white); color: var(--navy-deep); }
+  .dialogue .dlg-note { margin: 16px 0 0; font-size: 13.5px; color: var(--on-dark-soft); }
+  @media (max-width: 900px) { .peak-grid { grid-template-columns: 1fr; gap: 40px; } .peak { padding: 48px 0 56px; } }
+
+  /* FAQ */
+  .faq { background: var(--navy); color: var(--white); padding: 64px 0 72px; }
+  .faq .kicker { color: var(--gold-light); }
+  .faq h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 0; }
+  .faq-list { margin-top: 26px; border-top: 1px solid rgba(255,255,255,0.18); max-width: 920px; }
+  .faq details { border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px 0; font-family: var(--serif); font-size: clamp(19px, 2vw, 22px); font-weight: 700; line-height: 1.3; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; flex: none; font: 400 28px/1 var(--sans); color: var(--gold-light); transition: transform 0.2s ease; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq summary:hover { color: var(--gold-light); }
+  .faq .faq-a { padding: 0 0 20px; max-width: 72ch; }
+  .faq .faq-a p { margin: 0 0 12px; font-size: 16.5px; line-height: 1.6; color: var(--on-dark); }
+  .faq .faq-a p:last-child { margin-bottom: 0; }
+  @media (max-width: 700px) { .faq { padding: 48px 0 56px; } }
+  #trail, #today, #faq { scroll-margin-top: calc(var(--secnav-h) + 4px); }
 </style>
 </head>
 <body>
-<script>document.documentElement.className+=" js";</script>
+<script>document.documentElement.className+=" js"+((location.hash.length<2||location.hash==="#top")?" v-top":"");</script>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="band">
@@ -1503,7 +1649,7 @@
 
   <!-- ===== INTRO (full-bleed) ===== -->
   <section class="intro" id="top" data-view="top" aria-labelledby="front-h">
-    <img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background" loading="eager">
+    <noscript><img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background"></noscript>
     <canvas class="field" aria-hidden="true"></canvas>
     <div class="intro-shade"></div>
     <div class="intro-glow" aria-hidden="true"><span></span></div>
@@ -1512,16 +1658,30 @@
       <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
       <p class="lede">Agentic AI for Treasury and Finance, adopted with clear ownership, sound controls and an audit trail an auditor can follow.</p>
       <div class="actions">
-        <a class="go" href="#controls"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>See how it works</a>
+        <a class="cta-main" href="#trail">See the 5-Step Control Trail<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a class="alt cta-brief" href="#briefing"><span>Read Today&rsquo;s Briefing</span><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Open access &middot; No sign-up</span></a>
       </div>
     </div>
   </section>
 
+  <!-- ===== PROOF STRIP ===== -->
+  <section class="proof" data-view="top" aria-label="About this site">
+    <div class="wrap">
+      <ul>
+        <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><circle cx="14" cy="9" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 24c1.2-5 4.6-7.5 9-7.5s7.8 2.5 9 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><div><b>Practitioner-Led Perspective</b><span>20+ years in Treasury, Financial Control and reporting</span></div></li>
+        <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><circle cx="5" cy="14" r="2.6" fill="currentColor"/><circle cx="14" cy="14" r="2.6" fill="currentColor"/><circle cx="23" cy="14" r="2.6" fill="currentColor"/><path d="M7.6 14h3.8M16.6 14h3.8" stroke="currentColor" stroke-width="1.8"/></svg><div><b>5-Step Audit-Traceable Control Trail</b><span>Capture, Match, Flag, Approve, Post</span></div></li>
+        <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect x="5" y="4" width="18" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 10h10M9 14h10M9 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><div><b>Daily Plain-English Treasury &amp; Market Briefings</b><span>Every story summarised and linked to its source</span></div></li>
+        <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M9 12V9a5 5 0 0 1 9.6-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="5" y="12" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><div><b>100% Independent &amp; Open Access</b><span>No vendor ties. No sign-up. No paywall.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ===== BENEFITS ===== -->
-  <section class="benefits trail" data-view="top" aria-label="The five-step control trail">
+  <section class="benefits trail" id="trail" data-view="top" aria-label="The five-step control trail">
     <div class="wrap">
       <div class="kicker">The control trail</div>
       <h2 class="trail-h">Five steps from data to ledger</h2>
+      <p class="ht-intro">Pick a step to see what the agent does, what a person decides and what the auditor sees.</p>
       <ul>
         <li><b>Capture</b><span>Take in the data and keep the source.</span></li>
         <li><b>Match</b><span>Compare it with the books and the bank.</span></li>
@@ -1529,6 +1689,8 @@
         <li><b>Approve</b><span>A named person signs off.</span></li>
         <li><b>Post</b><span>Record it with the evidence.</span></li>
       </ul>
+      <div class="ht-host" hidden></div>
+      <a class="ht-more" href="#controls">All ten worked cases on AI Controls</a>
     </div>
   </section>
 
@@ -1539,7 +1701,7 @@
       <div class="tiles">
         <!-- Tall tile: the signature framework (photo) -->
         <a class="tile tile-tall tile-card tile-fw" href="#framework">
-          <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="eager" style="object-position: 50% 45%;"></div>
+          <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="lazy" decoding="async" style="object-position: 50% 45%;"></div>
           <div class="body">
           <div class="kicker">AI Controls</div>
           <h2><span class="hl">Controls that keep pace with automation</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
@@ -1549,7 +1711,7 @@
 
         <!-- Tall tile: agentic automation (photo) -->
         <a class="tile tile-tall tile-card" href="#agentic">
-          <div class="media"><img src="/img/ait-article-agents.jpg" alt="Glass cubes joined by thin lines on a black background, like a network" loading="eager" style="object-position: 50% 50%;"></div>
+          <div class="media"><img src="/img/ait-article-agents.jpg" alt="Glass cubes joined by thin lines on a black background, like a network" loading="lazy" decoding="async" style="object-position: 50% 50%;"></div>
           <div class="body">
           <div class="kicker">Agentic Automation</div>
           <h2><span class="hl">22 agents a Finance team could use. Each one reports to a person.</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
@@ -1570,12 +1732,40 @@
         </a>
       </div>
 
+    </div>
+  </section>
 
-      <div class="today" aria-label="Today at a glance">
-        <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span></div>
-        <div class="today-grid">
-          <div class="today-stories"><ol class="today-list"></ol><a class="today-all" href="#briefing">All stories</a></div>
-        </div>
+  <!-- ===== TODAY'S BRIEFING PREVIEW + PRACTITIONER DIALOGUE ===== -->
+  <section class="peak" id="today" data-view="top" aria-labelledby="peak-h">
+    <div class="wrap peak-grid">
+      <div class="peak-brief">
+        <div class="peak-head"><div class="kicker">Treasury Today</div><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Open access &middot; No sign-up</span></div>
+        <h2 id="peak-h">Today&rsquo;s top stories</h2>
+        <span class="today-date"></span>
+        <ol class="today-list"></ol>
+        <a class="peak-all" href="#briefing">Read the full briefing<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+      </div>
+      <aside class="dialogue" aria-labelledby="dlg-h">
+        <div class="kicker">Practitioner Dialogue</div>
+        <h3 id="dlg-h">Compare notes on AI and controls in Treasury</h3>
+        <p>If you are putting agents, approvals or audit trails to work in your own team, I would like to hear what is working and what is not. This is an exchange between practitioners, not a sales conversation.</p>
+        <a class="dlg-mail" href="mailto:gmenon@theaitreasurer.com?subject=Practitioner%20Dialogue">gmenon@theaitreasurer.com</a>
+        <a class="dlg-li" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a>
+        <p class="dlg-note">Views are my own and do not represent any employer.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq" data-view="top" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="kicker">Questions</div>
+      <h2 id="faq-h">Common questions</h2>
+      <div class="faq-list">
+        <details><summary>How is agentic AI different from RPA in Treasury?</summary><div class="faq-a"><p>RPA (robotic process automation) follows a fixed script: the same clicks and the same rules every time, and it stops when the input changes.</p><p>An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast. That flexibility is the benefit and the risk. An agent needs its own identity with limited rights, recorded versions of its rules and model, and a named person who approves what it proposes.</p></div></details>
+        <details><summary>What is the 5-Step Control Trail?</summary><div class="faq-a"><p>It is the test this site applies to any automated step in Treasury and Finance. Capture: data comes from a known source and is complete. Match: items are paired, and the rule and model versions are recorded. Flag: anything that does not match becomes a logged exception that is aged, never silently cleared. Approve: a named person signs off, and the agent that proposes an action never approves it. Post: the approved result is recorded with its evidence.</p><p>Four foundations sit around every system: Govern, Access, Change and Monitor. It is an illustrative framework aligned with the COSO internal control framework, not a certified standard.</p></div></details>
+        <details><summary>How does the control trail help with Internal Audit?</summary><div class="faq-a"><p>Each step answers a question an auditor will ask. Where did this data come from? Why were these two items paired? What did not match, and how long has it been open? Who approved it, and were they independent? Does the record trace back to source?</p><p>When an agent records that evidence as it works, the trail exists before the audit instead of being rebuilt afterwards. It does not replace your auditors' own testing, and nothing on this site is professional advice.</p></div></details>
+        <details><summary>How is the Daily Briefing put together?</summary><div class="faq-a"><p>Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the opinion lines and market figures before they appear.</p><p>The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice.</p></div></details>
       </div>
     </div>
   </section>
@@ -1864,9 +2054,9 @@
         <div class="ag-eye">Agentic Automation</div>
         <h2 id="ag-h">22 agents a Finance team could use. Each one reports to a person.</h2>
         <p class="ag-lede">Tap an agent to read its job description: what it does, what it may never do, and what the auditor will check.</p>
-        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#aab7cf;margin:18px 0 0;max-width:62ch">Terms used: FX is foreign exchange. IFRS and IAS are the international accounting standards. VAT and GST are sales taxes. SWIFT is the banking message network. ISDA and CSA are standard derivatives contract terms. KPI is key performance indicator.</p>
+        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#C9D2DE;margin:18px 0 0;max-width:62ch">Terms used: FX is foreign exchange. IFRS and IAS are the international accounting standards. VAT and GST are sales taxes. SWIFT is the banking message network. ISDA and CSA are standard derivatives contract terms. KPI is key performance indicator.</p>
         <ul class="ag-kpi"><li><b>124</b><span>functions mapped across 22 areas of Treasury and Finance</span></li><li><b>77</b><span>are drafted by the agent and always approved by a person</span></li><li><b>0</b><span>are left to an agent alone, with no person in the loop</span></li></ul>
-        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#aab7cf;margin:10px 0 0">Counts and levels are the author&rsquo;s proposals.</p>
+        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#C9D2DE;margin:10px 0 0">Counts and levels are the author&rsquo;s proposals.</p>
         <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ag-map">See every agent</a></div>
       </div>
     </div>
@@ -2654,6 +2844,127 @@
 })();
 </script>
 <script>
+/* Home: interactive control trail. Progressive enhancement over the static five steps.
+   "The auditor sees" is the trail record from the matching worked case on AI Controls (window.AIT_CASES),
+   so the wording lives in one place. The agent / person lines below are drawn from those same records. All cases are illustrative. */
+function aitHomeTrail(){
+  var sec = document.getElementById('trail'), host = sec && sec.querySelector('.ht-host');
+  var lis = sec ? sec.querySelectorAll('ul > li') : [];
+  var CASES = window.AIT_CASES || [];
+  if (!host || lis.length !== 5 || !CASES.length) return;
+  var fw = document.getElementById('framework');
+  var asks = fw ? [].map.call(fw.querySelectorAll('ol.trail > li .q'), function(q){ var c = q.cloneNode(true), b = c.querySelector('b'); if (b) b.remove(); return c.textContent.trim(); }) : [];
+  var found = fw ? [].map.call(fw.querySelectorAll('ul.found > li'), function(li){ var c = li.querySelector('.q').cloneNode(true), b = c.querySelector('b'); if (b) b.remove();
+    return { name: li.querySelector('.f-name').textContent, why: li.querySelector('.why').textContent, q: c.textContent.trim() }; }) : [];
+
+  var LINES = {
+    'Bank reconciliation': [
+      ['Takes in the overnight statement from the bank file channel, checks the account against the register and confirms all 412 lines agree to the file footer.', 'No action needed. The account register it checks against is kept by people, not by the agent.'],
+      ['Pairs 409 of 412 lines using the checking rules and an AI model for near-matches, then recalculates independently. Three lines, 18,400 in total, do not match.', 'No action needed. The rule and model versions in use were approved before go-live.'],
+      ['Opens three exceptions and assigns them to the cash team. None is cleared automatically.', 'The cash team owns the three open items. They stay on the ageing report until resolved.'],
+      ['Proposes clearing two of the items (11,200). It cannot sign off its own work.', 'A named reviewer approves the clearing. The third item (7,200) stays open.'],
+      ['Posts the 11,200 clearing journal, linked to the statement lines, versions and reviewer.', 'No new action. The open 7,200 item stays visible to the cash team until it is resolved.']
+    ],
+    'Supplier payment': [
+      ['Reads the PDF invoice from the accounts payable inbox, checks the sender is on the approved list, records the control total and screens the file for hidden instructions.', 'No action needed. The approved sender list is owned by people, not by the agent.'],
+      ['Pairs the invoice to the purchase order and goods receipt, recalculates the amounts and finds USD 120 more freight than the order allows.', 'No action needed. The checking rules and AI instruction versions were approved before use.'],
+      ['Opens an exception, blocks the invoice from payment and routes it to purchasing, who own the order.', 'Purchasing picks up the exception. It stays open and ageing until they resolve it.'],
+      ['Once the exception is closed, the payment agent proposes the USD 48,600 payment.', 'Purchasing confirms the extra freight was agreed and approves a change order. A named Treasury approver then approves the payment. The agent that proposed it cannot approve it.'],
+      ['Posts the journal and links it to the invoice, the amended order, the data snapshot, the versions and the approver.', 'No new action. The approver’s name travels with the entry.']
+    ],
+    'Cash forecast': [
+      ['Pulls ledger, bank balances and receivables ageing, and checks balances agree to bank statements and receivables agree to the ledger.', 'No action needed.'],
+      ['Drafts the 13-week forecast with a recorded AI model and instruction version. The roll-forward is recalculated independently.', 'No action needed. Model and instruction changes go through change control.'],
+      ['Spots a week 6 inflow 31% above the trailing average, marks it low confidence and opens an exception.', 'The exception waits for Treasury review before the forecast can go out.'],
+      ['Cannot approve its own forecast.', 'The Treasury manager reviews week 6, adjusts the inflow and approves.'],
+      ['Publishes the forecast with the data snapshot, versions, the adjustment and the approver, and keeps the prior version.', 'No new action. The adjustment and the approver are on record.']
+    ]
+  };
+  var ORDER = ['Bank reconciliation', 'Supplier payment', 'Cash forecast'];
+  var byLabel = {}; CASES.forEach(function(c){ byLabel[c.label] = c; });
+  ORDER = ORDER.filter(function(k){ return byLabel[k] && byLabel[k].rec && byLabel[k].rec.length === 5; });
+  if (!ORDER.length) return;
+
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  var stepName = [], stepLine = [];
+  var state = { c: ORDER[0], s: 0 };
+
+  /* case chooser */
+  var cases = el('div', 'ht-cases'); cases.setAttribute('role', 'group'); cases.setAttribute('aria-label', 'Choose a worked case');
+  cases.appendChild(el('span', 'lab', 'Worked case'));
+  var caseBtns = ORDER.map(function(k){ var b = el('button', null, k); b.type = 'button'; b.addEventListener('click', function(){ state.c = k; render(); }); cases.appendChild(b); return b; });
+  sec.querySelector('ul').parentNode.insertBefore(cases, sec.querySelector('ul'));
+
+  /* steps become buttons */
+  var stepBtns = [].map.call(lis, function(li, i){
+    stepName.push(li.querySelector('b').textContent); stepLine.push(li.querySelector('span').textContent);
+    var b = el('button', 'ht-step'); b.type = 'button';
+    while (li.firstChild) b.appendChild(li.firstChild);
+    li.appendChild(b);
+    b.addEventListener('click', function(){ state.s = i; render(); });
+    b.addEventListener('keydown', function(e){
+      var k = e.key, n = k === 'ArrowRight' || k === 'ArrowDown' ? 1 : k === 'ArrowLeft' || k === 'ArrowUp' ? -1 : 0;
+      if (!n) return; e.preventDefault(); state.s = (state.s + n + 5) % 5; render(); stepBtns[state.s].focus();
+    });
+    if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var tm; li.addEventListener('mouseenter', function(){ tm = setTimeout(function(){ if (state.s !== i) { state.s = i; render(); } }, 160); });
+      li.addEventListener('mouseleave', function(){ clearTimeout(tm); });
+    }
+    return b;
+  });
+
+  /* detail panel */
+  var panel = el('div', 'ht-panel'), hd = el('div', 'hd'), hdL = el('div'), hdR = el('span', 'case');
+  var hdT = el('b'), hdS = el('span', 'line');
+  hdL.appendChild(hdT); hdL.appendChild(hdS); hd.appendChild(hdL); hd.appendChild(hdR); panel.appendChild(hd);
+  var cols = el('div', 'ht-cols'), colEls = [];
+  [['The agent does', 'ag'], ['The person decides', 'pe'], ['The auditor sees', 'au']].forEach(function(c){
+    var d = el('div', 'ht-col ' + c[1]); d.appendChild(el('h4', null, c[0])); var p = el('p'); d.appendChild(p);
+    if (c[1] === 'au') { var q = el('p', 'ask'); d.appendChild(q); }
+    cols.appendChild(d); colEls.push(d);
+  });
+  panel.appendChild(cols);
+  var live = el('p', 'ht-live'); live.setAttribute('aria-live', 'polite'); panel.appendChild(live);
+  panel.appendChild(el('p', 'ht-fine', 'Illustrative case. Names, amounts and references are invented.'));
+  host.appendChild(panel);
+
+  /* four foundations */
+  if (found.length === 4) {
+    var fwrap = el('div', 'ht-found'), frow = el('div', 'ht-frow'); frow.setAttribute('role', 'group'); frow.setAttribute('aria-label', 'The four foundations');
+    frow.appendChild(el('span', 'lab', 'Four foundations'));
+    var fnote = el('div', 'ht-fnote'); fnote.hidden = true; fnote.id = 'ht-fnote';
+    var fBtns = found.map(function(f, i){
+      var b = el('button', null, f.name); b.type = 'button'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'ht-fnote');
+      b.addEventListener('click', function(){
+        var open = b.getAttribute('aria-expanded') !== 'true';
+        fBtns.forEach(function(x){ x.setAttribute('aria-expanded', 'false'); });
+        if (open) { b.setAttribute('aria-expanded', 'true'); fnote.innerHTML = ''; fnote.appendChild(el('p', null, f.why)); var q = el('p', 'ask'); q.appendChild(el('b', null, 'The auditor asks: ')); q.appendChild(document.createTextNode(f.q)); fnote.appendChild(q); }
+        fnote.hidden = !open;
+      });
+      frow.appendChild(b); return b;
+    });
+    fwrap.appendChild(frow); fwrap.appendChild(fnote); host.appendChild(fwrap);
+  }
+
+  function render(){
+    var c = byLabel[state.c], s = state.s, L = LINES[state.c][s];
+    caseBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', ORDER[i] === state.c ? 'true' : 'false'); });
+    stepBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', i === s ? 'true' : 'false'); lis[i].classList.toggle('on', i === s); });
+    hdT.textContent = 'Step ' + (s + 1) + ' of 5 · ' + stepName[s];
+    hdS.textContent = stepLine[s];
+    hdR.textContent = state.c;
+    colEls[0].querySelector('p').textContent = L[0];
+    colEls[1].querySelector('p').textContent = L[1];
+    colEls[2].querySelector('p').textContent = c.rec[s];
+    var ask = colEls[2].querySelector('.ask'); ask.innerHTML = '';
+    if (asks[s]) { ask.appendChild(el('b', null, 'The auditor asks: ')); ask.appendChild(document.createTextNode(asks[s])); }
+    live.textContent = state.c + ', step ' + (s + 1) + ', ' + stepName[s] + '.';
+  }
+  sec.classList.add('ht-on'); host.hidden = false; render();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aitHomeTrail); else aitHomeTrail();
+</script>
+<script>
 document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   b.addEventListener('click', function(){
     var col = b.closest('.mk-fold'); var open = col.classList.toggle('open');
@@ -2662,14 +2973,24 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 });
 </script>
 <script>
-/* Home "Today" strip: headlines and date taken from today's briefing, so they never drift. */
+/* Home briefing preview: headlines, a one-line summary and the source, all taken from today's briefing, so they never drift. */
 (function(){
   var list = document.querySelector('.today-list'); if (!list) return;
   var items = document.querySelectorAll('.briefing .leads .item'), html = '';
+  function esc(s){ return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  function firstSentence(t){ t = (t || '').replace(/\s+/g, ' ').trim(); var m = t.match(/^.{40,}?[.!?](?=\s+[A-Z0-9'\u2018\u201C(]|$)/); return m ? m[0] : t; }
   items.forEach(function(it, i){
     var a = it.querySelector('.cite a'), h = it.querySelector('h4'), t = it.querySelector('.topic');
     var click = a ? a.getAttribute('onclick') : "showTab('ai');return false;";
-    html += '<li><span class="n">0'+(i+1)+'</span><div><div class="topic">'+(t?t.innerHTML:'')+'</div><a href="#" onclick="'+click.replace(/"/g,'&quot;')+'">'+(h?h.textContent.replace(/&/g,'&amp;').replace(/</g,'&lt;'):'')+'</a></div></li>';
+    var m = /showTab\('[a-z_]+',\s*'([^']+)'/.exec(click || ''), story = m ? document.getElementById(m[1]) : null;
+    var sum = '', src = '';
+    if (story) {
+      var p = story.querySelector('p'), s = story.querySelector('.cite a[href^="http"]');
+      if (p) sum = firstSentence(p.textContent);
+      if (s) src = s.textContent.trim();
+    }
+    html += '<li><span class="n">0'+(i+1)+'</span><div><div class="topic">'+(t?t.innerHTML:'')+'</div><a href="#" onclick="'+esc(click)+'">'+esc(h?h.textContent:'')+'</a>'
+         + (sum ? '<p class="sum">'+esc(sum)+'</p>' : '') + (src ? '<p class="src">Source: '+esc(src)+'</p>' : '') + '</div></li>';
   });
   list.innerHTML = html;
   var d = document.querySelector('.briefing .sec-head .dateline'), out = document.querySelector('.today-date');
@@ -2713,6 +3034,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     return document.querySelector('[data-view="' + id + '"]') ? id : null;
   }
   function show(view){
+    document.documentElement.classList.remove('v-top');
     if (!view) view = 'top';
     views.forEach(function(s){
       var on = s.getAttribute('data-view') === view;
@@ -3145,6 +3467,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
         'No tie-out file is kept, so the auditor has to re-perform the whole note.'
       ] }
   ];
+  window.AIT_CASES = SC;
 
   var mode = 'steps', sel = 0, fsel = 0, w = 0, si = 2, gaps = [false, false, false, false, false];
   function resetGaps(){ gaps = [false, false, false, false, false]; }

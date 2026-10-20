@@ -1,0 +1,28 @@
+# The AI Treasurer
+
+> An independent, practitioner-led site on agentic AI in corporate Treasury and Finance, written by Gopakumar Menon, CA, CPA, CTP. Its position: AI agents can take on Treasury workflows, but authority stays with named people, and every automated step should leave a trail an auditor can follow. Everything on the site is free to read, with no sign-up, login or paywall. Nothing on it is financial or professional advice.
+
+The site is a single page with sections reached by anchor links. Key ideas:
+
+- The 5-Step Control Trail: Capture, Match, Flag, Approve, Post. It is the test the site applies to any automated step in Treasury and Finance.
+- The Four Foundations around every system: Govern, Access, Change, Monitor. Aligned with the COSO internal control framework. Illustrative, not a certified standard.
+- The agent that proposes an action never approves it; a named person signs off at a level set by risk.
+
+## Sections
+
+- [Home](https://theaitreasurer.com/): headline position, the interactive control trail with worked cases, today's top stories and common questions.
+- [AI Controls](https://theaitreasurer.com/#controls): the control trail and four foundations in full, with what the auditor asks at each step and ten illustrative worked cases (for example bank reconciliation, supplier payment, cash forecast, FX confirmation).
+- [Agentic Automation](https://theaitreasurer.com/#agentic): a proposed map of functions across Treasury and Finance, how far an AI agent goes in each, the control that keeps each one safe, and go-live checks.
+- [Treasury Today](https://theaitreasurer.com/#briefing): the daily briefing on AI, Treasury and Finance in five sections (AI and Technology, Treasury and Payments, Risk and Markets, Regulation and Compliance, Events). Each story is summarised in original words and links to its publisher.
+- [Markets](https://theaitreasurer.com/#markets): policy rates, money markets, yields and FX reference figures with dated sources, plus a short daily market commentary.
+- [About](https://theaitreasurer.com/#about): the author's background in Financial Control, Financial Reporting and Treasury.
+- [Common questions](https://theaitreasurer.com/#faq): agentic AI versus RPA, the control trail, Internal Audit, and how the briefing is put together.
+
+## How the daily briefing is produced
+
+Each morning an automated process searches the day's news, checking specialist Treasury publications first. AI models write short summaries in their own words with a link to the original publisher, and a second, independent model checks opinion lines and market figures. The briefing publishes automatically and is not reviewed by hand before it goes out. Figures are as reported on the dates shown and are not live market data.
+
+## Contact
+
+- Email: gmenon@theaitreasurer.com (practitioner exchange; views are the author's own and do not represent any employer)
+- LinkedIn: https://www.linkedin.com/in/gopakumarmenon
