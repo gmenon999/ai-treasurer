@@ -4,7 +4,7 @@
 
 The site is a single page with sections reached by anchor links. Key ideas:
 
-- The control trail (five steps): Capture, Match, Flag, Approve, Post. It is the test the site applies to any automated step in Treasury and Finance.
+- The 5-Step Control Trail: Capture, Match, Flag, Approve, Post. It is the test the site applies to any automated step in Treasury and Finance.
 - The Four Foundations around every system: Govern, Access, Change, Monitor. Aligned with the COSO internal control framework. Illustrative, not a certified standard.
 - The agent that proposes an action never approves it; a named person signs off at a level set by risk.
 
@@ -16,7 +16,7 @@ The site is a single page with sections reached by anchor links. Key ideas:
 - [Treasury Today](https://theaitreasurer.com/#briefing): the daily briefing on AI, Treasury and Finance in five sections (AI and Technology, Treasury and Payments, Risk and Markets, Regulation and Compliance, Events). Each story is summarised in original words and links to its publisher.
 - [Markets](https://theaitreasurer.com/#markets): policy rates, money markets, yields and FX reference figures with dated sources, plus a short daily market commentary.
 - [About](https://theaitreasurer.com/#about): the author's background in Financial Control, Financial Reporting and Treasury.
-- [Common questions](https://theaitreasurer.com/#faq): agentic AI versus RPA, the control trail, Internal Audit, and how the briefing is put together.
+- [Common questions](https://theaitreasurer.com/#faq): agentic AI versus RPA, the 5-Step Control Trail, Internal Audit, and how the briefing is put together.
 
 ## How the daily briefing is produced
 
