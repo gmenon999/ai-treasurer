@@ -1730,6 +1730,17 @@
   .ht-frow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; max-width: 720px; }
   .ht-frow button { width: 100%; text-align: center; padding: 12px 10px; }
   @media (max-width: 560px) { .ht-frow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* Agents on Home: three area cards instead of 22 tags */
+  .hag-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 40px; }
+  .hag-card { display: flex; flex-direction: column; gap: 6px; padding: 20px 20px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.18); border-top: 3px solid #8FA6C8; color: var(--white); text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+  .hag-card:hover, .hag-card:focus-visible { background: rgba(255,255,255,0.1); border-top-color: var(--gold-light); }
+  .hag-ct { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.2; }
+  .hag-cm { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); }
+  .hag-cx { font-size: 15px; line-height: 1.5; color: var(--on-dark); margin-top: 4px; }
+  .hag-cgo { margin-top: auto; padding-top: 12px; font-size: 14.5px; font-weight: 700; color: var(--white); }
+  .hag-cgo::after { content: " \2192"; color: var(--gold-light); }
+  @media (max-width: 900px) { .hag-cards { grid-template-columns: 1fr; gap: 8px; margin-top: 28px; } .hag-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 12px; padding: 14px 16px; } .hag-ct { font-size: 19px; } .hag-cm { grid-column: 1; font-size: 12px; } .hag-cx { display: none; } .hag-cgo { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding: 0; font-size: 0; } .hag-cgo::after { content: "\2192"; font-size: 20px; } }
 </style>
 </head>
 <body>
@@ -1799,7 +1810,7 @@
         <div class="hag-copy">
           <div class="kicker">Agentic Automation</div>
           <h2 id="hag-h">AI agents across Treasury and Finance. Each one reports to a person.</h2>
-          <p class="hag-lede">Tap an agent to read its job description: what it does, what it may never do, and what the auditor will check.</p>
+          <p class="hag-lede">Choose an area to read each agent&rsquo;s job description: what it does, what it may never do, and what the auditor will check.</p>
         </div>
         <dl class="hag-stats">
           <div><dt>124</dt><dd>functions mapped across 22 areas of Treasury and Finance</dd></div>
@@ -1807,10 +1818,10 @@
           <div><dt>0</dt><dd>are left to an agent alone, with no person in the loop</dd></div>
         </dl>
       </div>
-      <div class="hag-groups">
-        <div class="hag-grp"><h3>Treasury <span>11 agents &middot; 59 functions</span></h3><ul><li><a href="#ag-p-cash-and-liquidity" data-ag="ag-p-cash-and-liquidity" title="Liquidity and Funding Agent: Cash and liquidity, 6 functions"><span>Liquidity and Funding</span></a></li><li><a href="#ag-p-daily-cash-position" data-ag="ag-p-daily-cash-position" title="Daily Cash Position Agent: Daily cash position, 5 functions"><span>Daily Cash Position</span></a></li><li><a href="#ag-p-cash-forecast" data-ag="ag-p-cash-forecast" title="Cash Forecast Agent: Cash forecast, 5 functions"><span>Cash Forecast</span></a></li><li><a href="#ag-p-investments" data-ag="ag-p-investments" title="Investments Agent: Investments, 7 functions"><span>Investments</span></a></li><li><a href="#ag-p-bank-management" data-ag="ag-p-bank-management" title="Bank Agent: Bank management, 4 functions"><span>Bank</span></a></li><li><a href="#ag-p-bank-reconciliation" data-ag="ag-p-bank-reconciliation" title="Bank Reconciliation Agent: Bank reconciliation, 5 functions"><span>Bank Reconciliation</span></a></li><li><a href="#ag-p-bank-charges" data-ag="ag-p-bank-charges" title="Bank Charges Agent: Bank charges, 5 functions"><span>Bank Charges</span></a></li><li><a href="#ag-p-risk-fx-rates-and-commodities" data-ag="ag-p-risk-fx-rates-and-commodities" title="FX and Hedging Agent: Risk: FX, rates and commodities, 6 functions"><span>FX and Hedging</span></a></li><li><a href="#ag-p-credit-risk" data-ag="ag-p-credit-risk" title="Credit Risk Agent: Credit risk, 5 functions"><span>Credit Risk</span></a></li><li><a href="#ag-p-insurance" data-ag="ag-p-insurance" title="Insurance Agent: Insurance, 5 functions"><span>Insurance</span></a></li><li><a href="#ag-p-debt-and-funding" data-ag="ag-p-debt-and-funding" title="Debt and Covenant Agent: Debt and funding, 6 functions"><span>Debt and Covenant</span></a></li></ul></div>
-        <div class="hag-grp"><h3>Finance <span>10 agents &middot; 59 functions</span></h3><ul><li><a href="#ag-p-general-ledger-accounting" data-ag="ag-p-general-ledger-accounting" title="Ledger Agent: General ledger accounting, 8 functions"><span>Ledger</span></a></li><li><a href="#ag-p-accounts-payable-ap" data-ag="ag-p-accounts-payable-ap" title="Payables Agent: Accounts payable (AP), 4 functions"><span>Payables</span></a></li><li><a href="#ag-p-accounts-receivable-ar" data-ag="ag-p-accounts-receivable-ar" title="Receivables Agent: Accounts receivable (AR), 4 functions"><span>Receivables</span></a></li><li><a href="#ag-p-financial-reporting" data-ag="ag-p-financial-reporting" title="Reporting Agent: Financial reporting, 13 functions"><span>Reporting</span></a></li><li><a href="#ag-p-taxation" data-ag="ag-p-taxation" title="Tax Agent: Taxation, 7 functions"><span>Tax</span></a></li><li><a href="#ag-p-planning-and-analysis" data-ag="ag-p-planning-and-analysis" title="Planning Agent: Planning and analysis, 4 functions"><span>Planning</span></a></li><li><a href="#ag-p-procurement" data-ag="ag-p-procurement" title="Procurement Agent: Procurement, 4 functions"><span>Procurement</span></a></li><li><a href="#ag-p-inventory" data-ag="ag-p-inventory" title="Inventory Agent: Inventory, 5 functions"><span>Inventory</span></a></li><li><a href="#ag-p-sales-and-marketing" data-ag="ag-p-sales-and-marketing" title="Commercial Agent: Sales and Marketing, 4 functions"><span>Commercial</span></a></li><li><a href="#ag-p-payroll-accounting" data-ag="ag-p-payroll-accounting" title="Payroll Agent: Payroll accounting, 6 functions"><span>Payroll</span></a></li></ul></div>
-        <div class="hag-grp"><h3>Across both <span>1 agent &middot; 6 functions</span></h3><ul><li><a href="#ag-p-governance" data-ag="ag-p-governance" title="Governance Agent: Governance, 6 functions"><span>Governance</span></a></li></ul></div>
+      <div class="hag-cards">
+        <a class="hag-card" href="#ag-map" data-agf="treasury"><span class="hag-ct">Treasury</span><span class="hag-cm">11 agents &middot; 59 functions</span><span class="hag-cx">Liquidity, cash forecast, bank reconciliation, FX and hedging, debt and covenants</span><span class="hag-cgo">See the Treasury agents</span></a>
+        <a class="hag-card" href="#ag-map" data-agf="finance"><span class="hag-ct">Finance</span><span class="hag-cm">10 agents &middot; 59 functions</span><span class="hag-cx">Ledger, payables, receivables, reporting, tax, payroll</span><span class="hag-cgo">See the Finance agents</span></a>
+        <a class="hag-card" href="#ag-map" data-agf="across"><span class="hag-ct">Across both</span><span class="hag-cm">1 agent &middot; 6 functions</span><span class="hag-cx">Governance: Treasury policy, delegation of authority, segregation of duties</span><span class="hag-cgo">See the Governance agent</span></a>
       </div>
       <div class="hag-foot"><a class="hag-all" href="#agentic">See every agent<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><span class="hag-note">Counts and levels are the author&rsquo;s proposals.</span></div>
     </div>
@@ -3079,6 +3090,17 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 <script>
 /* Home agent links: switch to Agentic Automation, then open that agent's card (the view script handles the switch). */
 window.addEventListener('click', function(e){
+  var g = e.target.closest && e.target.closest('.hag a[data-agf]');
+  if (g && e.button === 0 && !e.metaKey && !e.ctrlKey) {
+    var f = g.getAttribute('data-agf');
+    setTimeout(function(){
+      var b = document.querySelector('.ag-fc[data-f="' + f + '"]'); if (b && b.getAttribute('aria-pressed') !== 'true') b.click();
+      var m = document.getElementById('ag-map'); if (!m) return;
+      var h = (document.querySelector('.secnav') || {}).offsetHeight || 0;
+      window.scrollTo({ top: m.getBoundingClientRect().top + window.pageYOffset - h - 8 });
+    }, 30);
+    return;
+  }
   var a = e.target.closest && e.target.closest('.hag a[data-ag]');
   if (!a || e.button !== 0 || e.metaKey || e.ctrlKey) return;
   var id = a.getAttribute('data-ag');
