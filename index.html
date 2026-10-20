@@ -1695,6 +1695,22 @@
     .peak-lead .note p + p { display: none; }
   }
   #dialogue { scroll-margin-top: calc(var(--secnav-h) + 16px); }
+
+  /* Author line under the proof strip: the one action (Follow on LinkedIn) */
+  .byline-row { display: flex; align-items: center; gap: 14px 16px; padding: 16px 0 20px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .byline-row img { flex: none; width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 2px solid var(--gold-light); }
+  .byline-row p { margin: 0; flex: 1 1 auto; font-size: 15px; line-height: 1.4; color: var(--white); }
+  .byline-row b { display: inline; font-family: var(--serif); font-size: 18px; }
+  .byline-row .cr { display: inline; margin-left: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--gold-light); }
+  .byline-row .role { display: block; font-size: 14px; color: var(--on-dark); margin-top: 2px; }
+  .byline-li { flex: none; display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px; background: var(--gold-light); color: var(--navy-deep); font-weight: 700; font-size: 15px; text-decoration: none; transition: background 0.2s; }
+  .byline-li:hover, .byline-li:focus-visible { background: var(--white); }
+  @media (max-width: 560px) {
+    .byline-row { flex-wrap: wrap; padding: 14px 0 18px; }
+    .byline-row p { flex-basis: calc(100% - 64px); }
+    .byline-row .role { display: none; }
+    .byline-li { width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -1735,7 +1751,7 @@
       <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
       <p class="lede">Agentic AI for Treasury and Finance, adopted with clear ownership, sound controls and an audit trail an auditor can follow.</p>
       <div class="actions">
-        <a class="cta-main" href="#agents">Meet the 22 agents<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a class="cta-main" href="#ag-how">See how the agents work<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
         <a class="alt cta-brief" href="#briefing"><span>Read Today&rsquo;s Briefing</span><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Open access &middot; No sign-up</span></a>
       </div>
     </div>
@@ -1750,6 +1766,11 @@
         <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect x="5" y="4" width="18" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 10h10M9 14h10M9 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><div><b>Daily Plain-English Treasury &amp; Market Briefings</b><span>Every story summarised and linked to its source</span></div></li>
         <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M9 12V9a5 5 0 0 1 9.6-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="5" y="12" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><div><b>100% Independent &amp; Open Access</b><span>No vendor ties. No sign-up. No paywall.</span></div></li>
       </ul>
+      <div class="byline-row">
+        <img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon" width="48" height="48" decoding="async">
+        <p><b>Gopakumar Menon</b> <span class="cr">CA &middot; CPA &middot; CTP</span><span class="role">Senior Treasury and Finance Leader, specialising in AI and Financial Controls</span></p>
+        <a class="byline-li" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a>
+      </div>
     </div>
   </section>
 
