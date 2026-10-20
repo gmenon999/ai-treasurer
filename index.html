@@ -1624,6 +1624,23 @@
   .faq .faq-a p:last-child { margin-bottom: 0; }
   @media (max-width: 700px) { .faq { padding: 48px 0 56px; } }
   #trail, #today, #faq { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+
+  /* Phone layout (Oct 2026): proof strip above the fold; shorter tiles so the briefing preview comes sooner */
+  @media (max-width: 720px) {
+    .intro .wrap { padding-top: 40px; padding-bottom: 36px; }
+    .intro h1 { margin: 10px 0 16px; }
+    .intro .lede { margin-bottom: 24px; }
+    .tile-card .media, .tile-desk.tile-card .media { aspect-ratio: 2 / 1; }
+    .tile-desk .note p { display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .tile-desk .note p + p { display: none; }
+  }
+  @media (max-width: 560px) {
+    .proof ul { grid-template-columns: 1fr 1fr; gap: 14px 16px; padding: 18px 0; }
+    .proof li, .proof li:first-child, .proof li:nth-child(3) { gap: 10px; padding: 0; border-left: 0; }
+    .proof svg { width: 22px; height: 22px; }
+    .proof b { font-size: 13.5px; line-height: 1.3; }
+    .proof span { display: none; }
+  }
 </style>
 </head>
 <body>
