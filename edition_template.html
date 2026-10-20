@@ -1641,6 +1641,46 @@
     .proof b { font-size: 13.5px; line-height: 1.3; }
     .proof span { display: none; }
   }
+
+  /* Home: the agents */
+  .hag { background: var(--navy-deep); color: var(--white); padding: 60px 0 64px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .hag .kicker { color: var(--gold-light); }
+  .hag-top { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; align-items: end; }
+  .hag h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 10px 0 14px; max-width: 22ch; }
+  .hag-lede { margin: 0; font-size: 16.5px; line-height: 1.55; color: var(--on-dark); max-width: 52ch; }
+  .hag-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0; }
+  .hag-stats div { padding: 0 18px; border-left: 1px solid rgba(255,255,255,0.16); }
+  .hag-stats div:first-child { border-left: 0; padding-left: 0; }
+  .hag-stats dt { font-family: var(--serif); font-size: clamp(34px, 3.6vw, 48px); line-height: 1; font-weight: 700; color: var(--gold-light); }
+  .hag-stats dd { margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: var(--on-dark); }
+  .hag-groups { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; margin-top: 40px; }
+  .hag-grp:last-child { grid-column: 1 / -1; }
+  .hag-grp h3 { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.16); font: 700 12px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); }
+  .hag-grp h3 span { margin-left: 8px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; font-size: 13.5px; color: var(--on-dark-soft); }
+  .hag-grp ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .hag-grp a { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.3); color: var(--white); font-size: 14.5px; font-weight: 600; line-height: 1.2; text-decoration: none; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .hag-grp a:hover, .hag-grp a:focus-visible { background: var(--white); color: var(--navy-deep); border-color: var(--white); }
+  .hag-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 32px; }
+  .hag-all { display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 22px; background: var(--gold-light); color: var(--navy-deep); font-weight: 700; font-size: 16px; text-decoration: none; transition: background 0.2s; }
+  .hag-all svg { width: 18px; height: 18px; }
+  .hag-all:hover, .hag-all:focus-visible { background: var(--white); }
+  .hag-note { font-size: 13.5px; color: var(--on-dark-soft); }
+  #agents { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  @media (min-width: 721px) {
+    .tiles.tiles-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+    .tiles.tiles-2 > * { grid-row: auto; grid-column: auto; min-height: 520px; }
+  }
+  @media (max-width: 900px) {
+    .hag-top { grid-template-columns: 1fr; gap: 28px; }
+    .hag-groups { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 560px) {
+    .hag { padding: 44px 0 48px; }
+    .hag-stats div { padding: 0 10px; }
+    .hag-stats dd { font-size: 12.5px; }
+    .hag-grp a { font-size: 14px; padding: 8px 12px; min-height: 40px; }
+    .hag-all { width: 100%; justify-content: space-between; }
+  }
 </style>
 </head>
 <body>
@@ -1681,7 +1721,7 @@
       <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
       <p class="lede">Agentic AI for Treasury and Finance, adopted with clear ownership, sound controls and an audit trail an auditor can follow.</p>
       <div class="actions">
-        <a class="cta-main" href="#trail">See the 5-Step Control Trail<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a class="cta-main" href="#agents">Meet the 22 agents<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
         <a class="alt cta-brief" href="#briefing"><span>Read Today&rsquo;s Briefing</span><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Open access &middot; No sign-up</span></a>
       </div>
     </div>
@@ -1696,6 +1736,30 @@
         <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect x="5" y="4" width="18" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 10h10M9 14h10M9 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><div><b>Daily Plain-English Treasury &amp; Market Briefings</b><span>Every story summarised and linked to its source</span></div></li>
         <li><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M9 12V9a5 5 0 0 1 9.6-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="5" y="12" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><div><b>100% Independent &amp; Open Access</b><span>No vendor ties. No sign-up. No paywall.</span></div></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ===== THE AGENTS (Home) ===== -->
+  <section class="hag" id="agents" data-view="top" aria-labelledby="hag-h">
+    <div class="wrap">
+      <div class="hag-top">
+        <div class="hag-copy">
+          <div class="kicker">Agentic Automation</div>
+          <h2 id="hag-h">22 agents a Finance team could use. Each one reports to a person.</h2>
+          <p class="hag-lede">Tap an agent to read its job description: what it does, what it may never do, and what the auditor will check.</p>
+        </div>
+        <dl class="hag-stats">
+          <div><dt>124</dt><dd>functions mapped across 22 areas of Treasury and Finance</dd></div>
+          <div><dt>77</dt><dd>are drafted by the agent and always approved by a person</dd></div>
+          <div><dt>0</dt><dd>are left to an agent alone, with no person in the loop</dd></div>
+        </dl>
+      </div>
+      <div class="hag-groups">
+        <div class="hag-grp"><h3>Treasury <span>11 agents &middot; 59 functions</span></h3><ul><li><a href="#ag-p-cash-and-liquidity" data-ag="ag-p-cash-and-liquidity" title="Liquidity and Funding Agent: Cash and liquidity, 6 functions"><span>Liquidity and Funding</span></a></li><li><a href="#ag-p-daily-cash-position" data-ag="ag-p-daily-cash-position" title="Daily Cash Position Agent: Daily cash position, 5 functions"><span>Daily Cash Position</span></a></li><li><a href="#ag-p-cash-forecast" data-ag="ag-p-cash-forecast" title="Cash Forecast Agent: Cash forecast, 5 functions"><span>Cash Forecast</span></a></li><li><a href="#ag-p-investments" data-ag="ag-p-investments" title="Investments Agent: Investments, 7 functions"><span>Investments</span></a></li><li><a href="#ag-p-bank-management" data-ag="ag-p-bank-management" title="Bank Agent: Bank management, 4 functions"><span>Bank</span></a></li><li><a href="#ag-p-bank-reconciliation" data-ag="ag-p-bank-reconciliation" title="Bank Reconciliation Agent: Bank reconciliation, 5 functions"><span>Bank Reconciliation</span></a></li><li><a href="#ag-p-bank-charges" data-ag="ag-p-bank-charges" title="Bank Charges Agent: Bank charges, 5 functions"><span>Bank Charges</span></a></li><li><a href="#ag-p-risk-fx-rates-and-commodities" data-ag="ag-p-risk-fx-rates-and-commodities" title="FX and Hedging Agent: Risk: FX, rates and commodities, 6 functions"><span>FX and Hedging</span></a></li><li><a href="#ag-p-credit-risk" data-ag="ag-p-credit-risk" title="Credit Risk Agent: Credit risk, 5 functions"><span>Credit Risk</span></a></li><li><a href="#ag-p-insurance" data-ag="ag-p-insurance" title="Insurance Agent: Insurance, 5 functions"><span>Insurance</span></a></li><li><a href="#ag-p-debt-and-funding" data-ag="ag-p-debt-and-funding" title="Debt and Covenant Agent: Debt and funding, 6 functions"><span>Debt and Covenant</span></a></li></ul></div>
+        <div class="hag-grp"><h3>Finance <span>10 agents &middot; 59 functions</span></h3><ul><li><a href="#ag-p-general-ledger-accounting" data-ag="ag-p-general-ledger-accounting" title="Ledger Agent: General ledger accounting, 8 functions"><span>Ledger</span></a></li><li><a href="#ag-p-accounts-payable-ap" data-ag="ag-p-accounts-payable-ap" title="Payables Agent: Accounts payable (AP), 4 functions"><span>Payables</span></a></li><li><a href="#ag-p-accounts-receivable-ar" data-ag="ag-p-accounts-receivable-ar" title="Receivables Agent: Accounts receivable (AR), 4 functions"><span>Receivables</span></a></li><li><a href="#ag-p-financial-reporting" data-ag="ag-p-financial-reporting" title="Reporting Agent: Financial reporting, 13 functions"><span>Reporting</span></a></li><li><a href="#ag-p-taxation" data-ag="ag-p-taxation" title="Tax Agent: Taxation, 7 functions"><span>Tax</span></a></li><li><a href="#ag-p-planning-and-analysis" data-ag="ag-p-planning-and-analysis" title="Planning Agent: Planning and analysis, 4 functions"><span>Planning</span></a></li><li><a href="#ag-p-procurement" data-ag="ag-p-procurement" title="Procurement Agent: Procurement, 4 functions"><span>Procurement</span></a></li><li><a href="#ag-p-inventory" data-ag="ag-p-inventory" title="Inventory Agent: Inventory, 5 functions"><span>Inventory</span></a></li><li><a href="#ag-p-sales-and-marketing" data-ag="ag-p-sales-and-marketing" title="Commercial Agent: Sales and Marketing, 4 functions"><span>Commercial</span></a></li><li><a href="#ag-p-payroll-accounting" data-ag="ag-p-payroll-accounting" title="Payroll Agent: Payroll accounting, 6 functions"><span>Payroll</span></a></li></ul></div>
+        <div class="hag-grp"><h3>Across both <span>1 agent &middot; 6 functions</span></h3><ul><li><a href="#ag-p-governance" data-ag="ag-p-governance" title="Governance Agent: Governance, 6 functions"><span>Governance</span></a></li></ul></div>
+      </div>
+      <div class="hag-foot"><a class="hag-all" href="#agentic">See every agent<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><span class="hag-note">Counts and levels are the author&rsquo;s proposals.</span></div>
     </div>
   </section>
 
@@ -1721,7 +1785,7 @@
   <section class="front" data-view="top" aria-label="Today at a glance">
     <div class="wrap">
 
-      <div class="tiles">
+      <div class="tiles tiles-2">
         <!-- Tall tile: the signature framework (photo) -->
         <a class="tile tile-tall tile-card tile-fw" href="#framework">
           <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="lazy" decoding="async" style="object-position: 50% 45%;"></div>
@@ -1732,15 +1796,6 @@
           </div>
         </a>
 
-        <!-- Tall tile: agentic automation (photo) -->
-        <a class="tile tile-tall tile-card" href="#agentic">
-          <div class="media"><img src="/img/ait-article-agents.jpg" alt="Glass cubes joined by thin lines on a black background, like a network" loading="lazy" decoding="async" style="object-position: 50% 50%;"></div>
-          <div class="body">
-          <div class="kicker">Agentic Automation</div>
-          <h2><span class="hl">22 agents a Finance team could use. Each one reports to a person.</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
-          <p>A proposed map of 124 functions across 22 areas of Treasury and Finance, how far an agent goes in each, and nine checks for go-live.</p>
-          </div>
-        </a>
 
         <!-- Editor's note -->
         <a class="tile tile-desk tile-card" href="#briefing">
@@ -2986,6 +3041,22 @@ function aitHomeTrail(){
   sec.classList.add('ht-on'); host.hidden = false; render();
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aitHomeTrail); else aitHomeTrail();
+</script>
+<script>
+/* Home agent links: switch to Agentic Automation, then open that agent's card (the view script handles the switch). */
+window.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('.hag a[data-ag]');
+  if (!a || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+  var id = a.getAttribute('data-ag');
+  setTimeout(function(){
+    var c = document.querySelector('.ag-card[data-p="' + id + '"]');
+    if (!c) return;
+    if (c.getAttribute('aria-expanded') !== 'true') c.click();
+    var h = (document.querySelector('.secnav') || {}).offsetHeight || 0;
+    window.scrollTo({ top: c.getBoundingClientRect().top + window.pageYOffset - h - 12 });
+    c.focus({ preventScroll: true });
+  }, 30);
+}, true);
 </script>
 <script>
 document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
