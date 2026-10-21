@@ -450,7 +450,14 @@ def editorial(res, date_human, history=None):
     )
     prompt, data = base, None
     for attempt in range(3):
-        data = _json(_ask(prompt, EDITORIAL_MODEL, max_tokens=12000, search=False), "editorial")
+        try:
+            data = _json(_ask(prompt, EDITORIAL_MODEL, max_tokens=16000, search=False), "editorial")
+        except ValueError as exc:  # malformed or cut-off reply: ask again instead of failing the whole edition
+            if attempt == 2:
+                raise
+            print("editorial: retry after unreadable reply (%s)" % exc)
+            prompt = base + "\n\nYOUR PREVIOUS REPLY WAS NOT VALID JSON. Return valid JSON only, with no text before or after it."
+            continue
         note = data.get("editor_note") or []
         leads = data.get("lead_stories") or []
         if len(note) < 2 or len(leads) < 3:

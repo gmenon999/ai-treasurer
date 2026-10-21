@@ -1082,6 +1082,86 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-21",
+   "note_headline": "Record working capital trapped in receivables makes invoice data Finance's cheapest funding source",
+   "note_opening": "Finance's largest untapped cash source sits in receivables, not funding markets. Hackett Group puts the working capital opportunity among the 1,000 largest North American public companies at a record $1.94 trillion, up 1",
+   "items": [
+    {
+     "headline": "Ripple Treasury adds policy-governed AI agents to GSmart with human approval",
+     "urls": [
+      "https://treasury.ripple.com/news/ripple-treasury-brings-industrys-first-governed-ai-for-enterprise-treasury"
+     ]
+    },
+    {
+     "headline": "API-first TMS platforms replace overnight batch files with 15-minute syncs",
+     "urls": [
+      "https://www.embat.io/treasury-management/cashflow/cashflow-management",
+      "https://treasurybrief.com/blog/cash-flow-forecasting-tools-for-enterprise-treasury/"
+     ]
+    },
+    {
+     "headline": "Hackett finds record $1.94 trillion working capital opportunity, up 12%",
+     "urls": [
+      "https://www.thehackettgroup.com/the-hackett-group-finds-record-1-94-trillion-working-capital-opportunity-among-north-americas-largest-companies/"
+     ]
+    },
+    {
+     "headline": "McKinsey sees invoice-level data releasing 10–30% of working capital as cash",
+     "urls": [
+      "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-cash-hiding-in-plain-sight"
+     ]
+    },
+    {
+     "headline": "Swift reports 98% of cross-border instructions now in ISO 20022 format",
+     "urls": [
+      "https://auspaynet.com.au/insights/crossborder/2026-2"
+     ]
+    },
+    {
+     "headline": "AICPA practice aid maps AI risks to ICFR and material misstatement",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ]
+    },
+    {
+     "headline": "Rising cross-currency basis costs force treasurers to reset hedging policy",
+     "urls": [
+      "https://www.thefytimes.com/article/global-bond-sell-off-cross-border-treasury-teams"
+     ]
+    },
+    {
+     "headline": "Banks cast tokenised deposits as storage and stablecoins as transit",
+     "urls": [
+      "https://www.digitaltoday.co.kr/en/view/111038/big-firms-onchain-funding-demand-growth-banking-sector-joint-response"
+     ]
+    },
+    {
+     "headline": "Fed expected to hold at 3.75–4.00% on 28 October, then hike in December",
+     "urls": [
+      "https://www.investing.com/news/economy-news/fed-to-skip-october-but-raise-rates-again-in-december-nearly-all-economists-say-reuters-poll-4960095"
+     ]
+    },
+    {
+     "headline": "CPI data lands just before the 27–28 October Fed meeting",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/2026-october.htm"
+     ]
+    },
+    {
+     "headline": "OFAC issues Iran General Licenses FF and EE, amends Lukoil licences",
+     "urls": [
+      "https://ofac.treasury.gov/recent-actions/20261015"
+     ]
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
+     "urls": [
+      "https://www.iasb.org"
+     ]
+    }
+   ]
   }
  ]
 }
