@@ -1741,12 +1741,6 @@
   .hag-cgo { margin-top: auto; padding-top: 12px; font-size: 14.5px; font-weight: 700; color: var(--white); }
   .hag-cgo::after { content: " \2192"; color: var(--gold-light); }
   @media (max-width: 900px) { .hag-cards { grid-template-columns: 1fr; gap: 8px; margin-top: 28px; } .hag-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 12px; padding: 14px 16px; } .hag-ct { font-size: 19px; } .hag-cm { grid-column: 1; font-size: 12px; } .hag-cx { display: none; } .hag-cgo { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding: 0; font-size: 0; } .hag-cgo::after { content: "\2192"; font-size: 20px; } }
-
-  /* Menu: Home stays pinned at the left while the other items slide */
-  .secnav .wrap > a[href="#top"] { position: sticky; left: -24px; z-index: 2; margin-left: -24px; padding: 0 30px 0 24px; margin-right: -30px; background: linear-gradient(90deg, var(--navy-deep) calc(100% - 18px), rgba(13,26,44,0)); border-bottom: 0; box-shadow: inset 0 -3px 0 transparent; }
-  .secnav .wrap > a[href="#top"][aria-current="true"]::after { content: ""; position: absolute; left: 24px; right: 30px; bottom: 0; height: 3px; background: var(--gold); }
-  .secnav-arrow.prev { display: none !important; }
-  @media (max-width: 700px) { .secnav .wrap > a[href="#top"] { left: -16px; margin-left: -16px; padding-left: 16px; padding-right: 20px; margin-right: -20px; background: linear-gradient(90deg, var(--navy-deep) calc(100% - 12px), rgba(13,26,44,0)); } .secnav .wrap > a[href="#top"][aria-current="true"]::after { left: 16px; right: 20px; } }
 </style>
 </head>
 <body>
@@ -3196,8 +3190,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       if (a.getAttribute('href') === '#' + view) {
         a.setAttribute('aria-current', 'true');
         var p = a.parentNode, r = a.getBoundingClientRect(), pr = p.getBoundingClientRect();
-        var hw = a.getAttribute('href') === '#top' ? 0 : ((p.querySelector('a[href="#top"]') || {}).offsetWidth || 0);
-        if (r.left < pr.left + hw || r.right > pr.right) p.scrollTo({ left: Math.max(0, a.offsetLeft - hw - 24), behavior: 'smooth' });
+        if (r.left < pr.left || r.right > pr.right) p.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
       } else a.removeAttribute('aria-current');
     });
     current = view;
