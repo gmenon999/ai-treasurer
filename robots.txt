@@ -1,0 +1,5 @@
+# The AI Treasurer: open access. Search engines and AI assistants are welcome to read and cite the site.
+User-agent: *
+Allow: /
+
+Sitemap: https://theaitreasurer.com/sitemap.xml
