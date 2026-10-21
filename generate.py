@@ -37,13 +37,14 @@ API_URL = "https://openrouter.ai/api/v1/chat/completions"
 RESEARCH_MODEL = os.environ.get("BRIEF_RESEARCH_MODEL", "anthropic/claude-haiku-4.5")
 EDITORIAL_MODEL = os.environ.get("BRIEF_EDITORIAL_MODEL", "anthropic/claude-opus-5.5")
 SEARCH_ENGINE = os.environ.get("BRIEF_SEARCH_ENGINE", "exa")
-MAX_SEARCHES = int(os.environ.get("BRIEF_MAX_SEARCHES", "10"))
+MAX_SEARCHES = int(os.environ.get("BRIEF_MAX_SEARCHES", "25"))
 TZ_OFFSET = int(os.environ.get("BRIEF_TZ_OFFSET_HOURS", "3"))  # Qatar = UTC+3
 CHECK_MODEL = os.environ.get("BRIEF_CHECK_MODEL", "anthropic/claude-sonnet-5.5")  # independent checker: never the drafting model
 TAKES_ON = (os.environ.get("BRIEF_TAKES") or "on").strip().lower() not in ("off", "false", "0", "no")
 TAKES_LOG = os.path.join(HERE, "editions", "takes-log.json")
 COST = {"usd": 0.0}  # running OpenRouter cost for this run (from the usage block)
-PREFERRED = ["tradefinanceglobal.com", "tradetreasurypayments.com", "treasury-management.com", "finextra.com"]  # Trade Finance Global, Trade Treasury Payments, TMI, Finextra
+PREFERRED = ["tradefinanceglobal.com", "tradetreasurypayments.com", "treasury-management.com", "finextra.com",
+             "treasurytoday.com", "gtnews.com", "cfodive.com", "thebanker.com", "risk.net", "centralbanking.com", "reuters.com", "ft.com"]  # Trade Finance Global, Trade Treasury Payments, TMI, Finextra
 EXCLUDED = ["reddit.com", "quora.com", "medium.com", "substack.com"]
 
 BEATS = [
@@ -91,7 +92,7 @@ def _key():
 
 
 def _search_tool():
-    p = {"engine": SEARCH_ENGINE, "max_uses": MAX_SEARCHES, "max_results": 6,
+    p = {"engine": SEARCH_ENGINE, "max_uses": MAX_SEARCHES, "max_results": 8,
          "max_characters": 2500, "excluded_domains": EXCLUDED}
     return {"type": "openrouter:web_search", "parameters": p}
 
@@ -216,8 +217,11 @@ def research(date_human, history=None):
         "PREFERRED SOURCES: check these specialist outlets first in every relevant beat (e.g. a site: search), "
         "and use them where they have a material story: Trade Finance Global (tradefinanceglobal.com), "
         "Trade Treasury Payments (tradetreasurypayments.com), Treasury Management International / TMI "
-        "(treasury-management.com), Finextra (finextra.com), S&P Global Ratings (spglobal.com/ratings) and "
-        "Moody's (moodys.com, ratings and outlooks). Other credible sources are still allowed.\n\n"
+        "(treasury-management.com), Finextra (finextra.com), Treasury Today (treasurytoday.com), gtnews (gtnews.com), "
+        "CFO Dive (cfodive.com), The Banker (thebanker.com), Risk.net (risk.net), Central Banking (centralbanking.com), "
+        "Reuters (reuters.com), the Financial Times (ft.com), S&P Global Ratings (spglobal.com/ratings) and "
+        "Moody's (moodys.com, ratings and outlooks). Search widely: use several different outlets across the beats "
+        "rather than the same few, and prefer developments from the last seven days. Other credible sources are still allowed.\n\n"
         "NO REPEATS: the stories below already ran in the last two weeks. Do not return them again. "
         "Only include a follow-up if something materially new has happened, and then the headline must "
         "say what is new.\n%s\n\n"
@@ -296,8 +300,9 @@ def dedupe(res, history):
                 continue
             kept.append(it); today_urls |= urls; today_heads.append(h)
         if not kept and fallback:
-            it, urls, h = fallback[0]  # never leave a section empty: reuse a recent story, never a same-day duplicate
-            kept = [it]; today_urls |= urls; today_heads.append(h); dropped.remove(h)
+            # Do not reuse a repeat yet: leave the beat empty so fill_empty() runs a focused, wider search first.
+            # The repeat is kept aside and used only if that search finds nothing new.
+            res.setdefault("_fallback", {})[k] = fallback[0][0]
         res["beats"][k] = kept
     if dropped:
         print("dedupe: dropped %d repeat(s): %s" % (len(dropped), "; ".join(dropped)[:400]))
@@ -308,11 +313,20 @@ def fill_empty(res, date_human, history):
     """No section is ever published empty: for any beat left with no items, run a focused search with a longer
     look-back (60 days, then 180), accept the freshest verified item, and say the date in the summary."""
     spec = {k: (t, d) for k, t, d in BEATS}
+    seen_urls, seen_heads = set(), []
+    for dday in (history or {}).get("days", []):
+        for it in dday.get("items", []):
+            seen_urls.update(it.get("urls") or []); seen_heads.append(it.get("headline", ""))
+    for k in BEAT_KEYS:
+        for it in res["beats"].get(k) or []:
+            seen_urls.update(x.get("url") for x in it.get("sources") or [] if x.get("url")); seen_heads.append(it.get("headline", ""))
+    covered_txt = "\n".join("- " + h for h in seen_heads[-80:]) or "- (none yet)"
+    fallbacks = res.pop("_fallback", {}) or {}
     for k in BEAT_KEYS:
         if res["beats"].get(k):
             continue
         t, d = spec[k]
-        got = []
+        got, raw_last = [], []
         for days in (60, 180):
             prompt = (
                 "You are the research desk for The AI Treasurer. Today is %s. Search the web for the most recent "
@@ -320,16 +334,36 @@ def fill_empty(res, date_human, history):
                 "treasurers: %s - %s.\nReturn STRICT JSON only: {\"items\": [{\"headline\": \"...\", \"summary\": \"...\", "
                 "\"sources\": [{\"name\": \"Publication\", \"url\": \"https://...\"}]}]} with 1-2 items, newest first. "
                 "summary = 30-45 words, original wording, and it must state the date of the development (for example "
-                "'On 17 June ...'). Never return an empty list: choose the most relevant development you can verify. %s"
-                % (date_human, days, t, d, GUARD))
+                "'On 17 June ...'). Never return an empty list: choose the most relevant development you can verify.\n"
+                "NO REPEATS: these stories already ran; do not return them unless something materially new has happened, "
+                "and then the headline must say what is new.\n%s\n%s"
+                % (date_human, days, t, d, covered_txt, GUARD))
             try:
                 data = _json(_ask(prompt, RESEARCH_MODEL, search=True), "fill %s" % k)
             except Exception as e:
                 print("fill_empty: %s attempt failed (%s)" % (k, e))
                 continue
             got = [it for it in (data.get("items") or []) if it.get("headline") and it.get("summary") and it.get("sources")]
+            raw_last = got or raw_last
+            fresh = [it for it in got
+                     if not (set(x.get("url") for x in it.get("sources") or [] if x.get("url")) & seen_urls)
+                     and not any(_similar(it.get("headline", ""), x) for x in seen_heads)]
+            if len(fresh) < len(got):
+                print("fill_empty: %s dropped %d repeat(s)" % (k, len(got) - len(fresh)))
+            got = fresh
             if got:
                 break
+        if not got and k in fallbacks:
+            got = [fallbacks[k]]  # last resort, so no section is empty: a recent story, never a same-day duplicate
+            print("fill_empty: %s found nothing new; reusing a recent story" % k)
+        if not got and raw_last:
+            today_urls = set()
+            for kk in BEAT_KEYS:
+                for it in res["beats"].get(kk) or []:
+                    today_urls.update(x.get("url") for x in it.get("sources") or [] if x.get("url"))
+            got = [it for it in raw_last if not (set(x.get("url") for x in it.get("sources") or [] if x.get("url")) & today_urls)][:1]
+            if got:
+                print("fill_empty: %s found nothing new; using the deeper search's recent story rather than leave it empty" % k)
         if not got:
             raise ValueError("research: section '%s' is empty even after a 180-day search; not publishing an empty section" % k)
         res["beats"][k] = got[:2]
