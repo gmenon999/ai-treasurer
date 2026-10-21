@@ -672,6 +672,79 @@
     "cost_usd": 0.3505
    },
    "edition_cost_usd": 1.2769
+  },
+  {
+   "date": "2026-10-21",
+   "items": [
+    {
+     "headline": "McKinsey sees invoice-level data releasing 10–30% of working capital as cash",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Rising cross-currency basis costs force treasurers to reset hedging policy",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Sibos 2026 casts tokenised deposits as storage and stablecoins as transit",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Fed expected to hold at 3.75–4.00% on 28 October, then hike in December",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Ripple Treasury adds policy-governed AI agents to GSmart with human approval",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "API-first TMS platforms replace overnight batch files with 15-minute syncs",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Hackett finds record $1.94 trillion working capital opportunity, up 12%",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Swift reports 98% of cross-border instructions now in ISO 20022 format",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "AICPA practice aid maps AI risks to ICFR and material misstatement",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "CPI data lands just before the 27–28 October Fed meeting",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "Overstated. The source is a Fed calendar page with no dates for the appearances, and it lists routine releases (G.17, H.4.1, H.8) that it never says move rate expectations. 'Each is a date when interest rate expectations can shift' is not supported. 'Moved' is also an inference, since the source onl"
+    },
+    {
+     "headline": "OFAC issues Iran General Licenses FF and EE, amends Lukoil licences",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.3625,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 5: The view states as fact that rupee bank loans are 'now priced off the 5.50% repo rate'. The cited facts give only the repo rate and the 25 bp rise, and say nothing about how loans are priced. The claim that local borrowing 'now costs more' is also an inference, not a cited fact. The USD/INR move is quoted but not tied to the funding question.",
+    "cost_usd": 0.3255
+   },
+   "edition_cost_usd": 1.0547
   }
  ]
 }
