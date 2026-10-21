@@ -271,9 +271,9 @@
   ]
  },
  "hormuz": {
-  "title": "Crude has followed Hormuz headlines: about $72 before the war, under $75 at the June reopening, about $104 on 9 October",
+  "title": "Crude has followed Hormuz headlines: about $72 before the war, under $75 at the June reopening, about $110 on 16 October",
   "note": "Selected Brent prices as reported on the dates shown, from different sources and contracts (futures or intraday). Not a daily series and not a forecast. Shipping status is as reported; sources differ on whether the strait is fully closed today.",
-  "asof": "2026-10-09",
+  "asof": "2026-10-20",
   "view": "Budget crude-linked costs as a range that depends on whether ships can pass through the Strait of Hormuz, not as one price, and review the plan when the strait's status changes as well as when the price moves.",
   "points": [
    {
@@ -371,6 +371,25 @@
      "name": "Trading Economics",
      "url": "https://tradingeconomics.com/commodity/brent-crude-oil"
     }
+   },
+   {
+    "d": "2026-10-14",
+    "v": 106.58,
+    "label": "$106.58",
+    "src": {
+     "name": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/10/14/iran-steps-up-hormuz-surveillance-attacks-soar-oil-flows-crash-again"
+    }
+   },
+   {
+    "d": "2026-10-16",
+    "v": 110,
+    "approx": true,
+    "label": "About $110, first time since May",
+    "src": {
+     "name": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/10/17/us-and-iran-both-claim-control-of-strait-of-hormuz-amid-attacks-on-vessels"
+    }
    }
   ],
   "events": [
@@ -427,6 +446,24 @@
      "name": "Bloomberg Law",
      "url": "https://news.bloomberglaw.com/tariff-news/us-iran-truce-collapses-as-attacks-worsen-and-blockade-returns"
     }
+   },
+   {
+    "d": "2026-09-27",
+    "t": "US rejects Iran's offer to reopen the strait in return for lifting the blockade",
+    "kind": "closed",
+    "src": {
+     "name": "Al Jazeera",
+     "url": "https://www.aljazeera.com/economy/2026/9/27/strait-of-hormuz-tensions-linger-as-iran-and-us-move-further-from-a-deal"
+    }
+   },
+   {
+    "d": "2026-10-17",
+    "t": "Tanker attacks surge through October; the US and Iran both claim control of the strait",
+    "kind": "closed",
+    "src": {
+     "name": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/10/17/us-and-iran-both-claim-control-of-strait-of-hormuz-amid-attacks-on-vessels"
+    }
    }
   ],
   "bands": [
@@ -452,7 +489,7 @@
    },
    {
     "from": "2026-07-14",
-    "to": "2026-10-09",
+    "to": "2026-10-20",
     "state": "closed"
    }
   ]
