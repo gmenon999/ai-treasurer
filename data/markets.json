@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-21T17:11:39Z",
+ "generated_utc": "2026-10-21T21:42:47Z",
  "policy": [
   {
    "bank": "Fed",
@@ -113,9 +113,9 @@
   },
   {
    "name": "US Treasury 3M",
-   "value": "4.26%",
+   "value": "4.25%",
    "change_bp": -1,
-   "asof": "2026-10-20",
+   "asof": "2026-10-21",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust3m",
@@ -123,9 +123,9 @@
   },
   {
    "name": "US Treasury 2Y",
-   "value": "4.79%",
+   "value": "4.81%",
    "change_bp": 2,
-   "asof": "2026-10-20",
+   "asof": "2026-10-21",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust2y",
@@ -133,9 +133,9 @@
   },
   {
    "name": "US Treasury 10Y",
-   "value": "5.12%",
-   "change_bp": -3,
-   "asof": "2026-10-20",
+   "value": "5.13%",
+   "change_bp": 1,
+   "asof": "2026-10-21",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust10y",
@@ -205,5 +205,7 @@
   }
  ],
  "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
- "errors": []
+ "errors": [
+  "boe: HTTPSConnectionPool(host='www.bankofengland.co.uk', port=443): Read timed out. (read timeout=30)"
+ ]
 }
