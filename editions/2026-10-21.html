@@ -28,7 +28,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":"https://theaitreasurer.com/#website","url":"https://theaitreasurer.com/","name":"The AI Treasurer","publisher":{"@id":"https://theaitreasurer.com/#author"},"image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg"},
- {"@type":"Person","@id":"https://theaitreasurer.com/#author","name":"Gopakumar Menon","honorificSuffix":"CA, CPA, CTP","url":"https://theaitreasurer.com/","image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg","email":"mailto:gmenon@theaitreasurer.com"}
+ {"@type":"Person","@id":"https://theaitreasurer.com/#author","name":"Gopakumar Menon","honorificSuffix":"CA, CPA, CTP","url":"https://theaitreasurer.com/","image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg","email":"mailto:gmenon@theaitreasurer.com","sameAs":["https://www.linkedin.com/in/gopakumarmenon"]},
+ {"@type":"FAQPage","@id":"https://theaitreasurer.com/#faq","mainEntity":[{"@type":"Question","name":"How is agentic AI different from RPA in Treasury?","acceptedAnswer":{"@type":"Answer","text":"RPA (robotic process automation) follows a fixed script: the same clicks and the same rules every time, and it stops when the input changes. An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast. Because it chooses its own steps, it needs controls a script never did: its own identity with limited rights, recorded versions of its rules and model, and a named person who approves what it proposes."}},{"@type":"Question","name":"What is the 5-Step Control Trail?","acceptedAnswer":{"@type":"Answer","text":"It is the test this site applies to any automated step in Treasury and Finance. Capture: data comes from a known source and is complete. Match: items are paired, and the rule and model versions are recorded. Flag: anything that does not match becomes a logged exception that is aged, never silently cleared. Approve: a named person signs off, and the agent that proposes an action never approves it. Post: the approved result is recorded with its evidence. Four foundations sit around every system: Govern, Access, Change and Monitor. It is an illustrative framework aligned with the COSO internal control framework, not a certified standard."}},{"@type":"Question","name":"How does the control trail help with Internal Audit?","acceptedAnswer":{"@type":"Answer","text":"Each step answers a question an auditor will ask. Where did this data come from? Why were these two items paired? What did not match, and how long has it been open? Who approved it, and were they independent? Does the record trace back to source? When an agent records that evidence as it works, the trail exists before the audit instead of being rebuilt afterwards. It does not replace your auditors' own testing, and nothing on this site is professional advice."}},{"@type":"Question","name":"How is the briefing put together?","acceptedAnswer":{"@type":"Answer","text":"Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the opinion lines and market figures before they appear. The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice."}}]}
 ]}
 </script>
 <style>
@@ -634,7 +635,8 @@
   }
 
   /* ---- Sticky section menu ---- */
-  .js [data-view]:not(.view-on) { display: none; }
+  /* Home paints before the view script runs (faster first paint); other views wait for it. */
+  .js:not(.v-top) [data-view]:not(.view-on), .js.v-top [data-view]:not([data-view="top"]):not(.view-on) { display: none; }
   .js main { min-height: calc(100vh - 180px); }
   :root { --secnav-h: 50px; }
   .secnav { position: sticky; top: 0; z-index: 20; background: var(--navy-deep); border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 6px 18px rgba(5,20,36,0.18); }
@@ -1472,10 +1474,277 @@
   /* About: Follow button gets clear space, no longer sits on the divider */
   .creds-head h2 { margin-bottom: 24px; }
   .creds-head .li-btn { margin: 0 0 32px; }
+
+  /* ===================== Home upgrade (Oct 2026) ===================== */
+  /* Contrast pass: text 12:1 or better on navy and navy-deep; muted text and accents 7:1 or better.
+     Markets keeps its locked colours (market-view-v1). */
+  :root { --on-dark: #E9EEF4; --on-dark-soft: #C9D2DE; --gold-light: #E9CB85; }
+  .markets-sec { --on-dark: #DCE2EA; --on-dark-soft: #9FACBE; --gold-light: #D9B867; }
+  .fwx { --fwx-tile: rgba(255,255,255,0.07); --fwx-tile-hover: rgba(255,255,255,0.14); }
+  .agentic.ag2 { --ag-tile: rgba(255,255,255,0.05); }
+  .ag-who, .ag-m5 i { color: #DCE7F9; }
+  .ag-step p.m { color: var(--white); }
+  .creds { background: #122E6B; }
+  .creds .advisor span { color: var(--white); }
+  .next-band .kicker { color: #6E520F; }
+
+  /* Hero: keep the light ribbon clear of the headline; dual call to action */
+  .intro .field { -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 42%, #000 68%); mask-image: linear-gradient(90deg, transparent 0, transparent 42%, #000 68%); }
+  @media (max-width: 720px) {
+    .intro .field { -webkit-mask-image: linear-gradient(180deg, #000 0, #000 9%, transparent 22%); mask-image: linear-gradient(180deg, #000 0, #000 9%, transparent 22%); }
+  }
+  .intro .actions { gap: 14px 16px; }
+  .cta-main { display: inline-flex; align-items: center; gap: 12px; min-height: 54px; padding: 0 22px 0 24px; background: var(--gold-light); color: var(--navy-deep); font-weight: 700; font-size: 17px; text-decoration: none; transition: background 0.2s ease; }
+  .cta-main svg { width: 20px; height: 20px; transition: transform 0.2s ease; }
+  .cta-main:hover, .cta-main:focus-visible { background: var(--white); }
+  .cta-main:hover svg { transform: translateX(3px); }
+  .intro .cta-brief { min-height: 54px; gap: 12px; padding: 0 16px 0 22px; }
+  .oa-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 1; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark); border: 1px solid rgba(255,255,255,0.32); padding: 6px 8px; white-space: nowrap; }
+  .oa-badge svg { width: 13px; height: 13px; flex: none; color: var(--gold-light); }
+  .intro .cta-brief:hover .oa-badge, .intro .cta-brief:focus-visible .oa-badge { color: var(--navy-deep); border-color: rgba(13,26,44,0.35); }
+  .intro .cta-brief:hover .oa-badge svg, .intro .cta-brief:focus-visible .oa-badge svg { color: var(--navy-deep); }
+  @media (max-width: 560px) {
+    .intro .actions { flex-direction: column; align-items: stretch; }
+    .cta-main, .intro .cta-brief { justify-content: space-between; }
+    .intro .cta-brief { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; row-gap: 8px; }
+  }
+
+  /* Proof strip */
+  .proof { background: var(--navy-deep); color: var(--white); border-top: 1px solid rgba(255,255,255,0.1); }
+  .proof ul { list-style: none; margin: 0; padding: 24px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .proof li { display: flex; gap: 14px; align-items: flex-start; padding: 2px 22px; border-left: 1px solid rgba(255,255,255,0.14); }
+  .proof li:first-child { border-left: 0; padding-left: 0; }
+  .proof svg { flex: none; width: 28px; height: 28px; color: var(--gold-light); margin-top: 1px; }
+  .proof b { display: block; font-size: 15px; line-height: 1.35; font-weight: 700; color: var(--white); }
+  .proof span { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--on-dark); }
+  @media (max-width: 1000px) { .proof ul { grid-template-columns: 1fr 1fr; row-gap: 20px; } .proof li:nth-child(3) { border-left: 0; padding-left: 0; } }
+  @media (max-width: 560px) { .proof ul { grid-template-columns: 1fr; row-gap: 16px; padding: 22px 0; } .proof li { border-left: 0; padding: 0; } }
+
+  /* Interactive control trail (Home) */
+  .ht-intro { margin: -18px 0 22px; font-size: 16.5px; color: var(--on-dark); max-width: 62ch; }
+  .ht-cases, .ht-frow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+  .ht-cases { margin: 0 0 34px; }
+  .ht-cases .lab, .ht-frow .lab { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin-right: 6px; }
+  .ht-cases button, .ht-frow button { appearance: none; font: 600 14.5px/1.2 var(--sans); color: var(--white); background: transparent; border: 1px solid rgba(255,255,255,0.4); padding: 10px 15px; cursor: pointer; border-radius: 999px; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .ht-frow button { border-radius: 0; }
+  .ht-cases button:hover, .ht-frow button:hover { border-color: var(--white); }
+  .ht-cases button[aria-pressed="true"], .ht-frow button[aria-expanded="true"] { background: var(--white); color: var(--navy-deep); border-color: var(--white); }
+  .benefits.trail.ht-on li { padding-bottom: 0; }
+  .ht-step { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+  .ht-step::after { content: ""; position: absolute; inset: -8px; }
+  .ht-step:focus-visible { outline: 0; }
+  .ht-step:focus-visible::after { outline: 3px solid var(--gold); outline-offset: 0; }
+  .ht-step b { transition: color 0.2s; }
+  .ht-step:hover b { color: var(--gold-light); }
+  .benefits.trail.ht-on li:last-child::before { background: var(--navy-deep); color: var(--gold-light); }
+  .benefits.trail.ht-on li.on::before { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-deep); }
+  .benefits.trail.ht-on li.on b { color: var(--gold-light); }
+  .ht-panel { margin-top: 30px; border: 1px solid rgba(255,255,255,0.18); border-top: 3px solid var(--gold-light); background: rgba(5,13,24,0.45); }
+  .ht-panel .hd { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 20px; padding: 16px 22px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .ht-panel .hd b { display: block; font-family: var(--serif); font-size: 21px; line-height: 1.25; }
+  .ht-panel .hd .line { display: block; font-size: 15px; color: var(--on-dark); margin-top: 2px; }
+  .ht-panel .hd .case { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .ht-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ht-col { padding: 20px 22px 22px; border-left: 1px solid rgba(255,255,255,0.12); }
+  .ht-col:first-child { border-left: 0; }
+  .ht-col h4 { margin: 0 0 8px; font: 700 12px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+  .ht-col p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .ht-col .ask, .ht-fnote .ask { margin-top: 12px; font-size: 14.5px; color: var(--on-dark); }
+  .benefits .ht-col .ask b, .benefits .ht-fnote .ask b { display: inline; font: 700 14.5px/1.5 var(--sans); color: var(--white); }
+  .peak .today-list li:first-child { padding-top: 4px; }
+  .ht-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ht-fine { margin: 0; padding: 10px 22px 12px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px; color: var(--on-dark-soft); }
+  .ht-found { margin-top: 26px; }
+  .ht-fnote { margin-top: 14px; max-width: 80ch; }
+  .ht-fnote p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .ht-more { display: inline-block; margin-top: 26px; color: var(--white); font-weight: 700; font-size: 15.5px; text-decoration: none; border-bottom: 2px solid var(--gold-light); padding-bottom: 2px; }
+  .ht-more::after { content: " \2192"; }
+  .ht-more:hover { color: var(--gold-light); }
+  @media (max-width: 900px) {
+    .benefits.trail.ht-on ul { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+    .benefits.trail.ht-on ul::before { left: 10%; right: 10%; top: 20px; bottom: auto; width: auto; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(217,184,103,0.35)); }
+    .benefits.trail.ht-on li { padding: 52px 0 0; min-height: 0; text-align: center; }
+    .benefits.trail.ht-on li::before { left: 50%; transform: translateX(-50%); }
+    .benefits.trail.ht-on li span { display: none; }
+    .benefits.trail.ht-on .ht-step { text-align: center; }
+    .benefits.trail.ht-on .ht-step b { font-size: 14.5px; }
+    .ht-panel .hd b { font-size: 19px; }
+    .ht-cols { grid-template-columns: 1fr; }
+    .ht-col { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .ht-col:first-child { border-top: 0; }
+    .ht-panel .hd, .ht-col { padding-left: 18px; padding-right: 18px; }
+    .ht-cases { margin-bottom: 26px; }
+  }
+  @media (max-width: 380px) { .benefits.trail.ht-on .ht-step b { font-size: 12.5px; } }
+
+  /* Briefing preview + Practitioner Dialogue */
+  .peak { background: var(--navy-deep); color: var(--white); padding: 64px 0 72px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .peak-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .peak-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .peak-head .kicker { color: var(--gold-light); }
+  .peak h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 4px; }
+  .peak .today-date { display: block; color: var(--on-dark-soft); font-size: 14px; margin-bottom: 22px; }
+  .peak .today-list li { padding: 18px 0; }
+  .peak .today-list .topic { color: var(--gold-light); }
+  .peak .today-list .sum { margin: 8px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .peak .today-list .src { margin: 6px 0 0; font-size: 13.5px; color: var(--on-dark-soft); }
+  .peak-all { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; min-height: 50px; padding: 0 20px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .peak-all svg { width: 18px; height: 18px; }
+  .peak-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 18px; }
+  .peak-links .peak-all { margin-top: 0; }
+  .peak-mk { color: var(--white); font-weight: 700; font-size: 15.5px; text-decoration: none; border-bottom: 2px solid var(--gold-light); padding-bottom: 2px; }
+  .peak-mk::after { content: " \2192"; }
+  .peak-mk:hover, .peak-mk:focus-visible { color: var(--gold-light); }
+  .peak-all:hover, .peak-all:focus-visible { background: var(--white); color: var(--navy-deep); }
+  .dialogue { background: var(--navy); border: 1px solid rgba(255,255,255,0.16); border-top: 3px solid var(--gold-light); padding: 28px 26px 26px; }
+  .dialogue .kicker { color: var(--gold-light); }
+  .dialogue h3 { font-family: var(--serif); font-size: clamp(22px, 2.2vw, 26px); line-height: 1.2; margin: 10px 0 12px; }
+  .dialogue p { margin: 0 0 22px; font-size: 16px; line-height: 1.55; color: var(--on-dark); }
+  .dlg-mail, .dlg-li { display: flex; align-items: center; justify-content: center; min-height: 50px; padding: 8px 16px; font-weight: 700; font-size: 15.5px; text-decoration: none; text-align: center; overflow-wrap: anywhere; transition: background 0.2s, color 0.2s; }
+  .dlg-mail { background: var(--gold-light); color: var(--navy-deep); }
+  .dlg-mail:hover, .dlg-mail:focus-visible { background: var(--white); }
+  .dlg-li { margin-top: 10px; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); }
+  .dlg-li:hover, .dlg-li:focus-visible { background: var(--white); color: var(--navy-deep); }
+  .dialogue .dlg-note { margin: 16px 0 0; font-size: 13.5px; color: var(--on-dark-soft); }
+  @media (max-width: 900px) { .peak-grid { grid-template-columns: 1fr; gap: 40px; } .peak { padding: 48px 0 56px; } }
+
+  /* FAQ */
+  .faq { background: var(--navy); color: var(--white); padding: 64px 0 72px; }
+  .faq .kicker { color: var(--gold-light); }
+  .faq h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 0; }
+  .faq-list { margin-top: 26px; border-top: 1px solid rgba(255,255,255,0.18); max-width: 920px; }
+  .faq details { border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px 0; font-family: var(--serif); font-size: clamp(19px, 2vw, 22px); font-weight: 700; line-height: 1.3; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; flex: none; font: 400 28px/1 var(--sans); color: var(--gold-light); transition: transform 0.2s ease; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq summary:hover { color: var(--gold-light); }
+  .faq .faq-a { padding: 0 0 20px; max-width: 72ch; }
+  .faq .faq-a p { margin: 0 0 12px; font-size: 16.5px; line-height: 1.6; color: var(--on-dark); }
+  .faq .faq-a p:last-child { margin-bottom: 0; }
+  @media (max-width: 700px) { .faq { padding: 48px 0 56px; } }
+  #trail, #today, #faq { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+
+  /* Phone layout (Oct 2026): proof strip above the fold; shorter tiles so the briefing preview comes sooner */
+  @media (max-width: 720px) {
+    .intro .wrap { padding-top: 40px; padding-bottom: 36px; }
+    .intro h1 { margin: 10px 0 16px; }
+    .intro .lede { margin-bottom: 24px; }
+    .tile-card .media, .tile-desk.tile-card .media { aspect-ratio: 2 / 1; }
+    .tile-desk .note p { display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .tile-desk .note p + p { display: none; }
+  }
+  @media (max-width: 560px) {
+    .proof ul { grid-template-columns: 1fr 1fr; gap: 14px 16px; padding: 18px 0; }
+    .proof li, .proof li:first-child, .proof li:nth-child(3) { gap: 10px; padding: 0; border-left: 0; }
+    .proof svg { width: 22px; height: 22px; }
+    .proof b { font-size: 13.5px; line-height: 1.3; }
+    .proof span { display: none; }
+  }
+
+  /* Home: the agents */
+  .hag { background: var(--navy-deep); color: var(--white); padding: 60px 0 64px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .hag .kicker { color: var(--gold-light); }
+  .hag-top { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; align-items: end; }
+  .hag h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 10px 0 14px; max-width: 22ch; }
+  .hag-lede { margin: 0; font-size: 16.5px; line-height: 1.55; color: var(--on-dark); max-width: 52ch; }
+  .hag-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0; }
+  .hag-stats div { padding: 0 18px; border-left: 1px solid rgba(255,255,255,0.16); }
+  .hag-stats div:first-child { border-left: 0; padding-left: 0; }
+  .hag-stats dt { font-family: var(--serif); font-size: clamp(34px, 3.6vw, 48px); line-height: 1; font-weight: 700; color: var(--gold-light); }
+  .hag-stats dd { margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: var(--on-dark); }
+  .hag-groups { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; margin-top: 40px; }
+  .hag-grp:last-child { grid-column: 1 / -1; }
+  .hag-grp h3 { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.16); font: 700 12px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); }
+  .hag-grp h3 span { margin-left: 8px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; font-size: 13.5px; color: var(--on-dark-soft); }
+  .hag-grp ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .hag-grp a { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.3); color: var(--white); font-size: 14.5px; font-weight: 600; line-height: 1.2; text-decoration: none; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .hag-grp a:hover, .hag-grp a:focus-visible { background: var(--white); color: var(--navy-deep); border-color: var(--white); }
+  .hag-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 32px; }
+  .hag-all { display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 22px; background: var(--gold-light); color: var(--navy-deep); font-weight: 700; font-size: 16px; text-decoration: none; transition: background 0.2s; }
+  .hag-all svg { width: 18px; height: 18px; }
+  .hag-all:hover, .hag-all:focus-visible { background: var(--white); }
+  .hag-note { font-size: 13.5px; color: var(--on-dark-soft); }
+  #agents { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  @media (min-width: 721px) {
+    .tiles.tiles-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+    .tiles.tiles-2 > * { grid-row: auto; grid-column: auto; min-height: 520px; }
+  }
+  @media (max-width: 900px) {
+    .hag-top { grid-template-columns: 1fr; gap: 28px; }
+    .hag-groups { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 560px) {
+    .hag { padding: 44px 0 48px; }
+    .hag-stats div { padding: 0 10px; }
+    .hag-stats dd { font-size: 12.5px; }
+    .hag-grp a { font-size: 14px; padding: 8px 12px; min-height: 40px; }
+    .hag-all { width: 100%; justify-content: space-between; }
+  }
+
+  /* Today's Lead inside the briefing preview (tiles row removed, Oct 2026) */
+  .peak-lead { margin: 6px 0 34px; padding: 22px 24px 20px; background: var(--navy); border-left: 3px solid var(--gold-light); }
+  .peak-lead .kicker { color: var(--gold-light); }
+  .peak-lead .note-h { font-family: var(--serif); font-size: clamp(21px, 2vw, 25px); line-height: 1.25; font-weight: 700; color: var(--white); margin: 8px 0 10px; }
+  .peak-lead .note p { margin: 0 0 10px; font-size: 16px; line-height: 1.6; color: var(--on-dark); }
+  .peak-lead .note p:last-child { margin-bottom: 0; }
+  .peak-sub { margin: 0 0 6px; font: 700 12px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+  @media (max-width: 720px) {
+    .peak-lead { padding: 18px 18px 16px; }
+    .peak-lead .note p { display: -webkit-box; -webkit-line-clamp: 5; line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+    .peak-lead .note p + p { display: none; }
+  }
+  #dialogue { scroll-margin-top: calc(var(--secnav-h) + 16px); }
+
+  /* Author line under the proof strip: the one action (Follow on LinkedIn) */
+  .byline-row { display: flex; align-items: center; gap: 14px 16px; padding: 16px 0 20px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .byline-row img { flex: none; width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 2px solid var(--gold-light); }
+  .byline-row p { margin: 0; flex: 1 1 auto; font-size: 15px; line-height: 1.4; color: var(--white); }
+  .byline-row b { display: inline; font-family: var(--serif); font-size: 18px; }
+  .byline-row .cr { display: inline; margin-left: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--gold-light); }
+  .byline-row .role { display: block; font-size: 14px; color: var(--on-dark); margin-top: 2px; }
+  .byline-li { flex: none; display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px; background: var(--gold-light); color: var(--navy-deep); font-weight: 700; font-size: 15px; text-decoration: none; transition: background 0.2s; }
+  .byline-li:hover, .byline-li:focus-visible { background: var(--white); }
+  @media (max-width: 560px) {
+    .byline-row { flex-wrap: wrap; padding: 14px 0 18px; }
+    .byline-row p { flex-basis: calc(100% - 64px); }
+    .byline-row .role { display: none; }
+    .byline-li { width: 100%; justify-content: center; }
+  }
+
+  /* How it works: agent steps recede, the person step (Approve) leads */
+  .ag-how .ag-step { background: rgba(255,255,255,0.05); border-left: 3px solid #8FA6C8; }
+  .ag-how .ag-sn { color: var(--on-dark-soft); }
+  .ag-how .ag-sh b { color: var(--white); }
+  .ag-how .ag-who > span { display: inline-block; margin-top: 6px; padding: 2px 8px; border: 1px solid rgba(143,166,200,0.75); color: #DCE7F9; font-size: 10.5px; letter-spacing: 0.14em; line-height: 1.5; }
+  .ag-how[data-mode="model"] .ag-step.pm, .ag-how[data-mode="case"] .ag-step.pc { background: rgba(233,203,133,0.09); border-left: 4px solid var(--gold-light); box-shadow: inset 0 0 0 1px rgba(233,203,133,0.55); }
+  .ag-how[data-mode="model"] .ag-step.pm .ag-sn, .ag-how[data-mode="case"] .ag-step.pc .ag-sn,
+  .ag-how[data-mode="model"] .ag-step.pm .ag-sh b, .ag-how[data-mode="case"] .ag-step.pc .ag-sh b { color: var(--gold-light); }
+  .ag-how[data-mode="model"] .ag-step.pm .ag-who > span, .ag-how[data-mode="case"] .ag-step.pc .ag-who > span { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-deep); font-size: 10.5px; font-weight: 800; }
+  .ag-how[data-mode="model"] .ag-step.pm p, .ag-how[data-mode="case"] .ag-step.pc p { color: var(--white); }
+  @media (max-width: 700px) { .ag-how .ag-who > span { margin-top: 0; } }
+
+  /* Four foundations: heading on its own line, four equal buttons (2 x 2 on phones) */
+  .ht-found { margin-top: 30px; }
+  .ht-found > .lab { margin: 0 0 12px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); }
+  .ht-frow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; max-width: 720px; }
+  .ht-frow button { width: 100%; text-align: center; padding: 12px 10px; }
+  @media (max-width: 560px) { .ht-frow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* Agents on Home: three area cards instead of 22 tags */
+  .hag-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 40px; }
+  .hag-card { display: flex; flex-direction: column; gap: 6px; padding: 20px 20px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.18); border-top: 3px solid #8FA6C8; color: var(--white); text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+  .hag-card:hover, .hag-card:focus-visible { background: rgba(255,255,255,0.1); border-top-color: var(--gold-light); }
+  .hag-ct { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.2; }
+  .hag-cm { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); }
+  .hag-cx { font-size: 15px; line-height: 1.5; color: var(--on-dark); margin-top: 4px; }
+  .hag-cgo { margin-top: auto; padding-top: 12px; font-size: 14.5px; font-weight: 700; color: var(--white); }
+  .hag-cgo::after { content: " \2192"; color: var(--gold-light); }
+  @media (max-width: 900px) { .hag-cards { grid-template-columns: 1fr; gap: 8px; margin-top: 28px; } .hag-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 12px; padding: 14px 16px; } .hag-ct { font-size: 19px; } .hag-cm { grid-column: 1; font-size: 12px; } .hag-cx { display: none; } .hag-cgo { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding: 0; font-size: 0; } .hag-cgo::after { content: "\2192"; font-size: 20px; } }
 </style>
 </head>
 <body>
-<script>document.documentElement.className+=" js";</script>
+<script>document.documentElement.className+=" js"+((location.hash.length<2||location.hash==="#top")?" v-top":"");</script>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="band">
@@ -1489,8 +1758,8 @@
 <nav class="secnav" aria-label="Sections">
   <div class="wrap">
     <a href="#top" aria-current="true">Home</a>
-    <a href="#controls">AI Controls</a>
     <a href="#agentic">Agentic Automation</a>
+    <a href="#controls">AI Controls</a>
     <a href="#briefing">Treasury Today</a>
     <a href="#markets">Markets</a>
     <a href="#about">About</a>
@@ -1503,7 +1772,7 @@
 
   <!-- ===== INTRO (full-bleed) ===== -->
   <section class="intro" id="top" data-view="top" aria-labelledby="front-h">
-    <img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background" loading="eager">
+    <noscript><img class="photo" src="/img/ait-hero-data.jpg" alt="Streams of blue light on a dark navy background"></noscript>
     <canvas class="field" aria-hidden="true"></canvas>
     <div class="intro-shade"></div>
     <div class="intro-glow" aria-hidden="true"><span></span></div>
@@ -1512,16 +1781,42 @@
       <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
       <p class="lede">Agentic AI for Treasury and Finance, adopted with clear ownership, sound controls and an audit trail an auditor can follow.</p>
       <div class="actions">
-        <a class="go" href="#controls"><span class="circle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>See how it works</a>
+        <a class="cta-main" href="#agents">See how the agents work<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a class="alt cta-brief" href="#trail"><span>See the five steps</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ===== BENEFITS ===== -->
-  <section class="benefits trail" data-view="top" aria-label="The five-step control trail">
+  <!-- ===== THE AGENTS (Home) ===== -->
+  <section class="hag" id="agents" data-view="top" aria-labelledby="hag-h">
     <div class="wrap">
-      <div class="kicker">The control trail</div>
+      <div class="hag-top">
+        <div class="hag-copy">
+          <div class="kicker">Agentic Automation</div>
+          <h2 id="hag-h">AI agents across Treasury and Finance. Each one reports to a person.</h2>
+          <p class="hag-lede">Choose an area to read each agent&rsquo;s job description: what it does, what it may never do, and what the auditor will check.</p>
+        </div>
+        <dl class="hag-stats">
+          <div><dt>124</dt><dd>functions mapped across 22 areas of Treasury and Finance</dd></div>
+          <div><dt>77</dt><dd>are drafted by the agent and always approved by a person</dd></div>
+          <div><dt>0</dt><dd>are left to an agent alone, with no person in the loop</dd></div>
+        </dl>
+      </div>
+      <div class="hag-cards">
+        <a class="hag-card" href="#ag-map" data-agf="treasury"><span class="hag-ct">Treasury</span><span class="hag-cm">11 agents &middot; 59 functions</span><span class="hag-cx">Liquidity, cash forecast, bank reconciliation, FX and hedging, debt and covenants</span><span class="hag-cgo">See the Treasury agents</span></a>
+        <a class="hag-card" href="#ag-map" data-agf="finance"><span class="hag-ct">Finance</span><span class="hag-cm">10 agents &middot; 59 functions</span><span class="hag-cx">Ledger, payables, receivables, reporting, tax, payroll</span><span class="hag-cgo">See the Finance agents</span></a>
+        <a class="hag-card" href="#ag-map" data-agf="across"><span class="hag-ct">Across both</span><span class="hag-cm">1 agent &middot; 6 functions</span><span class="hag-cx">Governance: Treasury policy, delegation of authority, segregation of duties</span><span class="hag-cgo">See the Governance agent</span></a>
+      </div>
+      <div class="hag-foot"><a class="hag-all" href="#agentic">See every agent<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><span class="hag-note">Counts and levels are the author&rsquo;s proposals.</span></div>
+    </div>
+  </section>
+
+  <!-- ===== BENEFITS ===== -->
+  <section class="benefits trail" id="trail" data-view="top" aria-label="The five-step control trail">
+    <div class="wrap">
+      <div class="kicker">How every agent is controlled</div>
       <h2 class="trail-h">Five steps from data to ledger</h2>
+      <p class="ht-intro">Pick a step to see what the agent does, what a person decides and what the auditor sees.</p>
       <ul>
         <li><b>Capture</b><span>Take in the data and keep the source.</span></li>
         <li><b>Match</b><span>Compare it with the books and the bank.</span></li>
@@ -1529,61 +1824,54 @@
         <li><b>Approve</b><span>A named person signs off.</span></li>
         <li><b>Post</b><span>Record it with the evidence.</span></li>
       </ul>
+      <div class="ht-host" hidden></div>
+      <a class="ht-more" href="#controls">More worked cases on AI Controls</a>
     </div>
   </section>
 
-  <!-- ===== FRONT: editorial grid ===== -->
-  <section class="front" data-view="top" aria-label="Today at a glance">
-    <div class="wrap">
 
-      <div class="tiles">
-        <!-- Tall tile: the signature framework (photo) -->
-        <a class="tile tile-tall tile-card tile-fw" href="#framework">
-          <div class="media"><img src="/img/ait-framework-skyline-night.jpg" alt="A city skyline of glass towers lit up at dusk above a waterfront" loading="eager" style="object-position: 50% 45%;"></div>
-          <div class="body">
-          <div class="kicker">AI Controls</div>
-          <h2><span class="hl">Controls that keep pace with automation</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
-          <p>The five-step control trail, and the four foundations around every system.</p>
-          </div>
-        </a>
-
-        <!-- Tall tile: agentic automation (photo) -->
-        <a class="tile tile-tall tile-card" href="#agentic">
-          <div class="media"><img src="/img/ait-article-agents.jpg" alt="Glass cubes joined by thin lines on a black background, like a network" loading="eager" style="object-position: 50% 50%;"></div>
-          <div class="body">
-          <div class="kicker">Agentic Automation</div>
-          <h2><span class="hl">22 agents a Finance team could use. Each one reports to a person.</span>&#8288;<span class="chev" aria-hidden="true"></span></h2>
-          <p>A proposed map of 124 functions across 22 areas of Treasury and Finance, how far an agent goes in each, and nine checks for go-live.</p>
-          </div>
-        </a>
-
-        <!-- Editor's note -->
-        <a class="tile tile-desk tile-card" href="#briefing">
-          <div class="media"><img src="/img/ait-tile-news-doha.jpg" alt="The Doha skyline at sunset, glass towers reflected in still water" loading="lazy" style="object-position: 50% 50%;"></div>
-          <div class="body">
-          <div class="kicker">Daily briefing: Treasury and Finance</div>
-          <div class="note">
+  <!-- ===== TODAY'S BRIEFING PREVIEW + PRACTITIONER DIALOGUE ===== -->
+  <section class="peak" id="today" data-view="top" aria-labelledby="peak-h">
+    <div class="wrap peak-grid">
+      <div class="peak-brief">
+        <div class="peak-head"><div class="kicker">Treasury Today</div><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Free &middot; No sign-up</span></div>
+        <h2 id="peak-h">Today&rsquo;s briefing</h2>
+        <span class="today-date"></span>
+        <div class="peak-lead"><div class="kicker">Today&rsquo;s Lead</div><div class="note">
             <h3 class="note-h">Record working capital trapped in receivables makes invoice data Finance's cheapest funding source</h3>
         <p>Finance's largest untapped cash source sits in receivables, not funding markets. Hackett Group puts the working capital opportunity among the 1,000 largest North American public companies at a record $1.94 trillion, up 12%, as receivables jumped 29% to $773 billion. McKinsey finds invoice-level data can surface 10–30% of working capital as one-time cash.</p>
         <p>Collections is now a Treasury and Finance control problem, not a credit-team chore. Embat's 15-minute bank syncs and Ripple Treasury's GSmart agents, which require human approval before acting, let Treasury see receipts arrive while controllers chase the invoices behind them. DSO has worsened three years running in 40 of 50 industries. Every late invoice is credit Finance never approved.</p>
-          </div>
-          <span class="arrow-link">Read today's briefing</span>
-          </div>
-        </a>
+          </div></div>
+        <h3 class="peak-sub">Top stories</h3>
+        <ol class="today-list"></ol>
+        <div class="peak-links"><a class="peak-all" href="#briefing">Read the full briefing<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><a class="peak-mk" href="#markets">Today&rsquo;s markets view</a></div>
       </div>
+      <aside class="dialogue" id="dialogue" aria-labelledby="dlg-h">
+        <div class="kicker">Get in touch</div>
+        <h3 id="dlg-h">Compare notes on AI and controls in Treasury</h3>
+        <p>If your team is using agents, approval steps or audit trails, I would like to hear what is working and what is not. I do not sell services through this site.</p>
+        <a class="dlg-mail" href="mailto:gmenon@theaitreasurer.com?subject=Practitioner%20Dialogue">gmenon@theaitreasurer.com</a>
+        <p class="dlg-note">Views are my own and do not represent any employer.</p>
+      </aside>
+    </div>
+  </section>
 
-
-      <div class="today" aria-label="Today at a glance">
-        <div class="today-head"><div class="kicker">Top stories</div><span class="today-date"></span></div>
-        <div class="today-grid">
-          <div class="today-stories"><ol class="today-list"></ol><a class="today-all" href="#briefing">All stories</a></div>
-        </div>
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq" data-view="top" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="kicker">Questions</div>
+      <h2 id="faq-h">Common questions</h2>
+      <div class="faq-list">
+        <details><summary>How is agentic AI different from RPA in Treasury?</summary><div class="faq-a"><p>RPA (robotic process automation) follows a fixed script: the same clicks and the same rules every time, and it stops when the input changes.</p><p>An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast. Because it chooses its own steps, it needs controls a script never did: its own identity with limited rights, recorded versions of its rules and model, and a named person who approves what it proposes.</p></div></details>
+        <details><summary>What is the 5-Step Control Trail?</summary><div class="faq-a"><p>It is the test this site applies to any automated step in Treasury and Finance. Capture: data comes from a known source and is complete. Match: items are paired, and the rule and model versions are recorded. Flag: anything that does not match becomes a logged exception that is aged, never silently cleared. Approve: a named person signs off, and the agent that proposes an action never approves it. Post: the approved result is recorded with its evidence.</p><p>Four foundations sit around every system: Govern, Access, Change and Monitor. It is an illustrative framework aligned with the COSO internal control framework, not a certified standard.</p></div></details>
+        <details><summary>How does the control trail help with Internal Audit?</summary><div class="faq-a"><p>Each step answers a question an auditor will ask. Where did this data come from? Why were these two items paired? What did not match, and how long has it been open? Who approved it, and were they independent? Does the record trace back to source?</p><p>When an agent records that evidence as it works, the trail exists before the audit instead of being rebuilt afterwards. It does not replace your auditors' own testing, and nothing on this site is professional advice.</p></div></details>
+        <details><summary>How is the briefing put together?</summary><div class="faq-a"><p>Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the opinion lines and market figures before they appear.</p><p>The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice.</p></div></details>
       </div>
     </div>
   </section>
 
   <aside class="next-band" data-view="top" aria-label="Next section">
-    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">Controls that keep pace with automation.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#agentic"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Agentic Automation</span><span class="nb-d">Where AI agents fit in Treasury and Finance, and the control that keeps each one safe.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
 
@@ -1748,7 +2036,7 @@
         </div>
 
         <!-- MARKET VIEW LOCKED 2026-10-09 (tag market-view-v1): design, layout, charts and AI Treasurer view panels are final. Do not change without the owner's explicit instruction. Daily content is generated into the slot by generate.py. -->
-        <!--MV-START--><!--MV-END-->
+        <!--MV-START--><section class="mv" aria-labelledby="mv-h"><h4 id="mv-h">Market view<small>Five points for Treasury, Wednesday, 21 October 2026</small></h4><ol><li><p><b>Fed path.</b> The Fed funds target is 3.75–4.00% after a rise on 17 September, and polled economists expect a hold on 28 October, then a December hike. Floating-rate borrowing costs face further upward pressure.</p><div class="mv-view" data-tone="bad"><div class="mv-vh"><b>AI Treasurer view</b><span>Floating-rate debt</span><span class="mv-eff">Cost up</span></div><p>Before the 27–28 October Fed meeting, recalculate next year's interest cost on floating-rate loans on the assumption that rates rise again in December.</p></div><span class="mv-src">Source: <a href="https://www.newyorkfed.org/markets/reference-rates/effr" target="_blank" rel="noopener">Federal Reserve Bank of New York</a>, <a href="https://www.investing.com/news/economy-news/fed-to-skip-october-but-raise-rates-again-in-december-nearly-all-economists-say-reuters-poll-4960095" target="_blank" rel="noopener">Investing.com/Reuters</a> and <a href="https://www.federalreserve.gov/newsevents/2026-october.htm" target="_blank" rel="noopener">Federal Reserve</a></span></li><li><p><b>Curve shape.</b> The US 10-year yield is 5.12% and the 2-year 4.79% as of 20 October, a spread of +33 bp (basis points). Longer-dated fixed-rate borrowing costs more than short-dated, so maturity choice carries a clear price.</p><div class="mv-view" data-tone="watch"><div class="mv-vh"><b>AI Treasurer view</b><span>Term borrowing</span><span class="mv-eff">Long cost higher</span></div><p>Compare the cost of fixing the rate on new debt for two years with fixing it for ten, using the 4.79% and 5.12% government yields as reference points.</p></div><span class="mv-src">Source: <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve" target="_blank" rel="noopener">US Treasury</a></span></li><li><p><b>Bills over overnight.</b> The 3-month Treasury bill yields 4.26% on 20 October, above the 3.87% overnight secured rate (SOFR) on 19 October. Surplus dollar cash earns more in short government bills than overnight.</p><div class="mv-view" data-tone="good"><div class="mv-vh"><b>AI Treasurer view</b><span>Surplus cash</span><span class="mv-eff">Yield up</span></div><p>Check whether the investment policy allows surplus dollar cash to be held in 3-month Treasury bills, and within what limits per counterparty and maturity.</p></div><span class="mv-src">Source: <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve" target="_blank" rel="noopener">US Treasury</a> and <a href="https://www.newyorkfed.org/markets/reference-rates/sofr" target="_blank" rel="noopener">Federal Reserve Bank of New York</a></span></li><li><p><b>Euro softness.</b> The euro is at 1.1215 against the dollar on 20 October, down 1.6% since 25 September even after the ECB's September rise. Euro earnings translate into fewer dollars.</p><div class="mv-view" data-tone="bad"><div class="mv-vh"><b>AI Treasurer view</b><span>FX translation</span><span class="mv-eff">Translation loss</span></div><p>Recalculate the dollar value of the remaining year's forecast euro earnings at 1.1215 and compare it with the exchange rate assumed in the budget.</p></div><span class="mv-src">Source: <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" target="_blank" rel="noopener">ECB reference rates (USD crosses derived)</a> and <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html" target="_blank" rel="noopener">European Central Bank</a></span></li><li><p><b>Rupee firmer.</b> The rupee has firmed 0.9% since 25 September to 94.93 per dollar on 20 October, after the RBI raised its policy repo rate to 5.50% on 7 October. Rupee costs rise in dollar terms.</p><div class="mv-view" data-tone="watch"><div class="mv-vh"><b>AI Treasurer view</b><span>Rupee exposure</span><span class="mv-eff">Cost up</span></div><p>Check the dollar value of rupee payroll and supplier payments due for the rest of the year at 94.93 per dollar against the budgeted rate.</p></div><span class="mv-src">Source: <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" target="_blank" rel="noopener">ECB reference rates (USD crosses derived)</a> and <a href="https://upstox.com/news/market-news/economy/rbi-mpc-meeting-october-7-2026-live-updates-governor-sanjay-malhotra-speech-repo-rate-hike-key-highlights/liveblog-201398/" target="_blank" rel="noopener">Upstox (RBI MPC, 7 Oct 2026)</a></span></li></ol><p class="mv-note">Commentary on the official figures below, as published on the dates shown. Not a forecast and not investment advice.</p></section><!--MV-END-->
 
         <div class="live" aria-label="Live market prices from TradingView">
           <div class="live-tag"><div><i aria-hidden="true"></i>Live</div><span>Indices, commodities, crypto</span></div>
@@ -1856,7 +2144,7 @@
 
 
   <aside class="next-band" data-view="controls" aria-label="Next section">
-    <div class="wrap"><a href="#agentic"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Agentic Automation</span><span class="nb-d">Where AI agents fit in Treasury and Finance, and the control that keeps each one safe.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Treasury Today</span><span class="nb-d">The stories that matter for Treasury and Finance today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== AGENTIC AUTOMATION ===== -->
@@ -1868,11 +2156,11 @@
 </svg>
       <div class="wrap ag-hero-in">
         <div class="ag-eye">Agentic Automation</div>
-        <h2 id="ag-h">22 agents a Finance team could use. Each one reports to a person.</h2>
+        <h2 id="ag-h">AI agents across Treasury and Finance. Each one reports to a person.</h2>
         <p class="ag-lede">Tap an agent to read its job description: what it does, what it may never do, and what the auditor will check.</p>
-        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#aab7cf;margin:18px 0 0;max-width:62ch">Terms used: FX is foreign exchange. IFRS and IAS are the international accounting standards. VAT and GST are sales taxes. SWIFT is the banking message network. ISDA and CSA are standard derivatives contract terms. KPI is key performance indicator.</p>
+        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#C9D2DE;margin:18px 0 0;max-width:62ch">Terms used: FX is foreign exchange. IFRS and IAS are the international accounting standards. VAT and GST are sales taxes. SWIFT is the banking message network. ISDA and CSA are standard derivatives contract terms. KPI is key performance indicator.</p>
         <ul class="ag-kpi"><li><b>124</b><span>functions mapped across 22 areas of Treasury and Finance</span></li><li><b>77</b><span>are drafted by the agent and always approved by a person</span></li><li><b>0</b><span>are left to an agent alone, with no person in the loop</span></li></ul>
-        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#aab7cf;margin:10px 0 0">Counts and levels are the author&rsquo;s proposals.</p>
+        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#C9D2DE;margin:10px 0 0">Counts and levels are the author&rsquo;s proposals.</p>
         <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ag-map">See every agent</a></div>
       </div>
     </div>
@@ -2139,7 +2427,7 @@
   </script>
 
   <aside class="next-band" data-view="agentic" aria-label="Next section">
-    <div class="wrap"><a href="#briefing"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Treasury Today</span><span class="nb-d">The stories that matter for Treasury and Finance today.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+    <div class="wrap"><a href="#controls"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">AI Controls</span><span class="nb-d">Controls that keep pace with automation.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
   <!-- ===== CREDENTIALS (blue band) ===== -->
@@ -2162,6 +2450,10 @@
     </div>
   </section>
 
+  <aside class="next-band" data-view="about" aria-label="Next section">
+    <div class="wrap"><a href="#dialogue"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Get in touch</span><span class="nb-d">Compare notes on AI and controls in Treasury.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  </aside>
+
 
 
 </main>
@@ -2170,7 +2462,7 @@
   <div class="wrap">
     <p>&copy; 2026 The AI Treasurer. Views expressed are personal, are not financial or professional advice, and do not represent any employer or organisation. Get in touch: <a href="mailto:gmenon@theaitreasurer.com">gmenon@theaitreasurer.com</a></p>
     <p>This briefing links to third-party publishers and summarises each item in its own words; it does not reproduce source articles. Figures are as reported on the dates shown and are not live market data. Company and publication names are used only to identify the source.</p>
-    <p>Photography via <a href="https://unsplash.com" rel="noopener">Unsplash</a>: Andreea Avramescu, Vitaly Gariev, Sasun Bughdaryan, Kelly Sikkema, Shubham Dhage, Dima Solomin and Daniele Levis Pelusi. People shown are not clients or staff.</p>
+    <p>Background photograph by Daniele Levis Pelusi via <a href="https://unsplash.com" rel="noopener">Unsplash</a>. The portrait is the author&rsquo;s own.</p>
   </div>
 </footer>
 
@@ -2660,6 +2952,154 @@
 })();
 </script>
 <script>
+/* Home: interactive control trail. Progressive enhancement over the static five steps.
+   "The auditor sees" is the trail record from the matching worked case on AI Controls (window.AIT_CASES),
+   so the wording lives in one place. The agent / person lines below are drawn from those same records. All cases are illustrative. */
+function aitHomeTrail(){
+  var sec = document.getElementById('trail'), host = sec && sec.querySelector('.ht-host');
+  var lis = sec ? sec.querySelectorAll('ul > li') : [];
+  var CASES = window.AIT_CASES || [];
+  if (!host || lis.length !== 5 || !CASES.length) return;
+  var fw = document.getElementById('framework');
+  var asks = fw ? [].map.call(fw.querySelectorAll('ol.trail > li .q'), function(q){ var c = q.cloneNode(true), b = c.querySelector('b'); if (b) b.remove(); return c.textContent.trim(); }) : [];
+  var found = fw ? [].map.call(fw.querySelectorAll('ul.found > li'), function(li){ var c = li.querySelector('.q').cloneNode(true), b = c.querySelector('b'); if (b) b.remove();
+    return { name: li.querySelector('.f-name').textContent, why: li.querySelector('.why').textContent, q: c.textContent.trim() }; }) : [];
+
+  var LINES = {
+    'Bank reconciliation': [
+      ['Takes in the overnight statement from the bank file channel, checks the account against the register and confirms all 412 lines agree to the file footer.', 'No action needed. The account register it checks against is kept by people, not by the agent.'],
+      ['Pairs 409 of 412 lines using the checking rules and an AI model for near-matches, then recalculates independently. Three lines, 18,400 in total, do not match.', 'No action needed. The rule and model versions in use were approved before go-live.'],
+      ['Opens three exceptions and assigns them to the cash team. None is cleared automatically.', 'The cash team owns the three open items. They stay on the ageing report until resolved.'],
+      ['Proposes clearing two of the items (11,200). It cannot sign off its own work.', 'A named reviewer approves the clearing. The third item (7,200) stays open.'],
+      ['Posts the 11,200 clearing journal, linked to the statement lines, versions and reviewer.', 'No new action. The open 7,200 item stays visible to the cash team until it is resolved.']
+    ],
+    'Supplier payment': [
+      ['Reads the PDF invoice from the accounts payable inbox, checks the sender is on the approved list, records the control total and screens the file for hidden instructions.', 'No action needed. The approved sender list is owned by people, not by the agent.'],
+      ['Pairs the invoice to the purchase order and goods receipt, recalculates the amounts and finds USD 120 more freight than the order allows.', 'No action needed. The checking rules and AI instruction versions were approved before use.'],
+      ['Opens an exception, blocks the invoice from payment and routes it to purchasing, who own the order.', 'Purchasing picks up the exception. It stays open and ageing until they resolve it.'],
+      ['Once the exception is closed, the payment agent proposes the USD 48,600 payment.', 'Purchasing confirms the extra freight was agreed and approves a change order. A named Treasury approver then approves the payment. The agent that proposed it cannot approve it.'],
+      ['Posts the journal and links it to the invoice, the amended order, the data snapshot, the versions and the approver.', 'No new action. The approver’s name travels with the entry.']
+    ],
+    'Cash forecast': [
+      ['Pulls ledger, bank balances and receivables ageing, and checks balances agree to bank statements and receivables agree to the ledger.', 'No action needed.'],
+      ['Drafts the 13-week forecast with a recorded AI model and instruction version. The roll-forward is recalculated independently.', 'No action needed. Model and instruction changes go through change control.'],
+      ['Spots a week 6 inflow 31% above the trailing average, marks it low confidence and opens an exception.', 'The exception waits for Treasury review before the forecast can go out.'],
+      ['Cannot approve its own forecast.', 'The Treasury manager reviews week 6, adjusts the inflow and approves.'],
+      ['Publishes the forecast with the data snapshot, versions, the adjustment and the approver, and keeps the prior version.', 'No new action. The adjustment and the approver are on record.']
+    ]
+  };
+  var ORDER = ['Bank reconciliation', 'Supplier payment', 'Cash forecast'];
+  var byLabel = {}; CASES.forEach(function(c){ byLabel[c.label] = c; });
+  ORDER = ORDER.filter(function(k){ return byLabel[k] && byLabel[k].rec && byLabel[k].rec.length === 5; });
+  if (!ORDER.length) return;
+
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  var stepName = [], stepLine = [];
+  var state = { c: ORDER[0], s: 0 };
+
+  /* case chooser */
+  var cases = el('div', 'ht-cases'); cases.setAttribute('role', 'group'); cases.setAttribute('aria-label', 'Choose a worked case');
+  cases.appendChild(el('span', 'lab', 'Worked case'));
+  var caseBtns = ORDER.map(function(k){ var b = el('button', null, k); b.type = 'button'; b.addEventListener('click', function(){ state.c = k; render(); }); cases.appendChild(b); return b; });
+  sec.querySelector('ul').parentNode.insertBefore(cases, sec.querySelector('ul'));
+
+  /* steps become buttons */
+  var stepBtns = [].map.call(lis, function(li, i){
+    stepName.push(li.querySelector('b').textContent); stepLine.push(li.querySelector('span').textContent);
+    var b = el('button', 'ht-step'); b.type = 'button';
+    while (li.firstChild) b.appendChild(li.firstChild);
+    li.appendChild(b);
+    b.addEventListener('click', function(){ state.s = i; render(); });
+    b.addEventListener('keydown', function(e){
+      var k = e.key, n = k === 'ArrowRight' || k === 'ArrowDown' ? 1 : k === 'ArrowLeft' || k === 'ArrowUp' ? -1 : 0;
+      if (!n) return; e.preventDefault(); state.s = (state.s + n + 5) % 5; render(); stepBtns[state.s].focus();
+    });
+    if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var tm; li.addEventListener('mouseenter', function(){ tm = setTimeout(function(){ if (state.s !== i) { state.s = i; render(); } }, 160); });
+      li.addEventListener('mouseleave', function(){ clearTimeout(tm); });
+    }
+    return b;
+  });
+
+  /* detail panel */
+  var panel = el('div', 'ht-panel'), hd = el('div', 'hd'), hdL = el('div'), hdR = el('span', 'case');
+  var hdT = el('b'), hdS = el('span', 'line');
+  hdL.appendChild(hdT); hdL.appendChild(hdS); hd.appendChild(hdL); hd.appendChild(hdR); panel.appendChild(hd);
+  var cols = el('div', 'ht-cols'), colEls = [];
+  [['The agent does', 'ag'], ['The person decides', 'pe'], ['The auditor sees', 'au']].forEach(function(c){
+    var d = el('div', 'ht-col ' + c[1]); d.appendChild(el('h4', null, c[0])); var p = el('p'); d.appendChild(p);
+    if (c[1] === 'au') { var q = el('p', 'ask'); d.appendChild(q); }
+    cols.appendChild(d); colEls.push(d);
+  });
+  panel.appendChild(cols);
+  var live = el('p', 'ht-live'); live.setAttribute('aria-live', 'polite'); panel.appendChild(live);
+  panel.appendChild(el('p', 'ht-fine', 'Illustrative case. Names, amounts and references are invented.'));
+  host.appendChild(panel);
+
+  /* four foundations */
+  if (found.length === 4) {
+    var fwrap = el('div', 'ht-found'), frow = el('div', 'ht-frow'); frow.setAttribute('role', 'group'); frow.setAttribute('aria-label', 'The four foundations');
+    fwrap.appendChild(el('div', 'lab', 'Four foundations around every agent'));
+    var fnote = el('div', 'ht-fnote'); fnote.hidden = true; fnote.id = 'ht-fnote';
+    var fBtns = found.map(function(f, i){
+      var b = el('button', null, f.name); b.type = 'button'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'ht-fnote');
+      b.addEventListener('click', function(){
+        var open = b.getAttribute('aria-expanded') !== 'true';
+        fBtns.forEach(function(x){ x.setAttribute('aria-expanded', 'false'); });
+        if (open) { b.setAttribute('aria-expanded', 'true'); fnote.innerHTML = ''; fnote.appendChild(el('p', null, f.why)); var q = el('p', 'ask'); q.appendChild(el('b', null, 'The auditor asks: ')); q.appendChild(document.createTextNode(f.q)); fnote.appendChild(q); }
+        fnote.hidden = !open;
+      });
+      frow.appendChild(b); return b;
+    });
+    fwrap.appendChild(frow); fwrap.appendChild(fnote); host.appendChild(fwrap);
+  }
+
+  function render(){
+    var c = byLabel[state.c], s = state.s, L = LINES[state.c][s];
+    caseBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', ORDER[i] === state.c ? 'true' : 'false'); });
+    stepBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', i === s ? 'true' : 'false'); lis[i].classList.toggle('on', i === s); });
+    hdT.textContent = 'Step ' + (s + 1) + ' of 5 · ' + stepName[s];
+    hdS.textContent = stepLine[s];
+    hdR.textContent = state.c;
+    colEls[0].querySelector('p').textContent = L[0];
+    colEls[1].querySelector('p').textContent = L[1];
+    colEls[2].querySelector('p').textContent = c.rec[s];
+    var ask = colEls[2].querySelector('.ask'); ask.innerHTML = '';
+    if (asks[s]) { ask.appendChild(el('b', null, 'The auditor asks: ')); ask.appendChild(document.createTextNode(asks[s])); }
+    live.textContent = state.c + ', step ' + (s + 1) + ', ' + stepName[s] + '.';
+  }
+  sec.classList.add('ht-on'); host.hidden = false; render();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aitHomeTrail); else aitHomeTrail();
+</script>
+<script>
+/* Home agent links: switch to Agentic Automation, then open that agent's card (the view script handles the switch). */
+window.addEventListener('click', function(e){
+  var g = e.target.closest && e.target.closest('.hag a[data-agf]');
+  if (g && e.button === 0 && !e.metaKey && !e.ctrlKey) {
+    var f = g.getAttribute('data-agf');
+    setTimeout(function(){
+      var b = document.querySelector('.ag-fc[data-f="' + f + '"]'); if (b && b.getAttribute('aria-pressed') !== 'true') b.click();
+      var m = document.getElementById('ag-map'); if (!m) return;
+      var h = (document.querySelector('.secnav') || {}).offsetHeight || 0;
+      window.scrollTo({ top: m.getBoundingClientRect().top + window.pageYOffset - h - 8 });
+    }, 30);
+    return;
+  }
+  var a = e.target.closest && e.target.closest('.hag a[data-ag]');
+  if (!a || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+  var id = a.getAttribute('data-ag');
+  setTimeout(function(){
+    var c = document.querySelector('.ag-card[data-p="' + id + '"]');
+    if (!c) return;
+    if (c.getAttribute('aria-expanded') !== 'true') c.click();
+    var h = (document.querySelector('.secnav') || {}).offsetHeight || 0;
+    window.scrollTo({ top: c.getBoundingClientRect().top + window.pageYOffset - h - 12 });
+    c.focus({ preventScroll: true });
+  }, 30);
+}, true);
+</script>
+<script>
 document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   b.addEventListener('click', function(){
     var col = b.closest('.mk-fold'); var open = col.classList.toggle('open');
@@ -2668,14 +3108,24 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 });
 </script>
 <script>
-/* Home "Today" strip: headlines and date taken from today's briefing, so they never drift. */
+/* Home briefing preview: headlines, a one-line summary and the source, all taken from today's briefing, so they never drift. */
 (function(){
   var list = document.querySelector('.today-list'); if (!list) return;
   var items = document.querySelectorAll('.briefing .leads .item'), html = '';
+  function esc(s){ return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  function firstSentence(t){ t = (t || '').replace(/\s+/g, ' ').trim(); var m = t.match(/^.{40,}?[.!?](?=\s+[A-Z0-9'\u2018\u201C(]|$)/); return m ? m[0] : t; }
   items.forEach(function(it, i){
     var a = it.querySelector('.cite a'), h = it.querySelector('h4'), t = it.querySelector('.topic');
     var click = a ? a.getAttribute('onclick') : "showTab('ai');return false;";
-    html += '<li><span class="n">0'+(i+1)+'</span><div><div class="topic">'+(t?t.innerHTML:'')+'</div><a href="#" onclick="'+click.replace(/"/g,'&quot;')+'">'+(h?h.textContent.replace(/&/g,'&amp;').replace(/</g,'&lt;'):'')+'</a></div></li>';
+    var m = /showTab\('[a-z_]+',\s*'([^']+)'/.exec(click || ''), story = m ? document.getElementById(m[1]) : null;
+    var sum = '', src = '';
+    if (story) {
+      var p = story.querySelector('p'), s = story.querySelector('.cite a[href^="http"]');
+      if (p) sum = firstSentence(p.textContent);
+      if (s) src = s.textContent.trim();
+    }
+    html += '<li><span class="n">0'+(i+1)+'</span><div><div class="topic">'+(t?t.innerHTML:'')+'</div><a href="#" onclick="'+esc(click)+'">'+esc(h?h.textContent:'')+'</a>'
+         + (sum ? '<p class="sum">'+esc(sum)+'</p>' : '') + (src ? '<p class="src">Source: '+esc(src)+'</p>' : '') + '</div></li>';
   });
   list.innerHTML = html;
   var d = document.querySelector('.briefing .sec-head .dateline'), out = document.querySelector('.today-date');
@@ -2719,6 +3169,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     return document.querySelector('[data-view="' + id + '"]') ? id : null;
   }
   function show(view){
+    document.documentElement.classList.remove('v-top');
     if (!view) view = 'top';
     views.forEach(function(s){
       var on = s.getAttribute('data-view') === view;
@@ -3151,6 +3602,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
         'No tie-out file is kept, so the auditor has to re-perform the whole note.'
       ] }
   ];
+  window.AIT_CASES = SC;
 
   var mode = 'steps', sel = 0, fsel = 0, w = 0, si = 2, gaps = [false, false, false, false, false];
   function resetGaps(){ gaps = [false, false, false, false, false]; }
