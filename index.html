@@ -1766,6 +1766,10 @@
     .dq { padding: 48px 0 52px; }
     .dq-list { grid-template-columns: 1fr; gap: 26px; }
     .dq-list li { padding: 0; border-left: 0; }
+    .dq-list li { display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 10px; align-items: start; }
+    .dq-list li::before { grid-column: 1; grid-row: 1 / span 3; font-size: 24px; margin: 1px 0 0; }
+    .dq-list li > * { grid-column: 2; }
+    .dq-list .dq-punch { margin-top: 4px; }
   }
   .arts[hidden] { display: none !important; }
   .arts { background: var(--navy-deep); color: var(--white); padding: 60px 0 64px; border-top: 1px solid rgba(255,255,255,0.12); }
