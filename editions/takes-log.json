@@ -745,6 +745,80 @@
     "cost_usd": 0.3255
    },
    "edition_cost_usd": 1.0547
+  },
+  {
+   "date": "2026-10-22",
+   "items": [
+    {
+     "headline": "Kyriba and JPMorgan bring agentic AI to Treasury investment decisions",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Trovata swaps overnight bank files for real-time API data and agentic AI",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Hackett sizes North American working capital opportunity at record $1.94 trillion",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ECB readies ISO 20022 MR2026 and HVPS+ changes for TARGET2",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "RBI derivative curbs lift Indian corporate FX hedging costs by 80–150bp",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ECB expected to hold at 2.50% on 29 October, with December hike likelier",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "XTPG Treasury Command links 70+ Brazilian institutions in one intraday view",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "AICPA practice aid brings AI into ICFR scoping and financial-statement audits",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Vantage Bank and Rio Bank settle loan participation payment with tokenised deposits",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Bank of America hit with record $1.21 billion BSA/AML and sanctions penalty",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "AMLA finalises standards on due diligence, PEP screening and group AML/CFT",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "The source says the standards are only 'proposed to apply six months after their entry into force', but the take states six months as settled and adds 'only'. The view tells readers to check 'screening of people in prominent public roles', yet the source text never says the standards cover political"
+    },
+    {
+     "headline": "FSB finalises 12 AI governance practices, reaching Treasury oversight of vendor AI",
+     "status": "dropped",
+     "lens": "Payments & operations",
+     "reasons": "copies wording from the source or summary"
+    }
+   ],
+   "cost_usd": 0.3429,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.234
+   },
+   "edition_cost_usd": 1.6706
   }
  ]
 }
