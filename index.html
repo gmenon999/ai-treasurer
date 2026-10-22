@@ -1854,7 +1854,10 @@
   .td .today-list .sum { display: none; }
   .td .today-list .topic { display: none; }
   .intro .hero-by { display: flex; align-items: center; gap: 12px; }
-  .intro .hero-face { flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold-light); }
+  .intro .hero-face { flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(233,203,133,0.6); }
+  .intro .hb-t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .intro .hero-by .hb-t a { border-bottom: 0; font-size: 15.5px; font-weight: 600; color: var(--white); }
+  .intro .hb-s { font-size: 13.5px; line-height: 1.4; color: var(--on-dark); }
   .td-contact { margin: 34px 0 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 15.5px; line-height: 1.6; color: var(--on-dark); max-width: 70ch; }
   .td-contact a { color: var(--white); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
   .briefing .peak-lead { margin: 22px 0 0; max-width: 900px; }
@@ -1911,7 +1914,7 @@
       <div class="kicker">AI &middot; Treasury &middot; Finance</div>
       <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
       <p class="lede">How to combine Human Judgement, Rule Based Automation and AI Agents across Treasury and Finance, and decide where each belongs.</p>
-      <p class="hero-by"><img class="hero-face" src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon" width="44" height="44"><span>By <a href="#about">Gopakumar Menon, CA, CPA, CTP</a> &middot; two decades in financial control, reporting and Treasury</span></p>
+      <p class="hero-by"><img class="hero-face" src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon" width="44" height="44"><span class="hb-t"><a href="#about">Gopakumar Menon, CA, CPA, CTP</a><span class="hb-s">Two decades in Finance and Treasury</span></span></p>
       <div class="actions">
         <a class="cta-main" href="#decisions">Start with the decision<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
       </div>
