@@ -1880,6 +1880,8 @@
     .ct-chain b { font-size: 18px; } .ct-chain span { margin-top: 0; }
     .dd-key { font-size: 18px; }
   }
+  @media (max-width: 430px) { .ag-jump a { padding: 0 7px; font-size: 12.5px; gap: 5px; } .ag-jump a span { width: 20px; height: 20px; } }
+  .ag-terms { margin: 28px 0 0; font-size: 13px; line-height: 1.55; color: var(--on-dark-soft); max-width: 75ch; }
 </style>
 </head>
 <body>
@@ -2290,7 +2292,7 @@
       </ul>
       </div>
       <p class="note">Illustrative framework, aligned with COSO&rsquo;s Internal Control&mdash;Integrated Framework and its 2026 guidance on internal control over generative AI. It describes a control approach, not a specific system or result.</p>
-      <p class="note">Adopting agents? The nine go-live checks are on <a href="#ag-golive">Agentic Automation</a>.</p>
+      <p class="note">Adopting agents? The nine readiness checks are on <a href="#ag-golive">Agentic Automation</a>.</p>
     </div>
   </section>
 
@@ -2310,16 +2312,14 @@
       <div class="wrap ag-hero-in">
         <div class="ag-eye">Agentic Automation</div>
         <h2 id="ag-h">AI agents across Treasury and Finance. Each one reports to a person.</h2>
-        <p class="ag-lede">Tap an agent to read its job description: what it does, what it may never do, and what the auditor will check.</p>
-        <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#C9D2DE;margin:18px 0 0;max-width:62ch">Terms used: FX is foreign exchange. IFRS and IAS are the international accounting standards. VAT and GST are sales taxes. SWIFT is the banking message network. ISDA and CSA are standard derivatives contract terms. KPI is key performance indicator.</p>
+        <p class="ag-lede">Each agent has a job description: what it does, what it may never do, and what the auditor will check.</p>
         <ul class="ag-kpi"><li><b>124</b><span>functions mapped across 22 areas of Treasury and Finance</span></li><li><b>77</b><span>are drafted by the agent and always approved by a person</span></li><li><b>0</b><span>are left to an agent alone, with no person in the loop</span></li></ul>
         <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#C9D2DE;margin:10px 0 0">Counts and levels are the author&rsquo;s proposals.</p>
-        <div class="ag-acts"><a class="ag-btn ag-btn-g" href="#ag-map">See every agent</a></div>
       </div>
     </div>
 
     <nav class="ag-jump" aria-label="On this page"><div class="wrap ag-jump-in">
-      <a href="#ag-how"><span>1</span>How it works</a><a href="#ag-map"><span>2</span>The agents</a><a href="#ag-golive"><span>3</span>Go-live checks</a>
+      <a href="#ag-how"><span>1</span>How it works</a><a href="#ag-map"><span>2</span>The agents</a><a href="#ag-golive"><span>3</span>Readiness</a>
     </div></nav>
 
     <div class="wrap">
@@ -2333,7 +2333,7 @@
           </div>
         </div>
         <p class="ag-case c">A supplier emails: &ldquo;Please update our bank details.&rdquo; It is a fake. Each step below shows how it is stopped.</p>
-        <ol class="ag-steps"><li id="ag-ex-1" class="ag-step "><div class="ag-sh"><span class="ag-sn">01</span><b>Capture</b><span class="ag-who"><span class="m">Agent</span><span class="c">Agent</span></span></div><p class="m">Reads the document or request and records where it came from.</p><p class="c">Logs the request, its source and the new details. Changes nothing.</p><p class="c ag-aud"><span>Auditor sees</span> The request and where it came from.</p></li><li id="ag-ex-2" class="ag-step "><div class="ag-sh"><span class="ag-sn">02</span><b>Match</b><span class="ag-who"><span class="m">Agent</span><span class="c">Agent</span></span></div><p class="m">Checks it against the records and the rules.</p><p class="c">Compares the new details with those on file and validates the account where the bank offers that.</p><p class="c ag-aud"><span>Auditor sees</span> The comparison result.</p></li><li id="ag-ex-3" class="ag-step "><div class="ag-sh"><span class="ag-sn">03</span><b>Flag</b><span class="ag-who"><span class="m">Agent</span><span class="c">Agent</span></span></div><p class="m">Raises anything unusual and holds it.</p><p class="c">Marks the request high risk and opens a call-back to the number already on file, never the one in the request.</p><p class="c ag-aud"><span>Auditor sees</span> The call-back task and the number used.</p></li><li id="ag-ex-4" class="ag-step pm pc"><div class="ag-sh"><span class="ag-sn">04</span><b>Approve</b><span class="ag-who"><span class="m">Person</span><span class="c">Person</span></span></div><p class="m">A named person decides. Nothing moves before this.</p><p class="c">One person makes the call-back and records it. A second person approves the change.</p><p class="c ag-aud"><span>Auditor sees</span> Both records, with names and times.</p></li><li id="ag-ex-5" class="ag-step pc"><div class="ag-sh"><span class="ag-sn">05</span><b>Post</b><span class="ag-who"><span class="m">Agent</span><span class="c">Person</span></span></div><p class="m">Records the result and who approved it.</p><p class="c">A person with edit rights applies the change only after both records exist.</p><p class="c ag-aud"><span>Auditor sees</span> Before and after master data, and a report of payments to changed accounts.</p></li></ol>
+        <ol class="ag-steps"><li id="ag-ex-1" class="ag-step "><div class="ag-sh"><span class="ag-sn">01</span><b>Capture</b><span class="ag-who"><span class="m">Agent</span><span class="c">Agent</span></span></div><p class="m">Keep the source</p><p class="c">Logs the request, its source and the new details. Changes nothing.</p><p class="c ag-aud"><span>Auditor sees</span> The request and where it came from.</p></li><li id="ag-ex-2" class="ag-step "><div class="ag-sh"><span class="ag-sn">02</span><b>Match</b><span class="ag-who"><span class="m">Agent</span><span class="c">Agent</span></span></div><p class="m">Pair with books and bank</p><p class="c">Compares the new details with those on file and validates the account where the bank offers that.</p><p class="c ag-aud"><span>Auditor sees</span> The comparison result.</p></li><li id="ag-ex-3" class="ag-step "><div class="ag-sh"><span class="ag-sn">03</span><b>Flag</b><span class="ag-who"><span class="m">Agent</span><span class="c">Agent</span></span></div><p class="m">Raise every difference</p><p class="c">Marks the request high risk and opens a call-back to the number already on file, never the one in the request.</p><p class="c ag-aud"><span>Auditor sees</span> The call-back task and the number used.</p></li><li id="ag-ex-4" class="ag-step pm pc"><div class="ag-sh"><span class="ag-sn">04</span><b>Approve</b><span class="ag-who"><span class="m">Person</span><span class="c">Person</span></span></div><p class="m">A named person signs off</p><p class="c">One person makes the call-back and records it. A second person approves the change.</p><p class="c ag-aud"><span>Auditor sees</span> Both records, with names and times.</p></li><li id="ag-ex-5" class="ag-step pc"><div class="ag-sh"><span class="ag-sn">05</span><b>Post</b><span class="ag-who"><span class="m">Agent</span><span class="c">Person</span></span></div><p class="m">Record it with the evidence</p><p class="c">A person with edit rights applies the change only after both records exist.</p><p class="c ag-aud"><span>Auditor sees</span> Before and after master data, and a report of payments to changed accounts.</p></li></ol>
         <p class="ag-src"><span class="m">Source: The AI Treasurer control model.</span><span class="c">Source: The AI Treasurer, illustrative example.</span></p>
 
         <div class="ag-sub">
@@ -2366,23 +2366,23 @@
           </div>
         </div>
         <p class="ag-src">Source: The AI Treasurer function map, October 2026. Illustrative and not exhaustive. The workflow or agent split follows Anthropic&rsquo;s <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a> and <a href="https://claude.com/blog/building-ai-agents-in-financial-services" target="_blank" rel="noopener">financial services guide</a>.</p>
-        <div class="ag-acts ag-nextp"><a class="ag-btn ag-btn-g" href="#ag-golive">Next: Go-live checks &rarr;</a></div>
+        <div class="ag-acts ag-nextp"><a class="ag-btn ag-btn-g" href="#ag-golive">Next: Readiness checks &rarr;</a></div>
       </div>
 
       <div class="ag-blk ag-golive ag-part" id="ag-golive">
-        <div class="ag-k">3 &middot; Go-live checks</div>
-        <h3 class="ag-h3">Nine checks: five before an agent touches live work, four once it is running</h3>
+        <div class="ag-k">3 &middot; Readiness checks</div>
+        <h3 class="ag-h3">Nine checks before an agent touches live work.</h3>
         <p class="ag-p">They apply to every agent on this page.</p>
         <div class="ag-glb" id="ctl-adopt">
-          <h4 class="ag-h4">Before go-live &middot; checks 1 to 5</h4>
+          <h4 class="ag-h4">Before it goes live &middot; checks 1 to 5</h4>
           <p class="ag-p">Put three of the <a href="#framework">four foundations</a> in place first: Govern, Access and Change. That means a register with an owner for every agent, its own identity with only the rights it needs, and change control over its instructions and models.</p>
-          <ol class="ag-gl ag-glw"><li><span class="ag-gn">1</span><p>Run the agent in draft-only mode on past cases and compare its drafts with what people decided.</p></li><li><span class="ag-gn">2</span><p>Treat the text of documents and emails as data, never as instructions. Test with planted instructions.</p></li><li><span class="ag-gn">3</span><p>Give the agent its own identity, the narrowest access that works, and no sensitive data carried between tasks.</p></li><li><span class="ag-gn">4</span><p>Name an owner and a person who can switch it off by removing the agent’s access, not by asking it to stop.</p></li><li><span class="ag-gn">5</span><p>Test the failure case. If the agent is unavailable, work continues by the manual route. If it is unsure, it holds and never releases.</p></li></ol>
+          <ol class="ag-gl ag-glw"><li><span class="ag-gn">1</span><p>Run the agent in draft mode on past cases and compare its drafts with what people decided.</p></li><li><span class="ag-gn">2</span><p>Treat the text of documents and emails as data, never as instructions. Test with planted instructions.</p></li><li><span class="ag-gn">3</span><p>Give the agent its own identity, the narrowest access that works, and no sensitive data carried between tasks.</p></li><li><span class="ag-gn">4</span><p>Name an owner and a person who can switch it off by removing the agent’s access, not by asking it to stop.</p></li><li><span class="ag-gn">5</span><p>Test the failure case. If the agent is unavailable, work continues by the manual route. If it is unsure, it holds and never releases.</p></li></ol>
         </div>
         <div class="ag-glb" id="ctl-after">
           <h4 class="ag-h4">Once it is running &middot; checks 6 to 9</h4>
           <p class="ag-p">Every transaction follows the five steps in <a href="#ag-how">How it works</a>. Monitor, the fourth foundation, tracks volumes, overrides, validation failures, exception ageing and drift, with a stop switch when limits are breached.</p>
           <ol class="ag-gl ag-glw"><li><span class="ag-gn">6</span><p>Hand over to a person on a blocker, repeated failure or unclear case, and cap the retries.</p></li><li><span class="ag-gn">7</span><p>Watch accuracy and the override rate. A rate near zero deserves as much scrutiny as a high one. Sample approvals to check reviewers are not just clicking through.</p></li><li><span class="ag-gn">8</span><p>Treat a new model, prompt or tool version as a change: test it, approve it, record it.</p></li><li><span class="ag-gn">9</span><p>Keep a decision record: the inputs, the data sources, the model version and who approved.</p></li></ol>
-          <p class="ag-src">Source: The AI Treasurer, informed by Anthropic&rsquo;s published guidance on agents. Checks 6 to 9 and the wording of check 4 are the author&rsquo;s judgment.</p>
+          <p class="ag-src">Source: The AI Treasurer, informed by Anthropic&rsquo;s published guidance on agents. Checks 6 to 9 and the wording of check 4 are the author&rsquo;s judgement.</p>
         </div>
         <div class="ag-glb" id="ctl-widen">
           <h4 class="ag-h4">Widening an agent&rsquo;s role</h4>
@@ -2398,6 +2398,7 @@
 
 
     <div class="wrap">
+      <p class="ag-terms">Terms used: FX is foreign exchange. IFRS and IAS are the international accounting standards. VAT and GST are sales taxes. SWIFT is the banking message network. ISDA and CSA are standard derivatives contract terms. KPI is key performance indicator.</p>
       <div class="ag-share" aria-label="Share this page">
         <span>Share this page</span>
         <button type="button" id="ag-copy">Copy link</button>
@@ -2438,7 +2439,7 @@
   var ticking = false;
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; spy(); }); } }, { passive: true });
   spy();
-  /* Sub-tabs: How it works, The agents and Go-live checks show one at a time */
+  /* Sub-tabs: How it works, The agents and Readiness checks show one at a time */
   var partEls = [].slice.call(root.querySelectorAll('.ag-part'));
   function partOf(el) { return el && el.closest ? el.closest('.ag-part') : null; }
   function showPart(id) {
@@ -3121,7 +3122,7 @@ function aitHomeTrail(){
   var LINES = {
     'Bank reconciliation': [
       ['Takes in the overnight statement from the bank file channel, checks the account against the register and confirms all 412 lines agree to the file footer.', 'No action needed. The account register it checks against is kept by people, not by the agent.'],
-      ['Pairs 409 of 412 lines using the checking rules and an AI model for near-matches, then recalculates independently. Three lines, 18,400 in total, do not match.', 'No action needed. The rule and model versions in use were approved before go-live.'],
+      ['Pairs 409 of 412 lines using the checking rules and an AI model for near-matches, then recalculates independently. Three lines, 18,400 in total, do not match.', 'No action needed. The rule and model versions in use were approved before it went live.'],
       ['Opens three exceptions and assigns them to the cash team. None is cleared automatically.', 'The cash team owns the three open items. They stay on the ageing report until resolved.'],
       ['Proposes clearing two of the items (11,200). It cannot sign off its own work.', 'A named reviewer approves the clearing. The third item (7,200) stays open.'],
       ['Posts the 11,200 clearing journal, linked to the statement lines, versions and reviewer.', 'No new action. The open 7,200 item stays visible to the cash team until it is resolved.']
