@@ -13,9 +13,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="AI Treasurer">
 <title>The AI Treasurer | Daily Briefing on AI, Treasury &amp; Finance</title>
-<meta name="description" content="A daily intelligence briefing on AI, Treasury and Finance, written in plain English, plus a controls-first view on adopting AI in Treasury.">
+<meta name="description" content="A Treasury and Finance practitioner on where AI belongs in Treasury, what it is really worth, and the controls that keep authority with people. Plus a free daily briefing.">
 <meta property="og:title" content="The AI Treasurer">
-<meta property="og:description" content="Daily intelligence on AI, Treasury and Finance for CFOs and treasurers. Treasury is getting faster; the controls have to keep up.">
+<meta property="og:description" content="Where AI belongs in Treasury, what it is really worth, and the controls that keep authority with people. For CFOs and Treasury leaders.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theaitreasurer.com/">
 <meta property="og:image" content="https://theaitreasurer.com/img/ait-og-gopakumar.jpg">
@@ -1743,6 +1743,26 @@
   .hag-cgo { margin-top: auto; padding-top: 12px; font-size: 14.5px; font-weight: 700; color: var(--white); }
   .hag-cgo::after { content: " \2192"; color: var(--gold-light); }
   @media (max-width: 900px) { .hag-cards { grid-template-columns: 1fr; gap: 8px; margin-top: 28px; } .hag-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 12px; padding: 14px 16px; } .hag-ct { font-size: 19px; } .hag-cm { grid-column: 1; font-size: 12px; } .hag-cx { display: none; } .hag-cgo { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding: 0; font-size: 0; } .hag-cgo::after { content: "\2192"; font-size: 20px; } }
+
+  /* ---------- 22 Oct 2026 Home: hero byline, decision questions ---------- */
+  .intro .hero-by { margin: 28px 0 0; font-size: 15px; line-height: 1.5; color: var(--on-dark); }
+  .intro .hero-by a { color: var(--white); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+  .dq { background: var(--navy); color: var(--white); padding: 60px 0 64px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .dq-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: dq; }
+  .dq-list li { counter-increment: dq; padding: 0 22px; border-left: 1px solid rgba(255,255,255,0.16); }
+  .dq-list li:first-child { border-left: 0; padding-left: 0; }
+  .dq-list li::before { content: counter(dq); display: block; font-family: var(--serif); font-size: 30px; line-height: 1; font-weight: 700; color: var(--gold-light); margin-bottom: 12px; }
+  .dq-list h3 { font-family: var(--serif); font-size: 20px; line-height: 1.25; margin: 0 0 8px; }
+  .dq-list p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.55; color: var(--on-dark); }
+  .dq .kicker { color: var(--gold-light); }
+  .dq h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 10px 0 28px; max-width: 26ch; }
+  .dq-list a { font-size: 14.5px; font-weight: 600; color: var(--white); text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+  .peak-auto { margin: 6px 0 14px; font-size: 14px; line-height: 1.5; color: var(--on-dark); }
+  @media (max-width: 900px) {
+    .dq { padding: 48px 0 52px; }
+    .dq-list { grid-template-columns: 1fr; gap: 26px; }
+    .dq-list li { padding: 0; border-left: 0; }
+  }
 </style>
 </head>
 <body>
@@ -1781,11 +1801,26 @@
     <div class="wrap">
       <div class="kicker">AI &middot; Treasury &middot; Finance</div>
       <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
-      <p class="lede">Agentic AI for Treasury and Finance, adopted with clear ownership, sound controls and an audit trail an auditor can follow.</p>
+      <p class="lede">A Finance leader&rsquo;s view on where AI can improve cash visibility, strengthen controls and free capacity in Treasury, and where rules-based automation or human judgement is still the better choice.</p>
       <div class="actions">
         <a class="cta-main" href="#agents">See how the agents work<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
         <a class="alt cta-brief" href="#trail"><span>See the five steps</span></a>
       </div>
+      <p class="hero-by">By <a href="#about">Gopakumar Menon, CA, CPA, CTP</a> &middot; two decades in financial control, reporting and Treasury</p>
+    </div>
+  </section>
+
+  <!-- ===== DECISION QUESTIONS (Home) ===== -->
+  <section class="dq" id="decisions" data-view="top" aria-labelledby="dq-h">
+    <div class="wrap">
+      <div class="kicker">Start with the decision</div>
+      <h2 id="dq-h">Four questions to answer before AI goes into Treasury</h2>
+      <ol class="dq-list">
+        <li><h3>What decision would clearer cash visibility change?</h3><p>If seeing a balance or forecast sooner would not change a funding, investment or payment decision, faster reporting adds little.</p></li>
+        <li><h3>Are rules enough?</h3><p>Much of matching and posting follows fixed rules. Rules cost less to run and are easier to audit. AI earns its place where inputs are messy, such as free-text remittances.</p></li>
+        <li><h3>What is the saved time really worth?</h3><p>Hours released are capacity. They become cash only when spending actually falls, for example fewer contractor days.</p></li>
+        <li><h3>Who keeps the authority?</h3><p>A named person approves what an agent proposes, every exception is logged, and the agent can be switched off.</p><a href="#trail">See the five steps</a></li>
+      </ol>
     </div>
   </section>
 
@@ -1839,6 +1874,7 @@
         <div class="peak-head"><div class="kicker">Treasury Today</div><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Free &middot; No sign-up</span></div>
         <h2 id="peak-h">Today&rsquo;s briefing</h2>
         <span class="today-date"></span>
+        <p class="peak-auto">Put together automatically each morning from public sources and not reviewed by hand. A news summary, not the author&rsquo;s analysis.</p>
         <div class="peak-lead"><div class="kicker">Today&rsquo;s Lead</div><div class="note">
             <h3 class="note-h">Regulators are pricing weak controls, and Finance now carries the bill</h3>
         <p>Regulators are pricing weak controls, not merely criticising them. US authorities hit Bank of America with a record $1.21 billion penalty for BSA/AML and sanctions failures. AICPA guidance of 13 October 2026 brings AI-enabled processes, including agentic workflows, into ICFR and audit testing, while AMLA has finalised standards on due diligence and PEP screening.</p>
