@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-22T11:51:05Z",
+ "generated_utc": "2026-10-22T17:09:55Z",
  "policy": [
   {
    "bank": "Fed",
@@ -84,8 +84,8 @@
   {
    "name": "SOFR",
    "value": "3.88%",
-   "change_bp": 1,
-   "asof": "2026-10-20",
+   "change_bp": 0,
+   "asof": "2026-10-21",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
    "id": "sofr",
@@ -95,7 +95,7 @@
    "name": "Fed funds effective",
    "value": "3.88%",
    "change_bp": 0,
-   "asof": "2026-10-20",
+   "asof": "2026-10-21",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
    "id": "effr",
@@ -145,9 +145,9 @@
  "fx": [
   {
    "name": "EUR/USD",
-   "value": "1.1234",
-   "change_pct": 0.17,
-   "asof": "2026-10-21",
+   "value": "1.1205",
+   "change_pct": -0.26,
+   "asof": "2026-10-22",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "eurusd",
@@ -155,9 +155,9 @@
   },
   {
    "name": "GBP/USD",
-   "value": "1.3402",
-   "change_pct": 0.41,
-   "asof": "2026-10-21",
+   "value": "1.3376",
+   "change_pct": -0.19,
+   "asof": "2026-10-22",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "gbpusd",
@@ -165,9 +165,9 @@
   },
   {
    "name": "USD/JPY",
-   "value": "157.88",
-   "change_pct": -0.16,
-   "asof": "2026-10-21",
+   "value": "157.05",
+   "change_pct": -0.53,
+   "asof": "2026-10-22",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdjpy",
@@ -175,9 +175,9 @@
   },
   {
    "name": "USD/INR",
-   "value": "94.47",
-   "change_pct": -0.48,
-   "asof": "2026-10-21",
+   "value": "94.82",
+   "change_pct": 0.37,
+   "asof": "2026-10-22",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdinr",
@@ -185,9 +185,9 @@
   },
   {
    "name": "USD/CNY",
-   "value": "6.6761",
+   "value": "6.6743",
    "change_pct": -0.03,
-   "asof": "2026-10-21",
+   "asof": "2026-10-22",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdcny",
@@ -195,9 +195,9 @@
   },
   {
    "name": "AUD/USD",
-   "value": "0.7034",
-   "change_pct": 0.7,
-   "asof": "2026-10-21",
+   "value": "0.7012",
+   "change_pct": -0.31,
+   "asof": "2026-10-22",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "audusd",
