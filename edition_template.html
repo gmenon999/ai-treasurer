@@ -1527,6 +1527,8 @@
   .ht-cases .lab, .ht-frow .lab { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold-light); margin-right: 6px; }
   .ht-cases button, .ht-frow button { appearance: none; font: 600 14.5px/1.2 var(--sans); color: var(--white); background: transparent; border: 1px solid rgba(255,255,255,0.4); padding: 10px 15px; cursor: pointer; border-radius: 999px; transition: background 0.2s, color 0.2s, border-color 0.2s; }
   .ht-frow button { border-radius: 0; }
+  .ht-cases a.ht-all { font: 600 14.5px/1.2 var(--sans); color: var(--gold-light); text-decoration: none; border: 1px dashed var(--gold-light); padding: 10px 15px; border-radius: 999px; transition: background 0.2s, color 0.2s; }
+  .ht-cases a.ht-all:hover, .ht-cases a.ht-all:focus-visible { background: var(--gold-light); color: var(--navy-deep); }
   .ht-cases button:hover, .ht-frow button:hover { border-color: var(--white); }
   .ht-cases button[aria-pressed="true"], .ht-frow button[aria-expanded="true"] { background: var(--white); color: var(--navy-deep); border-color: var(--white); }
   .benefits.trail.ht-on li { padding-bottom: 0; }
@@ -1825,7 +1827,7 @@
         <li><b>Post</b><span>Record it with the evidence.</span></li>
       </ul>
       <div class="ht-host" hidden></div>
-      <a class="ht-more" href="#controls">More worked cases on AI Controls</a>
+      <a class="ht-more" href="#controls">See all worked cases on AI Controls</a>
     </div>
   </section>
 
@@ -2993,8 +2995,15 @@ function aitHomeTrail(){
 
   /* case chooser */
   var cases = el('div', 'ht-cases'); cases.setAttribute('role', 'group'); cases.setAttribute('aria-label', 'Choose a worked case');
-  cases.appendChild(el('span', 'lab', 'Worked case'));
+  cases.appendChild(el('span', 'lab', 'Try a case'));
   var caseBtns = ORDER.map(function(k){ var b = el('button', null, k); b.type = 'button'; b.addEventListener('click', function(){ state.c = k; render(); }); cases.appendChild(b); return b; });
+  /* the chips are a sample: point to the full set on AI Controls */
+  var extra = CASES.length - ORDER.length;
+  if (extra > 0) {
+    var all = el('a', 'ht-all', '+' + extra + ' more \u2192'); all.href = '#controls';
+    all.setAttribute('aria-label', 'See all ' + CASES.length + ' worked cases on AI Controls'); cases.appendChild(all);
+    var more = sec.querySelector('.ht-more'); if (more) more.textContent = 'See all ' + CASES.length + ' worked cases on AI Controls';
+  }
   sec.querySelector('ul').parentNode.insertBefore(cases, sec.querySelector('ul'));
 
   /* steps become buttons */
