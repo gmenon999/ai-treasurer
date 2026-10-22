@@ -529,7 +529,7 @@ def editorial(res, date_human, history=None):
 
 # ---------------------------------------------------------------- The Treasurer's Take
 # Two lines under every item: "Focus: <lens>" (the one point that matters most, through the lens that
-# fits the story) and "Our view". Written from the full source article, checked by an independent model,
+# fits the story) and "AI-generated implications" (renamed from "Our view" on 22 Oct 2026). Written from the full source article, checked by an independent model,
 # dropped (never published) if it fails. Fail-safe: any error here leaves the news untouched.
 LENSES = ["Controls & audit", "Regulation & compliance", "Accounting & reporting", "Cash & liquidity",
           "Risk", "Payments & operations", "Cost & value"]
@@ -627,7 +627,7 @@ def _check_prompt(rows, drafts):
     blocks = []
     for n, it, src in rows:
         x = drafts[n]
-        blocks.append("### ITEM %d\nSOURCE TEXT:\n%s\nNEWS SUMMARY: %s\nTAKE: [Focus: %s] %s | Our view: %s"
+        blocks.append("### ITEM %d\nSOURCE TEXT:\n%s\nNEWS SUMMARY: %s\nTAKE: [Focus: %s] %s | AI-generated implications: %s"
                       % (n, src, it["summary"], x.get("lens"), x.get("focus"), x.get("view")))
     return (
         "You are the independent checker for The AI Treasurer. You did not write these takes. Check each one "
@@ -844,10 +844,10 @@ def _mv_local(points, facts):
             out.append("point %d banned phrases: %s" % (i, ", ".join(hits)))
         vague = _lint_view([p.get("view", "")])
         if vague:
-            out.append("point %d AI Treasurer view is not plain and precise: %s" % (i, ", ".join(vague)))
+            out.append("point %d AI-generated implications line is not plain and precise: %s" % (i, ", ".join(vague)))
         vw = len((p.get("view") or "").split())
         if not 10 <= vw <= 40:
-            out.append("point %d AI Treasurer view is %d words (target 14-32)" % (i, vw))
+            out.append("point %d AI-generated implications line is %d words (target 14-32)" % (i, vw))
         if p.get("tone") not in ("bad", "good", "watch") or not (p.get("effect") or "").strip() or not (p.get("area") or "").strip():
             out.append("point %d needs area, effect and tone (bad/good/watch)" % i)
         vx = sorted(x for x in _nums(p.get("view", "")) - _nums(cited) if x not in ("2026", "2027"))
@@ -866,7 +866,7 @@ def _mv_prompt(facts, date_human, fixes=None):
         "sentences, 20-35 words: the move with its figure and date basis, then what it means for funding, "
         "investing surplus cash, FX exposure or hedging. refs = the fact ids you used (every figure you write "
         "must appear in a cited fact; do not calculate new numbers).\n"
-        "Also give each point an AI Treasurer view: view = ONE sentence, 14-32 words, the Treasury question or step "
+        "Also give each point its AI-generated implications: view = ONE sentence, 14-32 words, the Treasury question or step "
         "to consider in response, framed as something to check or consider, never as an instruction to trade or buy "
         "a product; any figure in it must appear in a cited fact; " % date_human) + CLARITY + (" area = 2-4 words naming the Treasury area "
         "(e.g. 'Term borrowing'); effect = 2-3 words, the effect on a corporate Treasury (e.g. 'Cost up', "
@@ -887,7 +887,7 @@ def _mv_check(points, facts):
     blocks = []
     for i, x in enumerate(points, 1):
         cited = "\n".join("  [%s] %s" % (r, facts[r]["text"]) for r in x.get("refs") or [] if r in facts)
-        blocks.append("### POINT %d\n%s: %s\nAI TREASURER VIEW: %s\nCITED FACTS:\n%s" % (i, x.get("head"), x.get("text"), x.get("view"), cited))
+        blocks.append("### POINT %d\n%s: %s\nAI-GENERATED IMPLICATIONS: %s\nCITED FACTS:\n%s" % (i, x.get("head"), x.get("text"), x.get("view"), cited))
     prompt = (
         "You are the independent checker for The AI Treasurer. You did not write these points. Fail a point if ANY "
         "test fails:\n1. Every figure, date, name and direction (up/down, hike/cut) matches its CITED FACTS exactly. "
@@ -974,13 +974,13 @@ def market_view_html(points, date_human):
     lis = []
     for p in points:
         src = _sources_html(p.get("sources") or [], prefix="Source: ")
-        vw = ('<div class="mv-view" data-tone="%s"><div class="mv-vh"><b>AI Treasurer view</b><span>%s</span><span class="mv-eff">%s</span></div>'
+        vw = ('<div class="mv-view" data-tone="%s"><div class="mv-vh"><b>AI-generated implications</b><span>%s</span><span class="mv-eff">%s</span></div>'
               '<p>%s</p></div>' % (esc(p.get("tone") or "watch"), esc(p.get("area") or ""), esc(p.get("effect") or ""), esc(p["view"]))) if p.get("view") else ""
         lis.append('<li><p><b>%s.</b> %s</p>%s%s</li>' % (esc(p["head"]), esc(p["text"]), vw,
                    ('<span class="mv-src">%s</span>' % src) if src else ""))
     return (MV_START + '<section class="mv" aria-labelledby="mv-h"><h4 id="mv-h">Market view<small>Five points for '
-            'Treasury, %s</small></h4><ol>%s</ol><p class="mv-note">Commentary on the official figures below, as '
-            'published on the dates shown. Not a forecast and not investment advice.</p></section>' % (esc(date_human), "".join(lis))
+            'Treasury, %s</small></h4><ol>%s</ol><p class="mv-note">AI-generated commentary on the official figures below, as '
+            'published on the dates shown, checked by a second model and not reviewed by hand. Not a forecast and not investment advice.</p></section>' % (esc(date_human), "".join(lis))
             + MV_END)
 
 
@@ -1064,7 +1064,7 @@ def _take_html(t):
     if not t:
         return ""
     lens = esc(t.get("lens"))
-    return ('<div class="take"><p><b>Focus: %s.</b> %s</p><p class="view"><b>Our view.</b> %s</p></div>'
+    return ('<div class="take"><p><b>Focus: %s.</b> %s</p><p class="view"><b>AI-generated implications.</b> %s</p></div>'
             % (lens, esc(t.get("focus")), esc(t.get("view"))))
 
 
@@ -1184,7 +1184,7 @@ def mock_content():
         "dashboard": [{"value": "4.5-4.75%", "label": "10Y UST range", "src": "Outlook, 2026"}] * 6,
         "events": [{"when": "Soon", "place": "City - upcoming", "title": "A treasury event", "blurb": "Short blurb.", "source": {"name": "Example", "url": "https://example.com"}}],
         "note_headline": "Sample insight headline for the mock edition, eight words long",
-        "market_view": [{"head": "Curve shape", "text": "Sample point of market commentary, about thirty words, with a figure and what it means for funding, surplus cash or hedging so the layout can be checked end to end.", "view": "Sample AI Treasurer view: the check or step to consider, in one sentence.", "area": "Term borrowing", "effect": "Cost up", "tone": "watch", "sources": [{"name": "US Treasury", "url": "https://home.treasury.gov/"}]}] * 5,
+        "market_view": [{"head": "Curve shape", "text": "Sample point of market commentary, about thirty words, with a figure and what it means for funding, surplus cash or hedging so the layout can be checked end to end.", "view": "Sample AI-generated implication: the check or step to consider, in one sentence.", "area": "Term borrowing", "effect": "Cost up", "tone": "watch", "sources": [{"name": "US Treasury", "url": "https://home.treasury.gov/"}]}] * 5,
         "editor_note": ["First paragraph of the editor note for layout testing.", "Second paragraph tying it to controls and the audit trail."],
         "lead_stories": [
             {"topic": "Agentic Treasury Controls", "headline": "Lead one", "blurb": "Blurb.", "tab": "ai"},

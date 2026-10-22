@@ -20,7 +20,7 @@ The site is a single page with sections reached by anchor links. Key ideas:
 
 ## How the daily briefing is produced
 
-Each morning an automated process searches the day's news, checking specialist Treasury publications first. AI models write short summaries in their own words with a link to the original publisher, and a second, independent model checks opinion lines and market figures. The briefing publishes automatically and is not reviewed by hand before it goes out. Figures are as reported on the dates shown and are not live market data.
+Each morning an automated process searches the day's news, checking specialist Treasury publications first. AI models write short summaries in their own words with a link to the original publisher, and a second, independent model checks the AI-generated implications and market figures. The briefing publishes automatically and is not reviewed by hand before it goes out. Figures are as reported on the dates shown and are not live market data.
 
 ## Contact
 

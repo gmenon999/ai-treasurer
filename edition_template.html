@@ -29,7 +29,7 @@
 {"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":"https://theaitreasurer.com/#website","url":"https://theaitreasurer.com/","name":"The AI Treasurer","publisher":{"@id":"https://theaitreasurer.com/#author"},"image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg"},
  {"@type":"Person","@id":"https://theaitreasurer.com/#author","name":"Gopakumar Menon","honorificSuffix":"CA, CPA, CTP","url":"https://theaitreasurer.com/","image":"https://theaitreasurer.com/img/ait-gopakumar-headshot.jpg","email":"mailto:gmenon@theaitreasurer.com","sameAs":["https://www.linkedin.com/in/gopakumarmenon"]},
- {"@type":"FAQPage","@id":"https://theaitreasurer.com/#faq","mainEntity":[{"@type":"Question","name":"How is agentic AI different from RPA in Treasury?","acceptedAnswer":{"@type":"Answer","text":"RPA (robotic process automation) follows a fixed script: the same clicks and the same rules every time, and it stops when the input changes. An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast. Because it chooses its own steps, it needs controls a script never did: its own identity with limited rights, recorded versions of its rules and model, and a named person who approves what it proposes."}},{"@type":"Question","name":"What is the 5-Step Control Trail?","acceptedAnswer":{"@type":"Answer","text":"It is the test this site applies to any automated step in Treasury and Finance. Capture: data comes from a known source and is complete. Match: items are paired, and the rule and model versions are recorded. Flag: anything that does not match becomes a logged exception that is aged, never silently cleared. Approve: a named person signs off, and the agent that proposes an action never approves it. Post: the approved result is recorded with its evidence. Four foundations sit around every system: Govern, Access, Change and Monitor. It is an illustrative framework aligned with the COSO internal control framework, not a certified standard."}},{"@type":"Question","name":"How does the control trail help with Internal Audit?","acceptedAnswer":{"@type":"Answer","text":"Each step answers a question an auditor will ask. Where did this data come from? Why were these two items paired? What did not match, and how long has it been open? Who approved it, and were they independent? Does the record trace back to source? When an agent records that evidence as it works, the trail exists before the audit instead of being rebuilt afterwards. It does not replace your auditors' own testing, and nothing on this site is professional advice."}},{"@type":"Question","name":"How is the briefing put together?","acceptedAnswer":{"@type":"Answer","text":"Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the opinion lines and market figures before they appear. The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice."}}]}
+ {"@type":"FAQPage","@id":"https://theaitreasurer.com/#faq","mainEntity":[{"@type":"Question","name":"How is agentic AI different from RPA in Treasury?","acceptedAnswer":{"@type":"Answer","text":"RPA (robotic process automation) follows steps set in advance: the same clicks and the same rules each time. If the inputs change in a way the script was not built for, it may stop, raise an error or produce a wrong result, so someone has to maintain it. For stable, well-defined tasks, rules-based automation can be cheaper and easier to audit. An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast. Both need the same basic controls: their own identity, access limited to the task, change control over their scripts, rules or models, and an audit trail of what they did. Agents need further safeguards on top. Their outputs are probabilistic: the same input can give a different answer. Instructions hidden in an email or document can try to redirect them, known as prompt injection. Their behaviour can drift as models or data change. They can also take steps nobody planned. That is why a named person approves what an agent proposes."}},{"@type":"Question","name":"What is the 5-Step Control Trail?","acceptedAnswer":{"@type":"Answer","text":"It is the test this site applies to any automated step in Treasury and Finance. Capture: data comes from a known source and is complete. Match: items are paired, and the rule and model versions are recorded. Flag: anything that does not match becomes a logged exception that is aged, never silently cleared. Approve: a named person signs off, and the agent that proposes an action never approves it. Post: the approved result is recorded with its evidence. Four foundations sit around every system: Govern, Access, Change and Monitor. It is an illustrative framework aligned with the COSO internal control framework, not a certified standard."}},{"@type":"Question","name":"How does the control trail help with Internal Audit?","acceptedAnswer":{"@type":"Answer","text":"Each step answers a question an auditor will ask. Where did this data come from? Why were these two items paired? What did not match, and how long has it been open? Who approved it, and were they independent? Does the record trace back to source? When an agent records that evidence as it works, the trail exists before the audit instead of being rebuilt afterwards. It does not replace your auditors' own testing, and nothing on this site is professional advice."}},{"@type":"Question","name":"How is the briefing put together?","acceptedAnswer":{"@type":"Answer","text":"Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the implications and market figures before they appear. These are labelled AI-generated implications, not the author&rsquo;s personal view. The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice."}}]}
 ]}
 </script>
 <style>
@@ -135,6 +135,7 @@
   .sec-head p { margin: 12px 0 0; color: var(--navy-soft); max-width: 60ch; }
   .sec-head .dateline { font-size: 14px; color: var(--navy-soft); display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
   .sec-head .dateline b { color: var(--navy); }
+  .briefing .sec-head .brief-ai { margin: 10px 0 0; max-width: 70ch; font-size: 14px; line-height: 1.5; color: var(--on-dark); }
   .briefing .sec-head .brief-tag { margin: 14px 0 0; max-width: 70ch; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 19px; line-height: 1.3; color: var(--gold-light); }
   .sec-head .meta { display: flex; gap: 28px; }
   .sec-head .meta div { font-size: 13px; color: var(--navy-soft); line-height: 1.3; }
@@ -1766,6 +1767,19 @@
     .dq-list { grid-template-columns: 1fr; gap: 26px; }
     .dq-list li { padding: 0; border-left: 0; }
   }
+  .arts[hidden] { display: none !important; }
+  .arts { background: var(--navy-deep); color: var(--white); padding: 60px 0 64px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .arts .kicker { color: var(--gold-light); }
+  .arts h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 10px 0 12px; max-width: 30ch; }
+  .arts-lede { margin: 0 0 28px; font-size: 16.5px; line-height: 1.55; color: var(--on-dark); max-width: 60ch; }
+  .arts-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .art-card { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 20px; border: 1px solid rgba(255,255,255,0.18); border-top: 3px solid var(--gold-light); border-radius: 6px; text-decoration: none; color: var(--white); background: rgba(255,255,255,0.03); }
+  .art-card:hover { background: rgba(255,255,255,0.06); }
+  .art-flag { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #1A1203; background: var(--gold-light); padding: 3px 8px; border-radius: 3px; }
+  .art-t { font-family: var(--serif); font-size: 21px; line-height: 1.25; font-weight: 700; }
+  .art-d { font-size: 15px; line-height: 1.55; color: var(--on-dark); }
+  .art-go { margin-top: auto; padding-top: 6px; font-size: 14.5px; font-weight: 600; border-bottom: 1px solid var(--gold-light); align-self: flex-start; }
+  @media (max-width: 900px) { .arts { padding: 48px 0 52px; } .arts-list { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -1827,6 +1841,20 @@
     </div>
   </section>
 
+  <!-- ===== ARTICLES & INSIGHTS (Home) =====
+       HIDDEN until at least three approved articles exist (owner decision, 22 Oct 2026).
+       To launch: add one card per approved article (link to /articles/<slug>/), remove the hidden attribute,
+       and add each article URL to sitemap.xml. Never add draft or placeholder cards. -->
+  <section class="arts" id="articles" data-view="top" aria-labelledby="arts-h" hidden>
+    <div class="wrap">
+      <div class="kicker">Articles &amp; Insights</div>
+      <h2 id="arts-h">Original analysis, written and reviewed by the author</h2>
+      <p class="arts-lede">Longer pieces on value, cost and control in Treasury and Finance. Separate from the automated daily briefing.</p>
+      <div class="arts-list">
+      </div>
+    </div>
+  </section>
+
   <!-- ===== THE AGENTS (Home) ===== -->
   <section class="hag" id="agents" data-view="top" aria-labelledby="hag-h">
     <div class="wrap">
@@ -1878,7 +1906,7 @@
         <h2 id="peak-h">Today&rsquo;s briefing</h2>
         <span class="today-date"></span>
         <p class="peak-auto">Put together automatically each morning from public sources and not reviewed by hand. A news summary, not the author&rsquo;s analysis.</p>
-        <div class="peak-lead"><div class="kicker">Today&rsquo;s Lead</div><div class="note">
+        <div class="peak-lead"><div class="kicker">Today&rsquo;s Lead &middot; AI-generated</div><div class="note">
             <!--EDITOR_NOTE-->
           </div></div>
         <h3 class="peak-sub">Top stories</h3>
@@ -1901,10 +1929,10 @@
       <div class="kicker">Questions</div>
       <h2 id="faq-h">Common questions</h2>
       <div class="faq-list">
-        <details><summary>How is agentic AI different from RPA in Treasury?</summary><div class="faq-a"><p>RPA (robotic process automation) follows a fixed script: the same clicks and the same rules every time, and it stops when the input changes.</p><p>An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast. Because it chooses its own steps, it needs controls a script never did: its own identity with limited rights, recorded versions of its rules and model, and a named person who approves what it proposes.</p></div></details>
+        <details><summary>How is agentic AI different from RPA in Treasury?</summary><div class="faq-a"><p>RPA (robotic process automation) follows steps set in advance: the same clicks and the same rules each time. If the inputs change in a way the script was not built for, it may stop, raise an error or produce a wrong result, so someone has to maintain it. For stable, well-defined tasks, rules-based automation can be cheaper and easier to audit.</p><p>An AI agent works towards a goal. It reads emails, PDFs and bank files, decides which steps to take and proposes an action, such as pairing a payment to an invoice or flagging an unusual cash forecast.</p><p>Both need the same basic controls: their own identity, access limited to the task, change control over their scripts, rules or models, and an audit trail of what they did. Agents need further safeguards on top. Their outputs are probabilistic: the same input can give a different answer. Instructions hidden in an email or document can try to redirect them, known as prompt injection. Their behaviour can drift as models or data change. They can also take steps nobody planned. That is why a named person approves what an agent proposes.</p></div></details>
         <details><summary>What is the 5-Step Control Trail?</summary><div class="faq-a"><p>It is the test this site applies to any automated step in Treasury and Finance. Capture: data comes from a known source and is complete. Match: items are paired, and the rule and model versions are recorded. Flag: anything that does not match becomes a logged exception that is aged, never silently cleared. Approve: a named person signs off, and the agent that proposes an action never approves it. Post: the approved result is recorded with its evidence.</p><p>Four foundations sit around every system: Govern, Access, Change and Monitor. It is an illustrative framework aligned with the COSO internal control framework, not a certified standard.</p></div></details>
         <details><summary>How does the control trail help with Internal Audit?</summary><div class="faq-a"><p>Each step answers a question an auditor will ask. Where did this data come from? Why were these two items paired? What did not match, and how long has it been open? Who approved it, and were they independent? Does the record trace back to source?</p><p>When an agent records that evidence as it works, the trail exists before the audit instead of being rebuilt afterwards. It does not replace your auditors' own testing, and nothing on this site is professional advice.</p></div></details>
-        <details><summary>How is the briefing put together?</summary><div class="faq-a"><p>Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the opinion lines and market figures before they appear.</p><p>The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice.</p></div></details>
+        <details><summary>How is the briefing put together?</summary><div class="faq-a"><p>Each morning an automated process searches the day's news on AI, Treasury, payments, markets and regulation, checking specialist Treasury publications first. AI models write a short summary of each story in their own words and link it to the original publisher. A second, independent model checks the implications and market figures before they appear. These are labelled AI-generated implications, not the author&rsquo;s personal view.</p><p>The briefing publishes automatically and is not reviewed by hand before it goes out. It is free to read with no sign-up. Figures are as reported on the dates shown, and nothing in it is financial or professional advice.</p></div></details>
       </div>
     </div>
   </section>
@@ -1921,6 +1949,7 @@
         <div>
           <h2 id="brief-h">Treasury Today</h2>
           <p class="brief-tag">Today&rsquo;s top AI, Treasury and Finance stories, from every market</p>
+          <p class="brief-ai">Summaries and implications are AI-generated, checked by a second model and not reviewed by hand. They are not the author&rsquo;s personal analysis.</p>
           <div class="dateline">
             <!--DATELINE-->
           </div>
@@ -2070,7 +2099,7 @@
           <p class="disclaim">Policy rates, benchmark rates and FX reference rates from official sources, refreshed through the day. Each figure links to its source and shows its date. Not live market data and not investment advice.</p>
         </div>
 
-        <!-- MARKET VIEW LOCKED 2026-10-09 (tag market-view-v1): design, layout, charts and AI Treasurer view panels are final. Do not change without the owner's explicit instruction. Daily content is generated into the slot by generate.py. -->
+        <!-- MARKET VIEW LOCKED 2026-10-09 (tag market-view-v1): design, layout, charts and implications panels are final (panel label renamed to "AI-generated implications" at the owner's instruction, 22 Oct 2026). Do not change without the owner's explicit instruction. Daily content is generated into the slot by generate.py. -->
         <!--MARKET_VIEW-->
 
         <div class="live" aria-label="Live market prices from TradingView">
@@ -3365,7 +3394,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
         +'<div class="hzk"><span><i style="background:rgba(229,134,107,0.5)"></i>Closed or disrupted</span><span><i style="background:rgba(111,194,154,0.6)"></i>Open or reopening</span><span><i style="background:#D9B867"></i>Brent, as reported</span></div>'
         +'<div class="hzc" id="hz-c">'+o+'<div class="hzt" id="hz-t" hidden></div></div>'
         +'<ol class="hzl">'+evs+'</ol>'
-        +'<div class="vw"><b>AI Treasurer view</b><p>'+e(H.view)+'</p></div>'
+        +'<div class="vw"><b>AI-generated implications</b><p>'+e(H.view)+'</p></div>'
         +'<details class="hzd"><summary>Prices and sources used</summary><ul>'+pts+'</ul></details>'
         +'<p class="cap">'+e(H.note)+'</p></section>';
     }
@@ -3373,13 +3402,13 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       var P = D.positions || {}, pk = pos === 'exp' ? 'exporter' : 'importer';
       var cards = D.crude.map(function(c){ var u = dir === 'up', s = (pos === 'exp' && c.exporter) ? c.exporter : c;
         return '<div class="cd"><h5>'+e(c.channel)+'</h5><p>'+e(u ? s.up_what : s.down_what)+'</p><span class="pill" data-tone="'+e(u ? s.up_tone : s.down_tone)+'">'+e(u ? s.up_effect : s.down_effect)+'</span>'
-          +'<div class="vw"><b>AI Treasurer view</b><p>'+e(u ? s.up_view : s.down_view)+'</p></div></div>'; }).join('');
+          +'<div class="vw"><b>AI-generated implications</b><p>'+e(u ? s.up_view : s.down_view)+'</p></div></div>'; }).join('');
       return '<section class="mxs" aria-labelledby="cr-h"><h4 id="cr-h">Crude oil and Treasury decisions</h4><p class="mxh">Crude oil changes five Treasury decisions, and importers and exporters feel it in opposite ways</p>'
-        +'<p class="mxsub">Pick a direction and your position. Each card shows what a move in crude tends to change and the AI Treasurer view on what to check. General patterns, not a price forecast.</p>'
+        +'<p class="mxsub">Pick a direction and your position. Each card shows what a move in crude tends to change, with AI-generated implications on what to check. General patterns, not a price forecast.</p>'
         +'<div class="segs"><div class="seg" id="cr-seg" role="group" aria-label="Direction of crude oil"><button type="button" data-d="up" aria-pressed="'+(dir==='up')+'">Crude rises</button><button type="button" data-d="down" aria-pressed="'+(dir==='down')+'">Crude falls</button></div>'
         +'<div class="seg" id="cr-pos" role="group" aria-label="Your position in crude oil"><button type="button" data-p="imp" aria-pressed="'+(pos==='imp')+'">'+e((P.importer||{}).label || 'Crude importer')+'</button><button type="button" data-p="exp" aria-pressed="'+(pos==='exp')+'">'+e((P.exporter||{}).label || 'Crude exporter')+'</button></div></div>'
         +'<p class="mxsub" id="cr-posd">'+e((P[pk]||{}).def || '')+'</p>'
-        +'<div class="cards">'+cards+'</div><p class="cap">Views are opinion for discussion, not advice and not a forecast of oil prices.</p></section>';
+        +'<div class="cards">'+cards+'</div><p class="cap">Implications are AI-generated, for discussion only, not advice and not a forecast of oil prices.</p></section>';
     }
     function qatar(){
       var Q = D.qatar, mx = Math.max.apply(null, Q.rates.map(function(r){ return r.value; }))*1.12;
@@ -3388,7 +3417,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       var tmx = Math.max.apply(null, Q.turnover.map(function(t){ return t.value; }))*1.1;
       var tb = Q.turnover.map(function(t){ return '<li><span>'+link(d(t.date),t.source_url)+'</span><span class="bt"><span class="bf" style="width:'+(t.value/tmx*100)+'%"></span></span><span class="bv">'+t.value.toFixed(0)+'</span></li>'; }).join('');
       var pts = Q.points.map(function(p){ var s = [[p.s1n,p.s1u],[p.s2n,p.s2u]].filter(function(x){ return x[0]; }).map(function(x){ return link(x[0],x[1]); }).join(' and ');
-        return '<div class="cd"><h5>'+e(p.head)+'</h5><p>'+e(p.text)+'</p><span class="pill" data-tone="'+e(p.tone)+'">'+e(p.effect)+'</span><div class="vw"><b>AI Treasurer view</b><p>'+e(p.view)+'</p></div>'+(s?'<div class="src">Source: '+s+'</div>':'')+'</div>'; }).join('');
+        return '<div class="cd"><h5>'+e(p.head)+'</h5><p>'+e(p.text)+'</p><span class="pill" data-tone="'+e(p.tone)+'">'+e(p.effect)+'</span><div class="vw"><b>AI-generated implications</b><p>'+e(p.view)+'</p></div>'+(s?'<div class="src">Source: '+s+'</div>':'')+'</div>'; }).join('');
       var ref = Q.equities[0] ? d(Q.equities[0].asof) : '';
       return '<section class="mxs" aria-labelledby="qa-h"><h4 id="qa-h">Qatar money markets and equities</h4><p class="mxh">QCB deposit rate now sits above both SOFR and the top of the Fed range</p>'
         +'<p class="mxsub">Central bank rates against the dollar benchmarks, and the equity market in brief. Compiled from the sources linked, as published on the dates shown; not live data.</p>'
