@@ -10,7 +10,7 @@ The site is a single page with sections reached by anchor links. Key ideas:
 
 ## Sections
 
-- [Home](https://theaitreasurer.com/): headline position, the proposed AI agents across Treasury and Finance, grouped by area (each links to its job description), the interactive control trail with worked cases, today's top stories and common questions.
+- [Home](https://theaitreasurer.com/): five short sections. The headline position; Decide before you deploy (four business questions for the CFO, then the approach: fix the process and data, rule based automation, AI, AI agents; then start small with a pilot, measure and decide); where agents fit (22 proposed agents across 124 functions, each reporting to a named person); how control works (the five step control trail); and today's top three AI-generated briefing headlines with sources.
 - [Agentic Automation](https://theaitreasurer.com/#agentic): a proposed map of functions across Treasury and Finance, how far an AI agent goes in each, the control that keeps each one safe, and go-live checks.
 - [AI Controls](https://theaitreasurer.com/#controls): the control trail and four foundations in full, with what the auditor asks at each step and illustrative worked cases (for example bank reconciliation, supplier payment, cash forecast, FX confirmation).
 - [Treasury Today](https://theaitreasurer.com/#briefing): the daily briefing on AI, Treasury and Finance in five sections (AI and Technology, Treasury and Payments, Risk and Markets, Regulation and Compliance, Events). Each story is summarised in original words and links to its publisher.

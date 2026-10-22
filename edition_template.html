@@ -1814,6 +1814,64 @@
     .ap-steps li:not(:last-child)::after { content: none; }
     .ap-key { font-size: 18px; }
   }
+  /* ---------- Home redesign, Oct 2026: five screens ---------- */
+  .dd, .ct, .td { color: var(--white); padding: 64px 0 68px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .dd { background: var(--navy); } .ct { background: var(--navy); } .td { background: var(--navy-deep); }
+  .dd .kicker, .ct .kicker, .td .kicker, .hag-min .kicker { color: var(--gold-light); }
+  .dd h2, .ct h2, .td h2, .hag-min h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.01em; margin: 10px 0 30px; max-width: 30ch; }
+  .dd-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; }
+  .dd-stage { position: relative; border-top: 3px solid var(--gold-light); padding-top: 16px; }
+  .dd-stage:not(:last-child)::after { content: "\2192"; position: absolute; right: -32px; top: 10px; font-size: 22px; color: var(--gold-light); }
+  .dd-n { font-family: var(--serif); color: var(--gold-light); margin-right: 10px; }
+  .dd-stage h3 { font-family: var(--serif); font-size: 22px; line-height: 1.2; margin: 2px 0 12px; }
+  .dd details { border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .dd summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; font-size: 16px; line-height: 1.4; color: var(--white); }
+  .dd summary::-webkit-details-marker { display: none; }
+  .dd summary::after { content: "+"; color: var(--gold-light); font-size: 18px; line-height: 1.2; flex: none; }
+  .dd details[open] summary::after { content: "\2212"; }
+  .dd details p { margin: 0 0 12px; font-size: 15px; line-height: 1.55; color: var(--on-dark); }
+  .dd details em, .dd-key em { font-family: var(--serif); color: var(--gold-light); }
+  .dd-key { margin: 32px 0 0; font-size: 20px; line-height: 1.4; }
+  .hag-min { padding: 64px 0 68px; }
+  .am-bar { display: flex; gap: 6px; height: 76px; }
+  .am-seg { display: flex; flex-direction: column; justify-content: center; padding: 0 16px; background: var(--navy-mid); border-top: 3px solid var(--gold-light); color: var(--white); text-decoration: none; min-width: 0; }
+  .am-seg:hover { background: #24406A; }
+  .am-seg b { font-family: var(--serif); font-size: 19px; line-height: 1.2; }
+  .am-seg span { font-size: 14px; color: var(--on-dark); }
+  .am-sm { padding: 0 8px; align-items: center; text-align: center; }
+  .am-line { margin: 18px 0 0; font-size: 17px; line-height: 1.55; color: var(--white); max-width: 60ch; }
+  .am-go { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--white); font-weight: 700; font-size: 15.5px; text-decoration: none; border-bottom: 2px solid var(--gold-light); padding-bottom: 2px; }
+  .am-go svg { width: 16px; height: 16px; }
+  .ct-chain { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; counter-reset: ct; }
+  .ct-chain li { counter-increment: ct; position: relative; border-top: 3px solid var(--gold-light); padding-top: 14px; }
+  .ct-chain li::before { content: counter(ct); display: block; font-family: var(--serif); font-size: 15px; color: var(--gold-light); }
+  .ct-chain b { display: block; font-family: var(--serif); font-size: 21px; line-height: 1.2; }
+  .ct-chain span { display: block; margin-top: 4px; font-size: 15px; line-height: 1.45; color: var(--on-dark); }
+  .td h2 { margin-bottom: 4px; }
+  .td .today-date { display: block; color: var(--on-dark-soft); font-size: 14px; margin-bottom: 14px; }
+  .td-ai { margin: 0 0 18px; font-size: 14px; color: var(--on-dark); }
+  .td .today-list { max-width: 820px; }
+  .td .today-list .sum { display: none; }
+  .td .today-list .topic { display: none; }
+  .intro .hero-by { display: flex; align-items: center; gap: 12px; }
+  .intro .hero-face { flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold-light); }
+  .td-contact { margin: 34px 0 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 15.5px; line-height: 1.6; color: var(--on-dark); max-width: 70ch; }
+  .td-contact a { color: var(--white); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+  .briefing .peak-lead { margin: 22px 0 0; max-width: 900px; }
+  .briefing .peak-lead .note p, .briefing .peak-lead .note p + p { display: block; -webkit-line-clamp: unset; line-clamp: unset; overflow: visible; max-width: 75ch; }
+  @media (max-width: 900px) {
+    .dd, .ct, .td, .hag-min { padding: 46px 0 50px; }
+    .dd h2, .ct h2, .td h2, .hag-min h2 { margin-bottom: 22px; }
+    .dd-flow { grid-template-columns: 1fr; gap: 30px; }
+    .dd-stage:not(:last-child)::after { content: none; }
+    .am-bar { height: 70px; }
+    .am-seg { padding: 0 10px; } .am-seg b { font-size: 16px; } .am-seg span { font-size: 13px; }
+    .ct-chain { grid-template-columns: 1fr; gap: 0; }
+    .ct-chain li { display: grid; grid-template-columns: 26px 92px minmax(0, 1fr); align-items: baseline; border-top: 0; border-left: 3px solid var(--gold-light); padding: 8px 0 8px 12px; }
+    .ct-chain li::before { grid-column: 1; }
+    .ct-chain b { font-size: 18px; } .ct-chain span { margin-top: 0; }
+    .dd-key { font-size: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -1853,41 +1911,58 @@
       <div class="kicker">AI &middot; Treasury &middot; Finance</div>
       <h1 id="front-h"><span class="nw">Delegate the workflow,</span> <span class="nw">never the authority.</span></h1>
       <p class="lede">How to combine Human Judgement, Rule Based Automation and AI Agents across Treasury and Finance, and decide where each belongs.</p>
-      <p class="hero-by">By <a href="#about">Gopakumar Menon, CA, CPA, CTP</a> &middot; two decades in financial control, reporting and Treasury</p>
+      <p class="hero-by"><img class="hero-face" src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon" width="44" height="44"><span>By <a href="#about">Gopakumar Menon, CA, CPA, CTP</a> &middot; two decades in financial control, reporting and Treasury</span></p>
       <div class="actions">
-        <a class="cta-main" href="#decisions">Start with four questions<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
-        <a class="alt cta-brief" href="#agents"><span>See how the agents work</span></a>
+        <a class="cta-main" href="#decisions">Start with the decision<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- ===== DECISION QUESTIONS (Home) ===== -->
-  <section class="dq" id="decisions" data-view="top" aria-labelledby="dq-h">
+  <!-- ===== DECIDE BEFORE YOU DEPLOY (Home, 2026-10 redesign) ===== -->
+  <section class="dd" id="decisions" data-view="top" aria-labelledby="dd-h">
     <div class="wrap">
-      <div class="kicker">Start with the business</div>
-      <h2 id="dq-h">Four questions to answer before AI goes into Treasury and Finance</h2>
-      <ol class="dq-list">
-        <li><h3>What problem are you solving, and what does it cost today?</h3><p>Start with the business, not the technology. Name the problem in one sentence, for example a slow close at month end, idle cash sitting in bank accounts, or payments released without full checks. Then put a cost on it in money, time or risk.</p><p class="dq-punch"><em>If the cost is small, the problem can wait.</em></p></li>
-        <li><h3>How do you measure it today?</h3><p>Before changing anything, know your numbers. How many days does the close take? How many payments need correcting? How many hours go into the cash forecast? These figures are your benchmark. Measure the same figures after any change.</p><p class="dq-punch"><em>If they have not moved, the change has not worked.</em></p></li>
-        <li><h3>Would fixing the process be enough?</h3><p>Look at the process before the tools. Remove steps that add nothing, agree one way of working across entities and banks, and set clear rules for handling exceptions. Often that alone solves the problem.</p><p class="dq-punch"><em>Automating a messy process only makes the mess faster.</em></p></li>
-        <li><h3>Do you trust your data?</h3><p>A new system will not fix bad data. It will use it faster. Check that bank, ledger and forecast data is complete, consistent and reconciled, and that someone owns each source.</p><p class="dq-punch"><em>If you would not sign a report built on it today, do not build on it tomorrow.</em></p></li>
+      <div class="kicker">Decide before you deploy</div>
+      <h2 id="dd-h">Decide on the business first, then choose the simplest approach.</h2>
+      <ol class="dd-flow">
+        <li class="dd-stage"><h3><span class="dd-n">1</span>Ask four questions</h3>
+          <details><summary>What does the problem cost today?</summary><p><em>If the cost is small, the problem can wait.</em></p></details><details><summary>How do you measure it today?</summary><p><em>If the numbers have not moved after a change, it has not worked.</em></p></details><details><summary>Would fixing the process be enough?</summary><p><em>Automating a messy process only makes the mess faster.</em></p></details><details><summary>Do you trust your data?</summary><p><em>If you would not sign a report built on it today, do not build on it tomorrow.</em></p></details></li>
+        <li class="dd-stage"><h3><span class="dd-n">2</span>Choose the approach</h3>
+          <details><summary>Fix the process and data</summary><p>When steps add nothing or the data is incomplete.</p></details><details><summary>Rule Based Automation</summary><p>For predictable, clearly defined work.</p></details><details><summary>AI</summary><p>For interpretation: free text, PDFs and emails.</p></details><details><summary>AI Agents</summary><p>Where changing tasks need coordinating.</p></details></li>
+        <li class="dd-stage"><h3><span class="dd-n">3</span>Start small</h3>
+          <details><summary>Pilot</summary><p>A limited scope, measured against today&rsquo;s baseline.</p></details><details><summary>Measure</summary><p>Count cash savings and released capacity separately. <em>Decide in advance where the released time goes, or the saving never appears.</em></p></details><details><summary>Decide</summary><p>Scale, redesign or stop, against thresholds agreed before the pilot started.</p></details></li>
       </ol>
+      <p class="dd-key"><em>Choose the simplest effective solution, with clear human accountability.</em></p>
     </div>
   </section>
 
-  <!-- ===== CHOOSE THE RIGHT APPROACH (Home) ===== -->
-  <section class="ap" id="approach" data-view="top" aria-labelledby="ap-h">
+  <!-- ===== WHERE AGENTS FIT (Home, compact) ===== -->
+  <section class="hag hag-min" id="agents" data-view="top" aria-labelledby="hag-h">
     <div class="wrap">
-      <div class="kicker">After the four questions</div>
-      <h2 id="ap-h">Choose the right approach</h2>
-      <p class="ap-lede">Not every Finance problem needs AI, and not every AI task needs an agent. Fix weak processes and data first, use rules for predictable work, AI for interpretation, and agents where coordinating changing tasks adds value.</p>
-      <ol class="ap-steps">
-        <li><b>Fix the process and data</b><span>When steps add nothing or the data is incomplete</span></li>
-        <li><b>Rule Based Automation</b><span>For predictable, clearly defined work</span></li>
-        <li><b>AI</b><span>For interpretation: free text, PDFs, emails</span></li>
-        <li><b>AI Agents</b><span>Where changing tasks need coordinating</span></li>
+      <div class="kicker">Where agents fit</div>
+      <h2 id="hag-h">Agents do the work; people keep the authority.</h2>
+      <div class="am-bar" role="list">
+        <a role="listitem" class="am-seg" style="flex:11" href="#ag-map" data-agf="treasury"><b>Treasury</b><span>11 agents</span></a>
+        <a role="listitem" class="am-seg" style="flex:10" href="#ag-map" data-agf="finance"><b>Finance</b><span>10 agents</span></a>
+        <a role="listitem" class="am-seg am-sm" style="flex:3" href="#ag-map" data-agf="across" aria-label="Across both: 1 agent"><b>Both</b><span>1</span></a>
+      </div>
+      <p class="am-line">22 agents across 124 functions. None acts alone: each reports to a named person.</p>
+      <a class="am-go" href="#agentic">See every agent<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+    </div>
+  </section>
+
+  <!-- ===== HOW CONTROL WORKS (Home, compact) ===== -->
+  <section class="ct" id="trail" data-view="top" aria-labelledby="ct-h">
+    <div class="wrap">
+      <div class="kicker">How control works</div>
+      <h2 id="ct-h">Every automated step leaves a trail an auditor can follow.</h2>
+      <ol class="ct-chain">
+        <li><b>Capture</b><span>Keep the source</span></li>
+        <li><b>Match</b><span>Pair with books and bank</span></li>
+        <li><b>Flag</b><span>Raise every difference</span></li>
+        <li><b>Approve</b><span>A named person signs off</span></li>
+        <li><b>Post</b><span>Record it with the evidence</span></li>
       </ol>
-      <p class="ap-key"><em>Choose the simplest effective solution, with clear human accountability.</em></p>
+      <a class="am-go" href="#controls">See the worked cases<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
     </div>
   </section>
 
@@ -1905,84 +1980,16 @@
     </div>
   </section>
 
-  <!-- ===== THE AGENTS (Home) ===== -->
-  <section class="hag" id="agents" data-view="top" aria-labelledby="hag-h">
+  <!-- ===== TODAY IN TREASURY (Home, slim) ===== -->
+  <section class="peak td" id="today" data-view="top" aria-labelledby="peak-h">
     <div class="wrap">
-      <div class="hag-top">
-        <div class="hag-copy">
-          <div class="kicker">Agentic Automation</div>
-          <h2 id="hag-h">AI agents across Treasury and Finance. Each one reports to a person.</h2>
-          <p class="hag-lede">Choose an area to read each agent&rsquo;s job description: what it does, what it may never do, and what the auditor will check.</p>
-        </div>
-        <dl class="hag-stats">
-          <div><dt>124</dt><dd>functions mapped across 22 areas of Treasury and Finance</dd></div>
-          <div><dt>77</dt><dd>are drafted by the agent and always approved by a person</dd></div>
-          <div><dt>0</dt><dd>are left to an agent alone, with no person in the loop</dd></div>
-        </dl>
-      </div>
-      <div class="hag-cards">
-        <a class="hag-card" href="#ag-map" data-agf="treasury"><span class="hag-ct">Treasury</span><span class="hag-cm">11 agents &middot; 59 functions</span><span class="hag-cx">Liquidity, cash forecast, bank reconciliation, FX and hedging, debt and covenants</span><span class="hag-cgo">See the Treasury agents</span></a>
-        <a class="hag-card" href="#ag-map" data-agf="finance"><span class="hag-ct">Finance</span><span class="hag-cm">10 agents &middot; 59 functions</span><span class="hag-cx">Ledger, payables, receivables, reporting, tax, payroll</span><span class="hag-cgo">See the Finance agents</span></a>
-        <a class="hag-card" href="#ag-map" data-agf="across"><span class="hag-ct">Across both</span><span class="hag-cm">1 agent &middot; 6 functions</span><span class="hag-cx">Governance: Treasury policy, delegation of authority, segregation of duties</span><span class="hag-cgo">See the Governance agent</span></a>
-      </div>
-      <div class="hag-foot"><a class="hag-all" href="#agentic">See every agent<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><span class="hag-note">Counts and levels are the author&rsquo;s proposals.</span></div>
-    </div>
-  </section>
-
-  <!-- ===== BENEFITS ===== -->
-  <section class="benefits trail" id="trail" data-view="top" aria-label="The five-step control trail">
-    <div class="wrap">
-      <div class="kicker">How every agent is controlled</div>
-      <h2 class="trail-h">Five steps from data to ledger</h2>
-      <p class="ht-intro">Pick a step to see what the agent does, what a person decides and what the auditor sees.</p>
-      <ul>
-        <li><b>Capture</b><span>Take in the data and keep the source.</span></li>
-        <li><b>Match</b><span>Compare it with the books and the bank.</span></li>
-        <li><b>Flag</b><span>Raise every difference. Never hide one.</span></li>
-        <li><b>Approve</b><span>A named person signs off.</span></li>
-        <li><b>Post</b><span>Record it with the evidence.</span></li>
-      </ul>
-      <div class="ht-host" hidden></div>
-      <a class="ht-more" href="#controls">See all worked cases on AI Controls</a>
-    </div>
-  </section>
-
-
-  <!-- ===== START SMALL (Home) ===== -->
-  <section class="ss" id="start" data-view="top" aria-labelledby="ss-h">
-    <div class="wrap">
-      <div class="kicker">Before you scale</div>
-      <h2 id="ss-h">Start small, then scale or stop</h2>
-      <ol class="ss-steps">
-        <li><b>Pilot</b><p>A limited scope, such as a few bank accounts for three months, measured against today&rsquo;s baseline.</p></li>
-        <li><b>Measure</b><p>Count cash savings and released capacity separately.</p><p class="ss-key"><em>Decide in advance where the released time goes, or the saving never appears.</em></p></li>
-        <li><b>Decide</b><p>Scale, redesign or stop, against thresholds agreed before the pilot started.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ===== TODAY'S BRIEFING PREVIEW + PRACTITIONER DIALOGUE ===== -->
-  <section class="peak" id="today" data-view="top" aria-labelledby="peak-h">
-    <div class="wrap peak-grid">
-      <div class="peak-brief">
-        <div class="peak-head"><div class="kicker">Treasury Today</div><span class="oa-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 7V5a3 3 0 0 1 5.8-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="7" width="10" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Free &middot; No sign-up</span></div>
-        <h2 id="peak-h">Today&rsquo;s briefing</h2>
-        <span class="today-date"></span>
-        <p class="peak-auto">Put together automatically each morning from public sources and not reviewed by hand. A news summary, not the author&rsquo;s analysis.</p>
-        <div class="peak-lead"><div class="kicker">Today&rsquo;s Lead &middot; AI-generated</div><div class="note">
-            <!--EDITOR_NOTE-->
-          </div></div>
-        <h3 class="peak-sub">Top stories</h3>
-        <ol class="today-list"></ol>
-        <div class="peak-links"><a class="peak-all" href="#briefing">Read the full briefing<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><a class="peak-mk" href="#markets">Today&rsquo;s markets view</a></div>
-      </div>
-      <aside class="dialogue" id="dialogue" aria-labelledby="dlg-h">
-        <div class="kicker">Get in touch</div>
-        <h3 id="dlg-h">Compare notes on AI and controls in Treasury and Finance</h3>
-        <p>If your team is using agents, approval steps or audit trails, I would like to hear what is working and what is not. I do not sell services through this site.</p>
-        <a class="dlg-mail" href="mailto:gmenon@theaitreasurer.com?subject=Practitioner%20Dialogue">gmenon@theaitreasurer.com</a>
-        <p class="dlg-note">Views are my own and do not represent any employer.</p>
-      </aside>
+      <div class="kicker">Today in Treasury</div>
+      <h2 id="peak-h">What moved in Treasury and Finance today.</h2>
+      <span class="today-date"></span>
+      <p class="td-ai">AI-generated summaries of public sources, not the author&rsquo;s analysis.</p>
+      <ol class="today-list"></ol>
+      <div class="peak-links"><a class="peak-all" href="#briefing">Read the full briefing<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a><a class="peak-mk" href="#markets">Today&rsquo;s markets view</a></div>
+      <p class="td-contact" id="dialogue">Compare notes on AI and controls: <a href="mailto:gmenon@theaitreasurer.com?subject=Practitioner%20Dialogue">gmenon@theaitreasurer.com</a>. Views are my own and do not represent any employer.</p>
     </div>
   </section>
 
@@ -2016,6 +2023,9 @@
           <div class="dateline">
             <!--DATELINE-->
           </div>
+          <div class="peak-lead"><div class="kicker">Today&rsquo;s Lead &middot; AI-generated</div><div class="note">
+            <!--EDITOR_NOTE-->
+          </div></div>
         </div>
       </div>
       <div class="leads-head">
