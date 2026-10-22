@@ -1784,6 +1784,36 @@
   .art-d { font-size: 15px; line-height: 1.55; color: var(--on-dark); }
   .art-go { margin-top: auto; padding-top: 6px; font-size: 14.5px; font-weight: 600; border-bottom: 1px solid var(--gold-light); align-self: flex-start; }
   @media (max-width: 900px) { .arts { padding: 48px 0 52px; } .arts-list { grid-template-columns: 1fr; } }
+  .ap, .ss { background: var(--navy-mid); color: var(--white); padding: 56px 0 60px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .ap .kicker, .ss .kicker { color: var(--gold-light); }
+  .ap h2, .ss h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.01em; margin: 10px 0 14px; }
+  .ap-lede { margin: 0 0 28px; font-size: 17px; line-height: 1.6; color: var(--white); max-width: 66ch; }
+  .ap-steps, .ss-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .ap-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ss-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; }
+  .ap-steps li, .ss-steps li { position: relative; padding: 14px 28px 0 0; border-top: 3px solid var(--gold-light); }
+  .ap-steps li + li { padding-left: 4px; }
+  .ap-steps li:not(:last-child)::after { content: "\2192"; position: absolute; right: 8px; top: 12px; color: var(--gold-light); font-size: 18px; }
+  .ap-steps b, .ss-steps b { display: block; font-family: var(--serif); font-size: 20px; line-height: 1.25; }
+  .ap-steps span { display: block; margin-top: 6px; font-size: 15px; line-height: 1.5; color: var(--white); }
+  .ss-steps li + li { margin-left: 24px; }
+  .ss-steps p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--white); }
+  .ap-key, .ss-key { font-family: var(--serif); color: var(--gold-light); }
+  .ap-key { margin: 26px 0 0; font-size: 20px; line-height: 1.4; }
+  .ss-steps .ss-key { margin-top: 10px; font-size: 17px; line-height: 1.45; color: var(--gold-light); }
+  /* Home briefing preview, slimmer: headlines and sources only, lead trimmed */
+  .peak .today-list .sum { display: none; }
+  .peak .today-list li { padding: 14px 0; }
+  .peak-lead .note p { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .peak-lead .note p + p { display: none; }
+  @media (max-width: 900px) {
+    .ap, .ss { padding: 44px 0 48px; }
+    .ap-steps, .ss-steps { grid-template-columns: 1fr; gap: 14px; }
+    .ap-steps li, .ss-steps li { padding: 0 0 0 14px; border-top: 0; border-left: 3px solid var(--gold-light); margin-left: 0; }
+    .ap-steps li + li, .ss-steps li + li { padding-left: 14px; margin-left: 0; }
+    .ap-steps li:not(:last-child)::after { content: none; }
+    .ap-key { font-size: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -1845,6 +1875,22 @@
     </div>
   </section>
 
+  <!-- ===== CHOOSE THE RIGHT APPROACH (Home) ===== -->
+  <section class="ap" id="approach" data-view="top" aria-labelledby="ap-h">
+    <div class="wrap">
+      <div class="kicker">After the four questions</div>
+      <h2 id="ap-h">Choose the right approach</h2>
+      <p class="ap-lede">Not every Finance problem needs AI, and not every AI task needs an agent. Fix weak processes and data first, use rules for predictable work, AI for interpretation, and agents where coordinating changing tasks adds value.</p>
+      <ol class="ap-steps">
+        <li><b>Fix the process and data</b><span>When steps add nothing or the data is incomplete</span></li>
+        <li><b>Rule Based Automation</b><span>For predictable, clearly defined work</span></li>
+        <li><b>AI</b><span>For interpretation: free text, PDFs, emails</span></li>
+        <li><b>AI Agents</b><span>Where changing tasks need coordinating</span></li>
+      </ol>
+      <p class="ap-key"><em>Choose the simplest effective solution, with clear human accountability.</em></p>
+    </div>
+  </section>
+
   <!-- ===== ARTICLES & INSIGHTS (Home) =====
        HIDDEN until at least three approved articles exist (owner decision, 22 Oct 2026).
        To launch: add one card per approved article (link to /articles/<slug>/), remove the hidden attribute,
@@ -1901,6 +1947,19 @@
     </div>
   </section>
 
+
+  <!-- ===== START SMALL (Home) ===== -->
+  <section class="ss" id="start" data-view="top" aria-labelledby="ss-h">
+    <div class="wrap">
+      <div class="kicker">Before you scale</div>
+      <h2 id="ss-h">Start small, then scale or stop</h2>
+      <ol class="ss-steps">
+        <li><b>Pilot</b><p>A limited scope, such as a few bank accounts for three months, measured against today&rsquo;s baseline.</p></li>
+        <li><b>Measure</b><p>Count cash savings and released capacity separately.</p><p class="ss-key"><em>Decide in advance where the released time goes, or the saving never appears.</em></p></li>
+        <li><b>Decide</b><p>Scale, redesign or stop, against thresholds agreed before the pilot started.</p></li>
+      </ol>
+    </div>
+  </section>
 
   <!-- ===== TODAY'S BRIEFING PREVIEW + PRACTITIONER DIALOGUE ===== -->
   <section class="peak" id="today" data-view="top" aria-labelledby="peak-h">
