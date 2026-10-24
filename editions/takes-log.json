@@ -819,6 +819,78 @@
     "cost_usd": 0.234
    },
    "edition_cost_usd": 1.6706
+  },
+  {
+   "date": "2026-10-24",
+   "items": [
+    {
+     "headline": "Kyriba launches TAI, agentic AI that executes Treasury actions only after human approval",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Real-time bank APIs replace overnight batch files with 15-minute syncs",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "SWIFT says 98% of cross-border instructions now use ISO 20022",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Wider rate differentials and USD strength lift funding and hedging costs",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "AMLA finalises binding EU standards on PEP screening and due diligence",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Deloitte finds working capital now the primary driver of liquidity",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "BCG sees Treasury AI agents moving to autonomous execution within policy limits",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Citi Institute finds 72% of corporates prioritise releasing trapped liquidity",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "EY: 98% of firms have AI governance, but 69% doubt their expertise",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "ECB's Pontes settles tokenised assets in central bank money 24/7/365",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "French debt crisis drives euro to lows against yen as havens rally",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "US 10-year yield falls below 5% in biggest one-day drop since March 2023",
+     "status": "published",
+     "lens": "Risk"
+    }
+   ],
+   "cost_usd": 0.2129,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 3: The claim 'Only the government benchmark has eased' is not in the cited facts. Nothing cited shows that corporate rates or other yields have not eased, so this overstates what the facts support.; point 4: The point says rate differentials are 'wider', but the cited figures do not show that. The 3M bill is down 2 bp since 25 September and €STR is unchanged, so the gap is slightly narrower.",
+    "cost_usd": 0.4004
+   },
+   "edition_cost_usd": 1.3196
   }
  ]
 }
