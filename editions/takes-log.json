@@ -891,6 +891,73 @@
     "cost_usd": 0.4004
    },
    "edition_cost_usd": 1.3196
+  },
+  {
+   "date": "2026-10-26",
+   "items": [
+    {
+     "headline": "OCT Inst carries 17,000+ instant transfers into Spain from 102 countries",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "BNY and Citadel Securities complete first tokenised US Treasury triparty repo",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "OFAC designates A7 Network as FinCEN proposes blocking sub-agent transmittals",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Kyriba adds shareable Skills and 3 MB document uploads to TAI",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Datalog TMS opens OAuth 2.0-secured REST API to link banks and ERPs",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "PYMNTS Working Capital Index falls 6% as early payments drop to 12%",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "EPC's 2028 OCT Inst rulebook extends name fields to 140 characters",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "AICPA practice aid helps auditors test AI in financial reporting and ICFR",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Partior and OpenAssets prove atomic DvP with 24/7 settlement finality",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OAT-Bund spread hits 177.7 basis points as euro slides to $1.12",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review with 120-day comment period",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.2717,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1156
+   },
+   "edition_cost_usd": 1.2866
   }
  ]
 }
