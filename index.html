@@ -965,6 +965,8 @@
   .js .ag-cards .ag-pt { position: static; margin: 0; padding: 2px 0 12px; background: transparent; border-bottom: 1px solid var(--ag-line); }
   .js .ag-cards .ag-pt .ag-cg, .js .ag-cards .ag-pt h3 { display: none; }
   .js .ag-panels, .js .ag-scrim { display: none !important; }
+  .js .ag-card { scroll-margin-top: calc(var(--ag-top) + 12px); }
+  .js .ag-cards .ag-xb { display: flex; justify-content: center; width: 100%; min-height: 44px; margin-top: 20px; background: transparent; border: 1px solid var(--gold-light); color: var(--gold-light); }
   .ag-trail { margin: 14px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--on-dark-soft); }
   .ag-trail a { color: var(--gold-light); font-weight: 700; }
   .ag-legend { margin: 16px 0 0; font-size: 13px; line-height: 1.7; color: var(--on-dark-soft); }
@@ -2505,7 +2507,12 @@
   }
   cards.forEach(function (c) {
     var p = $(c.getAttribute('data-p'));
-    if (p) { c.parentNode.appendChild(p); c.setAttribute('aria-controls', p.id); }
+    if (p) { c.parentNode.appendChild(p); c.setAttribute('aria-controls', p.id);
+      /* a second Close at the foot of the job description, so a long card can be shut without scrolling back up */
+      var top = p.querySelector('.ag-x'), xb = document.createElement('button');
+      xb.type = 'button'; xb.className = 'ag-x ag-xb'; xb.textContent = 'Close';
+      if (top) xb.setAttribute('aria-label', top.getAttribute('aria-label'));
+      p.appendChild(xb); }
     c.setAttribute('aria-expanded', 'false');
     c.addEventListener('click', function (ev) {
       ev.preventDefault();
