@@ -1000,6 +1000,11 @@
   .ag-lg { margin-top: 22px; }
   .ag-lg h4 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0; padding-bottom: 8px; font-size: 14px; font-weight: 700; color: var(--white); border-bottom: 1px solid var(--ag-line); }
   .ag-fl { list-style: none; margin: 0; padding: 0; }
+  .js .ag-lg h4 { display: block; padding: 0; border-bottom: 0; }
+  .ag-lgb { position: relative; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%; min-height: 44px; padding: 10px 36px 10px 0; background: none; border: 0; border-bottom: 1px solid var(--ag-line); font: inherit; color: inherit; text-align: left; cursor: pointer; }
+  .ag-lgb::after { content: "+"; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 22px; line-height: 1; font-weight: 400; color: var(--gold-light); }
+  .ag-lgb[aria-expanded="true"]::after { content: "\2212"; }
+  .ag-lgn { font-size: 12px; font-weight: 700; color: var(--on-dark-soft); white-space: nowrap; }
   .ag-fl > li { border-bottom: 1px solid var(--ag-line); padding: 14px 0; }
   .ag-fh { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
   .ag-fh b { font-family: var(--serif); font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--white); }
@@ -2507,6 +2512,17 @@
       xb.type = 'button'; xb.className = 'ag-x ag-xb'; xb.textContent = 'Close';
       if (top) xb.setAttribute('aria-label', top.getAttribute('aria-label'));
       p.appendChild(xb); }
+    /* each autonomy level folds; closed until the reader opens it */
+    if (p) p.querySelectorAll('.ag-lg').forEach(function (g, k) {
+      var h = g.querySelector('h4'), ul = g.querySelector('.ag-fl'); if (!h || !ul) return;
+      var n = ul.children.length, b = document.createElement('button');
+      b.type = 'button'; b.className = 'ag-lgb'; b.setAttribute('aria-expanded', 'false');
+      ul.id = ul.id || (p.id + '-l' + k); b.setAttribute('aria-controls', ul.id);
+      while (h.firstChild) b.appendChild(h.firstChild);
+      var cnt = document.createElement('span'); cnt.className = 'ag-lgn'; cnt.textContent = n + (n === 1 ? ' function' : ' functions'); b.appendChild(cnt);
+      h.appendChild(b); ul.hidden = true;
+      b.addEventListener('click', function () { var on = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', on ? 'true' : 'false'); ul.hidden = !on; });
+    });
     c.setAttribute('aria-expanded', 'false');
     c.addEventListener('click', function (ev) {
       ev.preventDefault();
