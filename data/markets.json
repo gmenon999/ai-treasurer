@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-28T05:41:01Z",
+ "generated_utc": "2026-10-28T12:53:04Z",
  "policy": [
   {
    "bank": "Fed",
@@ -83,9 +83,9 @@
  "money": [
   {
    "name": "SOFR",
-   "value": "3.93%",
-   "change_bp": 1,
-   "asof": "2026-10-26",
+   "value": "3.95%",
+   "change_bp": 2,
+   "asof": "2026-10-27",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
    "id": "sofr",
@@ -103,9 +103,9 @@
   },
   {
    "name": "€STR",
-   "value": "2.441%",
+   "value": "2.440%",
    "change_bp": 0,
-   "asof": "2026-10-26",
+   "asof": "2026-10-27",
    "source_name": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",
    "id": "estr",
