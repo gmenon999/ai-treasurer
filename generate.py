@@ -237,10 +237,35 @@ def research(date_human, history=None):
         # the build only if that search also comes back empty.
         beats[k] = items[:3]
     data["beats"] = beats
-    data["events"] = (data.get("events") or [])[:3]
+    data["events"] = [e for e in (data.get("events") or []) if e.get("title")][:3]
     if not data["events"]:
-        raise ValueError("research: events incomplete")
+        # Not fatal (28 Oct 2026 failed here): fill_events() runs a focused search, and the edition
+        # publishes without an Events list only if that also finds nothing.
+        print("research: no events returned; fill_events() will run a focused search")
     return data
+
+
+def fill_events(res, date_human):
+    """Focused search for 2-3 dated treasury events when the main research returned none. Never fatal."""
+    if res.get("events"):
+        return res
+    prompt = (
+        "You are the research desk for The AI Treasurer. Today is %s. Search the web for 2-3 real, upcoming or "
+        "very recent treasury and finance events or deadlines (conferences such as Sibos, EuroFinance, AFP; "
+        "regulatory or ISO 20022 deadlines) in the next 60 days. Each must have a real source url you found.\n"
+        "Return STRICT JSON only: {\"events\": [{\"when\": \"16-18 Sep 2026\", \"place\": \"City - status\", "
+        "\"title\": \"...\", \"blurb\": \"...\", \"source\": {\"name\": \"...\", \"url\": \"https://...\"}}]}\n%s"
+        % (date_human, GUARD))
+    try:
+        data = _json(_ask(prompt, RESEARCH_MODEL, search=True), "fill events")
+        evs = [e for e in (data.get("events") or []) if e.get("title")
+               and str((e.get("source") or {}).get("url", "")).startswith("http")][:3]
+    except Exception as e:
+        print("fill_events: search failed (%s)" % e)
+        evs = []
+    res["events"] = evs
+    print("fill_events: %s" % ("filled %d event(s)" % len(evs) if evs else "nothing found; Events publishes empty"))
+    return res
 
 
 # ---------------------------------------------------------------- no-repeat memory
@@ -670,7 +695,7 @@ def _check(rows, drafts):
             fails[n] = "; ".join(p)
     todo = [r for r in rows if r[0] not in fails]
     if todo:
-        data = _json(_ask(_check_prompt(todo, drafts), CHECK_MODEL, max_tokens=4000, search=False), "check")
+        data = _json(_ask(_check_prompt(todo, drafts), CHECK_MODEL, max_tokens=8000, search=False), "check")
         verdict = {}
         for c in data.get("checks") or []:
             try:
@@ -1128,6 +1153,8 @@ def render(content, date_human, edition_n, archive_entries):
                     % (html.escape(src.get("url"), quote=True), esc(src.get("name"))))
         evs.append('<div class="event"><div class="when">%s<small>%s</small></div><div><h4>%s</h4><p>%s</p>%s</div></div>'
                    % (esc(e.get("when")), esc(e.get("place")), esc(e.get("title")), esc(e.get("blurb")), cite))
+    if not evs:
+        evs = ['<p class="event-none" style="color:var(--navy-soft);">No confirmed treasury events to list today.</p>']
     s = s.replace("<!--EVENTS-->", "\n      ".join(evs))
     # market view
     s = s.replace("<!--MARKET_VIEW-->", market_view_html(content.get("market_view") or [], date_human))
@@ -1250,23 +1277,55 @@ def _body_texts(content):
     return out
 
 
+_MON3 = {m[:3]: i for m, i in MONTHS.items()}
+_MON_RE = r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?"
+# A date that only gives the comparison basis ("down 23 bp since 2 October") is not the date of the
+# figure next to it. Treating it as one blocked the 27 and 29 Oct 2026 editions.
+_BASIS_BEFORE = re.compile(r"(?:since|from|versus|vs\.?|compared (?:with|to)|against)\s+(?:the\s+)?$", re.I)
+# Another tenor or a spread between "10-year" and the figure means the figure is not the 10-year yield
+# (29 Oct 2026: the 2-year's 4.67% was read as a 10-year yield).
+_OTHER_TENOR = re.compile(r"\b(?:\d+|two|three|five|thirty)(?:-|\s)?(?:year|yr|month|week)s?\b|\b\d+[YM]\b|spread|curve|gap", re.I)
+# The stored series is the US Treasury 10-year; other markets' 10-year yields cannot be checked against it.
+_NON_US = re.compile(r"\b(?:Bunds?|gilts?|OATs?|JGBs?|BTPs?|German|Germany|French|France|UK|British|Britain|Japan(?:ese)?|"
+                     r"Ital(?:y|ian)|Spain|Spanish|India(?:n)?|China|Chinese|euro[- ]area|Australia(?:n)?|Canad(?:a|ian)|Qatar(?:i)?|Saudi|Gulf)\b", re.I)
+
+
 def _sentence_dates(sent, pos):
-    """ISO date nearest to position pos in the sentence, year assumed 2026 if absent. None if no date."""
+    """ISO date nearest to position pos in the sentence, year assumed 2026 if absent. None if no date.
+    Reads '2 October', '2 Oct', 'October 2', 'Oct 2' and '2026-10-02'; ignores comparison-basis dates
+    ('since 2 October', 'from 2 October')."""
+    found = []
+    for m in re.finditer(r"\b(\d{1,2}) " + _MON_RE + r"(?:,? (\d{4}))?\b", sent):
+        found.append((m.start(), int(m.group(3) or 2026), _MON3[m.group(2)], int(m.group(1))))
+    for m in re.finditer(r"\b" + _MON_RE + r" (\d{1,2})\b(?:,? (\d{4}))?", sent):
+        found.append((m.start(), int(m.group(3) or 2026), _MON3[m.group(1)], int(m.group(2))))
+    for m in re.finditer(r"\b(\d{4})-(\d{2})-(\d{2})\b", sent):
+        found.append((m.start(), int(m.group(1)), int(m.group(2)), int(m.group(3))))
     best = None
-    for m in re.finditer(r"\b(\d{1,2}) (January|February|March|April|May|June|July|August|September|October|November|December)(?: (\d{4}))?\b", sent):
-        d = datetime.date(int(m.group(3) or 2026), MONTHS[m.group(2)], int(m.group(1))).isoformat()
-        dist = abs(m.start() - pos)
+    for start, y, mo, d in found:
+        if _BASIS_BEFORE.search(sent[max(0, start - 40):start]):
+            continue
+        try:
+            iso = datetime.date(y, mo, d).isoformat()
+        except ValueError:
+            continue
+        dist = abs(start - pos)
         if best is None or dist < best[0]:
-            best = (dist, d)
+            best = (dist, iso)
     return best[1] if best else None
 
 
 def _ten_year_claims(text):
-    """(value, iso date or None) for each 10-year yield figure in the text."""
+    """(value, iso date or None) for each US 10-year yield figure in the text. A figure is skipped when another
+    tenor or a spread sits between '10-year' and it, or when the yield is another market's (Bund, gilt, OAT...)."""
     out = []
     for sent in re.split(r"(?<=[.!?])\s+", text or ""):
-        for m in re.finditer(r"(?:10-year|10Y|ten-year)[^%.;]{0,60}?(\d+\.\d+)%", sent):
-            out.append((float(m.group(1)), _sentence_dates(sent, m.start(1))))
+        for m in re.finditer(r"(?:10-year|10Y|ten-year)([^%.;]{0,60}?)(\d+\.\d+)%", sent):
+            if _OTHER_TENOR.search(m.group(1)):
+                continue
+            if _NON_US.search(sent[max(0, m.start() - 40):m.start(2)]):
+                continue
+            out.append((float(m.group(2)), _sentence_dates(sent, m.start(2))))
     return out
 
 
@@ -1489,6 +1548,7 @@ def selftest():
         seen[name] = pr
     prompt_of("research prompt", lambda: research("Thursday, 15 October 2026", {"days": []}))
     prompt_of("fill_empty prompt", lambda: fill_empty({"beats": {}, "events": []}, "Thursday, 15 October 2026", {"days": []}))
+    prompt_of("fill_events prompt", lambda: fill_events({"beats": {}, "events": []}, "Thursday, 15 October 2026"))
     prompt_of("editorial prompt", lambda: editorial(dict(full_res), "Thursday, 15 October 2026", {"days": []}))
     prompt_of("market view prompt (full)", lambda: market_view(dict(full_res), "Thursday, 15 October 2026"))
 
@@ -1565,6 +1625,20 @@ def selftest():
         problems.append("consistency gate flags a headline figure that is in the summary")
     oct15["beats"]["payments"][0]["summary"] = "Unit added native RTP payments with round-the-clock settlement."
     prompt_of("repair prompt", lambda: repair_items(oct15, b15, "Thursday, 15 October 2026"))
+    # the 27 and 29 Oct 2026 blocks: a "since 2 October" basis date and the 2-year's figure were read as
+    # 10-year yields on 2 October; a non-US 10-year must not be checked against the US series
+    oct29 = {"beats": {}, "events": [], "lead_stories": [], "editor_note": [], "note_headline": "",
+             "market_view": [{"head": "Curve shape", "text": "The 10-year yield is 5.05% as of 28 Oct, down 23 bp since 2 October; "
+                              "the 10-year over 2-year spread is 38 bp with the 2-year at 4.67%.", "view": "", "effect": ""},
+                             {"head": "Long yields ease", "text": "The 10-year yield has eased to 5.00% since 2 October.", "view": "", "effect": ""},
+                             {"head": "French spread", "text": "The French 10-year yield was 3.45% on 2 October.", "view": "", "effect": ""}]}
+    b29, _ = consistency_problems(oct29)
+    if b29:
+        problems.append("consistency gate false alarm on the 27/29 Oct case: %s" % "; ".join(b29))
+    if _ten_year_claims("The US 10-year yield was 5.00% on 2 October 2026.") != [(5.0, "2026-10-02")]:
+        problems.append("10-year claim reader lost a real dated claim")
+    if _sentence_dates("closed at 5.05% on 2026-10-28", 10) != "2026-10-28":
+        problems.append("date reader missed an ISO date")
     mock_bad, _ = consistency_problems(mock_content())
     if mock_bad:
         problems.append("consistency gate flags the mock edition: %s" % "; ".join(mock_bad))
@@ -1630,7 +1704,7 @@ def main():
     else:
         history = load_history()
         history["days"] = [d for d in history.get("days", []) if d.get("date") != date_iso]  # a rebuild must not dedupe against itself
-        res = fill_empty(dedupe(research(date_human, history), history), date_human, history)
+        res = fill_events(fill_empty(dedupe(research(date_human, history), history), date_human, history), date_human)
         ed = editorial(res, date_human, history)
         content = dict(res); content.update(ed)
         content, tlog = takes(content, date_iso)
@@ -1651,6 +1725,15 @@ def main():
             print("REPAIRING: " + pr)
         if repair_items(content, problems, date_human):
             problems, warnings = consistency_problems(content)
+    if problems and content.get("market_view") and not args.mock:
+        # The Market view is optional by design (it is dropped when its own check fails). If dropping it clears
+        # every problem, publish without it; the workflow's "Flag a missing Market view" step still alerts.
+        trial = dict(content); trial["market_view"] = []
+        p2, w2 = consistency_problems(trial)
+        if not p2:
+            for pr in problems:
+                print("MARKET VIEW DROPPED: " + pr)
+            content, problems, warnings = trial, p2, w2
     for w in warnings:
         print("WARN: " + w)
     if problems:
