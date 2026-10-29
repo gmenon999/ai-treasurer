@@ -958,6 +958,75 @@
     "cost_usd": 0.1156
    },
    "edition_cost_usd": 1.2866
+  },
+  {
+   "date": "2026-10-29",
+   "items": [
+    {
+     "headline": "FPC maps ISO 20022 non-value messages across RTP and FedNow, both 24/7/365",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "DBS and EY find 88% of large firms using or testing tokenised cash",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Stripe lets AI agents pay invoices, with human approval for money movement",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Kyriba and Esker join AP/AR data to Treasury forecasting, targeting 2027",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "Overstates the source. The source says first customer availability is only 'targeted for 2027', but the take states flatly that the data 'will not feed Kyriba forecasts for any customer before 2027'. The claim that missed-payment news reaches Treasury only through existing processes is also an infer"
+    },
+    {
+     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "MAS sets AI supervisory expectations for banks, core rules effective October 2027",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "The focus mostly restates the news summary (proportionate risk management, the October 2027 and 2028 dates) and adds no new point. The implication to list every AI tool rests on an inventory expectation that is absent from the source text, where the list of key expectations is blank, so the action i"
+    },
+    {
+     "headline": "RBI derivative curbs lift Indian importers' hedging costs by 90+ basis points",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Fed holds at 3.75%–4%, with markets pricing an 85.7% chance of December hike",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Warsh signals two more Fed rate rises by early 2027 after 10-2 hold",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "EU adopts largest-ever Russia sanctions package, listing 1,569 individuals and entities",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB drafts Practice Statement on nature-related disclosures under IFRS S1 and S2",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.422,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.3497
+   },
+   "edition_cost_usd": 2.1553
   }
  ]
 }

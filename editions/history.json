@@ -1,228 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-12",
-   "note_headline": "Agentic AI now sits inside SOX scope, and CFOs carry the liability",
-   "note_opening": "Autonomous AI has lost any claim to sit outside the control framework. SEC guidance puts agentic systems that perform, support or initiate transactions within ICFR scope, and CFOs carry SOX Section 404 liability for the ",
-   "items": [
-    {
-     "headline": "MAS sets AI supervisory expectations and plans agentic AI consultation for 2027",
-     "urls": [
-      "https://www.mas.gov.sg/news/media-releases/2026/mas-sets-out-supervisory-expectations-on-responsible-ai-adoption-by-financial-institutions"
-     ]
-    },
-    {
-     "headline": "Trovata leads mid-market TMS benchmark with 28% first-choice share",
-     "urls": [
-      "https://finance-ai-index.com/treasury/treasury-management-systems/guide/"
-     ]
-    },
-    {
-     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
-     "urls": [
-      "https://www.cfo.com/news/us-firms-face-record-194t-liquidity-challenge-hackett-north-american-working-capital-survey-says/826774/"
-     ]
-    },
-    {
-     "headline": "HSBC and Ant International take tokenised deposits live in the UAE",
-     "urls": [
-      "https://garant.consulting/en/news/ant-international-hsbc-tokenised-deposits-uae-pilot-2026-10/"
-     ]
-    },
-    {
-     "headline": "SEC confirms no ICFR exemption for agentic AI under SOX Section 404",
-     "urls": [
-      "https://uniqus.com/wp-content/uploads/2026/09/Controlling-the-Agentic-Finance-Function.pdf"
-     ]
-    },
-    {
-     "headline": "US 10-year yield falls to 5.22% with Fed on hold at 3.75%-4.00%",
-     "urls": [
-      "https://www.federalreserve.gov/RELEASES/H15/default.htm"
-     ]
-    },
-    {
-     "headline": "Citi widens Coinbase partnership to offer corporate clients stablecoin payments",
-     "urls": [
-      "https://mempoolbrief.com/articles/coinbase-powers-citi-s-stablecoin-rails-for-institutions-cf53201f"
-     ]
-    },
-    {
-     "headline": "Fed holds at 3.75%-4.00% as cross-currency basis widening pressures hedging",
-     "urls": [
-      "https://www.federalreserve.gov/releases/h15/"
-     ]
-    },
-    {
-     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
-     "urls": [
-      "https://ofac.treasury.gov/recent-actions/20261008"
-     ]
-    },
-    {
-     "headline": "ISSB opens 120-day nature-related disclosures consultation from 22 October",
-     "urls": [
-      "https://www.issb.org/news-and-announcements/2026/issb-opens-consultation-on-nature-related-disclosures"
-     ]
-    }
-   ]
-  },
-  {
-   "date": "2026-10-13",
-   "note_headline": "Finance is leaving more risk unhedged and handing more decisions to machines",
-   "note_opening": "Treasury and Finance are accepting more open exposure and more delegated judgement at the same time. Corporate hedge ratios fell from 57% to 46% in Treasury Management International's Q2 2026 survey, the lowest since tra",
-   "items": [
-    {
-     "headline": "FIS launches agentic AI suite for collections, liquidity and risk",
-     "urls": [
-      "https://www.renascence.io/news/104368/fis-launches-agentic-ai-suite-for-the-office-of-the-cfo"
-     ]
-    },
-    {
-     "headline": "Ripple Treasury guide splits TMS market into AI-native and bolt-on",
-     "urls": [
-      "https://treasury.ripple.com/posts/ai-treasury-management-system"
-     ]
-    },
-    {
-     "headline": "Deloitte sees agentic AI orchestrating receivables, payables and inventory together",
-     "urls": [
-      "https://deloitte.wsj.com/cfo/cash-not-growth-could-become-the-test-for-corporate-america-ffcb7d0b?eafs_enabled="
-     ]
-    },
-    {
-     "headline": "Swift defers November 2026 CBPR+ standards release by 12 months",
-     "urls": [
-      "https://www.bankofengland.co.uk/payments/rtgs-renewal-programme/iso-20022",
-      "https://www.ecb.europa.eu/paym/groups/shared/docs/324fa-2025-10-22-t2-cg-item-5.4-a-iso-20022-message-unfreeze-strategy-status-update.pdf"
-     ]
-    },
-    {
-     "headline": "COSO GenAI framework sets controls across eight AI capability types",
-     "urls": [
-      "https://auditoresinternos.es/wp-content/uploads/2026/02/Achieving-Effective-Internal-Control-Over-Generative-AI_COSO_compressed.pdf"
-     ]
-    },
-    {
-     "headline": "Corporate hedge ratios fall to 46%, lowest since tracking began",
-     "urls": [
-      "https://treasury-management.com/news/q2-survey-reveals-corporates-pull-back-on-hedging-as-rate-paths-diverge"
-     ]
-    },
-    {
-     "headline": "OCBC goes live with Ant International tokenised deposits via WhaleRTP",
-     "urls": [
-      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
-     ]
-    },
-    {
-     "headline": "Fed holds at 3.75–4.00% as 10-year yield closes at 5.22%",
-     "urls": [
-      "https://www.federalreserve.gov/releases/h15/"
-     ]
-    },
-    {
-     "headline": "OFAC Economic Outcast alert raises Iran sanctions risk for foreign banks",
-     "urls": [
-      "https://ofac.treasury.gov/faqs/updated"
-     ]
-    },
-    {
-     "headline": "ISSB to open 120-day consultation on nature-related disclosures",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
-     ]
-    },
-    {
-     "headline": "IASB seeks feedback on IFRS 9 hedge accounting post-implementation review",
-     "urls": [
-      "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/"
-     ]
-    }
-   ]
-  },
-  {
-   "date": "2026-10-14",
-   "note_headline": "Cash now moves around the clock, so Finance controls cannot keep office hours",
-   "note_opening": "Liquidity is starting to move outside banking hours, and the tools that decide where it goes are increasingly automated. OCBC began mobilising SGD and USD tokenised deposits 24/7 for Ant International on 7 October 2026, ",
-   "items": [
-    {
-     "headline": "FIS launches agentic AI suite for cash forecasting and collections",
-     "urls": [
-      "https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-equips-cfos-with-agentic-ai-to-forecast-cash-flow-and-surface-risk-earlier"
-     ]
-    },
-    {
-     "headline": "Citi survey finds 72% of corporates prioritise freeing trapped liquidity",
-     "urls": [
-      "https://www.citigroup.com/global/news/press-release/2026/citi-institute-supply-chain-financing-report-liquidity-takes-center-stage-as-supply-chain-disruption-becomes-norm"
-     ]
-    },
-    {
-     "headline": "Growth firms using AI in working capital report 66% higher bottom-line gains",
-     "urls": [
-      "https://www.pymnts.com/wp-content/uploads/2026/01/PYMNTS-Growth-Corporates-Working-Capital-Index-January-2026.pdf"
-     ]
-    },
-    {
-     "headline": "OCBC and Ant International move tokenised deposits 24/7 across Singapore and Malaysia",
-     "urls": [
-      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
-     ]
-    },
-    {
-     "headline": "Swift will reject fully unstructured postal addresses from November 2026",
-     "urls": [
-      "https://www.swift.com/insights/newsletters/iso-20022-bytes-payments-call-action-november-2026"
-     ]
-    },
-    {
-     "headline": "AICPA practice aid tells auditors to test controls over material AI use",
-     "urls": [
-      "https://www.cpapracticeadvisor.com/2026/10/13/aicpa-releases-guidance-on-the-use-of-ai-in-financial-reporting-and-auditing/"
-     ]
-    },
-    {
-     "headline": "US 10-year yield hits 5.27% as markets price more hikes",
-     "urls": [
-      "https://www.federalreserve.gov/releases/h15/",
-      "https://www.bbvaresearch.com/wp-content/uploads/2026/10/US_Interest_Rates_Monitor_October_26_ENG.pdf"
-     ]
-    },
-    {
-     "headline": "Consensys and ClearToken partner on 24/7 delivery-versus-payment for tokenised assets",
-     "urls": [
-      "https://consensys.com/blog/consensys-and-clear-partner-to-bring-24-7-settlement-infrastructure-to-wholesale-markets"
-     ]
-    },
-    {
-     "headline": "OCBC becomes first bank to collaborate with Ant International on tokenised deposits",
-     "urls": [
-      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
-     ]
-    },
-    {
-     "headline": "Fed holds at 3.75%-4.00% while markets price three to four hikes",
-     "urls": [
-      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
-      "https://www.siktintelligence.com/blog/fed-rate-odds-october-2026"
-     ]
-    },
-    {
-     "headline": "OFAC widens Operation Economic Outcast, naming A7 Network a criminal organisation",
-     "urls": [
-      "https://www.bracewell.com/resources/treasury-expands-operation-economic-outcast-toolbox-with-focus-on-foreign-financial-institutions/"
-     ]
-    },
-    {
-     "headline": "ISSB opens 120-day consultation on nature-related disclosures from 22 October 2026",
-     "urls": [
-      "https://www.federalregister.gov/documents/2026/10/08/2026-20683/notice-of-ofac-sanctions-actions"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-15",
    "note_headline": "Auditors want AI inside existing controls just as banks build it into platforms",
    "note_opening": "Auditors now expect AI to be governed through the controls Finance already runs, not a parallel regime. The AICPA's 13 October 2026 practice aid folds AI into existing ICFR risk assessment; EY wants an inventory of AI us",
@@ -939,6 +717,85 @@
      "urls": [
       "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/",
       "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "note_headline": "Vendors are building human approval into AI for Finance before regulators require it",
+   "note_opening": "Control is being engineered into AI for Finance before supervisors make it mandatory. Stripe's Treasury for agents lets ChatGPT and Claude pay invoices, but requires human approval for money movement. MAS expects banks t",
+   "items": [
+    {
+     "headline": "Stripe lets AI agents pay invoices, with human approval for money movement",
+     "urls": [
+      "https://chertra.com/news/automation/stripe-treasury-for-agents-controlled-financial-automation/"
+     ]
+    },
+    {
+     "headline": "Kyriba and Esker join AP/AR data to Treasury forecasting, targeting 2027",
+     "urls": [
+      "https://www.kyriba.com/news/kyriba-and-esker-partner-to-help-companies-improve-cash-visibility-forecasting-and-liquidity-optimization/",
+      "https://www.esker.com/company/press-releases/kyriba-and-esker-partner-help-companies-improve-cash-visibility-forecasting/"
+     ]
+    },
+    {
+     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
+     "urls": [
+      "https://www.thehackettgroup.com/the-hackett-group-finds-record-1-94-trillion-working-capital-opportunity-among-north-americas-largest-companies/"
+     ]
+    },
+    {
+     "headline": "FPC maps ISO 20022 non-value messages across RTP and FedNow, both 24/7/365",
+     "urls": [
+      "https://paymentexpert.com/2026/10/26/fpc-guide-improve-us-instant-payments/"
+     ]
+    },
+    {
+     "headline": "MAS sets AI supervisory expectations for banks, core rules effective October 2027",
+     "urls": [
+      "https://www.mas.gov.sg/news/media-releases/2026/mas-sets-out-supervisory-expectations-on-responsible-ai-adoption-by-financial-institutions"
+     ]
+    },
+    {
+     "headline": "RBI derivative curbs lift Indian importers' hedging costs by 90+ basis points",
+     "urls": [
+      "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63783",
+      "https://www.thehindubusinessline.com/markets/forex/rupee-hedging-turmoil-exposes-strain-in-indias-fx-market/article71587071.ece"
+     ]
+    },
+    {
+     "headline": "Fed holds at 3.75%–4%, with markets pricing an 85.7% chance of December hike",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "https://www.cnbc.com/2026/10/28/us-treasurys-bonds-yields-federal-reserve.html"
+     ]
+    },
+    {
+     "headline": "DBS and EY find 88% of large firms using or testing tokenised cash",
+     "urls": [
+      "https://www.coindesk.com/business/2026/10/28/nearly-90-of-large-businesses-are-embracing-tokenized-cash-to-speed-up-payments-dbs"
+     ]
+    },
+    {
+     "headline": "Warsh signals two more Fed rate rises by early 2027 after 10-2 hold",
+     "urls": [
+      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "https://kpmg.com/us/en/articles/2026/october-2026-central-bank-scanner.html"
+     ]
+    },
+    {
+     "headline": "EU adopts largest-ever Russia sanctions package, listing 1,569 individuals and entities",
+     "urls": [
+      "https://www.consilium.europa.eu/en/press/press-releases/2026/10/12/russia-s-war-of-aggression-against-ukraine-eu-agrees-largest-ever-package-of-listings-targeting-almost-1600-individuals-and-entities-in-russia-s-military-industrial-complex/",
+      "https://finance.ec.europa.eu/news/eu-adopts-largest-ever-package-listings-against-russia-2026-10-12_en"
+     ]
+    },
+    {
+     "headline": "ISSB drafts Practice Statement on nature-related disclosures under IFRS S1 and S2",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/",
+      "https://www.ifrs.org/projects/work-plan/biodiversity-ecosystems-and-ecosystem-services/"
      ]
     }
    ]
