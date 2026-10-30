@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-30T09:59:51Z",
+ "generated_utc": "2026-10-30T18:00:24Z",
  "policy": [
   {
    "bank": "Fed",
@@ -84,8 +84,8 @@
   {
    "name": "SOFR",
    "value": "3.94%",
-   "change_bp": -1,
-   "asof": "2026-10-28",
+   "change_bp": 0,
+   "asof": "2026-10-29",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
    "id": "sofr",
@@ -95,7 +95,7 @@
    "name": "Fed funds effective",
    "value": "3.88%",
    "change_bp": 0,
-   "asof": "2026-10-28",
+   "asof": "2026-10-29",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
    "id": "effr",
@@ -145,9 +145,9 @@
  "fx": [
   {
    "name": "EUR/USD",
-   "value": "1.1130",
-   "change_pct": -0.03,
-   "asof": "2026-10-29",
+   "value": "1.1172",
+   "change_pct": 0.38,
+   "asof": "2026-10-30",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "eurusd",
@@ -155,9 +155,9 @@
   },
   {
    "name": "GBP/USD",
-   "value": "1.3317",
-   "change_pct": 0.22,
-   "asof": "2026-10-29",
+   "value": "1.3399",
+   "change_pct": 0.62,
+   "asof": "2026-10-30",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "gbpusd",
@@ -165,9 +165,9 @@
   },
   {
    "name": "USD/JPY",
-   "value": "158.06",
-   "change_pct": 0.06,
-   "asof": "2026-10-29",
+   "value": "157.25",
+   "change_pct": -0.51,
+   "asof": "2026-10-30",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdjpy",
@@ -175,9 +175,9 @@
   },
   {
    "name": "USD/INR",
-   "value": "95.27",
-   "change_pct": 0.05,
-   "asof": "2026-10-29",
+   "value": "94.96",
+   "change_pct": -0.33,
+   "asof": "2026-10-30",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdinr",
@@ -185,9 +185,9 @@
   },
   {
    "name": "USD/CNY",
-   "value": "6.6616",
-   "change_pct": -0.07,
-   "asof": "2026-10-29",
+   "value": "6.6529",
+   "change_pct": -0.13,
+   "asof": "2026-10-30",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdcny",
@@ -195,9 +195,9 @@
   },
   {
    "name": "AUD/USD",
-   "value": "0.7026",
-   "change_pct": -0.1,
-   "asof": "2026-10-29",
+   "value": "0.7025",
+   "change_pct": -0.01,
+   "asof": "2026-10-30",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "audusd",
@@ -205,8 +205,5 @@
   }
  ],
  "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
- "errors": [
-  "boe: time data '\"telephone\" : \"+44(0)0000000\"' does not match format '%d %b %Y'",
-  "history boe: list index out of range"
- ]
+ "errors": []
 }
