@@ -1027,6 +1027,38 @@
     "cost_usd": 0.3497
    },
    "edition_cost_usd": 2.1553
+  },
+  {
+   "date": "2026-10-30",
+   "items": [
+    {
+     "headline": "EY playbook tells treasurers to keep AI agents advisory before autonomous",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Swift defers structured postal address rule as ISO 20022 reaches 98%",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Euro hits 17-month low near $1.14 on energy shock and French debt",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "(all)",
+     "status": "error",
+     "reasons": "takes: no JSON in model response"
+    }
+   ],
+   "cost_usd": 0.4741,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 5: The point is internally inconsistent. It says the euro touched a 17-month low near $1.14 on 29 September, yet EUR/USD at 1.1130 on 29 October is already below that 'low'. It also says the rate is down 0.8% since 2 October, which does not fit a 29 September low near 1.14. The point repeats this conflict between the cited facts without flagging it, so the figures cannot be taken as accurate",
+    "cost_usd": 0.3423
+   },
+   "edition_cost_usd": 2.016
   }
  ]
 }

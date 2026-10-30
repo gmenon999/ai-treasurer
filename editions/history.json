@@ -1,101 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-15",
-   "note_headline": "Auditors want AI inside existing controls just as banks build it into platforms",
-   "note_opening": "Auditors now expect AI to be governed through the controls Finance already runs, not a parallel regime. The AICPA's 13 October 2026 practice aid folds AI into existing ICFR risk assessment; EY wants an inventory of AI us",
-   "items": [
-    {
-     "headline": "Ripple expands GSmart with approval-gated AI agents across Treasury workflows",
-     "urls": [
-      "https://treasury.ripple.com/news/ripple-treasury-brings-industrys-first-governed-ai-for-enterprise-treasury"
-     ]
-    },
-    {
-     "headline": "ISO 20022 leaders treat migration as a data-quality programme at Sibos 2026",
-     "urls": [
-      "https://vyntra.com/press/what-sibos-2026-taught-us-about-iso-20022/"
-     ]
-    },
-    {
-     "headline": "Standard Chartered sets out four-step playbook to tackle fragmented corporate cash",
-     "urls": [
-      "https://treasurytoday.com/insight-and-analysis/digital-solutions-ease-trapped-cash-challenges/"
-     ]
-    },
-    {
-     "headline": "Citi goes live first with multiple markets on Swift instant payments scheme",
-     "urls": [
-      "https://www.finextra.com/newsarticle/48508/citi-launches-multi-market-instant-payments-on-swift-scheme",
-      "https://www.citigroup.com/global/news/press-release/2026/citi-first-bank-launch-multi-market-instant-payments-swift-payments-scheme"
-     ]
-    },
-    {
-     "headline": "HSBC unveils HSBCnio, an AI-enabled transaction banking platform, at Sibos",
-     "urls": [
-      "https://bankingherald.com/hsbc-launches-hsbcnio-combining-transaction-banking-and-ai-tools-for-business-clients/"
-     ]
-    },
-    {
-     "headline": "AICPA practice aid folds AI into existing ICFR risk assessment for auditors",
-     "urls": [
-      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
-     ]
-    },
-    {
-     "headline": "EY tells auditors to map AI risks to material misstatement",
-     "urls": [
-      "https://www.ey.com/en_us/insights/assurance/ai-audit-readiness-for-financial-reporting"
-     ]
-    },
-    {
-     "headline": "10-year Treasury yield peaks at 5.28%, a 24-year high",
-     "urls": [
-      "https://www.nbcnews.com/business/markets/treasury-yields-hit-24-year-highs-global-sell-accelerates-rcna602045",
-      "https://www.federalreserve.gov/releases/h15/?utm="
-     ]
-    },
-    {
-     "headline": "Fed and ECB raise rates 25bp on the same day",
-     "urls": [
-      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
-      "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html"
-     ]
-    },
-    {
-     "headline": "Visa stablecoin-linked card volume up 200%, with 17% from business",
-     "urls": [
-      "https://corporate.visa.com/en/sites/visa-perspectives/newsroom/stablecoins-gain-traction-business-payments.html"
-     ]
-    },
-    {
-     "headline": "Fed lifts rates to 3.75%-4.00% with unanimous support",
-     "urls": [
-      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
-     ]
-    },
-    {
-     "headline": "OFAC issues Iran General License EE and amends Russia General License 13S",
-     "urls": [
-      "https://ofac.treasury.gov/recent-actions/20261008",
-      "https://ofac.treasury.gov/media/937091/download"
-     ]
-    },
-    {
-     "headline": "ISSB to open 120-day consultation on nature-related disclosures practice statement",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
-     ]
-    },
-    {
-     "headline": "IASB opens hedge accounting review, with comments due 26 January 2027",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-17",
    "note_headline": "The next liquidity gains come from joining Treasury to Finance operations",
    "note_opening": "The next pool of liquidity sits inside Finance operations, not in new funding. Citi research finds 72% of corporates prioritise freeing trapped cash, and Kyriba and Esker plan a Liquidity Operating Platform that feeds li",
@@ -796,6 +701,210 @@
      "urls": [
       "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/",
       "https://www.ifrs.org/projects/work-plan/biodiversity-ecosystems-and-ecosystem-services/"
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "note_headline": "Tokenised money has left the pilot stage, and Finance's liquidity model must follow",
+   "note_opening": "Tokenised money is becoming live infrastructure for Treasury and Finance, not a test-bed. The European Stability Mechanism settled a €1 billion digitally native bond on the Eurosystem's Pontes platform in central bank mo",
+   "items": [
+    {
+     "headline": "EY playbook tells treasurers to keep AI agents advisory before autonomous",
+     "urls": [
+      "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/insights/ai/documents/ey-from-spreadsheet-heroics-to-autonomous-treasury-an-agentic-ai-adoption-playbook-for-cfos-and-treasurers.pdf"
+     ],
+     "beat": "ai_agentic",
+     "summary": "EY's agentic AI playbook for treasurers recommends a smart overlay that wraps agents around existing TMS and ERP via APIs, with human approval before autonomous payments. It puts a governance council and audit logging ahead of scaling autonomous execution, setting a control-first sequence.",
+     "sources": [
+      {
+       "name": "EY",
+       "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/insights/ai/documents/ey-from-spreadsheet-heroics-to-autonomous-treasury-an-agentic-ai-adoption-playbook-for-cfos-and-treasurers.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "Stripe launches Treasury for agents with mandatory human approval on money movements",
+     "urls": [
+      "https://stripe.com/newsroom/news/treasury-for-agents"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Stripe launched Treasury for agents on 21 October 2026, letting businesses check balances, pay invoices and transfer funds through AI agents such as ChatGPT and Claude. Every money movement needs human approval, with configurable spending limits giving treasurers a built-in control point.",
+     "sources": [
+      {
+       "name": "Stripe Newsroom",
+       "url": "https://stripe.com/newsroom/news/treasury-for-agents"
+      }
+     ]
+    },
+    {
+     "headline": "Hackett Group puts excess European working capital at €1.26 trillion",
+     "urls": [
+      "https://www.thehackettgroup.com/insights/2026-working-capital-survey-europe-2610/"
+     ],
+     "beat": "cash",
+     "summary": "Hackett Group's 2026 survey finds €1.26 trillion of excess working capital trapped across Europe's largest companies, up from €1.18 trillion a year earlier. With cash balances falling and supplier payment extensions narrowing, CFOs face pressure to free liquidity through invoice-level data and supply-chain financing.",
+     "sources": [
+      {
+       "name": "Hackett Group",
+       "url": "https://www.thehackettgroup.com/insights/2026-working-capital-survey-europe-2610/"
+      }
+     ]
+    },
+    {
+     "headline": "HSBC survey finds 80% of treasurers run cash pools",
+     "urls": [
+      "https://www.business.hsbc.com/en-gb/insights/centralising-your-treasury"
+     ],
+     "beat": "cash",
+     "summary": "HSBC's Treasury Pulse Survey shows 80% of treasurers have set up cash pooling at global, regional or country level to centralise liquidity and automate internal funding. For ERM Group, HSBC's Treasury Solutions Group built a pooling structure to streamline external liquidity and optimise yield.",
+     "sources": [
+      {
+       "name": "HSBC",
+       "url": "https://www.business.hsbc.com/en-gb/insights/centralising-your-treasury"
+      }
+     ]
+    },
+    {
+     "headline": "EuroFinance flags idle subsidiary cash and multi-currency pooling hurdles",
+     "urls": [
+      "https://www.eurofinance.com/news/why-treasurers-are-rethinking-surplus-cash-strategies/"
+     ],
+     "beat": "cash",
+     "summary": "EuroFinance analysis finds overseas subsidiaries often sit on surplus cash in one jurisdiction while other entities borrow at higher rates elsewhere. Cash pooling can improve visibility and redistribute liquidity, but local currency controls, banking infrastructure and cross-border regulation make implementation harder.",
+     "sources": [
+      {
+       "name": "EuroFinance",
+       "url": "https://www.eurofinance.com/news/why-treasurers-are-rethinking-surplus-cash-strategies/"
+      }
+     ]
+    },
+    {
+     "headline": "Swift defers structured postal address rule as ISO 20022 reaches 98%",
+     "urls": [
+      "https://thefinancialcurrent.com/deep-dives/iso20022-payment-data-interoperability"
+     ],
+     "beat": "payments",
+     "summary": "Swift has deferred the November 2026 requirement for structured postal addresses (town and country) in all cross-border payment messages, citing widespread industry unpreparedness. By August 2026, 98% of cross-border instructions moved in ISO 20022. The deferral gives Treasury more time to clean counterparty address data.",
+     "sources": [
+      {
+       "name": "The Financial Current",
+       "url": "https://thefinancialcurrent.com/deep-dives/iso20022-payment-data-interoperability"
+      }
+     ]
+    },
+    {
+     "headline": "AICPA practice aid maps AI risks to material misstatement and ICFR scope",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ],
+     "beat": "regulation",
+     "summary": "The American Institute of CPAs issued a practice aid on 13 October 2026 covering how AI affects financial statement audits, when organisations use AI in reporting and when auditors use it. Finance Teams should expect scrutiny of control design, data integrity, output validation and human oversight.",
+     "sources": [
+      {
+       "name": "AICPA & CIMA",
+       "url": "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+      }
+     ]
+    },
+    {
+     "headline": "RBI imposes 20% FX risk reserve on corporate hedges above $2 million",
+     "urls": [
+      "https://www.cnbc.com/2026/10/10/india-unveils-tough-curbs-on-dollar-demand-to-defend-rupee.html",
+      "https://www.thehindubusinessline.com/markets/forex/rbi-tightens-forex-derivatives-framework-to-ensure-orderly-functioning-of-market/article71567174.ece"
+     ],
+     "beat": "risk",
+     "summary": "On 10 October, India's central bank imposed a 20% foreign exchange risk reserve on corporate hedging derivatives above $2 million notional, banned rebooking of cancelled contracts and tightened speculative positioning limits to 80% of documented exposures. Treasurers hedging in India face higher effective costs.",
+     "sources": [
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/10/10/india-unveils-tough-curbs-on-dollar-demand-to-defend-rupee.html"
+      },
+      {
+       "name": "The Hindu Business Line",
+       "url": "https://www.thehindubusinessline.com/markets/forex/rbi-tightens-forex-derivatives-framework-to-ensure-orderly-functioning-of-market/article71567174.ece"
+      }
+     ]
+    },
+    {
+     "headline": "ESM settles €1 billion digital bond on Pontes in central bank money",
+     "urls": [
+      "https://www.bundesbank.de/en/press/press-releases/esm-is-first-european-supranational-issuer-to-settle-dlt-based-bond-issuance-on-eurosystem-s-pontes-platform-with-bundesbank-and-clearstream-1013002"
+     ],
+     "beat": "digital",
+     "summary": "On 26 October, the European Stability Mechanism issued a €1 billion digitally native bond, settled through the Eurosystem's Pontes platform on Clearstream's D7 DLT infrastructure with the cash leg in central bank money. Europe's tokenised wholesale infrastructure has moved from pilot to live.",
+     "sources": [
+      {
+       "name": "Deutsche Bundesbank",
+       "url": "https://www.bundesbank.de/en/press/press-releases/esm-is-first-european-supranational-issuer-to-settle-dlt-based-bond-issuance-on-eurosystem-s-pontes-platform-with-bundesbank-and-clearstream-1013002"
+      }
+     ]
+    },
+    {
+     "headline": "DBS finds 88% of businesses deploying or piloting tokenised money",
+     "urls": [
+      "https://www.dbs.com/newsroom/Over_eight_in_10_businesses_starting_to_adopt_tokenised_money_to_aid_liquidity_management_improve_payments_and_support_business_expansion_DBS_survey"
+     ],
+     "beat": "digital",
+     "summary": "DBS reported on 28 October that 88% of businesses are already deploying or piloting tokenised money. Within two years, 71% expect real-time cross-border payments and 65% anticipate optimised Treasury liquidity management, signalling that adoption is moving into the mainstream.",
+     "sources": [
+      {
+       "name": "DBS",
+       "url": "https://www.dbs.com/newsroom/Over_eight_in_10_businesses_starting_to_adopt_tokenised_money_to_aid_liquidity_management_improve_payments_and_support_business_expansion_DBS_survey"
+      }
+     ]
+    },
+    {
+     "headline": "Euro hits 17-month low near $1.14 on energy shock and French debt",
+     "urls": [
+      "https://www.reuters.org/world/europe/euros-dollar-resilience-faces-energy-price-political-risk-tests-2026-09-29/",
+      "https://www.cnbc.com/2026/10/01/dollar-holds-firm-as-french-fiscal-woes-keep-euro-on-back-foot.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "The euro slid to approximately $1.14 on 29 September 2026, a 17-month low, as surging oil prices, France's record debt crisis and the Federal Reserve's rate-hike credibility against ECB caution weighed. It fell nearly 2.5% in September, its steepest monthly fall since July 2025.",
+     "sources": [
+      {
+       "name": "Reuters",
+       "url": "https://www.reuters.org/world/europe/euros-dollar-resilience-faces-energy-price-political-risk-tests-2026-09-29/"
+      },
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/10/01/dollar-holds-firm-as-french-fiscal-woes-keep-euro-on-back-foot.html"
+      }
+     ]
+    },
+    {
+     "headline": "US Treasury fines Bank of America a record $1.21 billion over AML failures",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0657/"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 13 October 2026, US Treasury imposed $1.21 billion in penalties on Bank of America for AML/CFT violations, including an ineffective BSA/AML programme, missing correspondent due diligence and unfiled suspicious activity reports. The bank failed to report over $5 billion of suspicious transactions to FinCEN.",
+     "sources": [
+      {
+       "name": "U.S. Department of the Treasury",
+       "url": "https://home.treasury.gov/news/press-releases/sb0657/"
+      }
+     ]
+    },
+    {
+     "headline": "ISSB consults on nature-related disclosure Practice Statement built on IFRS S1",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/",
+      "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/technical/ifrs-technical-resources/documents/ey-gl-ifrs-sustainability-dev-12-ed-nature-ps-10-2026.pdf"
+     ],
+     "beat": "reporting",
+     "summary": "The ISSB opened a consultation in October 2026 on a Practice Statement for nature-related disclosures, building on existing IFRS S1 requirements. It covers governance, risk management and strategy for nature-related dependencies and impacts across value chains, with integrated climate-nature scenario analysis.",
+     "sources": [
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
+      },
+      {
+       "name": "EY IFRS Technical Resources",
+       "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/technical/ifrs-technical-resources/documents/ey-gl-ifrs-sustainability-dev-12-ed-nature-ps-10-2026.pdf"
+      }
      ]
     }
    ]
