@@ -43,6 +43,16 @@ CHECK_MODEL = os.environ.get("BRIEF_CHECK_MODEL", "anthropic/claude-sonnet-5.5")
 TAKES_ON = (os.environ.get("BRIEF_TAKES") or "on").strip().lower() not in ("off", "false", "0", "no")
 TAKES_LOG = os.path.join(HERE, "editions", "takes-log.json")
 COST = {"usd": 0.0}  # running OpenRouter cost for this run (from the usage block)
+# OpenRouter credit guard (30 Oct 2026: 27-30 Oct editions failed because the API key's spending limit ran out).
+# Below CREDIT_STOP the build does not start (an edition costs about $1-2.50); below CREDIT_WARN the run
+# still publishes but the job turns red so GitHub emails the owner to top up before it runs out.
+KEY_URL = "https://openrouter.ai/api/v1/key"
+CREDIT_STOP = float(os.environ.get("BRIEF_CREDIT_STOP_USD", "3"))
+CREDIT_WARN = float(os.environ.get("BRIEF_CREDIT_WARN_USD", "10"))
+
+
+class CreditError(RuntimeError):
+    """OpenRouter refused for lack of credit (HTTP 402). Retrying cannot help; the owner must top up."""
 PREFERRED = ["tradefinanceglobal.com", "tradetreasurypayments.com", "treasury-management.com", "finextra.com",
              "treasurytoday.com", "gtnews.com", "cfodive.com", "thebanker.com", "risk.net", "centralbanking.com", "reuters.com", "ft.com"]  # Trade Finance Global, Trade Treasury Payments, TMI, Finextra
 EXCLUDED = ["reddit.com", "quora.com", "medium.com", "substack.com"]
@@ -84,6 +94,36 @@ def esc(x):
 
 
 # ---------------------------------------------------------------- OpenRouter
+def credit_left():
+    """Remaining spend on this API key in USD, or None if the key has no limit or the check fails."""
+    try:
+        r = requests.get(KEY_URL, headers={"Authorization": "Bearer " + _key()}, timeout=20)
+        d = (r.json() or {}).get("data") or {}
+        rem = d.get("limit_remaining")
+        return None if rem is None else float(rem)
+    except Exception as exc:  # noqa
+        print("credit check: could not read the key balance (%s)" % exc)
+        return None
+
+
+CREDIT_MSG = ("OpenRouter credit is used up for this API key. Top up credits or raise the key's limit at "
+              "openrouter.ai (Settings > Keys), then re-run 'Daily AI Treasurer Briefing' from the GitHub Actions tab.")
+
+
+def credit_check():
+    """Workflow alarm: exit 1 (job turns red, GitHub emails) when the key is low on credit."""
+    left = credit_left()
+    if left is None:
+        print("credit check: no limit reported for this key; nothing to check.")
+        return 0
+    print("credit check: $%.2f left on the OpenRouter key (about %d editions)." % (left, int(left // 2)))
+    if left < CREDIT_WARN:
+        print("::error::OpenRouter credit is low: $%.2f left, about %d day(s) of briefings. Top up at openrouter.ai "
+              "(Settings > Keys) so the daily briefing does not stop." % (left, int(left // 2)))
+        return 1
+    return 0
+
+
 def _key():
     k = os.environ.get("OPENROUTER_API_KEY", "").strip()
     if not k:
@@ -121,9 +161,13 @@ def _ask(prompt, model, max_tokens=9000, search=True, attempts=3):
                 if ch0.get("finish_reason") == "length":
                     print("_ask: reply CUT OFF at max_tokens=%d (model %s); raise the limit" % (max_tokens, model))
                 return ch0["message"]["content"] or ""
+            if r.status_code == 402:
+                raise CreditError("OpenRouter 402: %s" % r.text[:300])
             if r.status_code != 429 and r.status_code < 500:
                 raise RuntimeError("OpenRouter %d: %s" % (r.status_code, r.text[:400]))
             last = RuntimeError("OpenRouter %d" % r.status_code)
+        except CreditError:
+            raise
         except Exception as exc:  # noqa
             last = exc
         if attempt < attempts:
@@ -287,7 +331,9 @@ def save_history(h, date_iso, content):
     for k in BEAT_KEYS:
         for it in content["beats"].get(k) or []:
             urls = [x.get("url") for x in it.get("sources") or [] if x.get("url")]
-            day["items"].append({"headline": it.get("headline", ""), "urls": urls})
+            # beat, summary and sources are kept so fill_empty() can carry a story forward (30 Oct 2026)
+            day["items"].append({"headline": it.get("headline", ""), "urls": urls, "beat": k,
+                                 "summary": it.get("summary", ""), "sources": it.get("sources") or []})
     days = [d for d in h.get("days", []) if d.get("date") != date_iso] + [day]
     cutoff = (datetime.date.fromisoformat(date_iso) - datetime.timedelta(days=HISTORY_DAYS)).isoformat()
     h = {"days": [d for d in days if d.get("date", "") >= cutoff]}
@@ -334,6 +380,20 @@ def dedupe(res, history):
     return res
 
 
+def _carry_forward(k, history, res):
+    """Last resort so a section is never empty: the newest earlier story for this beat, saved in history,
+    provided it is not already on today's page."""
+    today_urls = set()
+    for kk in BEAT_KEYS:
+        for it in res["beats"].get(kk) or []:
+            today_urls.update(x.get("url") for x in it.get("sources") or [] if x.get("url"))
+    for d in reversed((history or {}).get("days", [])):
+        for it in d.get("items", []):
+            if it.get("beat") == k and it.get("summary") and it.get("sources") and not (set(it.get("urls") or []) & today_urls):
+                return [{"headline": it["headline"], "summary": it["summary"], "sources": it["sources"]}]
+    return []
+
+
 def fill_empty(res, date_human, history):
     """No section is ever published empty: for any beat left with no items, run a focused search with a longer
     look-back (60 days, then 180), accept the freshest verified item, and say the date in the summary."""
@@ -365,6 +425,8 @@ def fill_empty(res, date_human, history):
                 % (date_human, days, t, d, covered_txt, GUARD))
             try:
                 data = _json(_ask(prompt, RESEARCH_MODEL, search=True), "fill %s" % k)
+            except CreditError:
+                raise
             except Exception as e:
                 print("fill_empty: %s attempt failed (%s)" % (k, e))
                 continue
@@ -389,6 +451,10 @@ def fill_empty(res, date_human, history):
             got = [it for it in raw_last if not (set(x.get("url") for x in it.get("sources") or [] if x.get("url")) & today_urls)][:1]
             if got:
                 print("fill_empty: %s found nothing new; using the deeper search's recent story rather than leave it empty" % k)
+        if not got:
+            got = _carry_forward(k, history, res)
+            if got:
+                print("fill_empty: %s found nothing; carrying forward the most recent story for this section" % k)
         if not got:
             raise ValueError("research: section '%s' is empty even after a 180-day search; not publishing an empty section" % k)
         res["beats"][k] = got[:2]
@@ -1662,11 +1728,14 @@ def main():
     ap.add_argument("--force", action="store_true", help="rebuild today's edition even if it already exists")
     ap.add_argument("--market-view-only", action="store_true", help="refresh the Market view on today's published edition; news unchanged")
     ap.add_argument("--selftest", action="store_true", help="offline check that every prompt builds; no API calls")
+    ap.add_argument("--credit-check", action="store_true", help="exit 1 if the OpenRouter key is low on credit")
     ap.add_argument("--takes-only", action="store_true", help="add takes to today's published edition; news unchanged")
     args = ap.parse_args()
 
     if args.selftest:
         return selftest()
+    if args.credit_check:
+        return credit_check()
 
     now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
     date_iso = now.strftime("%Y-%m-%d")
@@ -1698,6 +1767,12 @@ def main():
         print("Rebuilding edition for %s" % date_iso)
 
     edition_n = (st["last_n"] + 1) if not args.mock else (st["last_n"] + 1 or 1)
+
+    if not args.mock:
+        left = credit_left()
+        if left is not None and left < CREDIT_STOP:
+            print("::error::Only $%.2f OpenRouter credit left; an edition needs about $1-2.50. %s" % (left, CREDIT_MSG))
+            return 4
 
     if args.mock:
         content = mock_content()
@@ -1766,4 +1841,8 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except CreditError as exc:
+        print("::error::%s (%s)" % (CREDIT_MSG, str(exc)[:200]))
+        sys.exit(4)

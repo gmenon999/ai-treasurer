@@ -81,6 +81,11 @@ jobs:
             [ "$i" = 5 ] && { echo "::error::push failed after 5 tries"; exit 1; }
             sleep $((i*10)); git fetch origin main; git rebase origin/main || { git rebase --abort || true; exit 1; }
           done
+      - name: Check OpenRouter credit (job turns red below $10 so GitHub emails the owner to top up)
+        if: ${{ always() && github.event.inputs.preview != 'true' }}
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python generate.py --credit-check
       - name: Flag a missing Market view (job turns red so GitHub emails the owner)
         if: ${{ always() && github.event.inputs.preview != 'true' && github.event.inputs.takes_only != 'true' }}
         env:
