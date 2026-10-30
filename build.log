@@ -1,0 +1,23 @@
+/home/runner/work/ai-treasurer/ai-treasurer/generate.py:1671: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow() + datetime.timedelta(hours=TZ_OFFSET)
+dedupe: dropped 7 repeat(s): Centalion deploys agentic AI treasury agent with Komgo for trade finance workflows, cuts issuance processing by 55%; Ripple Treasury expands GSmart agentic AI with policy-governed autonomous execution modes for treasury workflows; Datalog TMS launches OAuth 2.0 secured RESTful API for real-time bank and ERP connectivity; OCT Inst extends instant cross-border payments to 102 countries, Spain proces
+fill_empty: regulation attempt failed (OpenRouter 402: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 9000 tokens, but can only afford 7499. To increase, visit https://openrouter.ai/workspaces/default/keys/c7c99a6ab34682181821b59f8c6ff4fb7899dc821bca9295dd8c71ed14b90df0 and adjust the key's total limit","code":402,"metadata":{"provider_name":null,"previous_errors":[{"code":402,"message":"This request )
+fill_empty: regulation attempt failed (OpenRouter 402: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 9000 tokens, but can only afford 7499. To increase, visit https://openrouter.ai/workspaces/default/keys/c7c99a6ab34682181821b59f8c6ff4fb7899dc821bca9295dd8c71ed14b90df0 and adjust the key's total limit","code":402,"metadata":{"provider_name":null,"previous_errors":[{"code":402,"message":"This request )
+fill_empty: regulation found nothing new; reusing a recent story
+fill_empty: filled 'regulation' with 1 item(s)
+fill_empty: risk attempt failed (OpenRouter 402: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 9000 tokens, but can only afford 7314. To increase, visit https://openrouter.ai/workspaces/default/keys/c7c99a6ab34682181821b59f8c6ff4fb7899dc821bca9295dd8c71ed14b90df0 and adjust the key's total limit","code":402,"metadata":{"provider_name":null,"previous_errors":[{"code":402,"message":"This request )
+fill_empty: risk attempt failed (OpenRouter 402: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 9000 tokens, but can only afford 7314. To increase, visit https://openrouter.ai/workspaces/default/keys/c7c99a6ab34682181821b59f8c6ff4fb7899dc821bca9295dd8c71ed14b90df0 and adjust the key's total limit","code":402,"metadata":{"provider_name":null,"previous_errors":[{"code":402,"message":"This request )
+fill_empty: risk found nothing new; reusing a recent story
+fill_empty: filled 'risk' with 1 item(s)
+fill_empty: digital attempt failed (OpenRouter 402: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 9000 tokens, but can only afford 7314. To increase, visit https://openrouter.ai/workspaces/default/keys/c7c99a6ab34682181821b59f8c6ff4fb7899dc821bca9295dd8c71ed14b90df0 and adjust the key's total limit","code":402,"metadata":{"provider_name":null,"previous_errors":[{"code":402,"message":"This request )
+fill_empty: digital attempt failed (OpenRouter 402: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 9000 tokens, but can only afford 7314. To increase, visit https://openrouter.ai/workspaces/default/keys/c7c99a6ab34682181821b59f8c6ff4fb7899dc821bca9295dd8c71ed14b90df0 and adjust the key's total limit","code":402,"metadata":{"provider_name":null,"previous_errors":[{"code":402,"message":"This request )
+Traceback (most recent call last):
+  File "/home/runner/work/ai-treasurer/ai-treasurer/generate.py", line 1769, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/ai-treasurer/ai-treasurer/generate.py", line 1707, in main
+    res = fill_events(fill_empty(dedupe(research(date_human, history), history), date_human, history), date_human)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/ai-treasurer/ai-treasurer/generate.py", line 393, in fill_empty
+    raise ValueError("research: section '%s' is empty even after a 180-day search; not publishing an empty section" % k)
+ValueError: research: section 'digital' is empty even after a 180-day search; not publishing an empty section
