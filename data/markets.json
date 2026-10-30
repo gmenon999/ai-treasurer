@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-30T18:00:24Z",
+ "generated_utc": "2026-10-30T22:18:19Z",
  "policy": [
   {
    "bank": "Fed",
@@ -113,9 +113,9 @@
   },
   {
    "name": "US Treasury 3M",
-   "value": "4.18%",
-   "change_bp": 0,
-   "asof": "2026-10-29",
+   "value": "4.16%",
+   "change_bp": -2,
+   "asof": "2026-10-30",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust3m",
@@ -123,9 +123,9 @@
   },
   {
    "name": "US Treasury 2Y",
-   "value": "4.61%",
-   "change_bp": -6,
-   "asof": "2026-10-29",
+   "value": "4.56%",
+   "change_bp": -5,
+   "asof": "2026-10-30",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust2y",
@@ -133,9 +133,9 @@
   },
   {
    "name": "US Treasury 10Y",
-   "value": "4.98%",
-   "change_bp": -7,
-   "asof": "2026-10-29",
+   "value": "4.94%",
+   "change_bp": -4,
+   "asof": "2026-10-30",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust10y",
