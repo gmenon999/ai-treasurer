@@ -1059,6 +1059,79 @@
     "cost_usd": 0.3423
    },
    "edition_cost_usd": 2.016
+  },
+  {
+   "date": "2026-10-31",
+   "items": [
+    {
+     "headline": "UOB Group sets out bounded autonomy model for agentic corporate Treasury",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "47% of faster payment systems now support cross-border payments",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Deloitte and BDO set out AI governance for Finance Teams' reporting controls",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "HSBC and MUFG research moves FX risk into the boardroom",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ECB Pontes goes live for 24/7 DLT settlement in central bank money",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Wider US-euro rate gap raises dollar funding costs for non-USD corporates",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "HSBC widens Treasury APIs to deliver real-time ISO 20022 account data",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Citi takes tokenised deposits live in seven markets with 24/7 clearing",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Auditors expected to test AI agents as internal controls, Forbes warns",
+     "status": "dropped",
+     "lens": "Controls & audit",
+     "reasons": "The phrase 'Under the Change foundation' is not in the source and is not explained, so it reads as unexplained jargon. The rest of the take (prompt edit is a control change, auditors ask who approved the version, inventory of agents with edit and create/sign-off rights) is supported by the source."
+    },
+    {
+     "headline": "FIRMA Advisory says FX hedging policies need explicit carry-cost thresholds",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "EU's largest sanctions package lists 1,569 targets in Russia's defence supply chain",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB proposes Practice Statement on nature-related disclosures under IFRS S1 and S2",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.2626,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.2654
+   },
+   "edition_cost_usd": 1.3084
   }
  ]
 }

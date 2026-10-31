@@ -908,6 +908,191 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-31",
+   "note_headline": "Auditors will test Finance's AI agents as controls, so autonomy needs an audit trail",
+   "note_opening": "Auditors will test AI agents as internal controls, so Treasury and Finance must evidence their autonomy. A Forbes Council article dated 16 October 2026 expects version control, segregation of duties and fallback procedur",
+   "items": [
+    {
+     "headline": "UOB Group sets out bounded autonomy model for agentic corporate Treasury",
+     "urls": [
+      "https://uobgroup.com/assets/web-resources/research/pdf/da-261014.pdf"
+     ],
+     "beat": "ai_agentic",
+     "summary": "UOB Group has published research on the foundations of trusted, bounded autonomy in agentic Finance, describing AI agents that run several connected tasks inside predefined mandates and policy frameworks. Treasurers get a practical template for defining what agents may do unsupervised.",
+     "sources": [
+      {
+       "name": "UOB Group",
+       "url": "https://uobgroup.com/assets/web-resources/research/pdf/da-261014.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "HSBC widens Treasury APIs to deliver real-time ISO 20022 account data",
+     "urls": [
+      "https://www.hsbcinnovationbanking.com/gb/en/products/treasury-api/"
+     ],
+     "beat": "treasury_tech",
+     "summary": "HSBC has expanded its Treasury APIs, including Account Information, Account Balance and Account Transaction, feeding real-time account data in ISO 20022 format directly into ERP and TMS systems. Removing batch reporting delays tightens cash visibility and supports straight-through processing.",
+     "sources": [
+      {
+       "name": "HSBC Innovation Banking",
+       "url": "https://www.hsbcinnovationbanking.com/gb/en/products/treasury-api/"
+      }
+     ]
+    },
+    {
+     "headline": "Citi takes tokenised deposits live in seven markets with 24/7 clearing",
+     "urls": [
+      "https://www.pymnts.com/news/b2b-payments/2026/banks-offer-chief-financial-officers-programmable-liquidity-win-corporate-deposits/"
+     ],
+     "beat": "cash",
+     "summary": "Citi's CEO reported on 13 October 2026 that Citi Token Services now runs tokenised deposits operationally across seven markets, letting institutional clients move blockchain-settled funds in real time with 24/7 clearing while keeping regulated banking status. Treasurers gain a route to out-of-hours liquidity moves.",
+     "sources": [
+      {
+       "name": "PYMNTS",
+       "url": "https://www.pymnts.com/news/b2b-payments/2026/banks-offer-chief-financial-officers-programmable-liquidity-win-corporate-deposits/"
+      }
+     ]
+    },
+    {
+     "headline": "47% of faster payment systems now support cross-border payments",
+     "urls": [
+      "https://www.fintechfutures.com/fintech/money20-20-usa-2026-wraps-with-cross-border-payments-and-open-banking-in-focus"
+     ],
+     "beat": "payments",
+     "summary": "A Money20/20 survey finds 66% of RTGS systems run 24/7 or extended hours in 2026, up from 38% in 2023, while 47% of faster payment systems handle cross-border payments, mostly in APAC. Cut-off-driven liquidity buffers look increasingly dated.",
+     "sources": [
+      {
+       "name": "Fintech Futures",
+       "url": "https://www.fintechfutures.com/fintech/money20-20-usa-2026-wraps-with-cross-border-payments-and-open-banking-in-focus"
+      }
+     ]
+    },
+    {
+     "headline": "Auditors expected to test AI agents as internal controls, Forbes warns",
+     "urls": [
+      "https://www.forbes.com/councils/forbestechcouncil/2026/10/16/your-ai-is-now-an-internal-control-your-auditor-will-test-it-like-one/"
+     ],
+     "beat": "regulation",
+     "summary": "A Forbes Council article on 16 October 2026 says auditors will treat AI agents as governed configurations, requiring version control, segregation of duties so one identity cannot prepare and approve transactions, and fallback procedures. Each requirement will need evidence from Treasury and Finance.",
+     "sources": [
+      {
+       "name": "Forbes Tech Council",
+       "url": "https://www.forbes.com/councils/forbestechcouncil/2026/10/16/your-ai-is-now-an-internal-control-your-auditor-will-test-it-like-one/"
+      }
+     ]
+    },
+    {
+     "headline": "Deloitte and BDO set out AI governance for Finance Teams' reporting controls",
+     "urls": [
+      "https://www.deloitte.com/us/en/services/audit-assurance/blogs/accounting-finance/ai-risk-management-ai-controls-internal-audit.html"
+     ],
+     "beat": "regulation",
+     "summary": "Deloitte and BDO have published guidance on AI governance in financial reporting, stressing transparency, data integrity, SOC reporting compliance and segregation of duties. The aim is auditor confidence in AI-enabled controls, which shapes how Finance documents data and validates models.",
+     "sources": [
+      {
+       "name": "Deloitte US",
+       "url": "https://www.deloitte.com/us/en/services/audit-assurance/blogs/accounting-finance/ai-risk-management-ai-controls-internal-audit.html"
+      }
+     ]
+    },
+    {
+     "headline": "FIRMA Advisory says FX hedging policies need explicit carry-cost thresholds",
+     "urls": [
+      "https://firmaadvisory.com/insights/rates-eu-us-2026"
+     ],
+     "beat": "risk",
+     "summary": "FIRMA Advisory finds most corporate FX hedging policies have not been updated for divergent rate environments. Carry costs on multi-currency hedges are now material, so policies need explicit thresholds for each currency pair, giving treasurers a defined decision point.",
+     "sources": [
+      {
+       "name": "FIRMA Advisory",
+       "url": "https://firmaadvisory.com/insights/rates-eu-us-2026"
+      }
+     ]
+    },
+    {
+     "headline": "HSBC and MUFG research moves FX risk into the boardroom",
+     "urls": [
+      "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom"
+     ],
+     "beat": "risk",
+     "summary": "Research from HSBC and MUFG shows currency risk shifting from the back office to executive level, as trade tensions, tariff uncertainty and wider rate differentials raise volatility and hedging complexity. Boards will expect clearer FX exposure reporting from Treasury.",
+     "sources": [
+      {
+       "name": "HSBC Business",
+       "url": "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom"
+      }
+     ]
+    },
+    {
+     "headline": "ECB Pontes goes live for 24/7 DLT settlement in central bank money",
+     "urls": [
+      "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261021_1~d190f2c349.en.pdf"
+     ],
+     "beat": "digital",
+     "summary": "The ECB's Pontes platform went live on 21 September 2026, settling distributed ledger transactions in euro central bank money 24/7. DLT-based assets have sat inside the ECB collateral framework since March 2026, widening euro liquidity options for Treasury.",
+     "sources": [
+      {
+       "name": "European Central Bank",
+       "url": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261021_1~d190f2c349.en.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "Wider US-euro rate gap raises dollar funding costs for non-USD corporates",
+     "urls": [
+      "https://convera.com/docs/convera-global-fx-outlook-2026-10.pdf"
+     ],
+     "beat": "markets_macro",
+     "summary": "Wider rate differentials between the US and EUR, plus structural dollar support from higher bond yields and trade and tariff uncertainty, are lifting funding and hedging costs for non-USD corporates that need dollar liquidity. Treasury budgets for USD borrowing face pressure.",
+     "sources": [
+      {
+       "name": "Convera Global FX Outlook",
+       "url": "https://convera.com/docs/convera-global-fx-outlook-2026-10.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "EU's largest sanctions package lists 1,569 targets in Russia's defence supply chain",
+     "urls": [
+      "https://www.consilium.europa.eu/en/press/press-releases/2026/10/12/russia-s-war-of-aggression-against-ukraine-eu-agrees-largest-ever-package-of-listings-targeting-almost-1600-individuals-and-entities-in-russia-s-military-industrial-complex/",
+      "https://finance.ec.europa.eu/news/eu-adopts-largest-ever-package-listings-against-russia-2026-10-12_en"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 12 October 2026 the European Council adopted its largest-ever package, designating 1,569 targets: 826 Russian companies and 743 individuals serving as CEOs. The suppliers turn over €20+ billion annually and employ 250,000+ people, widening asset freezes and counterparty screening for payments and onboarding.",
+     "sources": [
+      {
+       "name": "European Council",
+       "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/10/12/russia-s-war-of-aggression-against-ukraine-eu-agrees-largest-ever-package-of-listings-targeting-almost-1600-individuals-and-entities-in-russia-s-military-industrial-complex/"
+      },
+      {
+       "name": "EU Finance",
+       "url": "https://finance.ec.europa.eu/news/eu-adopts-largest-ever-package-listings-against-russia-2026-10-12_en"
+      }
+     ]
+    },
+    {
+     "headline": "ISSB proposes Practice Statement on nature-related disclosures under IFRS S1 and S2",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/",
+      "https://www.ey.com/en_gl/technical/ifrs-technical-resources/issb-issues-ed-ifrs-practice-statement-on-nature-related-disclosures"
+     ],
+     "beat": "reporting",
+     "summary": "The ISSB published an Exposure Draft on 10 October 2026 for a Practice Statement on nature-related disclosures under IFRS S1 and S2. It would require disclosure of assets and activities vulnerable to those risks, integrated with climate-related disclosures and backed by SASB and TNFD metrics.",
+     "sources": [
+      {
+       "name": "IFRS Foundation",
+       "url": "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
+      },
+      {
+       "name": "EY Global",
+       "url": "https://www.ey.com/en_gl/technical/ifrs-technical-resources/issb-issues-ed-ifrs-practice-statement-on-nature-related-disclosures"
+      }
+     ]
+    }
+   ]
   }
  ]
 }
