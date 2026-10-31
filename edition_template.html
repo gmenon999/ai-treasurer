@@ -651,7 +651,7 @@
   .secnav-arrow.next { right: 0; justify-content: flex-end; padding-right: 12px; background: linear-gradient(90deg, rgba(13,26,44,0) 0%, var(--navy-deep) 45%); }
   .secnav-arrow.prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(13,26,44,0) 0%, var(--navy-deep) 45%); }
   .secnav.can-next .secnav-arrow.next, .secnav.can-prev .secnav-arrow.prev { display: flex; }
-  #top, #briefing, #markets, #framework, #agentic, #about, #briefing-tabs { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  #top, #briefing, #markets, #framework, #agentic, #about, #briefing-tabs, #decisions { scroll-margin-top: calc(var(--secnav-h) + 4px); }
   .tabs { top: var(--secnav-h); }
   @media (max-width: 700px) {
     .secnav .wrap { gap: 20px; padding-right: 36px; }
@@ -1501,6 +1501,8 @@
   .cta-main svg { width: 20px; height: 20px; transition: transform 0.2s ease; }
   .cta-main:hover, .cta-main:focus-visible { background: var(--white); }
   .cta-main:hover svg { transform: translateX(3px); }
+  .cta-main.cta-down svg { transform: rotate(90deg); }
+  .cta-main.cta-down:hover svg { transform: rotate(90deg) translateX(3px); }
   .intro .cta-brief { min-height: 54px; gap: 12px; padding: 0 16px 0 22px; }
   .oa-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 1; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark); border: 1px solid rgba(255,255,255,0.32); padding: 6px 8px; white-space: nowrap; }
   .oa-badge svg { width: 13px; height: 13px; flex: none; color: var(--gold-light); }
@@ -1925,7 +1927,7 @@
       <p class="lede">AI can do more. Where will it matter most?<br>Questions to decide where AI belongs in Treasury and Finance, and what should remain in human hands.</p>
       <p class="hero-by"><img class="hero-face" src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon" width="44" height="44"><span class="hb-t"><a href="#about">Gopakumar Menon, CA, CPA, CTP</a><span class="hb-s">Two decades in Finance and Treasury</span></span></p>
       <div class="actions">
-        <a class="cta-main" href="#decisions">See what your Board will ask<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a class="cta-main cta-down" href="#decisions">See what your Board will ask<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
       </div>
     </div>
   </section>
