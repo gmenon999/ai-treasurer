@@ -1132,6 +1132,76 @@
     "cost_usd": 0.2654
    },
    "edition_cost_usd": 1.3084
+  },
+  {
+   "date": "2026-11-01",
+   "items": [
+    {
+     "headline": "CPMI sets 2026-2027 timetable for ISO 20022 IP+ and HVPS+ guideline upgrades",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FSB finalises 12 AI sound practices with board accountability and vendor oversight",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "HSBC and MUFG research moves FX risk from back office to boardroom",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Centalion's AI Treasury Agent on Komgo cuts amendment time by 80%",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "FIS Agentic Insights Suite adds multi-horizon cash flow forecasting for Finance",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "FIRMA Advisory ties operational cash thresholds to rolling 13-week forecasts",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "COSO 2026 treats GenAI output as an assertion needing in-period evidence",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Citi Token Services extends 24/7 tokenised deposit settlement to seven markets",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "ECB holds at 2.50% as euro slides to 17-month low near 1.1130",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "The facts match the source (about 160 bp on Friday, about 137, euro down 0.35%, low of $1.116). The view fails test 4. It says only to 'compare' budgeted rates with the low, gives no date or frequency, and names no decision or action to follow the comparison. It takes no clear position."
+    },
+    {
+     "headline": "OFAC sanctions A7 Network, blocking 435+ sub-agents across 83 countries",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "AICPA practice aid shows auditors how to test AI in internal controls",
+     "status": "dropped",
+     "lens": "Controls & audit",
+     "reasons": "The claim that the 'Approve step' will 'draw attention' is not in the source and is overstated. The source names hallucinations as a risk and mentions controls generally, but it never singles out a sign-off or approval step. 'Approve step' is also unexplained jargon, which fails test 4. The listing "
+    }
+   ],
+   "cost_usd": 0.3764,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 2: The VIEW is vague: 'fixing the rate ... in instalments' is staging jargon with no stated number of instalments or timing, and 'the cost of waiting' is not defined. A treasurer could not tell exactly what to compare.; point 4: The claim that 'surplus dollar cash still earns close to the policy rate' is not in the cited facts. The facts give only SOFR, EFFR and the target range, not what a ",
+    "cost_usd": 0.3541
+   },
+   "edition_cost_usd": 1.989
   }
  ]
 }

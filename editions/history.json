@@ -1,79 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-17",
-   "note_headline": "The next liquidity gains come from joining Treasury to Finance operations",
-   "note_opening": "The next pool of liquidity sits inside Finance operations, not in new funding. Citi research finds 72% of corporates prioritise freeing trapped cash, and Kyriba and Esker plan a Liquidity Operating Platform that feeds li",
-   "items": [
-    {
-     "headline": "Centalion's AI agent on Komgo cuts trade Finance processing by 55-80%",
-     "urls": [
-      "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
-     ]
-    },
-    {
-     "headline": "Kyriba and Esker launch Liquidity Operating Platform linking Treasury and AP/AR",
-     "urls": [
-      "https://www.esker.com/company/press-releases/kyriba-and-esker-partner-help-companies-improve-cash-visibility-forecasting/"
-     ]
-    },
-    {
-     "headline": "Citi finds 72% of corporates prioritise freeing trapped liquidity",
-     "urls": [
-      "https://treasurytoday.com/insight-and-analysis/digital-solutions-ease-trapped-cash-challenges/"
-     ]
-    },
-    {
-     "headline": "SEPA Instant default leaves banks a 10-second window for fraud checks",
-     "urls": [
-      "https://thepaypers.com/payments/expert-views/from-mandate-to-mainstream-key-takeaways-on-sepa-instant-as-the-default"
-     ]
-    },
-    {
-     "headline": "AICPA practice aid brings agentic AI into ICFR audit scope",
-     "urls": [
-      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
-     ]
-    },
-    {
-     "headline": "CommBank FX Barometer finds hedge ratios steady as basis costs stay high",
-     "urls": [
-      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
-     ]
-    },
-    {
-     "headline": "BNY and Citadel Securities settle Treasury repo with tokenised assets",
-     "urls": [
-      "https://www.theblock.co/news/business/2026-10-14-bny-citadel-securities-complete-treasury-repo-in-first-use-of-tokenized-assets-on-major-triparty-platform-418534"
-     ]
-    },
-    {
-     "headline": "Fed holds rates at 3.75-4% as Warsh ends previews of decisions",
-     "urls": [
-      "https://www.cnbc.com/2026/10/16/kevin-warsh-fed-october-rate-hike-interest-rates-markets.html"
-     ]
-    },
-    {
-     "headline": "OFAC issues Iran General License FF and amends Russia licences",
-     "urls": [
-      "https://ofac.treasury.gov/recent-actions/20261015"
-     ]
-    },
-    {
-     "headline": "FRC fines Deloitte £6.05m over Go-Ahead Group audit failures",
-     "urls": [
-      "https://www.frc.org.uk/news-and-events/news/2026/10/sanctions-2026-10-07/"
-     ]
-    },
-    {
-     "headline": "IASB opens IFRS 9 hedge accounting review with comments due January 2027",
-     "urls": [
-      "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-18",
    "note_headline": "AI in Finance now has a rulebook, and audit evidence must prove it",
    "note_opening": "AI governance for Finance has moved from principle to checklist. The Financial Stability Board finalised 12 sound practices on 15 October 2026, covering human oversight and third-party risk across the AI lifecycle. Two d",
@@ -1089,6 +1016,187 @@
       {
        "name": "EY Global",
        "url": "https://www.ey.com/en_gl/technical/ifrs-technical-resources/issb-issues-ed-ifrs-practice-statement-on-nature-related-disclosures"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "note_headline": "Standard-setters now treat AI output as a claim Finance must prove in-period",
+   "note_opening": "Standard-setters now treat AI output as a claim Finance must prove, not a fact. COSO 2026 classes GenAI output as an assertion and wants AI-assisted judgments documented during the reporting period, not after close. The ",
+   "items": [
+    {
+     "headline": "Centalion's AI Treasury Agent on Komgo cuts amendment time by 80%",
+     "urls": [
+      "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/",
+      "https://www.pymnts.com/news/artificial-intelligence/2026/ai-agent-cuts-centalions-trade-finance-amendment-time-80/"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Centalion Group's AI Treasury Agent, launched on Komgo on 8 October 2026, runs facility and trade Finance workflows in natural language under governance and approval controls. Amendment time fell 80% and issuance time 55%, freeing a projected 60 working days a year.",
+     "sources": [
+      {
+       "name": "Centalion",
+       "url": "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
+      },
+      {
+       "name": "PYMNTS",
+       "url": "https://www.pymnts.com/news/artificial-intelligence/2026/ai-agent-cuts-centalions-trade-finance-amendment-time-80/"
+      }
+     ]
+    },
+    {
+     "headline": "FIS Agentic Insights Suite adds multi-horizon cash flow forecasting for Finance",
+     "urls": [
+      "https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-equips-cfos-with-agentic-ai-to-forecast-cash-flow-and-surface-risk-earlier"
+     ],
+     "beat": "treasury_tech",
+     "summary": "FIS released its Agentic Insights Suite on 12 October, pulling fragmented ERP, Treasury and CRM data into real-time scoring and forward-looking cash flow projections across multiple horizons. A plain-language interface serves Finance and Treasury teams, giving both one view of future cash.",
+     "sources": [
+      {
+       "name": "FIS Global",
+       "url": "https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-equips-cfos-with-agentic-ai-to-forecast-cash-flow-and-surface-risk-earlier"
+      }
+     ]
+    },
+    {
+     "headline": "FIRMA Advisory ties operational cash thresholds to rolling 13-week forecasts",
+     "urls": [
+      "https://firmaadvisory.com/insights/cash-management-2026/"
+     ],
+     "beat": "cash",
+     "summary": "FIRMA Advisory guidance sets operational cash thresholds at entity and group level, anchored to rolling 13-week forecasts so buffers move with the business cycle. It separates structural FX exposure from transactional noise and matches deployment to yield by currency via notional pooling, zero-balancing and target-balance structures.",
+     "sources": [
+      {
+       "name": "FIRMA Advisory",
+       "url": "https://firmaadvisory.com/insights/cash-management-2026/"
+      }
+     ]
+    },
+    {
+     "headline": "CPMI sets 2026-2027 timetable for ISO 20022 IP+ and HVPS+ guideline upgrades",
+     "urls": [
+      "https://www.bis.org/pages/cpmi-cross-border-payments-programme/pietf-iso20022-2026.pdf"
+     ],
+     "beat": "payments",
+     "summary": "A BIS CPMI report schedules upgrades to the ISO 20022 IP+ instant and HVPS+ high-value usage guidelines for 2026-2027, aligned with ISO Message Release 2025 and full external code sets. pacs.028 Payment Status lands in 2026, camt.110/111 Investigation in 2027, both aimed at cross-border interoperability.",
+     "sources": [
+      {
+       "name": "BIS",
+       "url": "https://www.bis.org/pages/cpmi-cross-border-payments-programme/pietf-iso20022-2026.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "COSO 2026 treats GenAI output as an assertion needing in-period evidence",
+     "urls": [
+      "https://www.ey.com/en_us/cro-risk/coso-2026-and-the-shift-in-ai-governance",
+      "https://virtaspartners.com/2026/04/28/genai-in-finance-is-now-an-internal-control-question-what-cosos-new-guidance-means-for-public-company-accounting-and-finance-teams/"
+     ],
+     "beat": "regulation",
+     "summary": "COSO 2026 says documentation for AI-assisted judgments must exist during the reporting period, not be created after close. ICFR controls need human-in-the-loop review, confidence thresholds, exception queues, escalation paths and monitored KPIs, because GenAI output counts as assertion, not fact.",
+     "sources": [
+      {
+       "name": "EY",
+       "url": "https://www.ey.com/en_us/cro-risk/coso-2026-and-the-shift-in-ai-governance"
+      },
+      {
+       "name": "Virtas Partners",
+       "url": "https://virtaspartners.com/2026/04/28/genai-in-finance-is-now-an-internal-control-question-what-cosos-new-guidance-means-for-public-company-accounting-and-finance-teams/"
+      }
+     ]
+    },
+    {
+     "headline": "FSB finalises 12 AI sound practices with board accountability and vendor oversight",
+     "urls": [
+      "https://www.fsb.org/uploads/P151026-1.pdf"
+     ],
+     "beat": "regulation",
+     "summary": "The Financial Stability Board published 'Sound Practices for Responsible Adoption of Artificial Intelligence', setting 12 governance principles. Boards and senior management must set an AI approach aligned to business model and risk appetite, with strong governance over third-party AI vendors and reliance on them.",
+     "sources": [
+      {
+       "name": "FSB",
+       "url": "https://www.fsb.org/uploads/P151026-1.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "HSBC and MUFG research moves FX risk from back office to boardroom",
+     "urls": [
+      "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom"
+     ],
+     "beat": "risk",
+     "summary": "HSBC research finds trade-policy uncertainty, geopolitical risk, supply-chain reconfiguration and higher interest rates reshaping corporate FX hedging. Treasurers are urged to reassess hedge ratios and tenors against carry costs, stress test for policy changes and automate exposure capture to cut manual process risk.",
+     "sources": [
+      {
+       "name": "HSBC",
+       "url": "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom"
+      }
+     ]
+    },
+    {
+     "headline": "Citi Token Services extends 24/7 tokenised deposit settlement to seven markets",
+     "urls": [
+      "https://www.citigroup.com/global/news/press-release/2026/citi-token-services-expands-global-footprint-japan-united-arab-emirates"
+     ],
+     "beat": "digital",
+     "summary": "On 28 September, Citi expanded tokenised deposit settlement to seven markets, giving clients 24/7 transfers without cut-off times. Japan, supporting USD, and the UAE, supporting USD and Euro, join the US and UK, while Ireland, Hong Kong and Singapore complete the set.",
+     "sources": [
+      {
+       "name": "Citi Global News",
+       "url": "https://www.citigroup.com/global/news/press-release/2026/citi-token-services-expands-global-footprint-japan-united-arab-emirates"
+      }
+     ]
+    },
+    {
+     "headline": "ECB holds at 2.50% as euro slides to 17-month low near 1.1130",
+     "urls": [
+      "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html",
+      "https://www.cnbc.com/2026/10/05/dollar-holds-firm-as-french-fiscal-woes-keep-euro-on-back-foot.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "The ECB held at 2.50% on 29 October as surging energy costs raised upside inflation and downside growth risks. The euro fell to a 17-month low near 1.1130 USD as the French sovereign spread widened above 150 basis points and equity sell-offs fuelled safe-haven demand.",
+     "sources": [
+      {
+       "name": "European Central Bank",
+       "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html"
+      },
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/10/05/dollar-holds-firm-as-french-fiscal-woes-keep-euro-on-back-foot.html"
+      }
+     ]
+    },
+    {
+     "headline": "OFAC sanctions A7 Network, blocking 435+ sub-agents across 83 countries",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0644",
+      "https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 24 October 2026, OFAC designated A7 Network a significant transnational criminal organisation used by Iran and others for sanctions evasion, blocking transactions with its 435+ sub-agents in 83 countries. FinCEN issued an alert and proposed treating A7-controlled transactions as a primary money laundering concern.",
+     "sources": [
+      {
+       "name": "U.S. Department of the Treasury - OFAC",
+       "url": "https://home.treasury.gov/news/press-releases/sb0644"
+      },
+      {
+       "name": "FinCEN Alert on the A7 Network",
+       "url": "https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "AICPA practice aid shows auditors how to test AI in internal controls",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ],
+     "beat": "reporting",
+     "summary": "On 13 October 2026, the AICPA released a practice aid for auditors assessing AI-related risks in financial reporting and controls, material misstatement and AI within internal control systems. It calls for professional scepticism towards AI outputs, given data quality and explainability concerns.",
+     "sources": [
+      {
+       "name": "AICPA & CIMA News",
+       "url": "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
       }
      ]
     }
