@@ -1202,6 +1202,43 @@
     "cost_usd": 0.3541
    },
    "edition_cost_usd": 1.989
+  },
+  {
+   "date": "2026-11-02",
+   "items": [
+    {
+     "headline": "Agentic AI sweeps excess cash in near real time within authority limits",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "BCG and Capgemini see Treasury AI agents reaching autonomous execution by 2026",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FSB finalises 12 sound practices for responsible AI adoption",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "BIS separates tokenised deposits from stablecoins on settlement finality",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "(all)",
+     "status": "error",
+     "reasons": "takes: unparseable JSON"
+    }
+   ],
+   "cost_usd": 0.2509,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1089
+   },
+   "edition_cost_usd": 1.7383
   }
  ]
 }
