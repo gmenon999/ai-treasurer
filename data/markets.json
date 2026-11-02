@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-02T11:02:45Z",
+ "generated_utc": "2026-11-02T21:42:59Z",
  "policy": [
   {
    "bank": "Fed",
@@ -83,9 +83,9 @@
  "money": [
   {
    "name": "SOFR",
-   "value": "3.94%",
-   "change_bp": 0,
-   "asof": "2026-10-29",
+   "value": "3.95%",
+   "change_bp": 1,
+   "asof": "2026-10-30",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
    "id": "sofr",
@@ -95,7 +95,7 @@
    "name": "Fed funds effective",
    "value": "3.88%",
    "change_bp": 0,
-   "asof": "2026-10-29",
+   "asof": "2026-10-30",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
    "id": "effr",
@@ -113,9 +113,9 @@
   },
   {
    "name": "US Treasury 3M",
-   "value": "4.16%",
-   "change_bp": -2,
-   "asof": "2026-10-30",
+   "value": "4.21%",
+   "change_bp": 5,
+   "asof": "2026-11-02",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust3m",
@@ -123,9 +123,9 @@
   },
   {
    "name": "US Treasury 2Y",
-   "value": "4.56%",
-   "change_bp": -5,
-   "asof": "2026-10-30",
+   "value": "4.59%",
+   "change_bp": 3,
+   "asof": "2026-11-02",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust2y",
@@ -133,9 +133,9 @@
   },
   {
    "name": "US Treasury 10Y",
-   "value": "4.94%",
-   "change_bp": -4,
-   "asof": "2026-10-30",
+   "value": "4.91%",
+   "change_bp": -3,
+   "asof": "2026-11-02",
    "source_name": "US Treasury",
    "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
    "id": "ust10y",
@@ -145,9 +145,9 @@
  "fx": [
   {
    "name": "EUR/USD",
-   "value": "1.1172",
-   "change_pct": 0.38,
-   "asof": "2026-10-30",
+   "value": "1.1216",
+   "change_pct": 0.39,
+   "asof": "2026-11-02",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "eurusd",
@@ -155,9 +155,9 @@
   },
   {
    "name": "GBP/USD",
-   "value": "1.3399",
-   "change_pct": 0.62,
-   "asof": "2026-10-30",
+   "value": "1.3419",
+   "change_pct": 0.15,
+   "asof": "2026-11-02",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "gbpusd",
@@ -165,9 +165,9 @@
   },
   {
    "name": "USD/JPY",
-   "value": "157.25",
-   "change_pct": -0.51,
-   "asof": "2026-10-30",
+   "value": "157.90",
+   "change_pct": 0.41,
+   "asof": "2026-11-02",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdjpy",
@@ -175,9 +175,9 @@
   },
   {
    "name": "USD/INR",
-   "value": "94.96",
-   "change_pct": -0.33,
-   "asof": "2026-10-30",
+   "value": "94.91",
+   "change_pct": -0.05,
+   "asof": "2026-11-02",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdinr",
@@ -185,9 +185,9 @@
   },
   {
    "name": "USD/CNY",
-   "value": "6.6529",
-   "change_pct": -0.13,
-   "asof": "2026-10-30",
+   "value": "6.6483",
+   "change_pct": -0.07,
+   "asof": "2026-11-02",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "usdcny",
@@ -195,9 +195,9 @@
   },
   {
    "name": "AUD/USD",
-   "value": "0.7025",
-   "change_pct": -0.01,
-   "asof": "2026-10-30",
+   "value": "0.7008",
+   "change_pct": -0.23,
+   "asof": "2026-11-02",
    "source_name": "ECB reference rates (USD crosses derived)",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
    "id": "audusd",
@@ -205,5 +205,7 @@
   }
  ],
  "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
- "errors": []
+ "errors": [
+  "market history estr: HTTPSConnectionPool(host='data-api.ecb.europa.eu', port=443): Read timed out. (read timeout=30)"
+ ]
 }
