@@ -1239,6 +1239,79 @@
     "cost_usd": 0.1089
    },
    "edition_cost_usd": 1.7383
+  },
+  {
+   "date": "2026-11-03",
+   "items": [
+    {
+     "headline": "Ripple extends GSmart AI with policy-governed agents across Treasury workflows",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "HSBC launches HSBCnio with ISO 20022 APIs and Model Context Protocol access",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Uber pilot earns 1.5 extra days of yield with 24/7 tokenised MMF settlement",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "HSBC notional pool cuts Advanced MedTech external borrowing by up to $10 million",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "JPMorgan Wire 365 now settles cross-border payments 24/7/365",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "EY says AI audit readiness requires shared ownership across Finance, IT and risk",
+     "status": "dropped",
+     "lens": "Controls & audit",
+     "reasons": "'Capture step' is unexplained jargon and does not appear in the source. 'Auditors will test' overstates the source, which says auditors will 'often expect to see' controls over data before it enters the AI system."
+    },
+    {
+     "headline": "OAT-Bund spread hits 176bp, widest since late 2011, as euro slides",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "HKMA's Project Ensemble moves to 24/7 tokenised central bank money settlement for 12 banks",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "BoE hike to 4% dated 5 November; markets price 73% December Fed hike",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Euro climbs 0.48% to $1.1212 as oil eases and French spreads tighten",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Bank of America fined record $1.21 billion over AML and sanctions failures",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB exposure draft proposes nature-related Practice Statement built on IFRS S1 and S2",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.4812,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1209
+   },
+   "edition_cost_usd": 1.7899
   }
  ]
 }
