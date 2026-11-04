@@ -1,80 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-20",
-   "note_headline": "Rate guidance is gone and hedge accounting is under review, so discipline beats prediction",
-   "note_opening": "Treasury and Finance are losing the external anchors they plan around. Fed Chair Kevin Warsh has ended pre-decision signalling, so the 28 October meeting arrives with no forward guidance. The IASB has opened its post-imp",
-   "items": [
-    {
-     "headline": "Ripple Treasury adds approval-gated AI agents to GSmart",
-     "urls": [
-      "https://treasury.ripple.com/news/ripple-treasury-brings-industrys-first-governed-ai-for-enterprise-treasury"
-     ]
-    },
-    {
-     "headline": "Kyriba and Esker feed live AP/AR signals into Treasury cash forecasts",
-     "urls": [
-      "https://www.kyriba.com/news/kyriba-and-esker-partner-to-help-companies-improve-cash-visibility-forecasting-and-liquidity-optimization/"
-     ]
-    },
-    {
-     "headline": "49% of mid-market CFOs hold over 10% of operating cash idle",
-     "urls": [
-      "https://connect.neugroup.com/public/blogs/the-2026-corporate-cash-confidence-survey-report"
-     ]
-    },
-    {
-     "headline": "Swift Scheme links instant-payment systems as CBPR+ release slips 12 months",
-     "urls": [
-      "https://home.cib.natixis.com/articles/international-flows-where-do-we-stand",
-      "https://www.jpmorgan.com/insights/payments/fx-cross-border/iso-20022-migration"
-     ]
-    },
-    {
-     "headline": "AICPA practice aid requires auditors to test AI controls within ICFR",
-     "urls": [
-      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
-     ]
-    },
-    {
-     "headline": "Australian corporates hold FX hedge ratios despite costly cross-currency basis",
-     "urls": [
-      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
-     ]
-    },
-    {
-     "headline": "Sibos 2026 banks split roles between tokenised deposits and stablecoins",
-     "urls": [
-      "https://spendthebits.com/insights/sibos-2026-tokenised-deposits-vs-stablecoins"
-     ]
-    },
-    {
-     "headline": "Fed Chair Warsh ends rate previews before the 28 October decision",
-     "urls": [
-      "https://www.wsj.com/economy/central-banking/warsh-avoids-signal-on-october-rate-move-a176b0d5"
-     ]
-    },
-    {
-     "headline": "OFAC issues Iran GL FF and amends Lukoil licences 128D and 130B",
-     "urls": [
-      "https://ofac.treasury.gov/recent-actions/20261015"
-     ]
-    },
-    {
-     "headline": "ISSB opens nature-related disclosures consultation for 120 days at COP17",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
-     ]
-    },
-    {
-     "headline": "IASB opens post-implementation review of IFRS 9 hedge accounting",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-21",
    "note_headline": "Record working capital trapped in receivables makes invoice data Finance's cheapest funding source",
    "note_opening": "Finance's largest untapped cash source sits in receivables, not funding markets. Hackett Group puts the working capital opportunity among the 1,000 largest North American public companies at a record $1.94 trillion, up 1",
@@ -1471,6 +1397,229 @@
       {
        "name": "IFRS – Live from COP17: ISSB nature-related disclosures consultation",
        "url": "https://www.ifrs.org/news-and-events/news/2026/10/cop17-issb-nature-related-disclosures-consultation/"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "note_headline": "Finance AI delivers real savings only where autonomy is bounded by design",
+   "note_opening": "Agentic AI is producing measurable gains in Treasury and Finance, but only inside hard limits. Centalion cut trade Finance issuance processing by 55% and amendments by 80% on Komgo, with approvals still enforced at the o",
+   "items": [
+    {
+     "headline": "Centalion cuts trade Finance processing by up to 80% with Komgo agent",
+     "urls": [
+      "https://komgo.io/newsroom/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Centalion deployed an AI Treasury Agent on Komgo, pairing a large language model with trade Finance workflows. Issuance processing for off-balance sheet instruments fell 55% and amendments 80%, freeing 60+ working days annually, while approvals stay enforced at the orchestration layer.",
+     "sources": [
+      {
+       "name": "Komgo",
+       "url": "https://komgo.io/newsroom/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations"
+      }
+     ]
+    },
+    {
+     "headline": "Standard Bank CIB says agentic Treasury AI needs bounded autonomy",
+     "urls": [
+      "https://corporateandinvestment.standardbank.com/cib/global/who-we-are/about-us/news/standard-bank-agentic-ai-treasury"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Standard Bank CIB argues not every Treasury decision should be automated. Autonomy should sit on a spectrum from monitoring alerts to advisory, approval-stage and predefined execution within limits, with humans able to access assumptions and alternatives, because commercial judgment and accountability cannot be fully replicated.",
+     "sources": [
+      {
+       "name": "Standard Bank",
+       "url": "https://corporateandinvestment.standardbank.com/cib/global/who-we-are/about-us/news/standard-bank-agentic-ai-treasury"
+      }
+     ]
+    },
+    {
+     "headline": "ServiceNow unifies 10+ Treasury data sources in Snowflake via Kyriba APIs",
+     "urls": [
+      "https://treasurytoday.com/asa-2026-winners/building-the-data-foundation-for-an-ai-enabled-treasury/"
+     ],
+     "beat": "treasury_tech",
+     "summary": "ServiceNow's Project Artemis consolidated 10+ fragmented Treasury data sources, including TMS, ERP and banking portals, into a single Snowflake data lake. Kyriba APIs feed transactions, positions and cash balances directly into a governance-ready repository, giving Finance consistent reporting and analytics.",
+     "sources": [
+      {
+       "name": "Treasury Today",
+       "url": "https://treasurytoday.com/asa-2026-winners/building-the-data-foundation-for-an-ai-enabled-treasury/"
+      }
+     ]
+    },
+    {
+     "headline": "Tipalti Treasury launches 13-week forecasts built from bank feeds and ERP invoices",
+     "urls": [
+      "https://tipalti.com/press/tipalti-introduces-treasury-solution/"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Tipalti released a Treasury solution that consolidates intraday and prior-day cash balances across entities and currencies with scheduled ERP payment data to produce customisable 13-week liquidity forecasts. Direct, secure global bank connectivity replaces manual aggregation across bank portals.",
+     "sources": [
+      {
+       "name": "Tipalti",
+       "url": "https://tipalti.com/press/tipalti-introduces-treasury-solution/"
+      }
+     ]
+    },
+    {
+     "headline": "Kyriba and J.P. Morgan embed Morgan Money liquidity recommendations in Treasury workflows",
+     "urls": [
+      "https://sapinsider.org/map/kyriba-jp-morgan-morgan-money-treasury-cash-management/"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Kyriba and J.P. Morgan have integrated Morgan Money into Treasury systems, surfacing liquidity recommendations shaped by each organisation's cash horizon, yield targets and funding needs. Suggestions respond to corporate context rather than hard-coded rules, so Treasury must decide how far to rely on them.",
+     "sources": [
+      {
+       "name": "SAPinsider",
+       "url": "https://sapinsider.org/map/kyriba-jp-morgan-morgan-money-treasury-cash-management/"
+      }
+     ]
+    },
+    {
+     "headline": "Ant International runs 24/7 HKD liquidity on tokenised deposits via Ensemble TX",
+     "urls": [
+      "https://www.theasianbanker.com/press-releases/ant-international-and-bank-partners-achieve-real-time-cross-bank-liquidity-management-through-tokenised-deposits-via-cebm-under-hkma-s-ensembletx"
+     ],
+     "beat": "cash",
+     "summary": "Between September and October 2026, Ant International managed real-time cross-bank liquidity with BOCHK, CCB Asia and HSBC using tokenised deposits settled in central bank money on HKMA's Ensemble TX. HKD transfers took five minutes, giving 24/7 access and lower pre-funding.",
+     "sources": [
+      {
+       "name": "The Asian Banker",
+       "url": "https://www.theasianbanker.com/press-releases/ant-international-and-bank-partners-achieve-real-time-cross-bank-liquidity-management-through-tokenised-deposits-via-cebm-under-hkma-s-ensembletx"
+      }
+     ]
+    },
+    {
+     "headline": "SWIFT requires structured postal addresses in cross-border messages from 14 November 2026",
+     "urls": [
+      "https://www.swift.com/standards/iso-20022/removal-unstructured-address",
+      "https://www.europeanpaymentscouncil.eu/what-we-do/epc-payment-schemes/sepa-instant-credit-transfer/sepa-instant-credit-transfer-rulebook"
+     ],
+     "beat": "payments",
+     "summary": "From 14 November 2026, SWIFT requires structured postal addresses in ISO 20022 cross-border messages, and fully unstructured messages may be rejected or delayed. The EPC has aligned the SCT Inst rulebook with SWIFT's November 2026 MX Release, making address data a payment risk.",
+     "sources": [
+      {
+       "name": "SWIFT",
+       "url": "https://www.swift.com/standards/iso-20022/removal-unstructured-address"
+      },
+      {
+       "name": "European Payments Council",
+       "url": "https://www.europeanpaymentscouncil.eu/what-we-do/epc-payment-schemes/sepa-instant-credit-transfer/sepa-instant-credit-transfer-rulebook"
+      }
+     ]
+    },
+    {
+     "headline": "FSB finalises 12 sound practices for responsible AI adoption",
+     "urls": [
+      "https://www.fsb.org/2026/10/sound-practices-for-responsible-adoption-of-artificial-intelligence-ai-final-report/"
+     ],
+     "beat": "regulation",
+     "summary": "The Financial Stability Board published its final report on 15 October 2026, setting out 12 non-binding practices spanning strategic direction, governance and human oversight, among others. Board accountability sits at the centre, and the toolkit is designed to adapt to institutions of all sizes.",
+     "sources": [
+      {
+       "name": "Financial Stability Board",
+       "url": "https://www.fsb.org/2026/10/sound-practices-for-responsible-adoption-of-artificial-intelligence-ai-final-report/"
+      }
+     ]
+    },
+    {
+     "headline": "HSBC research moves FX risk from back office to boardroom",
+     "urls": [
+      "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom",
+      "https://www.mufgresearch.com/fx/monthly-foreign-exchange-outlook-november-2026/"
+     ],
+     "beat": "risk",
+     "summary": "HSBC research published on 6 October 2026 finds currency risk is now treated as a business-model issue rather than purely market risk. CFOs and treasurers are reassessing hedge ratios, stress testing for policy changes and automating exposure capture to strengthen resilience.",
+     "sources": [
+      {
+       "name": "HSBC Business Insights",
+       "url": "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom"
+      },
+      {
+       "name": "MUFG Research",
+       "url": "https://www.mufgresearch.com/fx/monthly-foreign-exchange-outlook-november-2026/"
+      }
+     ]
+    },
+    {
+     "headline": "Standard Chartered launches tokenised deposits for Hong Kong corporates on Ensemble TX",
+     "urls": [
+      "https://www.sc.com/en/press-release/standard-chartered-launches-tokenised-deposits-in-hong-kong/"
+     ],
+     "beat": "digital",
+     "summary": "Standard Chartered launched tokenised deposits for corporate clients in Hong Kong on 2 November 2026, pairing regulated bank deposits with programmability. Transfers between participating banks run in real time, with inter-bank settlement in central bank money 24/7 on HKMA's Ensemble TX.",
+     "sources": [
+      {
+       "name": "Standard Chartered",
+       "url": "https://www.sc.com/en/press-release/standard-chartered-launches-tokenised-deposits-in-hong-kong/"
+      }
+     ]
+    },
+    {
+     "headline": "HashKey Group adopts Standard Chartered tokenised deposits for multi-market Treasury",
+     "urls": [
+      "https://group.hashkey.com/en/hashkey-adopts-tokenised-deposit-for-cross-market-treasury-and-liquidity-management-on-standard-chartereds-blockchain-platform/"
+     ],
+     "beat": "digital",
+     "summary": "HashKey Group, an Asian digital asset company, has adopted Standard Chartered's tokenised deposit solution to run Treasury operations across multiple markets, using blockchain infrastructure for institutional-grade liquidity management and settlement. It gives the bank's offer a named corporate adopter.",
+     "sources": [
+      {
+       "name": "HashKey",
+       "url": "https://group.hashkey.com/en/hashkey-adopts-tokenised-deposit-for-cross-market-treasury-and-liquidity-management-on-standard-chartereds-blockchain-platform/"
+      }
+     ]
+    },
+    {
+     "headline": "Fed holds at 3.75–4.00% as JPMorgan forecasts December quarter-point hike",
+     "urls": [
+      "https://www.ssga.com/us/en/institutional/insights/weekly-economic-perspectives-02-november-2026",
+      "https://www.jpmorgan.com/insights/global-research/economy/fed-rate-cuts"
+     ],
+     "beat": "markets_macro",
+     "summary": "The FOMC left rates at 3.75–4.00% on 1 October 2026, with two dissents favouring a hike. JPMorgan reads the statement as hawkish and expects a quarter-point increase in December, backed by strong US growth and 3.7% year-over-year inflation, a risk for floating-rate borrowers.",
+     "sources": [
+      {
+       "name": "State Street Global Advisors",
+       "url": "https://www.ssga.com/us/en/institutional/insights/weekly-economic-perspectives-02-november-2026"
+      },
+      {
+       "name": "JPMorgan",
+       "url": "https://www.jpmorgan.com/insights/global-research/economy/fed-rate-cuts"
+      }
+     ]
+    },
+    {
+     "headline": "FinCEN and OFAC fine Bank of America a record $1.21 billion",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0657",
+      "https://www.cnbc.com/2026/10/13/bank-of-america-treasury-money-laundering.html"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 13 October, FinCEN fined Bank of America $1.2 billion and OFAC added $11.6 million, a record $1.21 billion combined, for wilful AML/BSA violations and sanctions breaches. The bank missed SARs on $5 billion of suspicious transactions, with knock-on effects for corporate payment screening.",
+     "sources": [
+      {
+       "name": "U.S. Department of the Treasury",
+       "url": "https://home.treasury.gov/news/press-releases/sb0657"
+      },
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/10/13/bank-of-america-treasury-money-laundering.html"
+      }
+     ]
+    },
+    {
+     "headline": "AICPA practice aid maps AI risks to internal controls and misstatement",
+     "urls": [
+      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+     ],
+     "beat": "reporting",
+     "summary": "The AICPA released a practice aid on 13 October 2026 to help auditors judge how AI in financial reporting and controls affects audit risk, covering data quality, model reliability, bias and hallucinations. That shows controllers where auditors will probe AI.",
+     "sources": [
+      {
+       "name": "AICPA & CIMA News",
+       "url": "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
       }
      ]
     }

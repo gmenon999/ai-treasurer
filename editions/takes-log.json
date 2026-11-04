@@ -1312,6 +1312,89 @@
     "cost_usd": 0.1209
    },
    "edition_cost_usd": 1.7899
+  },
+  {
+   "date": "2026-11-04",
+   "items": [
+    {
+     "headline": "Tipalti Treasury launches 13-week forecasts built from bank feeds and ERP invoices",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FSB finalises 12 sound practices for responsible AI adoption",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Centalion cuts trade Finance processing by up to 80% with Komgo agent",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Standard Bank CIB says agentic Treasury AI needs bounded autonomy",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "ServiceNow unifies 10+ Treasury data sources in Snowflake via Kyriba APIs",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Kyriba and J.P. Morgan embed Morgan Money liquidity recommendations in Treasury workflows",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Ant International runs 24/7 HKD liquidity on tokenised deposits via Ensemble TX",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "SWIFT requires structured postal addresses in cross-border messages from 14 November 2026",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "HSBC research moves FX risk from back office to boardroom",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "no verdict from checker"
+    },
+    {
+     "headline": "Standard Chartered launches tokenised deposits for Hong Kong corporates on Ensemble TX",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "HashKey Group adopts Standard Chartered tokenised deposits for multi-market Treasury",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Fed holds at 3.75–4.00% as JPMorgan forecasts December quarter-point hike",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "FinCEN and OFAC fine Bank of America a record $1.21 billion",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "AICPA practice aid maps AI risks to internal controls and misstatement",
+     "status": "published",
+     "lens": "Controls & audit"
+    }
+   ],
+   "cost_usd": 0.4108,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.3437
+   },
+   "edition_cost_usd": 1.7133
   }
  ]
 }
