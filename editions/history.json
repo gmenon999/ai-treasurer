@@ -1,86 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-21",
-   "note_headline": "Record working capital trapped in receivables makes invoice data Finance's cheapest funding source",
-   "note_opening": "Finance's largest untapped cash source sits in receivables, not funding markets. Hackett Group puts the working capital opportunity among the 1,000 largest North American public companies at a record $1.94 trillion, up 1",
-   "items": [
-    {
-     "headline": "Ripple Treasury adds policy-governed AI agents to GSmart with human approval",
-     "urls": [
-      "https://treasury.ripple.com/news/ripple-treasury-brings-industrys-first-governed-ai-for-enterprise-treasury"
-     ]
-    },
-    {
-     "headline": "API-first TMS platforms replace overnight batch files with 15-minute syncs",
-     "urls": [
-      "https://www.embat.io/treasury-management/cashflow/cashflow-management",
-      "https://treasurybrief.com/blog/cash-flow-forecasting-tools-for-enterprise-treasury/"
-     ]
-    },
-    {
-     "headline": "Hackett finds record $1.94 trillion working capital opportunity, up 12%",
-     "urls": [
-      "https://www.thehackettgroup.com/the-hackett-group-finds-record-1-94-trillion-working-capital-opportunity-among-north-americas-largest-companies/"
-     ]
-    },
-    {
-     "headline": "McKinsey sees invoice-level data releasing 10–30% of working capital as cash",
-     "urls": [
-      "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-cash-hiding-in-plain-sight"
-     ]
-    },
-    {
-     "headline": "Swift reports 98% of cross-border instructions now in ISO 20022 format",
-     "urls": [
-      "https://auspaynet.com.au/insights/crossborder/2026-2"
-     ]
-    },
-    {
-     "headline": "AICPA practice aid maps AI risks to ICFR and material misstatement",
-     "urls": [
-      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
-     ]
-    },
-    {
-     "headline": "Rising cross-currency basis costs force treasurers to reset hedging policy",
-     "urls": [
-      "https://www.thefytimes.com/article/global-bond-sell-off-cross-border-treasury-teams"
-     ]
-    },
-    {
-     "headline": "Banks cast tokenised deposits as storage and stablecoins as transit",
-     "urls": [
-      "https://www.digitaltoday.co.kr/en/view/111038/big-firms-onchain-funding-demand-growth-banking-sector-joint-response"
-     ]
-    },
-    {
-     "headline": "Fed expected to hold at 3.75–4.00% on 28 October, then hike in December",
-     "urls": [
-      "https://www.investing.com/news/economy-news/fed-to-skip-october-but-raise-rates-again-in-december-nearly-all-economists-say-reuters-poll-4960095"
-     ]
-    },
-    {
-     "headline": "CPI data lands just before the 27–28 October Fed meeting",
-     "urls": [
-      "https://www.federalreserve.gov/newsevents/2026-october.htm"
-     ]
-    },
-    {
-     "headline": "OFAC issues Iran General Licenses FF and EE, amends Lukoil licences",
-     "urls": [
-      "https://ofac.treasury.gov/recent-actions/20261015"
-     ]
-    },
-    {
-     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
-     "urls": [
-      "https://www.iasb.org"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-22",
    "note_headline": "Regulators are pricing weak controls, and Finance now carries the bill",
    "note_opening": "Regulators are pricing weak controls, not merely criticising them. US authorities hit Bank of America with a record $1.21 billion penalty for BSA/AML and sanctions failures. AICPA guidance of 13 October 2026 brings AI-en",
@@ -1620,6 +1540,200 @@
       {
        "name": "AICPA & CIMA News",
        "url": "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "note_headline": "Dearer money and real-time bank data leave trapped working capital nowhere to hide",
+   "note_opening": "Idle cash has become an expensive habit for Treasury and Finance. The Bank of England raised rates to 4.00% on 5 November, its first hike in three years, and Hackett Group counts €1.26 trillion of excess working capital,",
+   "items": [
+    {
+     "headline": "HKMA launches Project SAGE to test agentic Finance in practice",
+     "urls": [
+      "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261102-4/"
+     ],
+     "beat": "ai_agentic",
+     "summary": "The Hong Kong Monetary Authority set up Project SAGE on 2 November 2026 to help industry explore agentic Finance solutions and validate practical implementation challenges, with a focus on market development and regulatory dialogue. Treasurers get an early read on supervisory expectations.",
+     "sources": [
+      {
+       "name": "HKMA",
+       "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261102-4/"
+      }
+     ]
+    },
+    {
+     "headline": "API-first Treasury systems replace overnight batches with intraday cash visibility",
+     "urls": [
+      "https://trovata.io/blog/real-time-cash-visibility-how-an-api-first-tms-sees-global-cash-as-it-moves"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Treasury management systems built on direct bank API integration refresh balances and transactions continuously through the day, normalise data across institutions and aggregate multiple entities. Replacing overnight batch processing gives Treasury a live cash position and an AI-ready data foundation.",
+     "sources": [
+      {
+       "name": "Trovata",
+       "url": "https://trovata.io/blog/real-time-cash-visibility-how-an-api-first-tms-sees-global-cash-as-it-moves"
+      }
+     ]
+    },
+    {
+     "headline": "Embat connects to J.P. Morgan's Bank Account Services API for real-time data",
+     "urls": [
+      "https://thepaypers.com/fintech/news/embat-integrates-jp-morgan-payments-bas-api-for-bank-connectivity"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Embat's Treasury management platform now links to J.P. Morgan Payments through its Bank Account Services API, feeding balances, transactions and payment data into Treasury systems in real time. For J.P. Morgan clients on Embat, that means cash positions built from live bank data.",
+     "sources": [
+      {
+       "name": "The Paypers",
+       "url": "https://thepaypers.com/fintech/news/embat-integrates-jp-morgan-payments-bas-api-for-bank-connectivity"
+      }
+     ]
+    },
+    {
+     "headline": "Hackett Group finds €1.26 trillion trapped in European working capital",
+     "urls": [
+      "https://www.thehackettgroup.com/the-hackett-group-1-26-trillion-trapped-working-capital-europes-largest-companies/"
+     ],
+     "beat": "cash",
+     "summary": "Hackett Group's 4 November 2026 study of Europe's 1,000 largest firms puts excess working capital at €1.26 trillion, 14% of revenue. The cash conversion cycle improved 1.8 days in 2025, yet €113 billion remains releasable across payables, inventory and receivables. That is self-funded liquidity.",
+     "sources": [
+      {
+       "name": "The Hackett Group",
+       "url": "https://www.thehackettgroup.com/the-hackett-group-1-26-trillion-trapped-working-capital-europes-largest-companies/"
+      }
+     ]
+    },
+    {
+     "headline": "ISO 20022 carries full remittance data across borders without truncation",
+     "urls": [
+      "https://www.finextra.com/blogposting/33282/iso-20022-meets-real-time-rails-vladyslav-kolodistyi-on-data-rich-instant-payments-across-borders"
+     ],
+     "beat": "payments",
+     "summary": "Under ISO 20022, payment and compliance data survive cross-border journeys intact, with remittance details landing in their original fields, untruncated and untranslated. Sender and receiver compliance teams therefore screen identical payment information, giving both ends a consistent view of every transfer.",
+     "sources": [
+      {
+       "name": "Finextra",
+       "url": "https://www.finextra.com/blogposting/33282/iso-20022-meets-real-time-rails-vladyslav-kolodistyi-on-data-rich-instant-payments-across-borders"
+      }
+     ]
+    },
+    {
+     "headline": "HKMA says agentic AI controls belong in the harness, not the prompt",
+     "urls": [
+      "https://www.hkma.gov.hk/media/eng/doc/key-information/press-release/2026/20261102e3a1.pdf"
+     ],
+     "beat": "regulation",
+     "summary": "The Hong Kong regulator's 2 November 2026 Discussion Paper states that agentic AI controls must sit in the agent harness, meaning instructions, workflow design and permissions, rather than model-level guardrails or prompt engineering. Treasury and Finance agents need permissions designed in, not requested politely.",
+     "sources": [
+      {
+       "name": "HKMA",
+       "url": "https://www.hkma.gov.hk/media/eng/doc/key-information/press-release/2026/20261102e3a1.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "FCA sets out good and poor practice for AI adoption in financial services",
+     "urls": [
+      "https://www.footanstey.com/our-insights/articles-news/ai-adoption-in-financial-services-fca-publishes-guidance-on-good-and-poor-practice/"
+     ],
+     "beat": "regulation",
+     "summary": "The UK Financial Conduct Authority's framework calls for proportionate AI governance, senior management oversight, defined escalation triggers and multidisciplinary teams at the design stage. For Finance functions deploying AI, the point is plain: decide in advance when a human must step in.",
+     "sources": [
+      {
+       "name": "Foot Anstey",
+       "url": "https://www.footanstey.com/our-insights/articles-news/ai-adoption-in-financial-services-fca-publishes-guidance-on-good-and-poor-practice/"
+      }
+     ]
+    },
+    {
+     "headline": "Treasurers shift FX hedging towards cash-flow-at-risk and fewer investor surprises",
+     "urls": [
+      "https://treasurytoday.com/insight-and-analysis/stability-the-new-currency-in-fx/"
+     ],
+     "beat": "risk",
+     "summary": "Corporate treasurers increasingly report currency risk to boards through cash-flow-at-risk, quantifying the worst-case annual move in operating cash flow after hedges. The goal has moved from managing the earnings line to reducing investor surprises, putting predictability ahead of point-exposure protection.",
+     "sources": [
+      {
+       "name": "Treasury Today",
+       "url": "https://treasurytoday.com/insight-and-analysis/stability-the-new-currency-in-fx/"
+      }
+     ]
+    },
+    {
+     "headline": "Tokenised deposits and stablecoins serve different Treasury jobs",
+     "urls": [
+      "https://thepaypers.com/crypto-web3-and-cbdc/expert-views/tokenised-deposits-will-accelerate-stablecoin-adoption"
+     ],
+     "beat": "digital",
+     "summary": "Tokenised deposits bring efficiency inside a single banking ecosystem and for internal cash pooling. Stablecoins keep the edge for cross-bank, multi-currency supplier payments and for bridging disconnected systems without common account relationships, so treasurers may need both rather than one.",
+     "sources": [
+      {
+       "name": "The Paypers",
+       "url": "https://thepaypers.com/crypto-web3-and-cbdc/expert-views/tokenised-deposits-will-accelerate-stablecoin-adoption"
+      }
+     ]
+    },
+    {
+     "headline": "Bank of England lifts rates to 4.00%, its first hike in three years",
+     "urls": [
+      "https://www.bankofengland.co.uk/monetary-policy-report/2026/november-2026",
+      "https://tradingeconomics.com/united-kingdom/government-bond-yield/news/597203"
+     ],
+     "beat": "markets_macro",
+     "summary": "The Bank of England lifted rates 25 basis points to 4.00% on 5 November, its first rise in three years, amid rising energy costs. Gilt yields fell to six-week lows as markets expected policymakers to temper expectations of further hikes. Sterling floating-rate debt costs more.",
+     "sources": [
+      {
+       "name": "Bank of England Official",
+       "url": "https://www.bankofengland.co.uk/monetary-policy-report/2026/november-2026"
+      },
+      {
+       "name": "Trading Economics",
+       "url": "https://tradingeconomics.com/united-kingdom/government-bond-yield/news/597203"
+      }
+     ]
+    },
+    {
+     "headline": "OFAC designates A7 Network, blocking 435+ sub-agents across 83 countries",
+     "urls": [
+      "https://sanctionsnews.bakermckenzie.com/ofac-adds-irans-automotive-and-rail-sectors-under-eo-13902-amends-faq-831-and-designates-the-a7-network-as-a-transnational-criminal-organization/"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 1 October 2026 OFAC designated A7 Network, linked to Russia and Iran sanctions evasion, a significant transnational criminal organisation, blocking dealings with 435+ sub-agents in 83 countries. FinCEN's proposed Section 9714 measure would bar covered financial institutions from fund transmittals involving any A7 Network Sub-Agent.",
+     "sources": [
+      {
+       "name": "Baker McKenzie Global Sanctions and Export Controls Blog",
+       "url": "https://sanctionsnews.bakermckenzie.com/ofac-adds-irans-automotive-and-rail-sectors-under-eo-13902-amends-faq-831-and-designates-the-a7-network-as-a-transnational-criminal-organization/"
+      }
+     ]
+    },
+    {
+     "headline": "FATF plenary moves to accelerate virtual asset standards implementation",
+     "urls": [
+      "https://www.fatf-gafi.org/en/publications/Fatfgeneral/outcomes-fatf-plenary-october-2026.html"
+     ],
+     "beat": "financial_crime",
+     "summary": "At its 28–30 October 2026 plenary, FATF agreed to significantly accelerate effective implementation of standards for virtual asset service providers in jurisdictions with materially important activity, citing rising ML/TF/PF risks and scam compound financing. Treasuries using stablecoins should expect tighter provider scrutiny.",
+     "sources": [
+      {
+       "name": "FATF Official Publications",
+       "url": "https://www.fatf-gafi.org/en/publications/Fatfgeneral/outcomes-fatf-plenary-october-2026.html"
+      }
+     ]
+    },
+    {
+     "headline": "IASB seeks feedback on IFRS 9 hedge accounting by 26 January 2027",
+     "urls": [
+      "https://www.iasplus.com/en-gb/publications/global/newsletters/need-to-know/2026/need-to-know--iasb-seeks-views-on-the-post-implementation-review-of-the-ifrs-9-hedge-accounting-requirements"
+     ],
+     "beat": "reporting",
+     "summary": "The International Accounting Standards Board published a Request for Information on 28 September 2026 for its post-implementation review of IFRS 9 and IFRS 7 hedge accounting, with the deadline extended to 26 January 2027. It tests whether costs and benefits meet stakeholder expectations.",
+     "sources": [
+      {
+       "name": "Deloitte IASPlus",
+       "url": "https://www.iasplus.com/en-gb/publications/global/newsletters/need-to-know/2026/need-to-know--iasb-seeks-views-on-the-post-implementation-review-of-the-ifrs-9-hedge-accounting-requirements"
       }
      ]
     }

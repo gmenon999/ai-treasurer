@@ -1395,6 +1395,86 @@
     "cost_usd": 0.3437
    },
    "edition_cost_usd": 1.7133
+  },
+  {
+   "date": "2026-11-05",
+   "items": [
+    {
+     "headline": "ISO 20022 carries full remittance data across borders without truncation",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "HKMA says agentic AI controls belong in the harness, not the prompt",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FCA sets out good and poor practice for AI adoption in financial services",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Treasurers shift FX hedging towards cash-flow-at-risk and fewer investor surprises",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Tokenised deposits and stablecoins serve different Treasury jobs",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FATF plenary moves to accelerate virtual asset standards implementation",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "IASB seeks feedback on IFRS 9 hedge accounting by 26 January 2027",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "HKMA launches Project SAGE to test agentic Finance in practice",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "Overstated: 'those expectations will reach Treasury through existing banking partners' is stated as fact, but the source says nothing about how expectations will flow to corporates. 'Before they reach wide use' and 'Banks' are also loose readings of the source ('financial institutions'). The focus l"
+    },
+    {
+     "headline": "API-first Treasury systems replace overnight batches with intraday cash visibility",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Embat connects to J.P. Morgan's Bank Account Services API for real-time data",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Hackett Group finds €1.26 trillion trapped in European working capital",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "no verdict from checker"
+    },
+    {
+     "headline": "Bank of England lifts rates to 4.00%, its first hike in three years",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "no verdict from checker"
+    },
+    {
+     "headline": "OFAC designates A7 Network, blocking 435+ sub-agents across 83 countries",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.2812,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 5: The facts and direction are correct, but the AI TREASURER VIEW fails test 5. 'Consider reporting... to the board' is a vague verb, and it gives no timing or specific step. It also does not follow from the point's rupee move: it comes from the general news item on cash-flow-at-risk, not from USD/INR falling or the dearer rupee costs.",
+    "cost_usd": 0.3839
+   },
+   "edition_cost_usd": 1.1979
   }
  ]
 }
