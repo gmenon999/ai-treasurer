@@ -1,89 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-22",
-   "note_headline": "Regulators are pricing weak controls, and Finance now carries the bill",
-   "note_opening": "Regulators are pricing weak controls, not merely criticising them. US authorities hit Bank of America with a record $1.21 billion penalty for BSA/AML and sanctions failures. AICPA guidance of 13 October 2026 brings AI-en",
-   "items": [
-    {
-     "headline": "Kyriba and JPMorgan bring agentic AI to Treasury investment decisions",
-     "urls": [
-      "https://www.kyriba.com/news/kyriba-jpmorgan-morgan-money-treasury-investment/"
-     ]
-    },
-    {
-     "headline": "Trovata swaps overnight bank files for real-time API data and agentic AI",
-     "urls": [
-      "https://trovata.io/trovata-tms"
-     ]
-    },
-    {
-     "headline": "XTPG Treasury Command links 70+ Brazilian institutions in one intraday view",
-     "urls": [
-      "https://xtpg.com.br/lancamento-treasury-command"
-     ]
-    },
-    {
-     "headline": "Hackett sizes North American working capital opportunity at record $1.94 trillion",
-     "urls": [
-      "https://www.thehackettgroup.com/the-hackett-group-finds-record-1-94-trillion-working-capital-opportunity-among-north-americas-largest-companies/"
-     ]
-    },
-    {
-     "headline": "ECB readies ISO 20022 MR2026 and HVPS+ changes for TARGET2",
-     "urls": [
-      "https://www.ecb.europa.eu/paym/groups/shared/docs/c3fb9-2025-10-22-t2-cg-item-5.4_iso_20022_mr2026_and_hvps__ug2026_change_requests-planning.pdf"
-     ]
-    },
-    {
-     "headline": "AICPA practice aid brings AI into ICFR scoping and financial-statement audits",
-     "urls": [
-      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing",
-      "https://www.cfodive.com/news/aicpa-issues-guidance-ai-assisted-auditing/832907/"
-     ]
-    },
-    {
-     "headline": "RBI derivative curbs lift Indian corporate FX hedging costs by 80–150bp",
-     "urls": [
-      "https://finmen.in/category/rbi%E2%80%9s-new-forex-hedging-rules-what-cfos-should-reassess-about-currency-and-credit-risk"
-     ]
-    },
-    {
-     "headline": "Vantage Bank and Rio Bank settle loan participation payment with tokenised deposits",
-     "urls": [
-      "https://cryptobriefing.com/vantage-rio-bank-tokenized-deposit-loan-payment/"
-     ]
-    },
-    {
-     "headline": "ECB expected to hold at 2.50% on 29 October, with December hike likelier",
-     "urls": [
-      "https://www.fxstreet.com/analysis/ecb-october-pause-mrr-in-focus-202610201244",
-      "https://kalshi.com/markets/kxcbdecisioneu/eu-central-bank-policy-interest-rate/kxcbdecisioneu-26oct29"
-     ]
-    },
-    {
-     "headline": "Bank of America hit with record $1.21 billion BSA/AML and sanctions penalty",
-     "urls": [
-      "https://home.treasury.gov/news/press-releases/sb0657/",
-      "https://www.fincen.gov/news/news-releases/fincen-assesses-12-billion-penalty-against-bank-america"
-     ]
-    },
-    {
-     "headline": "AMLA finalises standards on due diligence, PEP screening and group AML/CFT",
-     "urls": [
-      "https://www.amla.europa.eu/press-release-amla-finalises-key-standards-private-sector_en",
-      "https://www.klgates.com/thought-leadership/EU-Anti-Money-Laundering-Authority-Finalises-Three-Technical-Standards-on-AML/CFT-Requirements-10-14-2026"
-     ]
-    },
-    {
-     "headline": "FSB finalises 12 AI governance practices, reaching Treasury oversight of vendor AI",
-     "urls": [
-      "https://www.fsb.org/2026/07/cross-border-payments-towards-the-next-chapter/"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-24",
    "note_headline": "Treasury agents gain execution rights faster than Finance can staff their governance",
    "note_opening": "AI agents in Treasury and Finance are moving from recommending to executing. Kyriba's TAI executes money-market investments and stablecoin payments once humans approve, and BCG expects agents to route payments and run ca",
@@ -1734,6 +1651,182 @@
       {
        "name": "Deloitte IASPlus",
        "url": "https://www.iasplus.com/en-gb/publications/global/newsletters/need-to-know/2026/need-to-know--iasb-seeks-views-on-the-post-implementation-review-of-the-ifrs-9-hedge-accounting-requirements"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "note_headline": "Banks are wiring AI straight into Treasury data faster than Finance can govern it",
+   "note_opening": "Banks are piping live account data straight into corporate AI, and Finance governance trails behind. HSBC's HSBCnio lets clients feed ISO 20022 data into their own AI via Model Context Protocol, and Embat now draws real-",
+   "items": [
+    {
+     "headline": "Ripple Treasury switches on fully autonomous mode for GSmart AI agents",
+     "urls": [
+      "https://www.tokenpost.com/news/technology/41382"
+     ],
+     "beat": "ai_agentic",
+     "summary": "On 26 October 2026, Ripple Treasury let corporate customers configure GSmart AI agents to execute tasks such as overnight cash sweeps without routine approval. Policy controls, logging and escalation of edge cases to staff remain, so those limits now carry the risk.",
+     "sources": [
+      {
+       "name": "TokenPost",
+       "url": "https://www.tokenpost.com/news/technology/41382"
+      }
+     ]
+    },
+    {
+     "headline": "Embat links to J.P. Morgan's Bank Account Services API for intraday visibility",
+     "urls": [
+      "https://www.embat.io/blog/embat-jp-morgan-payments-bank-connectivity"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Embat's Treasury platform now connects to JPMorgan's Bank Account Services API, feeding real-time balances, transactions and payment data into TMS and ERP systems. Overnight batch processing gives way to intraday cash visibility, sharpening positioning and liquidity decisions.",
+     "sources": [
+      {
+       "name": "Embat",
+       "url": "https://www.embat.io/blog/embat-jp-morgan-payments-bank-connectivity"
+      }
+     ]
+    },
+    {
+     "headline": "NeuGroup: 23% of corporates leave over a quarter of operating cash idle",
+     "urls": [
+      "https://connect.neugroup.com/public/blogs/the-2026-corporate-cash-confidence-survey-report"
+     ],
+     "beat": "cash",
+     "summary": "NeuGroup's 2026 Corporate Cash Confidence Survey found nearly half of firms hold over 10% of operating cash uninvested and 23% leave more than a quarter idle. While 76% value 24/7 settlement, only 19% can move cash in real time. That gap costs yield.",
+     "sources": [
+      {
+       "name": "NeuGroup",
+       "url": "https://connect.neugroup.com/public/blogs/the-2026-corporate-cash-confidence-survey-report"
+      }
+     ]
+    },
+    {
+     "headline": "HSBC launches HSBCnio, opening ISO 20022 data to client AI systems",
+     "urls": [
+      "https://www.about.hsbc.de/news-and-media/hsbc-launch-new-digital-solution-to-transform-transaction-banking"
+     ],
+     "beat": "payments",
+     "summary": "On 29 September 2026, HSBC unveiled HSBCnio, an API-first transaction banking platform. Corporate clients can embed ISO 20022 data into their own AI systems through Model Context Protocol, with existing permissions and controls intact, bringing bank data closer to Treasury agents.",
+     "sources": [
+      {
+       "name": "HSBC Germany",
+       "url": "https://www.about.hsbc.de/news-and-media/hsbc-launch-new-digital-solution-to-transform-transaction-banking"
+      }
+     ]
+    },
+    {
+     "headline": "BDO survey finds only 29% of organisations have formal AI governance policies",
+     "urls": [
+      "https://www.bdo.com/insights/press-releases/bdo-research-ai-moves-into-high-stakes-financial-judgments-raising-the-bar-for-governance"
+     ],
+     "beat": "regulation",
+     "summary": "BDO's 2026 Audit Innovation Survey found only 29% of organisations have formal AI governance policies with reduced manual reconciliation. Roughly 20% remain developing or ad hoc, and 17% say AI capabilities are outpacing their data infrastructure, a direct concern for controllers and auditors.",
+     "sources": [
+      {
+       "name": "BDO",
+       "url": "https://www.bdo.com/insights/press-releases/bdo-research-ai-moves-into-high-stakes-financial-judgments-raising-the-bar-for-governance"
+      }
+     ]
+    },
+    {
+     "headline": "Bank of England raises Bank Rate to 4%, first rise in over three years",
+     "urls": [
+      "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/november-2026",
+      "https://www.bbc.com/news/articles/ck5ynw45jrgqo"
+     ],
+     "beat": "risk",
+     "summary": "On 5 November 2026, the Bank of England's monetary policy committee voted 8–1 for a 25bp rise to 4%, citing rising inflation, now forecast to reach 5% by mid-2027, on Middle East energy prices. A wider USD-GBP gap lifts borrowing costs for non-sterling treasurers.",
+     "sources": [
+      {
+       "name": "Bank of England",
+       "url": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/november-2026"
+      },
+      {
+       "name": "BBC News",
+       "url": "https://www.bbc.com/news/articles/ck5ynw45jrgqo"
+      }
+     ]
+    },
+    {
+     "headline": "Australian importers' FX hedging participation climbs to 87%, Commonwealth Bank finds",
+     "urls": [
+      "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
+     ],
+     "beat": "risk",
+     "summary": "Commonwealth Bank's FX Barometer, conducted August-September 2026, shows hedging participation rising to 87% for importers and 73% for exporters, as firms reassess expected AUD/USD weakness to 0.70 by end-March 2027. Corporates above A$4 billion turnover increasingly use options, forwards and cross-currency swaps.",
+     "sources": [
+      {
+       "name": "Commonwealth Bank",
+       "url": "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-fx-barometer-corporates-hold-the-line-on-hedging.html"
+      }
+     ]
+    },
+    {
+     "headline": "Deutsche Bank: tokenised deposits enable 24/7 settlement across branches",
+     "urls": [
+      "https://flow.db.com/files/documents/more/publications/white-papers-guides/2026/DB-Digital-Money-WP-2026-30pp-Web-Secured.pdf"
+     ],
+     "beat": "digital",
+     "summary": "Deutsche Bank's 2026 digital-money white paper shows tokenised deposit platforms on proprietary blockchain networks now support 24/7 settlement across branches. Programmable rule sets allow flexible cash pooling and rules-based automated sweeping, giving treasurers new options for structuring group liquidity.",
+     "sources": [
+      {
+       "name": "Deutsche Bank",
+       "url": "https://flow.db.com/files/documents/more/publications/white-papers-guides/2026/DB-Digital-Money-WP-2026-30pp-Web-Secured.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "Euro holds near $1.12 as OAT-Bund spread narrows to 148bp",
+     "urls": [
+      "https://www.ideal-investisseur.fr/en/markets/oat-bund-spread.html",
+      "https://www.exchangerates.org.uk/EUR-USD-spot-exchange-rates-history-2026.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 5 November 2026, EUR/USD held around 1.1224, near $1.12, after earlier weakness, and the OAT-Bund spread compressed to 148bp from 176bp as French debt stabilised after the US midterm election. A widening rate gap keeps medium-term pressure on the euro.",
+     "sources": [
+      {
+       "name": "Ideal Investisseur",
+       "url": "https://www.ideal-investisseur.fr/en/markets/oat-bund-spread.html"
+      },
+      {
+       "name": "Exchange Rates UK",
+       "url": "https://www.exchangerates.org.uk/EUR-USD-spot-exchange-rates-history-2026.html"
+      }
+     ]
+    },
+    {
+     "headline": "FATF launches targeted review to close virtual asset AML/CFT gaps",
+     "urls": [
+      "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 30 October 2026, the FATF began a targeted review of jurisdictions with materially important VASP activity to close gaps in implementing virtual asset AML/CFT standards. Results follow in June and October 2027, a signal for treasurers holding or settling in digital assets.",
+     "sources": [
+      {
+       "name": "Financial Action Task Force",
+       "url": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
+      }
+     ]
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
+     "urls": [
+      "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/",
+      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
+     ],
+     "beat": "reporting",
+     "summary": "On 28 September 2026, the IASB published a Request for Information on IFRS 9 hedge accounting and IFRS 7 disclosures. The 120-day comment period closes on 26 January 2027, giving treasurers and controllers a chance to say whether benefits justify application costs.",
+     "sources": [
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/"
+      },
+      {
+       "name": "IFRS News",
+       "url": "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
       }
      ]
     }

@@ -1475,6 +1475,77 @@
     "cost_usd": 0.3839
    },
    "edition_cost_usd": 1.1979
+  },
+  {
+   "date": "2026-11-06",
+   "items": [
+    {
+     "headline": "Ripple Treasury switches on fully autonomous mode for GSmart AI agents",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Embat links to J.P. Morgan's Bank Account Services API for intraday visibility",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Australian importers' FX hedging participation climbs to 87%, Commonwealth Bank finds",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Deutsche Bank: tokenised deposits enable 24/7 settlement across branches",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FATF launches targeted review to close virtual asset AML/CFT gaps",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "NeuGroup: 23% of corporates leave over a quarter of operating cash idle",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "HSBC launches HSBCnio, opening ISO 20022 data to client AI systems",
+     "status": "dropped",
+     "lens": "Payments & operations",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "BDO survey finds only 29% of organisations have formal AI governance policies",
+     "status": "dropped",
+     "lens": "Accounting & reporting",
+     "reasons": "The facts hold up against the source: 99%, 62%, 49%, and the point that unsupported AI estimates can add audit risk. The lens is the problem. The story's key point is that documentation, governance and evidence for AI-informed results lag behind adoption, so auditors may face more risk. That fits Co"
+    },
+    {
+     "headline": "Bank of England raises Bank Rate to 4%, first rise in over three years",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Euro holds near $1.12 as OAT-Bund spread narrows to 148bp",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, comments due 26 January 2027",
+     "status": "dropped",
+     "lens": "Accounting & reporting",
+     "reasons": "copies wording from the source or summary"
+    }
+   ],
+   "cost_usd": 0.2564,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 4: The point states 'A widening interest-rate gap keeps medium-term pressure on euro receipts' as fact. The source frames this as a conditional outlook. It also clashes with the point's own data, where the OAT-Bund gap narrowed, and it does not say which gap it means. The 'Euro steadies' headline sits oddly with the 0.38% daily fall. A forecast is therefore presented as fact, with a confusin",
+    "cost_usd": 0.4151
+   },
+   "edition_cost_usd": 1.6412
   }
  ]
 }
