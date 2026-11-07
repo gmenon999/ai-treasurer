@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-06T23:07:15Z",
+ "generated_utc": "2026-11-07T05:56:57Z",
  "policy": [
   {
    "bank": "Fed",
@@ -10,8 +10,8 @@
    "value": "3.75–4.00%",
    "change_bp": 25,
    "since": "2026-09-17",
-   "checked": "2026-11-06",
-   "asof": "2026-11-06",
+   "checked": "2026-11-07",
+   "asof": "2026-11-07",
    "stale": false
   },
   {
@@ -23,8 +23,8 @@
    "value": "2.50 / 2.65%",
    "change_bp": 25,
    "since": "2026-09-10",
-   "checked": "2026-11-06",
-   "asof": "2026-11-06",
+   "checked": "2026-11-07",
+   "asof": "2026-11-07",
    "stale": false
   },
   {
@@ -36,8 +36,8 @@
    "value": "4.00%",
    "change_bp": 25,
    "since": "2026-11-05",
-   "checked": "2026-11-06",
-   "asof": "2026-11-06",
+   "checked": "2026-11-07",
+   "asof": "2026-11-07",
    "stale": false
   },
   {
@@ -205,12 +205,5 @@
   }
  ],
  "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
- "errors": [
-  "sofr: Expecting value: line 1 column 1 (char 0)",
-  "effr: Expecting value: line 1 column 1 (char 0)",
-  "fed: Expecting value: line 1 column 1 (char 0)",
-  "history fed: Expecting value: line 1 column 1 (char 0)",
-  "market history sofr: Expecting value: line 1 column 1 (char 0)",
-  "market history effr: Expecting value: line 1 column 1 (char 0)"
- ]
+ "errors": []
 }
