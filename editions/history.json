@@ -1,88 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-24",
-   "note_headline": "Treasury agents gain execution rights faster than Finance can staff their governance",
-   "note_opening": "AI agents in Treasury and Finance are moving from recommending to executing. Kyriba's TAI executes money-market investments and stablecoin payments once humans approve, and BCG expects agents to route payments and run ca",
-   "items": [
-    {
-     "headline": "Kyriba launches TAI, agentic AI that executes Treasury actions only after human approval",
-     "urls": [
-      "https://www.kyriba.com/products/agentic-ai-tai/"
-     ]
-    },
-    {
-     "headline": "BCG sees Treasury AI agents moving to autonomous execution within policy limits",
-     "urls": [
-      "https://www.bcg.com/publications/2026/ai-agents-reshaping-corporate-treasury"
-     ]
-    },
-    {
-     "headline": "Real-time bank APIs replace overnight batch files with 15-minute syncs",
-     "urls": [
-      "https://internationalbanker.com/banking/always-on-treasury-how-real-time-finance-is-rewiring-corporate-liquidity-management/"
-     ]
-    },
-    {
-     "headline": "Citi Institute finds 72% of corporates prioritise releasing trapped liquidity",
-     "urls": [
-      "https://www.citigroup.com/global/news/press-release/2026/citi-institute-supply-chain-financing-report-liquidity-takes-center-stage-as-supply-chain-disruption-becomes-norm"
-     ]
-    },
-    {
-     "headline": "SWIFT says 98% of cross-border instructions now use ISO 20022",
-     "urls": [
-      "https://www.swift.com/standards/iso-20022/iso-20022-financial-institutions-focus-payments-instructions"
-     ]
-    },
-    {
-     "headline": "EY: 98% of firms have AI governance, but 69% doubt their expertise",
-     "urls": [
-      "https://www.ey.com/en_us/ey-center-for-executive-leadership/beyond-cost-and-returns-cfos-focusing-on-ai-governance"
-     ]
-    },
-    {
-     "headline": "Wider rate differentials and USD strength lift funding and hedging costs",
-     "urls": [
-      "https://www.mufgresearch.com/fx/monthly-foreign-exchange-outlook-october-2026"
-     ]
-    },
-    {
-     "headline": "ECB's Pontes settles tokenised assets in central bank money 24/7/365",
-     "urls": [
-      "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260921~e754847a7b.en.html",
-      "https://www.ecb.europa.eu/paym/target/pontes/html/index.en.html"
-     ]
-    },
-    {
-     "headline": "French debt crisis drives euro to lows against yen as havens rally",
-     "urls": [
-      "https://www.cnbc.com/2026/10/23/yen-shines-as-ai-jitters-spur-safe-haven-rush.html",
-      "https://uk.investing.com/news/forex-news/asia-fx-steadies-as-oil-surge-weighs-on-risk-appetite-yen-holds-gains-4927287"
-     ]
-    },
-    {
-     "headline": "US 10-year yield falls below 5% in biggest one-day drop since March 2023",
-     "urls": [
-      "https://www.cnbc.com/2026/10/22/treasurys-bonds-ai-yields.html",
-      "https://fred.stlouisfed.org/series/dgs10"
-     ]
-    },
-    {
-     "headline": "AMLA finalises binding EU standards on PEP screening and due diligence",
-     "urls": [
-      "https://www.amla.europa.eu/document/download/6274f127-ac15-4e2a-b79f-88633a4deb54_en?filename=Press+Release+-+AMLA+finalises+key+standards+for+the+private+sector.pdf"
-     ]
-    },
-    {
-     "headline": "Deloitte finds working capital now the primary driver of liquidity",
-     "urls": [
-      "https://www.deloitte.com/content/dam/assets-zone3/us/en/docs/services/consulting/2026/wc-roundup-2025-final.pdf"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-26",
    "note_headline": "Settlement is collapsing to minutes, and Finance controls must work at the same speed",
    "note_opening": "Settlement is shrinking to minutes, and the plumbing is already proving itself. BNY and Citadel Securities settled a tokenised 2-year Treasury note within minutes and reused it immediately as overnight repo collateral. P",
@@ -1827,6 +1745,182 @@
       {
        "name": "IFRS News",
        "url": "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "note_headline": "The bottleneck in Finance has moved from bank connectivity to forecasting discipline",
+   "note_opening": "The bottleneck in Treasury and Finance has moved from getting bank data to using it well. Embat authenticates J.P. Morgan accounts in seconds through the Banking Authorization Service API, with no IT development required",
+   "items": [
+    {
+     "headline": "Embat links to J.P. Morgan BAS API for real-time bank data",
+     "urls": [
+      "https://www.embat.io/blog/embat-jp-morgan-payments-bank-connectivity",
+      "https://thepaypers.com/fintech/news/embat-integrates-jp-morgan-payments-bas-api-for-bank-connectivity"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Embat clients can now authenticate J.P. Morgan bank accounts in seconds via the Banking Authorization Service API, with no IT development. Real-time balances, transactions and payment data feed Embat's ERP-integrated platform, cutting onboarding friction for Treasury visibility.",
+     "sources": [
+      {
+       "name": "Embat",
+       "url": "https://www.embat.io/blog/embat-jp-morgan-payments-bank-connectivity"
+      },
+      {
+       "name": "The Paypers",
+       "url": "https://thepaypers.com/fintech/news/embat-integrates-jp-morgan-payments-bas-api-for-bank-connectivity"
+      }
+     ]
+    },
+    {
+     "headline": "J.P. Morgan accounts connect to Embat in seconds, without IT development",
+     "urls": [
+      "https://www.embat.io/blog/embat-jp-morgan-payments-bank-connectivity"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Through J.P. Morgan Payments' Banking Authorization Service API, Embat's Treasury platform pulls real-time balances, transactions and payment data straight into its ERP-integrated system. Account authentication takes seconds and needs no IT development, shortening the path from bank to ledger.",
+     "sources": [
+      {
+       "name": "Embat",
+       "url": "https://www.embat.io/blog/embat-jp-morgan-payments-bank-connectivity"
+      }
+     ]
+    },
+    {
+     "headline": "62% of Finance executives struggle to manage or scale cash forecasting",
+     "urls": [
+      "https://www.pymnts.com/back-office/cfo/2026/62percent-of-finance-leaders-struggle-to-keep-cash-flow-forecasts-on-track/"
+     ],
+     "beat": "cash",
+     "summary": "62% of Finance executives report difficulty managing or scaling cash flow forecasting, which exposes gaps in liquidity visibility. Accurate forecasts depend on invoice timing, collection patterns and integration across disparate systems, the areas Treasury and Finance Teams must tighten.",
+     "sources": [
+      {
+       "name": "PYMNTS",
+       "url": "https://www.pymnts.com/back-office/cfo/2026/62percent-of-finance-leaders-struggle-to-keep-cash-flow-forecasts-on-track/"
+      }
+     ]
+    },
+    {
+     "headline": "ECB moves TARGET Services address releases to 28 November 2026",
+     "urls": [
+      "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews260904.en.html"
+     ],
+     "beat": "payments",
+     "summary": "The ECB has pushed its November 2026 TARGET Services releases from 14 November to 28 November 2026 after SWIFT asked for more preparation time. The releases precede removal of unstructured postal addresses in cross-border messages, giving payment teams two extra weeks to fix address data.",
+     "sources": [
+      {
+       "name": "ECB",
+       "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews260904.en.html"
+      }
+     ]
+    },
+    {
+     "headline": "BDO finds only 29% of organisations have formal AI governance policies",
+     "urls": [
+      "https://www.bdo.com/insights/press-releases/bdo-research-ai-moves-into-high-stakes-financial-judgments-raising-the-bar-for-governance"
+     ],
+     "beat": "regulation",
+     "summary": "BDO's 2026 Audit Innovation Survey shows AI governance is still nascent, with 29% of organisations holding formal policies. Many rely on manual reconciliation and lack the data infrastructure for their AI ambitions, a gap that raises control and audit readiness concerns.",
+     "sources": [
+      {
+       "name": "BDO",
+       "url": "https://www.bdo.com/insights/press-releases/bdo-research-ai-moves-into-high-stakes-financial-judgments-raising-the-bar-for-governance"
+      }
+     ]
+    },
+    {
+     "headline": "Interest-rate derivatives hit record 14.78 million contracts daily in October",
+     "urls": [
+      "https://www.cmegroup.com/newsletters/rates-recap/2026-11-rates-recap.html"
+     ],
+     "beat": "risk",
+     "summary": "In October 2026, interest-rate derivatives set a record monthly volume of 14.78 million contracts daily as the Treasury Volatility Index rose to 140. Corporates are buying more downside yield protection and tail risk cover amid funding market tightness and higher rate expectations.",
+     "sources": [
+      {
+       "name": "CME Group",
+       "url": "https://www.cmegroup.com/newsletters/rates-recap/2026-11-rates-recap.html"
+      }
+     ]
+    },
+    {
+     "headline": "Uber earns 1.5 extra days of yield with HSBC tokenised deposits",
+     "urls": [
+      "https://www.about.us.hsbc.com/newsroom/press-releases/uber-completes-pilot-of-a-first-ever-on-chain-liquidity-and-settlement-solution-on-a-public-network"
+     ],
+     "beat": "digital",
+     "summary": "On 30 October, Uber completed a pilot using HSBC tokenised deposits on the Canton Network to buy and sell Franklin Templeton money market funds at weekends. Atomic delivery-versus-payment settlement outside traditional banking hours earned 1.5 extra days of yield on idle cash.",
+     "sources": [
+      {
+       "name": "HSBC",
+       "url": "https://www.about.us.hsbc.com/newsroom/press-releases/uber-completes-pilot-of-a-first-ever-on-chain-liquidity-and-settlement-solution-on-a-public-network"
+      }
+     ]
+    },
+    {
+     "headline": "EUR/USD hits 17-month low near 1.1159 after Fitch shifts France outlook",
+     "urls": [
+      "https://www.capitalstreetfx.com/market-analysis/daily-forex-report-02-nov-2026/",
+      "https://www.mufgresearch.com/fx/fx-daily-snapshot-2-november-2026/"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 2 November 2026, EUR/USD touched a 17-month low near 1.1159 after Fitch moved France's outlook to negative, with the OAT-Bund spread at 155-160 basis points. Euro weakness persists despite a softer dollar as eurozone growth diverges from the US.",
+     "sources": [
+      {
+       "name": "Capital Street FX",
+       "url": "https://www.capitalstreetfx.com/market-analysis/daily-forex-report-02-nov-2026/"
+      },
+      {
+       "name": "MUFG Research",
+       "url": "https://www.mufgresearch.com/fx/fx-daily-snapshot-2-november-2026/"
+      }
+     ]
+    },
+    {
+     "headline": "FinCEN bars MEXC Global over $16 billion in sanctions-linked flows",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0685"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 6 November 2026, FinCEN ordered U.S. financial institutions to stop transacting with MEXC Global, a convertible virtual currency exchanger tied to at least $16 billion in Iranian, North Korean and Russian sanctions evasion and cybercrime flows. Counterparty screening must reflect the order.",
+     "sources": [
+      {
+       "name": "U.S. Department of the Treasury",
+       "url": "https://home.treasury.gov/news/press-releases/sb0685"
+      }
+     ]
+    },
+    {
+     "headline": "AMLA finalises three standards on due diligence and group AML/CFT governance",
+     "urls": [
+      "https://www.amla.europa.eu/press-release-amla-finalises-key-standards-private-sector_en"
+     ],
+     "beat": "financial_crime",
+     "summary": "The EU's Anti-Money Laundering Authority published three final regulatory technical standards on business relationship classification, customer due diligence including PEP screening, and group-wide AML/CFT governance. The harmonised framework will shape corporate onboarding and counterparty screening across member states.",
+     "sources": [
+      {
+       "name": "Anti-Money Laundering Authority (AMLA)",
+       "url": "https://www.amla.europa.eu/press-release-amla-finalises-key-standards-private-sector_en"
+      }
+     ]
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosures Practice Statement",
+     "urls": [
+      "https://www.ifrs.org/projects/work-plan/biodiversity-ecosystems-and-ecosystem-services/",
+      "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202621.html"
+     ],
+     "beat": "reporting",
+     "summary": "In October 2026 the ISSB published an Exposure Draft of IFRS Sustainability Disclosure Practice Statement 1 on nature-related disclosures, supplementing IFRS S1 and S2. The 120-day comment period closes on 19 February 2027, giving reporting teams time to respond.",
+     "sources": [
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/projects/work-plan/biodiversity-ecosystems-and-ecosystem-services/"
+      },
+      {
+       "name": "PwC Viewpoint",
+       "url": "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202621.html"
       }
      ]
     }

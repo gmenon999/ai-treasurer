@@ -1546,6 +1546,74 @@
     "cost_usd": 0.4151
    },
    "edition_cost_usd": 1.6412
+  },
+  {
+   "date": "2026-11-08",
+   "items": [
+    {
+     "headline": "J.P. Morgan accounts connect to Embat in seconds, without IT development",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "62% of Finance executives struggle to manage or scale cash forecasting",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Interest-rate derivatives hit record 14.78 million contracts daily in October",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Embat links to J.P. Morgan BAS API for real-time bank data",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "ECB moves TARGET Services ISO 20022 address release to 28 November 2026",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "BDO finds only 29% of organisations have formal AI governance policies",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Uber earns 1.5 extra days of yield with HSBC tokenised deposits",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "EUR/USD hits 17-month low near 1.1159 after Fitch shifts France outlook",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "FinCEN bars MEXC Global over $16 billion in sanctions-linked flows",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "AMLA finalises three standards on due diligence and group AML/CFT governance",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "The take overstates the timing. The source says the standards are proposed to apply six months after their entry into force, which is not the same as six months after adoption or publication. 'Just six months' is the take's own editorial emphasis, and the source never calls the period short. The tak"
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosures Practice Statement",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.343,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.2153
+   },
+   "edition_cost_usd": 1.8696
   }
  ]
 }
