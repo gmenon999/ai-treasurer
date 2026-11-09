@@ -45,14 +45,14 @@ TAKES_LOG = os.path.join(HERE, "editions", "takes-log.json")
 COST = {"usd": 0.0}  # running OpenRouter cost for this run (from the usage block)
 # OpenRouter credit guard (30 Oct 2026: 27-30 Oct editions failed because the API key's spending limit ran out).
 # Below CREDIT_STOP the build does not start (an edition costs about $1-2.50); below CREDIT_WARN the run
-# still publishes but the job turns red so GitHub emails the owner to top up before it runs out.
+# still publishes but the job turns red so GitHub emails the owner, naming which limit is low (key cap vs account balance).
 KEY_URL = "https://openrouter.ai/api/v1/key"
 CREDIT_STOP = float(os.environ.get("BRIEF_CREDIT_STOP_USD", "3"))
 CREDIT_WARN = float(os.environ.get("BRIEF_CREDIT_WARN_USD", "10"))
 
 
 class CreditError(RuntimeError):
-    """OpenRouter refused for lack of credit (HTTP 402). Retrying cannot help; the owner must top up."""
+    """OpenRouter refused for lack of credit (HTTP 402). Retrying cannot help; the owner must raise the key cap or, if the account is low, buy credits."""
 PREFERRED = ["tradefinanceglobal.com", "tradetreasurypayments.com", "treasury-management.com", "finextra.com",
              "treasurytoday.com", "gtnews.com", "cfodive.com", "thebanker.com", "risk.net", "centralbanking.com", "reuters.com", "ft.com"]  # Trade Finance Global, Trade Treasury Payments, TMI, Finextra
 EXCLUDED = ["reddit.com", "quora.com", "medium.com", "substack.com"]
@@ -106,20 +106,55 @@ def credit_left():
         return None
 
 
-CREDIT_MSG = ("OpenRouter credit is used up for this API key. Top up credits or raise the key's limit at "
-              "openrouter.ai (Settings > Keys), then re-run 'Daily AI Treasurer Briefing' from the GitHub Actions tab.")
+CREDITS_URL = "https://openrouter.ai/api/v1/credits"
+
+
+def account_balance():
+    """OpenRouter ACCOUNT balance in USD (total credits bought minus total used), or None if unreadable.
+    This is different from the API key's spending cap (credit_left). 9 Nov 2026: the alert told the owner to
+    'top up' when the account had $23 and only the key's cap was low - never confuse the two again."""
+    try:
+        r = requests.get(CREDITS_URL, headers={"Authorization": "Bearer " + _key()}, timeout=20)
+        d = (r.json() or {}).get("data") or {}
+        if d.get("total_credits") is None or d.get("total_usage") is None:
+            return None
+        return float(d["total_credits"]) - float(d["total_usage"])
+    except Exception as exc:  # noqa
+        print("credit check: could not read the account balance (%s)" % exc)
+        return None
+
+
+CREDIT_MSG = ("OpenRouter refused for lack of credit. First check the API key's spending cap at "
+              "openrouter.ai/settings/keys (raise or remove it); only if the ACCOUNT balance at "
+              "openrouter.ai/settings/credits is also low, buy credits. Then re-run 'Daily AI Treasurer Briefing' "
+              "from the GitHub Actions tab.")
 
 
 def credit_check():
-    """Workflow alarm: exit 1 (job turns red, GitHub emails) when the key is low on credit."""
-    left = credit_left()
-    if left is None:
-        print("credit check: no limit reported for this key; nothing to check.")
-        return 0
-    print("credit check: $%.2f left on the OpenRouter key (about %d editions)." % (left, int(left // 2)))
-    if left < CREDIT_WARN:
-        print("::error::OpenRouter credit is low: $%.2f left, about %d day(s) of briefings. Top up at openrouter.ai "
-              "(Settings > Keys) so the daily briefing does not stop." % (left, int(left // 2)))
+    """Workflow alarm: exit 1 (job turns red, GitHub emails) when the briefing is close to running out.
+    Two separate limits: the API key's spending cap and the account balance. The alert names exactly which
+    one is low, so the fix is never 'buy credits' when only the key cap needs raising."""
+    cap = credit_left()
+    bal = account_balance()
+    print("credit check: key cap left = %s; account balance = %s." % (
+        "no cap" if cap is None else "$%.2f" % cap, "unknown" if bal is None else "$%.2f" % bal))
+    bad = 0
+    if cap is not None and cap < CREDIT_WARN:
+        if bal is not None and bal >= CREDIT_WARN:
+            print("::error::OpenRouter KEY SPENDING CAP is low: $%.2f left on the briefing's API key (about %d "
+                  "day(s)). The account balance is fine ($%.2f) - do NOT buy credits. Raise or remove the key's "
+                  "limit at openrouter.ai/settings/keys." % (cap, int(cap // 2), bal))
+        else:
+            print("::error::OpenRouter KEY SPENDING CAP is low: $%.2f left on the briefing's API key (about %d "
+                  "day(s)). Raise or remove the key's limit at openrouter.ai/settings/keys. This is the key's "
+                  "cap, not the account balance (account balance: %s)." % (
+                      cap, int(cap // 2), "unknown" if bal is None else "$%.2f" % bal))
+        bad = 1
+    if bal is not None and bal < CREDIT_WARN:
+        print("::error::OpenRouter ACCOUNT BALANCE is low: $%.2f left. Buy credits at "
+              "openrouter.ai/settings/credits." % bal)
+        bad = 1
+    if bad:
         return 1
     return 0
 
