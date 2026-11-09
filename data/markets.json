@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-08T00:34:41Z",
+ "generated_utc": "2026-11-09T06:25:34Z",
  "policy": [
   {
    "bank": "Fed",
@@ -10,8 +10,8 @@
    "value": "3.75–4.00%",
    "change_bp": 25,
    "since": "2026-09-17",
-   "checked": "2026-11-08",
-   "asof": "2026-11-08",
+   "checked": "2026-11-09",
+   "asof": "2026-11-09",
    "stale": false
   },
   {
@@ -36,8 +36,8 @@
    "value": "4.00%",
    "change_bp": 25,
    "since": "2026-11-05",
-   "checked": "2026-11-08",
-   "asof": "2026-11-08",
+   "checked": "2026-11-09",
+   "asof": "2026-11-09",
    "stale": false
   },
   {
@@ -205,5 +205,9 @@
   }
  ],
  "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
- "errors": []
+ "errors": [
+  "estr: HTTPSConnectionPool(host='data-api.ecb.europa.eu', port=443): Read timed out. (read timeout=30)",
+  "ecb: HTTPSConnectionPool(host='data-api.ecb.europa.eu', port=443): Read timed out. (read timeout=30)",
+  "market history estr: HTTPSConnectionPool(host='data-api.ecb.europa.eu', port=443): Read timed out. (read timeout=30)"
+ ]
 }
