@@ -1614,6 +1614,89 @@
     "cost_usd": 0.2153
    },
    "edition_cost_usd": 1.8696
+  },
+  {
+   "date": "2026-11-09",
+   "items": [
+    {
+     "headline": "BCG says agentic AI in Treasury needs redesigned controls and escalation paths",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Real-time bank APIs displace overnight file transfers for intraday liquidity",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Kyriba named best Treasury management system in Euromoney 2026 awards",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Treasurers shift from cash optimisation to cash resilience amid volatility",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "PCAOB tests AI-driven controls under existing ICFR framework, not new standards",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "No AI-specific SOX standard exists, so CFOs must classify AI use",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Treasurers favour cash flow at risk over value at risk for FX",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Ant International settles 24/7 HKD interbank transfers in tokenised central bank money",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FATF launches targeted review of virtual asset compliance gaps",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Huntington launches Intelligent Treasury platform with Kyriba for multi-bank visibility",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "The focus mostly restates the news summary (consolidated balances and transactions, forecasts) and adds no new point. 'A single data set' and 'rather than assembling bank reports by hand' go beyond the source, which says only that the platform brings relationships into one location to view balances "
+    },
+    {
+     "headline": "Fed aligns FEDWIRE, CHIPS and SWIFT for November 2027 ISO 20022 changes",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Fed December hike odds rise to 76–80% after strong October jobs",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Bank of England lifts rates to 4.0% in first hike since August 2023",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosure Practice Statement",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.2185,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 1 uses figures not in its cited facts: 8",
+    "cost_usd": 0.3346
+   },
+   "edition_cost_usd": 1.5835
   }
  ]
 }

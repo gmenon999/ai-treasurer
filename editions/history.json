@@ -1925,6 +1925,224 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-11-09",
+   "note_headline": "Auditors will judge Finance AI by existing control rules, not new ones",
+   "note_opening": "AI in Finance has no rulebook of its own, so existing controls must carry the weight. PCAOB inspectors and peer reviewers test AI-driven controls under the ICFR framework, probing approval, validation, ownership and chan",
+   "items": [
+    {
+     "headline": "BCG says agentic AI in Treasury needs redesigned controls and escalation paths",
+     "urls": [
+      "https://www.bcg.com/publications/2026/ai-agents-reshaping-corporate-treasury"
+     ],
+     "beat": "ai_agentic",
+     "summary": "BCG finds Treasury operating models unready for autonomous decision-making at scale, with fragmented data and legacy governance built on human initiation. Thresholds and escalation paths must be embedded upfront, and accountability structures redesigned, before autonomy can scale safely.",
+     "sources": [
+      {
+       "name": "BCG",
+       "url": "https://www.bcg.com/publications/2026/ai-agents-reshaping-corporate-treasury"
+      }
+     ]
+    },
+    {
+     "headline": "Huntington launches Intelligent Treasury platform with Kyriba for multi-bank visibility",
+     "urls": [
+      "https://ir.huntington.com/news-presentations/press-releases/detail/1034/huntington-bank-announces-treasury-solution-that-turns-multi-bank-complexity-into-improved-liquidity-management"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Huntington announced its Intelligent Treasury platform on 5 November 2026, built on Kyriba technology and cloud infrastructure. It delivers consolidated balances and transactions, daily-to-monthly forecasts, centralised payment workflows and ERP integration without major IT investment, giving Treasury multi-bank cash visibility.",
+     "sources": [
+      {
+       "name": "Huntington Bancshares",
+       "url": "https://ir.huntington.com/news-presentations/press-releases/detail/1034/huntington-bank-announces-treasury-solution-that-turns-multi-bank-complexity-into-improved-liquidity-management"
+      }
+     ]
+    },
+    {
+     "headline": "Real-time bank APIs displace overnight file transfers for intraday liquidity",
+     "urls": [
+      "https://internationalbanker.com/banking/always-on-treasury-how-real-time-finance-is-rewiring-corporate-liquidity-management/"
+     ],
+     "beat": "treasury_tech",
+     "summary": "APIs now link bank platforms with ERP, TMS and payment systems continuously, replacing batch file transfers. They support real-time balances, payment initiation, tracking, validation, reconciliation and FX visibility, letting Treasury manage intraday liquidity without waiting on delayed settlement cycles.",
+     "sources": [
+      {
+       "name": "International Banker",
+       "url": "https://internationalbanker.com/banking/always-on-treasury-how-real-time-finance-is-rewiring-corporate-liquidity-management/"
+      }
+     ]
+    },
+    {
+     "headline": "Kyriba named best Treasury management system in Euromoney 2026 awards",
+     "urls": [
+      "https://wporigin.euromoney.com/article/8qtepjetj1wccwg8w4o08s448/corporate-banking/the-worlds-best-treasury-management-system-2026-kyriba/"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Euromoney's 2026 awards named Kyriba best TMS for cross-bank data integration and ERP connectivity. The platform absorbs differing reporting standards across banks, integrates payables automation and handles multi-bank format and testing requirements in a single deployment, easing connectivity work for Treasury.",
+     "sources": [
+      {
+       "name": "Euromoney",
+       "url": "https://wporigin.euromoney.com/article/8qtepjetj1wccwg8w4o08s448/corporate-banking/the-worlds-best-treasury-management-system-2026-kyriba/"
+      }
+     ]
+    },
+    {
+     "headline": "Treasurers shift from cash optimisation to cash resilience amid volatility",
+     "urls": [
+      "https://www.globalbankingandfinance.com/why-corporate-treasurers-are-rethinking-cash-management-in-a-higher-risk-world/"
+     ],
+     "beat": "cash",
+     "summary": "Treasurers are rethinking cash management around resilience: preserving liquidity through shocks, managing faster payment cycles, counterparty exposure control, fraud defence and cyber resilience, while still deploying surplus cash for yield. Return alone no longer defines a well-run cash programme.",
+     "sources": [
+      {
+       "name": "Global Banking and Finance Review",
+       "url": "https://www.globalbankingandfinance.com/why-corporate-treasurers-are-rethinking-cash-management-in-a-higher-risk-world/"
+      }
+     ]
+    },
+    {
+     "headline": "Fed aligns FEDWIRE, CHIPS and SWIFT for November 2027 ISO 20022 changes",
+     "urls": [
+      "https://www.frbservices.org/resources/financial-services/wires/fedwire-funds-service-iso-20022-implementation-center/on-the-wire-newsletter/november-2026-on-the-wire-newsletter/"
+     ],
+     "beat": "payments",
+     "summary": "The Federal Reserve is coordinating FEDWIRE with CHIPS and SWIFT on ISO 20022 changes due in November 2027, keeping the networks interoperable as message formats evolve. Its phased timeline reflects migration complexity, giving Treasury a fixed date for bank and system readiness.",
+     "sources": [
+      {
+       "name": "Federal Reserve Financial Services",
+       "url": "https://www.frbservices.org/resources/financial-services/wires/fedwire-funds-service-iso-20022-implementation-center/on-the-wire-newsletter/november-2026-on-the-wire-newsletter/"
+      }
+     ]
+    },
+    {
+     "headline": "PCAOB tests AI-driven controls under existing ICFR framework, not new standards",
+     "urls": [
+      "https://tax.thomsonreuters.com/blog/how-to-use-ai-in-audit-without-creating-inspection-risk/"
+     ],
+     "beat": "regulation",
+     "summary": "PCAOB inspectors and peer reviewers are assessing AI adoption under existing audit documentation standards, with no separate AI category yet. They test technology approval, validation, ownership and change authority, so Finance must back AI controls with documented audit evidence and professional judgment.",
+     "sources": [
+      {
+       "name": "Thomson Reuters",
+       "url": "https://tax.thomsonreuters.com/blog/how-to-use-ai-in-audit-without-creating-inspection-risk/"
+      }
+     ]
+    },
+    {
+     "headline": "No AI-specific SOX standard exists, so CFOs must classify AI use",
+     "urls": [
+      "https://financeaccountingtech.com/sessions/you-cant-automate-accountability-ai-governance-for-the-modern-cfo/"
+     ],
+     "beat": "regulation",
+     "summary": "Finance audit technology experts confirm there is no dedicated SOX or auditing standard for AI, though AI already drafts and reconciles within the financial close. CFOs need a classification framework that gauges how far each system sits from reportable decisions.",
+     "sources": [
+      {
+       "name": "Finance Accounting & Tech",
+       "url": "https://financeaccountingtech.com/sessions/you-cant-automate-accountability-ai-governance-for-the-modern-cfo/"
+      }
+     ]
+    },
+    {
+     "headline": "Treasurers favour cash flow at risk over value at risk for FX",
+     "urls": [
+      "https://treasurytoday.com/insight-and-analysis/stability-the-new-currency-in-fx/"
+     ],
+     "beat": "risk",
+     "summary": "Corporate FX hedging has shifted from protecting transactions to delivering earnings predictability. Cash flow at risk shows how far currency moves could push next-year operating cash flow below budget at a given confidence level, giving boards a clearer view of hedging cost and benefit.",
+     "sources": [
+      {
+       "name": "Treasury Today",
+       "url": "https://treasurytoday.com/insight-and-analysis/stability-the-new-currency-in-fx/"
+      }
+     ]
+    },
+    {
+     "headline": "Ant International settles 24/7 HKD interbank transfers in tokenised central bank money",
+     "urls": [
+      "https://www.businesswire.com/news/home/20261102286689/en/Ant-International-and-Bank-Partners-Achieve-Real-Time-Cross-Bank-Liquidity-Management-through-Tokenised-Deposits-via-CeBM-under-HKMAs-EnsembleTX"
+     ],
+     "beat": "digital",
+     "summary": "On 2 November, Ant International completed live HKD interbank transactions using tokenised deposits settled in HKMA's Central Bank Money (CeBM) with BOCHK, CCB (Asia) and HSBC. Payments reached final settlement in under five minutes on a 24/7 basis, showing multi-bank Treasury automation working live.",
+     "sources": [
+      {
+       "name": "Business Wire",
+       "url": "https://www.businesswire.com/news/home/20261102286689/en/Ant-International-and-Bank-Partners-Achieve-Real-Time-Cross-Bank-Liquidity-Management-through-Tokenised-Deposits-via-CeBM-under-HKMAs-EnsembleTX"
+      }
+     ]
+    },
+    {
+     "headline": "Fed December hike odds rise to 76–80% after strong October jobs",
+     "urls": [
+      "https://www.investing.com/news/economy-news/traders-raise-bets-of-fed-rate-hike-after-jobs-report-5008229",
+      "https://pricednews.com/odds/fed-rate-decision"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 6 November, traders lifted odds of a 25bp Federal Reserve hike at the December 8–9 meeting to 76–80%, from 67–75%, after 165,000 jobs were added, more than double forecasts, with unemployment at 4.1%. That repricing matters for floating-rate dollar debt.",
+     "sources": [
+      {
+       "name": "Reuters/Investing.com",
+       "url": "https://www.investing.com/news/economy-news/traders-raise-bets-of-fed-rate-hike-after-jobs-report-5008229"
+      },
+      {
+       "name": "Polymarket/PricedNews",
+       "url": "https://pricednews.com/odds/fed-rate-decision"
+      }
+     ]
+    },
+    {
+     "headline": "Bank of England lifts rates to 4.0% in first hike since August 2023",
+     "urls": [
+      "https://commonslibrary.parliament.uk/research-briefings/sn02802/",
+      "https://effectstory.com/en/data/central-bank-rates"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 5 November the Bank of England raised rates 25bp to 4.0%, its first increase since August 2023, by an 8–1 vote, citing higher energy prices and inflation momentum. CPI was 3.5% in September; the MPC forecasts 5% by Q2 2027, against a 2% target.",
+     "sources": [
+      {
+       "name": "UK Parliament",
+       "url": "https://commonslibrary.parliament.uk/research-briefings/sn02802/"
+      },
+      {
+       "name": "EffectStory",
+       "url": "https://effectstory.com/en/data/central-bank-rates"
+      }
+     ]
+    },
+    {
+     "headline": "FATF launches targeted review of virtual asset compliance gaps",
+     "urls": [
+      "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 30 October 2026, FATF announced a targeted review of jurisdictions with materially important VASP activity, aimed at uneven implementation of virtual asset standards under R.15. Initial results come in June 2027, with follow-up in October 2027, relevant to any Treasury handling digital assets.",
+     "sources": [
+      {
+       "name": "FATF",
+       "url": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
+      }
+     ]
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosure Practice Statement",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/",
+      "https://www.ifrs.org/content/dam/ifrs/project/nature-related-disclosures/issb-ed-2026-1-ps-nature-related-disclosures.pdf"
+     ],
+     "beat": "reporting",
+     "summary": "On 22 October 2026 the ISSB published an exposure draft for a Practice Statement on nature-related disclosures, built on IFRS S1 and S2. The 120-day consultation closes on 23 January 2027; the guidance covers nature-related risks and opportunities affecting cash flows and cost of capital.",
+     "sources": [
+      {
+       "name": "IFRS Foundation",
+       "url": "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
+      },
+      {
+       "name": "IFRS Foundation - ISSB Exposure Draft",
+       "url": "https://www.ifrs.org/content/dam/ifrs/project/nature-related-disclosures/issb-ed-2026-1-ps-nature-related-disclosures.pdf"
+      }
+     ]
+    }
+   ]
   }
  ]
 }
