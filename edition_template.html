@@ -500,6 +500,8 @@
   @media (prefers-reduced-motion: reduce) { .fwx *, .fwx *::after { animation: none !important; transition: none !important; } }
 
   footer { border-top: 1px solid var(--line); padding: 24px 0 48px; font-size: 13px; color: var(--navy-soft); }
+  .js:not([data-cur="briefing"]) footer .foot-brief { display: none; }
+  .js[data-cur="about"] footer .foot-mail { display: none; }
   footer p { margin: 0 0 8px; max-width: 90ch; }
   footer a { color: var(--navy); }
 
@@ -2665,8 +2667,8 @@
 
 <footer>
   <div class="wrap">
-    <p>&copy; 2026 The AI Treasurer. Views expressed are personal, are not financial or professional advice, and do not represent any employer or organisation. Get in touch: <a href="mailto:gmenon@theaitreasurer.com">gmenon@theaitreasurer.com</a></p>
-    <p>This briefing links to third-party publishers and summarises each item in its own words; it does not reproduce source articles. Figures are as reported on the dates shown and are not live market data. Company and publication names are used only to identify the source.</p>
+    <p>&copy; 2026 The AI Treasurer. Views expressed are personal, are not financial or professional advice, and do not represent any employer or organisation.<span class="foot-mail"> Get in touch: <a href="mailto:gmenon@theaitreasurer.com">gmenon@theaitreasurer.com</a></span></p>
+    <p class="foot-brief">The daily briefing links to third-party publishers and summarises each item in its own words; it does not reproduce source articles. Articles on this site are the author's own work. Figures are as reported on the dates shown and are not live market data. Company and publication names are used only to identify the source.</p>
   </div>
 </footer>
 
@@ -3382,6 +3384,7 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   function show(view){
     document.documentElement.classList.remove('v-top');
     if (!view) view = 'top';
+    document.documentElement.setAttribute('data-cur', view);
     views.forEach(function(s){
       var on = s.getAttribute('data-view') === view;
       s.classList.toggle('view-on', on);
