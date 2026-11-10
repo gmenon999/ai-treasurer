@@ -53,6 +53,74 @@ def load():
     return sorted(arts, key=lambda a: (a["_d"], a["slug"]), reverse=True)
 
 
+# ---- Shared site header and menu, same look as the Home page tabs ----
+HEAD_START, HEAD_END = "<!--SITE-HEADER-START-->", "<!--SITE-HEADER-END-->"
+CSS_START, CSS_END = "/*SITE-HEADER-CSS-START*/", "/*SITE-HEADER-CSS-END*/"
+MENU = [("/#top", "Home"), ("/insights/", "Insights"), ("/#agentic", "Agentic Automation"), ("/#controls", "AI Controls"),
+        ("/#briefing", "Treasury Today"), ("/#markets", "Markets"), ("/#about", "About")]
+
+HEADER_CSS = """
+  .sh-band { background: #0D1A2C; color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.08); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .sh-wrap { max-width: 1240px; margin: 0 auto; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .sh-mark { font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif; font-size: 22px; color: #FFFFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; line-height: 1.2; }
+  .sh-mark svg { width: 32px; height: 32px; flex: none; }
+  .sh-cta { color: #0D1A2C; background: #E9CB85; padding: 8px 14px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; }
+  .sh-cta:hover { background: #FFFFFF; }
+  .secnav { position: sticky; top: 0; z-index: 20; background: #0D1A2C; border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 6px 18px rgba(5,20,36,0.18); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .sn-wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; display: flex; gap: 30px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .sn-wrap::-webkit-scrollbar { display: none; }
+  .secnav a { flex: none; display: block; height: 50px; line-height: 50px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C9D2DE; text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+  .secnav a:hover { color: #FFFFFF; }
+  .secnav a[aria-current="page"] { color: #FFFFFF; border-bottom-color: #B08D3C; }
+  .sn-arrow { display: none; position: absolute; top: 0; bottom: 0; width: 52px; border: 0; padding: 0; cursor: pointer; color: #E9CB85; align-items: center; }
+  .sn-arrow svg { width: 22px; height: 22px; }
+  .sn-arrow.next { right: 0; justify-content: flex-end; padding-right: 12px; background: linear-gradient(90deg, rgba(13,26,44,0) 0%, #0D1A2C 45%); }
+  .sn-arrow.prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(13,26,44,0) 0%, #0D1A2C 45%); }
+  .secnav.can-next .sn-arrow.next, .secnav.can-prev .sn-arrow.prev { display: flex; }
+  @media (max-width: 720px) {
+    .sh-wrap { padding: 12px 20px; gap: 10px; }
+    .sh-mark { font-size: 18px; min-width: 0; }
+    .sh-mark svg { width: 30px; height: 30px; }
+    .sh-cta { font-size: 13px; padding: 8px 11px; }
+    .sn-wrap { gap: 20px; padding-right: 36px; }
+    .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
+  }
+"""
+
+
+def header_html(current):
+    links = "\n".join('    <a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if h == current else "", t) for h, t in MENU)
+    return ("""
+<header class="sh-band">
+  <div class="sh-wrap">
+    <a class="sh-mark" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
+    <a class="sh-cta" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a>
+  </div>
+</header>
+<nav class="secnav" aria-label="Sections">
+  <div class="sn-wrap">
+%s
+  </div>
+  <button type="button" class="sn-arrow prev" aria-label="Show earlier menu items"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+  <button type="button" class="sn-arrow next" aria-label="Show more menu items"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+</nav>
+<script>
+(function(){
+  var nav = document.querySelector('.secnav'), row = nav.querySelector('.sn-wrap');
+  function update(){ var max = row.scrollWidth - row.clientWidth; nav.classList.toggle('can-prev', row.scrollLeft > 4); nav.classList.toggle('can-next', max > 4 && row.scrollLeft < max - 4); }
+  nav.querySelector('.sn-arrow.next').addEventListener('click', function(){ row.scrollBy({ left: row.clientWidth * 0.6, behavior: 'smooth' }); });
+  nav.querySelector('.sn-arrow.prev').addEventListener('click', function(){ row.scrollBy({ left: -row.clientWidth * 0.6, behavior: 'smooth' }); });
+  row.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
+})();
+</script>
+""" % links)
+
+
+def with_header(text, current, name):
+    text = replace_region(text, HEAD_START, HEAD_END, header_html(current), name)
+    return replace_region(text, CSS_START, CSS_END, HEADER_CSS, name)
+
+
 def long_date(d):
     return "%d %s %d" % (d.day, d.strftime("%B"), d.year)
 
@@ -72,15 +140,22 @@ def home_cards(arts):
 
 
 def insights_page(arts):
+    # Stable numbering: No. 1 is the first article ever published, so numbers never change as new ones arrive.
+    order = {a["slug"]: i + 1 for i, a in enumerate(sorted(arts, key=lambda a: (a["_d"], a["slug"])))}
     items = []
     for a in arts:
         items.append(
             '        <li class="ins-item">\n'
-            '          <p class="ins-meta"><span class="ins-topic">%s</span> &middot; <time datetime="%s">%s</time> &middot; <span class="nw">%d min read</span></p>\n'
-            '          <h2 class="ins-t"><a href="/articles/%s/">%s</a></h2>\n'
-            '          <p class="ins-d">%s</p>\n'
-            '        </li>' % (e(a["topic"]), a["date"], long_date(a["_d"]), a["minutes"], e(a["slug"]), e(a["title"]), e(a["summary"])))
-    return PAGE.replace("<!--ITEMS-->", "\n".join(items))
+            '          <span class="ins-no" aria-hidden="true">%02d</span>\n'
+            '          <div class="ins-body">\n'
+            '            <p class="ins-meta"><span class="ins-topic">%s</span> &middot; <time datetime="%s">%s</time> &middot; <span class="nw">%d min read</span></p>\n'
+            '            <h2 class="ins-t"><a href="/articles/%s/">%s</a></h2>\n'
+            '            <p class="ins-d">%s</p>\n'
+            '            <a class="ins-go" href="/articles/%s/" aria-label="Read the article: %s">Read the article</a>\n'
+            '          </div>\n'
+            '        </li>' % (order[a["slug"]], e(a["topic"]), a["date"], long_date(a["_d"]), a["minutes"], e(a["slug"]), e(a["title"]),
+                              e(a["summary"]), e(a["slug"]), e(a["title"])))
+    return with_header(PAGE.replace("<!--ITEMS-->", "\n".join(items)), "/insights/", "insights page")
 
 
 def feed(arts):
@@ -133,6 +208,9 @@ def main():
         outputs[f] = replace_region(open(os.path.join(HERE, f), encoding="utf-8").read(), HOME_START, HOME_END, home_cards(arts), f)
     outputs["sitemap.xml"] = replace_region(open(os.path.join(HERE, "sitemap.xml"), encoding="utf-8").read(), MAP_START, MAP_END, sitemap_block(arts), "sitemap.xml")
     outputs["insights/index.html"] = insights_page(arts)
+    for a in arts:
+        ap = "articles/%s/index.html" % a["slug"]
+        outputs[ap] = with_header(open(os.path.join(HERE, ap), encoding="utf-8").read(), "/insights/", ap)
     if check:
         print("insights check ok: %d article(s)" % len(arts))
         return
@@ -170,16 +248,17 @@ PAGE = r'''<!DOCTYPE html>
   a { color: var(--white); }
   a:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
   .wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
-  header.band { border-bottom: 1px solid rgba(255,255,255,0.12); }
-  header.band .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
-  .mark { display: inline-flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; font-family: var(--serif); font-weight: 700; font-size: 19px; }
-  .mark svg { width: 30px; height: 30px; }
-  .home { color: var(--white); font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+  /*SITE-HEADER-CSS-START*//*SITE-HEADER-CSS-END*/
   main { padding: 64px 0 72px; }
   h1 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 48px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 10px; }
   .lede { margin: 0 0 34px; font-size: 18px; color: var(--on-dark); }
-  .ins-list { list-style: none; margin: 0; padding: 0; max-width: 800px; border-top: 1px solid rgba(255,255,255,0.16); }
-  .ins-item { padding: 26px 0 28px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+  .ins-list { list-style: none; margin: 0; padding: 0; max-width: 800px; }
+  .ins-item { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0 8px; padding: 18px 0 0; margin: 0 0 40px; border-top: 3px solid #B08D3C; }
+  .ins-no { font-family: var(--serif); font-size: 30px; line-height: 1; color: var(--gold-light); padding-top: 2px; }
+  .lede + .ins-list { margin-top: 8px; }
+  .ins-go { display: inline-block; margin-top: 14px; font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-light); padding-bottom: 2px; }
+  .ins-go:hover { color: var(--gold-light); }
+  @media (max-width: 600px) { .ins-item { grid-template-columns: 44px minmax(0, 1fr); } .ins-no { font-size: 24px; } }
   .ins-meta { margin: 0 0 8px; font-size: 13px; letter-spacing: 0.04em; color: var(--on-dark-soft); }
   .ins-topic { color: var(--gold-light); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
   .nw { white-space: nowrap; }
@@ -194,16 +273,11 @@ PAGE = r'''<!DOCTYPE html>
 </style>
 </head>
 <body>
-<header class="band">
-  <div class="wrap">
-    <a class="mark" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
-    <a class="home" href="/">Home</a>
-  </div>
-</header>
+<!--SITE-HEADER-START--><!--SITE-HEADER-END-->
 <main id="main">
   <div class="wrap">
     <h1>Insights</h1>
-    <p class="lede">Practical views for CFOs and Treasurers.</p>
+    <p class="lede">Practical views for CFOs and Treasurers, by Gopakumar Menon, CA, CPA, CTP.</p>
     <ol class="ins-list">
 <!--ITEMS-->
     </ol>
