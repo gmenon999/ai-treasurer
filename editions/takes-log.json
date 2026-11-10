@@ -1697,6 +1697,73 @@
     "cost_usd": 0.3346
    },
    "edition_cost_usd": 1.5835
+  },
+  {
+   "date": "2026-11-10",
+   "items": [
+    {
+     "headline": "MillTech survey finds corporate FX hedge ratios down to 46%",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Eurozone inflation hits 4.0%, making a December ECB hike highly probable",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Strong US jobs data lift December Fed hike odds to about 80%",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FATF launches targeted review of virtual asset standards implementation",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Deutsche Bank and Ant Digital set out three-layer model for agentic payments",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Real-time bank APIs replace overnight batch files for intraday cash visibility",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Multiliquid Treasury offers 24/7 instant redemption on tokenised T-bill yields",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Canada's Real-Time Rail goes live with eight institutions and 24/7 settlement",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "EY and COSO map AI failure modes onto existing SOX controls",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "PNC Bank opens incoming USDC payments for corporate clients via Coinbase",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosure Practice Statement",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.2154,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 2: The facts match, but the AI TREASURER VIEW fails the plain-language test. 'Fixing for longer at current rates' is unexplained jargon, close to 'lock in'. 'A short period' and 'longer' are vague, with no stated term or date. It also points towards a choice on where to place money, rather than a check that follows from the point.",
+    "cost_usd": 0.3937
+   },
+   "edition_cost_usd": 1.9849
   }
  ]
 }

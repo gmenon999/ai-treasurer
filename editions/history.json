@@ -1,82 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-26",
-   "note_headline": "Settlement is collapsing to minutes, and Finance controls must work at the same speed",
-   "note_opening": "Settlement is shrinking to minutes, and the plumbing is already proving itself. BNY and Citadel Securities settled a tokenised 2-year Treasury note within minutes and reused it immediately as overnight repo collateral. P",
-   "items": [
-    {
-     "headline": "Kyriba adds shareable Skills and 3 MB document uploads to TAI",
-     "urls": [
-      "https://sapinsider.org/map/kyriba-adds-shareable-tai-skills-and-document-uploads-for-treasury-teams/"
-     ]
-    },
-    {
-     "headline": "Datalog TMS opens OAuth 2.0-secured REST API to link banks and ERPs",
-     "urls": [
-      "https://www.datalog-finance.com/en/payment-bank-communication/datalog-tms-restful-api-powering-real-time-integrated-and-scalable-treasury-management/"
-     ]
-    },
-    {
-     "headline": "PYMNTS Working Capital Index falls 6% as early payments drop to 12%",
-     "urls": [
-      "https://www.pymnts.com/report/study/pymnts-working-capital-has-lost-its-strategic-edge/"
-     ]
-    },
-    {
-     "headline": "OCT Inst carries 17,000+ instant transfers into Spain from 102 countries",
-     "urls": [
-      "https://www.swift.com/insights/news/raising-bar-cross-border-payments-spain"
-     ]
-    },
-    {
-     "headline": "EPC's 2028 OCT Inst rulebook extends name fields to 140 characters",
-     "urls": [
-      "https://thepaypers.com/payments/interviews/oct-inst-three-years-on-momentum-builds-for-instant-international-payments"
-     ]
-    },
-    {
-     "headline": "AICPA practice aid helps auditors test AI in financial reporting and ICFR",
-     "urls": [
-      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing",
-      "https://www.cfodive.com/news/aicpa-issues-guidance-ai-assisted-auditing/832907/"
-     ]
-    },
-    {
-     "headline": "BNY and Citadel Securities complete first tokenised US Treasury triparty repo",
-     "urls": [
-      "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-completes-tokenized-us-treasury-triparty-repo-workflow-with-citadel-securities.html"
-     ]
-    },
-    {
-     "headline": "Partior and OpenAssets prove atomic DvP with 24/7 settlement finality",
-     "urls": [
-      "https://partior.com/news-and-insights/openassets-and-partior-complete-proof-of-concept-demonstrating-atomic-delivery-versus-payment-with-tokenised-deposits-as-the-settlement-asset"
-     ]
-    },
-    {
-     "headline": "OAT-Bund spread hits 177.7 basis points as euro slides to $1.12",
-     "urls": [
-      "https://www.cnbc.com/2026/10/23/france-debt-euro-zone-contagion.html",
-      "https://www.thefytimes.com/article/euro-17-month-low-french-debt-fx-hedgers"
-     ]
-    },
-    {
-     "headline": "OFAC designates A7 Network as FinCEN proposes blocking sub-agent transmittals",
-     "urls": [
-      "https://www.fincen.gov/news/news-releases/operation-economic-outcast-takes-unprecedented-action-against-sanctions-evasion"
-     ]
-    },
-    {
-     "headline": "IASB opens IFRS 9 hedge accounting review with 120-day comment period",
-     "urls": [
-      "https://www.ifrs.org/projects/work-plan/post-implementation-review-of-ifrs-9-hedge-accounting/",
-      "https://www.ifrs.org/news-and-events/news/2026/09/iasb-stakeholder-feedback-hedge-accounting-ifrs9-ifrs7/"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-29",
    "note_headline": "Vendors are building human approval into AI for Finance before regulators require it",
    "note_opening": "Control is being engineered into AI for Finance before supervisors make it mandatory. Stripe's Treasury for agents lets ChatGPT and Claude pay invoices, but requires human approval for money movement. MAS expects banks t",
@@ -2139,6 +2063,182 @@
       {
        "name": "IFRS Foundation - ISSB Exposure Draft",
        "url": "https://www.ifrs.org/content/dam/ifrs/project/nature-related-disclosures/issb-ed-2026-1-ps-nature-related-disclosures.pdf"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "note_headline": "Money now moves around the clock, but Finance controls still keep office hours",
+   "note_opening": "Settlement has gone round-the-clock, and Treasury and Finance must now run controls on the same clock. Payments Canada launched its Real-Time Rail on 9 November 2026 with eight participants, including Bank of America, li",
+   "items": [
+    {
+     "headline": "Deutsche Bank and Ant Digital set out three-layer model for agentic payments",
+     "urls": [
+      "https://www.prnewswire.com/news-releases/deutsche-bank-and-ant-digital-technologies-release-white-paper-on-agentic-payments-in-wholesale-finance-302933156.html"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Deutsche Bank and Ant Digital published agentic payments guidance with a three-layer architecture: intent and orchestration, control and authorisation, and settlement. Explicit limits, agent identity binding and Know Your Agent checks separate AI reasoning from execution, giving treasurers a template for approval design.",
+     "sources": [
+      {
+       "name": "PR Newswire",
+       "url": "https://www.prnewswire.com/news-releases/deutsche-bank-and-ant-digital-technologies-release-white-paper-on-agentic-payments-in-wholesale-finance-302933156.html"
+      }
+     ]
+    },
+    {
+     "headline": "Real-time bank APIs replace overnight batch files for intraday cash visibility",
+     "urls": [
+      "https://sysgenpro.com/finance-api-integration-for-treasury"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Treasury teams are moving to API-first set-ups, swapping overnight file transfers for real-time bank connectivity. Event-driven feeds absorb high daily volumes asynchronously, while synchronous REST APIs handle instant payment approvals, giving intraday cash visibility and event-based reconciliation between TMS and ERP.",
+     "sources": [
+      {
+       "name": "Sysgenpro",
+       "url": "https://sysgenpro.com/finance-api-integration-for-treasury"
+      }
+     ]
+    },
+    {
+     "headline": "Multiliquid Treasury offers 24/7 instant redemption on tokenised T-bill yields",
+     "urls": [
+      "https://www.prnewswire.com/news-releases/multiliquid-treasury-launches-247-t-bill-yield-and-instant-settlement-for-corporate-cash-302931080.html"
+     ],
+     "beat": "cash",
+     "summary": "On 5 November, Multiliquid Treasury launched institutional cash management that lets corporate treasuries earn 3-month U.S. Treasury Bill yields on idle balances, with 24/7 instant redemption through tokenised assets. It targets the cash drag created by money market fund business-day cut-offs.",
+     "sources": [
+      {
+       "name": "PR Newswire",
+       "url": "https://www.prnewswire.com/news-releases/multiliquid-treasury-launches-247-t-bill-yield-and-instant-settlement-for-corporate-cash-302931080.html"
+      }
+     ]
+    },
+    {
+     "headline": "Canada's Real-Time Rail goes live with eight institutions and 24/7 settlement",
+     "urls": [
+      "https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy",
+      "https://tradeinformer.com/payments/canada-launches-real-time-rail"
+     ],
+     "beat": "payments",
+     "summary": "On 9 November 2026, Payments Canada launched the Real-Time Rail, offering instant exchange, clearing and settlement 24/7 on ISO 20022. Eight participants, including Bank of America, went live, with confirmation of payee and other fraud controls mandatory from day one.",
+     "sources": [
+      {
+       "name": "Payments Canada",
+       "url": "https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy"
+      },
+      {
+       "name": "TradeInformer",
+       "url": "https://tradeinformer.com/payments/canada-launches-real-time-rail"
+      }
+     ]
+    },
+    {
+     "headline": "EY and COSO map AI failure modes onto existing SOX controls",
+     "urls": [
+      "https://mlflow.org/articles/sox-compliance-ai/"
+     ],
+     "beat": "regulation",
+     "summary": "EY and COSO map AI risks, from hallucination and drift to prompt injection and agent over-autonomy, onto existing ICFR, with no new SOX standard. CFOs must classify uses, document validation, split configuration from approval and keep point-in-time logs of inputs, prompts and reviewer identity.",
+     "sources": [
+      {
+       "name": "MLflow",
+       "url": "https://mlflow.org/articles/sox-compliance-ai/"
+      }
+     ]
+    },
+    {
+     "headline": "MillTech survey finds corporate FX hedge ratios down to 46%",
+     "urls": [
+      "https://www.reuters.com/business/us-uk-companies-cut-fx-hedges-lowest-since-2024-survey-shows-2026-09-18/"
+     ],
+     "beat": "risk",
+     "summary": "On 18 September 2026, MillTech's survey showed US and UK companies cutting FX hedge ratios to 46%, the lowest since tracking began in Q1 2024. Average hedge length fell to 5.7 months, and nearly half of firms hedge only 26-50% of exposures.",
+     "sources": [
+      {
+       "name": "Reuters",
+       "url": "https://www.reuters.com/business/us-uk-companies-cut-fx-hedges-lowest-since-2024-survey-shows-2026-09-18/"
+      }
+     ]
+    },
+    {
+     "headline": "PNC Bank opens incoming USDC payments for corporate clients via Coinbase",
+     "urls": [
+      "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+      "https://www.pymnts.com/news/banking/2026/pnc-opens-usdc-stablecoin-payments-to-corporate-clients/"
+     ],
+     "beat": "digital",
+     "summary": "On 9 November 2026, PNC Bank launched incoming USDC payments for corporate and institutional clients in a Coinbase-powered pilot. Transfers on Ethereum convert automatically to U.S. dollars at a 1-to-1 rate into designated accounts, speeding cross-border receipts under full banking protections.",
+     "sources": [
+      {
+       "name": "PNC Bank Newsroom",
+       "url": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients"
+      },
+      {
+       "name": "PYMNTS",
+       "url": "https://www.pymnts.com/news/banking/2026/pnc-opens-usdc-stablecoin-payments-to-corporate-clients/"
+      }
+     ]
+    },
+    {
+     "headline": "Eurozone inflation hits 4.0%, making a December ECB hike highly probable",
+     "urls": [
+      "https://www.investing.com/news/economy-news/euro-zone-inflation-rises-to-threeyear-high-4998098",
+      "https://global.morningstar.com/en-eu/economy/eurozone-inflation-rises-4-boosting-case-ecb-interest-rate-hike-december"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 4 November, eurozone inflation rose to 4.0% in October from 3.8% in September on food and energy costs. Markets price roughly 85% odds of a 25bp ECB hike on 17 December and two to three more hikes, potentially taking the deposit rate near 3.25%.",
+     "sources": [
+      {
+       "name": "Reuters/Investing.com",
+       "url": "https://www.investing.com/news/economy-news/euro-zone-inflation-rises-to-threeyear-high-4998098"
+      },
+      {
+       "name": "Morningstar Europe",
+       "url": "https://global.morningstar.com/en-eu/economy/eurozone-inflation-rises-4-boosting-case-ecb-interest-rate-hike-december"
+      }
+     ]
+    },
+    {
+     "headline": "Strong US jobs data lift December Fed hike odds to about 80%",
+     "urls": [
+      "https://www.streetinsider.com/Reuters/Fed+policymakers+consider+rate+hike+after+strong+jobs+report/27304646.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 6 November, a stronger-than-expected US jobs report showed 165,000 new positions and 4.1% unemployment. Markets repriced December hike odds to about 80% from 67% on Thursday, with inflation still above the Fed's 2% target and policymakers wanting more data.",
+     "sources": [
+      {
+       "name": "Reuters/Street Insider",
+       "url": "https://www.streetinsider.com/Reuters/Fed+policymakers+consider+rate+hike+after+strong+jobs+report/27304646.html"
+      }
+     ]
+    },
+    {
+     "headline": "FATF launches targeted review of virtual asset standards implementation",
+     "urls": [
+      "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 30 October 2026, the FATF Plenary agreed a targeted review of jurisdictions with materially important virtual asset sectors, reporting initial results in June 2027 and more in October 2027. It addresses uneven implementation of VASP standards that criminal networks exploit.",
+     "sources": [
+      {
+       "name": "FATF",
+       "url": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
+      }
+     ]
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosure Practice Statement",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
+     ],
+     "beat": "reporting",
+     "summary": "In October 2026, the ISSB opened a 120-day public consultation on a proposed Practice Statement for nature-related disclosures. It would complement IFRS S1 and S2 with guidance on governance, strategy, risk management, and nature-related metrics and targets, widening reporting scope for Finance.",
+     "sources": [
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
       }
      ]
     }
