@@ -1806,6 +1806,11 @@
   .art-topic { color: var(--gold-light); }
   .art-go { color: var(--white); border-bottom-color: var(--gold-light); }
   .art-img { display: block; border-radius: 4px; overflow: hidden; line-height: 0; }
+  @media (max-width: 900px) {
+    .art-card.has-img { display: flex; flex-direction: column; }
+    .art-card.has-img .art-meta { order: 1; } .art-card.has-img .art-t { order: 2; } .art-card.has-img .art-img { order: 3; margin: 4px 0 2px; }
+    .art-card.has-img .art-d { order: 4; } .art-card.has-img .art-go { order: 5; }
+  }
   .art-img img { width: 100%; height: auto; display: block; }
   .art-card:hover .art-img img { opacity: 0.92; }
   .arts-all a { color: var(--white); border-bottom-color: var(--gold-light); }
