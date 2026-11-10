@@ -1797,21 +1797,29 @@
   .arts h2 { color: var(--white); }
   .arts-lede { color: var(--white); font-size: 18px; }
   @media (max-width: 900px) { .arts-lede { font-size: 17px; } }
-  .art-card { background: #FFFFFF; color: var(--navy); border: 1px solid var(--line); border-top: 3px solid var(--gold); box-shadow: 0 1px 2px rgba(20,38,63,0.06); }
-  .art-card:hover { background: #FFFFFF; box-shadow: 0 6px 18px rgba(20,38,63,0.10); }
-  .art-d, .art-meta { color: var(--navy-soft); }
-  .art-topic { color: #7E6024; }
-  .art-go { border-bottom-color: var(--gold); }
+  /* Editorial style, same as the Insights page and Treasury Today: no box, gold rule on top */
+  .art-card { background: none; color: var(--white); border: 0; border-top: 3px solid var(--gold-light); border-radius: 0; box-shadow: none; padding: 18px 0 0; }
+  .art-card:hover { background: none; }
+  .art-card:hover .art-t { text-decoration: underline; text-decoration-color: var(--gold-light); text-underline-offset: 5px; }
+  .art-d { color: var(--on-dark); }
+  .art-meta { color: var(--on-dark-soft); }
+  .art-topic { color: var(--gold-light); }
+  .art-go { color: var(--white); border-bottom-color: var(--gold-light); }
+  .art-img { display: block; border-radius: 4px; overflow: hidden; line-height: 0; }
+  .art-img img { width: 100%; height: auto; display: block; }
+  .art-card:hover .art-img img { opacity: 0.92; }
   .arts-all a { color: var(--white); border-bottom-color: var(--gold-light); }
   /* Card layout adapts to the number of articles: 1 = one wide card, 2 = two columns, 3+ = three */
   .arts-list:has(> .art-card:only-child) { grid-template-columns: 1fr; }
   @media (min-width: 901px) { .arts-list:has(> .art-card:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 901px) {
-    .art-card:only-child { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-areas: "meta meta" "t d" "t go"; column-gap: 56px; row-gap: 12px; padding: 30px 34px 30px; }
+    .art-card:only-child { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "meta meta" "t d" "t go"; column-gap: 56px; row-gap: 12px; padding: 20px 0 0; }
+    .art-card.has-img:only-child { grid-template-areas: "img meta" "img t" "img d" "img go" "img ."; grid-template-rows: auto auto auto auto 1fr; column-gap: 48px; align-content: start; align-items: start; }
+    .art-card:only-child .art-img { grid-area: img; }
     .art-card:only-child .art-meta { grid-area: meta; }
-    .art-card:only-child .art-t { grid-area: t; font-size: 28px; line-height: 1.2; }
-    .art-card:only-child .art-d { grid-area: d; font-size: 16.5px; align-self: start; }
-    .art-card:only-child .art-go { grid-area: go; align-self: end; justify-self: start; }
+    .art-card:only-child .art-t { grid-area: t; font-size: 30px; line-height: 1.18; }
+    .art-card:only-child .art-d { grid-area: d; font-size: 17px; align-self: start; }
+    .art-card:only-child .art-go { grid-area: go; align-self: start; justify-self: start; }
   }
   @media (max-width: 900px) { .arts { padding: 48px 0 52px; } .arts-list { grid-template-columns: 1fr; } }
   .ap, .ss { background: var(--navy-mid); color: var(--white); padding: 56px 0 60px; border-top: 1px solid rgba(255,255,255,0.12); }
@@ -1975,7 +1983,7 @@
       <h2 id="arts-h">Insights</h2>
       <p class="arts-lede">Practical views for CFOs and Treasurers, by Gopakumar Menon.</p>
       <div class="arts-list"><!--INSIGHTS-HOME-START-->
-        <a class="art-card" href="/articles/start-where-mistakes-are-cheap/"><span class="art-meta"><span class="art-topic">AI and automation</span> &middot; 10 Nov 2026 &middot; 3 min read</span><span class="art-t">Your First AI Task in Treasury Should Be Unglamorous</span><span class="art-d">Four questions to decide which tasks you can trust AI with, and which must stay with your team.</span><span class="art-go">Read the article</span></a>
+        <a class="art-card has-img" href="/articles/start-where-mistakes-are-cheap/"><span class="art-img"><img src="/articles/start-where-mistakes-are-cheap/card.png" alt="" width="1200" height="627" loading="lazy"></span><span class="art-meta"><span class="art-topic">AI and automation</span> &middot; 10 Nov 2026 &middot; 3 min read</span><span class="art-t">Your First AI Task in Treasury Should Be Unglamorous</span><span class="art-d">Four questions to decide which tasks you can trust AI with, and which must stay with your team.</span><span class="art-go">Read the article</span></a>
         <!--INSIGHTS-HOME-END-->
       </div>
       <p class="arts-all"><a href="/insights/">See all insights</a></p>
