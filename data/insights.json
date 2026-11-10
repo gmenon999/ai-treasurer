@@ -1,0 +1,15 @@
+{
+  "_readme": "Single source for The AI Treasurer Insights. Add one entry per approved article (newest anywhere; the script sorts by date), then run: python3 insights.py. It rebuilds the Home cards (latest 3), /insights/, /insights/feed.xml and the sitemap entries. Topics must be one of the listed topics.",
+  "topics": ["AI and automation", "Controls and audit", "Cash and liquidity", "Payments", "FX and risk", "Finance leadership"],
+  "articles": [
+    {
+      "slug": "start-where-mistakes-are-cheap",
+      "title": "Start Where Mistakes Are Cheap: Choosing the First AI Tasks in Treasury",
+      "summary": "Before asking what an AI agent can do, ask what a wrong answer would cost and who would catch it.",
+      "date": "2026-11-10",
+      "topic": "AI and automation",
+      "minutes": 3,
+      "image": "/articles/start-where-mistakes-are-cheap/og.png"
+    }
+  ]
+}
