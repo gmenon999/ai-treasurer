@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14263F">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<title>Start Where Mistakes Are Cheap: Choosing the First AI Tasks in Treasury | The AI Treasurer</title>
+<meta name="description" content="Before asking what an AI agent can do in Treasury, ask what a wrong answer would cost and who would catch it. Four questions for choosing where to start.">
+<link rel="canonical" href="https://theaitreasurer.com/articles/start-where-mistakes-are-cheap/">
+<meta property="og:title" content="Start Where Mistakes Are Cheap: Choosing the First AI Tasks in Treasury">
+<meta property="og:description" content="Four questions for choosing where AI starts in Treasury, and what it has to earn before it touches cash.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://theaitreasurer.com/articles/start-where-mistakes-are-cheap/">
+<meta property="og:image" content="https://theaitreasurer.com/articles/start-where-mistakes-are-cheap/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root { --navy: #14263F; --navy-deep: #0D1A2C; --navy-soft: #3B4A60; --gold: #B08D3C; --gold-light: #E9CB85; --line: #CFCBC3; --tint: #F4F2EE; --white: #FFFFFF;
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--sans); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--navy); }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  header.band { background: var(--navy-deep); color: var(--white); }
+  header.band .wrap { max-width: 1240px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap; }
+  .mark { display: inline-flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; font-family: var(--serif); font-weight: 700; font-size: 19px; }
+  .mark svg { width: 30px; height: 30px; }
+  .home { color: var(--white); font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+  .draft { background: #FFF4D6; border-bottom: 1px solid #E2C46F; color: #3A2C05; font-size: 15px; line-height: 1.5; }
+  .draft .wrap { padding-top: 12px; padding-bottom: 12px; }
+  .kicker { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+  .art-head { padding: 48px 0 20px; }
+  h1 { font-family: var(--serif); font-size: clamp(30px, 4.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em; margin: 12px 0 16px; }
+  .dek { font-size: 20px; line-height: 1.5; color: var(--navy-soft); margin: 0 0 18px; }
+  .byline { font-size: 15px; color: var(--navy-soft); border-top: 1px solid var(--line); padding-top: 14px; margin: 0; }
+  .hero { margin: 8px 0 28px; }
+  .hero img { display: block; width: 100%; height: auto; border-radius: 6px; }
+  h2 { font-family: var(--serif); font-size: clamp(23px, 3vw, 28px); line-height: 1.25; margin: 44px 0 12px; }
+  h2 .n { color: var(--gold); margin-right: 8px; }
+  p { margin: 0 0 16px; }
+  ol, ul { margin: 0 0 16px; padding-left: 22px; }
+  li { margin: 0 0 8px; }
+  .key { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1.45; color: var(--navy); border-left: 3px solid var(--gold-light); padding: 2px 0 2px 16px; margin: 20px 0 24px; }
+  .box { background: var(--tint); border-radius: 6px; padding: 18px 20px 4px; margin: 24px 0; }
+  .end { border-top: 1px solid var(--line); margin-top: 44px; padding: 20px 0 8px; font-size: 15px; color: var(--navy-soft); }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 40px; font-size: 13px; color: var(--navy-soft); }
+  @media (max-width: 600px) { body { font-size: 17px; } .art-head { padding-top: 32px; } .dek { font-size: 18px; } }
+</style>
+</head>
+<body>
+
+<header class="band">
+  <div class="wrap">
+    <a class="mark" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
+    <a class="home" href="/#articles">All insights</a>
+  </div>
+</header>
+
+
+<main id="main">
+<article class="wrap">
+
+  <div class="art-head">
+    <div class="kicker">Insights</div>
+    <h1>Start Where Mistakes Are Cheap: Choosing the First AI Tasks in Treasury</h1>
+    <p class="dek">Before asking what an AI agent can do, ask what a wrong answer would cost and who would catch it.</p>
+    <p class="byline">By Gopakumar Menon, CA, CPA, CTP &middot; <time datetime="2026-11-10">10 November 2026</time></p>
+  </div>
+
+  <figure class="hero">
+    <picture>
+    <source media="(max-width: 600px)" srcset="cover-square.png" width="1080" height="1080">
+    <img src="cover.png" width="1920" height="1080" alt="Which Treasury tasks to hand to AI, from easy to catch to hard to undo. Allow AI to draft: commentary, variance notes, bank queries and exception flags. Allow AI to propose once proven: cash sweeps and hedge execution. No AI, human decides: payment release.">
+    </picture>
+  </figure>
+
+  <p>Every Treasury team is being asked to show progress on AI. The usual starting point is a list of what the technology can do. A better question: what happens when it gets something wrong?</p>
+  <p>Two mistakes can look alike on day one. An agent writes a cash commentary with a wrong number; the person reading it spots it, and it costs ten minutes. An agent releases a payment to the wrong beneficiary; nobody notices until the supplier calls, and the money may not come back. The order in which you adopt AI should follow that difference.</p>
+
+  <h2>Four questions to ask before handing a task to AI</h2>
+  <ol>
+    <li><b>What does a wrong answer cost, and can it be reversed?</b></li>
+    <li><b>Who would notice, and how soon?</b></li>
+    <li><b>Can a person check the output against a source in a few minutes?</b></li>
+    <li><b>Would something simpler do?</b> A rule, a better report or a cleaner process is often cheaper and easier to audit.</li>
+  </ol>
+  <p class="key">If a mistake is cheap, visible and easy to check, it is a good place to learn.</p>
+
+  <h2>Which Treasury tasks to hand to AI</h2>
+  <p>Sorted by those questions, most Treasury tasks fall into three groups.</p>
+
+  <h2><span class="n">1</span>Allow AI to draft</h2>
+  <p>Cash position commentary, forecast versus actual notes, drafting queries to banks, and flagging unusual items for review. In each of these, a person reads the output before anything moves, and the source data is close at hand. If it&rsquo;s wrong, you lose a few minutes.</p>
+
+  <h2><span class="n">2</span>Allow AI to propose once proven</h2>
+  <p>Cash sweeps and hedge execution can come later, once proposals have a track record. The AI proposes, a person approves each action, and every approval is recorded. Limits sit in the banking and payment systems, not in the AI&rsquo;s instructions, so an AI error cannot exceed them.</p>
+
+  <h2><span class="n">3</span>No AI, human decides</h2>
+  <p>Payment release, and anything else that is irreversible or time critical, stays with a person for now. Before automation comes anywhere near it, agree limits, approvals and an escalation path, and test that it can be switched off by someone who knows how.</p>
+  <p class="key">The teams that get this right won&rsquo;t be the fastest. They&rsquo;ll be the ones who can tell their auditor exactly what the AI is allowed to do.</p>
+
+  <h2>Deciding when to give it more</h2>
+  <p>Write down the evidence before the pilot starts, not after. Useful measures are how often reviewers change the output, how many errors are found late, and how long exceptions stay open. Set the level each must reach to justify more authority. If the numbers fall short, do not expand, and be willing to step back.</p>
+
+  <div class="box">
+    <p><b>A useful exercise this week.</b> List every task where AI is used or proposed in your Treasury. Next to each, write what a wrong answer would cost and who would catch it. The list will tell you where to start.</p>
+  </div>
+
+  <div class="end">
+    <p>This article is general discussion, not professional or investment advice. Views are the author&rsquo;s own and do not represent any employer.</p>
+  </div>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap"><p>&copy; The AI Treasurer &middot; <a href="/">theaitreasurer.com</a></p></div>
+</footer>
+</body>
+</html>
