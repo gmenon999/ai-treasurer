@@ -269,6 +269,16 @@ PAGE = r'''<!DOCTYPE html>
   .ins-d { margin: 0; font-size: 17px; line-height: 1.55; color: var(--on-dark); max-width: 62ch; }
   .feed { margin: 28px 0 0; font-size: 14px; color: var(--on-dark-soft); }
   .feed a { color: var(--on-dark); }
+  .next-band { background: #FFFFFF; border-top: 1px solid #CFCBC3; }
+  .next-band a { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 40px 0; text-decoration: none; color: #14263F; }
+  .next-band .nb-copy { display: flex; flex-direction: column; gap: 6px; }
+  .next-band .kicker { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #6E520F; }
+  .next-band .nb-t { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; line-height: 1.15; }
+  .next-band .nb-d { color: #3B4A60; font-size: 16px; }
+  .next-band .nb-arrow { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #14263F; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s ease, color 0.2s ease; }
+  .next-band a:hover .nb-arrow { background: #14263F; color: #FFFFFF; }
+  .next-band a:hover .nb-t { text-decoration: underline; text-decoration-color: #B08D3C; text-underline-offset: 6px; }
+  @media (max-width: 700px) { .next-band a { padding: 30px 0; } .next-band .nb-arrow { width: 44px; height: 44px; } }
   footer { border-top: 1px solid rgba(255,255,255,0.12); padding: 22px 0 40px; font-size: 13px; color: var(--on-dark-soft); }
   footer a { color: var(--on-dark); }
 </style>
@@ -284,6 +294,9 @@ PAGE = r'''<!DOCTYPE html>
     </ol>
   </div>
 </main>
+<aside class="next-band" aria-label="Next section">
+  <div class="wrap"><a href="/#agentic"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Agentic Automation</span><span class="nb-d">Where AI agents fit in Treasury and Finance, and the control that keeps each one safe.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+</aside>
 <footer>
   <div class="wrap"><p>&copy; The AI Treasurer &middot; Views are personal and not financial or professional advice &middot; <a href="/">theaitreasurer.com</a></p></div>
 </footer>
