@@ -696,6 +696,7 @@
   .next-band .nb-copy { display: flex; flex-direction: column; gap: 6px; }
   .next-band .nb-t { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; line-height: 1.15; }
   .next-band .nb-d { color: var(--navy-soft); font-size: 16px; }
+  .next-band .nb-mail { margin-top: 4px; font-size: 16px; font-weight: 600; color: var(--navy); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; overflow-wrap: anywhere; }
   .next-band .nb-arrow { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--navy); display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s ease, color 0.2s ease; }
   .next-band a:hover .nb-arrow { background: var(--navy); color: var(--white); }
   .next-band a:hover .nb-t { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; }
@@ -2654,8 +2655,8 @@
     </div>
   </section>
 
-  <aside class="next-band" data-view="about" aria-label="Next section">
-    <div class="wrap"><a href="#dialogue"><span class="nb-copy"><span class="kicker">Next</span><span class="nb-t">Get in touch</span><span class="nb-d">Share your experience of AI in Treasury and Finance: what is working, and what is not.</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
+  <aside class="next-band" data-view="about" aria-label="Get in touch">
+    <div class="wrap"><a href="mailto:gmenon@theaitreasurer.com?subject=Practitioner%20Dialogue"><span class="nb-copy"><span class="nb-t">Get in touch</span><span class="nb-d">Share your experience of AI in Treasury and Finance: what is working, and what is not.</span><span class="nb-mail">gmenon@theaitreasurer.com</span></span><span class="nb-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="3.5" y="6" width="17" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a></div>
   </aside>
 
 
