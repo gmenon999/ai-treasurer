@@ -6,14 +6,14 @@
     <atom:link href="https://theaitreasurer.com/insights/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical views for CFOs and Treasurers, by Gopakumar Menon.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 10 Nov 2026 09:44:28 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 10:53:35 +0000</lastBuildDate>
     <item>
-      <title>Start Where Mistakes Are Cheap: Choosing the First AI Tasks in Treasury</title>
+      <title>Your First AI Task in Treasury Should Be Unglamorous</title>
       <link>https://theaitreasurer.com/articles/start-where-mistakes-are-cheap/</link>
       <guid isPermaLink="true">https://theaitreasurer.com/articles/start-where-mistakes-are-cheap/</guid>
       <pubDate>Tue, 10 Nov 2026 06:00:00 +0000</pubDate>
       <category>AI and automation</category>
-      <description>Before asking what an AI agent can do, ask what a wrong answer would cost and who would catch it.</description>
+      <description>Four questions to decide which tasks you can trust AI with, and which must stay with your team.</description>
     </item>
   </channel>
 </rss>
