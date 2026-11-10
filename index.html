@@ -652,6 +652,7 @@
   .secnav-arrow.prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(13,26,44,0) 0%, var(--navy-deep) 45%); }
   .secnav.can-next .secnav-arrow.next, .secnav.can-prev .secnav-arrow.prev { display: flex; }
   #top, #briefing, #markets, #framework, #agentic, #about, #briefing-tabs, #decisions { scroll-margin-top: calc(var(--secnav-h) + 4px); }
+  #decisions { scroll-margin-top: var(--secnav-h); } /* sits under the light Insights band: no gap, or a cream strip shows under the menu */
   .tabs { top: var(--secnav-h); }
   @media (max-width: 700px) {
     .secnav .wrap { gap: 20px; padding-right: 36px; }
