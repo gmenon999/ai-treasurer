@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-10T03:34:25Z",
+ "generated_utc": "2026-11-10T14:51:48Z",
  "policy": [
   {
    "bank": "Fed",
@@ -23,8 +23,8 @@
    "value": "2.50 / 2.65%",
    "change_bp": 25,
    "since": "2026-09-10",
-   "checked": "2026-11-09",
-   "asof": "2026-11-09",
+   "checked": "2026-11-10",
+   "asof": "2026-11-10",
    "stale": false
   },
   {
@@ -83,9 +83,9 @@
  "money": [
   {
    "name": "SOFR",
-   "value": "3.89%",
-   "change_bp": -3,
-   "asof": "2026-11-06",
+   "value": "3.88%",
+   "change_bp": -1,
+   "asof": "2026-11-09",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
    "id": "sofr",
@@ -95,7 +95,7 @@
    "name": "Fed funds effective",
    "value": "3.88%",
    "change_bp": 0,
-   "asof": "2026-11-06",
+   "asof": "2026-11-09",
    "source_name": "Federal Reserve Bank of New York",
    "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
    "id": "effr",
@@ -103,9 +103,9 @@
   },
   {
    "name": "€STR",
-   "value": "2.443%",
+   "value": "2.442%",
    "change_bp": 0,
-   "asof": "2026-11-06",
+   "asof": "2026-11-09",
    "source_name": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",
    "id": "estr",
@@ -206,6 +206,6 @@
  ],
  "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
  "errors": [
-  "ecb: HTTPSConnectionPool(host='data-api.ecb.europa.eu', port=443): Read timed out. (read timeout=30)"
+  "history ecb: HTTPSConnectionPool(host='data-api.ecb.europa.eu', port=443): Read timed out. (read timeout=30)"
  ]
 }
