@@ -67,12 +67,9 @@
   .glance .kicker { margin: 0 0 10px; }
   .glance .rule { font-size: 22px; line-height: 1.38; font-weight: 700; margin: 0 0 20px; }
   .tiers { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  .tiers > li { background: var(--white); border-left: 6px solid; border-radius: 0 6px 6px 0; padding: 12px 16px 13px; font-family: var(--sans); }
+  .tiers li { background: var(--white); border-left: 6px solid; border-radius: 0 6px 6px 0; padding: 12px 16px 13px; font-family: var(--sans); }
   .tiers .l { display: block; font-size: 16.5px; font-weight: 700; line-height: 1.3; }
-  .tiers ul.t { list-style: none; margin: 6px 0 0; padding: 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
-  .tiers ul.t li { position: relative; padding-left: 16px; margin: 0 0 3px; }
-  .tiers ul.t li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; }
-  .tiers li.t1 ul.t li::before { background: var(--pale); } .tiers li.t2 ul.t li::before { background: var(--blue); } .tiers li.t3 ul.t li::before { background: var(--gold); }
+  .tiers .t { display: block; font-size: 15px; line-height: 1.45; color: var(--muted); margin-top: 3px; }
   .t1 { border-color: var(--pale) !important; } .t2 { border-color: var(--blue) !important; } .t3 { border-color: var(--gold) !important; }
 
   h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(25px, 3.4vw, 30px); line-height: 1.2; margin: 52px 0 14px; letter-spacing: -0.005em; }
@@ -150,9 +147,9 @@
     <div class="kicker">At a glance</div>
     <p class="rule">Start AI where a mistake is cheap and easy to catch. Give it more authority only once it has earned it.</p>
     <ul class="tiers">
-      <li class="t1"><span class="l">Allow AI to draft</span><ul class="t"><li>Cash commentary</li><li>Forecast versus actual notes</li><li>Bank queries</li><li>Unusual item flags</li></ul></li>
-      <li class="t2"><span class="l">Allow AI to suggest, human approves</span><ul class="t"><li>Cash sweeps</li><li>Hedge execution</li></ul></li>
-      <li class="t3"><span class="l">No AI, human decides</span><ul class="t"><li>Payment release</li></ul></li>
+      <li class="t1"><span class="l">Allow AI to draft</span><span class="t">Cash commentary &middot; Forecast versus actual notes &middot; Bank queries &middot; Unusual item flags</span></li>
+      <li class="t2"><span class="l">Allow AI to suggest, human approves</span><span class="t">Cash sweeps &middot; Hedge execution</span></li>
+      <li class="t3"><span class="l">No AI, human decides</span><span class="t">Payment release</span></li>
     </ul>
   </section>
 
