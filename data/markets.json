@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-10T21:18:37Z",
+ "generated_utc": "2026-11-11T06:16:06Z",
  "policy": [
   {
    "bank": "Fed",
@@ -10,8 +10,8 @@
    "value": "3.75–4.00%",
    "change_bp": 25,
    "since": "2026-09-17",
-   "checked": "2026-11-10",
-   "asof": "2026-11-10",
+   "checked": "2026-11-11",
+   "asof": "2026-11-11",
    "stale": false
   },
   {
@@ -36,8 +36,8 @@
    "value": "4.00%",
    "change_bp": 25,
    "since": "2026-11-05",
-   "checked": "2026-11-10",
-   "asof": "2026-11-10",
+   "checked": "2026-11-11",
+   "asof": "2026-11-11",
    "stale": false
   },
   {
