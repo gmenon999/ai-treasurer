@@ -1764,6 +1764,84 @@
     "cost_usd": 0.3937
    },
    "edition_cost_usd": 1.9849
+  },
+  {
+   "date": "2026-11-11",
+   "items": [
+    {
+     "headline": "JPMorgan likens agentic Treasury AI to fly-by-wire flight controls",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Citizens Bank launches Treasury Intelligence for multibank cash and forecast views",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "EuroFinance 2026 turns Treasury focus to cash trapped in operating cycles",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ISO 20022 carries remittance data across rails but leaves interoperability gaps",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "KPMG tells CFOs AI safety is a lifecycle cost, not a launch cost",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Deloitte sees 3.5% UK inflation keeping Bank of England hike expectations high",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Trovata builds autonomous Treasury agents on Amazon Bedrock and AgentCore",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "FEI and Controllers Council test AI as both system and preparer",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Forvis Mazars and EY test whether ICFR controls still fit AI",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Diverging BoE and ECB paths call for separate sterling and euro hedging",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "The claim that floating-rate sterling debt 'carries the larger risk' is not in the source. It is the take's own inference from the longer UK cycle, but it is stated as fact. 'Both central banks are expected to raise rates' also overstates the source: the BoE has already raised, and the ECB only 'may"
+    },
+    {
+     "headline": "OCBC and Ant International launch 24/7 tokenised-deposit settlement in SGD and USD",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "FinCEN cuts MEXC Global off from U.S. financial system over $16 billion flows",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "ISSB opens 120-day consultation on nature-related disclosure practice statement",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.256,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.2472
+   },
+   "edition_cost_usd": 1.3064
   }
  ]
 }
