@@ -1842,6 +1842,74 @@
     "cost_usd": 0.2472
    },
    "edition_cost_usd": 1.3064
+  },
+  {
+   "date": "2026-11-12",
+   "items": [
+    {
+     "headline": "Prolific Banking's FI-Streams portal cuts bank API rollout to under four months",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Only 38% of CFOs see better customer payment behaviour, down from 73%",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "OCC Bulletin 2026-54 maps AI risk to 16 components across six pillars",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "EY finds corporate stablecoin use doubled to 18% in live production",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "U.S. Q3 GDP grows 3.4%, reinforcing the Fed's higher-for-longer stance",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FATF finds only 34% of jurisdictions largely compliant on virtual assets",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "IASB keeps IFRS 16 intact but tightens lease cash outflow disclosures",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Centalion and Komgo cut trade-finance issuance time 55% with an AI agent",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Hackett finds receivables up 11%, twice revenue growth, as DSO slips again",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Canada's Real-Time Rail goes live with 8 participants and 24/7 settlement",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Bank of England lifts Bank Rate to 4.00%, first rise since August 2023",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "The source text is only a generic newsletter description and a list of monthly update titles. It says nothing about the Bank of England raising Bank Rate to 4.00%, this being the first rise since August 2023, markets pricing up to three more hikes, or a December decision. Every fact in the take is t"
+    }
+   ],
+   "cost_usd": 0.2022,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1121
+   },
+   "edition_cost_usd": 1.3123
   }
  ]
 }

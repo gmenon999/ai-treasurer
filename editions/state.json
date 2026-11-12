@@ -216,7 +216,14 @@
       "human": "Wednesday, 11 November 2026",
       "month": "November 2026",
       "file": "/editions/2026-11-11.html"
+    },
+    {
+      "n": 32,
+      "date": "2026-11-12",
+      "human": "Thursday, 12 November 2026",
+      "month": "November 2026",
+      "file": "/editions/2026-11-12.html"
     }
   ],
-  "last_n": 31
+  "last_n": 32
 }

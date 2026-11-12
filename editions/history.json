@@ -2447,6 +2447,177 @@
      ]
     }
    ]
+  },
+  {
+   "date": "2026-11-12",
+   "note_headline": "Record operating cash is masking slower collections, and rising rates will expose it",
+   "note_opening": "Headline cash strength across Treasury and Finance is hiding a deterioration in collections. Hackett's survey of the 1,000 largest North American companies shows operating cash flow at 17% of revenue, a 13-year high, whi",
+   "items": [
+    {
+     "headline": "Centalion and Komgo cut trade-finance issuance time 55% with an AI agent",
+     "urls": [
+      "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Centalion Group and Komgo deployed an AI Treasury agent that answers natural-language queries on trade-finance facility capacity, enforces controls through an orchestration layer and keeps human approval at every step. Issuance time fell 55%, amendments 80%, freeing 60+ working days yearly.",
+     "sources": [
+      {
+       "name": "Centalion",
+       "url": "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
+      }
+     ]
+    },
+    {
+     "headline": "Prolific Banking's FI-Streams portal cuts bank API rollout to under four months",
+     "urls": [
+      "https://www.fintechbits.net/prolific-banking-developer-portal-apis"
+     ],
+     "beat": "treasury_tech",
+     "summary": "On 9 November 2026 Prolific Banking launched the FI-Streams Developer Portal and APIs, letting banks offer branded self-service APIs to corporates in under four months rather than 12–18 months. Payments, reporting and webhooks are covered, shortening Treasury's wait for connectivity.",
+     "sources": [
+      {
+       "name": "Fintechbits",
+       "url": "https://www.fintechbits.net/prolific-banking-developer-portal-apis"
+      }
+     ]
+    },
+    {
+     "headline": "Hackett finds receivables up 11%, twice revenue growth, as DSO slips again",
+     "urls": [
+      "https://www.businessfinanceweekly.com/resources/corporate-finance/cash-flow-hit-a-13-year-high-receivables-grew-twice-as-fast-as-revenue"
+     ],
+     "beat": "cash",
+     "summary": "Hackett's 2026 survey of the 1,000 largest North American companies put operating cash flow at 17% of revenue, a 13-year high. Receivables rose 11%, twice revenue growth, DSO worsened 2.1 days for a third year, and the cash-conversion cycle improved only 0.2 days.",
+     "sources": [
+      {
+       "name": "Business Finance Weekly / Hackett",
+       "url": "https://www.businessfinanceweekly.com/resources/corporate-finance/cash-flow-hit-a-13-year-high-receivables-grew-twice-as-fast-as-revenue"
+      }
+     ]
+    },
+    {
+     "headline": "Only 38% of CFOs see better customer payment behaviour, down from 73%",
+     "urls": [
+      "https://www.pymnts.com/back-office/cfo/2026/52percent-chief-financial-officers-prioritize-clearer-view-cash-flow/"
+     ],
+     "beat": "cash",
+     "summary": "52% of CFOs now prioritise clearer cash-flow views, yet only 38% report improved customer payment behaviour, down from 73% a year earlier. Supply-chain programme settlement volumes rose 35% year-on-year, suggesting vendor-payment deferral is reaching its limits as a working-capital lever.",
+     "sources": [
+      {
+       "name": "PYMNTS / CFO.com",
+       "url": "https://www.pymnts.com/back-office/cfo/2026/52percent-chief-financial-officers-prioritize-clearer-view-cash-flow/"
+      }
+     ]
+    },
+    {
+     "headline": "Canada's Real-Time Rail goes live with 8 participants and 24/7 settlement",
+     "urls": [
+      "https://www.theasianbanker.com/updates-and-articles/canada-launches-24-7-payment-rail-lloyds-and-brac-digitise-trade-documents"
+     ],
+     "beat": "payments",
+     "summary": "Payments Canada launched Real-Time Rail on 9 November 2026, offering 24/7 interbank clearing and settlement on ISO 20022 with immediate funds availability. 8 institutions, including Bank of America and Wealthsimple, joined at launch; a Canada-EU RTR link is under discussion but not yet operational.",
+     "sources": [
+      {
+       "name": "The Asian Banker",
+       "url": "https://www.theasianbanker.com/updates-and-articles/canada-launches-24-7-payment-rail-lloyds-and-brac-digitise-trade-documents"
+      }
+     ]
+    },
+    {
+     "headline": "OCC Bulletin 2026-54 maps AI risk to 16 components across six pillars",
+     "urls": [
+      "https://www.debevoise.com/insights/publications/2026/11/occs-new-super-intelligence-supervisory-framework"
+     ],
+     "beat": "regulation",
+     "summary": "OCC Bulletin 2026-54 sets out an AI supervisory framework of 16 components across six pillars: purpose, risk, control, oversight, resilience and assurance. It creates no new enforceable standards but applies existing risk-management concepts, signalling examiners will evaluate material AI use.",
+     "sources": [
+      {
+       "name": "Debevoise & Plimpton",
+       "url": "https://www.debevoise.com/insights/publications/2026/11/occs-new-super-intelligence-supervisory-framework"
+      }
+     ]
+    },
+    {
+     "headline": "Bank of England lifts Bank Rate to 4.00%, first rise since August 2023",
+     "urls": [
+      "https://www.deloitte.com/uk/en/services/consulting-financial/analysis/interest-rate-and-fx-market-newsletter.html"
+     ],
+     "beat": "risk",
+     "summary": "The Bank of England raised Bank Rate to 4.00% in November 2026, its first increase since August 2023, with markets pricing up to three more hikes. Sterling treasurers face December hike risk, while euro treasurers may see a December adjustment before eventual ECB easing.",
+     "sources": [
+      {
+       "name": "Deloitte UK",
+       "url": "https://www.deloitte.com/uk/en/services/consulting-financial/analysis/interest-rate-and-fx-market-newsletter.html"
+      }
+     ]
+    },
+    {
+     "headline": "EY finds corporate stablecoin use doubled to 18% in live production",
+     "urls": [
+      "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/insights/financial-services/documents/ey-gl-blockchain-based-payments-survey-10-2026.pdf"
+     ],
+     "beat": "digital",
+     "summary": "EY's July–August 2026 survey found 18% of corporates running stablecoins live in production, double the 9% of 2025. Only 5% of financial institutions have no plans to offer stablecoin services, with cross-border supplier payments and B2B acceptance leading use cases.",
+     "sources": [
+      {
+       "name": "EY",
+       "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/insights/financial-services/documents/ey-gl-blockchain-based-payments-survey-10-2026.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "U.S. Q3 GDP grows 3.4%, reinforcing the Fed's higher-for-longer stance",
+     "urls": [
+      "https://downloads.ctfassets.net/izij9rskv5y1/6OFxRZtWCMvoTmuGJ1b7GQ/4a5fc455695d457fb576257cbd7a2e7a/xe-currency-outlook-GLOBAL_November_2026_refreshed-2.pdf"
+     ],
+     "beat": "markets_macro",
+     "summary": "U.S. GDP expanded at a 3.4% seasonally adjusted annualised rate in Q3, driven by resilient domestic spending and strong capital investment. Firm employment data support the Fed's higher-for-longer stance into the final months of 2026, leaving little near-term rate relief for dollar borrowers.",
+     "sources": [
+      {
+       "name": "XE Currency Outlook",
+       "url": "https://downloads.ctfassets.net/izij9rskv5y1/6OFxRZtWCMvoTmuGJ1b7GQ/4a5fc455695d457fb576257cbd7a2e7a/xe-currency-outlook-GLOBAL_November_2026_refreshed-2.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "FATF finds only 34% of jurisdictions largely compliant on virtual assets",
+     "urls": [
+      "https://www.fatf-gafi.org/en/news/targeted-updated-va-vasps-2026.html",
+      "https://www.fatf-gafi.org/content/dam/fatf-gafi/reports/7th-targeted-update-on-implementation-fatf-standards-vas-vasps-2026.pdf"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 5 November 2026 the Financial Action Task Force published its seventh targeted update, finding only 34% of jurisdictions largely compliant with virtual asset AML/CFT standards. Gaps in Travel Rule operationalisation and enforcement affect corporate payments routed through digital asset channels.",
+     "sources": [
+      {
+       "name": "FATF",
+       "url": "https://www.fatf-gafi.org/en/news/targeted-updated-va-vasps-2026.html"
+      },
+      {
+       "name": "FATF",
+       "url": "https://www.fatf-gafi.org/content/dam/fatf-gafi/reports/7th-targeted-update-on-implementation-fatf-standards-vas-vasps-2026.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "IASB keeps IFRS 16 intact but tightens lease cash outflow disclosures",
+     "urls": [
+      "https://www.iasplus.com/en/news/2026/11/iasb-meeting-notes",
+      "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/eeg/ap3-iasb-technical-update.pdf"
+     ],
+     "beat": "reporting",
+     "summary": "Concluding its post-implementation review on 28-29 October 2026, the IASB found IFRS 16 working as intended. It will strengthen disclosure of total cash outflows for lease payments and how they are classified across operating, investing and financing activities, sharpening cash-flow reporting.",
+     "sources": [
+      {
+       "name": "IASPlus",
+       "url": "https://www.iasplus.com/en/news/2026/11/iasb-meeting-notes"
+      },
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/eeg/ap3-iasb-technical-update.pdf"
+      }
+     ]
+    }
+   ]
   }
  ]
 }
