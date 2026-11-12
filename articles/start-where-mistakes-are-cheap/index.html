@@ -106,6 +106,30 @@
     .key { font-size: 21px; }
     .byline .who { display: block; margin-bottom: 2px; } .byline .sep.first { display: none; }
   }
+  /* balanced line breaks: no single orphan word on a heading's last line */
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  /* desktop layout on the site grid: text aligned under the logo, contents rail on the right */
+  .art-shell { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+  .art-main { max-width: 680px; margin: 0 auto; }
+  .art-rail { display: none; }
+  @media (min-width: 1100px) {
+    .back-bar .wrap, footer .wrap { max-width: 1240px; padding-left: 20px; padding-right: 20px; }
+    .art-shell { display: grid; grid-template-columns: minmax(0, 720px) 260px; justify-content: space-between; gap: 0 64px; }
+    .art-main { max-width: none; margin: 0; }
+    .art-rail { display: block; }
+    .rail-in { position: sticky; top: calc(var(--sn-h, 52px) + 64px); margin-top: 52px; padding-top: 16px; border-top: 3px solid var(--gold); font-family: var(--sans); }
+    .rail-k { margin: 0 0 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); }
+    .rail-toc { list-style: none; margin: 0 0 22px; padding: 0; }
+    .rail-toc li { margin: 0; }
+    .rail-toc a { display: block; padding: 8px 0 8px 14px; border-left: 2px solid var(--line); font-size: 15px; line-height: 1.4; color: var(--muted); text-decoration: none; }
+    .rail-toc a:hover { color: var(--navy); }
+    .rail-toc a.on { color: var(--navy); font-weight: 600; border-left-color: var(--gold); }
+    .rail-back { font-size: 14px; font-weight: 600; text-decoration: none; color: var(--navy); }
+    .rail-back:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+    h2[id] { scroll-margin-top: calc(var(--sn-h, 52px) + 60px); }
+  }
 </style>
 <link rel="alternate" type="application/rss+xml" title="The AI Treasurer: Insights" href="/insights/feed.xml">
 </head>
@@ -144,7 +168,8 @@
 
 <main id="main">
 <div class="back-bar"><div class="wrap"><a class="back-link" href="/insights/">&larr; All Insights</a></div></div>
-<article class="wrap">
+<div class="art-shell">
+<article class="art-main">
 
   <div class="art-head">
     <div class="kicker">Insights &middot; AI and automation</div>
@@ -167,7 +192,7 @@
   <p>Most Treasury teams are under pressure to show progress on AI. The first question is usually what AI can do. A better question is what happens when it gets something wrong.</p>
   <p>An AI mistake can cost little or a lot, depending on the task. If AI drafts a cash commentary with a wrong number, the reader spots it and you lose ten minutes. If AI releases a payment to the wrong supplier, nobody notices until the supplier calls, and the money may not come back. Start with tasks like the first, not the second.</p>
 
-  <h2>Four questions to ask before handing a task to AI</h2>
+  <h2 id="four-questions">Four questions to ask before handing a task to AI</h2>
   <ol>
     <li>What does a wrong answer cost, and can it be reversed?</li>
     <li>Who would notice a mistake, and how soon?</li>
@@ -175,7 +200,7 @@
     <li>Do you need AI at all? A simple rule, a better report or a cleaner process is often cheaper and easier to audit.</li>
   </ol>
 
-  <h2>Which Treasury tasks can AI automate?</h2>
+  <h2 id="which-tasks">Which Treasury tasks can AI automate?</h2>
   <p>Apply the four questions above, and most Treasury tasks fall into three groups. The examples are in the box at the top. Here is how each group works.</p>
 
   <h3 class="t1">Allow AI to prepare, human reviews</h3>
@@ -189,7 +214,7 @@
 
   <p class="key">Speed is not the goal. Being able to show your auditor exactly what the AI is allowed to do is.</p>
 
-  <h2>When to give AI more authority</h2>
+  <h2 id="more-authority">When to give AI more authority</h2>
   <p>Before a pilot starts, write down what results would justify giving AI more authority. Useful measures are how often reviewers change the output, how many errors are found late, and how long exceptions stay open. Set the level each must reach. If the numbers fall short, do not widen the AI&rsquo;s role, and be ready to take authority back.</p>
 
   <div class="box">
@@ -207,11 +232,18 @@
   </div>
 
 </article>
+<aside class="art-rail" aria-label="In this article"><div class="rail-in">
+  <p class="rail-k">In this article</p>
+  <ol class="rail-toc"><li><a href="#four-questions">Four questions to ask before handing a task to AI</a></li><li><a href="#which-tasks">Which Treasury tasks can AI automate?</a></li><li><a href="#more-authority">When to give AI more authority</a></li></ol>
+  <a class="rail-back" href="/insights/">&larr; All Insights</a>
+</div></aside>
+</div>
 </main>
 
 <footer>
   <div class="wrap"><p>&copy; The AI Treasurer &middot; <a href="/">theaitreasurer.com</a></p></div>
 </footer>
 <script>(function(){var n=document.querySelector(".secnav");function m(){if(n)document.documentElement.style.setProperty("--sn-h",n.offsetHeight+"px")}m();addEventListener("resize",m);addEventListener("load",m)})();</script>
+<script>(function(){var ls=[].slice.call(document.querySelectorAll(".rail-toc a"));if(!ls.length||!("IntersectionObserver" in window))return;var hs=ls.map(function(a){return document.getElementById(a.getAttribute("href").slice(1))});function on(id){ls.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+id)})}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)on(e.target.id)})},{rootMargin:"0px 0px -70% 0px"});hs.forEach(function(h){if(h)io.observe(h)})})();</script>
 </body>
 </html>

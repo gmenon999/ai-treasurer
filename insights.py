@@ -154,8 +154,10 @@ def insights_page(arts):
             '            <p class="ins-d">%s</p>\n'
             '            <a class="ins-go" href="/articles/%s/" aria-label="Read the article: %s">Read the article</a>\n'
             '          </div>\n'
+            '%s'
             '        </li>' % (order[a["slug"]], e(a["topic"]), a["date"], long_date(a["_d"]), a["minutes"], e(a["slug"]), e(a["title"]),
-                              e(a["summary"]), e(a["slug"]), e(a["title"])))
+                              e(a["summary"]), e(a["slug"]), e(a["title"]),
+                              ('          <a class="ins-img" href="/articles/%s/" tabindex="-1" aria-hidden="true"><img src="%s" alt="" width="1200" height="627" loading="lazy"></a>\n' % (e(a["slug"]), e(a["image"]))) if a.get("image") else ""))
     return with_header(PAGE.replace("<!--ITEMS-->", "\n".join(items)), "/insights/", "insights page")
 
 
@@ -253,7 +255,16 @@ PAGE = r'''<!DOCTYPE html>
   main { padding: 64px 0 72px; }
   h1 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 48px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 10px; }
   .lede { margin: 0 0 34px; font-size: 18px; color: var(--on-dark); }
-  .ins-list { list-style: none; margin: 0; padding: 0; max-width: 800px; }
+  .ins-list { list-style: none; margin: 0; padding: 0; }
+  .ins-img { display: block; grid-column: 2; margin-top: 22px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
+  .ins-img img { display: block; width: 100%; height: auto; transition: transform .4s ease; }
+  .ins-img:hover img { transform: scale(1.02); }
+  @media (min-width: 900px) {
+    .ins-list .ins-item { grid-template-columns: 64px minmax(0, 1fr) minmax(0, 480px); gap: 0 48px; padding-top: 28px; }
+    .ins-img { grid-column: 3; grid-row: 1; margin-top: 4px; }
+    .ins-body .ins-t { font-size: clamp(26px, 2.4vw, 32px); }
+  }
+  h1, h2 { text-wrap: balance; }
   .ins-item { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0 8px; padding: 18px 0 0; margin: 0 0 40px; border-top: 3px solid #B08D3C; }
   .ins-no { font-family: var(--serif); font-size: 30px; line-height: 1; color: var(--gold-light); padding-top: 2px; }
   .lede + .ins-list { margin-top: 8px; }
