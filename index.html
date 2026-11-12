@@ -1436,6 +1436,8 @@
   .about-strip p { margin: 0; max-width: 60ch; font-size: 17px; line-height: 1.5; }
   .about-strip .li-btn { margin-top: 0; }
   @media (max-width: 720px) { .intro { min-height: 0; } .benefits.trail { padding-top: 24px; } }
+  /* desktop: hero fills the first screen so the next section does not peek in */
+  @media (min-width: 900px) { .intro { min-height: calc(100vh - var(--chrome-h, 120px)); min-height: calc(100svh - var(--chrome-h, 120px)); align-items: center; } }
 
   /* control trail: labelled, connected timeline */
   .benefits.trail { padding: 44px 0 52px; }
@@ -4084,5 +4086,6 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
   render(false);
 })();
 </script>
+<script>(function(){function s(){var h=document.querySelector("header.band"),n=document.querySelector(".secnav");document.documentElement.style.setProperty("--chrome-h",((h?h.offsetHeight:0)+(n?n.offsetHeight:0))+"px");}s();addEventListener("resize",s);})();</script>
 </body>
 </html>
