@@ -1,85 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-10-29",
-   "note_headline": "Vendors are building human approval into AI for Finance before regulators require it",
-   "note_opening": "Control is being engineered into AI for Finance before supervisors make it mandatory. Stripe's Treasury for agents lets ChatGPT and Claude pay invoices, but requires human approval for money movement. MAS expects banks t",
-   "items": [
-    {
-     "headline": "Stripe lets AI agents pay invoices, with human approval for money movement",
-     "urls": [
-      "https://chertra.com/news/automation/stripe-treasury-for-agents-controlled-financial-automation/"
-     ]
-    },
-    {
-     "headline": "Kyriba and Esker join AP/AR data to Treasury forecasting, targeting 2027",
-     "urls": [
-      "https://www.kyriba.com/news/kyriba-and-esker-partner-to-help-companies-improve-cash-visibility-forecasting-and-liquidity-optimization/",
-      "https://www.esker.com/company/press-releases/kyriba-and-esker-partner-help-companies-improve-cash-visibility-forecasting/"
-     ]
-    },
-    {
-     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
-     "urls": [
-      "https://www.thehackettgroup.com/the-hackett-group-finds-record-1-94-trillion-working-capital-opportunity-among-north-americas-largest-companies/"
-     ]
-    },
-    {
-     "headline": "FPC maps ISO 20022 non-value messages across RTP and FedNow, both 24/7/365",
-     "urls": [
-      "https://paymentexpert.com/2026/10/26/fpc-guide-improve-us-instant-payments/"
-     ]
-    },
-    {
-     "headline": "MAS sets AI supervisory expectations for banks, core rules effective October 2027",
-     "urls": [
-      "https://www.mas.gov.sg/news/media-releases/2026/mas-sets-out-supervisory-expectations-on-responsible-ai-adoption-by-financial-institutions"
-     ]
-    },
-    {
-     "headline": "RBI derivative curbs lift Indian importers' hedging costs by 90+ basis points",
-     "urls": [
-      "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63783",
-      "https://www.thehindubusinessline.com/markets/forex/rupee-hedging-turmoil-exposes-strain-in-indias-fx-market/article71587071.ece"
-     ]
-    },
-    {
-     "headline": "Fed holds at 3.75%–4%, with markets pricing an 85.7% chance of December hike",
-     "urls": [
-      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
-      "https://www.cnbc.com/2026/10/28/us-treasurys-bonds-yields-federal-reserve.html"
-     ]
-    },
-    {
-     "headline": "DBS and EY find 88% of large firms using or testing tokenised cash",
-     "urls": [
-      "https://www.coindesk.com/business/2026/10/28/nearly-90-of-large-businesses-are-embracing-tokenized-cash-to-speed-up-payments-dbs"
-     ]
-    },
-    {
-     "headline": "Warsh signals two more Fed rate rises by early 2027 after 10-2 hold",
-     "urls": [
-      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
-      "https://kpmg.com/us/en/articles/2026/october-2026-central-bank-scanner.html"
-     ]
-    },
-    {
-     "headline": "EU adopts largest-ever Russia sanctions package, listing 1,569 individuals and entities",
-     "urls": [
-      "https://www.consilium.europa.eu/en/press/press-releases/2026/10/12/russia-s-war-of-aggression-against-ukraine-eu-agrees-largest-ever-package-of-listings-targeting-almost-1600-individuals-and-entities-in-russia-s-military-industrial-complex/",
-      "https://finance.ec.europa.eu/news/eu-adopts-largest-ever-package-listings-against-russia-2026-10-12_en"
-     ]
-    },
-    {
-     "headline": "ISSB drafts Practice Statement on nature-related disclosures under IFRS S1 and S2",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/",
-      "https://www.ifrs.org/projects/work-plan/biodiversity-ecosystems-and-ecosystem-services/"
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-10-30",
    "note_headline": "Tokenised money has left the pilot stage, and Finance's liquidity model must follow",
    "note_opening": "Tokenised money is becoming live infrastructure for Treasury and Finance, not a test-bed. The European Stability Mechanism settled a €1 billion digitally native bond on the Eurosystem's Pontes platform in central bank mo",
@@ -2614,6 +2535,215 @@
       {
        "name": "IFRS",
        "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/eeg/ap3-iasb-technical-update.pdf"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-13",
+   "note_headline": "The SEC wants proof behind Finance AI claims, and spreadsheets still run cash",
+   "note_opening": "AI claims across Treasury and Finance now need evidence that matches daily practice. The SEC set up a Financial Reporting and Accounting Unit in August 2026, and Enforcement Director David Woodcock said on 30 October 202",
+   "items": [
+    {
+     "headline": "Atlar deploys Claude-powered agents for OnePay's scheduled Treasury workflows",
+     "urls": [
+      "https://www.atlar.com/blog/onepay-brings-its-treasury-under-one-roof-with-atlar"
+     ],
+     "beat": "ai_agentic",
+     "summary": "On 12 November 2026, Atlar put Claude-powered autonomous agents to work in OnePay's Treasury operations, running scheduled cash position analysis and bank fee audits with approval controls. Agents connect to all OnePay banks and its ERP, showing how sign-off gates keep autonomy accountable.",
+     "sources": [
+      {
+       "name": "Atlar",
+       "url": "https://www.atlar.com/blog/onepay-brings-its-treasury-under-one-roof-with-atlar"
+      }
+     ]
+    },
+    {
+     "headline": "Huntington and Kyriba launch Intelligent Treasury for multi-bank cash visibility",
+     "urls": [
+      "https://ir.huntington.com/news-presentations/press-releases/detail/1034/huntington-bank-announces-treasury-solution-that-turns-multi-bank-complexity-into-improved-liquidity-management"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Huntington announced Intelligent Treasury, built with Kyriba, as of 5 November 2026. It offers consolidated balances and transactions, daily-to-monthly cash forecasting, centralised payment workflows and ERP integration across multiple banking relationships, giving treasurers one view of cash across their banks.",
+     "sources": [
+      {
+       "name": "Huntington Bancshares",
+       "url": "https://ir.huntington.com/news-presentations/press-releases/detail/1034/huntington-bank-announces-treasury-solution-that-turns-multi-bank-complexity-into-improved-liquidity-management"
+      }
+     ]
+    },
+    {
+     "headline": "Finmo board finds 80–90% of Asia cash positioning still runs on Excel",
+     "urls": [
+      "https://www.finmo.net/resources/newsroom/asia-s-cfos-still-build-their-cash-position-by-hand-finmo-advisory-board-finds"
+     ],
+     "beat": "cash",
+     "summary": "Finmo's advisory board found 80–90% of Asia cash-position work runs on Excel fed by portals, emails, ERPs and Treasury systems. Multi-entity consolidation is hardest, as accounting platforms are single-entity by design and lag 1–2 weeks in transaction coding.",
+     "sources": [
+      {
+       "name": "Finmo",
+       "url": "https://www.finmo.net/resources/newsroom/asia-s-cfos-still-build-their-cash-position-by-hand-finmo-advisory-board-finds"
+      }
+     ]
+    },
+    {
+     "headline": "Citigroup urges treasurers to classify jurisdictions to free trapped cash",
+     "urls": [
+      "https://www.citigroup.com/global/insights/navigating-the-global-liquidity-maze"
+     ],
+     "beat": "cash",
+     "summary": "Citigroup's liquidity guidance asks treasurers to sort jurisdictions as liberal, semi-restrictive or restrictive. The aim is better cash visibility, mobilising trapped cash and building market-based concentration frameworks, giving groups a structured basis for deciding where liquidity can realistically be pooled.",
+     "sources": [
+      {
+       "name": "Citigroup",
+       "url": "https://www.citigroup.com/global/insights/navigating-the-global-liquidity-maze"
+      }
+     ]
+    },
+    {
+     "headline": "BIS says G20 end-2027 cross-border instant-payment goal is unachievable",
+     "urls": [
+      "https://thepaypers.com/payments/expert-views/a2a-payments-interoperability-how-regional-rails-are-starting-to-connect"
+     ],
+     "beat": "payments",
+     "summary": "Instant-payment rails on ISO 20022 still diverge on message versions, field requirements and address formats, forcing translation between them. The BIS December 2025 assessment confirms the G20 end-2027 cross-border goal is unachievable despite policy completion, so cross-border friction will outlast the deadline.",
+     "sources": [
+      {
+       "name": "The Paypers",
+       "url": "https://thepaypers.com/payments/expert-views/a2a-payments-interoperability-how-regional-rails-are-starting-to-connect"
+      }
+     ]
+    },
+    {
+     "headline": "SEC to test whether AI use matches public disclosures in 2027 exams",
+     "urls": [
+      "https://www.mcguirewoods.com/client-resources/alerts/2026/11/the-sec-is-watching-what-heightened-ai-disclosure-scrutiny-and-the-2027-examination-priorities-mean-for-your-company/"
+     ],
+     "beat": "regulation",
+     "summary": "A new SEC Financial Reporting Unit will assess whether AI use aligns with public disclosures, focusing on fair representation, operational consistency and whether algorithm recommendations match investor profiles. Heightened 2027 examination priorities put AI governance squarely on the CFO office's agenda.",
+     "sources": [
+      {
+       "name": "McGuireWoods",
+       "url": "https://www.mcguirewoods.com/client-resources/alerts/2026/11/the-sec-is-watching-what-heightened-ai-disclosure-scrutiny-and-the-2027-examination-priorities-mean-for-your-company/"
+      }
+     ]
+    },
+    {
+     "headline": "KPMG tells CFOs AI governance is a lifecycle cost, not a launch cost",
+     "urls": [
+      "https://www.financialexecutives.org/FEI-Daily/November-2026/cfri-2026-christian-peo-kpmg-ai-reality-check.aspx"
+     ],
+     "beat": "regulation",
+     "summary": "KPMG argues strong AI governance speeds enterprise adoption, but generic AI-leader claims need verifiable support that stays consistent across earnings releases, calls and filings. The CFO office must build those controls upfront rather than retrofit them, budgeting governance across the whole lifecycle.",
+     "sources": [
+      {
+       "name": "Financial Executives Institute",
+       "url": "https://www.financialexecutives.org/FEI-Daily/November-2026/cfri-2026-christian-peo-kpmg-ai-reality-check.aspx"
+      }
+     ]
+    },
+    {
+     "headline": "CME interest-rate derivatives hit record 14.8 million contracts a day in October",
+     "urls": [
+      "https://www.cmegroup.com/media-room/press-releases/2026/11/03/cme_group_reportsrecordoctoberadvof30millioncontractsup15yearove.html"
+     ],
+     "beat": "risk",
+     "summary": "CME Group said on 3 November 2026 that October 2026 interest-rate derivative average daily volume reached 14.8 million contracts, up 28% year-over-year, with U.S. Treasury futures up 48%. Corporates and asset managers are hedging diverging central bank rate paths and persistent energy-driven inflation.",
+     "sources": [
+      {
+       "name": "CME Group",
+       "url": "https://www.cmegroup.com/media-room/press-releases/2026/11/03/cme_group_reportsrecordoctoberadvof30millioncontractsup15yearove.html"
+      }
+     ]
+    },
+    {
+     "headline": "Zanders and Standard Chartered say tokenisation beats 2–3 day correspondent settlement",
+     "urls": [
+      "https://zandersgroup.com/en/insights/resources/corporate-treasury-tokenization-reimagining-liquidity-settlement-and-the-future-of-corporate-treasury"
+     ],
+     "beat": "digital",
+     "summary": "Joint analysis from Zanders and Standard Chartered finds that tokenising cash, deposits, securities and collateral as programmable blockchain tokens enables near-real-time settlement, against 2–3 day correspondent-banking cycles. That cuts reconciliation effort and frees trapped liquidity.",
+     "sources": [
+      {
+       "name": "Zanders Group",
+       "url": "https://zandersgroup.com/en/insights/resources/corporate-treasury-tokenization-reimagining-liquidity-settlement-and-the-future-of-corporate-treasury"
+      }
+     ]
+    },
+    {
+     "headline": "Markets price 87% chance of December Fed hike after hot October CPI",
+     "urls": [
+      "https://www.investing.com/news/economy-news/fed-rate-hike-odds-in-december-at-88-after-hot-cpi-cme-fedwatch-5017585",
+      "https://www.cnbc.com/2026/11/10/fed-governor-waller-sees-december-hike-likely.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "Headline CPI of 0.4% and core CPI of 0.3%, both above consensus, on 10 November pushed markets to price an 87% probability of a 25 basis-point hike on December 9, up from 72% a week earlier. Governor Christopher Waller backed a quarter-point rise.",
+     "sources": [
+      {
+       "name": "Investing.com",
+       "url": "https://www.investing.com/news/economy-news/fed-rate-hike-odds-in-december-at-88-after-hot-cpi-cme-fedwatch-5017585"
+      },
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/11/10/fed-governor-waller-sees-december-hike-likely.html"
+      }
+     ]
+    },
+    {
+     "headline": "Euro slides to 18-month low at 1.1095 as rate gap widens",
+     "urls": [
+      "https://www.exchangerates.org.uk/news/47748/2026-11-11-euro-forecast-eur-usd-could-slip-to-1-10-within-three-months-rabobank.html",
+      "https://fxrecap.com/forex-news/top-stories/dollar-rises-after-us-cpi-eur-usd-1-1127"
+     ],
+     "beat": "markets_macro",
+     "summary": "EUR/USD hit 1.1095, an 18-month low, as 10-year US Treasury yields stood above 5% on 11 November 2026 after the hot October CPI print, while ECB hike odds stayed lower. The wider US-eurozone rate differential raises the stakes for euro-dollar hedging.",
+     "sources": [
+      {
+       "name": "Rabobank",
+       "url": "https://www.exchangerates.org.uk/news/47748/2026-11-11-euro-forecast-eur-usd-could-slip-to-1-10-within-three-months-rabobank.html"
+      },
+      {
+       "name": "fxrecap.com",
+       "url": "https://fxrecap.com/forex-news/top-stories/dollar-rises-after-us-cpi-eur-usd-1-1127"
+      }
+     ]
+    },
+    {
+     "headline": "FinCEN cuts MEXC Global from US system over $16 billion in flows",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0685",
+      "https://www.federalregister.gov/documents/2026/11/10/2026-22962/imposition-of-special-measure-prohibiting-the-transmittal-of-funds-involving-mexc-global"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 6 November 2026, FinCEN ordered covered financial institutions to stop moving funds to or from Seychelles-based crypto exchange MEXC Global, citing $16 billion in sanctions-linked flows tied to Russian illicit Finance and cybercrime. The order, effective 10 December 2026, tests onboarding and counterparty screening.",
+     "sources": [
+      {
+       "name": "U.S. Department of the Treasury",
+       "url": "https://home.treasury.gov/news/press-releases/sb0685"
+      },
+      {
+       "name": "Federal Register",
+       "url": "https://www.federalregister.gov/documents/2026/11/10/2026-22962/imposition-of-special-measure-prohibiting-the-transmittal-of-funds-involving-mexc-global"
+      }
+     ]
+    },
+    {
+     "headline": "SEC Enforcement to scrutinise whether corporate AI disclosures match reality",
+     "urls": [
+      "https://www.debevoise.com/insights/publications/2026/11/sec-enforcement-director-signals-continued-scrutin",
+      "https://www.sec.gov/newsroom/press-releases/2026-72-sec-establishes-financial-reporting-accounting-unit-enforcement-division"
+     ],
+     "beat": "reporting",
+     "summary": "On 30 October 2026, SEC Enforcement Director David Woodcock said the Division will test whether AI disclosures represent capabilities and material risks. A Financial Reporting and Accounting Unit from August 2026 pursues accounting fraud, auditing misconduct; 2027 priorities cover AI claims and audit committee oversight.",
+     "sources": [
+      {
+       "name": "Debevoise & Plimpton",
+       "url": "https://www.debevoise.com/insights/publications/2026/11/sec-enforcement-director-signals-continued-scrutin"
+      },
+      {
+       "name": "SEC",
+       "url": "https://www.sec.gov/newsroom/press-releases/2026-72-sec-establishes-financial-reporting-accounting-unit-enforcement-division"
       }
      ]
     }

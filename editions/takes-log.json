@@ -1910,6 +1910,84 @@
     "cost_usd": 0.1121
    },
    "edition_cost_usd": 1.3123
+  },
+  {
+   "date": "2026-11-13",
+   "items": [
+    {
+     "headline": "Citigroup urges treasurers to classify jurisdictions to free trapped cash",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "KPMG tells CFOs AI governance is a lifecycle cost, not a launch cost",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "CME interest-rate derivatives hit record 14.8 million contracts a day in October",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Atlar deploys Claude-powered agents for OnePay's scheduled Treasury workflows",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Huntington and Kyriba launch Intelligent Treasury for multi-bank cash visibility",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "The source says only that supported payments can be initiated. It does not say the cash view covers more banks than you can pay from. That inference about banks is not in the source, so the focus overreaches. The view also gives no timing."
+    },
+    {
+     "headline": "Finmo board finds 80–90% of Asia cash positioning still runs on Excel",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "BIS says G20 end-2027 cross-border instant-payment goal is unachievable",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "SEC to test whether AI use matches public disclosures in 2027 exams",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "Zanders and Standard Chartered say tokenisation beats 2–3 day correspondent settlement",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Markets price 87% chance of December Fed hike after hot October CPI",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Euro slides to 18-month low at 1.1095 as rate gap widens",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "FinCEN cuts MEXC Global from US system over $16 billion in flows",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "SEC Enforcement to scrutinise whether corporate AI disclosures match reality",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.3309,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1059
+   },
+   "edition_cost_usd": 1.4847
   }
  ]
 }
