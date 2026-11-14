@@ -1988,6 +1988,75 @@
     "cost_usd": 0.1059
    },
    "edition_cost_usd": 1.4847
+  },
+  {
+   "date": "2026-11-14",
+   "items": [
+    {
+     "headline": "Rate volatility and working capital each worry 48% of Finance leaders",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "RBI's 20% reserve on FX derivatives raises Indian hedging costs",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Banque de France outlines private clearing for tokenised deposits via Pontes",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "All 71 economists expect ECB to lift deposit rate to 2.75% in December",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Trovata deploys autonomous Treasury agents on Amazon Bedrock and AgentCore",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Kyriba Open APIs connect live Treasury data to 1,000+ banks and ERPs",
+     "status": "dropped",
+     "lens": "Controls & audit",
+     "reasons": "Overstated: 'Each API link ... replaces a person logging in' goes beyond the source, which says APIs remove portal logins, file processing and manual exports, not that every link replaces a login. The auditor's question is also not in the source. The action gives no timing, such as when to build the"
+    },
+    {
+     "headline": "Only 38% of CFOs see better customer payment behaviour, down from 73%",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "FedNow adds ISO 20022 cross-border capability and payee name verification",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "IAASB publishes first quality management guide for AI-enabled audit tools",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "OFAC extends Cuba sanctions to electronics, manufacturing, marine and technology sectors",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "SEC Enforcement to test AI disclosure accuracy in 2027 examinations",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "The focus mostly repeats the news summary (AI claims must match disclosures, fiscal 2027 examinations testing this). 'Must show' is firmer than the source's 'should' for public companies. The action does not say who does the check or when, for example before the next filing or on a set schedule."
+    }
+   ],
+   "cost_usd": 0.3112,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1178
+   },
+   "edition_cost_usd": 1.2911
   }
  ]
 }
