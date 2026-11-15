@@ -2057,6 +2057,69 @@
     "cost_usd": 0.1178
    },
    "edition_cost_usd": 1.2911
+  },
+  {
+   "date": "2026-11-15",
+   "items": [
+    {
+     "headline": "EY tells CFOs to wrap agents around TMS and ERP, not replace them",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "SEC 2027 exam priorities test whether AI use matches company disclosures",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "JPMorgan whitepaper shows Treasury agents hedging FX within a 9-second approval loop",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "API-first TMS designs swap overnight batch files for live intraday bank feeds",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Hackett puts North American working capital opportunity at record $1.94 trillion",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "SWIFT delays November 2026 structured-address mandate, revised timing due December",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "Crown Agents Bank goes live on interest-rate swaps within four months",
+     "status": "dropped",
+     "lens": "Cost & value",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "Visa adds Monad to its stablecoin settlement programme",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Dollar hits 19-month high as December Fed hike odds reach 86-90%",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "EU extends chemical weapons sanctions regime to 2031, listings reviewed annually",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    }
+   ],
+   "cost_usd": 0.3671,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.289
+   },
+   "edition_cost_usd": 1.6507
   }
  ]
 }
