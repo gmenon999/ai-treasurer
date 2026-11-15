@@ -1,7 +1,23 @@
 {
   "_readme": "Single source for The AI Treasurer Insights. Add one entry per approved article (newest anywhere; the script sorts by date), then run: python3 insights.py. It rebuilds the Home cards (latest 3), /insights/, /insights/feed.xml and the sitemap entries. Topics must be one of the listed topics.",
-  "topics": ["AI and automation", "Controls and audit", "Cash and liquidity", "Payments", "FX and risk", "Finance leadership"],
+  "topics": [
+    "AI and automation",
+    "Controls and audit",
+    "Cash and liquidity",
+    "Payments",
+    "FX and risk",
+    "Finance leadership"
+  ],
   "articles": [
+    {
+      "slug": "what-did-treasury-know",
+      "title": "What did Treasury know at 9am?",
+      "summary": "Why every major Treasury decision needs a record of the forecast it was based on, and what that record should hold.",
+      "date": "2026-11-15",
+      "topic": "Controls and audit",
+      "minutes": 3,
+      "image": "/articles/what-did-treasury-know/card.png"
+    },
     {
       "slug": "start-where-mistakes-are-cheap",
       "title": "Your First AI Task in Treasury Should Be Unglamorous",
