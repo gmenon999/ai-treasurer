@@ -1,187 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-11-01",
-   "note_headline": "Standard-setters now treat AI output as a claim Finance must prove in-period",
-   "note_opening": "Standard-setters now treat AI output as a claim Finance must prove, not a fact. COSO 2026 classes GenAI output as an assertion and wants AI-assisted judgments documented during the reporting period, not after close. The ",
-   "items": [
-    {
-     "headline": "Centalion's AI Treasury Agent on Komgo cuts amendment time by 80%",
-     "urls": [
-      "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/",
-      "https://www.pymnts.com/news/artificial-intelligence/2026/ai-agent-cuts-centalions-trade-finance-amendment-time-80/"
-     ],
-     "beat": "ai_agentic",
-     "summary": "Centalion Group's AI Treasury Agent, launched on Komgo on 8 October 2026, runs facility and trade Finance workflows in natural language under governance and approval controls. Amendment time fell 80% and issuance time 55%, freeing a projected 60 working days a year.",
-     "sources": [
-      {
-       "name": "Centalion",
-       "url": "https://centalion.com/news/centalion-and-komgo-bring-agentic-ai-into-live-treasury-operations/"
-      },
-      {
-       "name": "PYMNTS",
-       "url": "https://www.pymnts.com/news/artificial-intelligence/2026/ai-agent-cuts-centalions-trade-finance-amendment-time-80/"
-      }
-     ]
-    },
-    {
-     "headline": "FIS Agentic Insights Suite adds multi-horizon cash flow forecasting for Finance",
-     "urls": [
-      "https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-equips-cfos-with-agentic-ai-to-forecast-cash-flow-and-surface-risk-earlier"
-     ],
-     "beat": "treasury_tech",
-     "summary": "FIS released its Agentic Insights Suite on 12 October, pulling fragmented ERP, Treasury and CRM data into real-time scoring and forward-looking cash flow projections across multiple horizons. A plain-language interface serves Finance and Treasury teams, giving both one view of future cash.",
-     "sources": [
-      {
-       "name": "FIS Global",
-       "url": "https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-equips-cfos-with-agentic-ai-to-forecast-cash-flow-and-surface-risk-earlier"
-      }
-     ]
-    },
-    {
-     "headline": "FIRMA Advisory ties operational cash thresholds to rolling 13-week forecasts",
-     "urls": [
-      "https://firmaadvisory.com/insights/cash-management-2026/"
-     ],
-     "beat": "cash",
-     "summary": "FIRMA Advisory guidance sets operational cash thresholds at entity and group level, anchored to rolling 13-week forecasts so buffers move with the business cycle. It separates structural FX exposure from transactional noise and matches deployment to yield by currency via notional pooling, zero-balancing and target-balance structures.",
-     "sources": [
-      {
-       "name": "FIRMA Advisory",
-       "url": "https://firmaadvisory.com/insights/cash-management-2026/"
-      }
-     ]
-    },
-    {
-     "headline": "CPMI sets 2026-2027 timetable for ISO 20022 IP+ and HVPS+ guideline upgrades",
-     "urls": [
-      "https://www.bis.org/pages/cpmi-cross-border-payments-programme/pietf-iso20022-2026.pdf"
-     ],
-     "beat": "payments",
-     "summary": "A BIS CPMI report schedules upgrades to the ISO 20022 IP+ instant and HVPS+ high-value usage guidelines for 2026-2027, aligned with ISO Message Release 2025 and full external code sets. pacs.028 Payment Status lands in 2026, camt.110/111 Investigation in 2027, both aimed at cross-border interoperability.",
-     "sources": [
-      {
-       "name": "BIS",
-       "url": "https://www.bis.org/pages/cpmi-cross-border-payments-programme/pietf-iso20022-2026.pdf"
-      }
-     ]
-    },
-    {
-     "headline": "COSO 2026 treats GenAI output as an assertion needing in-period evidence",
-     "urls": [
-      "https://www.ey.com/en_us/cro-risk/coso-2026-and-the-shift-in-ai-governance",
-      "https://virtaspartners.com/2026/04/28/genai-in-finance-is-now-an-internal-control-question-what-cosos-new-guidance-means-for-public-company-accounting-and-finance-teams/"
-     ],
-     "beat": "regulation",
-     "summary": "COSO 2026 says documentation for AI-assisted judgments must exist during the reporting period, not be created after close. ICFR controls need human-in-the-loop review, confidence thresholds, exception queues, escalation paths and monitored KPIs, because GenAI output counts as assertion, not fact.",
-     "sources": [
-      {
-       "name": "EY",
-       "url": "https://www.ey.com/en_us/cro-risk/coso-2026-and-the-shift-in-ai-governance"
-      },
-      {
-       "name": "Virtas Partners",
-       "url": "https://virtaspartners.com/2026/04/28/genai-in-finance-is-now-an-internal-control-question-what-cosos-new-guidance-means-for-public-company-accounting-and-finance-teams/"
-      }
-     ]
-    },
-    {
-     "headline": "FSB finalises 12 AI sound practices with board accountability and vendor oversight",
-     "urls": [
-      "https://www.fsb.org/uploads/P151026-1.pdf"
-     ],
-     "beat": "regulation",
-     "summary": "The Financial Stability Board published 'Sound Practices for Responsible Adoption of Artificial Intelligence', setting 12 governance principles. Boards and senior management must set an AI approach aligned to business model and risk appetite, with strong governance over third-party AI vendors and reliance on them.",
-     "sources": [
-      {
-       "name": "FSB",
-       "url": "https://www.fsb.org/uploads/P151026-1.pdf"
-      }
-     ]
-    },
-    {
-     "headline": "HSBC and MUFG research moves FX risk from back office to boardroom",
-     "urls": [
-      "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom"
-     ],
-     "beat": "risk",
-     "summary": "HSBC research finds trade-policy uncertainty, geopolitical risk, supply-chain reconfiguration and higher interest rates reshaping corporate FX hedging. Treasurers are urged to reassess hedge ratios and tenors against carry costs, stress test for policy changes and automate exposure capture to cut manual process risk.",
-     "sources": [
-      {
-       "name": "HSBC",
-       "url": "https://www.business.hsbc.com/en-gb/insights/fx-moves-fromback-office-to-boardroom"
-      }
-     ]
-    },
-    {
-     "headline": "Citi Token Services extends 24/7 tokenised deposit settlement to seven markets",
-     "urls": [
-      "https://www.citigroup.com/global/news/press-release/2026/citi-token-services-expands-global-footprint-japan-united-arab-emirates"
-     ],
-     "beat": "digital",
-     "summary": "On 28 September, Citi expanded tokenised deposit settlement to seven markets, giving clients 24/7 transfers without cut-off times. Japan, supporting USD, and the UAE, supporting USD and Euro, join the US and UK, while Ireland, Hong Kong and Singapore complete the set.",
-     "sources": [
-      {
-       "name": "Citi Global News",
-       "url": "https://www.citigroup.com/global/news/press-release/2026/citi-token-services-expands-global-footprint-japan-united-arab-emirates"
-      }
-     ]
-    },
-    {
-     "headline": "ECB holds at 2.50% as euro slides to 17-month low near 1.1130",
-     "urls": [
-      "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html",
-      "https://www.cnbc.com/2026/10/05/dollar-holds-firm-as-french-fiscal-woes-keep-euro-on-back-foot.html"
-     ],
-     "beat": "markets_macro",
-     "summary": "The ECB held at 2.50% on 29 October as surging energy costs raised upside inflation and downside growth risks. The euro fell to a 17-month low near 1.1130 USD as the French sovereign spread widened above 150 basis points and equity sell-offs fuelled safe-haven demand.",
-     "sources": [
-      {
-       "name": "European Central Bank",
-       "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html"
-      },
-      {
-       "name": "CNBC",
-       "url": "https://www.cnbc.com/2026/10/05/dollar-holds-firm-as-french-fiscal-woes-keep-euro-on-back-foot.html"
-      }
-     ]
-    },
-    {
-     "headline": "OFAC sanctions A7 Network, blocking 435+ sub-agents across 83 countries",
-     "urls": [
-      "https://home.treasury.gov/news/press-releases/sb0644",
-      "https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf"
-     ],
-     "beat": "financial_crime",
-     "summary": "On 24 October 2026, OFAC designated A7 Network a significant transnational criminal organisation used by Iran and others for sanctions evasion, blocking transactions with its 435+ sub-agents in 83 countries. FinCEN issued an alert and proposed treating A7-controlled transactions as a primary money laundering concern.",
-     "sources": [
-      {
-       "name": "U.S. Department of the Treasury - OFAC",
-       "url": "https://home.treasury.gov/news/press-releases/sb0644"
-      },
-      {
-       "name": "FinCEN Alert on the A7 Network",
-       "url": "https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf"
-      }
-     ]
-    },
-    {
-     "headline": "AICPA practice aid shows auditors how to test AI in internal controls",
-     "urls": [
-      "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
-     ],
-     "beat": "reporting",
-     "summary": "On 13 October 2026, the AICPA released a practice aid for auditors assessing AI-related risks in financial reporting and controls, material misstatement and AI within internal control systems. It calls for professional scepticism towards AI outputs, given data quality and explainability concerns.",
-     "sources": [
-      {
-       "name": "AICPA & CIMA News",
-       "url": "https://www.aicpa-cima.com/news/article/aicpa-releases-guidance-to-help-auditors-address-the-use-of-ai-in-financial-reporting-and-auditing"
-      }
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-11-02",
    "note_headline": "Static Treasury policies are breaking, and Finance must rewrite them as live rules",
    "note_opening": "Treasury and Finance policies written for a zero-rate, batch-file world now produce wrong answers. FIRMA Advisory ties operational cash thresholds to rolling 13-week forecasts and builds explicit carry-cost thresholds in",
@@ -2683,6 +2502,221 @@
       {
        "name": "SEC 2027 Examination Priorities",
        "url": "https://www.stblaw.com/about-us/publications/view/2026/11/09/sec-s-2027-examination-priorities-notable-developments-emerging-themes-and-recent-examination-insights"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-16",
+   "note_headline": "Trapped cash is now the top Finance priority, and reporting rules are following",
+   "note_opening": "Liquidity visibility has become the organising problem for Treasury and Finance. Citi Institute finds 72 per cent of global corporates now rank freeing trapped supply-chain liquidity as their leading priority, up from 66",
+   "items": [
+    {
+     "headline": "Ripple's GSmart agents now span five Treasury workflow domains",
+     "urls": [
+      "https://treasury.ripple.com/solutions/ai/treasury-ai-agents"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Ripple has extended its GSmart agentic platform across five domains: forecasting, liquidity, risk, reconciliation and reporting. Each agent runs on a schedule or trigger within policy limits set in Knowledge Studio, and treasurers set autonomy per workflow, making delegation a documented control choice.",
+     "sources": [
+      {
+       "name": "Ripple",
+       "url": "https://treasury.ripple.com/solutions/ai/treasury-ai-agents"
+      }
+     ]
+    },
+    {
+     "headline": "REST APIs and lakehouses bring real-time TMS data to Treasury",
+     "urls": [
+      "https://www.ingwb.com/en/payments-and-collections/treasury-apis",
+      "https://www.datalog-finance.com/en/payment-bank-communication/datalog-tms-restful-api-powering-real-time-integrated-and-scalable-treasury-management/",
+      "https://community.databricks.com/t5/technical-blog/from-kyriba-to-lakehouse-a-near-real-time-treasury-data-pipeline/ba-p/170328"
+     ],
+     "beat": "treasury_tech",
+     "summary": "Treasury integrations involving ING, Datalog and Databricks now rely on RESTful APIs to expose cash flows, balances and FX exposures in real time from TMS platforms such as Kyriba and Datalog. Near-real-time lakehouse pipelines feed AI and reporting, so data lineage becomes a control issue.",
+     "sources": [
+      {
+       "name": "ING",
+       "url": "https://www.ingwb.com/en/payments-and-collections/treasury-apis"
+      },
+      {
+       "name": "Datalog Finance",
+       "url": "https://www.datalog-finance.com/en/payment-bank-communication/datalog-tms-restful-api-powering-real-time-integrated-and-scalable-treasury-management/"
+      },
+      {
+       "name": "Databricks",
+       "url": "https://community.databricks.com/t5/technical-blog/from-kyriba-to-lakehouse-a-near-real-time-treasury-data-pipeline/ba-p/170328"
+      }
+     ]
+    },
+    {
+     "headline": "72 per cent of corporates now rank trapped liquidity as top priority, says Citi",
+     "urls": [
+      "https://www.citigroup.com/global/news/press-release/2026/citi-institute-supply-chain-financing-report-liquidity-takes-center-stage-as-supply-chain-disruption-becomes-norm"
+     ],
+     "beat": "cash",
+     "summary": "The Citi Institute Supply Chain Financing Report finds 72 per cent of global corporates rank freeing trapped liquidity as their leading priority for the next 12 months, up from 66 per cent. For 64 per cent, simply measuring supply-chain liquidity is the driver.",
+     "sources": [
+      {
+       "name": "Citigroup",
+       "url": "https://www.citigroup.com/global/news/press-release/2026/citi-institute-supply-chain-financing-report-liquidity-takes-center-stage-as-supply-chain-disruption-becomes-norm"
+      }
+     ]
+    },
+    {
+     "headline": "China opens cross-border cash pooling to multinationals nationwide",
+     "urls": [
+      "https://jingpost.com/news/china-roll-out-cross-border-cash-pooling"
+     ],
+     "beat": "cash",
+     "summary": "China is rolling out cross-border cash pooling nationwide, letting multinational groups concentrate onshore and offshore subsidiary cash in one virtual account. Fewer bilateral FX transactions and simpler group-level liquidity deployment could ease trapped-cash constraints for Treasury teams.",
+     "sources": [
+      {
+       "name": "JingPost",
+       "url": "https://jingpost.com/news/china-roll-out-cross-border-cash-pooling"
+      }
+     ]
+    },
+    {
+     "headline": "SWIFT postpones SR2026, pushing cross-border payment changes to 2027 or later",
+     "urls": [
+      "https://www.jpmorgan.com/insights/payments/fx-cross-border/iso-20022-migration",
+      "https://www.nordea.com/en/news/navigating-payment-changes-iso-20022-and-address-requirements-in-2026"
+     ],
+     "beat": "payments",
+     "summary": "SWIFT has postponed Standards Release 2026 (SR2026), originally due 14 November. A partial SR2026 covering all MT messages and most ISO 20022 categories is planned for June 2027, while MT Category 1, CBPR+ and SCORE+ changes move to Standards Release 2027 or later.",
+     "sources": [
+      {
+       "name": "JPMorgan",
+       "url": "https://www.jpmorgan.com/insights/payments/fx-cross-border/iso-20022-migration"
+      },
+      {
+       "name": "Nordea",
+       "url": "https://www.nordea.com/en/news/navigating-payment-changes-iso-20022-and-address-requirements-in-2026"
+      }
+     ]
+    },
+    {
+     "headline": "OCC framework grades bank super intelligence use across 16 components and six pillars",
+     "urls": [
+      "https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-54.html",
+      "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-97a.pdf"
+     ],
+     "beat": "regulation",
+     "summary": "OCC Bulletin 2026-54, issued on 10 November 2026, sets how examiners will assess banks' use of super intelligence. Its 16 components sit in six pillars, from Purpose to Assurance, and risk tiers depend on consequences and transfer of agency, not technical sophistication.",
+     "sources": [
+      {
+       "name": "Office of the Comptroller of the Currency",
+       "url": "https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-54.html"
+      },
+      {
+       "name": "OCC News Release",
+       "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-97a.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "State Street sees geopolitical and tariff risks lifting FX volatility into 2027",
+     "urls": [
+      "https://www.ssga.com/us/en/institutional/insights/currency-market-commentary-november-2026"
+     ],
+     "beat": "risk",
+     "summary": "State Street expects FX risk to stay elevated as political uncertainty in major economies shapes tariff policy and Fed policy diverges from other central banks. Trump administration policies could reshape 2027 FX volatility and, with it, corporate currency exposure.",
+     "sources": [
+      {
+       "name": "State Street",
+       "url": "https://www.ssga.com/us/en/institutional/insights/currency-market-commentary-november-2026"
+      }
+     ]
+    },
+    {
+     "headline": "Tokenised deposits suit internal pooling; stablecoins lead on cross-border flows",
+     "urls": [
+      "https://thepaypers.com/crypto-web3-and-cbdc/expert-views/tokenised-deposits-will-accelerate-stablecoin-adoption",
+      "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/insights/financial-services/documents/ey-gl-blockchain-based-payments-survey-10-2026.pdf"
+     ],
+     "beat": "digital",
+     "summary": "EY survey and The Paypers analysis find tokenised deposits efficient for instant internal sweeping and intercompany settlement within one banking ecosystem. Stablecoins keep an edge as neutral bridges for multi-bank and cross-border flows, with 67 per cent of corporate respondents prioritising lower transaction costs.",
+     "sources": [
+      {
+       "name": "The Paypers",
+       "url": "https://thepaypers.com/crypto-web3-and-cbdc/expert-views/tokenised-deposits-will-accelerate-stablecoin-adoption"
+      },
+      {
+       "name": "EY",
+       "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/insights/financial-services/documents/ey-gl-blockchain-based-payments-survey-10-2026.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "US two-year yield hits 4.88% as December Fed hike odds reach 88%",
+     "urls": [
+      "https://www.brecorder.com/news/40449075/us-treasuries-two-year-yields-headed-for-biggest-weekly-jump-in-two-years",
+      "https://www.cnbc.com/2026/11/15/fed-has-some-work-to-do-on-inflation-kansas-city-fed-chief-says.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "Two-year Treasury yields reached 4.88% on 16 November 2026, with the biggest weekly jump in over two years. Markets price 88% odds of a December hike; the 10-year rose to 5.15% on 16 November 2026 and the dollar index hit 103.40.",
+     "sources": [
+      {
+       "name": "Business Recorder (Reuters)",
+       "url": "https://www.brecorder.com/news/40449075/us-treasuries-two-year-yields-headed-for-biggest-weekly-jump-in-two-years"
+      },
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/11/15/fed-has-some-work-to-do-on-inflation-kansas-city-fed-chief-says.html"
+      }
+     ]
+    },
+    {
+     "headline": "All 71 Reuters economists expect ECB to lift deposit rate to 2.75%",
+     "urls": [
+      "https://www.fxstreet.com/news/economists-agree-ecb-will-hike-rates-to-275-in-december-reuters-poll-shows-202611121202",
+      "https://www.globalbankingandfinance.com/ecb-set-last-rate-hike-december-inflation-risks-keep-door/"
+     ],
+     "beat": "markets_macro",
+     "summary": "All 71 economists polled by Reuters on 12 November 2026 expect a 25-basis-point ECB rise to 2.75% in December, with eurozone inflation at a three-year high of 4.0%. Most see this as the peak, but over one-third expect another hike in early 2027.",
+     "sources": [
+      {
+       "name": "FXStreet (Reuters)",
+       "url": "https://www.fxstreet.com/news/economists-agree-ecb-will-hike-rates-to-275-in-december-reuters-poll-shows-202611121202"
+      },
+      {
+       "name": "Global Banking and Finance",
+       "url": "https://www.globalbankingandfinance.com/ecb-set-last-rate-hike-december-inflation-risks-keep-door/"
+      }
+     ]
+    },
+    {
+     "headline": "FinCEN cuts MEXC Global off from US system over $16.7 billion Russia flows",
+     "urls": [
+      "https://www.federalregister.gov/documents/2026/11/10/2026-22962/imposition-of-special-measure-prohibiting-the-transmittal-of-funds-involving-mexc-global",
+      "https://www.fincen.gov/system/files/2026-11/MEXC-Section-9714.pdf"
+     ],
+     "beat": "financial_crime",
+     "summary": "FinCEN on 10 November 2026 named MEXC Global a primary money laundering concern tied to Russian illicit Finance, barring all US transmittals involving the exchange from 10 December 2026. It cites $16.7 billion in flows from May 2021 to May 2026 and AML/CFT non-compliance.",
+     "sources": [
+      {
+       "name": "Federal Register",
+       "url": "https://www.federalregister.gov/documents/2026/11/10/2026-22962/imposition-of-special-measure-prohibiting-the-transmittal-of-funds-involving-mexc-global"
+      },
+      {
+       "name": "FinCEN",
+       "url": "https://www.fincen.gov/system/files/2026-11/MEXC-Section-9714.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "IASB moves to tighten IFRS 16 lease cash outflow disclosures",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/updates/iasb/2026/iasb-update-october-2026/"
+     ],
+     "beat": "reporting",
+     "summary": "In October 2026 the IASB tentatively decided to amend IFRS 16 so lessees disclose total lease payment cash outflows separately and split amounts across operating, investing and financing activities. Treasury and controllers gain clearer sight of lease-driven liquidity calls.",
+     "sources": [
+      {
+       "name": "IFRS Foundation",
+       "url": "https://www.ifrs.org/news-and-events/updates/iasb/2026/iasb-update-october-2026/"
       }
      ]
     }

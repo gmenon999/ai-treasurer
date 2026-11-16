@@ -2120,6 +2120,81 @@
     "cost_usd": 0.289
    },
    "edition_cost_usd": 1.6507
+  },
+  {
+   "date": "2026-11-16",
+   "items": [
+    {
+     "headline": "China opens cross-border cash pooling to multinationals nationwide",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "OCC framework grades bank super intelligence use across 16 components and six pillars",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Tokenised deposits suit internal pooling; stablecoins lead on cross-border flows",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Ripple's GSmart agents now span five Treasury workflow domains",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "REST APIs and lakehouses bring real-time TMS data to Treasury",
+     "status": "dropped",
+     "lens": "Controls & audit",
+     "reasons": "The claim that 'any error in those rights now reaches the ERP' is the checker's inference; the source only says the API authentication aligns with TMS user rights. 'The auditor will ask' is speculation, not in the source. 'Under the Access foundation' is unexplained jargon with no basis in the sourc"
+    },
+    {
+     "headline": "72 per cent of corporates now rank trapped liquidity as top priority, says Citi",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "SWIFT postpones SR2026, pushing cross-border payment changes to 2027 or later",
+     "status": "dropped",
+     "lens": "Payments & operations",
+     "reasons": "'SR2026 is postponed in full' is inaccurate and self-contradictory: the source says only the cross-border payment changes are extracted and postponed, while a partial SR2026 release is planned for 12 June 2027. The take also states that date as 'now set', but the source says it is 'planned'."
+    },
+    {
+     "headline": "State Street sees geopolitical and tariff risks lifting FX volatility into 2027",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "US two-year yield hits 4.88% as December Fed hike odds reach 88%",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "All 71 Reuters economists expect ECB to lift deposit rate to 2.75%",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "FinCEN cuts MEXC Global off from US system over $16.7 billion Russia flows",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "IASB moves to tighten IFRS 16 lease cash outflow disclosures",
+     "status": "dropped",
+     "lens": "Accounting & reporting",
+     "reasons": "The take overstates the source in two places. 'The IASB plans to amend IAS 7 paragraph 7' is only a tentative decision to propose an amendment, with 11 of 13 members agreeing. 'Members want the drafting to confirm...' should be 'some members', since the source says only 'Some IASB members asked the "
+    }
+   ],
+   "cost_usd": 0.4858,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.225
+   },
+   "edition_cost_usd": 1.6693
   }
  ]
 }
