@@ -2195,6 +2195,90 @@
     "cost_usd": 0.225
    },
    "edition_cost_usd": 1.6693
+  },
+  {
+   "date": "2026-11-17",
+   "items": [
+    {
+     "headline": "Treasury agents move from generating insights to taking action within set limits",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "JPMorgan says unmatched payer data leaves receivables cash trapped",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Half of SWIFT payments reach the recipient bank within 40 seconds",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "PCAOB and SEC officials press for AI governance and process-level risk assessment",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "OCC grades bank AI across 16 components in six risk pillars",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "RBI imposes 20% cash reserve on corporate FX hedges above USD 2 million",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Dollar index hits 19-month high as EUR/USD slips to 1.1007",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "EU sanctions 113 Russian targets across banks, energy and shadow fleet",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "IASB explores separate disclosure of IFRS 16 lease cash outflows",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Deutsche Bank and Ant Digital map agentic AI across liquidity and trade Finance",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "JPMorgan expands SAP API links to cut manual Treasury file handling",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "DBS and Kinexys launch 24/7 tokenised dollar transfers between US and Singapore",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "no verdict from checker"
+    },
+    {
+     "headline": "OFAC designates 10 targets in Iranian defence electronics procurement networks",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "PCAOB creates 'Super Intelligence Unit' to police AI misconduct in audits",
+     "status": "dropped",
+     "lens": "Regulation & compliance",
+     "reasons": "no verdict from checker"
+    }
+   ],
+   "cost_usd": 0.243,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.364
+   },
+   "edition_cost_usd": 1.6689
   }
  ]
 }

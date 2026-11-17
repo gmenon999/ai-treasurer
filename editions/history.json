@@ -1,233 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-11-02",
-   "note_headline": "Static Treasury policies are breaking, and Finance must rewrite them as live rules",
-   "note_opening": "Treasury and Finance policies written for a zero-rate, batch-file world now produce wrong answers. FIRMA Advisory ties operational cash thresholds to rolling 13-week forecasts and builds explicit carry-cost thresholds in",
-   "items": [
-    {
-     "headline": "Agentic AI sweeps excess cash in near real time within authority limits",
-     "urls": [
-      "https://www.pymnts.com/news/artificial-intelligence/2026/why-cfos-are-letting-ai-agents-touch-their-cash-carefully/"
-     ],
-     "beat": "ai_agentic",
-     "summary": "Corporate treasuries are using agentic systems that watch balances across accounts, test projected needs against policy thresholds and sweep surplus cash into money-market funds or internal pools, reversing moves when payables need liquidity. Pre-set authority limits become the control that matters.",
-     "sources": [
-      {
-       "name": "PYMNTS",
-       "url": "https://www.pymnts.com/news/artificial-intelligence/2026/why-cfos-are-letting-ai-agents-touch-their-cash-carefully/"
-      }
-     ]
-    },
-    {
-     "headline": "BCG and Capgemini see Treasury AI agents reaching autonomous execution by 2026",
-     "urls": [
-      "https://www.capgemini.com/insights/expert-perspectives/ai-powered-cash-management-the-future-of-treasury-is-autonomous/"
-     ],
-     "beat": "ai_agentic",
-     "summary": "BCG and Capgemini describe agentic Treasury as a path from insight to signal, recommendation and execution, with autonomy by 2026 confined to low-risk, short-duration instruments. Larger decisions still escalate to people, so guardrails and audit trails decide how far agents go.",
-     "sources": [
-      {
-       "name": "Capgemini",
-       "url": "https://www.capgemini.com/insights/expert-perspectives/ai-powered-cash-management-the-future-of-treasury-is-autonomous/"
-      }
-     ]
-    },
-    {
-     "headline": "TreasurUp and Apideck let banks reach 50+ ERP systems through one integration",
-     "urls": [
-      "https://treasurytoday.com/press-releases/press-release-treasurup-and-apideck-partner-on-erp-embedded-banking/"
-     ],
-     "beat": "treasury_tech",
-     "summary": "On 15 October 2026, TreasurUp and Apideck enabled banks to embed real-time ISO 20022 banking into 50+ ERP and accounting systems via a single, bank-branded integration on the bank's own rails. Treasurers gain live payment and account data inside the ledger.",
-     "sources": [
-      {
-       "name": "Treasury Today",
-       "url": "https://treasurytoday.com/press-releases/press-release-treasurup-and-apideck-partner-on-erp-embedded-banking/"
-      }
-     ]
-    },
-    {
-     "headline": "FIRMA Advisory links operational cash thresholds to rolling 13-week forecasts",
-     "urls": [
-      "https://firmaadvisory.com/insights/cash-management-2026"
-     ],
-     "beat": "treasury_tech",
-     "summary": "FIRMA Advisory anchors operational cash thresholds at entity level, consolidates them at group and ties them to rolling 13-week forecasts, so buffers move with the business. Static policies give way to dynamic liquidity rules that underpin working-capital deployment and sweep-and-pool structures.",
-     "sources": [
-      {
-       "name": "FIRMA Advisory",
-       "url": "https://firmaadvisory.com/insights/cash-management-2026"
-      }
-     ]
-    },
-    {
-     "headline": "Real-time bank APIs replace overnight batch files with 15-minute syncs",
-     "urls": [
-      "https://sysgenpro.com/finance-connectivity-architecture-for-treasury-erp-and-api"
-     ],
-     "beat": "treasury_tech",
-     "summary": "Bank connectivity is moving from batch-based reconciliation to event-driven webhooks and APIs that push transaction data and payment status into Treasury systems in 15-minute syncs. Reconciliation latency falls and near-real-time cash visibility becomes the baseline for liquidity decisions.",
-     "sources": [
-      {
-       "name": "Sysgenpro",
-       "url": "https://sysgenpro.com/finance-connectivity-architecture-for-treasury-erp-and-api"
-      }
-     ]
-    },
-    {
-     "headline": "Hackett finds record €1.26 trillion of excess European working capital",
-     "urls": [
-      "https://www.thehackettgroup.com/insights/2026-working-capital-survey-europe-2610/"
-     ],
-     "beat": "cash",
-     "summary": "Hackett Group's 2026 European survey, published in October 2026, puts excess working capital at a record €1.26 trillion, with receivables growing faster than revenue. Days sales outstanding worsened for a third consecutive year in 40 of 50 industries, so collections deserve Treasury and Finance attention.",
-     "sources": [
-      {
-       "name": "The Hackett Group",
-       "url": "https://www.thehackettgroup.com/insights/2026-working-capital-survey-europe-2610/"
-      }
-     ]
-    },
-    {
-     "headline": "SWIFT defers structured postal address mandate for ISO 20022 messages",
-     "urls": [
-      "https://sebgroup.com/our-offering/cash-management/cash-management-news/discontinuation-of-unstructured-addresses"
-     ],
-     "beat": "payments",
-     "summary": "On 27 August 2026 SWIFT postponed its November 2026 structured address requirement after market infrastructures asked for more time. Unstructured, hybrid and structured formats remain accepted until a revised deadline. Cross-border ISO 20022 coexistence ended in November 2025, so only address data gains time.",
-     "sources": [
-      {
-       "name": "SEB",
-       "url": "https://sebgroup.com/our-offering/cash-management/cash-management-news/discontinuation-of-unstructured-addresses"
-      }
-     ]
-    },
-    {
-     "headline": "EPC aligns address deferral as SCT Inst moves to 5-7-9 second execution",
-     "urls": [
-      "https://thepaypers.com/payments/expert-views/real-time-payments-infrastructure-and-scheme-evolution"
-     ],
-     "beat": "payments",
-     "summary": "The European Payments Council postponed the structured address requirement, aligning with the Nordic Payments Council and the revised market deadline. The latest SCT Inst rulebook cuts execution from 10-20-25 seconds to 5-7-9 seconds and removes the €100,000 default cap for B2B instant transfers.",
-     "sources": [
-      {
-       "name": "The Paypers",
-       "url": "https://thepaypers.com/payments/expert-views/real-time-payments-infrastructure-and-scheme-evolution"
-      }
-     ]
-    },
-    {
-     "headline": "FSB finalises 12 sound practices for responsible AI adoption",
-     "urls": [
-      "https://www.fsb.org/uploads/P151026-1.pdf"
-     ],
-     "beat": "regulation",
-     "summary": "The Financial Stability Board published final guidance on 12 AI governance practices in October 2026, asking financial institutions to fold AI risks into existing risk frameworks, keep documentation and lifecycle records, and stage approvals by materiality. Board accountability and vendor oversight now reach Treasury AI.",
-     "sources": [
-      {
-       "name": "FSB",
-       "url": "https://www.fsb.org/uploads/P151026-1.pdf"
-      }
-     ]
-    },
-    {
-     "headline": "FIRMA Advisory adds carry-cost thresholds to FX hedging policy as rate gaps widen",
-     "urls": [
-      "https://firmaadvisory.com/insights/rates-eu-us-2026"
-     ],
-     "beat": "risk",
-     "summary": "FIRMA Advisory says widening US-EUR rate gaps require explicit carry-cost thresholds by currency pair and horizon. Hedging a EUR 50 million receivable now carries a ~USD 1.1 million 12-month forward gain, versus ~€1 million in EUR receivable costs. Policies built for zero rates now mislead.",
-     "sources": [
-      {
-       "name": "FIRMA Advisory",
-       "url": "https://firmaadvisory.com/insights/rates-eu-us-2026"
-      }
-     ]
-    },
-    {
-     "headline": "EY finds 18% of corporates have used stablecoins, 15% tokenised deposits",
-     "urls": [
-      "https://www.ey.com/en_gl/insights/financial-services/seven-signals-shaping-the-next-phase-of-blockchain-payments"
-     ],
-     "beat": "digital",
-     "summary": "EY's blockchain payments study shows 18% of corporates have used stablecoins and 15% have deployed tokenised deposits, roughly doubling since 2025, with 21% using either for cross-border B2B payments. Supplier payments (53%) lead, aimed at cutting settlement delays (56%) and FX transaction costs (52%).",
-     "sources": [
-      {
-       "name": "EY",
-       "url": "https://www.ey.com/en_gl/insights/financial-services/seven-signals-shaping-the-next-phase-of-blockchain-payments"
-      }
-     ]
-    },
-    {
-     "headline": "BIS separates tokenised deposits from stablecoins on settlement finality",
-     "urls": [
-      "https://www.bis.org/speeches/20260828-pushing-monetary-frontier-stablecoins-and-tokenised-deposits"
-     ],
-     "beat": "digital",
-     "summary": "The Bank for International Settlements defines tokenised deposits as account-based bank liabilities on programmable platforms that settle at par through central bank accounts, unlike stablecoins, bearer instruments on public blockchains without par enforcement. For Treasury, tokenised deposits offer greater interoperability and fungibility across banks.",
-     "sources": [
-      {
-       "name": "BIS",
-       "url": "https://www.bis.org/speeches/20260828-pushing-monetary-frontier-stablecoins-and-tokenised-deposits"
-      }
-     ]
-    },
-    {
-     "headline": "Fed holds at 3.75%–4.00% as markets price 85.7% odds of December hike",
-     "urls": [
-      "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
-      "https://www.pbs.org/newshour/economy/watch-live-fed-chair-warsh-holds-briefing-after-latest-interest-rate-decision"
-     ],
-     "beat": "markets_macro",
-     "summary": "On 28 October the Fed held rates at 3.75%–4.00% in a 10–2 vote, two members preferring a hike. Chair Kevin Warsh signalled more increases. Derivatives price an 85.7% chance of a 25-basis-point December hike and three more quarter-point rises by September 2027, lifting refinancing costs.",
-     "sources": [
-      {
-       "name": "Federal Reserve Board",
-       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
-      },
-      {
-       "name": "PBS NewsHour",
-       "url": "https://www.pbs.org/newshour/economy/watch-live-fed-chair-warsh-holds-briefing-after-latest-interest-rate-decision"
-      }
-     ]
-    },
-    {
-     "headline": "FinCEN and OFAC fine Bank of America record $1.2 billion over AML failures",
-     "urls": [
-      "https://home.treasury.gov/news/press-releases/sb0657/",
-      "https://www.fincen.gov/news/news-releases/fincen-assesses-12-billion-penalty-against-bank-america"
-     ],
-     "beat": "financial_crime",
-     "summary": "On 13 October 2026, FinCEN and OFAC penalised Bank of America $1.2 billion for weak anti-money laundering programmes, missing customer due diligence on correspondent accounts and late suspicious activity reports, including delays on $5+ billion in suspicious transactions. The scale shows how hard enforcement bites.",
-     "sources": [
-      {
-       "name": "U.S. Department of the Treasury",
-       "url": "https://home.treasury.gov/news/press-releases/sb0657/"
-      },
-      {
-       "name": "FinCEN News Release",
-       "url": "https://www.fincen.gov/news/news-releases/fincen-assesses-12-billion-penalty-against-bank-america"
-      }
-     ]
-    },
-    {
-     "headline": "FRC revises ISA (UK) 250 and 270 with risk-based non-compliance approach",
-     "urls": [
-      "https://www.frc.org.uk/news-and-events/news/2026/10/frc-strengthens-audit-quality-with-revised-standards-on-assessing-risks-associated-with-non-compliance-with-laws-and-regulations/"
-     ],
-     "beat": "reporting",
-     "summary": "On 29 October 2026 the Financial Reporting Council published revised ISA (UK) 250 and ISA (UK) 270, setting a clearer, risk-based view of material misstatement from legal non-compliance, including Economic Crime and Corporate Transparency Act 2023 requirements. Audits from 15 December 2027 apply them.",
-     "sources": [
-      {
-       "name": "Financial Reporting Council",
-       "url": "https://www.frc.org.uk/news-and-events/news/2026/10/frc-strengthens-audit-quality-with-revised-standards-on-assessing-risks-associated-with-non-compliance-with-laws-and-regulations/"
-      }
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-11-03",
    "note_headline": "Money now moves at weekends, so Finance controls must run around the clock",
    "note_opening": "Weekends and holidays are becoming working days for corporate cash. JPMorgan's Wire 365 settles payments 24/7/365, including US holidays, while HKMA's Project Ensemble moved to 24/7 tokenised central bank money settlemen",
@@ -2717,6 +2490,229 @@
       {
        "name": "IFRS Foundation",
        "url": "https://www.ifrs.org/news-and-events/updates/iasb/2026/iasb-update-october-2026/"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-17",
+   "note_headline": "Regulators are now grading AI autonomy, so Finance must prove every delegated decision",
+   "note_opening": "Supervisors and auditors are building the rulebook for AI that acts, not just advises. The OCC now grades bank AI across 16 components in six pillars, weighing reversibility, autonomy and customer impact. On 10 November ",
+   "items": [
+    {
+     "headline": "Deutsche Bank and Ant Digital map agentic AI across liquidity and trade Finance",
+     "urls": [
+      "https://corporates.db.com/publications/White-papers-guides/agentic-payments-in-wholesale-finance"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Deutsche Bank and Ant Digital Technologies published a whitepaper setting out agentic AI use cases in Treasury liquidity management, cross-border payment orchestration and trade finance. It stresses institutional controls over delegated decisions, the point treasurers must settle before any agent touches cash.",
+     "sources": [
+      {
+       "name": "Deutsche Bank Corporates",
+       "url": "https://corporates.db.com/publications/White-papers-guides/agentic-payments-in-wholesale-finance"
+      }
+     ]
+    },
+    {
+     "headline": "Treasury agents move from generating insights to taking action within set limits",
+     "urls": [
+      "https://www.concourse.ai/insights/ai-native-treasury",
+      "https://agicap.com/en-us/article/ai-agents-for-finance/"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Treasury AI is moving beyond dashboards to agents that execute tasks inside human-defined boundaries. Key deployments now run parts of the daily cash cycle, from monitoring and categorisation to reconciliation and forecasting, under treasurer-set rules and approval limits, making those limits the core control.",
+     "sources": [
+      {
+       "name": "Concourse AI",
+       "url": "https://www.concourse.ai/insights/ai-native-treasury"
+      },
+      {
+       "name": "Agicap",
+       "url": "https://agicap.com/en-us/article/ai-agents-for-finance/"
+      }
+     ]
+    },
+    {
+     "headline": "JPMorgan expands SAP API links to cut manual Treasury file handling",
+     "urls": [
+      "https://valor.globo.com/conteudo-de-marca/jp-morgan/noticia/2026/11/16/jp-morgan-aposta-na-tesouraria-em-tempo-real-no-brasil.ghtml"
+     ],
+     "beat": "treasury_tech",
+     "summary": "JPMorgan has extended the API infrastructure linking its payments solutions directly into SAP ERP environments. Companies can view balances, transactions and payment tracking inside existing systems without manual file handling, shrinking the manual touchpoints Treasury must control.",
+     "sources": [
+      {
+       "name": "Valor Econômico / J.P. Morgan",
+       "url": "https://valor.globo.com/conteudo-de-marca/jp-morgan/noticia/2026/11/16/jp-morgan-aposta-na-tesouraria-em-tempo-real-no-brasil.ghtml"
+      }
+     ]
+    },
+    {
+     "headline": "JPMorgan says unmatched payer data leaves receivables cash trapped",
+     "urls": [
+      "https://www.cfodive.com/news/jpmorgan-updates-ar-platform-help-unstick-working-capital/874810/"
+     ],
+     "beat": "cash",
+     "summary": "JPMorgan warns that accounts receivable teams unable to match payer identity to invoice detail leave working capital stuck. Enhanced AR platforms now connect receivables data with payment records to release that stranded cash, a direct lever on cash conversion for Treasury and Finance.",
+     "sources": [
+      {
+       "name": "CFO Dive",
+       "url": "https://www.cfodive.com/news/jpmorgan-updates-ar-platform-help-unstick-working-capital/874810/"
+      }
+     ]
+    },
+    {
+     "headline": "Half of SWIFT payments reach the recipient bank within 40 seconds",
+     "urls": [
+      "https://www.swift.com/about-us/media-centre/press-releases/spotlight-speed-half-payments-swift-reach-bank-within-40-seconds-domestic-delays-impact-user-experience"
+     ],
+     "beat": "payments",
+     "summary": "SWIFT data shows half of payments on its network arrive at the recipient bank within 40 seconds and 75% within 10 minutes, meeting its one-hour end-to-end target. Country-level processing still varies significantly, so treasurers cannot assume uniform speed across corridors.",
+     "sources": [
+      {
+       "name": "SWIFT",
+       "url": "https://www.swift.com/about-us/media-centre/press-releases/spotlight-speed-half-payments-swift-reach-bank-within-40-seconds-domestic-delays-impact-user-experience"
+      }
+     ]
+    },
+    {
+     "headline": "PCAOB and SEC officials press for AI governance and process-level risk assessment",
+     "urls": [
+      "https://www.accountingtoday.com/news/irs-sec-pcaob-officials-talk-more-about-si-for-super-intelligence"
+     ],
+     "beat": "regulation",
+     "summary": "PCAOB and SEC officials said AI, especially 'super intelligence', needs clear governance plans, effective risk assessment at process level and internal controls that reflect its opacity and probabilistic behaviour. Finance Teams deploying AI in close or Treasury processes can expect auditors to test that.",
+     "sources": [
+      {
+       "name": "Accounting Today",
+       "url": "https://www.accountingtoday.com/news/irs-sec-pcaob-officials-talk-more-about-si-for-super-intelligence"
+      }
+     ]
+    },
+    {
+     "headline": "OCC grades bank AI across 16 components in six risk pillars",
+     "urls": [
+      "https://www.pwc.com/us/en/industries/financial-services/library/our-take/occ-ai-supervision-treasury-clearing-nov-13-2026.html"
+     ],
+     "beat": "regulation",
+     "summary": "The OCC issued AI supervision guidance sorting bank AI use into 16 components across six pillars. Risk is classified by consequence, weighing reversibility, customer impact, autonomy and data sensitivity, a useful template for Treasury and Finance Teams assessing agents that move cash.",
+     "sources": [
+      {
+       "name": "PwC",
+       "url": "https://www.pwc.com/us/en/industries/financial-services/library/our-take/occ-ai-supervision-treasury-clearing-nov-13-2026.html"
+      }
+     ]
+    },
+    {
+     "headline": "RBI imposes 20% cash reserve on corporate FX hedges above USD 2 million",
+     "urls": [
+      "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13738&Mode=0"
+     ],
+     "beat": "risk",
+     "summary": "On 10 October 2026 the RBI required authorised dealers to hold a 20% cash deposit with the central bank on corporate hedging FX derivatives above USD 2 million notional. Rupee protection against currency weakness becomes substantially dearer for Treasury teams.",
+     "sources": [
+      {
+       "name": "Reserve Bank of India",
+       "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13738&Mode=0"
+      }
+     ]
+    },
+    {
+     "headline": "DBS and Kinexys launch 24/7 tokenised dollar transfers between US and Singapore",
+     "urls": [
+      "https://www.tokenisingstartups.com/new/dbs-kinexys-24-7-tokenised-deposit-transfers"
+     ],
+     "beat": "digital",
+     "summary": "On 16 November 2026, DBS Token Services and Kinexys by JPMorgan began instant US dollar transfers on a 24/7 basis between tokenised deposit accounts, with Partior's shared ledger orchestrating settlement. Ant International is the first institutional client, pointing to round-the-clock US-Singapore liquidity for treasurers.",
+     "sources": [
+      {
+       "name": "Tokenising Startups",
+       "url": "https://www.tokenisingstartups.com/new/dbs-kinexys-24-7-tokenised-deposit-transfers"
+      }
+     ]
+    },
+    {
+     "headline": "Dollar index hits 19-month high as EUR/USD slips to 1.1007",
+     "urls": [
+      "https://www.streetinsider.com/Reuters/Dollar+extends+gains%2C+yen+looks+past+soft+Japan+GDP+data/27346391.html",
+      "https://www.fxstreet.com/reuters/us-dollar-index-extends-gains-as-traders-bet-on-a-longer-fed-hiking-cycle-202611161214"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 16 November the dollar index reached 103.50, a 19-month high last seen in April 2025, after stronger inflation data and hawkish Fed signals of a likely December hike. EUR/USD fell to 1.1007, sharpening hedging decisions for euro exposures.",
+     "sources": [
+      {
+       "name": "Street Insider / Reuters",
+       "url": "https://www.streetinsider.com/Reuters/Dollar+extends+gains%2C+yen+looks+past+soft+Japan+GDP+data/27346391.html"
+      },
+      {
+       "name": "FXStreet",
+       "url": "https://www.fxstreet.com/reuters/us-dollar-index-extends-gains-as-traders-bet-on-a-longer-fed-hiking-cycle-202611161214"
+      }
+     ]
+    },
+    {
+     "headline": "EU sanctions 113 Russian targets across banks, energy and shadow fleet",
+     "urls": [
+      "https://www.consilium.europa.eu/en/press/press-releases/2026/11/16/ukraine-eu-lists-113-individuals-and-entities-to-further-restrict-russia-s-ability-to-finance-its-war-of-aggression/"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 16 November 2026 the EU Council hit 113 targets, 12 individuals and 101 entities, with asset freezes and travel bans. They include nearly 50 Russian banks, energy firms, Wildberries and Ozon shareholders and shadow-fleet intermediaries in the UAE and China, plus Seychelles and Oman.",
+     "sources": [
+      {
+       "name": "Council of the European Union",
+       "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/11/16/ukraine-eu-lists-113-individuals-and-entities-to-further-restrict-russia-s-ability-to-finance-its-war-of-aggression/"
+      }
+     ]
+    },
+    {
+     "headline": "OFAC designates 10 targets in Iranian defence electronics procurement networks",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0637"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 29 September 2026 OFAC designated 10 individuals and entities, including Iran-based Kavoshcom and Hong Kong-based EC Mojo Technology, for procuring military electronics for Iran's Ministry of Defence, Aerospace Industries Organization and ballistic missile programmes. Electronics supplier checks now need sharper screening.",
+     "sources": [
+      {
+       "name": "U.S. Department of the Treasury",
+       "url": "https://home.treasury.gov/news/press-releases/sb0637"
+      }
+     ]
+    },
+    {
+     "headline": "PCAOB creates 'Super Intelligence Unit' to police AI misconduct in audits",
+     "urls": [
+      "https://pcaobus.org/news-events/news-releases/news-release-detail/pcaob-announces-new-specialized-units-in-enforcement-division",
+      "https://www.cpapracticeadvisor.com/2026/11/11/pcaob-creates-five-units-within-enforcement-division/193684/"
+     ],
+     "beat": "reporting",
+     "summary": "On 10 November 2026 the PCAOB announced five new specialised enforcement units, including a 'Super Intelligence Unit' to investigate emerging risks and possible misconduct from AI use in public company audits. Controllers should expect auditors to scrutinise AI-generated evidence more closely.",
+     "sources": [
+      {
+       "name": "PCAOB News Release",
+       "url": "https://pcaobus.org/news-events/news-releases/news-release-detail/pcaob-announces-new-specialized-units-in-enforcement-division"
+      },
+      {
+       "name": "CPA Practice Advisor",
+       "url": "https://www.cpapracticeadvisor.com/2026/11/11/pcaob-creates-five-units-within-enforcement-division/193684/"
+      }
+     ]
+    },
+    {
+     "headline": "IASB explores separate disclosure of IFRS 16 lease cash outflows",
+     "urls": [
+      "https://www.ifrs.org/content/dam/ifrs/meetings/2026/october/dpoc/dp3-pir-ifrs-16.pdf",
+      "https://news.bloombergtax.com/financial-accounting/global-board-backs-more-lease-details-in-cash-flow-statements"
+     ],
+     "beat": "reporting",
+     "summary": "In October 2026 the IASB decided to explore requiring IFRS 16 lessees to disclose components of total lease cash outflows separately and show which cash flow statement line items hold each. Treasury and reporting teams may need finer-grained lease cash data.",
+     "sources": [
+      {
+       "name": "IFRS.org Staff Paper",
+       "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/october/dpoc/dp3-pir-ifrs-16.pdf"
+      },
+      {
+       "name": "Bloomberg Tax",
+       "url": "https://news.bloombergtax.com/financial-accounting/global-board-backs-more-lease-details-in-cash-flow-statements"
       }
      ]
     }
