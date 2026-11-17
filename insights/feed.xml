@@ -6,14 +6,14 @@
     <atom:link href="https://theaitreasurer.com/insights/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical views for CFOs and Treasurers, by Gopakumar Menon.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 15 Nov 2026 11:01:38 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 07:14:10 +0000</lastBuildDate>
     <item>
-      <title>What did Treasury know at 9am?</title>
+      <title>Your AI cash forecast just refreshed. Can Treasury prove what it knew last Monday?</title>
       <link>https://theaitreasurer.com/articles/what-did-treasury-know/</link>
       <guid isPermaLink="true">https://theaitreasurer.com/articles/what-did-treasury-know/</guid>
       <pubDate>Tue, 17 Nov 2026 06:00:00 +0000</pubDate>
       <category>Controls and audit</category>
-      <description>Why every major Treasury decision needs a record of the forecast it was based on, and what that record should hold.</description>
+      <description>Why every major Treasury decision needs a forecast version of record, and what that record should hold.</description>
     </item>
     <item>
       <title>Your First AI Task in Treasury Should Be Unglamorous</title>

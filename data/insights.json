@@ -11,12 +11,12 @@
   "articles": [
     {
       "slug": "what-did-treasury-know",
-      "title": "What did Treasury know at 9am?",
-      "summary": "Why every major Treasury decision needs a record of the forecast it was based on, and what that record should hold.",
+      "title": "Your AI cash forecast just refreshed. Can Treasury prove what it knew last Monday?",
+      "summary": "Why every major Treasury decision needs a forecast version of record, and what that record should hold.",
       "date": "2026-11-17",
       "topic": "Controls and audit",
       "minutes": 3,
-      "image": "/articles/what-did-treasury-know/card.png"
+      "image": "/articles/what-did-treasury-know/card.jpg"
     },
     {
       "slug": "start-where-mistakes-are-cheap",
