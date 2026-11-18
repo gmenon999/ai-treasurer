@@ -2279,6 +2279,90 @@
     "cost_usd": 0.364
    },
    "edition_cost_usd": 1.6689
+  },
+  {
+   "date": "2026-11-18",
+   "items": [
+    {
+     "headline": "Deutsche Bank and Ant Digital chart autonomous AI for liquidity and FX",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Google runs $100bn portfolio through three-agent cash-management system",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Microsoft's six-agent MICS system moves Treasury to touchless-first execution",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Finance Teams speed agentic AI adoption, but 27% flag compliance risk",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Foreign investors' FX hedge ratios fell to 44.5% in October",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "HKMA and SWIFT deepen work on tokenised-deposit cross-border payments",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Technology firms step up FX hedging into 2027 on geopolitical and rate risk",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FinCEN proposes beneficial-ownership verification for every new corporate account",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Northern Data picks Embat's API-first TMS to centralise 100+ bank accounts",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "The facts are supported. The view fails the 'what, with what, and when' test because it gives no deadline or timing. It also adds 'daily balances', which the source does not mention."
+    },
+    {
+     "headline": "Over 40% of treasurers want 24/7 money-market fund liquidity, AFP finds",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Bacardi extends DPO by 25 days through structured working-capital framework",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "The definition of the cash conversion cycle is inaccurate. 'Days between paying suppliers and collecting from customers' leaves out inventory days, yet the source says the cycle covers receivables, inventory and payables, and Bacardi cut inventory days by over 15. The take also says bonuses were tie"
+    },
+    {
+     "headline": "SWIFT delays SR2026 payments changes, deferring ISO 20022 structured-address mandate",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "KeyCorp adds $6.8bn forward-starting swaps, taking its position to $10.1bn",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "IASB moves to require IFRS 16 lease cash outflow disclosure by classification",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.2474,
+   "market_view": {
+    "status": "dropped",
+    "reasons": "point 5: The point calls this 'peer practice diverging', but the cited facts compare two different groups. Technology companies are corporate hedgers. Foreign investors holding US equities and bonds are not corporate treasurer peers. The 'diverging' claim and the peer framing are unsupported and overstated. The view also tells the treasurer to compare their policy with 'peer practice' without sayi",
+    "cost_usd": 0.3426
+   },
+   "edition_cost_usd": 1.1703
   }
  ]
 }
