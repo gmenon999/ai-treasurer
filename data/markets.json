@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-18T00:57:35Z",
+ "generated_utc": "2026-11-18T11:40:10Z",
  "policy": [
   {
    "bank": "Fed",
@@ -23,8 +23,8 @@
    "value": "2.50 / 2.65%",
    "change_bp": 25,
    "since": "2026-09-10",
-   "checked": "2026-11-17",
-   "asof": "2026-11-17",
+   "checked": "2026-11-18",
+   "asof": "2026-11-18",
    "stale": false
   },
   {
@@ -103,9 +103,9 @@
   },
   {
    "name": "€STR",
-   "value": "2.440%",
+   "value": "2.441%",
    "change_bp": 0,
-   "asof": "2026-11-16",
+   "asof": "2026-11-17",
    "source_name": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",
    "id": "estr",
@@ -205,8 +205,5 @@
   }
  ],
  "notes": "Figures as published by the sources shown, on the dates shown. The Qatari riyal is pegged at QAR 3.64 per USD. Not live market data and not investment advice.",
- "errors": [
-  "ecb: 503 Server Error: Service Temporarily Unavailable for url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?lastNObservations=1&format=csvdata",
-  "history ecb: 503 Server Error: Service Temporarily Unavailable for url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod=2016-09-25&format=csvdata"
- ]
+ "errors": []
 }
