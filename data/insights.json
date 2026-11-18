@@ -10,6 +10,15 @@
   ],
   "articles": [
     {
+      "slug": "where-freed-hours-go",
+      "title": "Your reconciliation only takes a few minutes. So why is your team still busy?",
+      "summary": "How to plan the time automation frees up, and how to check where it went.",
+      "date": "2026-11-18",
+      "topic": "Finance leadership",
+      "minutes": 3,
+      "image": "/articles/where-freed-hours-go/card.jpg"
+    },
+    {
       "slug": "what-did-treasury-know",
       "title": "Your AI cash forecast just refreshed. Can Treasury prove what it knew last Monday?",
       "summary": "Why every major Treasury decision needs a forecast version of record, and what that record should hold.",

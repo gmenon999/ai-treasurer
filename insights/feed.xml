@@ -6,7 +6,15 @@
     <atom:link href="https://theaitreasurer.com/insights/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical views for CFOs and Treasurers, by Gopakumar Menon.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 17 Nov 2026 07:14:10 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 09:00:20 +0000</lastBuildDate>
+    <item>
+      <title>Your reconciliation only takes a few minutes. So why is your team still busy?</title>
+      <link>https://theaitreasurer.com/articles/where-freed-hours-go/</link>
+      <guid isPermaLink="true">https://theaitreasurer.com/articles/where-freed-hours-go/</guid>
+      <pubDate>Wed, 18 Nov 2026 06:00:00 +0000</pubDate>
+      <category>Finance leadership</category>
+      <description>How to plan the time automation frees up, and how to check where it went.</description>
+    </item>
     <item>
       <title>Your AI cash forecast just refreshed. Can Treasury prove what it knew last Monday?</title>
       <link>https://theaitreasurer.com/articles/what-did-treasury-know/</link>

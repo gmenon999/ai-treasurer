@@ -8,8 +8,14 @@
   <!--INSIGHTS-SITEMAP-START-->
   <url>
     <loc>https://theaitreasurer.com/insights/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaitreasurer.com/articles/where-freed-hours-go/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
