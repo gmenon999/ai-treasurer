@@ -2363,6 +2363,38 @@
     "cost_usd": 0.3426
    },
    "edition_cost_usd": 1.1703
+  },
+  {
+   "date": "2026-11-19",
+   "items": [
+    {
+     "headline": "HKMA and SWIFT test tokenised deposits for 24/7 cross-border payments",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "EU sanctions 113 more Russian individuals and entities, including financial institutions",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "IAASB approves first quality management guide for AI-enabled audit tools",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "(all)",
+     "status": "error",
+     "reasons": "OpenRouter 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.\",\"code\":402,\"metadata\":{\"reason\":\"in_flight_budget_exhausted\",\"limit_source\":\"openrouter_in_flight_budget\",\"remedy_hint\""
+    }
+   ],
+   "cost_usd": 0.2707,
+   "market_view": {
+    "status": "error",
+    "reasons": "OpenRouter 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.\",\"code\":402,\"metadata\":{\"reason\":\"in_flight_budget_exhausted\",\"limit_source\":\"openrouter_in_flight_budget\",\"remedy_hint\"",
+    "cost_usd": 0.0
+   },
+   "edition_cost_usd": 1.556
   }
  ]
 }
