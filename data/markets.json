@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-20T02:18:39Z",
+ "generated_utc": "2026-11-20T10:51:51Z",
  "policy": [
   {
    "bank": "Fed",
@@ -56,14 +56,14 @@
   {
    "bank": "PBOC",
    "label": "1-year / 5-year LPR",
-   "source_name": "Dim Sum Daily (National Interbank Funding Center)",
-   "source_url": "https://www.dimsumdaily.hk/china-keeps-loan-prime-rates-unchanged-with-one-year-benchmark-at-3/",
+   "source_name": "Xinhua (National Interbank Funding Center)",
+   "source_url": "https://english.news.cn/20261120/42b87ac0942a4f39b97de49db49cb9a0/c.html",
    "id": "pboc",
    "value": "3.00 / 3.50%",
    "change_bp": 0,
-   "since": "2026-10-20",
-   "checked": "2026-10-20",
-   "asof": "2026-10-20",
+   "since": "2026-11-20",
+   "checked": "2026-11-20",
+   "asof": "2026-11-20",
    "stale": false
   },
   {
@@ -103,9 +103,9 @@
   },
   {
    "name": "€STR",
-   "value": "2.442%",
+   "value": "2.441%",
    "change_bp": 0,
-   "asof": "2026-11-18",
+   "asof": "2026-11-19",
    "source_name": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",
    "id": "estr",
