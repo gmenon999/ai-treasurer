@@ -2395,6 +2395,43 @@
     "cost_usd": 0.0
    },
    "edition_cost_usd": 1.556
+  },
+  {
+   "date": "2026-11-24",
+   "items": [
+    {
+     "headline": "BNY and Microsoft agents negotiate a US Treasury bill trade within set limits",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "JPMorgan API v6.5.4 adds third-party app search for ERP and TMS links",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "HSBCnio adds MCP server access to live Treasury data for AI assistants",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FinCEN proposes stricter beneficial owner checks at corporate account opening",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "(all)",
+     "status": "error",
+     "reasons": "takes: unparseable JSON"
+    }
+   ],
+   "cost_usd": 0.2177,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.3467
+   },
+   "edition_cost_usd": 1.958
   }
  ]
 }
