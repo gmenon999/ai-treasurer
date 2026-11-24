@@ -10,6 +10,15 @@
   ],
   "articles": [
     {
+      "slug": "ai-agent-negotiated-treasury-trade",
+      "title": "An AI Agent Just Negotiated a Treasury Trade With Another AI Agent",
+      "summary": "What happened when two AI agents negotiated a U.S. Treasury bill trade, and five questions to answer before an agent negotiates for your Treasury.",
+      "date": "2026-11-24",
+      "topic": "AI and automation",
+      "minutes": 4,
+      "image": "/articles/ai-agent-negotiated-treasury-trade/card.jpg"
+    },
+    {
       "slug": "where-freed-hours-go",
       "title": "Now your Reconciliation only takes a few minutes. So why is your team still busy?",
       "summary": "How to plan the time automation frees up, and how to check where it went.",

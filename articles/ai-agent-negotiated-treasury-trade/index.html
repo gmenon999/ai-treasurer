@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14263F">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<title>An AI Agent Just Negotiated a Treasury Trade With Another AI Agent | The AI Treasurer</title>
+<meta name="description" content="What happened when two AI agents negotiated a U.S. Treasury bill trade, and five questions to answer before an agent negotiates for your Treasury.">
+<link rel="canonical" href="https://theaitreasurer.com/articles/ai-agent-negotiated-treasury-trade/">
+<meta property="og:title" content="An AI Agent Just Negotiated a Treasury Trade With Another AI Agent">
+<meta property="og:description" content="What happened when two AI agents negotiated a U.S. Treasury bill trade, and five questions to answer before an agent negotiates for your Treasury.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://theaitreasurer.com/articles/ai-agent-negotiated-treasury-trade/">
+<meta property="og:image" content="https://theaitreasurer.com/articles/ai-agent-negotiated-treasury-trade/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root { --navy: #14263F; --navy-deep: #0D1A2C; --navy-soft: #3B4A60; --muted: #5A6779; --gold: #B08D3C; --gold-text: #8A6A22; --gold-light: #E9CB85; --blue: #2E6AF0; --pale: #8FA6C8; --line: #DDD8CE; --paper: #F6F3EC; --white: #FFFFFF;
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--serif); font-size: 19.5px; line-height: 1.62; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: var(--navy); }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 22px; }
+  /*SITE-HEADER-CSS-START*/
+  .sh-band { background: #0D1A2C; color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.08); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .sh-wrap { max-width: 1240px; margin: 0 auto; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .sh-mark { font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif; font-size: 22px; color: #FFFFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; line-height: 1.2; }
+  .sh-mark svg { width: 32px; height: 32px; flex: none; }
+  .sh-cta { color: #0D1A2C; background: #E9CB85; padding: 8px 14px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; }
+  .sh-cta:hover { background: #FFFFFF; }
+  .secnav { position: sticky; top: 0; z-index: 20; background: #0D1A2C; border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 6px 18px rgba(5,20,36,0.18); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .sn-wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; display: flex; gap: 30px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .sn-wrap::-webkit-scrollbar { display: none; }
+  .secnav a { flex: none; display: block; height: 50px; line-height: 50px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C9D2DE; text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+  .secnav a:hover { color: #FFFFFF; }
+  .secnav a[aria-current="page"] { color: #FFFFFF; border-bottom-color: #B08D3C; }
+  .sn-arrow { display: none; position: absolute; top: 0; bottom: 0; width: 52px; border: 0; padding: 0; cursor: pointer; color: #E9CB85; align-items: center; }
+  .sn-arrow svg { width: 22px; height: 22px; }
+  .sn-arrow.next { right: 0; justify-content: flex-end; padding-right: 12px; background: linear-gradient(90deg, rgba(13,26,44,0) 0%, #0D1A2C 45%); }
+  .sn-arrow.prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(13,26,44,0) 0%, #0D1A2C 45%); }
+  .secnav.can-next .sn-arrow.next, .secnav.can-prev .sn-arrow.prev { display: flex; }
+  @media (max-width: 720px) {
+    .sh-wrap { padding: 12px 20px; gap: 10px; }
+    .sh-mark { font-size: 18px; min-width: 0; }
+    .sh-mark svg { width: 30px; height: 30px; }
+    .sh-cta { font-size: 13px; padding: 8px 11px; }
+    .sn-wrap { gap: 20px; padding-right: 36px; }
+    .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
+  }
+/*SITE-HEADER-CSS-END*/
+
+  .art-head { padding: 52px 0 8px; }
+  .back-bar { position: sticky; top: var(--sn-h, 52px); z-index: 15; background: var(--white); border-bottom: 1px solid var(--line); }
+  .back-bar .wrap { padding-top: 6px; padding-bottom: 6px; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--navy); text-decoration: none; }
+  .back-link:hover { color: var(--gold-text); }
+  .kicker { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-text); }
+  h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(31px, 5vw, 44px); line-height: 1.1; letter-spacing: -0.012em; margin: 12px 0 14px; }
+  .dek { font-size: 21px; line-height: 1.45; color: var(--navy-soft); margin: 0 0 20px; }
+  .byline { font-family: var(--sans); font-size: 14px; color: var(--muted); margin: 0; padding-bottom: 26px; }
+  .byline span { white-space: nowrap; }
+  .byline .sep { margin: 0 6px; color: #A8B0BC; }
+
+  .glance { background: var(--paper); border-radius: 8px; padding: 24px 26px 22px; margin: 0 0 40px; }
+  .glance .kicker { margin: 0 0 10px; }
+  .glance .rule { font-size: 22px; line-height: 1.38; font-weight: 700; margin: 0 0 20px; }
+  .tiers { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .tiers li { background: var(--white); border-left: 6px solid; border-radius: 0 6px 6px 0; padding: 12px 16px 13px; font-family: var(--sans); }
+  .tiers .l { display: block; font-size: 16.5px; font-weight: 700; line-height: 1.3; }
+  .glance .note { margin: 12px 0 0; font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+  .tiers .t { display: block; font-size: 15px; line-height: 1.45; color: var(--muted); margin-top: 3px; }
+  .t1 { border-color: #5E86C2 !important; } .t2 { border-color: #2E5C9C !important; } .t3 { border-color: var(--navy) !important; }
+
+  .glance .keep-k { margin: 0 0 8px; font-family: var(--sans); font-size: 15px; font-weight: 700; }
+  ul.keep { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  ul.keep li { background: var(--white); border-left: 6px solid #2E5C9C; border-radius: 0 6px 6px 0; padding: 10px 16px 11px; font-family: var(--sans); font-size: 16.5px; font-weight: 600; line-height: 1.35; }
+  .tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+  ol.num { margin: 0 0 18px; padding-left: 24px; }
+  ol.num > li { margin: 0 0 10px; padding-left: 4px; }
+  ol.num > li::marker { color: #2E5C9C; font-weight: 700; }
+  ul.dots { list-style: none; margin: 0 0 18px; padding: 0; }
+  ul.dots > li { position: relative; margin: 0 0 10px; padding-left: 22px; }
+  ul.dots > li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: #2E5C9C; }
+  ul.dots ul { list-style: none; margin: 8px 0 8px; padding: 0; }
+  ul.dots ul li { position: relative; margin: 0 0 4px; padding-left: 20px; }
+  ul.dots ul li::before { content: ""; position: absolute; left: 2px; top: 0.7em; width: 7px; height: 2px; background: var(--gold); }
+  h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(25px, 3.4vw, 30px); line-height: 1.2; margin: 52px 0 14px; letter-spacing: -0.005em; }
+  h3 { font-family: var(--sans); font-weight: 700; font-size: 18px; line-height: 1.3; margin: 30px 0 8px; padding-left: 14px; border-left: 5px solid; }
+  ul.tasks { list-style: none; margin: 0 0 14px; padding: 0 0 0 19px; }
+  ul.tasks li { position: relative; margin: 0 0 6px; padding-left: 18px; }
+  ul.tasks li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  ul.tasks { border: 0 !important; }
+  ul.tasks.t1 li::before { background: #5E86C2; } ul.tasks.t2 li::before { background: #2E5C9C; } ul.tasks.t3 li::before { background: var(--navy); }
+  p { margin: 0 0 18px; }
+  ol { margin: 0 0 18px; padding-left: 26px; }
+  ol li { margin: 0 0 10px; padding-left: 4px; }
+  .key { font-style: italic; font-size: 23px; line-height: 1.42; color: var(--navy); margin: 36px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--gold-light); }
+  .box { background: var(--paper); border-radius: 8px; padding: 20px 24px 4px; margin: 40px 0 0; }
+  .box .kicker { margin-bottom: 8px; }
+  .follow { margin-top: 40px; padding: 22px 26px 12px; background: var(--navy-deep); color: var(--white); border-radius: 8px; font-family: var(--sans); font-size: 16px; line-height: 1.5; }
+  .follow p { margin: 0 0 12px; }
+  .follow a { display: inline-block; min-height: 44px; line-height: 44px; margin-right: 22px; font-weight: 600; color: var(--white); text-decoration: none; border-bottom: 2px solid var(--gold-light); }
+  .follow a:focus-visible { outline-color: var(--gold-light); }
+  .end { border-top: 1px solid var(--line); margin-top: 48px; padding: 18px 0 8px; font-family: var(--sans); font-size: 14px; line-height: 1.55; color: var(--muted); }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 40px; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    body { font-size: 18.5px; }
+    .art-head { padding-top: 34px; }
+    .dek { font-size: 19px; }
+    .glance { padding: 20px 18px 18px; margin-left: -6px; margin-right: -6px; }
+    .glance .rule { font-size: 20px; }
+    .key { font-size: 21px; }
+    .byline .who { display: block; margin-bottom: 2px; } .byline .sep.first { display: none; }
+  }
+  /* balanced line breaks: no single orphan word on a heading's last line */
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  /* desktop layout on the site grid: text aligned under the logo, contents rail on the right */
+  .art-shell { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+  .art-main { max-width: 680px; margin: 0 auto; }
+  .art-rail { display: none; }
+  @media (min-width: 1100px) {
+    .back-bar .wrap, footer .wrap { max-width: 1240px; padding-left: 20px; padding-right: 20px; }
+    .art-shell { display: grid; grid-template-columns: minmax(0, 720px) 260px; justify-content: space-between; gap: 0 64px; }
+    .art-main { max-width: none; margin: 0; }
+    .art-rail { display: block; }
+    .rail-in { position: sticky; top: calc(var(--sn-h, 52px) + 64px); margin-top: 52px; padding-top: 16px; border-top: 3px solid var(--gold); font-family: var(--sans); }
+    .rail-k { margin: 0 0 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); }
+    .rail-toc { list-style: none; margin: 0 0 22px; padding: 0; }
+    .rail-toc li { margin: 0; }
+    .rail-toc a { display: block; padding: 8px 0 8px 14px; border-left: 2px solid var(--line); font-size: 15px; line-height: 1.4; color: var(--muted); text-decoration: none; }
+    .rail-toc a:hover { color: var(--navy); }
+    .rail-toc a.on { color: var(--navy); font-weight: 600; border-left-color: var(--gold); }
+    .rail-back { font-size: 14px; font-weight: 600; text-decoration: none; color: var(--navy); }
+    .rail-back:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+    h2[id] { scroll-margin-top: calc(var(--sn-h, 52px) + 60px); }
+  }
+</style>
+<link rel="alternate" type="application/rss+xml" title="The AI Treasurer: Insights" href="/insights/feed.xml">
+</head>
+<body>
+
+<!--SITE-HEADER-START-->
+<header class="sh-band">
+  <div class="sh-wrap">
+    <a class="sh-mark" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
+    <a class="sh-cta" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a>
+  </div>
+</header>
+<nav class="secnav" aria-label="Sections">
+  <div class="sn-wrap">
+    <a href="/#top">Home</a>
+    <a href="/insights/" aria-current="page">Insights</a>
+    <a href="/#agentic">Agentic Automation</a>
+    <a href="/#controls">AI Controls</a>
+    <a href="/#briefing">Treasury Today</a>
+    <a href="/#markets">Markets</a>
+    <a href="/#about">About</a>
+  </div>
+  <button type="button" class="sn-arrow prev" aria-label="Show earlier menu items"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+  <button type="button" class="sn-arrow next" aria-label="Show more menu items"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+</nav>
+<script>
+(function(){
+  var nav = document.querySelector('.secnav'), row = nav.querySelector('.sn-wrap');
+  function update(){ var max = row.scrollWidth - row.clientWidth; nav.classList.toggle('can-prev', row.scrollLeft > 4); nav.classList.toggle('can-next', max > 4 && row.scrollLeft < max - 4); }
+  nav.querySelector('.sn-arrow.next').addEventListener('click', function(){ row.scrollBy({ left: row.clientWidth * 0.6, behavior: 'smooth' }); });
+  nav.querySelector('.sn-arrow.prev').addEventListener('click', function(){ row.scrollBy({ left: -row.clientWidth * 0.6, behavior: 'smooth' }); });
+  row.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
+})();
+</script>
+<!--SITE-HEADER-END-->
+
+<main id="main">
+<div class="back-bar"><div class="wrap"><a class="back-link" href="/insights/">&larr; All Insights</a></div></div>
+<div class="art-shell">
+<article class="art-main">
+
+  <div class="art-head">
+<div class="kicker">Insights &middot; AI and automation</div>
+<h1>An AI Agent Just Negotiated a Treasury Trade With Another AI Agent</h1>
+<p class="byline"><span class="who">By Gopakumar Menon, CA, CPA, CTP</span> <span><span class="sep first">&middot;</span><time datetime="2026-11-24">24 November 2026</time></span> <span><span class="sep">&middot;</span>4 min read</span></p>
+</div>
+<figure class="hero" style="margin:0 0 28px"><img src="hero.jpg" width="1080" height="1350" alt="Two humanoid AI agents in business suits negotiate across a boardroom table with laptops" style="display:block;width:100%;max-width:480px;height:auto;margin:0 auto;border-radius:6px"><figcaption style="font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;margin-top:8px">Image: AI generated</figcaption></figure>
+
+<div class="glance">
+<div class="kicker">At a glance</div>
+<p class="rule">An AI agent can negotiate for Treasury without being allowed to execute. Keep the two apart, and make every step leave a record an auditor can follow.</p>
+<p class="keep-k">The controls in the pilot</p>
+<ul class="keep">
+<li>Instructions set in advance</li>
+<li>Checks on counterparty, security, size and settlement</li>
+<li>Price limits approved in advance</li>
+<li>Terms matched on one central record</li>
+<li>A person approves before execution</li>
+<li>Booking in existing systems</li>
+</ul>
+</div>
+
+<h2 id="happened">What happened</h2>
+<p>Can an AI agent negotiate a Treasury trade with another AI agent?</p>
+<p>Yes. It happened on 17 November 2026, the first of its kind.</p>
+<p>Real money. Real trade.</p>
+<p>Microsoft&rsquo;s Treasury agent negotiated a U.S. Treasury bill trade with BNY&rsquo;s agent. BNY calls it an industry first.</p>
+<p>Microsoft&rsquo;s Treasury team briefed its agent with trading instructions.</p>
+<p>The agent reached BNY over a secure gateway.</p>
+<p>BNY&rsquo;s systems checked the counterparty, the security, the size, the settlement terms and the prices available.</p>
+<p>Only then did the two agents trade offers and counteroffers, inside limits each firm had approved.</p>
+<p>When they agreed, each side sent its version of the terms separately to a central record.</p>
+<p>The record confirmed the two versions matched.</p>
+<p>Traders at both firms then approved.</p>
+<p>The trade was booked through each firm&rsquo;s own systems.</p>
+<p>The agents could not execute anything.</p>
+<p>And every step was kept on record: who took part, what was said, which checks ran, and who decided.</p>
+
+<h2 id="distinction">The distinction that matters</h2>
+<p>Negotiating and executing are not the same thing.</p>
+<p>Negotiating is where a dealer&rsquo;s time goes.</p>
+<p>It is the back and forth of quotes, messages and counteroffers.</p>
+<p>Executing is where the accountability sits.</p>
+<p>It moves money, creates an exposure, and ends up in the ledger.</p>
+<p>The pilot gave the first to the agents.</p>
+<p>It kept the second with people.</p>
+<p>I think that design choice is worth more attention than the technology.</p>
+<p class="key">Let the agent do the talking. Keep the deciding with a person.</p>
+
+<h2 id="trail">How it maps to the control trail</h2>
+<p>I read the pilot against the <a href="/#controls">five step trail</a> this site uses. This is my reading, not how BNY describes it.</p>
+<ul class="dots">
+<li><strong>Capture:</strong> the instructions and the prices the agent may use are fixed before the agent starts.</li>
+<li><strong>Match:</strong> both sides&rsquo; terms are compared independently on one central record.</li>
+<li><strong>Flag:</strong> counterparty, security, size, settlement and price are checked. The agents negotiate only after these pass.</li>
+<li><strong>Approve:</strong> a trader at each firm signs off.</li>
+<li><strong>Post:</strong> the trade is booked in the existing trading systems, not by the agent.</li>
+</ul>
+<p>The order differs from the trail: the checks ran before the negotiation, and the match after it. All five controls were still there.</p>
+<p>Each step leaves a record an auditor can check: the instructions, the matched terms, the check results, the approval and the booking.</p>
+<p>If an auditor can follow that trail, the agent is helping.</p>
+<p>If not, the agent is only adding speed, not control.</p>
+
+<h2 id="questions">Five questions before an agent negotiates for your Treasury</h2>
+<ol class="num">
+<li>Who gave the agent its instructions, and where are they recorded?</li>
+<li>Which limits can it not cross: price, size, counterparty, settlement?</li>
+<li>How do both sides confirm they agreed the same terms?</li>
+<li>Who approves before anything is executed?</li>
+<li>Could you rebuild the whole negotiation afterwards, message by message?</li>
+</ol>
+<p>If any answer is &ldquo;we would have to ask the vendor&rdquo;, the agent is not ready.</p>
+
+<h2 id="test">Where a corporate Treasury could test the same pattern</h2>
+<p class="tag">Examples only, not a full list</p>
+<ul class="dots">
+<li>Collecting and comparing quotes for a short term deposit</li>
+<li>Gathering foreign exchange (FX) quotes from panel banks for a routine trade</li>
+<li>Rolling over a money market placement with an existing bank</li>
+</ul>
+<p>In each case the pattern stays the same.</p>
+<p>The agent gathers and negotiates.</p>
+<p>A person approves.</p>
+<p>Your existing system books it.</p>
+<p>BNY says it will keep testing, and has named repo (sale and repurchase agreements) and other contract negotiations as possible later uses.</p>
+<p>For a Treasury reader, the lesson is already in this first trade: the agents negotiated, and people approved.</p>
+
+<h2 id="room">When to give the agent more room</h2>
+<p>Authority should follow evidence, not the other way round.</p>
+<p>Start with the agent proposing terms and a person approving every one.</p>
+<p>Compare the agent&rsquo;s terms with what your dealers would have achieved.</p>
+<p>Record every exception and why it happened.</p>
+<p>Then widen the limits step by step.</p>
+<p>Wider limits mean a wider price or size range to negotiate in. Execution stays with a person.</p>
+
+<div class="box">
+<div class="kicker">Try this</div>
+<p>Take one routine negotiation your team runs by email or chat, such as a deposit placement or an FX quote. Write down the answers to the five questions for it. If you cannot answer question five from your current records, fix that first. Before any agent is involved.</p>
+</div>
+<div class="follow">
+    <p>Written by Gopakumar Menon, CA, CPA, CTP. Follow on LinkedIn for each new piece.</p>
+    <a href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a><a href="/insights/">All Insights</a>
+  </div>
+
+  <div class="end">
+    <p>Facts as reported by BNY on 17 November 2026. This article is general discussion, not professional or investment advice. Views are the author&rsquo;s own and do not represent any employer.</p>
+  </div>
+
+</article>
+<aside class="art-rail" aria-label="In this article"><div class="rail-in">
+  <p class="rail-k">In this article</p>
+  <ol class="rail-toc"><li><a href="#happened">What happened</a></li><li><a href="#distinction">The distinction that matters</a></li><li><a href="#trail">How it maps to the control trail</a></li><li><a href="#questions">Five questions</a></li><li><a href="#test">Where to test the pattern</a></li><li><a href="#room">When to give the agent more room</a></li></ol>
+  <a class="rail-back" href="/insights/">&larr; All Insights</a>
+</div></aside>
+</div>
+</main>
+
+<footer>
+  <div class="wrap"><p>&copy; The AI Treasurer &middot; <a href="/">theaitreasurer.com</a></p></div>
+</footer>
+<script>(function(){var n=document.querySelector(".secnav");function m(){if(n)document.documentElement.style.setProperty("--sn-h",n.offsetHeight+"px")}m();addEventListener("resize",m);addEventListener("load",m)})();</script>
+<script>(function(){var ls=[].slice.call(document.querySelectorAll(".rail-toc a"));if(!ls.length||!("IntersectionObserver" in window))return;var hs=ls.map(function(a){return document.getElementById(a.getAttribute("href").slice(1))});function on(id){ls.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+id)})}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)on(e.target.id)})},{rootMargin:"0px 0px -70% 0px"});hs.forEach(function(h){if(h)io.observe(h)})})();</script>
+</body>
+</html>
