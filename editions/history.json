@@ -1,182 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-11-10",
-   "note_headline": "Money now moves around the clock, but Finance controls still keep office hours",
-   "note_opening": "Settlement has gone round-the-clock, and Treasury and Finance must now run controls on the same clock. Payments Canada launched its Real-Time Rail on 9 November 2026 with eight participants, including Bank of America, li",
-   "items": [
-    {
-     "headline": "Deutsche Bank and Ant Digital set out three-layer model for agentic payments",
-     "urls": [
-      "https://www.prnewswire.com/news-releases/deutsche-bank-and-ant-digital-technologies-release-white-paper-on-agentic-payments-in-wholesale-finance-302933156.html"
-     ],
-     "beat": "ai_agentic",
-     "summary": "Deutsche Bank and Ant Digital published agentic payments guidance with a three-layer architecture: intent and orchestration, control and authorisation, and settlement. Explicit limits, agent identity binding and Know Your Agent checks separate AI reasoning from execution, giving treasurers a template for approval design.",
-     "sources": [
-      {
-       "name": "PR Newswire",
-       "url": "https://www.prnewswire.com/news-releases/deutsche-bank-and-ant-digital-technologies-release-white-paper-on-agentic-payments-in-wholesale-finance-302933156.html"
-      }
-     ]
-    },
-    {
-     "headline": "Real-time bank APIs replace overnight batch files for intraday cash visibility",
-     "urls": [
-      "https://sysgenpro.com/finance-api-integration-for-treasury"
-     ],
-     "beat": "treasury_tech",
-     "summary": "Treasury teams are moving to API-first set-ups, swapping overnight file transfers for real-time bank connectivity. Event-driven feeds absorb high daily volumes asynchronously, while synchronous REST APIs handle instant payment approvals, giving intraday cash visibility and event-based reconciliation between TMS and ERP.",
-     "sources": [
-      {
-       "name": "Sysgenpro",
-       "url": "https://sysgenpro.com/finance-api-integration-for-treasury"
-      }
-     ]
-    },
-    {
-     "headline": "Multiliquid Treasury offers 24/7 instant redemption on tokenised T-bill yields",
-     "urls": [
-      "https://www.prnewswire.com/news-releases/multiliquid-treasury-launches-247-t-bill-yield-and-instant-settlement-for-corporate-cash-302931080.html"
-     ],
-     "beat": "cash",
-     "summary": "On 5 November, Multiliquid Treasury launched institutional cash management that lets corporate treasuries earn 3-month U.S. Treasury Bill yields on idle balances, with 24/7 instant redemption through tokenised assets. It targets the cash drag created by money market fund business-day cut-offs.",
-     "sources": [
-      {
-       "name": "PR Newswire",
-       "url": "https://www.prnewswire.com/news-releases/multiliquid-treasury-launches-247-t-bill-yield-and-instant-settlement-for-corporate-cash-302931080.html"
-      }
-     ]
-    },
-    {
-     "headline": "Canada's Real-Time Rail goes live with eight institutions and 24/7 settlement",
-     "urls": [
-      "https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy",
-      "https://tradeinformer.com/payments/canada-launches-real-time-rail"
-     ],
-     "beat": "payments",
-     "summary": "On 9 November 2026, Payments Canada launched the Real-Time Rail, offering instant exchange, clearing and settlement 24/7 on ISO 20022. Eight participants, including Bank of America, went live, with confirmation of payee and other fraud controls mandatory from day one.",
-     "sources": [
-      {
-       "name": "Payments Canada",
-       "url": "https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy"
-      },
-      {
-       "name": "TradeInformer",
-       "url": "https://tradeinformer.com/payments/canada-launches-real-time-rail"
-      }
-     ]
-    },
-    {
-     "headline": "EY and COSO map AI failure modes onto existing SOX controls",
-     "urls": [
-      "https://mlflow.org/articles/sox-compliance-ai/"
-     ],
-     "beat": "regulation",
-     "summary": "EY and COSO map AI risks, from hallucination and drift to prompt injection and agent over-autonomy, onto existing ICFR, with no new SOX standard. CFOs must classify uses, document validation, split configuration from approval and keep point-in-time logs of inputs, prompts and reviewer identity.",
-     "sources": [
-      {
-       "name": "MLflow",
-       "url": "https://mlflow.org/articles/sox-compliance-ai/"
-      }
-     ]
-    },
-    {
-     "headline": "MillTech survey finds corporate FX hedge ratios down to 46%",
-     "urls": [
-      "https://www.reuters.com/business/us-uk-companies-cut-fx-hedges-lowest-since-2024-survey-shows-2026-09-18/"
-     ],
-     "beat": "risk",
-     "summary": "On 18 September 2026, MillTech's survey showed US and UK companies cutting FX hedge ratios to 46%, the lowest since tracking began in Q1 2024. Average hedge length fell to 5.7 months, and nearly half of firms hedge only 26-50% of exposures.",
-     "sources": [
-      {
-       "name": "Reuters",
-       "url": "https://www.reuters.com/business/us-uk-companies-cut-fx-hedges-lowest-since-2024-survey-shows-2026-09-18/"
-      }
-     ]
-    },
-    {
-     "headline": "PNC Bank opens incoming USDC payments for corporate clients via Coinbase",
-     "urls": [
-      "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
-      "https://www.pymnts.com/news/banking/2026/pnc-opens-usdc-stablecoin-payments-to-corporate-clients/"
-     ],
-     "beat": "digital",
-     "summary": "On 9 November 2026, PNC Bank launched incoming USDC payments for corporate and institutional clients in a Coinbase-powered pilot. Transfers on Ethereum convert automatically to U.S. dollars at a 1-to-1 rate into designated accounts, speeding cross-border receipts under full banking protections.",
-     "sources": [
-      {
-       "name": "PNC Bank Newsroom",
-       "url": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients"
-      },
-      {
-       "name": "PYMNTS",
-       "url": "https://www.pymnts.com/news/banking/2026/pnc-opens-usdc-stablecoin-payments-to-corporate-clients/"
-      }
-     ]
-    },
-    {
-     "headline": "Eurozone inflation hits 4.0%, making a December ECB hike highly probable",
-     "urls": [
-      "https://www.investing.com/news/economy-news/euro-zone-inflation-rises-to-threeyear-high-4998098",
-      "https://global.morningstar.com/en-eu/economy/eurozone-inflation-rises-4-boosting-case-ecb-interest-rate-hike-december"
-     ],
-     "beat": "markets_macro",
-     "summary": "On 4 November, eurozone inflation rose to 4.0% in October from 3.8% in September on food and energy costs. Markets price roughly 85% odds of a 25bp ECB hike on 17 December and two to three more hikes, potentially taking the deposit rate near 3.25%.",
-     "sources": [
-      {
-       "name": "Reuters/Investing.com",
-       "url": "https://www.investing.com/news/economy-news/euro-zone-inflation-rises-to-threeyear-high-4998098"
-      },
-      {
-       "name": "Morningstar Europe",
-       "url": "https://global.morningstar.com/en-eu/economy/eurozone-inflation-rises-4-boosting-case-ecb-interest-rate-hike-december"
-      }
-     ]
-    },
-    {
-     "headline": "Strong US jobs data lift December Fed hike odds to about 80%",
-     "urls": [
-      "https://www.streetinsider.com/Reuters/Fed+policymakers+consider+rate+hike+after+strong+jobs+report/27304646.html"
-     ],
-     "beat": "markets_macro",
-     "summary": "On 6 November, a stronger-than-expected US jobs report showed 165,000 new positions and 4.1% unemployment. Markets repriced December hike odds to about 80% from 67% on Thursday, with inflation still above the Fed's 2% target and policymakers wanting more data.",
-     "sources": [
-      {
-       "name": "Reuters/Street Insider",
-       "url": "https://www.streetinsider.com/Reuters/Fed+policymakers+consider+rate+hike+after+strong+jobs+report/27304646.html"
-      }
-     ]
-    },
-    {
-     "headline": "FATF launches targeted review of virtual asset standards implementation",
-     "urls": [
-      "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
-     ],
-     "beat": "financial_crime",
-     "summary": "On 30 October 2026, the FATF Plenary agreed a targeted review of jurisdictions with materially important virtual asset sectors, reporting initial results in June 2027 and more in October 2027. It addresses uneven implementation of VASP standards that criminal networks exploit.",
-     "sources": [
-      {
-       "name": "FATF",
-       "url": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/launch-targeted-review-strengthen-standards-virtual-assets.html"
-      }
-     ]
-    },
-    {
-     "headline": "ISSB opens 120-day consultation on nature-related disclosure Practice Statement",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
-     ],
-     "beat": "reporting",
-     "summary": "In October 2026, the ISSB opened a 120-day public consultation on a proposed Practice Statement for nature-related disclosures. It would complement IFRS S1 and S2 with guidance on governance, strategy, risk management, and nature-related metrics and targets, widening reporting scope for Finance.",
-     "sources": [
-      {
-       "name": "IFRS",
-       "url": "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
-      }
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-11-11",
    "note_headline": "Agent autonomy in Finance is a standing control cost, not a launch project",
    "note_opening": "Autonomy in Treasury and Finance is becoming a design choice that carries a running cost. JPMorgan frames agentic AI as 'fly-by-wire', with humans setting boundaries and agents adjusting within them, while Trovata on Ama",
@@ -2130,6 +1954,206 @@
       {
        "name": "IAASB",
        "url": "https://www.iaasb.org/news-events/2026-11/iaasb-publishes-first-guide-quality-management-ai-enabled-technological-tools"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-25",
+   "note_headline": "AI now negotiates Treasury trades, and enforcement makes human sign-off non-negotiable",
+   "note_opening": "AI agents now negotiate trades, yet enforcement is making human sign-off the control that matters. BNY and Microsoft let agents negotiate a US Treasury bill trade on 17 November 2026, with traders approving terms before ",
+   "items": [
+    {
+     "headline": "BNY and Microsoft agents negotiate a US Treasury bill trade",
+     "urls": [
+      "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-and-microsoft-complete-first-agentic-negotiation-of-a-us-treasury-trade.html"
+     ],
+     "beat": "ai_agentic",
+     "summary": "On 17 November 2026, BNY and Microsoft completed an industry-first pilot in which AI agents negotiated a US Treasury bill trade within predefined parameters. Human traders reviewed and approved the terms before execution through existing systems, a template for supervised agentic dealing.",
+     "sources": [
+      {
+       "name": "BNY Newsroom",
+       "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-and-microsoft-complete-first-agentic-negotiation-of-a-us-treasury-trade.html"
+      }
+     ]
+    },
+    {
+     "headline": "Embat uses JPMorgan's BAS API to connect bank accounts in seconds",
+     "urls": [
+      "https://thepaypers.com/fintech/news/embat-integrates-jp-morgan-payments-bas-api-for-bank-connectivity"
+     ],
+     "beat": "treasury_tech",
+     "summary": "On 4 November 2026, Embat deployed JPMorgan's new Banking Authorization Service (BAS) API, letting corporate clients authenticate and link JPMorgan accounts to its platform in seconds without IT. Real-time data flows to ERP systems, cutting onboarding friction for Treasury.",
+     "sources": [
+      {
+       "name": "The Paypers",
+       "url": "https://thepaypers.com/fintech/news/embat-integrates-jp-morgan-payments-bas-api-for-bank-connectivity"
+      }
+     ]
+    },
+    {
+     "headline": "DBS and Kinexys enable 24/7 USD tokenised deposit transfers across US and Singapore",
+     "urls": [
+      "https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers"
+     ],
+     "beat": "cash",
+     "summary": "On 16 November 2026, DBS and JPMorgan's Kinexys launched interoperability for instant USD transfers between blockchain-based institutional accounts in the US and Singapore, weekends included. Multinationals can deploy on-chain USD liquidity on demand 24/7, extending cash positioning beyond banking hours.",
+     "sources": [
+      {
+       "name": "DBS Newsroom",
+       "url": "https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers"
+      }
+     ]
+    },
+    {
+     "headline": "HKMA and SWIFT explore tokenised deposits linked to Project Ensemble",
+     "urls": [
+      "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261116-4/"
+     ],
+     "beat": "payments",
+     "summary": "On 16 November 2026, the Hong Kong Monetary Authority deepened work with SWIFT on multi-currency tokenised deposits for cross-border transactions. Bank of China (Hong Kong), Standard Chartered and HSBC are helping connect the SWIFT ledger with Project Ensemble's settlement layer, shaping future payment routes.",
+     "sources": [
+      {
+       "name": "Hong Kong Monetary Authority",
+       "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261116-4/"
+      }
+     ]
+    },
+    {
+     "headline": "PCAOB launches Super Intelligence Unit to investigate AI misconduct in audits",
+     "urls": [
+      "https://pcaobus.org/news-events/news-releases/news-release-detail/pcaob-announces-new-specialized-units-in-enforcement-division",
+      "https://www.cpapracticeadvisor.com/2026/11/11/pcaob-creates-five-units-within-enforcement-division/193684/"
+     ],
+     "beat": "regulation",
+     "summary": "On 11 November 2026, the PCAOB created a Super Intelligence Unit in its Enforcement Division to investigate AI-related audit risks and misconduct without discouraging appropriate adoption. It will also build its own AI enforcement tools, so controllers should expect sharper scrutiny of AI-assisted work.",
+     "sources": [
+      {
+       "name": "PCAOB",
+       "url": "https://pcaobus.org/news-events/news-releases/news-release-detail/pcaob-announces-new-specialized-units-in-enforcement-division"
+      },
+      {
+       "name": "CPA Practice Advisor",
+       "url": "https://www.cpapracticeadvisor.com/2026/11/11/pcaob-creates-five-units-within-enforcement-division/193684/"
+      }
+     ]
+    },
+    {
+     "headline": "US Treasury cleared repo reaches $7.9 trillion, sponsored share a record 30.9%",
+     "urls": [
+      "https://www.isda.org/2026/11/24/isda-actrix-us-treasury-repo-market-clearing-indicators-october-2026/"
+     ],
+     "beat": "risk",
+     "summary": "On 24 November 2026, ISDA-Actrix reported cleared repo average daily volume of $7.9 trillion in October 2026, up 3.4% month-on-month. Sponsored client repo reached $2.5 trillion, a record 30.9% share, reflecting counterparty risk management and lower balance-sheet demand after the SEC Treasury clearing mandate.",
+     "sources": [
+      {
+       "name": "ISDA-Actrix US Treasury Repo Market Clearing Indicators",
+       "url": "https://www.isda.org/2026/11/24/isda-actrix-us-treasury-repo-market-clearing-indicators-october-2026/"
+      }
+     ]
+    },
+    {
+     "headline": "HKMA extends Project Ensemble pilot to 24/7 tokenised deposit settlement",
+     "urls": [
+      "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261102-5/"
+     ],
+     "beat": "digital",
+     "summary": "On 2 November, the Hong Kong Monetary Authority widened Project Ensemble's pilot to support 24/7 settlement of tokenised deposit transactions in tokenised central bank money. With 12 banks and 20 industry partners, it lets real-value Treasury operations run outside traditional system hours.",
+     "sources": [
+      {
+       "name": "Hong Kong Monetary Authority",
+       "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261102-5/"
+      }
+     ]
+    },
+    {
+     "headline": "ECB sources see 25bp December hike as near-certain, then a pause",
+     "urls": [
+      "https://www.streetinsider.com/Reuters/ECB+flags+December+hike+but+sees+yield+rise+hitting+growth/27254434.html",
+      "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "On 29 October, ECB sources said a 25bp rise on 17 December is all but certain after recent energy-price increases. Policymakers expect to pause afterwards because sharp gains in market borrowing costs could weigh on growth, framing euro funding and hedging plans.",
+     "sources": [
+      {
+       "name": "Reuters/Street Insider",
+       "url": "https://www.streetinsider.com/Reuters/ECB+flags+December+hike+but+sees+yield+rise+hitting+growth/27254434.html"
+      },
+      {
+       "name": "ECB Official Press Release",
+       "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html"
+      }
+     ]
+    },
+    {
+     "headline": "Markets price 93% odds of a December Fed hike as dollar holds firm",
+     "urls": [
+      "https://kalshi.com/economics/fed-rate-odds",
+      "https://finance.yahoo.com/quote/DX-Y.NYB/history/"
+     ],
+     "beat": "markets_macro",
+     "summary": "As of 25 November, prediction markets price a 93% chance of a 25bp Fed increase on 9 December. The dollar index sits near 103.85, close to a 19-month peak, after a 1.9% monthly gain, keeping pressure on dollar funding costs and FX hedging budgets.",
+     "sources": [
+      {
+       "name": "Kalshi Prediction Market",
+       "url": "https://kalshi.com/economics/fed-rate-odds"
+      },
+      {
+       "name": "Yahoo Finance",
+       "url": "https://finance.yahoo.com/quote/DX-Y.NYB/history/"
+      }
+     ]
+    },
+    {
+     "headline": "OFAC designates Iranian exchange houses in Operation Economic Outcast",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0699",
+      "https://ofac.treasury.gov/recent-actions/20261123"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 23 November 2026, OFAC designated over two dozen Iranian exchange houses, front companies and personnel to disrupt Iran's global shadow banking networks under Operation Economic Outcast. Treasury teams should expect refreshed screening lists and closer scrutiny of counterparties linked to sanctions evasion.",
+     "sources": [
+      {
+       "name": "U.S. Department of the Treasury",
+       "url": "https://home.treasury.gov/news/press-releases/sb0699"
+      },
+      {
+       "name": "OFAC Recent Actions",
+       "url": "https://ofac.treasury.gov/recent-actions/20261123"
+      }
+     ]
+    },
+    {
+     "headline": "OCC fines Bank of America record $750 million over BSA/AML failures",
+     "urls": [
+      "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-89.html"
+     ],
+     "beat": "financial_crime",
+     "summary": "On 11 November 2026, the OCC assessed Bank of America a record $750 million civil penalty for systematic transaction monitoring gaps, late suspicious activity reports covering billions of dollars, and thin BSA/AML staffing and training over years. Banking partners' compliance weaknesses can become corporate operational risk.",
+     "sources": [
+      {
+       "name": "Office of the Comptroller of the Currency",
+       "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-89.html"
+      }
+     ]
+    },
+    {
+     "headline": "IASB closes IFRS 16 review and plans targeted lease accounting fixes",
+     "urls": [
+      "https://www.ifrs.org/news-and-events/news/2026/11/pir-ifrs-16-concludes-identifies-targeted-improvements/",
+      "https://www.ifrs.org/projects/work-plan/leases-targeted-improvements-amendments-to-ifrs-16/"
+     ],
+     "beat": "reporting",
+     "summary": "On 23 November 2026, the IASB completed its post-implementation review of IFRS 16 Leases, finding the standard works as intended. Targeted improvements will aim to make reporting more useful and cut lessee application costs without compromising information quality, welcome news for controllers.",
+     "sources": [
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/news-and-events/news/2026/11/pir-ifrs-16-concludes-identifies-targeted-improvements/"
+      },
+      {
+       "name": "IFRS Projects",
+       "url": "https://www.ifrs.org/projects/work-plan/leases-targeted-improvements-amendments-to-ifrs-16/"
       }
      ]
     }

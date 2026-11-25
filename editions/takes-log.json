@@ -2432,6 +2432,79 @@
     "cost_usd": 0.3467
    },
    "edition_cost_usd": 1.958
+  },
+  {
+   "date": "2026-11-25",
+   "items": [
+    {
+     "headline": "BNY and Microsoft agents negotiate a US Treasury bill trade",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ECB sources see 25bp December hike as near-certain, then a pause",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "OCC fines Bank of America record $750 million over BSA/AML failures",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Embat uses JPMorgan's BAS API to connect bank accounts in seconds",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "DBS and Kinexys enable 24/7 USD tokenised deposit transfers across US and Singapore",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "HKMA and SWIFT explore tokenised deposits linked to Project Ensemble",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "PCAOB launches Super Intelligence Unit to investigate AI misconduct in audits",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "US Treasury cleared repo reaches $7.9 trillion, sponsored share a record 30.9%",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "HKMA extends Project Ensemble pilot to 24/7 tokenised deposit settlement",
+     "status": "dropped",
+     "lens": "Payments & operations",
+     "reasons": "The focus largely repeats the news summary (24/7 settlement of tokenised deposits in tokenised central bank money, treasury use outside conventional hours) and adds no new point. It also overstates: saying treasury uses are 'no longer limited to conventional operating hours' ignores that this is a c"
+    },
+    {
+     "headline": "Markets price 93% odds of a December Fed hike as dollar holds firm",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "OFAC designates Iranian exchange houses in Operation Economic Outcast",
+     "status": "published",
+     "lens": "Regulation & compliance"
+    },
+    {
+     "headline": "IASB closes IFRS 16 review and plans targeted lease accounting fixes",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.3878,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.3604
+   },
+   "edition_cost_usd": 2.4027
   }
  ]
 }
