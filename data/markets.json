@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-24T23:54:12Z",
+ "generated_utc": "2026-11-25T08:30:55Z",
  "policy": [
   {
    "bank": "Fed",
@@ -10,8 +10,8 @@
    "value": "3.75–4.00%",
    "change_bp": 25,
    "since": "2026-09-17",
-   "checked": "2026-11-24",
-   "asof": "2026-11-24",
+   "checked": "2026-11-25",
+   "asof": "2026-11-25",
    "stale": false
   },
   {
@@ -23,8 +23,8 @@
    "value": "2.50 / 2.65%",
    "change_bp": 25,
    "since": "2026-09-10",
-   "checked": "2026-11-24",
-   "asof": "2026-11-24",
+   "checked": "2026-11-25",
+   "asof": "2026-11-25",
    "stale": false
   },
   {
@@ -36,8 +36,8 @@
    "value": "4.00%",
    "change_bp": 25,
    "since": "2026-11-05",
-   "checked": "2026-11-24",
-   "asof": "2026-11-24",
+   "checked": "2026-11-25",
+   "asof": "2026-11-25",
    "stale": false
   },
   {
@@ -103,9 +103,9 @@
   },
   {
    "name": "€STR",
-   "value": "2.443%",
+   "value": "2.444%",
    "change_bp": 0,
-   "asof": "2026-11-23",
+   "asof": "2026-11-24",
    "source_name": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",
    "id": "estr",
