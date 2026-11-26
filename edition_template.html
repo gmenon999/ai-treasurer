@@ -1521,6 +1521,8 @@
     section#top.intro h1 { margin: 14px 0 30px; }
     section#top.intro .lede { margin-bottom: 40px; }
     section#top.intro .hero-by { margin-bottom: 44px; }
+    /* fill the whole phone screen under the menu, so Insights starts on the first scroll */
+    section#top.intro { min-height: calc(100vh - var(--chrome-h, 113px)); min-height: calc(100lvh - var(--chrome-h, 113px)); align-items: center; }
   }
   /* About: short headline, experience line underneath (26 Nov 2026) */
   .creds-head h2 { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 12px; max-width: 24ch; }
