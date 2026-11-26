@@ -1483,6 +1483,38 @@
   /* About: Follow button gets clear space, no longer sits on the divider */
   .creds-head h2 { margin-bottom: 24px; }
   .creds-head .li-btn { margin: 0 0 32px; }
+  /* Home: agents figures and bars, and tap-a-step control trail (26 Nov 2026) */
+  .hag2-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 72px; align-items: center; }
+  .hag2 .am-line { margin: 0 0 22px; }
+  .hag2-big { display: grid; grid-template-columns: repeat(2, max-content); gap: 0 40px; margin: 0; }
+  .hag2-big dt { font-family: var(--serif); font-weight: 700; font-size: clamp(48px, 6vw, 72px); line-height: 1; color: var(--white); }
+  .hag2-big dd { margin: 6px 0 0; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
+  .hag2-bars { display: grid; gap: 12px; margin-top: 30px; }
+  .hag2-bar { display: grid; grid-template-columns: 7.5em minmax(0, 1fr) 2em; gap: 14px; align-items: center; color: var(--on-dark); text-decoration: none; font-size: 15px; min-height: 32px; }
+  .hag2-bar .bt { height: 8px; background: rgba(255,255,255,0.14); }
+  .hag2-bar .bt i { display: block; height: 100%; background: var(--gold-light); min-width: 6px; }
+  .hag2-bar .bn { text-align: right; font-weight: 700; color: var(--white); }
+  .hag2-bar:hover .bl, .hag2-bar:focus-visible .bl { color: var(--white); text-decoration: underline; }
+  .ctt-hint { margin: -14px 0 14px; font-size: 14.5px; color: var(--on-dark-soft); }
+  .ctt-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .ctt-b { appearance: none; border: 0; padding: 12px 12px 13px; text-align: left; cursor: pointer; background: rgba(255,255,255,0.12); color: var(--white); font: 700 17px/1.2 var(--serif); min-height: 44px; }
+  .ctt-b .n { display: block; margin-bottom: 4px; font: 700 11px/1 var(--sans); letter-spacing: 0.16em; color: var(--gold-light); }
+  .ctt-b:hover { background: rgba(255,255,255,0.2); }
+  .ctt-b[aria-pressed="true"] { background: var(--gold-light); color: var(--navy-deep); }
+  .ctt-b[aria-pressed="true"] .n { color: var(--navy-deep); }
+  .ctt-b:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+  .ctt-p { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 48px; margin: 14px 0 26px; padding: 22px 24px; border-top: 3px solid var(--gold-light); background: rgba(255,255,255,0.06); }
+  .ctt-p[hidden] { display: none; }
+  .ctt-p h3 { margin: 0 0 8px; font: 700 12px/1.3 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
+  .ctt-p p { margin: 0; font-family: var(--serif); font-size: clamp(19px, 2vw, 23px); line-height: 1.35; color: var(--white); }
+  .ctt-p p.q { font-style: italic; }
+  @media (max-width: 900px) { .hag2-grid { grid-template-columns: 1fr; gap: 32px; } }
+  @media (max-width: 700px) {
+    .ctt-b { padding: 10px 6px 11px; font-size: 13px; }
+    .ctt-b .n { font-size: 10px; letter-spacing: 0.1em; }
+    .ctt-p { grid-template-columns: 1fr; padding: 18px 16px; }
+    .hag2-big { gap: 0 28px; }
+  }
   /* About: short headline, experience line underneath (26 Nov 2026) */
   .creds-head h2 { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 12px; max-width: 24ch; }
   .creds-sub { margin: 0 0 28px; font-size: 19px; line-height: 1.5; color: var(--white); max-width: 46ch; }
@@ -2029,32 +2061,58 @@
   </section>
 
   <!-- ===== WHERE AGENTS FIT (Home, compact) ===== -->
-  <section class="hag hag-min" id="agents" data-view="top" aria-labelledby="hag-h">
-    <div class="wrap">
-      <div class="kicker">Where agents fit</div>
-      <h2 id="hag-h">Agents do the work; people keep the authority.</h2>
-      <div class="am-bar" role="list">
-        <a role="listitem" class="am-seg" style="flex:11" href="#ag-map" data-agf="treasury"><b>Treasury</b><span>11 agents</span></a>
-        <a role="listitem" class="am-seg" style="flex:10" href="#ag-map" data-agf="finance"><b>Finance</b><span>10 agents</span></a>
-        <a role="listitem" class="am-seg am-sm" style="flex:3" href="#ag-map" data-agf="across" aria-label="Across both: 1 agent"><b>Both</b><span>1</span></a>
+  <section class="hag hag-min hag2" id="agents" data-view="top" aria-labelledby="hag-h">
+    <div class="wrap hag2-grid">
+      <div>
+        <div class="kicker">Where agents fit</div>
+        <h2 id="hag-h">Agents do the work; people keep the authority.</h2>
+        <p class="am-line">22 agents across 124 functions. None acts alone: each reports to a named person.</p>
+        <a class="am-go" href="#agentic">See every agent<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
       </div>
-      <p class="am-line">22 agents across 124 functions. None acts alone: each reports to a named person.</p>
-      <a class="am-go" href="#agentic">See every agent<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+      <div class="hag2-figs">
+        <dl class="hag2-big"><div><dt>22</dt><dd>agents</dd></div><div><dt>124</dt><dd>functions</dd></div></dl>
+        <div class="hag2-bars" role="list" aria-label="Agents by area">
+          <a role="listitem" class="hag2-bar" href="#ag-map" data-agf="treasury"><span class="bl">Treasury</span><span class="bt"><i style="width:50%"></i></span><span class="bn">11</span></a>
+          <a role="listitem" class="hag2-bar" href="#ag-map" data-agf="finance"><span class="bl">Finance</span><span class="bt"><i style="width:45.45%"></i></span><span class="bn">10</span></a>
+          <a role="listitem" class="hag2-bar" href="#ag-map" data-agf="across"><span class="bl">Across both</span><span class="bt"><i style="width:4.55%"></i></span><span class="bn">1</span></a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== HOW CONTROL WORKS (Home, compact) ===== -->
+  <!-- ===== HOW CONTROL WORKS (Home, compact): tap a step ===== -->
   <section class="ct" id="trail" data-view="top" aria-labelledby="ct-h">
     <div class="wrap">
       <div class="kicker">How control works</div>
       <h2 id="ct-h">Every automated step leaves a trail an auditor can follow.</h2>
-      <ol class="ct-chain">
-        <li><b>Capture</b><span>Keep the source</span></li>
-        <li><b>Match</b><span>Pair with books and bank</span></li>
-        <li><b>Flag</b><span>Raise every difference</span></li>
-        <li><b>Approve</b><span>A named person signs off</span></li>
-        <li><b>Post</b><span>Record it with the evidence</span></li>
-      </ol>
+      <p class="ctt-hint">Choose a step.</p>
+      <div class="ctt-steps" role="group" aria-label="The five steps of the control trail">
+        <button type="button" class="ctt-b" id="ctt-b0" aria-pressed="true" aria-controls="ctt-p0"><span class="n">01</span>Capture</button>
+        <button type="button" class="ctt-b" id="ctt-b1" aria-pressed="false" aria-controls="ctt-p1"><span class="n">02</span>Match</button>
+        <button type="button" class="ctt-b" id="ctt-b2" aria-pressed="false" aria-controls="ctt-p2"><span class="n">03</span>Flag</button>
+        <button type="button" class="ctt-b" id="ctt-b3" aria-pressed="false" aria-controls="ctt-p3"><span class="n">04</span>Approve</button>
+        <button type="button" class="ctt-b" id="ctt-b4" aria-pressed="false" aria-controls="ctt-p4"><span class="n">05</span>Post</button>
+      </div>
+      <div class="ctt-p" id="ctt-p0" role="region" aria-labelledby="ctt-b0">
+        <div><h3>The agent</h3><p>Keep the source</p></div>
+        <div><h3>The auditor asks</h3><p class="q">Where did this data come from, and is all of it here?</p></div>
+      </div>
+      <div class="ctt-p" id="ctt-p1" role="region" aria-labelledby="ctt-b1" hidden>
+        <div><h3>The agent</h3><p>Pair with books and bank</p></div>
+        <div><h3>The auditor asks</h3><p class="q">Why were these two items paired, and by which version?</p></div>
+      </div>
+      <div class="ctt-p" id="ctt-p2" role="region" aria-labelledby="ctt-b2" hidden>
+        <div><h3>The agent</h3><p>Raise every difference</p></div>
+        <div><h3>The auditor asks</h3><p class="q">What didn&#39;t match, and how long has it been open?</p></div>
+      </div>
+      <div class="ctt-p" id="ctt-p3" role="region" aria-labelledby="ctt-b3" hidden>
+        <div><h3>A person</h3><p>A named person signs off</p></div>
+        <div><h3>The auditor asks</h3><p class="q">Who accepted it, and were they independent?</p></div>
+      </div>
+      <div class="ctt-p" id="ctt-p4" role="region" aria-labelledby="ctt-b4" hidden>
+        <div><h3>The agent</h3><p>Record it with the evidence</p></div>
+        <div><h3>The auditor asks</h3><p class="q">Does what was recorded trace back to source?</p></div>
+      </div>
       <a class="am-go" href="#controls">See the worked cases<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
     </div>
   </section>
@@ -3298,6 +3356,17 @@ function aitHomeTrail(){
   sec.classList.add('ht-on'); host.hidden = false; render();
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aitHomeTrail); else aitHomeTrail();
+</script>
+<script>
+/* Home control trail: tap a step to see who does it and what the auditor asks. */
+(function(){
+  var bs = document.querySelectorAll('.ctt-b');
+  bs.forEach(function(b, i){
+    b.addEventListener('click', function(){
+      bs.forEach(function(x, j){ x.setAttribute('aria-pressed', String(j === i)); var p = document.getElementById('ctt-p' + j); if (p) p.hidden = j !== i; });
+    });
+  });
+})();
 </script>
 <script>
 /* Home agent links: switch to Agentic Automation, then open that agent's card (the view script handles the switch). */
