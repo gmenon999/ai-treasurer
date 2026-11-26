@@ -1483,6 +1483,9 @@
   /* About: Follow button gets clear space, no longer sits on the divider */
   .creds-head h2 { margin-bottom: 24px; }
   .creds-head .li-btn { margin: 0 0 32px; }
+  /* About: short headline, experience line underneath (26 Nov 2026) */
+  .creds-head h2 { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 12px; max-width: 24ch; }
+  .creds-sub { margin: 0 0 28px; font-size: 19px; line-height: 1.5; color: var(--white); max-width: 46ch; }
 
   /* ===================== Home upgrade (Oct 2026) ===================== */
   /* Contrast pass: text 12:1 or better on navy and navy-deep; muted text and accents 7:1 or better.
@@ -1870,7 +1873,7 @@
   .dd-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; }
   .dd-stage { position: relative; border-top: 3px solid var(--gold-light); padding-top: 16px; }
   .dd-stage:not(:last-child)::after { content: "\2192"; position: absolute; right: -32px; top: 10px; font-size: 22px; color: var(--gold-light); }
-  .dd-n { font-family: var(--serif); color: var(--gold-light); margin-right: 10px; }
+  .dd-n { display: block; margin: 0 0 6px; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
   .dd-stage h3 { font-family: var(--serif); font-size: 22px; line-height: 1.2; margin: 2px 0 12px; }
   .dd details { border-bottom: 1px solid rgba(255,255,255,0.14); }
   .dd summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; font-size: 16px; line-height: 1.4; color: var(--white); }
@@ -2014,11 +2017,11 @@
       <div class="kicker">Decide before you deploy</div>
       <h2 id="dd-h">The questions your Board will ask about AI. Answer them first.</h2>
       <ol class="dd-flow">
-        <li class="dd-stage"><h3><span class="dd-n">1</span>Is it worth solving?</h3>
+        <li class="dd-stage"><h3><span class="dd-n">Question 1</span>Is it worth solving?</h3>
           <details><summary>What is this problem really costing you?</summary><p class="dd-a">Put a number on it: cash tied up, hours spent, errors, fees or risk. Name the person who owns it.</p><p class="dd-t">If the cost is small, the problem can wait.</p></details><details><summary>Do you know today&rsquo;s numbers?</summary><p class="dd-a">Set the baseline before anything changes: days to close the books, payments corrected or returned, hours spent on the cash forecast, idle cash and bank fees. Note who reports each figure and how often.</p><p class="dd-t">No baseline, no proof of value.</p></details><details><summary>Would a simpler fix do the job?</summary><p class="dd-a">Check whether a simpler process, a clearer policy or one more control would solve the problem before any technology is bought.</p><p class="dd-t">Automating a messy process only makes the mess faster.</p></details><details><summary>Would you sign off on this data?</summary><p class="dd-a">Check that bank, ledger and forecast data is complete, reconciled and owned.</p><p class="dd-t">If you would not sign a report built on it today, do not build on it tomorrow.</p></details></li>
-        <li class="dd-stage"><h3><span class="dd-n">2</span>What is the right tool?</h3>
+        <li class="dd-stage"><h3><span class="dd-n">Question 2</span>What is the right tool?</h3>
           <details><summary>Why fix the process and data first?</summary><p class="dd-a">Before buying any tool, remove steps that add no value, use one way of working across entities and banks, and clean the master data, such as supplier and bank account records.</p><p class="dd-t">The cheapest fix is often the best one.</p></details><details><summary>When does Rule Based Automation beat AI?</summary><p class="dd-a">Use for predictable, high volume work. Consistent, testable and easy to audit.</p><p class="dd-t">If a rule can do it, use a rule.</p></details><details><summary>Where is AI worth paying for?</summary><p class="dd-a">Use where the work needs interpretation: free text, PDFs, emails or unusual patterns. A person reviews the output.</p><p class="dd-t">Pay for judgement only where rules fall short.</p></details><details><summary>What does it take to trust AI Agents?</summary><p class="dd-a">An agent carries a task from start to finish across several systems, for example collecting remittances, matching them and preparing the entry for approval. Use one only where the steps change from case to case. It works under its own login, within set limits, and a named person approves its output.</p><p class="dd-t">The more an agent can do, the tighter the controls must be.</p></details></li>
-        <li class="dd-stage"><h3><span class="dd-n">3</span>How will you prove it?</h3>
+        <li class="dd-stage"><h3><span class="dd-n">Question 3</span>How will you prove it?</h3>
           <details><summary>How small should a pilot be?</summary><p class="dd-a">Test on a small, contained part of the business first, for example five bank accounts for three months, and compare the results with today&rsquo;s baseline.</p><p class="dd-t">Small enough to stop, large enough to learn.</p></details><details><summary>When does saved time become cash?</summary><p class="dd-a">Track the same baseline figures every month. Report cash savings, such as lower fees or fewer contractor days, separately from time released, and decide in advance where that time will go. Track errors and exceptions too, so speed never comes at the cost of control.</p><p class="dd-t">Capacity is not cash until spending falls.</p></details><details><summary>Who decides to scale or stop?</summary><p class="dd-a">Before the pilot starts, agree the results that would justify scaling up, redesigning or stopping, and who makes the call. At the end, decide against those results, not against how the pilot feels.</p><p class="dd-t">Set the bar for success before the pilot starts.</p></details></li>
       </ol>
       <p class="dd-key"><em>Choose the simplest effective solution, with clear human accountability.</em></p>
@@ -2661,7 +2664,8 @@
       <div class="creds-head">
         <div class="kicker">About</div>
         <div class="advisor"><img src="/img/ait-gopakumar-headshot.jpg" alt="Gopakumar Menon, CA, CPA, CTP" width="96" height="96" loading="lazy"><div><b>Gopakumar Menon, CA, CPA, CTP</b><span>Senior Treasury and Finance Leader, specialising in AI and Financial Controls</span></div></div>
-        <h2 id="work-top">Two decades in Financial Controls, Financial Reporting and Treasury, with a keen interest in AI.</h2>
+        <h2 id="work-top">Modernising Treasury and Finance through Automation and AI.</h2>
+        <p class="creds-sub">Two decades in Financial Controls, Financial Reporting and Treasury.</p>
         <a class="li-btn" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Connect on LinkedIn</a>
       </div>
       <div class="creds-row">

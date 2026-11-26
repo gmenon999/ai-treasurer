@@ -58,21 +58,20 @@
   h1 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 48px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 10px; }
   .lede { margin: 0 0 34px; font-size: 18px; color: var(--on-dark); }
   .ins-list { list-style: none; margin: 0; padding: 0; }
-  .ins-img { display: block; grid-column: 2; margin-top: 22px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
+  .ins-img { display: block; grid-column: 1; margin-top: 22px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
   .ins-img img { display: block; width: 100%; height: auto; transition: transform .4s ease; }
   .ins-img:hover img { transform: scale(1.02); }
   @media (min-width: 900px) {
-    .ins-list .ins-item { grid-template-columns: 64px minmax(0, 1fr) minmax(0, 480px); gap: 0 48px; padding-top: 28px; }
-    .ins-img { grid-column: 3; grid-row: 1; margin-top: 4px; }
+    .ins-list .ins-item { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); gap: 0 48px; padding-top: 28px; }
+    .ins-img { grid-column: 2; grid-row: 1; margin-top: 4px; }
     .ins-body .ins-t { font-size: clamp(26px, 2.4vw, 32px); }
   }
   h1, h2 { text-wrap: balance; }
-  .ins-item { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0 8px; padding: 18px 0 0; margin: 0 0 40px; border-top: 3px solid #B08D3C; }
-  .ins-no { font-family: var(--serif); font-size: 30px; line-height: 1; color: var(--gold-light); padding-top: 2px; }
+  .ins-item { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 8px; padding: 18px 0 0; margin: 0 0 40px; border-top: 3px solid #B08D3C; }
+  .ins-no { margin: 0 0 8px; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
   .lede + .ins-list { margin-top: 8px; }
   .ins-go { display: inline-block; margin-top: 14px; font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-light); padding-bottom: 2px; }
   .ins-go:hover { color: var(--gold-light); }
-  @media (max-width: 600px) { .ins-item { grid-template-columns: 44px minmax(0, 1fr); } .ins-no { font-size: 24px; } }
   .ins-meta { margin: 0 0 8px; font-size: 13px; letter-spacing: 0.04em; color: var(--on-dark-soft); }
   .ins-topic { color: var(--gold-light); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
   .nw { white-space: nowrap; }
@@ -133,8 +132,8 @@
     <p class="lede">Practical views for CFOs and Treasurers, by Gopakumar Menon, CA, CPA, CTP.</p>
     <ol class="ins-list">
         <li class="ins-item">
-          <span class="ins-no" aria-hidden="true">04</span>
           <div class="ins-body">
+            <p class="ins-no">Article 04</p>
             <p class="ins-meta"><span class="ins-topic">AI and automation</span> &middot; <time datetime="2026-11-24">24 November 2026</time> &middot; <span class="nw">4 min read</span></p>
             <h2 class="ins-t"><a href="/articles/ai-agent-negotiated-treasury-trade/">An AI Agent Just Negotiated a Treasury Trade With Another AI Agent</a></h2>
             <p class="ins-d">What happened when two AI agents negotiated a U.S. Treasury bill trade, and five questions to answer before an agent negotiates for your Treasury.</p>
@@ -143,8 +142,8 @@
           <a class="ins-img" href="/articles/ai-agent-negotiated-treasury-trade/" tabindex="-1" aria-hidden="true"><img src="/articles/ai-agent-negotiated-treasury-trade/card.jpg" alt="" width="1200" height="627" loading="lazy"></a>
         </li>
         <li class="ins-item">
-          <span class="ins-no" aria-hidden="true">03</span>
           <div class="ins-body">
+            <p class="ins-no">Article 03</p>
             <p class="ins-meta"><span class="ins-topic">Finance leadership</span> &middot; <time datetime="2026-11-18">18 November 2026</time> &middot; <span class="nw">3 min read</span></p>
             <h2 class="ins-t"><a href="/articles/where-freed-hours-go/">Now your Reconciliation only takes a few minutes. So why is your team still busy?</a></h2>
             <p class="ins-d">How to plan the time automation frees up, and how to check where it went.</p>
@@ -153,8 +152,8 @@
           <a class="ins-img" href="/articles/where-freed-hours-go/" tabindex="-1" aria-hidden="true"><img src="/articles/where-freed-hours-go/card.jpg" alt="" width="1200" height="627" loading="lazy"></a>
         </li>
         <li class="ins-item">
-          <span class="ins-no" aria-hidden="true">02</span>
           <div class="ins-body">
+            <p class="ins-no">Article 02</p>
             <p class="ins-meta"><span class="ins-topic">Controls and audit</span> &middot; <time datetime="2026-11-17">17 November 2026</time> &middot; <span class="nw">3 min read</span></p>
             <h2 class="ins-t"><a href="/articles/what-did-treasury-know/">Your AI cash forecast just refreshed. Can Treasury prove what it knew last Monday?</a></h2>
             <p class="ins-d">Why every major Treasury decision needs a forecast version of record, and what that record should hold.</p>
@@ -163,8 +162,8 @@
           <a class="ins-img" href="/articles/what-did-treasury-know/" tabindex="-1" aria-hidden="true"><img src="/articles/what-did-treasury-know/card.jpg" alt="" width="1200" height="627" loading="lazy"></a>
         </li>
         <li class="ins-item">
-          <span class="ins-no" aria-hidden="true">01</span>
           <div class="ins-body">
+            <p class="ins-no">Article 01</p>
             <p class="ins-meta"><span class="ins-topic">AI and automation</span> &middot; <time datetime="2026-11-10">10 November 2026</time> &middot; <span class="nw">3 min read</span></p>
             <h2 class="ins-t"><a href="/articles/start-where-mistakes-are-cheap/">Your First AI Task in Treasury Should Be Unglamorous</a></h2>
             <p class="ins-d">Four questions to decide which tasks you can trust AI with, and which must stay with your team.</p>

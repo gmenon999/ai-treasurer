@@ -147,8 +147,8 @@ def insights_page(arts):
     for a in arts:
         items.append(
             '        <li class="ins-item">\n'
-            '          <span class="ins-no" aria-hidden="true">%02d</span>\n'
             '          <div class="ins-body">\n'
+            '            <p class="ins-no">Article %02d</p>\n'
             '            <p class="ins-meta"><span class="ins-topic">%s</span> &middot; <time datetime="%s">%s</time> &middot; <span class="nw">%d min read</span></p>\n'
             '            <h2 class="ins-t"><a href="/articles/%s/">%s</a></h2>\n'
             '            <p class="ins-d">%s</p>\n'
@@ -256,21 +256,20 @@ PAGE = r'''<!DOCTYPE html>
   h1 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 48px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 10px; }
   .lede { margin: 0 0 34px; font-size: 18px; color: var(--on-dark); }
   .ins-list { list-style: none; margin: 0; padding: 0; }
-  .ins-img { display: block; grid-column: 2; margin-top: 22px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
+  .ins-img { display: block; grid-column: 1; margin-top: 22px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
   .ins-img img { display: block; width: 100%; height: auto; transition: transform .4s ease; }
   .ins-img:hover img { transform: scale(1.02); }
   @media (min-width: 900px) {
-    .ins-list .ins-item { grid-template-columns: 64px minmax(0, 1fr) minmax(0, 480px); gap: 0 48px; padding-top: 28px; }
-    .ins-img { grid-column: 3; grid-row: 1; margin-top: 4px; }
+    .ins-list .ins-item { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); gap: 0 48px; padding-top: 28px; }
+    .ins-img { grid-column: 2; grid-row: 1; margin-top: 4px; }
     .ins-body .ins-t { font-size: clamp(26px, 2.4vw, 32px); }
   }
   h1, h2 { text-wrap: balance; }
-  .ins-item { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0 8px; padding: 18px 0 0; margin: 0 0 40px; border-top: 3px solid #B08D3C; }
-  .ins-no { font-family: var(--serif); font-size: 30px; line-height: 1; color: var(--gold-light); padding-top: 2px; }
+  .ins-item { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 8px; padding: 18px 0 0; margin: 0 0 40px; border-top: 3px solid #B08D3C; }
+  .ins-no { margin: 0 0 8px; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
   .lede + .ins-list { margin-top: 8px; }
   .ins-go { display: inline-block; margin-top: 14px; font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-light); padding-bottom: 2px; }
   .ins-go:hover { color: var(--gold-light); }
-  @media (max-width: 600px) { .ins-item { grid-template-columns: 44px minmax(0, 1fr); } .ins-no { font-size: 24px; } }
   .ins-meta { margin: 0 0 8px; font-size: 13px; letter-spacing: 0.04em; color: var(--on-dark-soft); }
   .ins-topic { color: var(--gold-light); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
   .nw { white-space: nowrap; }
