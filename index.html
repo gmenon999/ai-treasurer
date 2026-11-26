@@ -1515,15 +1515,18 @@
     .ctt-p { grid-template-columns: 1fr; padding: 18px 16px; }
     .hag2-big { gap: 0 28px; }
   }
-  /* Home opening on phones: roomier, like the draft, so Insights starts lower on the first screen (26 Nov 2026) */
+  /* Home opening on phones: height follows the content (no forced full screen), so there is no
+     empty band under the button and the first Insights card starts on the first screen (26 Nov 2026, revised) */
   @media (max-width: 720px) {
-    section#top.intro .wrap { padding-top: 104px; padding-bottom: 96px; }
-    section#top.intro h1 { margin: 14px 0 30px; }
-    section#top.intro .lede { margin-bottom: 40px; }
-    section#top.intro .hero-by { margin-bottom: 44px; }
-    /* fill the whole phone screen under the menu, so Insights starts on the first scroll */
-    section#top.intro { min-height: calc(100vh - var(--chrome-h, 113px)); min-height: calc(100lvh - var(--chrome-h, 113px)); align-items: center; }
+    section#top.intro { min-height: 0; align-items: flex-start; }
+    section#top.intro .wrap { padding-top: 56px; padding-bottom: 40px; }
+    section#top.intro h1 { margin: 14px 0 24px; }
+    section#top.intro .lede { margin-bottom: 32px; }
+    section#top.intro .hero-by { margin-bottom: 32px; }
   }
+  /* Header: LinkedIn as an outline button, so the Board button is the one gold action (26 Nov 2026) */
+  .nav .cta { background: transparent; color: var(--gold-light); border: 1px solid var(--gold-light); }
+  .nav .cta:hover, .nav .cta:focus-visible { background: var(--gold-light); color: var(--navy-deep); }
   /* About: short headline, experience line underneath (26 Nov 2026) */
   .creds-head h2 { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 12px; max-width: 24ch; }
   .creds-sub { margin: 0 0 28px; font-size: 19px; line-height: 1.5; color: var(--white); max-width: 46ch; }
