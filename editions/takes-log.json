@@ -2505,6 +2505,84 @@
     "cost_usd": 0.3604
    },
    "edition_cost_usd": 2.4027
+  },
+  {
+   "date": "2026-11-26",
+   "items": [
+    {
+     "headline": "AstraZeneca stretches cash forecast from one week to five weeks",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "ING's Stable Pricing Cash Pool lets treasurers fix pool rates for set windows",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "SWIFT postpones SR2026 cross-border changes, keeping unstructured addresses alive",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Finance Teams flag 27% compliance-risk concern over agentic AI adoption",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "FinCEN proposes risk-based beneficial ownership checks at account opening",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Stripe Treasury lets AI agents move corporate money via MCP server",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Hackett finds €1.26 trillion trapped in European working capital",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "Canada's Real-Time Rail goes live with 24/7 ISO 20022 instant settlement",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Markets price 97% odds of December Fed hike, dollar hits 19-month high",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "HKMA launches CMU Digital Asset Platform with 24-hour tokenised settlement",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Fed holds at 3.75%-4.00% but signals 25bp December hike",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "IASB closes IFRS 16 review, eyes clearer lease cash-flow disclosures",
+     "status": "dropped",
+     "lens": "Accounting & reporting",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, feedback due 26 January 2027",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.3978,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.2625
+   },
+   "edition_cost_usd": 1.6622
   }
  ]
 }

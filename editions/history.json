@@ -1,210 +1,6 @@
 {
  "days": [
   {
-   "date": "2026-11-11",
-   "note_headline": "Agent autonomy in Finance is a standing control cost, not a launch project",
-   "note_opening": "Autonomy in Treasury and Finance is becoming a design choice that carries a running cost. JPMorgan frames agentic AI as 'fly-by-wire', with humans setting boundaries and agents adjusting within them, while Trovata on Ama",
-   "items": [
-    {
-     "headline": "JPMorgan likens agentic Treasury AI to fly-by-wire flight controls",
-     "urls": [
-      "https://www.jpmorgan.com/payments/newsroom/agentic-ai-corporate-cash-treasury-management"
-     ],
-     "beat": "ai_agentic",
-     "summary": "JPMorgan casts Treasury autonomy as policy-bounded execution: people set boundaries and permissions, and agents make continuous adjustments inside them. The catch for treasurers is that thresholds, auditability and escalation paths must be designed upfront, before any agent is allowed to act.",
-     "sources": [
-      {
-       "name": "JPMorgan",
-       "url": "https://www.jpmorgan.com/payments/newsroom/agentic-ai-corporate-cash-treasury-management"
-      }
-     ]
-    },
-    {
-     "headline": "Trovata builds autonomous Treasury agents on Amazon Bedrock and AgentCore",
-     "urls": [
-      "https://aws.amazon.com/blogs/machine-learning/autonomous-treasury-agents-how-trovata-built-an-ai-native-solution-on-amazon-bedrock-and-agentcore/"
-     ],
-     "beat": "ai_agentic",
-     "summary": "Trovata, working with AWS, has built an AI-native Treasury solution on Amazon Bedrock and AgentCore that reconciles hundreds of accounts automatically, cutting manual processing from hours to seconds. It also enables autonomous cash-management workflows, shifting the control question from doing reconciliations to supervising them.",
-     "sources": [
-      {
-       "name": "AWS",
-       "url": "https://aws.amazon.com/blogs/machine-learning/autonomous-treasury-agents-how-trovata-built-an-ai-native-solution-on-amazon-bedrock-and-agentcore/"
-      }
-     ]
-    },
-    {
-     "headline": "Citizens Bank launches Treasury Intelligence for multibank cash and forecast views",
-     "urls": [
-      "https://investor.citizensbank.com/about-us/newsroom/latest-news/2026/2026-11-09-133051871.aspx"
-     ],
-     "beat": "treasury_tech",
-     "summary": "Citizens Bank unveiled Treasury Intelligence on November 9, 2026, consolidating cash positions and forecasts across all of a client's banking relationships. A basic version is available to AccessOPTIMA reporting clients, giving treasurers one view of cash across every bank relationship.",
-     "sources": [
-      {
-       "name": "Citizens Bank",
-       "url": "https://investor.citizensbank.com/about-us/newsroom/latest-news/2026/2026-11-09-133051871.aspx"
-      }
-     ]
-    },
-    {
-     "headline": "EuroFinance 2026 turns Treasury focus to cash trapped in operating cycles",
-     "urls": [
-      "https://cib.bnpparibas/eurofinance-2026-corporate-treasury-trends/"
-     ],
-     "beat": "cash",
-     "summary": "Treasurers at EuroFinance 2026 moved past cash optimisation towards releasing cash locked in operating cycles. Receivables management, payment terms, inventory control and process automation took centre stage, putting cash conversion firmly on a shared agenda between Treasury and the wider Finance function.",
-     "sources": [
-      {
-       "name": "BNP Paribas CIB",
-       "url": "https://cib.bnpparibas/eurofinance-2026-corporate-treasury-trends/"
-      }
-     ]
-    },
-    {
-     "headline": "ISO 20022 carries remittance data across rails but leaves interoperability gaps",
-     "urls": [
-      "https://www.finextra.com/blogposting/33282/iso-20022-meets-real-time-rails-vladyslav-kolodistyi-on-data-rich-instant-payments-across-borders"
-     ],
-     "beat": "payments",
-     "summary": "The shared ISO 20022 standard lets remittance data travel across instant-payment systems without truncation. Global interoperability is still held back by differing field requirements and address formats between regional real-time rails, and the standard does not solve currency conversion or liquidity prefunding.",
-     "sources": [
-      {
-       "name": "Finextra",
-       "url": "https://www.finextra.com/blogposting/33282/iso-20022-meets-real-time-rails-vladyslav-kolodistyi-on-data-rich-instant-payments-across-borders"
-      }
-     ]
-    },
-    {
-     "headline": "FEI and Controllers Council test AI as both system and preparer",
-     "urls": [
-      "https://daily.financialexecutives.org/FEI-Daily/November-2026/ai-ambition-capacity-controls-finance.aspx",
-      "https://controllerscouncil.org/ai-governance-for-finance-deploying-ai-tools-that-survive-an-audit-webinar-highlights/"
-     ],
-     "beat": "regulation",
-     "summary": "The Financial Executives Institute and Controllers Council propose assessing AI within the existing COSO framework. As a system, AI is judged on access, configuration, monitoring and model updates; as a preparer, its output gets the same management review as human accounting work.",
-     "sources": [
-      {
-       "name": "FEI",
-       "url": "https://daily.financialexecutives.org/FEI-Daily/November-2026/ai-ambition-capacity-controls-finance.aspx"
-      },
-      {
-       "name": "Controllers Council",
-       "url": "https://controllerscouncil.org/ai-governance-for-finance-deploying-ai-tools-that-survive-an-audit-webinar-highlights/"
-      }
-     ]
-    },
-    {
-     "headline": "KPMG tells CFOs AI safety is a lifecycle cost, not a launch cost",
-     "urls": [
-      "https://www.cfodive.com/news/cfos-urged-build-safety-ai-investments-outset-kpmg/874214/"
-     ],
-     "beat": "regulation",
-     "summary": "A KPMG executive warns that AI spending does not stop at testing and validation. Continuous red-teaming, runtime observability, security controls, incident response and human oversight run for the life of the system, so safety belongs in recurring budgets, not one-off project spend.",
-     "sources": [
-      {
-       "name": "CFO Dive",
-       "url": "https://www.cfodive.com/news/cfos-urged-build-safety-ai-investments-outset-kpmg/874214/"
-      }
-     ]
-    },
-    {
-     "headline": "Forvis Mazars and EY test whether ICFR controls still fit AI",
-     "urls": [
-      "https://www.forvismazars.us/forsights/2026/11/auditing-ai-at-the-speed-of-change",
-      "https://www.ey.com/en_us/ey-center-for-executive-leadership/beyond-cost-and-returns-cfos-focusing-on-ai-governance"
-     ],
-     "beat": "regulation",
-     "summary": "Forvis Mazars and EY map AI's audit implications onto existing SOX and COSO frameworks, asking whether ICFR controls stay appropriate as AI takes on financial tasks. New expectations may follow for authorisation, data quality, monitoring, incident response and third-party oversight.",
-     "sources": [
-      {
-       "name": "Forvis Mazars",
-       "url": "https://www.forvismazars.us/forsights/2026/11/auditing-ai-at-the-speed-of-change"
-      },
-      {
-       "name": "EY",
-       "url": "https://www.ey.com/en_us/ey-center-for-executive-leadership/beyond-cost-and-returns-cfos-focusing-on-ai-governance"
-      }
-     ]
-    },
-    {
-     "headline": "Diverging BoE and ECB paths call for separate sterling and euro hedging",
-     "urls": [
-      "https://www.eurofinance.com/news/higher-for-longer-what-boe-and-ecb-tightening-means-for-corporate-treasury/"
-     ],
-     "beat": "risk",
-     "summary": "EuroFinance analysis suggests the Bank of England may hike in early 2027, while the ECB adjusts in December and then eases. Sterling and euro exposures need separate management. Floating-rate sterling debt merits urgent review, with phased hedging and caps protecting borrowers while keeping optionality.",
-     "sources": [
-      {
-       "name": "EuroFinance",
-       "url": "https://www.eurofinance.com/news/higher-for-longer-what-boe-and-ecb-tightening-means-for-corporate-treasury/"
-      }
-     ]
-    },
-    {
-     "headline": "OCBC and Ant International launch 24/7 tokenised-deposit settlement in SGD and USD",
-     "urls": [
-      "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
-     ],
-     "beat": "digital",
-     "summary": "OCBC is the first bank to partner with Ant International on tokenised deposits, delivering near-real-time SGD and USD settlement on a 24/7 basis across Singapore and Malaysia via the blockchain-based WhaleRTP platform. Less reconciliation and freed trapped liquidity are the Treasury gains.",
-     "sources": [
-      {
-       "name": "OCBC",
-       "url": "https://www.ocbc.com/group/media/release/2026/ocbc-tokenised-deposit-ant-international-treasury"
-      }
-     ]
-    },
-    {
-     "headline": "Deloitte sees 3.5% UK inflation keeping Bank of England hike expectations high",
-     "urls": [
-      "https://www.deloitte.com/content/dam/assets-zone2/uk/en/docs/services/consulting/2026/ir-and-fx-newsletter-nov-2026.pdf"
-     ],
-     "beat": "markets_macro",
-     "summary": "Deloitte's October-November rates and FX newsletter puts UK headline inflation at a persistent 3.5%, driven by energy, which keeps rate-hike expectations elevated. BoE and ECB policy paths diverge significantly, with distinct consequences for sterling and euro borrowers through early 2027.",
-     "sources": [
-      {
-       "name": "Deloitte",
-       "url": "https://www.deloitte.com/content/dam/assets-zone2/uk/en/docs/services/consulting/2026/ir-and-fx-newsletter-nov-2026.pdf"
-      }
-     ]
-    },
-    {
-     "headline": "FinCEN cuts MEXC Global off from U.S. financial system over $16 billion flows",
-     "urls": [
-      "https://home.treasury.gov/news/press-releases/sb0685"
-     ],
-     "beat": "financial_crime",
-     "summary": "On 6 November 2026, FinCEN barred U.S. financial institutions from transmittals of funds to or from MEXC Global. The cryptocurrency exchanger processed at least $16 billion in illicit transactions tied to Iranian, North Korean and Russian sanctions evasion and cybercrime. Payment screens must block it.",
-     "sources": [
-      {
-       "name": "U.S. Department of the Treasury",
-       "url": "https://home.treasury.gov/news/press-releases/sb0685"
-      }
-     ]
-    },
-    {
-     "headline": "ISSB opens 120-day consultation on nature-related disclosure practice statement",
-     "urls": [
-      "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/",
-      "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202621.html"
-     ],
-     "beat": "reporting",
-     "summary": "The ISSB published an Exposure Draft of IFRS Sustainability Disclosure Practice Statement 1 on 9 October 2026, opening a 120-day consultation with comments due 19 February 2027. It guides disclosure of material nature-related information affecting cash flows and cost of capital.",
-     "sources": [
-      {
-       "name": "IFRS",
-       "url": "https://www.ifrs.org/news-and-events/news/2026/10/issb-consults-on-proposals-nature-related-disclosures/"
-      },
-      {
-       "name": "PwC",
-       "url": "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202621.html"
-      }
-     ]
-    }
-   ]
-  },
-  {
    "date": "2026-11-12",
    "note_headline": "Record operating cash is masking slower collections, and rising rates will expose it",
    "note_opening": "Headline cash strength across Treasury and Finance is hiding a deterioration in collections. Hackett's survey of the 1,000 largest North American companies shows operating cash flow at 17% of revenue, a 13-year high, whi",
@@ -2154,6 +1950,220 @@
       {
        "name": "IFRS Projects",
        "url": "https://www.ifrs.org/projects/work-plan/leases-targeted-improvements-amendments-to-ifrs-16/"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-11-26",
+   "note_headline": "Dearer money makes cash visibility the Finance priority, from agent approvals to lease disclosures",
+   "note_opening": "Cash visibility has become the Finance priority as money gets dearer. Markets price 97% odds of a 25bp Fed hike at the 8-9 December meeting, lifting the dollar to 19-month highs. AstraZeneca stretched its cash forecast f",
+   "items": [
+    {
+     "headline": "Stripe Treasury lets AI agents move corporate money via MCP server",
+     "urls": [
+      "https://stripe.com/blog/give-your-agents-controlled-access-to-analyze-your-data-and-move-funds",
+      "https://docs.stripe.com/treasury/agents"
+     ],
+     "beat": "ai_agentic",
+     "summary": "Stripe moved Treasury into public preview on 19 November 2026, letting AI agents transfer funds, convert currencies and pay vendors through its Model Context Protocol server. Approval workflows are configurable, and every money movement needs human sign-off by default, a ready-made control point.",
+     "sources": [
+      {
+       "name": "Stripe Blog",
+       "url": "https://stripe.com/blog/give-your-agents-controlled-access-to-analyze-your-data-and-move-funds"
+      },
+      {
+       "name": "Stripe Documentation",
+       "url": "https://docs.stripe.com/treasury/agents"
+      }
+     ]
+    },
+    {
+     "headline": "AstraZeneca stretches cash forecast from one week to five weeks",
+     "urls": [
+      "https://www.eurofinance.com/news/how-astrazeneca-automated-global-cash-forecasting/"
+     ],
+     "beat": "treasury_tech",
+     "summary": "AstraZeneca extended its cash-forecasting horizon from one week to five weeks by pulling payment and receivables data in near real-time from multiple SAP systems into a platform blending statistical methods and machine learning. Treasurers gain better liquidity planning and less spreadsheet dependency.",
+     "sources": [
+      {
+       "name": "EuroFinance",
+       "url": "https://www.eurofinance.com/news/how-astrazeneca-automated-global-cash-forecasting/"
+      }
+     ]
+    },
+    {
+     "headline": "ING's Stable Pricing Cash Pool lets treasurers fix pool rates for set windows",
+     "urls": [
+      "https://wporigin.euromoney.com/article/8jm8dyato7swocks8c08o0w0w/europes-best-new-treasury-innovation-2026-ing-bank-stable-pricing-cash-pool/"
+     ],
+     "beat": "cash",
+     "summary": "Through Bank Mendes Gans, ING introduced a Stable Pricing Cash Pool that lets multinational treasurers fix interest rates for defined windows, such as one week, while keeping legal daily revocability. ING hedges the rate exposure, giving treasurers firmer sight of borrowing costs.",
+     "sources": [
+      {
+       "name": "Euromoney",
+       "url": "https://wporigin.euromoney.com/article/8jm8dyato7swocks8c08o0w0w/europes-best-new-treasury-innovation-2026-ing-bank-stable-pricing-cash-pool/"
+      }
+     ]
+    },
+    {
+     "headline": "Hackett finds €1.26 trillion trapped in European working capital",
+     "urls": [
+      "https://www.thehackettgroup.com/the-hackett-group-1-26-trillion-trapped-working-capital-europes-largest-companies/"
+     ],
+     "beat": "cash",
+     "summary": "The Hackett Group's analysis of Europe's 1,000 largest publicly traded nonfinancial companies found €1.26 trillion trapped in working capital. Their cash conversion cycle still improved 1.8 days (4%) in 2025, with days sales outstanding and days inventory outstanding both falling, yet sizeable cash remains locked.",
+     "sources": [
+      {
+       "name": "The Hackett Group",
+       "url": "https://www.thehackettgroup.com/the-hackett-group-1-26-trillion-trapped-working-capital-europes-largest-companies/"
+      }
+     ]
+    },
+    {
+     "headline": "Canada's Real-Time Rail goes live with 24/7 ISO 20022 instant settlement",
+     "urls": [
+      "https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy"
+     ],
+     "beat": "payments",
+     "summary": "Payments Canada launched the Real-Time Rail on 9 November 2026, offering instant settlement, 24/7 availability and data-rich ISO 20022 messaging. A joint Canada–EU commitment targets interlinking instant payment systems, which would ease cross-border transactions for Treasury teams paying between the two.",
+     "sources": [
+      {
+       "name": "Payments Canada",
+       "url": "https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy"
+      }
+     ]
+    },
+    {
+     "headline": "SWIFT postpones SR2026 cross-border changes, keeping unstructured addresses alive",
+     "urls": [
+      "https://www.fsb.org/uploads/P161126.pdf"
+     ],
+     "beat": "payments",
+     "summary": "SWIFT has deferred every SR2026 ISO 20022 cross-border payment change planned for November 2026, citing uneven industry readiness. Removal of unstructured postal addresses is on hold and they remain accepted, with a new timeline expected by December, giving Treasury teams breathing room on data remediation.",
+     "sources": [
+      {
+       "name": "FSB G20 Roadmap Report",
+       "url": "https://www.fsb.org/uploads/P161126.pdf"
+      }
+     ]
+    },
+    {
+     "headline": "Finance Teams flag 27% compliance-risk concern over agentic AI adoption",
+     "urls": [
+      "https://internalaudit360.com/six-steps-to-build-sox-entity-level-controls-for-ai/"
+     ],
+     "beat": "regulation",
+     "summary": "An industry survey shows a 27% compliance-risk concern among Finance Teams as treasurers speed up agentic AI deployment. Findings stress SOX controls, audit logs and human-in-the-loop governance before autonomous execution, while CFO offices prioritise inventorying AI use cases and embedding AI-disclosure requirements in SOX walkthroughs.",
+     "sources": [
+      {
+       "name": "Internal Audit 360",
+       "url": "https://internalaudit360.com/six-steps-to-build-sox-entity-level-controls-for-ai/"
+      }
+     ]
+    },
+    {
+     "headline": "Markets price 97% odds of December Fed hike, dollar hits 19-month high",
+     "urls": [
+      "https://www.cnbc.com/2026/11/25/fed-december-rate-hike-consumer-impact.html"
+     ],
+     "beat": "risk",
+     "summary": "On 25 November, investors priced a 97% probability of a 25-basis-point Fed rise in December 2026, driven by hawkish official commentary and stronger-than-expected inflation data. The dollar reached 19-month highs, and markets expect further tightening into 2027, a live issue for dollar exposures.",
+     "sources": [
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/11/25/fed-december-rate-hike-consumer-impact.html"
+      }
+     ]
+    },
+    {
+     "headline": "HKMA launches CMU Digital Asset Platform with 24-hour tokenised settlement",
+     "urls": [
+      "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/"
+     ],
+     "beat": "digital",
+     "summary": "The Hong Kong Monetary Authority launched the CMU Digital Asset Platform on 25 November, supporting paperless debt securities issuance and 24-hour tokenised settlement across multiple currencies. Direct links to RTGS systems and CBDCs bring round-the-clock settlement closer to treasurers issuing or holding debt.",
+     "sources": [
+      {
+       "name": "Hong Kong Monetary Authority",
+       "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/"
+      }
+     ]
+    },
+    {
+     "headline": "Fed holds at 3.75%-4.00% but signals 25bp December hike",
+     "urls": [
+      "https://www.marketwatch.com/story/the-fed-says-inflation-hasnt-gotten-any-better-ahead-of-its-key-december-vote-to-raise-rates-65024d33",
+      "https://www.cnbc.com/2026/11/25/fed-december-rate-hike-consumer-impact.html"
+     ],
+     "beat": "markets_macro",
+     "summary": "Federal Reserve survey data released on 25 November confirmed elevated inflation and strong growth, with rates held at 3.75%-4.00% and further tightening signalled. Markets price 97% odds of a 25bp hike at the 8-9 December meeting, and two officials openly back a December increase.",
+     "sources": [
+      {
+       "name": "MarketWatch",
+       "url": "https://www.marketwatch.com/story/the-fed-says-inflation-hasnt-gotten-any-better-ahead-of-its-key-december-vote-to-raise-rates-65024d33"
+      },
+      {
+       "name": "CNBC",
+       "url": "https://www.cnbc.com/2026/11/25/fed-december-rate-hike-consumer-impact.html"
+      }
+     ]
+    },
+    {
+     "headline": "FinCEN proposes risk-based beneficial ownership checks at account opening",
+     "urls": [
+      "https://home.treasury.gov/news/press-releases/sb0691",
+      "https://www.federalregister.gov/documents/2026/11/19/2026-23614"
+     ],
+     "beat": "financial_crime",
+     "summary": "FinCEN proposed amendments to customer due diligence rules on 17 November 2026, dropping the need to identify beneficial owners at every new account opening. Banks would verify on a risk basis at opening, when facts question reliability, or during ongoing reviews, potentially easing corporate onboarding.",
+     "sources": [
+      {
+       "name": "U.S. Department of Treasury",
+       "url": "https://home.treasury.gov/news/press-releases/sb0691"
+      },
+      {
+       "name": "Federal Register",
+       "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23614"
+      }
+     ]
+    },
+    {
+     "headline": "IASB closes IFRS 16 review, eyes clearer lease cash-flow disclosures",
+     "urls": [
+      "https://www.ifrs.org/content/dam/ifrs/project/pir-ifrs-16/pir-ifrs16-feedbackstatement-2026.pdf",
+      "https://www.ifrs.org/projects/completed-projects/2026/post-implementation-review-of-ifrs-16-leases/"
+     ],
+     "beat": "reporting",
+     "summary": "The IASB published its IFRS 16 feedback statement on 23 November 2026 and will explore requiring lessees to disclose the components of total lease-related cash outflows and where they sit in the cash flow statement, targeting inconsistent application that clouds cash comparisons.",
+     "sources": [
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/content/dam/ifrs/project/pir-ifrs-16/pir-ifrs16-feedbackstatement-2026.pdf"
+      },
+      {
+       "name": "IFRS",
+       "url": "https://www.ifrs.org/projects/completed-projects/2026/post-implementation-review-of-ifrs-16-leases/"
+      }
+     ]
+    },
+    {
+     "headline": "IASB opens IFRS 9 hedge accounting review, feedback due 26 January 2027",
+     "urls": [
+      "https://www.acts.co.za/news/blog/2026/11/iasb-post-implementation-review-ifrs-9-ifrs-7-hedge-accounting",
+      "https://www.ey.com/en_gl/technical/ifrs-technical-resources/ifrs-developments-252-iasb-seeks-feedback-on-ifrs-9-hedge-accounting"
+     ],
+     "beat": "reporting",
+     "summary": "On 16 November 2026 the IASB launched its post-implementation review of IFRS 9 and IFRS 7 hedge accounting requirements. Stakeholders have until 26 January 2027 to comment on costs, usefulness and application challenges, including diversity in practice, a chance for treasurers to shape hedge rules.",
+     "sources": [
+      {
+       "name": "Acts Online",
+       "url": "https://www.acts.co.za/news/blog/2026/11/iasb-post-implementation-review-ifrs-9-ifrs-7-hedge-accounting"
+      },
+      {
+       "name": "EY",
+       "url": "https://www.ey.com/en_gl/technical/ifrs-technical-resources/ifrs-developments-252-iasb-seeks-feedback-on-ifrs-9-hedge-accounting"
       }
      ]
     }
