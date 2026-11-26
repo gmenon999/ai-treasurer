@@ -16,7 +16,7 @@
       "date": "2026-11-24",
       "topic": "AI and automation",
       "minutes": 4,
-      "image": "/articles/ai-agent-negotiated-treasury-trade/card.jpg"
+      "image": "/articles/ai-agent-negotiated-treasury-trade/card-v2.jpg"
     },
     {
       "slug": "where-freed-hours-go",
@@ -25,7 +25,7 @@
       "date": "2026-11-18",
       "topic": "Finance leadership",
       "minutes": 3,
-      "image": "/articles/where-freed-hours-go/card.jpg"
+      "image": "/articles/where-freed-hours-go/card-v2.jpg"
     },
     {
       "slug": "what-did-treasury-know",
@@ -43,7 +43,7 @@
       "date": "2026-11-10",
       "topic": "AI and automation",
       "minutes": 3,
-      "image": "/articles/start-where-mistakes-are-cheap/card.png"
+      "image": "/articles/start-where-mistakes-are-cheap/card-v2.jpg"
     }
   ]
 }
