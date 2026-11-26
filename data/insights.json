@@ -6,9 +6,19 @@
     "Cash and liquidity",
     "Payments",
     "FX and risk",
-    "Finance leadership"
+    "Finance leadership",
+    "Treasury operations"
   ],
   "articles": [
+    {
+      "slug": "hk-tokenised-bonds",
+      "title": "A Bond Trade Can Now Settle While Your Treasury Team Is Asleep",
+      "summary": "What Hong Kong’s new bond platform changes for Treasury, and five questions to answer before your Treasury holds a tokenised bond.",
+      "date": "2026-11-26",
+      "topic": "Treasury operations",
+      "minutes": 4,
+      "image": "/articles/hk-tokenised-bonds/card.jpg"
+    },
     {
       "slug": "ai-agent-negotiated-treasury-trade",
       "title": "An AI Agent Just Negotiated a Treasury Trade With Another AI Agent",

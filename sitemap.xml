@@ -8,8 +8,14 @@
   <!--INSIGHTS-SITEMAP-START-->
   <url>
     <loc>https://theaitreasurer.com/insights/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaitreasurer.com/articles/hk-tokenised-bonds/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

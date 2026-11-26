@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14263F">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<title>A Bond Trade Can Now Settle While Your Treasury Team Is Asleep | The AI Treasurer</title>
+<meta name="description" content="What Hong Kong’s new bond platform changes for Treasury, and five questions to answer before your Treasury holds a tokenised bond.">
+<link rel="canonical" href="https://theaitreasurer.com/articles/hk-tokenised-bonds/">
+<meta property="og:title" content="A Bond Trade Can Now Settle While Your Treasury Team Is Asleep">
+<meta property="og:description" content="What Hong Kong’s new bond platform changes for Treasury, and five questions to answer before your Treasury holds a tokenised bond.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://theaitreasurer.com/articles/hk-tokenised-bonds/">
+<meta property="og:image" content="https://theaitreasurer.com/articles/hk-tokenised-bonds/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root { --navy: #14263F; --navy-deep: #0D1A2C; --navy-soft: #3B4A60; --muted: #5A6779; --gold: #B08D3C; --gold-text: #8A6A22; --gold-light: #E9CB85; --blue: #2E6AF0; --pale: #8FA6C8; --line: #DDD8CE; --paper: #F6F3EC; --white: #FFFFFF;
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--serif); font-size: 19.5px; line-height: 1.62; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: var(--navy); }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 22px; }
+  /*SITE-HEADER-CSS-START*/
+  .sh-band { background: #0D1A2C; color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.08); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .sh-wrap { max-width: 1240px; margin: 0 auto; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .sh-mark { font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif; font-size: 22px; color: #FFFFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; line-height: 1.2; }
+  .sh-mark svg { width: 32px; height: 32px; flex: none; }
+  .sh-cta { color: #0D1A2C; background: #E9CB85; padding: 8px 14px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; }
+  .sh-cta:hover { background: #FFFFFF; }
+  .secnav { position: sticky; top: 0; z-index: 20; background: #0D1A2C; border-bottom: 1px solid rgba(255,255,255,0.12); box-shadow: 0 6px 18px rgba(5,20,36,0.18); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .sn-wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; display: flex; gap: 30px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .sn-wrap::-webkit-scrollbar { display: none; }
+  .secnav a { flex: none; display: block; height: 50px; line-height: 50px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C9D2DE; text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+  .secnav a:hover { color: #FFFFFF; }
+  .secnav a[aria-current="page"] { color: #FFFFFF; border-bottom-color: #B08D3C; }
+  .sn-arrow { display: none; position: absolute; top: 0; bottom: 0; width: 52px; border: 0; padding: 0; cursor: pointer; color: #E9CB85; align-items: center; }
+  .sn-arrow svg { width: 22px; height: 22px; }
+  .sn-arrow.next { right: 0; justify-content: flex-end; padding-right: 12px; background: linear-gradient(90deg, rgba(13,26,44,0) 0%, #0D1A2C 45%); }
+  .sn-arrow.prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(13,26,44,0) 0%, #0D1A2C 45%); }
+  .secnav.can-next .sn-arrow.next, .secnav.can-prev .sn-arrow.prev { display: flex; }
+  @media (max-width: 720px) {
+    .sh-wrap { padding: 12px 20px; gap: 10px; }
+    .sh-mark { font-size: 18px; min-width: 0; }
+    .sh-mark svg { width: 30px; height: 30px; }
+    .sh-cta { font-size: 13px; padding: 8px 11px; }
+    .sn-wrap { gap: 20px; padding-right: 36px; }
+    .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
+  }
+/*SITE-HEADER-CSS-END*/
+
+  .art-head { padding: 52px 0 8px; }
+  .back-bar { position: sticky; top: var(--sn-h, 52px); z-index: 15; background: var(--white); border-bottom: 1px solid var(--line); }
+  .back-bar .wrap { padding-top: 6px; padding-bottom: 6px; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--navy); text-decoration: none; }
+  .back-link:hover { color: var(--gold-text); }
+  .kicker { font-family: var(--sans); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold-text); }
+  h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(31px, 5vw, 44px); line-height: 1.1; letter-spacing: -0.012em; margin: 12px 0 14px; }
+  .dek { font-size: 21px; line-height: 1.45; color: var(--navy-soft); margin: 0 0 20px; }
+  .byline { font-family: var(--sans); font-size: 14px; color: var(--muted); margin: 0; padding-bottom: 26px; }
+  .byline span { white-space: nowrap; }
+  .byline .sep { margin: 0 6px; color: #A8B0BC; }
+
+  .glance { background: var(--paper); border-radius: 8px; padding: 24px 26px 22px; margin: 0 0 40px; }
+  .glance .kicker { margin: 0 0 10px; }
+  .glance .rule { font-size: 22px; line-height: 1.38; font-weight: 700; margin: 0 0 20px; }
+  .tiers { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .tiers li { background: var(--white); border-left: 6px solid; border-radius: 0 6px 6px 0; padding: 12px 16px 13px; font-family: var(--sans); }
+  .tiers .l { display: block; font-size: 16.5px; font-weight: 700; line-height: 1.3; }
+  .glance .note { margin: 12px 0 0; font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+  .tiers .t { display: block; font-size: 15px; line-height: 1.45; color: var(--muted); margin-top: 3px; }
+  .t1 { border-color: #5E86C2 !important; } .t2 { border-color: #2E5C9C !important; } .t3 { border-color: var(--navy) !important; }
+
+  .glance .keep-k { margin: 0 0 8px; font-family: var(--sans); font-size: 15px; font-weight: 700; }
+  ul.keep { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  ul.keep li { background: var(--white); border-left: 6px solid #2E5C9C; border-radius: 0 6px 6px 0; padding: 10px 16px 11px; font-family: var(--sans); font-size: 16.5px; font-weight: 600; line-height: 1.35; }
+  .tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+  ol.num { margin: 0 0 18px; padding-left: 24px; }
+  ol.num > li { margin: 0 0 10px; padding-left: 4px; }
+  ol.num > li::marker { color: #2E5C9C; font-weight: 700; }
+  ul.dots { list-style: none; margin: 0 0 18px; padding: 0; }
+  ul.dots > li { position: relative; margin: 0 0 10px; padding-left: 22px; }
+  ul.dots > li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: #2E5C9C; }
+  ul.dots ul { list-style: none; margin: 8px 0 8px; padding: 0; }
+  ul.dots ul li { position: relative; margin: 0 0 4px; padding-left: 20px; }
+  ul.dots ul li::before { content: ""; position: absolute; left: 2px; top: 0.7em; width: 7px; height: 2px; background: var(--gold); }
+  h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(25px, 3.4vw, 30px); line-height: 1.2; margin: 52px 0 14px; letter-spacing: -0.005em; }
+  h3 { font-family: var(--sans); font-weight: 700; font-size: 18px; line-height: 1.3; margin: 30px 0 8px; padding-left: 14px; border-left: 5px solid; }
+  ul.tasks { list-style: none; margin: 0 0 14px; padding: 0 0 0 19px; }
+  ul.tasks li { position: relative; margin: 0 0 6px; padding-left: 18px; }
+  ul.tasks li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  ul.tasks { border: 0 !important; }
+  ul.tasks.t1 li::before { background: #5E86C2; } ul.tasks.t2 li::before { background: #2E5C9C; } ul.tasks.t3 li::before { background: var(--navy); }
+  p { margin: 0 0 18px; }
+  ol { margin: 0 0 18px; padding-left: 26px; }
+  ol li { margin: 0 0 10px; padding-left: 4px; }
+  .key { font-style: italic; font-size: 23px; line-height: 1.42; color: var(--navy); margin: 36px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--gold-light); }
+  .box { background: var(--paper); border-radius: 8px; padding: 20px 24px 4px; margin: 40px 0 0; }
+  .box .kicker { margin-bottom: 8px; }
+  .follow { margin-top: 40px; padding: 22px 26px 12px; background: var(--navy-deep); color: var(--white); border-radius: 8px; font-family: var(--sans); font-size: 16px; line-height: 1.5; }
+  .follow p { margin: 0 0 12px; }
+  .follow a { display: inline-block; min-height: 44px; line-height: 44px; margin-right: 22px; font-weight: 600; color: var(--white); text-decoration: none; border-bottom: 2px solid var(--gold-light); }
+  .follow a:focus-visible { outline-color: var(--gold-light); }
+  .end { border-top: 1px solid var(--line); margin-top: 48px; padding: 18px 0 8px; font-family: var(--sans); font-size: 14px; line-height: 1.55; color: var(--muted); }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 40px; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    body { font-size: 18.5px; }
+    .art-head { padding-top: 34px; }
+    .dek { font-size: 19px; }
+    .glance { padding: 20px 18px 18px; margin-left: -6px; margin-right: -6px; }
+    .glance .rule { font-size: 20px; }
+    .key { font-size: 21px; }
+    .byline .who { display: block; margin-bottom: 2px; } .byline .sep.first { display: none; }
+  }
+  /* balanced line breaks: no single orphan word on a heading's last line */
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  /* desktop layout on the site grid: text aligned under the logo, contents rail on the right */
+  .art-shell { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+  .art-main { max-width: 680px; margin: 0 auto; }
+  .art-rail { display: none; }
+  @media (min-width: 1100px) {
+    .back-bar .wrap, footer .wrap { max-width: 1240px; padding-left: 20px; padding-right: 20px; }
+    .art-shell { display: grid; grid-template-columns: minmax(0, 720px) 260px; justify-content: space-between; gap: 0 64px; }
+    .art-main { max-width: none; margin: 0; }
+    .art-rail { display: block; }
+    .rail-in { position: sticky; top: calc(var(--sn-h, 52px) + 64px); margin-top: 52px; padding-top: 16px; border-top: 3px solid var(--gold); font-family: var(--sans); }
+    .rail-k { margin: 0 0 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); }
+    .rail-toc { list-style: none; margin: 0 0 22px; padding: 0; }
+    .rail-toc li { margin: 0; }
+    .rail-toc a { display: block; padding: 8px 0 8px 14px; border-left: 2px solid var(--line); font-size: 15px; line-height: 1.4; color: var(--muted); text-decoration: none; }
+    .rail-toc a:hover { color: var(--navy); }
+    .rail-toc a.on { color: var(--navy); font-weight: 600; border-left-color: var(--gold); }
+    .rail-back { font-size: 14px; font-weight: 600; text-decoration: none; color: var(--navy); }
+    .rail-back:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+    h2[id] { scroll-margin-top: calc(var(--sn-h, 52px) + 60px); }
+  }
+</style>
+<link rel="alternate" type="application/rss+xml" title="The AI Treasurer: Insights" href="/insights/feed.xml">
+</head>
+<body>
+
+<!--SITE-HEADER-START-->
+<header class="sh-band">
+  <div class="sh-wrap">
+    <a class="sh-mark" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#ffffff"/><polygon points="50,20 82,46 82,58 50,32 18,58 18,46" fill="#2E6AF0"/><polygon points="50,48 82,74 82,86 50,60 18,86 18,74" fill="#14263F"/></svg><span>The AI Treasurer</span></a>
+    <a class="sh-cta" href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a>
+  </div>
+</header>
+<nav class="secnav" aria-label="Sections">
+  <div class="sn-wrap">
+    <a href="/#top">Home</a>
+    <a href="/insights/" aria-current="page">Insights</a>
+    <a href="/#agentic">Agentic Automation</a>
+    <a href="/#controls">AI Controls</a>
+    <a href="/#briefing">Treasury Today</a>
+    <a href="/#markets">Markets</a>
+    <a href="/#about">About</a>
+  </div>
+  <button type="button" class="sn-arrow prev" aria-label="Show earlier menu items"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+  <button type="button" class="sn-arrow next" aria-label="Show more menu items"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+</nav>
+<script>
+(function(){
+  var nav = document.querySelector('.secnav'), row = nav.querySelector('.sn-wrap');
+  function update(){ var max = row.scrollWidth - row.clientWidth; nav.classList.toggle('can-prev', row.scrollLeft > 4); nav.classList.toggle('can-next', max > 4 && row.scrollLeft < max - 4); }
+  nav.querySelector('.sn-arrow.next').addEventListener('click', function(){ row.scrollBy({ left: row.clientWidth * 0.6, behavior: 'smooth' }); });
+  nav.querySelector('.sn-arrow.prev').addEventListener('click', function(){ row.scrollBy({ left: -row.clientWidth * 0.6, behavior: 'smooth' }); });
+  row.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
+})();
+</script>
+<!--SITE-HEADER-END-->
+
+<main id="main">
+<div class="back-bar"><div class="wrap"><a class="back-link" href="/insights/">&larr; All Insights</a></div></div>
+<div class="art-shell">
+<article class="art-main">
+
+  <div class="art-head">
+<div class="kicker">Insights &middot; Treasury operations</div>
+<h1>A Bond Trade Can Now Settle While Your Treasury Team Is Asleep</h1>
+<p class="byline"><span class="who">By Gopakumar Menon, CA, CPA, CTP</span> <span><span class="sep first">&middot;</span><time datetime="2026-11-26">26 November 2026</time></span> <span><span class="sep">&middot;</span>4 min read</span></p>
+</div>
+
+<div class="glance">
+<div class="kicker">At a glance</div>
+<p class="rule">Atomic settlement means the bond and the cash move in one step, on one ledger, or neither moves. That makes settlement faster and simpler. Settlement at any hour adds a new question for Treasury: are the cash, the approval and the record ready at that hour too?</p>
+<p class="keep-k">Three concepts to know</p>
+<ul class="keep">
+<li>Tokenised</li>
+<li>Atomic</li>
+<li>24 hour settlement</li>
+</ul>
+</div>
+
+<h2 id="happened">What happened</h2>
+<p>Can a bond trade settle while your whole Treasury team is asleep?</p>
+<p>Yes. In Hong Kong, it can. Since 25 November 2026.</p>
+<p>That day, the Hong Kong Monetary Authority launched a new platform for bonds, the CMU Digital Asset Platform. CMU is Hong Kong&rsquo;s central settlement system for bonds.</p>
+<p>It runs on a shared digital ledger.</p>
+<p>It handles the whole life of a bond: issuing it, settling trades, paying coupons and repaying it at maturity.</p>
+<p>It can also turn existing bonds into tokens.</p>
+<p>Ten banks are the first direct participants, including HSBC, Standard Chartered, Bank of China (Hong Kong) and DBS.</p>
+<p>Three concepts are relevant here.</p>
+
+<h2 id="tokenised">Tokenised</h2>
+<p>A token is a digital record of who owns what, kept on a shared ledger.</p>
+<p>For an existing bond, think of it as the same bond, recorded in a new way.</p>
+<p>New bonds can also be issued as tokens from the start.</p>
+<p>What changes is how ownership is recorded and moved.</p>
+
+<h2 id="atomic">Atomic</h2>
+<p>A bond trade has two legs.</p>
+<p>The bond moves one way. The cash moves the other.</p>
+<p>Settlement systems already link the two, so neither moves without the other.</p>
+<p>But the bond and the cash usually sit in separate systems.</p>
+<p>The link depends on messages between them, and it works only during operating hours.</p>
+<p>Atomic settlement puts both on one ledger.</p>
+<p>Both move in a single step, or neither moves.</p>
+
+<h2 id="hours">24 hour settlement</h2>
+<p>The platform settles in several currencies, 24 hours a day, using cash tokens.</p>
+<p>A cash token is money in digital form on the same ledger, so the cash leg can move with the bond.</p>
+<p>Settlement no longer has to wait for the office to open.</p>
+
+<h2 id="distinction">The distinction that matters</h2>
+<p>Settling faster and being ready to settle are not the same thing.</p>
+<p>Atomic settlement makes the trade simpler.</p>
+<p>It does not remove the work around it.</p>
+<p>If a trade can settle at any hour, three things must also work at that hour.</p>
+<p>The cash must be in place.</p>
+<p>The approval must be in place.</p>
+<p>And the record must match your books by morning.</p>
+<p class="key">The system can settle at midnight. Your controls decide whether it should.</p>
+
+<h2 id="treasury">What it means for Treasury</h2>
+<ul class="dots">
+<li><strong>Liquidity:</strong> cash may be needed outside office hours. If your bank settles outside office hours, the cutoffs that once gave the team time to fund an account may no longer apply.</li>
+<li><strong>Approvals:</strong> someone must be able to approve a trade at 2am, within a written limit, or the trade waits until morning by design.</li>
+<li><strong>Reconciliation:</strong> the token record, the bank&rsquo;s record and your ledger must agree. Three records, one position.</li>
+<li><strong>Daily cash position:</strong> if settlement does not stop, choose a fixed cutoff time for the daily snapshot and keep to it.</li>
+<li><strong>Access:</strong> the direct participants are banks. A corporate Treasury would most likely reach the platform through its bank.</li>
+</ul>
+
+<h2 id="questions">Five questions before your Treasury holds a tokenised bond</h2>
+<ol class="num">
+<li>Which bank gives you access, and what does it record for you?</li>
+<li>What is your daily cutoff for the cash position when settlement does not stop?</li>
+<li>Who can approve a trade outside office hours, and up to what limit?</li>
+<li>How will the token record be matched to your ledger and bank statement?</li>
+<li>If the platform is unavailable, how does the trade settle?</li>
+</ol>
+
+<h2 id="going">Where it is going</h2>
+<p>CMU OmniClear, which runs the platform for the Hong Kong Monetary Authority, plans to extend it beyond bonds to funds and other real world assets.</p>
+<p>It also plans links to tokenised deposits and regulated stablecoins.</p>
+<p>That is a roadmap, not a date.</p>
+<p>For most corporate Treasuries, nothing changes this week.</p>
+<p>But the question is coming.</p>
+<p>Is your Treasury ready for settlement that does not wait for the office?</p>
+
+<div class="box">
+<div class="kicker">Try this</div>
+<p>Take your last bond or money market trade. Note when it was agreed, when it settled, and which steps waited for an office to open: yours, your bank&rsquo;s or the market&rsquo;s.</p>
+<p>Then ask question 3: who would have approved that trade at 2am?</p>
+</div>
+<p style="margin-top:28px"><em>P.S. If a trade settled at 2am tonight, who on your team would know by 9am?</em></p>
+<div class="follow">
+    <p>Written by Gopakumar Menon, CA, CPA, CTP. Follow on LinkedIn for each new piece.</p>
+    <a href="https://www.linkedin.com/in/gopakumarmenon" target="_blank" rel="noopener">Follow on LinkedIn</a><a href="/insights/">All Insights</a>
+  </div>
+
+  <div class="end">
+    <p>Facts as reported by the Hong Kong Monetary Authority on 25 November 2026. This article is general discussion, not professional or investment advice. Views are the author&rsquo;s own and do not represent any employer.</p>
+  </div>
+
+</article>
+<aside class="art-rail" aria-label="In this article"><div class="rail-in">
+  <p class="rail-k">In this article</p>
+  <ol class="rail-toc"><li><a href="#happened">What happened</a></li><li><a href="#tokenised">Tokenised</a></li><li><a href="#atomic">Atomic</a></li><li><a href="#hours">24 hour settlement</a></li><li><a href="#distinction">The distinction that matters</a></li><li><a href="#treasury">What it means for Treasury</a></li><li><a href="#questions">Five questions</a></li><li><a href="#going">Where it is going</a></li></ol>
+  <a class="rail-back" href="/insights/">&larr; All Insights</a>
+</div></aside>
+</div>
+</main>
+
+<footer>
+  <div class="wrap"><p>&copy; The AI Treasurer &middot; <a href="/">theaitreasurer.com</a></p></div>
+</footer>
+<script>(function(){var n=document.querySelector(".secnav");function m(){if(n)document.documentElement.style.setProperty("--sn-h",n.offsetHeight+"px")}m();addEventListener("resize",m);addEventListener("load",m)})();</script>
+<script>(function(){var ls=[].slice.call(document.querySelectorAll(".rail-toc a"));if(!ls.length||!("IntersectionObserver" in window))return;var hs=ls.map(function(a){return document.getElementById(a.getAttribute("href").slice(1))});function on(id){ls.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+id)})}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)on(e.target.id)})},{rootMargin:"0px 0px -70% 0px"});hs.forEach(function(h){if(h)io.observe(h)})})();</script>
+</body>
+</html>

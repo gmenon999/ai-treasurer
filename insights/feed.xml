@@ -6,7 +6,15 @@
     <atom:link href="https://theaitreasurer.com/insights/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical views for CFOs and Treasurers, by Gopakumar Menon.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 24 Nov 2026 08:04:06 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 20:07:42 +0000</lastBuildDate>
+    <item>
+      <title>A Bond Trade Can Now Settle While Your Treasury Team Is Asleep</title>
+      <link>https://theaitreasurer.com/articles/hk-tokenised-bonds/</link>
+      <guid isPermaLink="true">https://theaitreasurer.com/articles/hk-tokenised-bonds/</guid>
+      <pubDate>Thu, 26 Nov 2026 06:00:00 +0000</pubDate>
+      <category>Treasury operations</category>
+      <description>What Hong Kong’s new bond platform changes for Treasury, and five questions to answer before your Treasury holds a tokenised bond.</description>
+    </item>
     <item>
       <title>An AI Agent Just Negotiated a Treasury Trade With Another AI Agent</title>
       <link>https://theaitreasurer.com/articles/ai-agent-negotiated-treasury-trade/</link>
