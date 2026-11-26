@@ -1515,6 +1515,13 @@
     .ctt-p { grid-template-columns: 1fr; padding: 18px 16px; }
     .hag2-big { gap: 0 28px; }
   }
+  /* Home opening on phones: roomier, like the draft, so Insights starts lower on the first screen (26 Nov 2026) */
+  @media (max-width: 720px) {
+    section#top.intro .wrap { padding-top: 104px; padding-bottom: 96px; }
+    section#top.intro h1 { margin: 14px 0 30px; }
+    section#top.intro .lede { margin-bottom: 40px; }
+    section#top.intro .hero-by { margin-bottom: 44px; }
+  }
   /* About: short headline, experience line underneath (26 Nov 2026) */
   .creds-head h2 { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 12px; max-width: 24ch; }
   .creds-sub { margin: 0 0 28px; font-size: 19px; line-height: 1.5; color: var(--white); max-width: 46ch; }
