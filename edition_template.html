@@ -1548,6 +1548,8 @@
     .sp-ico { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: #1B3150; border: 1px solid rgba(233,203,133,0.35); color: var(--gold-light); flex: none; }
     .sp-ico svg { width: 26px; height: 26px; }
   }
+  /* Spotlight panel: a slightly lighter navy than the opening, with a gold top rule, so it reads as its own block (owner, 27 Nov 2026) */
+  .spot { position: relative; background: #12223A; border-top: 2px solid var(--gold-light); padding: 16px 20px 14px !important; }
   .sp-dots { display: none; }
   .sp-wrap { position: relative; }
   .sp-row { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2px) / 3); list-style: none; margin: 0; padding: 0;
@@ -1575,19 +1577,28 @@
     section#top.intro .hero-by { margin-bottom: clamp(18px, 3vh, 32px); }
   }
   @media (max-width: 720px) {
-    .sp-row { grid-auto-columns: 74%; margin-right: -16px; padding-right: 16px; scroll-padding-left: 0; }
+    .sp-row { grid-auto-columns: 80%; scroll-padding-left: 0; }
+    .spot { padding: 14px 14px 10px !important; }
     .sp-row li { padding: 0 16px; }
     /* swipe cues on phones (owner, 27 Nov 2026 21:51): gold edge arrows like the menu's, and dots under the strip */
     .sp-nav, .sp-nav.prev, .sp-nav.next { top: 0; bottom: 0; height: auto; transform: none; width: 46px; border: 0; color: var(--gold-light); }
     .sp-nav svg { width: 24px; height: 24px; }
-    .sp-nav.next { right: -16px; left: auto; justify-content: flex-end; padding-right: 10px; background: linear-gradient(90deg, rgba(8,18,34,0) 0%, rgba(8,18,34,0.92) 55%); }
-    .sp-nav.prev { left: -16px; right: auto; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(8,18,34,0) 0%, rgba(8,18,34,0.92) 55%); }
+    .sp-nav.next { right: 0; left: auto; justify-content: flex-end; padding-right: 10px; background: linear-gradient(90deg, rgba(18,34,58,0) 0%, rgba(18,34,58,0.95) 55%); }
+    .sp-nav.prev { left: 0; right: auto; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(18,34,58,0) 0%, rgba(18,34,58,0.95) 55%); }
     .sp-nav:hover, .sp-nav:focus-visible { background-color: transparent; color: var(--white); }
+    .sp-nav.prev { display: none !important; }
     .sp-dots { display: flex; gap: 2px; margin-top: 10px; margin-left: -8px; }
     .sp-dots button { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .sp-dots button::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.35); }
     .sp-dots button[aria-current="true"]::before { width: 18px; border-radius: 4px; background: var(--gold-light); }
     .sp-t { font-size: 16px; }
+  }
+  @media (max-width: 720px) and (max-height: 700px) {
+    section#top.intro .wrap { padding-top: 22px; }
+    section#top.intro h1 { margin-bottom: 10px; }
+    section#top.intro .lede { margin-bottom: 10px; }
+    section#top.intro .hero-by { margin-bottom: 10px; }
+    section#top.intro .wrap > .spot { margin-top: 12px; }
   }
   /* About: short headline, experience line underneath (26 Nov 2026) */
   .creds-head h2 { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 12px; max-width: 24ch; }
