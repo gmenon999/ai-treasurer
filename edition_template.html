@@ -661,16 +661,9 @@
     .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
     .tabs { position: static; }
   }
-  .tabs .tabs-more { display: none; margin: 0; }
-  /* Treasury Today topics on phones: stay pinned under the menu while reading, as one swipeable row (owner, 27 Nov 2026 23:12). */
+  /* Treasury Today topics on phones: stay pinned under the menu while reading, keeping the original rows of buttons (owner, 27 Nov 2026 23:22). */
   @media (max-width: 720px) {
     .tabs { position: sticky; top: calc(var(--secnav-h) + 1px); z-index: 15; }
-    .tabs .tabrow { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-top: 10px; padding-bottom: 10px; padding-right: 44px; scroll-padding-inline: 16px; }
-    .tabs .tabrow::-webkit-scrollbar { display: none; }
-    .tabs .tabrow button { flex: none; }
-    .tabs .tabs-more { flex-direction: row; position: absolute; top: 0; bottom: 0; right: 0; width: 56px; border: 0; padding: 0 10px 0 0; cursor: pointer; color: var(--navy); align-items: center; justify-content: flex-end; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 50%); }
-    .tabs-more svg { width: 22px; height: 22px; }
-    .tabs.can-next .tabs-more { display: flex; }
   }
 
   /* ---- Today strip (Home) ---- */
@@ -4270,22 +4263,6 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 <script>
 /* Landing on Home from an old "/#top" link: show the very top of the page, not the anchor offset. */
 (function(){ if (location.hash === '#top') { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; history.replaceState(null, '', location.pathname + location.search); var go=function(){ window.scrollTo(0,0); }; go(); document.addEventListener('DOMContentLoaded', go); window.addEventListener('load', function(){ go(); setTimeout(go, 60); setTimeout(go, 300); }); } })();
-</script>
-<script>
-/* Treasury Today topics on phones: arrow shows there are more topics; the chosen topic is kept in view. */
-(function(){
-  var bar = document.getElementById('briefing-tabs'); if (!bar) return;
-  var row = bar.querySelector('.tabrow');
-  var b = document.createElement('button'); b.type = 'button'; b.className = 'tabs-more'; b.setAttribute('aria-label', 'More topics');
-  b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>';
-  bar.appendChild(b);
-  function upd(){ bar.classList.toggle('can-next', row.scrollWidth - row.clientWidth - row.scrollLeft > 4); }
-  b.addEventListener('click', function(){ row.scrollBy({ left: row.clientWidth * 0.7, behavior: 'smooth' }); });
-  row.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd(); if (window.ResizeObserver) new ResizeObserver(upd).observe(row);
-  row.querySelectorAll('button').forEach(function(t){ t.addEventListener('click', function(){
-    var l = t.offsetLeft - 16; if (l < row.scrollLeft || t.offsetLeft + t.offsetWidth > row.scrollLeft + row.clientWidth - 44) row.scrollTo({ left: Math.max(0, l), behavior: 'smooth' });
-  }); });
-})();
 </script>
 </body>
 </html>
