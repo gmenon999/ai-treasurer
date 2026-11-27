@@ -68,7 +68,7 @@ def load():
 # ---- Shared site header and menu, same look as the Home page tabs ----
 HEAD_START, HEAD_END = "<!--SITE-HEADER-START-->", "<!--SITE-HEADER-END-->"
 CSS_START, CSS_END = "/*SITE-HEADER-CSS-START*/", "/*SITE-HEADER-CSS-END*/"
-MENU = [("/#top", "Home"), ("/insights/", "Insights"), ("/#agentic", "Agentic Automation"), ("/#controls", "AI Controls"),
+MENU = [("/", "Home"), ("/insights/", "Insights"), ("/#agentic", "Agentic Automation"), ("/#controls", "AI Controls"),
         ("/#briefing", "Treasury Today"), ("/#markets", "Markets"), ("/#about", "About")]
 
 HEADER_CSS = """

@@ -4262,5 +4262,9 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 })();
 </script>
 <script>(function(){function s(){var h=document.querySelector("header.band"),n=document.querySelector(".secnav");document.documentElement.style.setProperty("--chrome-h",((h?h.offsetHeight:0)+(n?n.offsetHeight:0))+"px");}s();addEventListener("resize",s);})();</script>
+<script>
+/* Landing on Home from an old "/#top" link: show the very top of the page, not the anchor offset. */
+(function(){ if (location.hash === '#top') { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; history.replaceState(null, '', location.pathname + location.search); var go=function(){ window.scrollTo(0,0); }; go(); document.addEventListener('DOMContentLoaded', go); window.addEventListener('load', function(){ go(); setTimeout(go, 60); setTimeout(go, 300); }); } })();
+</script>
 </body>
 </html>
