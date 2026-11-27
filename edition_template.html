@@ -1550,7 +1550,8 @@
   }
   /* Spotlight panel: brand blue #1E3A66 with a gold top rule, so it reads as its own block (consultant choice, owner delegated, 27 Nov 2026).
      Text contrast: titles 11.3:1, gold labels 7.2:1 (site target 7:1). */
-  .spot { position: relative; background: #1E3A66; border-top: 2px solid var(--gold-light); padding: 16px 20px 14px !important; }
+  .spot { position: relative; padding-bottom: 0 !important; }
+  .sp-wrap { background: #1E3A66; border-top: 2px solid var(--gold-light); padding: 14px 20px; }  /* blue only behind the articles, not the heading (owner, 27 Nov 2026 22:14) */
   .sp-dots { display: none; }
   .sp-wrap { position: relative; }
   .sp-row { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2px) / 3); list-style: none; margin: 0; padding: 0;
@@ -1562,7 +1563,7 @@
   .sp-nav.prev { left: -52px; } .sp-nav.next { right: -52px; }
   .sp-nav:hover, .sp-nav:focus-visible { background: var(--gold-light); color: var(--navy-deep); border-color: var(--gold-light); }
   .sp-nav[hidden] { display: none; }
-  @media (max-width: 1340px) { .sp-nav.prev { left: auto; right: 48px; top: -34px; transform: none; } .sp-nav.next { right: 0; top: -34px; transform: none; } }
+  @media (max-width: 1340px) { .sp-nav.prev { left: auto; right: 48px; top: -50px; transform: none; } .sp-nav.next { right: 0; top: -50px; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .sp-row { scroll-behavior: auto; } }
   .sp-row li { padding: 0 24px; border-left: 1px solid rgba(255,255,255,0.35); }
   .sp-row li:first-child { padding-left: 0; border-left: 0; }
@@ -1579,7 +1580,7 @@
   }
   @media (max-width: 720px) {
     .sp-row { grid-auto-columns: 80%; scroll-padding-left: 0; }
-    .spot { padding: 14px 14px 10px !important; }
+    .sp-wrap { padding: 14px 14px 0; }
     .sp-row li { padding: 0 16px; }
     /* swipe cues on phones (owner, 27 Nov 2026 21:51): gold edge arrows like the menu's, and dots under the strip */
     .sp-nav, .sp-nav.prev, .sp-nav.next { top: 0; bottom: 0; height: auto; transform: none; width: 46px; border: 0; color: var(--gold-light); }
@@ -1588,7 +1589,7 @@
     .sp-nav.prev { left: 0; right: auto; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(30,58,102,0) 0%, rgba(30,58,102,0.95) 55%); }
     .sp-nav:hover, .sp-nav:focus-visible { background-color: transparent; color: var(--white); }
     .sp-nav.prev { display: none !important; }
-    .sp-dots { display: flex; gap: 2px; margin-top: 10px; margin-left: -8px; }
+    .sp-dots { display: flex; gap: 2px; margin: 0; padding: 8px 6px 10px; background: #1E3A66; }
     .sp-dots button { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .sp-dots button::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.35); }
     .sp-dots button[aria-current="true"]::before { width: 18px; border-radius: 4px; background: var(--gold-light); }
