@@ -23,6 +23,7 @@ DATA = os.path.join(HERE, "data", "insights.json")
 SITE = "https://theaitreasurer.com"
 HOME_FILES = ("edition_template.html", "index.html")
 HOME_START, HOME_END = "<!--INSIGHTS-HOME-START-->", "<!--INSIGHTS-HOME-END-->"
+SPOT_START, SPOT_END = "<!--SPOTLIGHT-START-->", "<!--SPOTLIGHT-END-->"
 MAP_START, MAP_END = "<!--INSIGHTS-SITEMAP-START-->", "<!--INSIGHTS-SITEMAP-END-->"
 HOME_CARDS = 3
 
@@ -142,6 +143,18 @@ def home_cards(arts):
     return "\n" + "\n".join(out) + "\n        "
 
 
+def spotlight(arts):
+    # First screen strip: latest 3 articles, number and title only (swipe on phones, no animation)
+    order = {a["slug"]: i + 1 for i, a in enumerate(sorted(arts, key=lambda a: (a["_d"], a["slug"])))}
+    arrow = '<svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'
+    lis = []
+    for a in arts[:HOME_CARDS]:
+        lis.append('<li><a class="sp" href="/articles/%s/"><span class="sp-c"><span class="sp-k">Article %02d</span><span class="sp-t">%s</span></span>%s</a></li>'
+                   % (e(a["slug"]), order[a["slug"]], e(a["title"]), arrow))
+    return ('\n        <div class="spot" aria-labelledby="spot-h"><h2 id="spot-h" class="spot-h">Spotlight</h2>'
+            '<ul class="sp-row">' + "".join(lis) + '</ul></div>\n        ')
+
+
 def insights_page(arts):
     # Stable numbering: No. 1 is the first article ever published, so numbers never change as new ones arrive.
     order = {a["slug"]: i + 1 for i, a in enumerate(sorted(arts, key=lambda a: (a["_d"], a["slug"])))}
@@ -211,6 +224,7 @@ def main():
     outputs = {}
     for f in HOME_FILES:
         outputs[f] = replace_region(open(os.path.join(HERE, f), encoding="utf-8").read(), HOME_START, HOME_END, home_cards(arts), f)
+        outputs[f] = replace_region(outputs[f], SPOT_START, SPOT_END, spotlight(arts), f)
     outputs["sitemap.xml"] = replace_region(open(os.path.join(HERE, "sitemap.xml"), encoding="utf-8").read(), MAP_START, MAP_END, sitemap_block(arts), "sitemap.xml")
     outputs["insights/index.html"] = insights_page(arts)
     for a in arts:

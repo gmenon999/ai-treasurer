@@ -1521,10 +1521,10 @@
     /* airy, evenly spaced: the gaps grow with the screen height, and the section fills the screen under the
        menu, so Insights starts on the first scroll without one empty band under the button (27 Nov 2026) */
     section#top.intro { min-height: calc(100vh - var(--chrome-h, 113px)); min-height: calc(100lvh - var(--chrome-h, 113px)); justify-content: center; }
-    section#top.intro .wrap { padding-top: clamp(48px, 9vh, 96px); padding-bottom: clamp(48px, 9vh, 96px); }
-    section#top.intro h1 { margin: 16px 0 clamp(24px, 6vh, 56px); }
-    section#top.intro .lede { margin-bottom: clamp(32px, 9vh, 80px); }
-    section#top.intro .hero-by { margin-bottom: clamp(32px, 9vh, 80px); }
+    section#top.intro .wrap { padding-top: clamp(28px, 4vh, 56px); padding-bottom: clamp(16px, 3vh, 32px); }
+    section#top.intro h1 { margin: 12px 0 clamp(16px, 2.6vh, 28px); }
+    section#top.intro .lede { margin-bottom: clamp(18px, 3vh, 32px); }
+    section#top.intro .hero-by { margin-bottom: clamp(18px, 3vh, 32px); }
   }
   /* Header: LinkedIn as an outline button, so the Board button is the one gold action (26 Nov 2026) */
   .nav .cta { background: transparent; color: var(--gold-light); border: 1px solid var(--gold-light); }
@@ -1532,6 +1532,29 @@
   /* Home Insights cards: article serial number, same as the Insights page (27 Nov 2026) */
   .art-no { display: block; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
   .art-card.has-img .art-no { order: 0; }
+  /* Home first screen: Spotlight strip of the latest articles (27 Nov 2026). Swipe on phones, no animation. */
+  .spot { margin-top: clamp(24px, 4vh, 40px); padding-bottom: clamp(8px, 2vh, 24px); }
+  .spot-h { font-family: var(--serif); font-weight: 700; font-size: 24px; line-height: 1.1; margin: 0 0 12px; color: var(--white); }
+  .sp-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); list-style: none; margin: 0; padding: 0; }
+  .sp-row li { padding: 0 24px; border-left: 1px solid rgba(255,255,255,0.35); }
+  .sp-row li:first-child { padding-left: 0; border-left: 0; }
+  .sp { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center; color: var(--white); text-decoration: none; }
+  .sp-k { display: block; margin-bottom: 6px; font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+  .sp-t { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-family: var(--serif); font-weight: 700; font-size: 17px; line-height: 1.25; }
+  .sp-arr { width: 24px; height: 24px; flex: none; }
+  .sp:hover .sp-t, .sp:focus-visible .sp-t { text-decoration: underline; text-decoration-color: var(--gold-light); text-underline-offset: 4px; }
+  @media (min-width: 721px) {
+    section#top.intro .wrap { padding-top: 32px; padding-bottom: 8px; }
+    section#top.intro h1 { font-size: clamp(38px, 4.6vw, 60px); margin: 12px 0 clamp(16px, 2.6vh, 28px); }
+    section#top.intro .lede { margin-bottom: clamp(18px, 3vh, 32px); }
+    section#top.intro .hero-by { margin-bottom: clamp(18px, 3vh, 32px); }
+  }
+  @media (max-width: 720px) {
+    .sp-row { grid-auto-columns: 70%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-right: -16px; padding-right: 16px; }
+    .sp-row::-webkit-scrollbar { display: none; }
+    .sp-row li { scroll-snap-align: start; padding: 0 16px; }
+    .sp-t { font-size: 16px; }
+  }
   /* About: short headline, experience line underneath (26 Nov 2026) */
   .creds-head h2 { font-size: clamp(28px, 3.2vw, 40px); margin-bottom: 12px; max-width: 24ch; }
   .creds-sub { margin: 0 0 28px; font-size: 19px; line-height: 1.5; color: var(--white); max-width: 46ch; }
@@ -2039,6 +2062,9 @@
       <div class="actions">
         <a class="cta-main cta-down" href="#decisions">See what your Board will ask<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
       </div>
+      <!--SPOTLIGHT-START-->
+        <div class="spot" aria-labelledby="spot-h"><h2 id="spot-h" class="spot-h">Spotlight</h2><ul class="sp-row"><li><a class="sp" href="/articles/hk-tokenised-bonds/"><span class="sp-c"><span class="sp-k">Article 05</span><span class="sp-t">A Bond Trade Can Now Settle While Your Treasury Team Is Asleep</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/ai-agent-negotiated-treasury-trade/"><span class="sp-c"><span class="sp-k">Article 04</span><span class="sp-t">An AI Agent Just Negotiated a Treasury Trade With Another AI Agent</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/where-freed-hours-go/"><span class="sp-c"><span class="sp-k">Article 03</span><span class="sp-t">Now your Reconciliation only takes a few minutes. So why is your team still busy?</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li></ul></div>
+        <!--SPOTLIGHT-END-->
     </div>
   </section>
 
