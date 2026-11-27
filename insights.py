@@ -6,7 +6,8 @@ Run after adding or editing an article entry:
     python3 insights.py --check    # validate only, change nothing (used by CI)
 
 It rewrites only the marked regions it owns:
-  * Home cards (latest 3) between INSIGHTS-HOME markers in edition_template.html and index.html
+  * Home Spotlight strip (every article) between SPOTLIGHT markers in edition_template.html and index.html
+    (the separate Home Insights cards section was removed on 27 Nov 2026; home_cards() is kept but unused)
   * /insights/index.html (the full list) and /insights/feed.xml (RSS)
   * Insights URLs between INSIGHTS-SITEMAP markers in sitemap.xml
 Article pages themselves are hand-written under /articles/<slug>/index.html.
@@ -151,7 +152,7 @@ def spotlight(arts):
     for a in arts:
         lis.append('<li><a class="sp" href="/articles/%s/"><span class="sp-c"><span class="sp-k">Article %02d</span><span class="sp-t">%s</span></span>%s</a></li>'
                    % (e(a["slug"]), order[a["slug"]], e(a["title"]), arrow))
-    return ('\n        <div class="spot" aria-labelledby="spot-h"><h2 id="spot-h" class="spot-h">Spotlight</h2>'
+    return ('\n        <div class="spot" aria-labelledby="spot-h"><div class="spot-top"><h2 id="spot-h" class="spot-h">Spotlight</h2><a class="spot-all" href="/insights/">See all insights</a></div>'
             '<div class="sp-wrap"><ul class="sp-row">' + "".join(lis) + '</ul>'
             '<button type="button" class="sp-nav prev" aria-label="Previous articles" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>'
             '<button type="button" class="sp-nav next" aria-label="More articles" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>'
@@ -226,8 +227,7 @@ def main():
     check = "--check" in sys.argv
     outputs = {}
     for f in HOME_FILES:
-        outputs[f] = replace_region(open(os.path.join(HERE, f), encoding="utf-8").read(), HOME_START, HOME_END, home_cards(arts), f)
-        outputs[f] = replace_region(outputs[f], SPOT_START, SPOT_END, spotlight(arts), f)
+        outputs[f] = replace_region(open(os.path.join(HERE, f), encoding="utf-8").read(), SPOT_START, SPOT_END, spotlight(arts), f)
     outputs["sitemap.xml"] = replace_region(open(os.path.join(HERE, "sitemap.xml"), encoding="utf-8").read(), MAP_START, MAP_END, sitemap_block(arts), "sitemap.xml")
     outputs["insights/index.html"] = insights_page(arts)
     for a in arts:
