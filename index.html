@@ -1518,9 +1518,8 @@
   /* Home opening on phones: height follows the content (no forced full screen), so there is no
      empty band under the button and the first Insights card starts on the first screen (26 Nov 2026, revised) */
   @media (max-width: 720px) {
-    /* airy, evenly spaced: the gaps grow with the screen height, and the section fills the screen under the
-       menu, so Insights starts on the first scroll without one empty band under the button (27 Nov 2026) */
-    section#top.intro { min-height: calc(100vh - var(--chrome-h, 113px)); min-height: calc(100lvh - var(--chrome-h, 113px)); justify-content: center; }
+    /* gaps grow a little with screen height; the section fits its content (27 Nov 2026, 21:38) */
+    section#top.intro { min-height: 0; justify-content: flex-start; }  /* fits its content: no spare space above the label (owner, 27 Nov 2026 21:38) */
     section#top.intro .wrap { padding-top: clamp(28px, 4vh, 56px); padding-bottom: clamp(16px, 3vh, 32px); }
     section#top.intro h1 { margin: 12px 0 clamp(16px, 2.6vh, 28px); }
     section#top.intro .lede { margin-bottom: clamp(18px, 3vh, 32px); }
