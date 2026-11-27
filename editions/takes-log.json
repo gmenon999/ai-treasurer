@@ -2583,6 +2583,79 @@
     "cost_usd": 0.2625
    },
    "edition_cost_usd": 1.6622
+  },
+  {
+   "date": "2026-11-27",
+   "items": [
+    {
+     "headline": "Ripple Treasury launches governed multi-agent AI that cites policy before acting",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "SWIFT postpones SR2026 removal of unstructured addresses in ISO 20022 messages",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Zapier survey: 27% of Finance Teams cite compliance risk in agentic AI",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "OFAC targets Iranian shadow banking networks in Operation Economic Outcast",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "IASB seeks feedback on whether IFRS 9 hedge accounting works as intended",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Visa, BILL and Billtrust pilot AI agents paying approved invoices via supplier portals",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Embat connects to JPMorgan Payments' BAS API, cutting Treasury onboarding to days",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "68% of CFOs expect working capital pressure to rise despite adequate financing",
+     "status": "dropped",
+     "lens": "Cash & liquidity",
+     "reasons": "The source is a paywalled stub with no survey findings, so the take says nothing about the story's key point (financing adequacy, visibility and forecasting priority). The Cash & liquidity lens is forced onto a point about access. The 'headline percentages' and the 'sample size and respondent mix' a"
+    },
+    {
+     "headline": "Corporate FX hedge ratios fall to a record-low 43% as tactics shift",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "StraitsX and OCBC pilot B2B stablecoin payments into live business accounts",
+     "status": "published",
+     "lens": "Payments & operations"
+    },
+    {
+     "headline": "Markets price 97.4% odds of a 25bp Fed hike in December",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Bank of England lifts Bank Rate 25bp to 4%, first hike since 2023",
+     "status": "published",
+     "lens": "Risk"
+    }
+   ],
+   "cost_usd": 0.283,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.1216
+   },
+   "edition_cost_usd": 1.481
   }
  ]
 }
