@@ -661,6 +661,10 @@
     .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
     .tabs { position: static; }
   }
+  /* Pinned topic bar names the subheading being read (owner, 27 Nov 2026 23:29). Hangs under the bar, so nothing below moves. */
+  .tabs-now { position: absolute; left: 0; right: 0; top: 100%; background: #F6F3EC; border-bottom: 1px solid var(--line); box-shadow: 0 4px 10px rgba(20,38,63,0.06); font: 600 13.5px/1.35 var(--sans); color: var(--navy); padding: 8px 0; display: none; }
+  .tabs-now b { font-weight: 700; margin-right: 6px; }
+  .tabs.has-now .tabs-now { display: block; }
   /* Treasury Today topics on phones: stay pinned under the menu while reading, keeping the original rows of buttons (owner, 27 Nov 2026 23:22). */
   @media (max-width: 720px) {
     .tabs { position: sticky; top: calc(var(--secnav-h) + 1px); z-index: 15; }
@@ -2830,8 +2834,9 @@
     panels.forEach(function(p){ p.classList.toggle('active', p.id === 'p-'+key); });
     var t = document.getElementById('briefing-tabs');
     var it = itemId ? document.getElementById(itemId) : null;
-    var dest = it || t;
-    if (dest) { var h = (document.querySelector('.secnav')||{}).offsetHeight || 0; window.scrollTo({ top: dest.getBoundingClientRect().top + window.pageYOffset - h - (it ? 16 : 0), behavior: 'smooth' }); }
+    // Measure from the panel, not the pinned bar (a pinned bar reports where it is stuck, not where it sits).
+    var dest = it || document.getElementById('p-'+key);
+    if (dest) { var h = ((document.querySelector('.secnav')||{}).offsetHeight || 0) + (t ? t.offsetHeight : 0); window.scrollTo({ top: Math.max(0, dest.getBoundingClientRect().top + window.pageYOffset - h - (it ? 16 : 0)), behavior: 'smooth' }); }
     if (it) { it.classList.remove('flash'); void it.offsetWidth; it.classList.add('flash'); }
   }
   tabs.forEach(function(b){
@@ -4263,6 +4268,29 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 <script>
 /* Landing on Home from an old "/#top" link: show the very top of the page, not the anchor offset. */
 (function(){ if (location.hash === '#top') { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; history.replaceState(null, '', location.pathname + location.search); var go=function(){ window.scrollTo(0,0); }; go(); document.addEventListener('DOMContentLoaded', go); window.addEventListener('load', function(){ go(); setTimeout(go, 60); setTimeout(go, 300); }); } })();
+</script>
+<script>
+/* Pinned topic bar: show which subheading of the chosen topic is being read. */
+(function(){
+  var bar = document.getElementById('briefing-tabs'); if (!bar) return;
+  var now = document.createElement('div'); now.className = 'tabs-now'; now.setAttribute('aria-live', 'polite');
+  now.innerHTML = '<div class="wrap"><b>Now:</b><span></span></div>'; bar.appendChild(now);
+  var label = now.querySelector('span'), last = '', busy = false;
+  function upd(){
+    busy = false;
+    var p = document.querySelector('.panel.active'), cur = null;
+    if (p && bar.offsetParent !== null) {
+      var edge = bar.getBoundingClientRect().bottom + 12, end = p.getBoundingClientRect().bottom;
+      if (end > edge + 40) p.querySelectorAll('.beat > h3').forEach(function(h){ if (h.getBoundingClientRect().top <= edge) cur = h; });
+    }
+    var txt = cur ? cur.textContent.trim() : '';
+    if (txt !== last) { last = txt; label.textContent = txt; bar.classList.toggle('has-now', !!txt); }
+  }
+  function q(){ if (!busy) { busy = true; requestAnimationFrame(upd); } }
+  addEventListener('scroll', q, { passive: true }); addEventListener('resize', q);
+  bar.addEventListener('click', function(){ setTimeout(q, 50); setTimeout(q, 700); });
+  q();
+})();
 </script>
 </body>
 </html>
