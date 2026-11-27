@@ -661,6 +661,9 @@
     .secnav a { font-size: 11.5px; letter-spacing: 0.06em; }
     .tabs { position: static; }
   }
+  /* Each subheading carries its topic name and position, so it reads as part of the chosen topic (owner, 27 Nov 2026 23:42). */
+  .beat-k { display: block; font: 700 11.5px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: #5A430C; margin-bottom: 8px; }
+  .beat.no-up .to-sections { display: none; }
   /* Pinned topic bar names the subheading being read (owner, 27 Nov 2026 23:29). Hangs under the bar, so nothing below moves. */
   .tabs-now { position: absolute; left: 0; right: 0; top: 100%; background: #F6F3EC; border-bottom: 1px solid var(--line); box-shadow: 0 4px 10px rgba(20,38,63,0.06); font: 600 13.5px/1.35 var(--sans); color: var(--navy); padding: 8px 0; display: none; }
   .tabs-now b { font-weight: 700; margin-right: 6px; }
@@ -4289,13 +4292,27 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
       var edge = bar.getBoundingClientRect().bottom + 12, end = p.getBoundingClientRect().bottom;
       if (end > edge + 40) p.querySelectorAll('.beat > h3').forEach(function(h){ if (h.getBoundingClientRect().top <= edge) cur = h; });
     }
-    var txt = cur ? cur.textContent.trim() : '';
+    var txt = ''; if (cur) { var c = cur.cloneNode(true), kk = c.querySelector('.beat-k'); if (kk) kk.remove(); txt = c.textContent.trim(); }
     if (txt !== last) { last = txt; label.textContent = txt; bar.classList.toggle('has-now', !!txt); }
   }
   function q(){ if (!busy) { busy = true; requestAnimationFrame(upd); } }
   addEventListener('scroll', q, { passive: true }); addEventListener('resize', q);
   bar.addEventListener('click', function(){ setTimeout(q, 50); setTimeout(q, 700); });
   q();
+})();
+</script>
+<script>
+/* Subheadings: show "Topic · 1 of 2" above each one; keep "All sections" only at the end of the topic. */
+(function(){
+  document.querySelectorAll('.panel').forEach(function(p){
+    var tab = document.getElementById(p.getAttribute('aria-labelledby')), name = tab ? tab.textContent.trim() : '';
+    var beats = p.querySelectorAll('.beat'), n = beats.length;
+    beats.forEach(function(b, i){
+      var h = b.querySelector(':scope > h3');
+      if (h && name) { var k = document.createElement('span'); k.className = 'beat-k'; k.textContent = name + (n > 1 ? ' \u00b7 ' + (i + 1) + ' of ' + n : ''); h.insertBefore(k, h.firstChild); }
+      if (i < n - 1) b.classList.add('no-up');
+    });
+  });
 })();
 </script>
 </body>
