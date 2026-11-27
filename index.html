@@ -1519,7 +1519,11 @@
      empty band under the button and the first Insights card starts on the first screen (26 Nov 2026, revised) */
   @media (max-width: 720px) {
     /* gaps grow a little with screen height; the section fits its content (27 Nov 2026, 21:38) */
-    section#top.intro { min-height: 0; justify-content: flex-start; }  /* fits its content: no spare space above the label (owner, 27 Nov 2026 21:38) */
+    /* fills the phone screen so the Board questions stay below it; the spare room is shared between the blocks
+       (intro, byline, button, Spotlight), not piled above the label (owner, 27 Nov 2026 21:43) */
+    section#top.intro { min-height: calc(100vh - var(--chrome-h, 113px)); min-height: calc(100lvh - var(--chrome-h, 113px)); justify-content: flex-start; }
+    section#top.intro .wrap { flex: 1 1 auto; display: flex; flex-direction: column; }
+    section#top.intro .wrap > .lede, section#top.intro .wrap > .hero-by, section#top.intro .wrap > .actions, section#top.intro .wrap > .spot { margin-top: auto; }
     section#top.intro .wrap { padding-top: clamp(28px, 4vh, 56px); padding-bottom: clamp(16px, 3vh, 32px); }
     section#top.intro h1 { margin: 12px 0 clamp(16px, 2.6vh, 28px); }
     section#top.intro .lede { margin-bottom: clamp(18px, 3vh, 32px); }
