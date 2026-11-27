@@ -1518,11 +1518,13 @@
   /* Home opening on phones: height follows the content (no forced full screen), so there is no
      empty band under the button and the first Insights card starts on the first screen (26 Nov 2026, revised) */
   @media (max-width: 720px) {
-    section#top.intro { min-height: 0; align-items: flex-start; }
-    section#top.intro .wrap { padding-top: 56px; padding-bottom: 40px; }
-    section#top.intro h1 { margin: 14px 0 24px; }
-    section#top.intro .lede { margin-bottom: 32px; }
-    section#top.intro .hero-by { margin-bottom: 32px; }
+    /* airy, evenly spaced: the gaps grow with the screen height, and the section fills the screen under the
+       menu, so Insights starts on the first scroll without one empty band under the button (27 Nov 2026) */
+    section#top.intro { min-height: calc(100vh - var(--chrome-h, 113px)); min-height: calc(100lvh - var(--chrome-h, 113px)); justify-content: center; }
+    section#top.intro .wrap { padding-top: clamp(48px, 9vh, 96px); padding-bottom: clamp(48px, 9vh, 96px); }
+    section#top.intro h1 { margin: 16px 0 clamp(24px, 6vh, 56px); }
+    section#top.intro .lede { margin-bottom: clamp(32px, 9vh, 80px); }
+    section#top.intro .hero-by { margin-bottom: clamp(32px, 9vh, 80px); }
   }
   /* Header: LinkedIn as an outline button, so the Board button is the one gold action (26 Nov 2026) */
   .nav .cta { background: transparent; color: var(--gold-light); border: 1px solid var(--gold-light); }
