@@ -25,6 +25,16 @@ SITE = "https://theaitreasurer.com"
 HOME_FILES = ("edition_template.html", "index.html")
 HOME_START, HOME_END = "<!--INSIGHTS-HOME-START-->", "<!--INSIGHTS-HOME-END-->"
 SPOT_START, SPOT_END = "<!--SPOTLIGHT-START-->", "<!--SPOTLIGHT-END-->"
+# Spotlight topic icons (desktop only; owner 27 Nov 2026). One per topic, so new articles need no new art.
+TOPIC_ICONS = {
+    'AI and automation': '<svg viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="12" cy="10" r="1.6"/><path d="M6.7 7.1 10.6 9.3M17.3 7.1 13.4 9.3M12 11.6V16"/></g></svg>',
+    'Controls and audit': '<svg viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 19 6v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="m8.8 12.2 2.3 2.3 4.3-4.6"/></g></svg>',
+    'Cash and liquidity': '<svg viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 6 7.2 6 10.5A6 6 0 0 1 6 13.5C6 10.2 9 7 12 3z"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.5 2.2"/></g></svg>',
+    'Payments': '<svg viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3 10h18M7 14.5h4"/></g></svg>',
+    'FX and risk': '<svg viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></g></svg>',
+    'Finance leadership': '<svg viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></g></svg>',
+    'Treasury operations': '<svg viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5M4.5 20h15M6.5 11v6.5M10 11v6.5M14 11v6.5M17.5 11v6.5"/></g></svg>',
+}
 MAP_START, MAP_END = "<!--INSIGHTS-SITEMAP-START-->", "<!--INSIGHTS-SITEMAP-END-->"
 HOME_CARDS = 3
 
@@ -150,8 +160,10 @@ def spotlight(arts):
     arrow = '<svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'
     lis = []
     for a in arts:
-        lis.append('<li><a class="sp" href="/articles/%s/"><span class="sp-c"><span class="sp-k">Article %02d</span><span class="sp-t">%s</span></span>%s</a></li>'
-                   % (e(a["slug"]), order[a["slug"]], e(a["title"]), arrow))
+        ico = TOPIC_ICONS.get(a["topic"], "")
+        ico = ('<span class="sp-ico" aria-hidden="true">%s</span>' % ico) if ico else ""
+        lis.append('<li><a class="sp%s" href="/articles/%s/">%s<span class="sp-c"><span class="sp-k">Article %02d</span><span class="sp-t">%s</span></span>%s</a></li>'
+                   % (" has-ico" if ico else "", e(a["slug"]), ico, order[a["slug"]], e(a["title"]), arrow))
     return ('\n        <div class="spot" aria-labelledby="spot-h"><div class="spot-top"><h2 id="spot-h" class="spot-h">Spotlight</h2><a class="spot-all" href="/insights/">See all insights</a></div>'
             '<div class="sp-wrap"><ul class="sp-row">' + "".join(lis) + '</ul>'
             '<button type="button" class="sp-nav prev" aria-label="Previous articles" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>'
