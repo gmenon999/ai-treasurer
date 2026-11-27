@@ -1535,7 +1535,18 @@
   /* Home first screen: Spotlight strip of the latest articles (27 Nov 2026). Swipe on phones, no animation. */
   .spot { margin-top: clamp(24px, 4vh, 40px); padding-bottom: clamp(8px, 2vh, 24px); }
   .spot-h { font-family: var(--serif); font-weight: 700; font-size: 24px; line-height: 1.1; margin: 0 0 12px; color: var(--white); }
-  .sp-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); list-style: none; margin: 0; padding: 0; }
+  .sp-wrap { position: relative; }
+  .sp-row { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2px) / 3); list-style: none; margin: 0; padding: 0;
+    overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; scroll-behavior: smooth; scrollbar-width: none; }
+  .sp-row::-webkit-scrollbar { display: none; }
+  .sp-row li { scroll-snap-align: start; }
+  .sp-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.45); background: var(--navy-deep); color: var(--white); cursor: pointer; padding: 0; }
+  .sp-nav svg { width: 20px; height: 20px; }
+  .sp-nav.prev { left: -52px; } .sp-nav.next { right: -52px; }
+  .sp-nav:hover, .sp-nav:focus-visible { background: var(--gold-light); color: var(--navy-deep); border-color: var(--gold-light); }
+  .sp-nav[hidden] { display: none; }
+  @media (max-width: 1340px) { .sp-nav.prev { left: auto; right: 48px; top: -34px; transform: none; } .sp-nav.next { right: 0; top: -34px; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .sp-row { scroll-behavior: auto; } }
   .sp-row li { padding: 0 24px; border-left: 1px solid rgba(255,255,255,0.35); }
   .sp-row li:first-child { padding-left: 0; border-left: 0; }
   .sp { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center; color: var(--white); text-decoration: none; }
@@ -1550,9 +1561,9 @@
     section#top.intro .hero-by { margin-bottom: clamp(18px, 3vh, 32px); }
   }
   @media (max-width: 720px) {
-    .sp-row { grid-auto-columns: 70%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-right: -16px; padding-right: 16px; }
-    .sp-row::-webkit-scrollbar { display: none; }
-    .sp-row li { scroll-snap-align: start; padding: 0 16px; }
+    .sp-row { grid-auto-columns: 74%; margin-right: -16px; padding-right: 16px; scroll-padding-left: 0; }
+    .sp-row li { padding: 0 16px; }
+    .sp-nav { display: none !important; }
     .sp-t { font-size: 16px; }
   }
   /* About: short headline, experience line underneath (26 Nov 2026) */
@@ -2063,7 +2074,7 @@
         <a class="cta-main cta-down" href="#decisions">See what your Board will ask<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
       </div>
       <!--SPOTLIGHT-START-->
-        <div class="spot" aria-labelledby="spot-h"><h2 id="spot-h" class="spot-h">Spotlight</h2><ul class="sp-row"><li><a class="sp" href="/articles/hk-tokenised-bonds/"><span class="sp-c"><span class="sp-k">Article 05</span><span class="sp-t">A Bond Trade Can Now Settle While Your Treasury Team Is Asleep</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/ai-agent-negotiated-treasury-trade/"><span class="sp-c"><span class="sp-k">Article 04</span><span class="sp-t">An AI Agent Just Negotiated a Treasury Trade With Another AI Agent</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/where-freed-hours-go/"><span class="sp-c"><span class="sp-k">Article 03</span><span class="sp-t">Now your Reconciliation only takes a few minutes. So why is your team still busy?</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li></ul></div>
+        <div class="spot" aria-labelledby="spot-h"><h2 id="spot-h" class="spot-h">Spotlight</h2><div class="sp-wrap"><ul class="sp-row"><li><a class="sp" href="/articles/hk-tokenised-bonds/"><span class="sp-c"><span class="sp-k">Article 05</span><span class="sp-t">A Bond Trade Can Now Settle While Your Treasury Team Is Asleep</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/ai-agent-negotiated-treasury-trade/"><span class="sp-c"><span class="sp-k">Article 04</span><span class="sp-t">An AI Agent Just Negotiated a Treasury Trade With Another AI Agent</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/where-freed-hours-go/"><span class="sp-c"><span class="sp-k">Article 03</span><span class="sp-t">Now your Reconciliation only takes a few minutes. So why is your team still busy?</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/what-did-treasury-know/"><span class="sp-c"><span class="sp-k">Article 02</span><span class="sp-t">Your AI cash forecast just refreshed. Can Treasury prove what it knew last Monday?</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li><li><a class="sp" href="/articles/start-where-mistakes-are-cheap/"><span class="sp-c"><span class="sp-k">Article 01</span><span class="sp-t">Your First AI Task in Treasury Should Be Unglamorous</span></span><svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li></ul><button type="button" class="sp-nav prev" aria-label="Previous articles" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button type="button" class="sp-nav next" aria-label="More articles" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div></div>
         <!--SPOTLIGHT-END-->
     </div>
   </section>
@@ -3399,6 +3410,18 @@ function aitHomeTrail(){
   sec.classList.add('ht-on'); host.hidden = false; render();
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aitHomeTrail); else aitHomeTrail();
+</script>
+<script>
+/* Spotlight: arrows for mouse users on wider screens; touch users swipe. Nothing moves on its own. */
+(function(){
+  var w = document.querySelector('.sp-wrap'); if (!w) return;
+  var row = w.querySelector('.sp-row'), pv = w.querySelector('.sp-nav.prev'), nx = w.querySelector('.sp-nav.next');
+  function step(){ var li = row.querySelector('li'); return li ? li.getBoundingClientRect().width : row.clientWidth / 3; }
+  function upd(){ var max = row.scrollWidth - row.clientWidth; pv.hidden = row.scrollLeft < 4; nx.hidden = max < 4 || row.scrollLeft > max - 4; }
+  pv.addEventListener('click', function(){ row.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  nx.addEventListener('click', function(){ row.scrollBy({ left: step(), behavior: 'smooth' }); });
+  row.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
+})();
 </script>
 <script>
 /* Home control trail: tap a step to see who does it and what the auditor asks. */

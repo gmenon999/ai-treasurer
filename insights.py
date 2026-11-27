@@ -144,15 +144,18 @@ def home_cards(arts):
 
 
 def spotlight(arts):
-    # First screen strip: latest 3 articles, number and title only (swipe on phones, no animation)
+    # First screen strip: every article, newest first, number and title only (swipe, no automatic movement)
     order = {a["slug"]: i + 1 for i, a in enumerate(sorted(arts, key=lambda a: (a["_d"], a["slug"])))}
     arrow = '<svg class="sp-arr" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'
     lis = []
-    for a in arts[:HOME_CARDS]:
+    for a in arts:
         lis.append('<li><a class="sp" href="/articles/%s/"><span class="sp-c"><span class="sp-k">Article %02d</span><span class="sp-t">%s</span></span>%s</a></li>'
                    % (e(a["slug"]), order[a["slug"]], e(a["title"]), arrow))
     return ('\n        <div class="spot" aria-labelledby="spot-h"><h2 id="spot-h" class="spot-h">Spotlight</h2>'
-            '<ul class="sp-row">' + "".join(lis) + '</ul></div>\n        ')
+            '<div class="sp-wrap"><ul class="sp-row">' + "".join(lis) + '</ul>'
+            '<button type="button" class="sp-nav prev" aria-label="Previous articles" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>'
+            '<button type="button" class="sp-nav next" aria-label="More articles" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>'
+            '</div></div>\n        ')
 
 
 def insights_page(arts):
