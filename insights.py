@@ -130,13 +130,15 @@ def short_date(d):
 
 
 def home_cards(arts):
+    # Same stable numbering as the Insights page (oldest article = 01)
+    order = {a["slug"]: i + 1 for i, a in enumerate(sorted(arts, key=lambda a: (a["_d"], a["slug"])))}
     out = []
     for a in arts[:HOME_CARDS]:
         img = ('<span class="art-img"><img src="%s" alt="" width="1200" height="627" loading="lazy"></span>' % e(a["image"])) if a.get("image") else ""
         out.append(
-            '        <a class="art-card%s" href="/articles/%s/">%s<span class="art-meta"><span class="art-topic">%s</span> &middot; %s &middot; %d min read</span>'
+            '        <a class="art-card%s" href="/articles/%s/">%s<span class="art-no">Article %02d</span><span class="art-meta"><span class="art-topic">%s</span> &middot; %s &middot; %d min read</span>'
             '<span class="art-t">%s</span><span class="art-d">%s</span><span class="art-go">Read the article</span></a>'
-            % (" has-img" if img else "", e(a["slug"]), img, e(a["topic"]), short_date(a["_d"]), a["minutes"], e(a["title"]), e(a["summary"])))
+            % (" has-img" if img else "", e(a["slug"]), img, order[a["slug"]], e(a["topic"]), short_date(a["_d"]), a["minutes"], e(a["title"]), e(a["summary"])))
     return "\n" + "\n".join(out) + "\n        "
 
 
