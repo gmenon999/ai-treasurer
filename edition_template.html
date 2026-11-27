@@ -1548,6 +1548,7 @@
     .sp-ico { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: #1B3150; border: 1px solid rgba(233,203,133,0.35); color: var(--gold-light); flex: none; }
     .sp-ico svg { width: 26px; height: 26px; }
   }
+  .sp-dots { display: none; }
   .sp-wrap { position: relative; }
   .sp-row { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2px) / 3); list-style: none; margin: 0; padding: 0;
     overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; scroll-behavior: smooth; scrollbar-width: none; }
@@ -1576,7 +1577,16 @@
   @media (max-width: 720px) {
     .sp-row { grid-auto-columns: 74%; margin-right: -16px; padding-right: 16px; scroll-padding-left: 0; }
     .sp-row li { padding: 0 16px; }
-    .sp-nav { display: none !important; }
+    /* swipe cues on phones (owner, 27 Nov 2026 21:51): gold edge arrows like the menu's, and dots under the strip */
+    .sp-nav, .sp-nav.prev, .sp-nav.next { top: 0; bottom: 0; height: auto; transform: none; width: 46px; border: 0; color: var(--gold-light); }
+    .sp-nav svg { width: 24px; height: 24px; }
+    .sp-nav.next { right: -16px; left: auto; justify-content: flex-end; padding-right: 10px; background: linear-gradient(90deg, rgba(8,18,34,0) 0%, rgba(8,18,34,0.92) 55%); }
+    .sp-nav.prev { left: -16px; right: auto; justify-content: flex-start; padding-left: 10px; background: linear-gradient(270deg, rgba(8,18,34,0) 0%, rgba(8,18,34,0.92) 55%); }
+    .sp-nav:hover, .sp-nav:focus-visible { background-color: transparent; color: var(--white); }
+    .sp-dots { display: flex; gap: 2px; margin-top: 10px; margin-left: -8px; }
+    .sp-dots button { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .sp-dots button::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.35); }
+    .sp-dots button[aria-current="true"]::before { width: 18px; border-radius: 4px; background: var(--gold-light); }
     .sp-t { font-size: 16px; }
   }
   /* About: short headline, experience line underneath (26 Nov 2026) */
@@ -3415,7 +3425,16 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
   function upd(){ var max = row.scrollWidth - row.clientWidth; pv.hidden = row.scrollLeft < 4; nx.hidden = max < 4 || row.scrollLeft > max - 4; }
   pv.addEventListener('click', function(){ row.scrollBy({ left: -step(), behavior: 'smooth' }); });
   nx.addEventListener('click', function(){ row.scrollBy({ left: step(), behavior: 'smooth' }); });
-  row.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
+  /* dots: one per article, the current one in gold; tapping a dot goes to that article */
+  var lis = row.querySelectorAll('li'), dots = document.createElement('div'); dots.className = 'sp-dots';
+  dots.setAttribute('role', 'group'); dots.setAttribute('aria-label', 'Spotlight articles');
+  [].forEach.call(lis, function(li, i){ var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Show article ' + (i + 1) + ' of ' + lis.length);
+    b.addEventListener('click', function(){ row.scrollTo({ left: li.offsetLeft - row.firstElementChild.offsetLeft, behavior: 'smooth' }); }); dots.appendChild(b); });
+  w.parentNode.insertBefore(dots, w.nextSibling);
+  function cur(){ var best = 0, d = 1e9; [].forEach.call(lis, function(li, i){ var x = Math.abs(li.getBoundingClientRect().left - row.getBoundingClientRect().left); if (x < d) { d = x; best = i; } });
+    if (row.scrollLeft > row.scrollWidth - row.clientWidth - 4) best = lis.length - 1;
+    [].forEach.call(dots.children, function(b, i){ b.setAttribute('aria-current', i === best ? 'true' : 'false'); }); }
+  row.addEventListener('scroll', function(){ upd(); cur(); }, { passive: true }); window.addEventListener('resize', function(){ upd(); cur(); }); upd(); cur();
 })();
 </script>
 <script>
