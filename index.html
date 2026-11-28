@@ -972,6 +972,7 @@
   @media (max-width: 430px) { .ag-jump .ag-jump-in a { font-size: 12px; letter-spacing: 0.01em; padding: 0 6px; gap: 5px; } .ag-jump .ag-jump-in a:first-child { padding-left: 0; } }
   /* Tap-to-play explainer video (owner draft, 28 Nov 2026). Never autoplays. */
   .agv { margin: 6px 0 22px; }
+  .agv-how { margin: 18px 0 8px; }
   .agv-go { appearance: none; display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 8px 18px 8px 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(233,203,133,0.55); color: #fff; font: 600 16px/1.2 var(--sans); cursor: pointer; }
   .agv-go:hover { background: rgba(255,255,255,0.14); }
   .agv-play { width: 32px; height: 32px; border-radius: 50%; background: var(--gold-light); position: relative; flex: none; }
@@ -2579,6 +2580,8 @@
         <div class="ag-bh">
           <div><div class="ag-k">1 &middot; How it works</div>
           <h3 class="ag-h3">Five steps. The Agent does the checking, a named person makes the decision.</h3></div>
+        <div class="agv agv-how"><button type="button" class="agv-go" aria-controls="agv-box-how" aria-expanded="false"><span class="agv-play" aria-hidden="true"></span><span class="agv-txt">Watch: how it works<span class="agv-t">1 minute, with sound</span></span></button>
+        <div class="agv-box" id="agv-box-how" hidden><video controls playsinline preload="none" poster="/media/how-it-works.jpg" width="1080" height="1080"><source src="/media/how-it-works.mp4" type="video/mp4"></video><p class="agv-note">Illustrative. Levels and counts are the author&rsquo;s proposals.</p></div></div>
           <div class="ag-seg" role="group" aria-label="Show the steps as">
             <button type="button" data-mode="model" aria-pressed="true">The model</button>
             <button type="button" data-mode="case" aria-pressed="false">A worked example</button>
@@ -4395,11 +4398,13 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
 <script>
 /* Explainer video: opens and plays only when the reader taps the button. */
 (function(){
-  var b = document.querySelector('.agv-go'), box = document.getElementById('agv-box'), v = document.getElementById('agv-video');
-  if (!b || !box || !v) return;
-  b.addEventListener('click', function(){
-    var open = box.hidden; box.hidden = !open; b.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (open) { try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {} } else { v.pause(); }
+  document.querySelectorAll('.agv-go').forEach(function(b){
+    var box = document.getElementById(b.getAttribute('aria-controls')), v = box && box.querySelector('video');
+    if (!box || !v) return;
+    b.addEventListener('click', function(){
+      var open = box.hidden; box.hidden = !open; b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) { try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {} } else { v.pause(); }
+    });
   });
 })();
 </script>
