@@ -965,6 +965,9 @@
   .agk li { display: flex; align-items: center; gap: 18px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
   .agk b { flex: none; min-width: 1.95em; font: 700 44px/1 var(--serif); color: var(--gold-light); }
   .agk span { font-size: 17px; line-height: 1.4; color: #fff; }
+  /* Agent list stays closed until a reader picks a job (owner, 28 Nov 2026 13:47). */
+  .js #ag-map.agx-closed .ag-tools, .js #ag-map.agx-closed #ag-status, .js #ag-map.agx-closed .ag-mapgrid { display: none; }
+  .agx-all { margin: 0 0 28px; }
   .ag-gh span { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); font-weight: 700; }
   .ag-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .ag-card { display: flex; flex-direction: column; height: 100%; padding: 14px 16px; background: var(--ag-tile); color: var(--white); text-decoration: none; border-left: 3px solid transparent; transition: background .2s, border-color .2s; }
@@ -2584,6 +2587,7 @@
         <p class="agx-lead">Pick the job you want done, then open its agents to see what each one does and where a person decides.</p>
         <ol class="agx"><li class="agx-g"><span class="agx-c" aria-hidden="true">1</span><h4>Cash visibility</h4><p class="agx-d">Know where the cash is today and see where it is heading.</p><p class="agx-m">2 agents &middot; 10 functions</p><p class="agx-a">Daily Cash Position, Cash Forecast</p><button type="button" class="agx-go" data-go="cash">See these agents <span aria-hidden="true">&rarr;</span></button></li><li class="agx-g"><span class="agx-c alt" aria-hidden="true">2</span><h4>Payments, collections and banks</h4><p class="agx-d">Money in, money out, and the bank accounts it moves through.</p><p class="agx-m">4 agents &middot; 17 functions</p><p class="agx-a">Payables, Receivables, Bank, Bank Charges</p><button type="button" class="agx-go" data-go="pay">See these agents <span aria-hidden="true">&rarr;</span></button></li><li class="agx-g"><span class="agx-c" aria-hidden="true">3</span><h4>Liquidity, funding and investments</h4><p class="agx-d">Move cash to where it is needed, borrow on the right terms and place the surplus safely.</p><p class="agx-m">3 agents &middot; 19 functions</p><p class="agx-a">Liquidity and Funding, Debt and Covenant, Investments</p><button type="button" class="agx-go" data-go="liq">See these agents <span aria-hidden="true">&rarr;</span></button></li><li class="agx-g"><span class="agx-c alt" aria-hidden="true">4</span><h4>Financial risk</h4><p class="agx-d">Keep currency, rate, commodity, counterparty and insurable risks inside agreed limits.</p><p class="agx-m">3 agents &middot; 16 functions</p><p class="agx-a">FX and Hedging, Credit Risk, Insurance</p><button type="button" class="agx-go" data-go="risk">See these agents <span aria-hidden="true">&rarr;</span></button></li><li class="agx-g"><span class="agx-c" aria-hidden="true">5</span><h4>Accounting and reporting</h4><p class="agx-d">Agree the books to the bank, record it correctly, pay the right tax and staff, and report on time.</p><p class="agx-m">5 agents &middot; 39 functions</p><p class="agx-a">Bank Reconciliation, Ledger, Reporting, Tax, Payroll</p><button type="button" class="agx-go" data-go="acc">See these agents <span aria-hidden="true">&rarr;</span></button></li><li class="agx-g"><span class="agx-c alt" aria-hidden="true">6</span><h4>Planning, buying and selling</h4><p class="agx-d">Plan the numbers and control what the business buys, holds and sells.</p><p class="agx-m">4 agents &middot; 17 functions</p><p class="agx-a">Planning, Procurement, Inventory, Commercial</p><button type="button" class="agx-go" data-go="plan">See these agents <span aria-hidden="true">&rarr;</span></button></li></ol>
         <div class="agx-o"><p class="agx-m">Across all six</p><h4>Oversight</h4><p class="agx-d">Governance Agent: keeps every agent within its limits, access and approvals.</p><p class="agx-m">1 agent &middot; 6 functions</p></div>
+        <p class="agx-all"><button type="button" class="agx-go" data-go="all">See all 22 agents <span aria-hidden="true">&rarr;</span></button></p>
         <p class="ag-start"><b>Where to start.</b> Work where a person already checks the result and a mistake is cheap: bank reconciliation, cash positioning, variance analysis. Leave payments until later.</p>
         <div class="ag-tools">
           <label class="ag-search"><span class="ag-sr">Search agents and functions</span><input type="search" id="ag-q" placeholder="Search, e.g. bank details" autocomplete="off"></label>
@@ -4352,6 +4356,18 @@ document.querySelectorAll('.mk-fold .mk-tog').forEach(function(b){
     h += (k && getComputedStyle(k).position === 'sticky') ? k.offsetHeight : 0;
     window.scrollTo({ top: s.getBoundingClientRect().top + window.pageYOffset - h - 12, behavior: 'smooth' });
   }); });
+})();
+</script>
+<script>
+/* Agent list: closed on arrival; opens when a job, a filter, an agent card or a Home link is chosen. */
+(function(){
+  var m = document.getElementById('ag-map'); if (!m) return;
+  m.classList.add('agx-closed');
+  document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('.agx-go, .ag-fc, .ag-card, .hag a[data-agf], .hag a[data-ag]')) m.classList.remove('agx-closed');
+  }, true);
+  var q = document.getElementById('ag-q'); if (q) q.addEventListener('focus', function(){ m.classList.remove('agx-closed'); });
+  if (/^#ag-p-/.test(location.hash)) m.classList.remove('agx-closed');
 })();
 </script>
 </body>
