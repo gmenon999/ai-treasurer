@@ -306,7 +306,15 @@ def research(date_human, history=None):
         "say what is new.\n%s\n\n"
         "summary = 30-45 words, original wording. %s" % (date_human, beats_spec, covered_txt, GUARD)
     )
-    data = _json(_ask(prompt, RESEARCH_MODEL, search=True), "research")
+    try:
+        data = _json(_ask(prompt, RESEARCH_MODEL, search=True), "research")
+    except ValueError:
+        # One retry (added 28 Nov 2026): on 28 Nov the model answered in prose instead of JSON and the
+        # whole day was lost. Costs a second search only on days the first one fails.
+        print("research: no JSON on the first attempt; retrying once.")
+        data = _json(_ask(prompt + "\n\nReply with the JSON object only. If a beat has little fresh news, "
+                          "return fewer items or an empty list for it rather than explaining.",
+                          RESEARCH_MODEL, search=True), "research (retry)")
     # validate
     beats = data.get("beats", {})
     for k in BEAT_KEYS:
