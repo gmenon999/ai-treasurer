@@ -2656,6 +2656,69 @@
     "cost_usd": 0.1216
    },
    "edition_cost_usd": 1.481
+  },
+  {
+   "date": "2026-11-28",
+   "items": [
+    {
+     "headline": "Corporate stablecoin use in production doubles to 18%, EY survey finds",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "EU sanctions 113 more Russian targets, including shadow fleet supporters",
+     "status": "no source text",
+     "reasons": "source not readable"
+    },
+    {
+     "headline": "Hyundai Card and JPMorgan Kinexys trial AI agents for multi-currency liquidity",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "HSBC opens live account data to client AI tools through HSBCnio",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "ING lets multinational treasurers fix cash pool rates over agreed windows",
+     "status": "dropped",
+     "lens": "Risk",
+     "reasons": "copies wording from the source or summary"
+    },
+    {
+     "headline": "Standard Chartered widens tokenised deposits between Singapore and Hong Kong",
+     "status": "published",
+     "lens": "Cash & liquidity"
+    },
+    {
+     "headline": "COSO 2026 requires in-period evidence for AI-assisted judgments, exposing CFO gaps",
+     "status": "published",
+     "lens": "Controls & audit"
+    },
+    {
+     "headline": "Average Q2 FX hedge losses climb to £750k as volatility bites",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "Dollar index holds at 104.01 as markets price 93% odds of Fed hike",
+     "status": "published",
+     "lens": "Risk"
+    },
+    {
+     "headline": "ISSB starts balloting greenhouse gas taxonomy update due in H1 2027",
+     "status": "published",
+     "lens": "Accounting & reporting"
+    }
+   ],
+   "cost_usd": 0.3464,
+   "market_view": {
+    "status": "published",
+    "reasons": "",
+    "cost_usd": 0.3779
+   },
+   "edition_cost_usd": 1.9571
   }
  ]
 }
