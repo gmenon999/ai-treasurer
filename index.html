@@ -953,6 +953,9 @@
   .js .ag-how[data-mode="model"] .ag-steps, .js .ag-how[data-mode="case"] .agh { display: none; }
   .agh, .agl { margin-top: 8px; }
   .agx-c.lv0 { background: #fff; } .agx-c.lv1 { background: var(--gold-light); } .agx-c.lv2 { background: #9FACBE; }
+  .ag-how .ag-sub { margin-top: 56px; padding-top: 36px; border-top: 2px solid var(--gold-light); }
+  .agx-lv { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; margin-bottom: 14px; font: 700 14px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-deep); border-radius: 4px; }
+  .agx-lv.lv0 { background: #fff; } .agx-lv.lv1 { background: var(--gold-light); } .agx-lv.lv2 { background: #9FACBE; }
   .agh-link { margin: 8px 0 18px; }
   .ag-gh span { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); font-weight: 700; }
   .ag-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
@@ -2562,9 +2565,10 @@
         <p class="ag-src"><span class="m">Source: The AI Treasurer control model.</span><span class="c">Source: The AI Treasurer, illustrative example.</span></p>
 
         <div class="ag-sub">
-          <h4 class="ag-h4">How far each function goes on its own</h4>
+          <div class="ag-k">Levels</div>
+          <h3 class="ag-h3">Three levels. How far an agent may go on its own.</h3>
           <p class="ag-p">Each function is counted once, at the most independent level any of its steps reaches. Even then, a person approves the steps that move money, post an entry or change master data.</p>
-          <ol class="agx agl"><li class="agx-g"><span class="agx-c lv0" aria-hidden="true">0</span><h4>A person decides</h4><p class="agx-m">Level 0 &middot; 3 functions</p><p class="agx-d">The agent only gathers information.</p></li><li class="agx-g"><span class="agx-c lv1" aria-hidden="true">1</span><h4>The agent drafts. A person approves</h4><p class="agx-m">Level 1 &middot; 77 functions</p><p class="agx-d">Anything that moves money, posts an entry or changes master data.</p></li><li class="agx-g"><span class="agx-c lv2" aria-hidden="true">2</span><h4>The agent runs. A person handles the exceptions</h4><p class="agx-m">Level 2 &middot; 44 functions</p><p class="agx-d">Matching, checking and reporting. Never the final money step.</p></li></ol>
+          <ol class="agx agl"><li class="agx-g"><span class="agx-lv lv0" aria-hidden="true">Level 0</span><h4>A person decides</h4><p class="agx-m">3 functions</p><p class="agx-d">The agent only gathers information.</p></li><li class="agx-g"><span class="agx-lv lv1" aria-hidden="true">Level 1</span><h4>The agent drafts. A person approves</h4><p class="agx-m">77 functions</p><p class="agx-d">Anything that moves money, posts an entry or changes master data.</p></li><li class="agx-g"><span class="agx-lv lv2" aria-hidden="true">Level 2</span><h4>The agent runs. A person handles the exceptions</h4><p class="agx-m">44 functions</p><p class="agx-d">Matching, checking and reporting. Never the final money step.</p></li></ol>
           <div class="agx-o"><p class="agx-m">The rule</p><p class="agx-d">Anything that moves money, posts an entry or changes master data stays at Level 1 or below.</p></div>
           <p class="ag-src">Source: The AI Treasurer function map, October 2026. Illustrative. Levels are the author&rsquo;s proposals.</p>
         </div>
