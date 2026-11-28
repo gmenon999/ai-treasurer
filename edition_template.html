@@ -953,7 +953,10 @@
   .js .ag-how[data-mode="model"] .ag-steps, .js .ag-how[data-mode="case"] .agh { display: none; }
   .agh, .agl { margin-top: 8px; }
   .agx-c.lv0 { background: #fff; } .agx-c.lv1 { background: var(--gold-light); } .agx-c.lv2 { background: #9FACBE; }
-  .ag-how .ag-sub { margin-top: 56px; padding-top: 36px; border-top: 2px solid var(--gold-light); }
+  .ag-how .ag-sub { position: relative; margin-top: 56px; padding: 36px 0 32px; background: #172A45; box-shadow: 0 0 0 100vmax #172A45; clip-path: inset(0 -100vmax); }
+  .ag-how .ag-sub::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold-light); box-shadow: 0 0 0 100vmax var(--gold-light); clip-path: inset(0 -100vmax); }
+  .ag-how .ag-sub .agx-g { border-top-color: rgba(255,255,255,0.16); }
+  .ag-how .agh-link { margin-top: 28px; }
   .agx-lv { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; margin-bottom: 14px; font: 700 14px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-deep); border-radius: 4px; }
   .agx-lv.lv0 { background: #fff; } .agx-lv.lv1 { background: var(--gold-light); } .agx-lv.lv2 { background: #9FACBE; }
   .agh-link { margin: 8px 0 18px; }
