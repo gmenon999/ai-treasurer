@@ -960,6 +960,11 @@
   .agx-lv { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; margin-bottom: 14px; font: 700 14px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-deep); border-radius: 4px; }
   .agx-lv.lv0 { background: #fff; } .agx-lv.lv1 { background: var(--gold-light); } .agx-lv.lv2 { background: #9FACBE; }
   .agh-link { margin: 8px 0 18px; }
+  /* Agentic hero figures as simple rows (owner draft, 28 Nov 2026). */
+  .agk { list-style: none; margin: 26px 0 0; padding: 0; border-top: 2px solid var(--gold-light); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); column-gap: 32px; }
+  .agk li { display: flex; align-items: center; gap: 18px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .agk b { flex: none; min-width: 1.95em; font: 700 44px/1 var(--serif); color: var(--gold-light); }
+  .agk span { font-size: 17px; line-height: 1.4; color: #fff; }
   .ag-gh span { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-soft); font-weight: 700; }
   .ag-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .ag-card { display: flex; flex-direction: column; height: 100%; padding: 14px 16px; background: var(--ag-tile); color: var(--white); text-decoration: none; border-left: 3px solid transparent; transition: background .2s, border-color .2s; }
@@ -2537,7 +2542,7 @@
         <div class="ag-eye">Agentic Automation</div>
         <h2 id="ag-h">AI agents across Treasury and Finance. Each one reports to a person.</h2>
         <p class="ag-lede">Each agent has a job description: what it does, what it may never do, and what the auditor will check.</p>
-        <ul class="ag-kpi"><li><b>124</b><span>functions mapped across 22 areas of Treasury and Finance</span></li><li><b>77</b><span>are drafted by the agent and always approved by a person</span></li><li><b>0</b><span>are left to an agent alone, with no person in the loop</span></li></ul>
+        <ul class="agk"><li><b>22</b><span>agents, grouped into five jobs</span></li><li><b>124</b><span>functions across Treasury and Finance</span></li><li><b>0</b><span>left to an agent alone. A person is always in the loop.</span></li></ul>
         <p class="ag-gl" style="font-size:.82rem;line-height:1.5;color:#C9D2DE;margin:10px 0 0">Counts and levels are the author&rsquo;s proposals.</p>
       </div>
     </div>
